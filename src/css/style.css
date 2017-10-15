@@ -3,8 +3,53 @@
  * Copyright 2017 Sergienko Anton
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(../fonts/Roboto-Light.ttf); }
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Roboto-Regular.ttf); }
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/Roboto-Medium.ttf); }
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/Roboto-Bold.ttf); }
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  src: url(../fonts/Roboto-Black.ttf); }
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/Roboto-Italic.ttf); }
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 300;
+  src: url(../fonts/RobotoMono-Light.ttf); }
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/RobotoMono-Regular.ttf); }
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/RobotoMono-Bold.ttf); }
 body {
-  font: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
-  color: #333; }
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+  overflow-x: hidden; }
 
 /*# sourceMappingURL=style.css.map */

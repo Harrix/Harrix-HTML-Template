@@ -4,9 +4,10 @@
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
 $font-stack: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-$text-color: #333;
+
+@import "fonts";
 
 body {
-  font: $font-stack;
-  color: $text-color;
+  font-family: $font-stack;
+  overflow-x: hidden;
 }
