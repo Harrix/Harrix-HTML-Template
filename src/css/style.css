@@ -50,6 +50,16 @@
   src: url(../fonts/RobotoMono-Bold.ttf); }
 body {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  color: #222; }
+
+.bg-white {
+  background-color: #ffffff; }
+
+body {
+  padding-top: 4.5rem; }
+
+#logo {
+  height: 50px; }
 
 /*# sourceMappingURL=style.css.map */
