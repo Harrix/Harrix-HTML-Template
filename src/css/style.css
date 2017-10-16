@@ -57,9 +57,12 @@ body {
   background-color: #ffffff; }
 
 body {
-  padding-top: 4.5rem; }
+  padding-top: 5.0rem; }
 
 #logo {
   height: 50px; }
+
+.icon-hamburger {
+  height: 22px; }
 
 /*# sourceMappingURL=style.css.map */
