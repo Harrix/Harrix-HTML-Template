@@ -10,12 +10,21 @@ Roboto,
 'Open Sans',
 'Helvetica Neue',
 sans-serif;
+
 $background-color: #ffffff;
 $text-color: #222;//#474747
 $link-color: #19a5a5;
 $main-color: #de2b26;
 $duration-animation: 0.2s;
 $type-animation: ease-in-out;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
 
 @mixin animation() {
   transition: all $duration-animation $type-animation;
@@ -35,20 +44,5 @@ body {
 .bg-white {
   background-color: #ffffff;
 }
-
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px
-) !default;
-
-/*.container {
-@media (lg) {
-margin-left: 0px;
-margin-right: 0px;
-}
-}*/
 
 @import "header";

@@ -17,4 +17,20 @@ header {
   .icon-hamburger {
     height: 22px;
   }
+
+  a {
+    color: $text-color !important;
+
+    &:hover {
+      color: $link-color !important;
+    }
+  }
+
+  .nav-link {
+    @extend a;
+  }
+
+  .navbar-toggler {
+    border: 1px solid transparent !important;
+  }
 }
