@@ -12,7 +12,9 @@ Roboto,
 sans-serif;
 
 $background-color: #ffffff;
+$header-background-color: #ffffff;
 $text-color: #222;//#474747
+$text-color-in-dark: #ffffff;
 $link-color: #19a5a5;
 $main-color: #de2b26;
 $duration-animation: 0.2s;
@@ -34,15 +36,5 @@ $grid-breakpoints: (
 }
 
 @import "fonts";
-
-body {
-  font-family: $font-stack;
-  overflow-x: hidden;
-  color: $text-color;
-}
-
-.bg-white {
-  background-color: #ffffff;
-}
-
+@import "common";
 @import "header";
