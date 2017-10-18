@@ -1,15 +1,15 @@
 body {
-    font-family: $font-stack;
-    overflow-x: hidden;
-    color: $text-color;
+  font-family: $font-stack;
+  overflow-x: hidden;
+  color: $text-color;
 
-    ::selection {
-        color: $text-color-in-dark;
-        background: $main-color;
-    }
-
-    ::-moz-selection {
-        color: $text-color-in-dark;
-        background: $main-color;
-    }    
+   ::selection {
+    color: $text-color-in-dark;
+    background: $main-color;
   }
+
+   ::-moz-selection {
+    color: $text-color-in-dark;
+    background: $main-color;
+  }
+}
