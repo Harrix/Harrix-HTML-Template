@@ -56,13 +56,26 @@ body {
 .bg-white {
   background-color: #ffffff; }
 
+/*.container {
+@media (lg) {
+margin-left: 0px;
+margin-right: 0px;
+}
+}*/
 body {
   padding-top: 5.0rem; }
 
-#logo {
-  height: 50px; }
-
-.icon-hamburger {
-  height: 22px; }
+header {
+  font-size: 14px; }
+  header #logo {
+    height: 50px;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out; }
+  header .shrink {
+    height: 40px !important; }
+  header .icon-hamburger {
+    height: 22px; }
 
 /*# sourceMappingURL=style.css.map */

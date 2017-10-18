@@ -2,10 +2,19 @@ body {
   padding-top: 5.0rem;
 }
 
-#logo {
-  height: 50px;
-}
+header {
+  font-size: 14px;
 
-.icon-hamburger {
-  height: 22px;
+  #logo {
+    height: 50px;
+    @include animation();
+  }
+
+  .shrink {
+    height: 40px !important;
+  }
+
+  .icon-hamburger {
+    height: 22px;
+  }
 }
