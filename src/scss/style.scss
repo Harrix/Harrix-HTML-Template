@@ -11,26 +11,24 @@ Roboto,
 'Helvetica Neue',
 sans-serif;
 
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px
-) !default;
+$grid-breakpoints: ( xs: 0,
+sm: 576px,
+md: 768px,
+lg: 992px,
+xl: 1200px) !default;
 
-$background-color: #ffffff;
+$background-color:        #ffffff;
 $header-background-color: #ffffff;
-$text-color: #222;//#474747
-$text-color-in-dark: #ffffff;
-$link-color: #19a5a5;
-$main-color: #de2b26;
-$border-color: #eee;
-$duration-animation: 0.2s;
-$type-animation: ease-in-out;
-$grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
-$header-font-size: 0.875rem;
-$zindex-fixed: 1030 !default;
+$text-color:              #222; //#474747
+$text-color-in-dark:      #ffffff;
+$link-color:              #19a5a5;
+$main-color:              #de2b26;
+$border-color:            #eee;
+$duration-animation:      0.2s;
+$type-animation:          ease-in-out;
+$grid-breakpoint-mobile:  map-get($grid-breakpoints, lg);
+$header-font-size:        0.875rem;
+$zindex-fixed:            1030 !default;
 
 @mixin animation() {
   transition: all $duration-animation $type-animation;
