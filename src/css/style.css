@@ -2,5 +2,142 @@
  * Harrix HTML Template (https://github.com/Harrix/Harrix-HTML-Template)
  * Copyright 2017 Sergienko Anton
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
- */@font-face{font-family:'Roboto';font-style:normal;font-weight:300;src:url(../fonts/Roboto-Light.ttf)}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:url(../fonts/Roboto-Regular.ttf)}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;src:url(../fonts/Roboto-Medium.ttf)}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;src:url(../fonts/Roboto-Bold.ttf)}@font-face{font-family:'Roboto';font-style:normal;font-weight:900;src:url(../fonts/Roboto-Black.ttf)}@font-face{font-family:'Roboto';font-style:italic;font-weight:400;src:url(../fonts/Roboto-Italic.ttf)}@font-face{font-family:'Roboto Mono';font-style:normal;font-weight:300;src:url(../fonts/RobotoMono-Light.ttf)}@font-face{font-family:'Roboto Mono';font-style:normal;font-weight:400;src:url(../fonts/RobotoMono-Regular.ttf)}@font-face{font-family:'Roboto Mono';font-style:normal;font-weight:700;src:url(../fonts/RobotoMono-Bold.ttf)}body{font-family:-apple-system,BlinkMacSystemFont,Roboto,"Open Sans","Helvetica Neue",sans-serif;overflow-x:hidden;color:#222}body ::selection{color:#fff;background:#de2b26}body ::-moz-selection{color:#fff;background:#de2b26}body{padding-top:5.0rem}header{font-size:14px;background-color:#fff}header #logo{height:50px;transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out}header .shrink{height:40px !important}header .icon-hamburger{height:22px}header a,header .nav-link{color:#222 !important}header a:hover,header .nav-link:hover{color:#19a5a5 !important}header .navbar-toggler{border:1px solid transparent !important}
+ */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(../fonts/Roboto-Light.ttf);
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/Roboto-Medium.ttf);
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/Roboto-Bold.ttf);
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  src: url(../fonts/Roboto-Black.ttf);
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/Roboto-Italic.ttf);
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 300;
+  src: url(../fonts/RobotoMono-Light.ttf);
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/RobotoMono-Regular.ttf);
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/RobotoMono-Bold.ttf);
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+  color: #222;
+}
+body ::selection {
+  color: #ffffff;
+  background: #de2b26;
+}
+body ::-moz-selection {
+  color: #ffffff;
+  background: #de2b26;
+}
+
+body {
+  padding-top: 5.0rem;
+}
+
+header {
+  font-size: 0.875rem;
+  background-color: #ffffff;
+}
+header #logo {
+  height: 3.125rem;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+header .shrink {
+  height: 2.5rem !important;
+}
+header .icon-hamburger {
+  height: 1.375rem;
+}
+header a,
+header .nav-link {
+  color: #222 !important;
+}
+header a:hover,
+header .nav-link:hover {
+  color: #19a5a5 !important;
+}
+header .navbar-toggler {
+  border: 0 solid transparent !important;
+}
+@media (max-width: 768px) {
+  header .nav-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+  }
+  header .nav-item:last-child {
+    border-bottom: 0 solid transparent;
+  }
+  header .dropdown-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.0rem;
+    padding-top: 1.0rem;
+  }
+  header .dropdown-item:last-child {
+    border-bottom: 0 solid transparent;
+    padding-bottom: 0rem;
+  }
+  header .dropdown-item:first-child {
+    padding-top: 0rem;
+  }
+}
+header .dropdown-menu {
+  font-size: 0.875rem;
+  color: #222;
+  background-color: #ffffff;
+  border: 0 solid #eee;
+  border-radius: 0rem;
+  box-shadow: none;
+  padding-top: 0rem;
+}
+header .dropdown-item:focus, header .dropdown-item:hover, header .dropdown-item.active, header .dropdown-item:active {
+  color: #19a5a5;
+  text-decoration: none;
+  background-color: #ffffff;
+}
+
 /*# sourceMappingURL=style.css.map */

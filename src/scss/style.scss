@@ -11,15 +11,6 @@ Roboto,
 'Helvetica Neue',
 sans-serif;
 
-$background-color: #ffffff;
-$header-background-color: #ffffff;
-$text-color: #222;//#474747
-$text-color-in-dark: #ffffff;
-$link-color: #19a5a5;
-$main-color: #de2b26;
-$duration-animation: 0.2s;
-$type-animation: ease-in-out;
-
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -27,6 +18,18 @@ $grid-breakpoints: (
   lg: 992px,
   xl: 1200px
 ) !default;
+
+$background-color: #ffffff;
+$header-background-color: #ffffff;
+$text-color: #222;//#474747
+$text-color-in-dark: #ffffff;
+$link-color: #19a5a5;
+$main-color: #de2b26;
+$border-color: #eee;
+$duration-animation: 0.2s;
+$type-animation: ease-in-out;
+$grid-breakpoint-mobile: map-get($grid-breakpoints, md);
+$header-font-size: 0.875rem;
 
 @mixin animation() {
   transition: all $duration-animation $type-animation;
