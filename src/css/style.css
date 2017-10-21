@@ -76,10 +76,19 @@ body ::-moz-selection {
     max-width: 100%;
   }
 }
-body {
-  padding-top: 5.0rem;
-}
+@media (min-width: 992px) {
+  body {
+    padding-top: 5.0rem;
+  }
 
+  header {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    z-index: 1030 !important;
+  }
+}
 header {
   font-size: 0.875rem;
   background-color: #ffffff;

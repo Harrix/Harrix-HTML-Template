@@ -1,5 +1,14 @@
+@media (min-width: $grid-breakpoint-mobile) {
 body {
   padding-top: 5.0rem;
+}
+header {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    z-index: $zindex-fixed !important;
+}
 }
 
 header {

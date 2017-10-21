@@ -30,6 +30,7 @@ $duration-animation: 0.2s;
 $type-animation: ease-in-out;
 $grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
 $header-font-size: 0.875rem;
+$zindex-fixed: 1030 !default;
 
 @mixin animation() {
   transition: all $duration-animation $type-animation;
