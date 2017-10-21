@@ -13,3 +13,9 @@ body {
     background: $main-color;
   }
 }
+
+@media (max-width: $grid-breakpoint-mobile) {
+  .container {
+    max-width: 100%;
+  }
+}

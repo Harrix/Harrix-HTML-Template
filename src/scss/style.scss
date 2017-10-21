@@ -28,7 +28,7 @@ $main-color: #de2b26;
 $border-color: #eee;
 $duration-animation: 0.2s;
 $type-animation: ease-in-out;
-$grid-breakpoint-mobile: map-get($grid-breakpoints, md);
+$grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
 $header-font-size: 0.875rem;
 
 @mixin animation() {
