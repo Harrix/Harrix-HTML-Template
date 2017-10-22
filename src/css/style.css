@@ -154,4 +154,8 @@ header .dropdown-item:focus, header .dropdown-item:hover, header .dropdown-item.
   background-color: #ffffff;
 }
 
+h1, .h1 {
+  font-size: 28px;
+}
+
 /*# sourceMappingURL=style.css.map */
