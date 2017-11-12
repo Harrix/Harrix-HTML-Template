@@ -1,5 +1,6 @@
 .header-section {
   padding-top: 2rem;
+  padding-bottom: 2rem;
 
   .container {
     padding-left: 10%;
@@ -24,5 +25,13 @@
       position: relative;
       width: 3rem;
     }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  figcaption{
+    display: none;
   }
 }

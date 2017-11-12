@@ -91,8 +91,6 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
             nodeIndex++;
         }
 
-
-
         if(index >= 0) {
             // open PhotoSwipe if valid index found
             openPhotoSwipe( index, clickedGallery );
@@ -152,9 +150,9 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
             },
 
             shareButtons: [
-                {id:"vk",label:"Опубликовать в Вконтакте",url:"http://vk.com/share.php?url={{url}}&image={{image_url}}&title={{text}}&noparse=true"},
-                {id:"facebook",label:"Опубликовать в Facebook",url:"https://www.facebook.com/sharer/sharer.php?u={{url}}"},
-                {id:"twitter",label:"Опубликовать в Twitter",url:"https://twitter.com/intent/tweet?text={{text}}&url={{url}}"},
+                //{id:"vk",label:"Опубликовать в Вконтакте",url:"http://vk.com/share.php?url={{url}}&image={{image_url}}&title={{text}}&noparse=true"},
+                //{id:"facebook",label:"Опубликовать в Facebook",url:"https://www.facebook.com/sharer/sharer.php?u={{url}}"},
+                //{id:"twitter",label:"Опубликовать в Twitter",url:"https://twitter.com/intent/tweet?text={{text}}&url={{url}}"},
                 {id:"download",label:"Скачать",url:"{{raw_image_url}}",download:!0}
             ],
 
