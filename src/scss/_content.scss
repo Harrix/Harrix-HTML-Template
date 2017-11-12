@@ -1,0 +1,69 @@
+.content {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  text-align: justify;
+
+  a {
+    text-decoration: none;
+    color: $link-color;
+
+    &:hover {
+      text-decoration: none;
+      border-bottom: 1px dashed $hover-link-color;
+      color: $hover-link-color;
+    }
+  }
+
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a,
+  .h1 a,
+  .h2 a,
+  .h3 a,
+  .h4 a,
+  .h5 a,
+  .h6 a {
+    border: none !important;
+    color: $text-color;
+  }
+
+  ol,
+  ul,
+  dl {
+    -webkit-padding-start: 1rem;
+  }
+
+  kbd {
+    font-size: 0.875rem;
+    color: $text-color-in-dark;
+    background-color: $main-color;
+    border-radius: 0.1875rem;
+    font-family: $font-stack-code;
+}
+
+blockquote {
+    font-style: italic;
+    padding: 0 0 0 2em;
+    position: relative;
+    quotes: "\201c" "\201d";
+    font-size: 17.5px;
+    //border-left: 5px solid $main-color;
+    color: $main-color;
+    &:before {
+        position: absolute;
+        left: 0;
+        top: 10px;
+        color: #d70033;
+        content: open-quote;
+        font-family: georgia,serif;
+        font-size: 2em;
+        font-weight: bold;
+        line-height: .7em;
+    }
+}
+}

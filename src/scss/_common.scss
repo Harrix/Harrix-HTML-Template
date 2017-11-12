@@ -2,6 +2,7 @@ body {
   font-family: $font-stack;
   overflow-x: hidden;
   color: $text-color;
+  font-weight: $text-font-weight;
 
    ::selection {
     color: $text-color-in-dark;
@@ -23,4 +24,54 @@ body {
 input,
 textarea {
   outline: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $h-font-weight;
+}
+
+h1,
+.h1 {
+  font-size: 1.75rem;
+}
+
+h2,
+.h2 {
+  font-size: 1.625rem;
+}
+
+h3,
+.h3 {
+  font-size: 1.5rem;
+}
+
+h4,
+.h4 {
+  font-size: 1.375rem;
+}
+
+h5,
+.h5 {
+  font-size: 1.25rem;
+}
+
+h6,
+.h6 {
+  font-size: 1.125rem;
+}
+
+.lead {
+  font-size: 1rem;
+  font-weight: $lead-font-weight;
 }

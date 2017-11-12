@@ -11,6 +11,9 @@ Roboto,
 'Helvetica Neue',
 sans-serif;
 
+$font-stack-code: 'Roboto Mono',
+monospace;
+
 $grid-breakpoints: ( xs: 0,
 sm: 576px,
 md: 768px,
@@ -22,6 +25,7 @@ $header-background-color: #ffffff;
 $text-color:              #222; //#474747
 $text-color-in-dark:      #ffffff;
 $link-color:              #19a5a5;
+$hover-link-color:        #71c2c2;
 $main-color:              #de2b26;
 $hover-main-color:        #f54d4c;
 $border-color:            #eee;
@@ -32,6 +36,8 @@ $grid-breakpoint-mobile:  map-get($grid-breakpoints, lg);
 $header-font-size:        0.875rem;
 $zindex-fixed:            1030 !default;
 $h-font-weight:           300;
+$lead-font-weight:        400;
+$text-font-weight:        400;
 
 @mixin animation() {
   transition: all $duration-animation $type-animation;
@@ -41,9 +47,9 @@ $h-font-weight:           300;
 }
 
 @import "fonts";
+@import "photoswipe";
 @import "common";
 @import "header";
-@import "typography";
 @import "sections";
 @import "buttons";
-@import "photoswipe";
+@import "content";

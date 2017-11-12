@@ -61,6 +61,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   overflow-x: hidden;
   color: #222;
+  font-weight: 400;
 }
 body ::selection {
   color: #ffffff;
@@ -79,6 +80,56 @@ body ::-moz-selection {
 input,
 textarea {
   outline: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+}
+
+h1,
+.h1 {
+  font-size: 1.75rem;
+}
+
+h2,
+.h2 {
+  font-size: 1.625rem;
+}
+
+h3,
+.h3 {
+  font-size: 1.5rem;
+}
+
+h4,
+.h4 {
+  font-size: 1.375rem;
+}
+
+h5,
+.h5 {
+  font-size: 1.25rem;
+}
+
+h6,
+.h6 {
+  font-size: 1.125rem;
+}
+
+.lead {
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 @media (min-width: 992px) {
@@ -159,55 +210,6 @@ header .dropdown-item:focus, header .dropdown-item:hover, header .dropdown-item.
   background-color: #ffffff;
 }
 
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 300;
-}
-
-h1,
-.h1 {
-  font-size: 1.75rem;
-}
-
-h2,
-.h2 {
-  font-size: 1.625rem;
-}
-
-h3,
-.h3 {
-  font-size: 1.5rem;
-}
-
-h4,
-.h4 {
-  font-size: 1.375rem;
-}
-
-h5,
-.h5 {
-  font-size: 1.25rem;
-}
-
-h6,
-.h6 {
-  font-size: 1.125rem;
-}
-
-.lead {
-  font-size: 1.125rem;
-}
-
 .header-section {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -271,6 +273,69 @@ button ::-moz-focus-inner,
 
 .btn-title {
   min-width: 8.125rem;
+}
+
+.content {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  text-align: justify;
+}
+.content a {
+  text-decoration: none;
+  color: #19a5a5;
+}
+.content a:hover {
+  text-decoration: none;
+  border-bottom: 1px dashed #71c2c2;
+  color: #71c2c2;
+}
+.content h1 a,
+.content h2 a,
+.content h3 a,
+.content h4 a,
+.content h5 a,
+.content h6 a,
+.content .h1 a,
+.content .h2 a,
+.content .h3 a,
+.content .h4 a,
+.content .h5 a,
+.content .h6 a {
+  border: none !important;
+  color: #222;
+}
+.content ol,
+.content ul,
+.content dl {
+  -webkit-padding-start: 1rem;
+}
+.content kbd {
+  font-size: 0.875rem;
+  color: #ffffff;
+  background-color: #de2b26;
+  border-radius: 0.1875rem;
+  font-family: "Roboto Mono", monospace;
+}
+.content blockquote {
+  font-style: italic;
+  padding: 0 0 0 2em;
+  position: relative;
+  quotes: "\201c" "\201d";
+  font-size: 17.5px;
+  color: #de2b26;
+}
+.content blockquote:before {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: #d70033;
+  content: open-quote;
+  font-family: georgia,serif;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: .7em;
 }
 
 /*# sourceMappingURL=style.css.map */
