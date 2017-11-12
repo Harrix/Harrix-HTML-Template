@@ -1,0 +1,28 @@
+.header-section {
+  padding-top: 2rem;
+
+  .container {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .button-row {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    &:after {
+      background: $hr-color;
+      bottom: 0;
+      content: "";
+      display: block;
+      height: 1px;
+      left: 0;
+      right: 0;
+      margin: 1.25rem auto;
+      position: relative;
+      width: 3rem;
+    }
+  }
+}

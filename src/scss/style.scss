@@ -23,12 +23,15 @@ $text-color:              #222; //#474747
 $text-color-in-dark:      #ffffff;
 $link-color:              #19a5a5;
 $main-color:              #de2b26;
+$hover-main-color:        #f54d4c;
 $border-color:            #eee;
+$hr-color:                #19a5a5;
 $duration-animation:      0.2s;
 $type-animation:          ease-in-out;
 $grid-breakpoint-mobile:  map-get($grid-breakpoints, lg);
 $header-font-size:        0.875rem;
 $zindex-fixed:            1030 !default;
+$h-font-weight:           300;
 
 @mixin animation() {
   transition: all $duration-animation $type-animation;
@@ -41,3 +44,5 @@ $zindex-fixed:            1030 !default;
 @import "common";
 @import "header";
 @import "typography";
+@import "sections";
+@import "buttons";

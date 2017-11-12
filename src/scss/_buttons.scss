@@ -1,0 +1,37 @@
+button,
+.btn {
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+   ::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+.btn {
+  background-color: $main-color;
+  color: $text-color-in-dark !important;
+  border: 0;
+  border-radius: 0px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-right: 0.625rem;
+  padding: 0.5625rem 1.4375rem;
+  margin-bottom: 0.625rem;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $hover-main-color;
+    color: $text-color-in-dark !important;
+    border: 0;
+  }
+}
+
+.btn-title {
+    min-width: 8.125rem;
+}
