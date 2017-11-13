@@ -44,26 +44,33 @@
     background-color: $main-color;
     border-radius: 0.1875rem;
     font-family: $font-stack-code;
-}
+  }
 
-blockquote {
+  blockquote {
     font-style: italic;
     padding: 0 0 0 2em;
     position: relative;
     quotes: "\201c" "\201d";
-    font-size: 17.5px;
-    //border-left: 5px solid $main-color;
-    color: $main-color;
+    font-size: 1.25rem;
+    color: $blockquote-color;
+    font-weight: $blockquote-font-weight;
+
     &:before {
-        position: absolute;
-        left: 0;
-        top: 10px;
-        color: #d70033;
-        content: open-quote;
-        font-family: georgia,serif;
-        font-size: 2em;
-        font-weight: bold;
-        line-height: .7em;
+      position: absolute;
+      left: 0;
+      top: 0.625rem;
+      color: $main-color;
+      content: open-quote;
+      font-family: georgia, serif;
+      font-size: 2em;
+      font-weight: bold;
+      line-height: .7em;
     }
-}
+  }
+
+  .important {
+    color: $main-color;
+    font-weight: bold;
+    font-family: $font-stack-code;
+  }
 }

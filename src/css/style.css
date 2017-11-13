@@ -40,6 +40,12 @@
   src: url(../fonts/Roboto-Italic.ttf);
 }
 @font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 300;
+  src: url(../fonts/Roboto-LightItalic.ttf);
+}
+@font-face {
   font-family: 'Roboto Mono';
   font-style: normal;
   font-weight: 300;
@@ -323,19 +329,25 @@ button ::-moz-focus-inner,
   padding: 0 0 0 2em;
   position: relative;
   quotes: "\201c" "\201d";
-  font-size: 17.5px;
-  color: #de2b26;
+  font-size: 1.25rem;
+  color: #19a5a5;
+  font-weight: 300;
 }
 .content blockquote:before {
   position: absolute;
   left: 0;
-  top: 10px;
-  color: #d70033;
+  top: 0.625rem;
+  color: #de2b26;
   content: open-quote;
-  font-family: georgia,serif;
+  font-family: georgia, serif;
   font-size: 2em;
   font-weight: bold;
   line-height: .7em;
+}
+.content .important {
+  color: #de2b26;
+  font-weight: bold;
+  font-family: "Roboto Mono", monospace;
 }
 
 /*# sourceMappingURL=style.css.map */

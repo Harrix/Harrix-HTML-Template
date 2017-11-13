@@ -30,6 +30,7 @@ $main-color:              #de2b26;
 $hover-main-color:        #f54d4c;
 $border-color:            #eee;
 $hr-color:                #19a5a5;
+$blockquote-color:        #19a5a5;
 $duration-animation:      0.2s;
 $type-animation:          ease-in-out;
 $grid-breakpoint-mobile:  map-get($grid-breakpoints, lg);
@@ -38,6 +39,7 @@ $zindex-fixed:            1030 !default;
 $h-font-weight:           300;
 $lead-font-weight:        400;
 $text-font-weight:        400;
+$blockquote-font-weight:  300;
 
 @mixin animation() {
   transition: all $duration-animation $type-animation;
