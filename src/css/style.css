@@ -150,8 +150,9 @@ h6,
 .row div {
   margin-bottom: 1rem;
 }
-.row .col {
-  margin-bottom: 0;
+
+.margin-bottom-0 {
+  margin-bottom: 0 !important;
 }
 
 @media (min-width: 992px) {
