@@ -63,6 +63,13 @@
   font-weight: 700;
   src: url(../fonts/RobotoMono-Bold.ttf);
 }
+.gallery img {
+  width: 100%;
+}
+.gallery figcaption {
+  display: none;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   overflow-x: hidden;
@@ -239,12 +246,6 @@ header .dropdown-item:focus, header .dropdown-item:hover, header .dropdown-item.
   margin: 1.25rem auto;
   position: relative;
   width: 3rem;
-}
-.header-section img {
-  width: 100%;
-}
-.header-section figcaption {
-  display: none;
 }
 
 button:active, button:focus,

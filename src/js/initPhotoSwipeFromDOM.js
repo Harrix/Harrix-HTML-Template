@@ -210,7 +210,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
 function startPhotoSwipe () {
     /*Запускаем PhotoSwipe*/
-    initPhotoSwipeFromDOM('.imgDisplay');
+    initPhotoSwipeFromDOM('.gallery');
 }
 
 if (window.addEventListener) // W3C standard
