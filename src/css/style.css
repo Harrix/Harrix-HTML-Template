@@ -108,6 +108,8 @@ h4,
 h5,
 h6 {
   font-weight: 500;
+  margin-top: 1.125rem;
+  margin-bottom: 1rem;
 }
 
 h1,
@@ -143,6 +145,13 @@ h6,
 .lead {
   font-size: 1rem;
   font-weight: 400;
+}
+
+.row div {
+  margin-bottom: 1rem;
+}
+.row .col {
+  margin-bottom: 0;
 }
 
 @media (min-width: 992px) {
@@ -224,8 +233,8 @@ header .dropdown-item:focus, header .dropdown-item:hover, header .dropdown-item.
 }
 
 .header-section {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .header-section .container {
   padding-left: 10%;

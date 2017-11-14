@@ -39,6 +39,8 @@ h4,
 h5,
 h6 {
   font-weight: $h-font-weight;
+  margin-top: 1.125rem;
+  margin-bottom: 1rem;
 }
 
 h1,
@@ -74,4 +76,13 @@ h6,
 .lead {
   font-size: 1rem;
   font-weight: $lead-font-weight;
+}
+
+.row {
+  div {
+    margin-bottom: 1rem;
+  }
+  .col {
+    margin-bottom: 0;
+  }
 }
