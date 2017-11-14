@@ -20,6 +20,7 @@
   <script src="js/photoswipe.min.js"></script>
   <script src="js/photoswipe-ui-default.min.js"></script>
   <script src="js/initPhotoSwipeFromDOM.min.js"></script>
+  <script src="js/masonry.pkgd.min.js"></script>  
   <script src='js/script.min.js'></script>
 </head>
 
@@ -181,6 +182,137 @@
       </div>
     </div>
   </div>
+
+  <div class="container content">
+    <div class="row">
+      <div class="col content-with-gallery">
+        <a class="anchor" name="photoswipe"></a>
+        <h2><a href='#contents' title='Вернуться к содержанию'>PhotoSwipe</a></h2>
+
+        <h3>Одиночное изображение слева</h3>
+
+        <div class="gallery monod-left" style="max-width: 600px;" itemscope="" itemtype="http://schema.org/ImageGallery">
+          <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
+            <a href="img/Nature - 20140712 - DSC_4608.jpg" itemprop="contentUrl" data-size="1920x1258">
+              <img src="img/Nature - 20140712 - DSC_4608 - small.jpg" itemprop="thumbnail" title="Цветы на берегу острова Татышев в городе Красноярск." alt="Цветы на берегу острова Татышев в городе Красноярск." />
+              </a>
+            <figcaption itemprop="caption description">Цветы на берегу острова Татышев в городе Красноярск.</figcaption>
+          </figure>
+        </div>
+
+        <h3>Одиночное изображение по центру</h3>
+
+        <div class="gallery monod" style="max-width: 600px;" itemscope="" itemtype="http://schema.org/ImageGallery">
+          <figure itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">
+            <a href="img/Nature - 20140712 - DSC_4608.jpg" itemprop="contentUrl" data-size="1920x1258">
+              <img src="img/Nature - 20140712 - DSC_4608 - small.jpg" itemprop="thumbnail" title="Цветы на берегу острова Татышев в городе Красноярск." alt="Цветы на берегу острова Татышев в городе Красноярск." />
+              </a>
+            <figcaption itemprop="caption description">Цветы на берегу острова Татышев в городе Красноярск.</figcaption>
+          </figure>
+        </div>
+
+        <h3>Галерея</h2>
+    
+          <div class="photoswipe_gallery gallery-columns-3 gallery-size-thumbnail gallery" itemscope itemtype="http://schema.org/ImageGallery">
+            <figure class="msnry_item" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="img/Nature - 20140712 - DSC_4608.jpg" itemprop="contentUrl" data-size="1920x1258" data-caption="" >
+                <img src="img/Nature - 20140712 - DSC_4608 - small.jpg" itemprop="thumbnail" alt=""  />
+              </a>
+              <figcaption class="photoswipe-gallery-caption" >Цветы на берегу острова Татышев в городе Красноярск.</figcaption>
+            </figure>
+            <figure class="msnry_item" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="img/Nature - 20120518 - _DSC_5959_stitch4-2.jpg" itemprop="contentUrl" data-size="1507x1920" data-caption="" >
+                <img src="img/Nature - 20120518 - _DSC_5959_stitch4-2 - small.jpg" itemprop="thumbnail" alt=""  />
+              </a>
+              <figcaption class="photoswipe-gallery-caption">Недостроенное здание.</figcaption>
+            </figure>
+            <figure class="msnry_item" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="img/Nature - 20120404 - DSC_0950-2.jpg" itemprop="contentUrl" data-size="1920x1143" data-caption="">
+                <img src="img/Nature - 20120404 - DSC_0950-2 - small.jpg" itemprop="thumbnail" alt=""  />
+              </a>
+              <figcaption class="photoswipe-gallery-caption" >Вид на Октябрьский мост.</figcaption>
+            </figure>
+            <figure class="msnry_item" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="img/Nature - 20120518 - DSC_5470.jpg" itemprop="contentUrl" data-size="1920x1272" data-caption="">
+                <img src="img/Nature - 20120518 - DSC_5470 - small.jpg" itemprop="thumbnail" alt=""  />
+              </a>
+              <figcaption class="photoswipe-gallery-caption" >Паутина.</figcaption>
+            </figure>
+            <figure class="msnry_item" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="img/Nature - 20121114 - DSC_7436-3.jpg" itemprop="contentUrl" data-size="1920x1272" data-caption="">
+                <img src="img/Nature - 20121114 - DSC_7436-3 - small.jpg" itemprop="thumbnail" alt=""  />
+              </a>
+              <figcaption class="photoswipe-gallery-caption" >Котенок.</figcaption>
+            </figure>
+            <figure class="msnry_item" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="img/Nature - 20140628 - DSC_4206_stitch.jpg" itemprop="contentUrl" data-size="1920x1920" data-caption="">
+                <img src="img/Nature - 20140628 - DSC_4206_stitch - small.jpg" itemprop="thumbnail" alt=""  />
+              </a>
+              <figcaption class="photoswipe-gallery-caption" >Красноярск.</figcaption>
+            </figure>
+            <figure class="msnry_item" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="img/Nature - 20140817 - DSC_5149-2.jpg" itemprop="contentUrl" data-size="1920x1217" data-caption="">
+                <img src="img/Nature - 20140817 - DSC_5149-2 - small.jpg" itemprop="thumbnail" alt=""  />
+              </a>
+              <figcaption class="photoswipe-gallery-caption" >Мастерская художника.</figcaption>
+            </figure>
+            <figure class="msnry_item" itemscope itemtype="http://schema.org/ImageObject">
+              <a href="img/Nature - 20120518 - DSC_5780-2.jpg" itemprop="contentUrl" data-size="1920x1272" data-caption="">
+                <img src="img/Nature - 20120518 - DSC_5780-2 - small.jpg" itemprop="thumbnail" alt=""  />
+              </a>
+              <figcaption class="photoswipe-gallery-caption" >Цветы.</figcaption>
+            </figure>
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="content col-md-10 col-centered"> 
+          <a class="anchor" name="fontawesome"></a>
+          <h2><a href='#contents' title='Вернуться к содержанию'>Font Awesome</a></h2>
+          
+          <p>
+            <ul class="fa-ul">
+              <li><i class="fa-li fa fa-check-circle color-blue-hover fa-lg" aria-hidden="true"></i>Математические функции</li>
+              <li><i class="fa-li fa fa-check-circle color-blue-hover fa-lg" aria-hidden="true"></i>Возможность задать свою функцию в виде кода</li>
+              <li><i class="fa-li fa fa-check-circle color-blue-hover fa-lg" aria-hidden="true"></i>Поддержка C++11</li>
+              <li><i class="fa-li fa fa-check-circle color-blue-hover fa-lg" aria-hidden="true"></i>Использование шаблонов</li>
+            </ul>
+          </p>
+          
+          <p>
+          <i class="fa fa-spinner fa-spin fa-3x fa-fw margin-bottom color-blue"></i>
+          <span class="sr-only">Загрузка...</span>
+          
+          <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw margin-bottom color-blue"></i>
+          <span class="sr-only">Загрузка...</span>
+          
+          <i class="fa fa-refresh fa-spin fa-3x fa-fw margin-bottom color-blue"></i>
+          <span class="sr-only">Загрузка...</span>
+          
+          <i class="fa fa-cog fa-spin fa-3x fa-fw margin-bottom color-blue"></i>
+          <span class="sr-only">Загрузка...</span>
+          
+          <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom color-blue"></i>
+          <span class="sr-only">Загрузка...</span>      
+          </p>
+          
+          <p>
+          <i class="fa fa-shield color-blue"></i> Обычное состояние<br>
+          <i class="fa fa-shield fa-rotate-90 color-blue"></i> fa-rotate-90<br>
+          <i class="fa fa-shield fa-rotate-180 color-blue"></i> fa-rotate-180<br>
+          <i class="fa fa-shield fa-rotate-270 color-blue"></i> fa-rotate-270<br>
+          <i class="fa fa-shield fa-flip-horizontal color-blue"></i> fa-flip-horizontal<br>
+          <i class="fa fa-shield fa-flip-vertical color-blue"></i> fa-flip-vertical
+          </p>
+          
+        </div>
+      </div>
+    </div>
 
   <!-- Root element of PhotoSwipe. -->
   <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">

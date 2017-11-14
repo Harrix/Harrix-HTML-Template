@@ -12,4 +12,30 @@ $(document).ready(function() {
     $('.spoiler').click(function() {
         $(this).toggleClass("folded").toggleClass("unfolded").next().slideToggle();
     });
+
+    //Меняем размеры элементов у галерей
+    changeSizeFiguraInPhotoswipeGallery();
+
+    //События при изменении размера окна
+    $(window).resize(function() {
+        //При изменении размеров окна тоже нужно поменять размеры изображений в галереях 
+        changeSizeFiguraInPhotoswipeGallery();
+
+        //Принудительно показываем боковую панель при увеличении размера окна
+        //forcedDisplaySidebar();
+    });
+
+    //Запускаем поиск галерей, чтобы привести сетку изображений к нужному виду
+    $('.photoswipe_gallery').masonry({
+        // options
+        itemSelector: '.msnry_item',
+        fitWidth: true,
+    });
 });
+
+function changeSizeFiguraInPhotoswipeGallery() {
+    //Функция подсчета ширины рисунков в галереях
+    var width_content = $(".content-with-gallery").width();
+    var w_figura = (width_content - 40) / 3;
+    $(".msnry_item").width(w_figura);
+}
