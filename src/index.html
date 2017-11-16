@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/photoswipe.css">
   <link rel="stylesheet" href="css/default-skin/default-skin.css">
-  <link rel="stylesheet" href="css/vis.min.css">
   <link rel="stylesheet" href="css/style.min.css">
 
   <script src="js/jquery.min.js"></script>
@@ -30,7 +29,6 @@
   <script src="js/photoswipe-ui-default.min.js"></script>
   <script src="js/init-photoswipe.min.js"></script>
   <script src="js/masonry.pkgd.min.js"></script>
-  <script src='js/vis.min.js'></script>
   <script src='js/script.min.js'></script>
 </head>
 
@@ -99,8 +97,6 @@
           <li><a href="#fontawesome">Font Awesome</a></li>
           <li><a href="#katex">KaTeX</a></li>
           <li><a href="#highlight.js">highlight.js</a></li>
-          <li><a href="#chart.js">Chart.js</a></li>
-          <li><a href="#3d">3D график</a></li>
           <li><a href="#color-red-section">Важный красный блок</a></li>
           <li><a href="#buttons-and-alerts">Кнопки и сообщения</a></li>
           <li><a href="#history">Список изменений</a></li>
@@ -418,240 +414,6 @@
      system(&#x22;pause&#x22;);
         return 0;
     }</code></pre>
-        </div>
-      </div>
-    </div>
-    
-    <div class="container">
-      <div class="row">
-        <div class="content col-md-10 col-centered">
-          <a class="anchor" id="chart.js"></a>
-          <h2><a href='#contents' title='Вернуться к содержанию'>Chart.js - двумерный график</a></h2>
-              
-          <div style="width:100%">
-              <div>
-                  <canvas id="canvas"></canvas>
-              </div>
-          </div>
-          <script>
-        var randomScalingFactor = function() {
-            return Math.round(Math.random() * 10.0) * Math.pow(10, Math.ceil(Math.random() * 5));
-        };
-        var randomColor = function(opacity) {
-            return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
-        };
-    
-        var scatterChartData = {
-            datasets: [{
-                label: "V(node2)",
-          data: [{
-            x: 1,
-            y: -1.711e-2,
-          }, {
-            x: 1.26,
-            y: -2.708e-2,
-          }, {
-            x: 1.58,
-            y: -4.285e-2,
-          }, {
-            x: 2.0,
-            y: -6.772e-2,
-          }, {
-            x: 2.51,
-            y: -1.068e-1,
-          }, {
-            x: 3.16,
-            y: -1.681e-1,
-          }, {
-            x: 3.98,
-            y: -2.635e-1,
-          }, {
-            x: 5.01,
-            y: -4.106e-1,
-          }, {
-            x: 6.31,
-            y: -6.339e-1,
-          }, {
-            x: 7.94,
-            y: -9.659e-1,
-          }, {
-            x: 10.00,
-            y: -1.445,
-          }, {
-            x: 12.6,
-            y: -2.110,
-          }, {
-            x: 15.8,
-            y: -2.992,
-          }, {
-            x: 20.0,
-            y: -4.102,
-          }, {
-            x: 25.1,
-            y: -5.429,
-          }, {
-            x: 31.6,
-            y: -6.944,
-          }, {
-            x: 39.8,
-            y: -8.607,
-          }, {
-            x: 50.1,
-            y: -1.038e1,
-          }, {
-            x: 63.1,
-            y: -1.223e1,
-          }, {
-            x: 79.4,
-            y: -1.413e1,
-          }, {
-            x: 100.00,
-            y: -1.607e1,
-          }, {
-            x: 126,
-            y: -1.803e1,
-          }, {
-            x: 158,
-            y: -2e1,
-          }, {
-            x: 200,
-            y: -2.199e1,
-          }, {
-            x: 251,
-            y: -2.398e1,
-          }, {
-            x: 316,
-            y: -2.597e1,
-          }, {
-            x: 398,
-            y: -2.797e1,
-          }, {
-            x: 501,
-            y: -2.996e1,
-          }, {
-            x: 631,
-            y: -3.196e1,
-          }, {
-            x: 794,
-            y: -3.396e1,
-          }, {
-            x: 1000,
-            y: -3.596e1,
-          },]
-            }]
-        };
-    
-        $.each(scatterChartData.datasets, function(i, dataset) {
-            dataset.borderColor = randomColor(0.4);
-            dataset.backgroundColor = randomColor(0.1);
-            dataset.pointBorderColor = randomColor(0.7);
-            dataset.pointBackgroundColor = randomColor(0.5);
-            dataset.pointBorderWidth = 1;
-        });
-    
-        function ff()  {
-            var ctx = document.getElementById("canvas").getContext("2d");
-            window.myScatter = Chart.Scatter(ctx, {
-              data: scatterChartData,
-              options: {
-                title: {
-                      display: true,
-                      text: 'Chart.js Scatter Chart - Logarithmic X-Axis'
-                  },
-                  scales: {
-                    xAxes: [{
-                      type: 'linear',
-                      position: 'bottom',
-                      ticks: {
-                        userCallback: function(tick) {
-                          var remain = tick / (Math.pow(10, Math.floor(Chart.helpers.log10(tick))));
-                          if (remain === 1 || remain === 2 || remain === 5) {
-                            return tick.toString() + "Hz";
-                          }
-                          return '';
-                        },
-                      },
-                      scaleLabel: {
-                        labelString: 'Frequency',
-                        display: true,
-                      }
-                    }],
-                    yAxes: [{
-                      type: 'linear',
-                      ticks: {
-                        userCallback: function(tick) {
-                          return tick.toString() + "dB";
-                        }
-                      },
-                      scaleLabel: {
-                        labelString: 'Voltage',
-                        display: true
-                      }
-                    }]
-                  }
-                }
-            });
-        };
-        ff();
-        </script>
-        </div>
-      </div>
-    </div>
-    
-    <div class="container">
-      <div class="row">
-        <div class="content col-md-10 col-centered">           
-          <a class="anchor" id="3d"></a>
-          <h2><a href='#contents' title='Вернуться к содержанию'>3D график</a></h2>
-    
-               <script>
-     $(document).ready(function(){
-         drawVisualization();   
-        })
-      </script>  
-              <script type="text/javascript">
-        var data = null;
-        var graph = null;
-    
-        function custom(x, y) {
-          return (Math.sin(x/50) * Math.cos(y/50) * 50 + 50);
-        }
-    
-        // Called when the Visualization API is loaded.
-        function drawVisualization() {
-          // Create and populate a data table.
-          data = new vis.DataSet();
-          // create some nice looking data with sin/cos
-          var counter = 0;
-          var steps = 50;  // number of datapoints will be steps*steps
-          var axisMax = 314;
-          var axisStep = axisMax / steps;
-          for (var x = 0; x < axisMax; x+=axisStep) {
-            for (var y = 0; y < axisMax; y+=axisStep) {
-              var value = custom(x,y);
-              data.add({id:counter++,x:x,y:y,z:value,style:value});
-            }
-          }
-    
-          // specify options
-          var options = {
-            width:  '100%',
-            height: '600px',
-            style: 'surface',
-            showPerspective: true,
-            showGrid: true,
-            showShadow: false,
-            keepAspectRatio: true,
-            verticalRatio: 0.5
-          };
-    
-          // Instantiate our graph object.
-          var container = document.getElementById('mygraph');
-          graph = new vis.Graph3d(container, data, options);
-        }
-      </script>
-              <div id="mygraph"></div>
-              
         </div>
       </div>
     </div>
