@@ -13,6 +13,12 @@ $(document).ready(function() {
         $(this).toggleClass("folded").toggleClass("unfolded").next().slideToggle();
     });
 
+      //Находим все вставки LaTeX в виде div класса tex и рендерим их
+  var tex = document.getElementsByClassName("tex");
+  Array.prototype.forEach.call(tex, function(el) {
+    katex.render(el.getAttribute("data-expr"), el,{ displayMode: true });
+  });
+
     //Меняем размеры элементов у галерей
     changeSizeFiguraInPhotoswipeGallery();
 
