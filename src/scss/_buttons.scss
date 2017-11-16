@@ -14,7 +14,7 @@ button,
   background-color: $main-color;
   color: $text-color-in-dark !important;
   border: 0;
-  border-radius: 0px;
+  border-radius: $button-border-radius;
   text-transform: uppercase;
   font-size: 0.75rem;
   font-weight: bold;
