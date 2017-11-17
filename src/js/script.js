@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    //Размеры логотипа при скроле
     $(window).scroll(function() {
         var bo = $(this).scrollTop();
         if (bo >= 50) {
@@ -13,6 +14,7 @@ $(document).ready(function() {
         hljs.highlightBlock(block);
     });
 
+    //Подготавливаем сплойеры
     $('.spoiler-text').hide();
     $('.spoiler').click(function() {
         $(this).toggleClass("folded").toggleClass("unfolded").next().slideToggle();
@@ -26,10 +28,24 @@ $(document).ready(function() {
         });
     });
 
-    //Меняем размеры элементов у галерей
-    changeSizeFiguraInPhotoswipeGallery();
+      //Скрываем или показываем кнопку "Наверх"
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 200) {
 
-    //События при изменении размера окна
+      $('#top-link').fadeIn();
+    } else {
+      $('#top-link').fadeOut();
+    }
+  });
+  
+  //При нажатии на кнопку "Наверх" анимируем переход
+  $('#top-link').click(function(){
+    $('html, body').animate({scrollTop : 0},800);
+    return false;
+  });
+
+    //Галереи
+    changeSizeFiguraInPhotoswipeGallery();
     $(window).resize(function() {
         //При изменении размеров окна тоже нужно поменять размеры изображений в галереях 
         changeSizeFiguraInPhotoswipeGallery();
@@ -37,8 +53,6 @@ $(document).ready(function() {
         //Принудительно показываем боковую панель при увеличении размера окна
         //forcedDisplaySidebar();
     });
-
-    //Запускаем поиск галерей, чтобы привести сетку изображений к нужному виду
     $('.photoswipe_gallery').masonry({
         // options
         itemSelector: '.msnry_item',
