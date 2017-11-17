@@ -28,24 +28,26 @@ $(document).ready(function() {
         });
     });
 
-      //Скрываем или показываем кнопку "Наверх"
-  $(window).scroll(function(){
-    if ($(this).scrollTop() > 200) {
+    //Скрываем или показываем кнопку "Наверх"
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 200) {
 
-      $('#top-link').fadeIn();
-    } else {
-      $('#top-link').fadeOut();
-    }
-  });
-  
-  //При нажатии на кнопку "Наверх" анимируем переход
-  $('#top-link').click(function(){
-    $('html, body').animate({scrollTop : 0},800);
-    return false;
-  });
+            $('#top-link').fadeIn();
+        } else {
+            $('#top-link').fadeOut();
+        }
+    });
 
-  //Включаем авторазмер iframe, которые есть на странице
-  iFrameResize({});
+    //При нажатии на кнопку "Наверх" анимируем переход
+    $('#top-link').click(function() {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 800);
+        return false;
+    });
+
+    //Включаем авторазмер iframe, которые есть на странице
+    iFrameResize({});
 
     //Галереи
     changeSizeFiguraInPhotoswipeGallery();
