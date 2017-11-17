@@ -423,8 +423,8 @@
     </div>
   </div>
 
-  <div class="color-section color-red-section ">
-    <div class="container ">
+  <div class="color-section color-red-section">
+    <div class="container">
       <a class="anchor" id="color-red-section"></a>
       <h1>Важный блок</h1>
       <p class="lead">
@@ -495,14 +495,53 @@
           <div class="after-icon">Предупреждение. Это не обязательно ошибка, но стоит сообщить об этом пользователю. И в данный момент сообщяем об этом.</div>
         </div>
 
+        <ul class="fa-ul">
+          <li class="color-danger"><i class="fa-li fa fa-exclamation-circle fa-lg" aria-hidden="true"></i>Опасное предупреждение. Например, тут сообщается, что файл не открылся, и это плохо. Что-нибудь сделайте? а то с программой случится что-то плохое.</li>
+          <li class="color-success"><i class="fa-li fa fa-check-circle fa-lg" aria-hidden="true"></i>Успех! Что-то получилось именно так, как и хотелось. Вот и сообщается, что всё получилось, как нужно.</li>
+          <li class="color-info"><i class="fa-li fa fa-info-circle fa-lg" aria-hidden="true"></i>Информационное сообщение. Здесь о чем-то мы сообщаем. Мало ли что нужно сообщить. Например, что смысл жизни заключен в числе 42.</li>
+          <li class="color-warning"><i class="fa-li fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>Рядовое обычное сообщение, в котором о чем-то говорится. Например, что завершился цикл, и так далее.</li>
+          <li>
+            <i class="fa-li fa fa-info-circle fa-lg" aria-hidden="true"></i>Рядовое обычное сообщение, в котором о чем-то говорится. Например, что завершился цикл, и так далее.</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container content">
+    <div class="row">
+      <div class="col">
+        <a class="anchor" id="history"></a>
+        <h2><a href="#contents" title="Вернуться к содержанию">Список изменений</a></h2>
+
         <p>
-          <ul class="fa-ul">
-            <li class="color-danger"><i class="fa-li fa fa-exclamation-circle fa-lg" aria-hidden="true"></i>Опасное предупреждение. Например, тут сообщается, что файл не открылся, и это плохо. Что-нибудь сделайте? а то с программой случится что-то плохое.</li>
-            <li class="color-success"><i class="fa-li fa fa-check-circle fa-lg" aria-hidden="true"></i>Успех! Что-то получилось именно так, как и хотелось. Вот и сообщается, что всё получилось, как нужно.</li>
-            <li class="color-info"><i class="fa-li fa fa-info-circle fa-lg" aria-hidden="true"></i>Информационное сообщение. Здесь о чем-то мы сообщаем. Мало ли что нужно сообщить. Например, что смысл жизни заключен в числе 42.</li>
-            <li class="color-warning"><i class="fa-li fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>Рядовое обычное сообщение, в котором о чем-то говорится. Например, что завершился цикл, и так далее.</li>
+          <ul class="changes">
             <li>
-              <i class="fa-li fa fa-info-circle fa-lg" aria-hidden="true "></i>Рядовое обычное сообщение, в котором о чем-то говорится. Например, что завершился цикл, и так далее.</li>
+              <div class="change-label-container"><em class="change-label change-new">New</em></div>Dark theme now available from Options menu.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-added">Added</em></div>Icons indicating whether a file was added, removed or modified.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Unable to add repository which exists at drive root.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Crash due to incorrect handling of input arguments on launch.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Crash due to COM exception when interacting with Taskbar.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Crash when scanning filesystem for local repositories.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Created SSH keys not added to ssh-agent on first launch.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Crash due to decoding malformed parameters on restart.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-updated">Updated</em></div>Posh-Git now includes new icons in prompt.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-updated">Updated</em></div>Git Shell updated to v2.8.1.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-updated">Updated</em></div>Git LFS updated to v1.2.0.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-updated">Updated</em></div>Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-removed">Removed</em></div>Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</li>
           </ul>
         </p>
 
@@ -510,54 +549,13 @@
     </div>
   </div>
 
-  <div class="container content ">
-    <div class="row ">
-      <div class="col ">
-        <a class="anchor " id="history "></a>
-        <h2><a href="#contents " title="Вернуться к содержанию ">Список изменений</a></h2>
+  <div class="container content">
+    <div class="row">
+      <div class="col">
+        <a class="anchor" id="adaptive-tables"></a>
+        <h2><a href="#contents" title="Вернуться к содержанию">Адаптивные таблицы</a></h2>
 
-        <p>
-          <ul class="changes ">
-            <li>
-              <div class="change-label-container "><em class="change-label change-new ">New</em></div>Dark theme now available from Options menu.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-added ">Added</em></div>Icons indicating whether a file was added, removed or modified.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-fixed ">Fixed</em></div>Unable to add repository which exists at drive root.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-fixed ">Fixed</em></div>Crash due to incorrect handling of input arguments on launch.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-fixed ">Fixed</em></div>Crash due to COM exception when interacting with Taskbar.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-fixed ">Fixed</em></div>Crash when scanning filesystem for local repositories.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-fixed ">Fixed</em></div>Created SSH keys not added to ssh-agent on first launch.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-fixed ">Fixed</em></div>Crash due to decoding malformed parameters on restart.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-updated ">Updated</em></div>Posh-Git now includes new icons in prompt.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-updated ">Updated</em></div>Git Shell updated to v2.8.1.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-updated ">Updated</em></div>Git LFS updated to v1.2.0.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-updated ">Updated</em></div>Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</li>
-            <li>
-              <div class="change-label-container "><em class="change-label change-removed ">Removed</em></div>Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</li>
-          </ul>
-        </p>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="container content ">
-    <div class="row ">
-      <div class="col ">
-        <a class="anchor " id="adaptive-tables "></a>
-        <h2><a href="#contents " title="Вернуться к содержанию ">Адаптивные таблицы</a></h2>
-
-        <table class="table_adaptive_classic ">
+        <table class="table_adaptive_classic">
           <caption>Учет товаров</caption>
           <thead>
             <tr>
@@ -569,48 +567,48 @@
           </thead>
           <tbody>
             <tr>
-              <td data-label="ФИО ">Сергиенко Антон Борисович</td>
-              <td data-label="Наличие ноутбука ">1 123 руб.</td>
-              <td data-label="Оплата ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Сергиенко Антон Борисович</td>
+              <td data-label="Наличие ноутбука">1 123 руб.</td>
+              <td data-label="Оплата">&#9899;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Владимиров Пётр Васильевич</td>
-              <td data-label="Оплата ">411 руб.</td>
-              <td data-label="Наличие ноутбука ">&nbsp;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Владимиров Пётр Васильевич</td>
+              <td data-label="Оплата">411 руб.</td>
+              <td data-label="Наличие ноутбука">&nbsp;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Воротцов Игорь Витальевич</td>
-              <td data-label="Оплата ">8 010 руб.</td>
-              <td data-label="Наличие ноутбука ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&nbsp;</td>
+              <td data-label="ФИО">Воротцов Игорь Витальевич</td>
+              <td data-label="Оплата">8 010 руб.</td>
+              <td data-label="Наличие ноутбука">&#9899;</td>
+              <td data-label="Наличие паспорта">&nbsp;</td>
             </tr>
-            <tr class="subhead ">
-              <td colspan="4 ">Вне обработки</td>
-            </tr>
-            <tr>
-              <td data-label="ФИО ">Уваров Борис Тимофеевич</td>
-              <td data-label="Наличие ноутбука ">999 руб.</td>
-              <td data-label="Оплата ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+            <tr class="subhead">
+              <td colspan="4">Вне обработки</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Клесин Алексей Алексеевич</td>
-              <td data-label="Оплата ">48 458 руб.</td>
-              <td class="circle_in_table " data-label="Наличие ноутбука ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Уваров Борис Тимофеевич</td>
+              <td data-label="Наличие ноутбука">999 руб.</td>
+              <td data-label="Оплата">&#9899;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Кизоров Антоний Егорьевич</td>
-              <td data-label="Оплата ">0 руб.</td>
-              <td data-label="Наличие ноутбука ">&nbsp;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Клесин Алексей Алексеевич</td>
+              <td data-label="Оплата">48 458 руб.</td>
+              <td class="circle_in_table" data-label="Наличие ноутбука">&#9899;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
+            </tr>
+            <tr>
+              <td data-label="ФИО">Кизоров Антоний Егорьевич</td>
+              <td data-label="Оплата">0 руб.</td>
+              <td data-label="Наличие ноутбука">&nbsp;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
           </tbody>
         </table>
 
-        <table class="table_adaptive_classic ">
+        <table class="table_adaptive_classic">
           <caption>Учет товаров</caption>
           <thead>
             <tr>
@@ -622,48 +620,48 @@
           </thead>
           <tbody>
             <tr>
-              <td data-label="ФИО ">Сергиенко Антон Борисович</td>
-              <td data-label="Наличие ноутбука ">1 123 руб.</td>
-              <td data-label="Оплата "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
-              <td data-label="Наличие паспорта "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
+              <td data-label="ФИО">Сергиенко Антон Борисович</td>
+              <td data-label="Наличие ноутбука">1 123 руб.</td>
+              <td data-label="Оплата"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
+              <td data-label="Наличие паспорта"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Владимиров Пётр Васильевич</td>
-              <td data-label="Оплата ">411 руб.</td>
-              <td data-label="Наличие ноутбука "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
-              <td data-label="Наличие паспорта "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
+              <td data-label="ФИО">Владимиров Пётр Васильевич</td>
+              <td data-label="Оплата">411 руб.</td>
+              <td data-label="Наличие ноутбука"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
+              <td data-label="Наличие паспорта"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Воротцов Игорь Витальевич</td>
-              <td data-label="Оплата ">8 010 руб.</td>
-              <td data-label="Наличие ноутбука "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
-              <td data-label="Наличие паспорта "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
+              <td data-label="ФИО">Воротцов Игорь Витальевич</td>
+              <td data-label="Оплата">8 010 руб.</td>
+              <td data-label="Наличие ноутбука"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
+              <td data-label="Наличие паспорта"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
             </tr>
-            <tr class="subhead ">
-              <td colspan="4 ">Вне обработки</td>
-            </tr>
-            <tr>
-              <td data-label="ФИО ">Уваров Борис Тимофеевич</td>
-              <td data-label="Наличие ноутбука ">999 руб.</td>
-              <td data-label="Оплата "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
-              <td data-label="Наличие паспорта "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
+            <tr class="subhead">
+              <td colspan="4">Вне обработки</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Клесин Алексей Алексеевич</td>
-              <td data-label="Оплата ">48 458 руб.</td>
-              <td class="circle_in_table " data-label="Наличие ноутбука "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
-              <td data-label="Наличие паспорта "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
+              <td data-label="ФИО">Уваров Борис Тимофеевич</td>
+              <td data-label="Наличие ноутбука">999 руб.</td>
+              <td data-label="Оплата"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
+              <td data-label="Наличие паспорта"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Кизоров Антоний Егорьевич</td>
-              <td data-label="Оплата ">0 руб.</td>
-              <td data-label="Наличие ноутбука "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
-              <td data-label="Наличие паспорта "><i class="fa fa-circle font-size-70 " aria-hidden="true "></i></td>
+              <td data-label="ФИО">Клесин Алексей Алексеевич</td>
+              <td data-label="Оплата">48 458 руб.</td>
+              <td class="circle_in_table" data-label="Наличие ноутбука"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
+              <td data-label="Наличие паспорта"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+              <td data-label="ФИО">Кизоров Антоний Егорьевич</td>
+              <td data-label="Оплата">0 руб.</td>
+              <td data-label="Наличие ноутбука"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
+              <td data-label="Наличие паспорта"><i class="fa fa-circle font-size-70" aria-hidden="true"></i></td>
             </tr>
           </tbody>
         </table>
 
-        <table class="table_adaptive_gray ">
+        <table class="table_adaptive_gray">
           <caption>Учет товаров</caption>
           <thead>
             <tr>
@@ -675,48 +673,48 @@
           </thead>
           <tbody>
             <tr>
-              <td data-label="ФИО ">Сергиенко Антон Борисович</td>
-              <td data-label="Наличие ноутбука ">1 123 руб.</td>
-              <td data-label="Оплата ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Сергиенко Антон Борисович</td>
+              <td data-label="Наличие ноутбука">1 123 руб.</td>
+              <td data-label="Оплата">&#9899;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Владимиров Пётр Васильевич</td>
-              <td data-label="Оплата ">411 руб.</td>
-              <td data-label="Наличие ноутбука ">&nbsp;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Владимиров Пётр Васильевич</td>
+              <td data-label="Оплата">411 руб.</td>
+              <td data-label="Наличие ноутбука">&nbsp;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Воротцов Игорь Витальевич</td>
-              <td data-label="Оплата ">8 010 руб.</td>
-              <td data-label="Наличие ноутбука ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&nbsp;</td>
+              <td data-label="ФИО">Воротцов Игорь Витальевич</td>
+              <td data-label="Оплата">8 010 руб.</td>
+              <td data-label="Наличие ноутбука">&#9899;</td>
+              <td data-label="Наличие паспорта">&nbsp;</td>
             </tr>
-            <tr class="subhead ">
-              <td colspan="4 ">Вне обработки</td>
-            </tr>
-            <tr>
-              <td data-label="ФИО ">Уваров Борис Тимофеевич</td>
-              <td data-label="Наличие ноутбука ">999 руб.</td>
-              <td data-label="Оплата ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+            <tr class="subhead">
+              <td colspan="4">Вне обработки</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Клесин Алексей Алексеевич</td>
-              <td data-label="Оплата ">48 458 руб.</td>
-              <td class="circle_in_table " data-label="Наличие ноутбука ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Уваров Борис Тимофеевич</td>
+              <td data-label="Наличие ноутбука">999 руб.</td>
+              <td data-label="Оплата">&#9899;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Кизоров Антоний Егорьевич</td>
-              <td data-label="Оплата ">0 руб.</td>
-              <td data-label="Наличие ноутбука ">&nbsp;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Клесин Алексей Алексеевич</td>
+              <td data-label="Оплата">48 458 руб.</td>
+              <td class="circle_in_table" data-label="Наличие ноутбука">&#9899;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
+            </tr>
+            <tr>
+              <td data-label="ФИО">Кизоров Антоний Егорьевич</td>
+              <td data-label="Оплата">0 руб.</td>
+              <td data-label="Наличие ноутбука">&nbsp;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
           </tbody>
         </table>
 
-        <table class="table_adaptive ">
+        <table class="table_adaptive">
           <caption>Учет товаров</caption>
           <thead>
             <tr>
@@ -728,122 +726,122 @@
           </thead>
           <tbody>
             <tr>
-              <td data-label="ФИО ">Сергиенко Антон Борисович</td>
-              <td data-label="Наличие ноутбука ">1 123 руб.</td>
-              <td data-label="Оплата ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Сергиенко Антон Борисович</td>
+              <td data-label="Наличие ноутбука">1 123 руб.</td>
+              <td data-label="Оплата">&#9899;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Владимиров Пётр Васильевич</td>
-              <td data-label="Оплата ">411 руб.</td>
-              <td data-label="Наличие ноутбука ">&nbsp;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Владимиров Пётр Васильевич</td>
+              <td data-label="Оплата">411 руб.</td>
+              <td data-label="Наличие ноутбука">&nbsp;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Воротцов Игорь Витальевич</td>
-              <td data-label="Оплата ">8 010 руб.</td>
-              <td data-label="Наличие ноутбука ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&nbsp;</td>
+              <td data-label="ФИО">Воротцов Игорь Витальевич</td>
+              <td data-label="Оплата">8 010 руб.</td>
+              <td data-label="Наличие ноутбука">&#9899;</td>
+              <td data-label="Наличие паспорта">&nbsp;</td>
             </tr>
-            <tr class="subhead ">
-              <td colspan="4 ">Вне обработки</td>
-            </tr>
-            <tr>
-              <td data-label="ФИО ">Уваров Борис Тимофеевич</td>
-              <td data-label="Наличие ноутбука ">999 руб.</td>
-              <td data-label="Оплата ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+            <tr class="subhead">
+              <td colspan="4">Вне обработки</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Клесин Алексей Алексеевич</td>
-              <td data-label="Оплата ">48 458 руб.</td>
-              <td class="circle_in_table " data-label="Наличие ноутбука ">&#9899;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Уваров Борис Тимофеевич</td>
+              <td data-label="Наличие ноутбука">999 руб.</td>
+              <td data-label="Оплата">&#9899;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
             <tr>
-              <td data-label="ФИО ">Кизоров Антоний Егорьевич</td>
-              <td data-label="Оплата ">0 руб.</td>
-              <td data-label="Наличие ноутбука ">&nbsp;</td>
-              <td data-label="Наличие паспорта ">&#9899;</td>
+              <td data-label="ФИО">Клесин Алексей Алексеевич</td>
+              <td data-label="Оплата">48 458 руб.</td>
+              <td class="circle_in_table" data-label="Наличие ноутбука">&#9899;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
+            </tr>
+            <tr>
+              <td data-label="ФИО">Кизоров Антоний Егорьевич</td>
+              <td data-label="Оплата">0 руб.</td>
+              <td data-label="Наличие ноутбука">&nbsp;</td>
+              <td data-label="Наличие паспорта">&#9899;</td>
             </tr>
           </tbody>
         </table>
 
-        <table class="table_adaptive ">
+        <table class="table_adaptive">
           <caption>Учет товаров</caption>
           <thead>
             <tr>
-              <th width="30% ">RSS канал</th>
-              <th width="20% ">Ссылка на сайт</th>
-              <th width="50% ">Описание</th>
+              <th width="30%">RSS канал</th>
+              <th width="20%">Ссылка на сайт</th>
+              <th width="50%">Описание</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td data-label="RSS канал "><a href="https://feeds.feedburner.com/harrix ">feeds.feedburner.com/harrix</a></td>
-              <td data-label="Ссылка на сайт "><a href="http://blog.harrix.org ">Harrix Блог</a></td>
-              <td data-label="Описание " class="left_text ">Ос­нов­ной блог со ста­тья­ми на раз­ные те­мы: IT, AI, на­ука и др.</td>
+              <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrix">feeds.feedburner.com/harrix</a></td>
+              <td data-label="Ссылка на сайт"><a href="http://blog.harrix.org">Harrix Блог</a></td>
+              <td data-label="Описание" class="left_text">Ос­нов­ной блог со ста­тья­ми на раз­ные те­мы: IT, AI, на­ука и др.</td>
             </tr>
             <tr>
-              <td data-label="RSS канал "><a href="https://feeds.feedburner.com/harrixgames ">feeds.feedburner.com/harrixgames</a></td>
-              <td data-label="Ссылка на сайт "><a href="http://games.harrix.org ">Harrix Games</a></td>
-              <td data-label="Описание " class="left_text ">Иг­ры и го­ло­во­лом­ки с интел­лек­ту­аль­ным укл­он­ом и не то­лько.</td>
+              <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrixgames">feeds.feedburner.com/harrixgames</a></td>
+              <td data-label="Ссылка на сайт"><a href="http://games.harrix.org">Harrix Games</a></td>
+              <td data-label="Описание" class="left_text">Иг­ры и го­ло­во­лом­ки с интел­лек­ту­аль­ным укл­он­ом и не то­лько.</td>
             </tr>
           </tbody>
         </table>
 
-        <table class="table_adaptive_gray ">
+        <table class="table_adaptive_gray">
           <caption>Учет товаров</caption>
           <thead>
             <tr>
-              <th width="30% ">RSS канал</th>
-              <th width="20% ">Ссылка на сайт</th>
-              <th width="50% ">Описание</th>
+              <th width="30%">RSS канал</th>
+              <th width="20%">Ссылка на сайт</th>
+              <th width="50%">Описание</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td data-label="RSS канал "><a href="https://feeds.feedburner.com/harrix ">feeds.feedburner.com/harrix</a></td>
-              <td data-label="Ссылка на сайт "><a href="http://blog.harrix.org ">Harrix Блог</a></td>
-              <td data-label="Описание " class="left_text ">Ос­нов­ной блог со ста­тья­ми на раз­ные те­мы: IT, AI, на­ука и др.</td>
+              <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrix">feeds.feedburner.com/harrix</a></td>
+              <td data-label="Ссылка на сайт"><a href="http://blog.harrix.org">Harrix Блог</a></td>
+              <td data-label="Описание" class="left_text">Ос­нов­ной блог со ста­тья­ми на раз­ные те­мы: IT, AI, на­ука и др.</td>
             </tr>
             <tr>
-              <td data-label="RSS канал "><a href="https://feeds.feedburner.com/harrixgames ">feeds.feedburner.com/harrixgames</a></td>
-              <td data-label="Ссылка на сайт "><a href="http://games.harrix.org ">Harrix Games</a></td>
-              <td data-label="Описание " class="left_text ">Иг­ры и го­ло­во­лом­ки с интел­лек­ту­аль­ным укл­он­ом и не то­лько.</td>
+              <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrixgames">feeds.feedburner.com/harrixgames</a></td>
+              <td data-label="Ссылка на сайт"><a href="http://games.harrix.org">Harrix Games</a></td>
+              <td data-label="Описание" class="left_text">Иг­ры и го­ло­во­лом­ки с интел­лек­ту­аль­ным укл­он­ом и не то­лько.</td>
             </tr>
           </tbody>
         </table>
 
-        <table class="table_adaptive_classic ">
+        <table class="table_adaptive_classic">
           <caption>Учет товаров</caption>
           <thead>
             <tr>
-              <th width="30% ">RSS канал</th>
-              <th width="20% ">Ссылка на сайт</th>
-              <th width="50% ">Описание</th>
+              <th width="30%">RSS канал</th>
+              <th width="20%">Ссылка на сайт</th>
+              <th width="50%">Описание</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td data-label="RSS канал "><a href="https://feeds.feedburner.com/harrix ">feeds.feedburner.com/harrix</a></td>
-              <td data-label="Ссылка на сайт " class="left_text "><a href="http://blog.harrix.org ">Harrix Блог</a></td>
-              <td data-label="Описание " class="left_text ">Ос­нов­ной блог со ста­тья­ми на раз­ные те­мы: IT, AI, на­ука и др.</td>
+              <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrix">feeds.feedburner.com/harrix</a></td>
+              <td data-label="Ссылка на сайт" class="left_text"><a href="http://blog.harrix.org">Harrix Блог</a></td>
+              <td data-label="Описание" class="left_text">Ос­нов­ной блог со ста­тья­ми на раз­ные те­мы: IT, AI, на­ука и др.</td>
             </tr>
             <tr>
-              <td data-label="RSS канал "><a href="https://feeds.feedburner.com/harrixgames ">feeds.feedburner.com/harrixgames</a></td>
-              <td data-label="Ссылка на сайт " class="left_text "><a href="http://games.harrix.org ">Harrix Games</a></td>
-              <td data-label="Описание " class="left_text ">Иг­ры и го­ло­во­лом­ки с интел­лек­ту­аль­ным укл­он­ом и не то­лько.</td>
+              <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrixgames">feeds.feedburner.com/harrixgames</a></td>
+              <td data-label="Ссылка на сайт" class="left_text"><a href="http://games.harrix.org">Harrix Games</a></td>
+              <td data-label="Описание" class="left_text">Иг­ры и го­ло­во­лом­ки с интел­лек­ту­аль­ным укл­он­ом и не то­лько.</td>
             </tr>
           </tbody>
         </table>
 
         <p>Таблица без границ.</p>
-        <table class="borderless margin-bottom ">
+        <table class="borderless margin-bottom">
           <thead>
             <tr>
-              <th width="30% ">№</th>
-              <th width="70% ">Текст</th>
+              <th width="30%">№</th>
+              <th width="70%">Текст</th>
             </tr>
           </thead>
           <tbody>
@@ -866,60 +864,60 @@
     </div>
   </div>
 
-  <div class="color-section ">
-    <div class="container ">
-      <a class="anchor " id="color-section "></a>
+  <div class="color-section">
+    <div class="container">
+      <a class="anchor" id="color-section"></a>
       <h1>Важный блок</h1>
-      <p class="lead ">
+      <p class="lead">
         Сообщаем что-то такое, что должно привлечь ваше внимание. Это очень важно! Обязательно прочитайте этот текст, так как он о чем-то сообщает.
       </p>
     </div>
   </div>
 
-  <a href="#top " id="top-link "><i class="fa fa-angle-up "></i></a>
+  <a href="#top" id="top-link"><i class="fa fa-angle-up"></i></a>
 
-  <footer role="contentinfo ">
-    <div class="container ">
+  <footer role="contentinfo">
+    <div class="container">
       <p>© 2014
         <script>
-        new Date().getFullYear() > 2014 && document.write("- " + new Date().getFullYear());
-        </script> <a href="http://harrix.org ">Harrix</a></p>
+        new Date().getFullYear() > 2014 && document.write("-" + new Date().getFullYear());
+        </script> <a href="http://harrix.org">Harrix</a></p>
     </div>
   </footer>
 
   <!-- Root element of PhotoSwipe. -->
-  <div class="pswp " tabindex="-1 " role="dialog " aria-hidden="true ">
-    <div class="pswp__bg "></div>
-    <div class="pswp__scroll-wrap ">
-      <div class="pswp__container ">
-        <div class="pswp__item "></div>
-        <div class="pswp__item "></div>
-        <div class="pswp__item "></div>
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
       </div>
-      <div class="pswp__ui pswp__ui--hidden ">
-        <div class="pswp__top-bar ">
-          <div class="pswp__counter "></div>
-          <button class="pswp__button pswp__button--close " title="Close (Esc) "></button>
-          <button class="pswp__button pswp__button--share " title="Share "></button>
-          <button class="pswp__button pswp__button--fs " title="Toggle fullscreen "></button>
-          <button class="pswp__button pswp__button--zoom " title="Zoom in/out "></button>
-          <div class="pswp__preloader ">
-            <div class="pswp__preloader__icn ">
-              <div class="pswp__preloader__cut ">
-                <div class="pswp__preloader__donut "></div>
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div>
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap ">
-          <div class="pswp__share-tooltip "></div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
         </div>
-        <button class="pswp__button pswp__button--arrow--left " title="Previous (arrow left) ">
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
         </button>
-        <button class="pswp__button pswp__button--arrow--right " title="Next (arrow right) ">
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
         </button>
-        <div class="pswp__caption ">
-          <div class="pswp__caption__center "></div>
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
         </div>
       </div>
     </div>
