@@ -44,6 +44,9 @@ $(document).ready(function() {
     return false;
   });
 
+  //Включаем авторазмер iframe, которые есть на странице
+  iFrameResize({});
+
     //Галереи
     changeSizeFiguraInPhotoswipeGallery();
     $(window).resize(function() {
