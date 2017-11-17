@@ -87,3 +87,31 @@ h6,
 .margin-bottom-0 {
   margin-bottom: 0 !important;
 }
+
+#top-link {
+  background-color: #de2b26;
+  bottom: 60px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  height: 50px;
+  line-height: 50px;
+  position: fixed;
+  right: 60px;
+  text-align: center;
+  text-decoration: none;
+  width: 50px;
+  z-index: 999;
+  display: none;
+}
+
+#top-link:hover {
+  background-color: #f54d4c;
+}
+
+@media (max-width: 1024px) {
+#top-link {
+  bottom: 20px !important;
+  right: 20px !important;
+}
+}
