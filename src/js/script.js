@@ -8,16 +8,23 @@ $(document).ready(function() {
         }
     });
 
+    //Запускаем подсветку синтаксиса
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
     $('.spoiler-text').hide();
     $('.spoiler').click(function() {
         $(this).toggleClass("folded").toggleClass("unfolded").next().slideToggle();
     });
 
-      //Находим все вставки LaTeX в виде div класса tex и рендерим их
-  var tex = document.getElementsByClassName("tex");
-  Array.prototype.forEach.call(tex, function(el) {
-    katex.render(el.getAttribute("data-expr"), el,{ displayMode: true });
-  });
+    //Находим все вставки LaTeX в виде div класса tex и рендерим их
+    var tex = document.getElementsByClassName("tex");
+    Array.prototype.forEach.call(tex, function(el) {
+        katex.render(el.getAttribute("data-expr"), el, {
+            displayMode: true
+        });
+    });
 
     //Меняем размеры элементов у галерей
     changeSizeFiguraInPhotoswipeGallery();
