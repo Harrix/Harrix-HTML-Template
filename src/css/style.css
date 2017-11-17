@@ -63,10 +63,10 @@
   font-weight: 700;
   src: url(../fonts/RobotoMono-Bold.ttf);
 }
-.gallery img {
+.lightbox img {
   width: 100%;
 }
-.gallery figcaption {
+.lightbox figcaption {
   display: none;
 }
 

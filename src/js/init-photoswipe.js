@@ -219,7 +219,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
 
 function startPhotoSwipe() {
-    initPhotoSwipeFromDOM('.gallery');
+    initPhotoSwipeFromDOM('.lightbox');
 }
 
 if (window.addEventListener) {
