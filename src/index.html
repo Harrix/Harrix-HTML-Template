@@ -34,7 +34,7 @@
   <script src="js/masonry.pkgd.min.js"></script>
   <script src="js/iframeResizer.min.js"></script>
   <script src="katex/katex.min.js"></script>
-  <script src='js/script.min.js'></script>
+  <script src="js/script.min.js"></script>
 </head>
 
 <body>
@@ -92,7 +92,7 @@
 
   <div class="container content">
     <div class="row">
-      <div class="content col-md-12 col-centered">
+      <div class="col">
         <a class="anchor" id="contents"></a>
         <h2>Содержание</h2>
         <ul>
@@ -108,65 +108,62 @@
           <li><a href="#adaptive-tables">Адаптивные таблицы</a></li>
           <li><a href="#color-section">Важный блок</a></li>
         </ul>
+
+        <a class="anchor" id="typography"></a>
+        <h2><a href="#contents" title="Вернуться к содержанию">Типографика</a></h2>
+
+        <p>В данном блоке пример использования обычного текста в несколько абзацев. Непосредственно в данном абзаце не будет применения никаких дополнительных украшательств текста. Просто несколько строк в абзаце. Поэтому мне надо о чем-нибудь тут написать, чтобы текста было побольше. Например, можно написать о том, что угол наклона оси вращения Земли составляет 23,44°. Именно такой угол наклона в моём логотипе.</p>
+
+        <p>А теперь начнем показывать некоторые возможности оформления текста. Например, можно показать сочетания клавиш с помощью такой конструкции
+          <kbd>Ctrl</kbd> +
+          <kbd>V</kbd>. Таким же образом можно оформлять и вызов пунктов меню:
+          <kbd>File</kbd> →
+          <kbd>Open</kbd>.</p>
+
+        <p>Для выделения текста используется класс <span class="important">.important</span>. Например, название класса именно этим классом и оформлено. Выделение <strong>обычным жирным</strong> не особо приветствуется, но разрешается.</p>
+
+        <p>Ссылки (<a href="http://harrix.org">harrix.org</a>) отображаются другим цветом и подчеркиваются. При наведении на них цвет ссылки меняется на более светлый.</p>
+
+        <p>Списки оформляются вот таким вот образом:</p>
+        <ul>
+          <li>Меркурий</li>
+          <li>Венера</li>
+          <li>Земля</li>
+          <li>
+            <ul>
+              <li>Луна</li>
+            </ul>
+          </li>
+          <li>Марс</li>
+          <li>
+            <ul>
+              <li>Фобос</li>
+              <li>Деймос</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p>А это абзац текста после списка. Он тут для того, чтобы можно было оценить расстояние от списка до последующего текста.</p>
+
+        <p>Приведем пример использования цитат в тексте:</p>
+
+        <blockquote>Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела. Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом случае игроки тоже не знают друг друга и никогда больше не встретятся. Если второй игрок отвергнет предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?</blockquote>
+
+        <div class="spoiler-wrapper">
+          <div class="spoiler folded"><a href="javascript:void(0);">Сплойер</a></div>
+          <div class="spoiler-text">
+            Тут некоторая закрытая информация, которая раскрывает сюжетную линию XX эпизода Звёздных войн.
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="container content">
-    <a class="anchor" id="typography"></a>
-    <h2><a href='#contents' title='Вернуться к содержанию'>Типографика</a></h2>
-
-    <p>В данном блоке пример использования обычного текста в несколько абзацев. Непосредственно в данном абзаце не будет применения никаких дополнительных украшательств текста. Просто несколько строк в абзаце. Поэтому мне надо о чем-нибудь тут написать, чтобы текста было побольше. Например, можно написать о том, что угол наклона оси вращения Земли составляет 23,44°. Именно такой угол наклона в моём логотипе.</p>
-
-    <p>А теперь начнем показывать некоторые возможности оформления текста. Например, можно показать сочетания клавиш с помощью такой конструкции
-      <kbd>Ctrl</kbd> +
-      <kbd>V</kbd>. Таким же образом можно оформлять и вызов пунктов меню:
-      <kbd>File</kbd> →
-      <kbd>Open</kbd>.</p>
-
-    <p>Для выделения текста используется класс <span class="important">.important</span>. Например, название класса именно этим классом и оформлено. Выделение <strong>обычным жирным</strong> не особо приветствуется, но разрешается.</p>
-
-    <p>Ссылки (<a href="http://harrix.org">harrix.org</a>) отображаются другим цветом и подчеркиваются. При наведении на них цвет ссылки меняется на более светлый.</p>
-
-    <p>Списки оформляются вот таким вот образом:</p>
-    <ul>
-      <li>Меркурий</li>
-      <li>Венера</li>
-      <li>Земля</li>
-      <li>
-        <ul>
-          <li>Луна</li>
-        </ul>
-      </li>
-      <li>Марс</li>
-      <li>
-        <ul>
-          <li>Фобос</li>
-          <li>Деймос</li>
-        </ul>
-      </li>
-    </ul>
-
-    <p>А это абзац текста после списка. Он тут для того, чтобы можно было оценить расстояние от списка до последующего текста.</p>
-
-    <p>Приведем пример использования цитат в тексте:</p>
-
-    <blockquote>Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела. Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом случае игроки тоже не знают друг друга и никогда больше не встретятся. Если второй игрок отвергнет предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?</blockquote>
-
-    <div class="spoiler-wrapper">
-      <div class="spoiler folded"><a href="javascript:void(0);">Сплойер</a></div>
-      <div class="spoiler-text">
-        Тут некоторая закрытая информация, которая раскрывает сюжетную линию XX эпизода Звёздных войн.
-      </div>
-    </div>
-
   </div>
 
   <div class="container content">
     <div class="row">
       <div class="col margin-bottom-0">
         <a class="anchor" id="columns"></a>
-        <h2><a href='#contents' title='Вернуться к содержанию'>Колонки</a></h2>
+        <h2><a href="#contents" title="Вернуться к содержанию">Колонки</a></h2>
       </div>
     </div>
     <div class="row">
@@ -198,7 +195,7 @@
     <div class="row">
       <div class="col content-with-gallery">
         <a class="anchor" id="photoswipe"></a>
-        <h2><a href='#contents' title='Вернуться к содержанию'>PhotoSwipe</a></h2>
+        <h2><a href="#contents" title="Вернуться к содержанию">PhotoSwipe</a></h2>
 
         <h3>Одиночное изображение слева</h3>
 
@@ -280,11 +277,11 @@
       </div>
     </div>
     
-    <div class="container">
+    <div class="container content">
       <div class="row">
-        <div class="content col-md-10 col-centered"> 
+        <div class="col"> 
           <a class="anchor" id="fontawesome"></a>
-          <h2><a href='#contents' title='Вернуться к содержанию'>Font Awesome</a></h2>
+          <h2><a href="#contents" title="Вернуться к содержанию">Font Awesome</a></h2>
           
           <p>
             <ul class="fa-ul">
@@ -325,11 +322,11 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container content">
       <div class="row">
-        <div class="content col-md-10 col-centered">
+        <div class="col">
           <a class="anchor" id="katex"></a>
-          <h2><a href='#contents' title='Вернуться к содержанию'>KaTeX</a></h2>
+          <h2><a href="#contents" title="Вернуться к содержанию">KaTeX</a></h2>
      
           <div class="tex" data-expr="c = \pm\sqrt{a^2 + b^2}"></div>
           <div class="tex" data-expr="\Gamma\ \Delta\ \Theta\ \Lambda\ \Xi\ \Pi\ \Sigma\ \Upsilon\ \Phi\ \Psi\ \Omega"></div>
@@ -339,11 +336,11 @@
       </div>
     </div>
     
-    <div class="container">
+    <div class="container content">
       <div class="row">
-        <div class="content col-md-10 col-centered">
+        <div class="col">
               <a class="anchor" id="highlight.js"></a>
-              <h2><a href='#contents' title='Вернуться к содержанию'>highlight.js</a></h2>
+              <h2><a href="#contents" title="Вернуться к содержанию">highlight.js</a></h2>
               
               <pre><code class="cpp">//&#x421;&#x43E;&#x434;&#x435;&#x440;&#x436;&#x438;&#x43C;&#x43E;&#x435; &#x444;&#x430;&#x439;&#x43B;&#x430; input.txt
     /*
@@ -433,11 +430,11 @@
       </div>
     </div>
               
-    <div class="container">
+    <div class="container content">
       <div class="row">
-        <div class="content col-md-10 col-centered">
+        <div class="col">
           <a class="anchor" id="buttons-and-alerts"></a>
-          <h2><a href='#contents' title='Вернуться к содержанию'>Кнопки и сообщения</a></h2>
+          <h2><a href="#contents" title="Вернуться к содержанию">Кнопки и сообщения</a></h2>
             
           <p class="text-xs-left">
             <a class="btn btn-title" href="files/example.zip" target="_blank"><i class="fa fa-file-archive-o fa-lg" aria-hidden="true"></i> Демо</a>
@@ -501,11 +498,11 @@
       </div>
     </div>
     
-    <div class="container">
+    <div class="container content">
       <div class="row">
-        <div class="content col-md-10 col-centered">
+        <div class="col">
           <a class="anchor" id="history"></a>
-          <h2><a href='#contents' title='Вернуться к содержанию'>Список изменений</a></h2>
+          <h2><a href="#contents" title="Вернуться к содержанию">Список изменений</a></h2>
     
           <p>
             <ul class="changes">
@@ -529,11 +526,11 @@
       </div>
     </div>
     
-    <div class="container">
+    <div class="container content">
       <div class="row">
-        <div class="content col-md-10 col-centered">
+        <div class="col">
           <a class="anchor" id="adaptive-tables"></a>
-          <h2><a href='#contents' title='Вернуться к содержанию'>Адаптивные таблицы</a></h2>
+          <h2><a href="#contents" title="Вернуться к содержанию">Адаптивные таблицы</a></h2>
               
     <table class="table_adaptive_classic">
     <caption>Учет товаров</caption>
