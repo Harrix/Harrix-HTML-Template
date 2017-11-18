@@ -24,7 +24,6 @@
   <link rel="stylesheet" href="css/default-skin/default-skin.css">
   <link rel="stylesheet" href="katex/katex.min.css">
   <link rel="stylesheet" href="css/style.min.css">
-
   <!-- TODO: table.css Адаптивные таблицы -->
   <!-- TODO: harrixListWithFilter.css Фильтр для списков Harrix TreeListFilter -->
 
@@ -38,7 +37,6 @@
   <script src="js/iframeResizer.min.js"></script>
   <script src="katex/katex.min.js"></script>
   <script src="js/script.min.js"></script>
-
   <!-- TODO: harrixListWithFilter.js Фильтр для списков Harrix TreeListFilter -->
 </head>
 
@@ -325,80 +323,80 @@
         <a class="anchor" id="highlight.js"></a>
         <h2><a href="#contents" title="Вернуться к содержанию">highlight.js</a></h2>
 
-        <pre><code class="cpp">//&#x421;&#x43E;&#x434;&#x435;&#x440;&#x436;&#x438;&#x43C;&#x43E;&#x435; &#x444;&#x430;&#x439;&#x43B;&#x430; input.txt
-  /*
-  Aslapova Nastya she did not come to class 29 5
-  Nikolaev Dima he bought a house 12 9
-  Tokmin Lev he does not know programming 96 75
-  */
-   
-  #include &#x22;stdafx.h&#x22;//Visual Studio &#x43C;&#x43E;&#x436;&#x435;&#x442; &#x43F;&#x43E;&#x43F;&#x440;&#x43E;&#x441;&#x438;&#x442;&#x44C;
-   
-  #include &#x3C;iostream&#x3E;
-  #include &#x3C;fstream&#x3E;
-  #include &#x3C;string&#x3E;
-  #include &#x3C;sstream&#x3E;
-   
-  using namespace std;
-   
-  int main()
+        <pre><code class="cpp">//Содержимое файла input.txt
+/*
+Aslapova Nastya she did not come to class 29 5
+Nikolaev Dima he bought a house 12 9
+Tokmin Lev he does not know programming 96 75
+*/
+ 
+#include "stdafx.h"//Visual Studio может попросить
+ 
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+ 
+using namespace std;
+ 
+int main()
+{
+ setlocale(LC_ALL, "RUSSIAN");//Чтобы русский текст поддерживался
+ 
+ //Создаем файловый поток и связываем его с файлом
+ ifstream file("input.txt");
+ 
+ if (file.is_open())//Если открытие файла прошло успешно
+ {
+  cout << "Файл открыт." << endl;
+ 
+  string line;//Строчка текста
+ 
+  //Будем считывать информацию построчно до тех пор,
+  //пока не закончится файл
+ 
+  while (getline(file, line))
   {
-   setlocale(LC_ALL, &#x22;RUSSIAN&#x22;);//&#x427;&#x442;&#x43E;&#x431;&#x44B; &#x440;&#x443;&#x441;&#x441;&#x43A;&#x438;&#x439; &#x442;&#x435;&#x43A;&#x441;&#x442; &#x43F;&#x43E;&#x434;&#x434;&#x435;&#x440;&#x436;&#x438;&#x432;&#x430;&#x43B;&#x441;&#x44F;
-   
-   //&#x421;&#x43E;&#x437;&#x434;&#x430;&#x435;&#x43C; &#x444;&#x430;&#x439;&#x43B;&#x43E;&#x432;&#x44B;&#x439; &#x43F;&#x43E;&#x442;&#x43E;&#x43A; &#x438; &#x441;&#x432;&#x44F;&#x437;&#x44B;&#x432;&#x430;&#x435;&#x43C; &#x435;&#x433;&#x43E; &#x441; &#x444;&#x430;&#x439;&#x43B;&#x43E;&#x43C;
-   ifstream file(&#x22;input.txt&#x22;);
-   
-   if (file.is_open())//&#x415;&#x441;&#x43B;&#x438; &#x43E;&#x442;&#x43A;&#x440;&#x44B;&#x442;&#x438;&#x435; &#x444;&#x430;&#x439;&#x43B;&#x430; &#x43F;&#x440;&#x43E;&#x448;&#x43B;&#x43E; &#x443;&#x441;&#x43F;&#x435;&#x448;&#x43D;&#x43E;
-   {
-   cout &#x3C;&#x3C; &#x22;&#x424;&#x430;&#x439;&#x43B; &#x43E;&#x442;&#x43A;&#x440;&#x44B;&#x442;.&#x22; &#x3C;&#x3C; endl;
-   
-   string line;//&#x421;&#x442;&#x440;&#x43E;&#x447;&#x43A;&#x430; &#x442;&#x435;&#x43A;&#x441;&#x442;&#x430;
-   
-   //&#x411;&#x443;&#x434;&#x435;&#x43C; &#x441;&#x447;&#x438;&#x442;&#x44B;&#x432;&#x430;&#x442;&#x44C; &#x438;&#x43D;&#x444;&#x43E;&#x440;&#x43C;&#x430;&#x446;&#x438;&#x44E; &#x43F;&#x43E;&#x441;&#x442;&#x440;&#x43E;&#x447;&#x43D;&#x43E; &#x434;&#x43E; &#x442;&#x435;&#x445; &#x43F;&#x43E;&#x440;,
-   //&#x43F;&#x43E;&#x43A;&#x430; &#x43D;&#x435; &#x437;&#x430;&#x43A;&#x43E;&#x43D;&#x447;&#x438;&#x442;&#x441;&#x44F; &#x444;&#x430;&#x439;&#x43B;
-   
-   while (getline(file, line))
-   {
-    //cout &#x3C;&#x3C; line &#x3C;&#x3C; endl;//&#x41C;&#x43E;&#x436;&#x43D;&#x43E; &#x43F;&#x43E;&#x441;&#x43C;&#x43E;&#x442;&#x440;&#x435;&#x442;&#x44C;, &#x447;&#x442;&#x43E; &#x432; &#x441;&#x442;&#x440;&#x43E;&#x447;&#x43A;&#x435; &#x441;&#x447;&#x438;&#x442;&#x430;&#x43B;&#x43E;&#x441;&#x44C;
-   
-    //&#x422;&#x435;&#x43F;&#x435;&#x440;&#x44C; &#x432; line &#x445;&#x440;&#x430;&#x43D;&#x438;&#x442;&#x441;&#x44F; &#x441;&#x43E;&#x434;&#x435;&#x440;&#x436;&#x438;&#x43C;&#x43E;&#x435; &#x441;&#x442;&#x440;&#x43E;&#x447;&#x43A;&#x438; &#x438;&#x437; &#x444;&#x430;&#x439;&#x43B;&#x430;.
-    //&#x411;&#x443;&#x434;&#x435;&#x43C; &#x435;&#x451; &#x440;&#x430;&#x437;&#x431;&#x438;&#x440;&#x430;&#x442;&#x44C; &#x43D;&#x430; &#x441;&#x43E;&#x441;&#x442;&#x430;&#x432;&#x43D;&#x44B;&#x435; &#x447;&#x430;&#x441;&#x442;&#x438;.
-   
-    //&#x412; &#x43D;&#x430;&#x448;&#x435;&#x43C; &#x444;&#x430;&#x439;&#x43B;&#x435; &#x438;&#x434;&#x443;&#x442; &#x434;&#x432;&#x435; &#x441;&#x442;&#x440;&#x43E;&#x447;&#x43A;&#x438;, &#x430; &#x43F;&#x43E;&#x442;&#x43E;&#x43C; &#x434;&#x432;&#x430; &#x447;&#x438;&#x441;&#x43B;&#x430;
-    string name, surname, info;
-    int age, money;
-   
-    //&#x421;&#x43E;&#x437;&#x434;&#x430;&#x434;&#x438;&#x43C; &#x43F;&#x43E;&#x442;&#x43E;&#x43A; &#x434;&#x43B;&#x44F; &#x441;&#x447;&#x438;&#x442;&#x44B;&#x432;&#x430;&#x43D;&#x438;&#x44F; &#x434;&#x430;&#x43D;&#x43D;&#x44B;&#x445; &#x438;&#x437; &#x441;&#x442;&#x440;&#x43E;&#x447;&#x43A;&#x438;
-    istringstream iss(line);
-   
-    string token;
-    int i = 0;
-    while (getline(iss, token, &#x27;\t&#x27;)) {
+   //cout << line << endl;//Можно посмотреть, что в строчке считалось
+ 
+   //Теперь в line хранится содержимое строчки из файла.
+   //Будем её разбирать на составные части.
+ 
+   //В нашем файле идут две строчки, а потом два числа
+   string name, surname, info;
+   int age, money;
+ 
+   //Создадим поток для считывания данных из строчки
+   istringstream iss(line);
+ 
+   string token;
+   int i = 0;
+   while (getline(iss, token, '\t')) {
     if (i == 0) surname = token;
     if (i == 1) name = token;
     if (i == 2) info = token;
-    if (i == 3) age = atoi(token.c_str());//&#x43F;&#x435;&#x440;&#x435;&#x432;&#x43E;&#x434; string &#x432; int
-    if (i == 4) money = atoi(token.c_str());//&#x43F;&#x435;&#x440;&#x435;&#x432;&#x43E;&#x434; string &#x432; int
+    if (i == 3) age = atoi(token.c_str());//перевод string в int
+    if (i == 4) money = atoi(token.c_str());//перевод string в int
     i++;
-    }
-   
-    //&#x412;&#x44B;&#x432;&#x435;&#x434;&#x435;&#x43C; &#x43D;&#x430;&#x448;&#x438; &#x434;&#x430;&#x43D;&#x43D;&#x44B;&#x435;
-    cout &#x3C;&#x3C; &#x22;&#x414;&#x430;&#x43D;&#x43D;&#x44B;&#x435; &#x438;&#x437; &#x441;&#x442;&#x440;&#x43E;&#x447;&#x43A;&#x438;:&#x22; &#x3C;&#x3C; endl;
-    cout &#x3C;&#x3C; &#x22;\t&#x424;&#x430;&#x43C;&#x438;&#x43B;&#x438;&#x44F;: &#x22; &#x3C;&#x3C; surname &#x3C;&#x3C; endl;
-    cout &#x3C;&#x3C; &#x22;\t&#x418;&#x43C;&#x44F;: &#x22; &#x3C;&#x3C; name &#x3C;&#x3C; endl;
-    cout &#x3C;&#x3C; &#x22;\t&#x418;&#x43D;&#x444;&#x43E;&#x440;&#x43C;&#x430;&#x446;&#x438;&#x44F;: &#x22; &#x3C;&#x3C; info &#x3C;&#x3C; endl;
-    cout &#x3C;&#x3C; &#x22;\t&#x412;&#x43E;&#x437;&#x440;&#x430;&#x441;&#x442;: &#x22; &#x3C;&#x3C; age &#x3C;&#x3C; endl;
-    cout &#x3C;&#x3C; &#x22;\t&#x414;&#x435;&#x43D;&#x44C;&#x433;&#x438;: &#x22; &#x3C;&#x3C; money &#x3C;&#x3C; endl;
    }
-   }
-   else
-   {
-   cout &#x3C;&#x3C; &#x22;&#x41D;&#x435; &#x443;&#x434;&#x430;&#x43B;&#x43E;&#x441;&#x44C; &#x43E;&#x442;&#x43A;&#x440;&#x44B;&#x442;&#x44C; &#x444;&#x430;&#x439;&#x43B;.&#x22; &#x3C;&#x3C; endl;
-   }
-   
-   system(&#x22;pause&#x22;);
+ 
+   //Выведем наши данные
+   cout << "Данные из строчки:" << endl;
+   cout << "\tФамилия: " << surname << endl;
+   cout << "\tИмя: " << name << endl;
+   cout << "\tИнформация: " << info << endl;
+   cout << "\tВозраст: " << age << endl;
+   cout << "\tДеньги: " << money << endl;
+  }
+ }
+ else
+ {
+  cout << "Не удалось открыть файл." << endl;
+ }
+ 
+ system("pause");
     return 0;
-  }</code></pre>
+}</code></pre>
       </div>
     </div>
   </div>

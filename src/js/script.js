@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    //Запускаем подсветку синтаксиса
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
     //Размеры логотипа при скроле
     $(window).scroll(function() {
         var bo = $(this).scrollTop();
@@ -7,11 +12,6 @@ $(document).ready(function() {
         } else {
             $("#logo").removeClass("shrink");
         }
-    });
-
-    //Запускаем подсветку синтаксиса
-    $('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
     });
 
     //Подготавливаем сплойеры
@@ -31,7 +31,6 @@ $(document).ready(function() {
     //Скрываем или показываем кнопку "Наверх"
     $(window).scroll(function() {
         if ($(this).scrollTop() > 200) {
-
             $('#top-link').fadeIn();
         } else {
             $('#top-link').fadeOut();
