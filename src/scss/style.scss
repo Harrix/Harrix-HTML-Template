@@ -4,23 +4,19 @@
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
 
-$font-stack: -apple-system,
-BlinkMacSystemFont,
-Roboto,
-'Open Sans',
-'Helvetica Neue',
-sans-serif;
+$font-stack: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 
-$font-stack-code: 'Roboto Mono',
-monospace;
+$font-stack-code: 'Roboto Mono', monospace;
 
-$grid-breakpoints: ( xs: 0,
+$grid-breakpoints: (
+xs: 0,
 sm: 576px,
 md: 768px,
 lg: 992px,
-xl: 1200px) !default;
+xl: 1200px
+) !default;
 
-$colors: ( 
+$colors: (
 black-color:       #222, //#474747
 teal-color:        #19a5a5,
 teal-color-hover:  #71c2c2,
@@ -40,16 +36,16 @@ $main-color:              map-get($colors, red-color);
 $border-color:            #eee;
 $hr-color:                map-get($colors, teal-color);
 $blockquote-color:        map-get($colors, teal-color);
-$duration-animation : 0.2s;
-$type-animation : ease-in-out;
-$grid-breakpoint-mobile : map-get($grid-breakpoints, lg);
-$header-font-size : 0.875rem;
-$zindex-fixed : 1030 !default;
-$h-font-weight : 400;
-$lead-font-weight : 400;
-$text-font-weight : 400;
-$blockquote-font-weight : 300;
-$button-border-radius : 0px;
+$duration-animation: 0.2s;
+$type-animation: ease-in-out;
+$grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
+$header-font-size: 0.875rem;
+$zindex-fixed: 1030 !default;
+$h-font-weight: 400;
+$lead-font-weight: 400;
+$text-font-weight: 400;
+$blockquote-font-weight: 300;
+$button-border-radius: 0px;
 
 @mixin animation() {
   transition: all $duration-animation $type-animation;
