@@ -11,7 +11,7 @@ button,
 }
 
 .btn {
-  background-color: $main-color;
+  background-color: map-get($colors, red-color);
   color: $text-color-in-dark !important;
   border: 0;
   border-radius: $button-border-radius;
@@ -26,7 +26,7 @@ button,
   &:hover,
   &:focus,
   &:active {
-    background-color: $hover-main-color;
+    background-color: map-get($colors, red-color);
     color: $text-color-in-dark !important;
     border: 0;
   }

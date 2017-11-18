@@ -310,7 +310,7 @@ button ::-moz-focus-inner,
   margin-bottom: 0.625rem;
 }
 .btn:hover, .btn:focus, .btn:active {
-  background-color: #f54d4c;
+  background-color: #de2b26;
   color: #ffffff !important;
   border: 0;
 }
