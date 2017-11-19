@@ -17,23 +17,25 @@ xl: 1200px
 ) !default;
 
 $colors: (
-black-color:       #222, //#474747
+black-color:       #222222, //#474747
+white-color:       #ffffff,
+grey-light:        #eeeeee,
 teal-color:        #19a5a5,
-teal-color-hover:  #71c2c2,
+teal-color-light:  #71c2c2,
 red-color:         #de2b26,
-red-color-hover:   #f54d4c,
+red-color-light:   #f54d4c,
 green-color:       #4abf60,
-green-color-hover: #77cb87,
+green-color-light: #77cb87,
 ) !default;
 
-$background-color:        #ffffff;
-$header-background-color: #ffffff;
-$text-color:              #222; //#474747
-$text-color-in-dark:      #ffffff;
+$background-color:        map-get($colors, white-color);
+$header-background-color: map-get($colors, white-color);
+$text-color:              map-get($colors, black-color);
+$text-color-in-dark:      map-get($colors, white-color);
 $link-color:              map-get($colors, teal-color);
-$hover-link-color:        map-get($colors, teal-color-hover);
+$hover-link-color:        map-get($colors, teal-color-light);
 $main-color:              map-get($colors, red-color);
-$border-color:            #eee;
+$border-color:            map-get($colors, grey-light);
 $hr-color:                map-get($colors, teal-color);
 $blockquote-color:        map-get($colors, teal-color);
 $duration-animation: 0.2s;
