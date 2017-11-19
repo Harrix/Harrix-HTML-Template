@@ -5,7 +5,6 @@
  */
 
 $font-stack: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-
 $font-stack-code: 'Roboto Mono', monospace;
 
 $grid-breakpoints: (
@@ -50,10 +49,10 @@ $blockquote-font-weight: 300;
 $button-border-radius: 0px;
 
 @mixin animation() {
-  transition: all $duration-animation $type-animation;
+  transition:         all $duration-animation $type-animation;
   -webkit-transition: all $duration-animation $type-animation;
-  -moz-transition: all $duration-animation $type-animation;
-  -o-transition: all $duration-animation $type-animation;
+  -moz-transition:    all $duration-animation $type-animation;
+  -o-transition:      all $duration-animation $type-animation;
 }
 
 @import "fonts";
