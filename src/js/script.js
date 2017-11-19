@@ -1,3 +1,9 @@
+/*!
+ * Harrix HTML Template (https://github.com/Harrix/Harrix-HTML-Template)
+ * Copyright 2017 Sergienko Anton
+ * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
+ */
+
 $(document).ready(function() {
     //Запускаем подсветку синтаксиса
     $('pre code').each(function(i, block) {
