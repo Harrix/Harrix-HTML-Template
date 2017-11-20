@@ -316,8 +316,11 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   border: none !important;
   color: #222222;
 }
-.content ol, .content ul, .content dl {
+.content ol, .content ul {
+  -moz-padding-start: 1rem;
   -webkit-padding-start: 1rem;
+  -khtml-padding-start: 1rem;
+  -o-padding-start: 1rem;
 }
 .content kbd {
   font-size: 0.875rem;

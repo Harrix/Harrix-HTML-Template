@@ -21,8 +21,11 @@
     color: $text-color;
   }
 
-  ol, ul, dl {
+  ol, ul {
+    -moz-padding-start: 1rem;
     -webkit-padding-start: 1rem;
+    -khtml-padding-start: 1rem;
+    -o-padding-start: 1rem;
   }
 
   kbd {
