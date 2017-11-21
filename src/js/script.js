@@ -37,14 +37,14 @@ $(document).ready(function() {
     //Скрываем или показываем кнопку "Наверх"
     $(window).scroll(function() {
         if ($(this).scrollTop() > 200) {
-            $('#top-link').fadeIn();
+            $('#back-to-top').fadeIn();
         } else {
-            $('#top-link').fadeOut();
+            $('#back-to-top').fadeOut();
         }
     });
 
     //При нажатии на кнопку "Наверх" анимируем переход
-    $('#top-link').click(function() {
+    $('#back-to-top').click(function() {
         $('html, body').animate({
             scrollTop: 0
         }, 800);

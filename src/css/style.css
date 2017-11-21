@@ -137,33 +137,33 @@ h6, .h6 {
   margin-bottom: 0 !important;
 }
 
-#top-link {
-  background-color: #de2b26;
-  bottom: 60px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 20px;
-  height: 50px;
-  line-height: 50px;
+#back-to-top {
+  height: 3.125rem;
+  width: 3.125rem;
+  right: 3.75rem;
+  bottom: 3.75rem;
   position: fixed;
-  right: 60px;
+  font-size: 1.25rem;
+  line-height: 3.125rem;
+  background-color: #aaaaaa;
+  opacity: 0.9;
+  color: #ffffff;
+  cursor: pointer;
   text-align: center;
   text-decoration: none;
-  width: 50px;
   z-index: 999;
   display: none;
 }
-
-#top-link:hover {
-  background-color: #f54d4c;
+#back-to-top:hover {
+  background-color: #19a5a5;
 }
-
-@media (max-width: 1024px) {
-  #top-link {
-    bottom: 20px !important;
-    right: 20px !important;
+@media (max-width: 992px) {
+  #back-to-top {
+    bottom: 1.25rem !important;
+    right: 1.25rem !important;
   }
 }
+
 @media (min-width: 992px) {
   body {
     padding-top: 5.0rem;

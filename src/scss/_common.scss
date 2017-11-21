@@ -70,30 +70,29 @@ h6, .h6 {
   margin-bottom: 0 !important;
 }
 
-#top-link {
-  background-color: #de2b26;
-  bottom: 60px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 20px;
-  height: 50px;
-  line-height: 50px;
+#back-to-top {
+  height: 3.125rem;
+  width: 3.125rem;
+  right: 3.75rem;
+  bottom: 3.75rem;
   position: fixed;
-  right: 60px;
+  font-size: 1.25rem;
+  line-height: 3.125rem;
+  background-color: map-get($colors, grey-color);
+  opacity: 0.9;  
+  color: $text-color-in-dark;
+  cursor: pointer;
   text-align: center;
-  text-decoration: none;
-  width: 50px;
-  z-index: 999;
+  text-decoration: none;  
+  z-index: $z-index-lightbox - 1;
   display: none;
-}
 
-#top-link:hover {
-  background-color: #f54d4c;
-}
+  &:hover {
+    background-color: map-get($colors, teal-color);
+  }
 
-@media (max-width: 1024px) {
-  #top-link {
-    bottom: 20px !important;
-    right: 20px !important;
+  @media (max-width: $grid-breakpoint-mobile) {
+    bottom: 1.25rem !important;
+    right: 1.25rem !important;
   }
 }
