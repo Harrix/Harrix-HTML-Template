@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
 
-$(document).ready(function() {
+$(function() {
     //Запускаем подсветку синтаксиса
     $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
