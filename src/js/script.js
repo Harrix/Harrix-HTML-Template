@@ -64,9 +64,7 @@ $(function() {
         itemSelector: '.msnry_item',
         fitWidth: true,
     });
-});
 
-$(function() {
     //Плавная прокрутка по якорям
     $('a[href*="#"]:not([href="#"])').click(function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
