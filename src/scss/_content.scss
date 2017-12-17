@@ -10,8 +10,7 @@
     color: $link-color;
 
     &:hover {
-      text-decoration: none;
-      border-bottom: 1px dashed $hover-link-color;
+      text-decoration: underline;
       color: $hover-link-color;
     }
   }
