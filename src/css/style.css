@@ -353,5 +353,8 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   font-weight: bold;
   font-family: "Roboto Mono", monospace;
 }
+.content .fa-ul {
+  margin-left: 0.5em;
+}
 
 /*# sourceMappingURL=style.css.map */
