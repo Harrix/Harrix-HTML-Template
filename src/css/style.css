@@ -312,8 +312,11 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   color: #71c2c2;
 }
 .content h1 a, .content h2 a, .content h3 a, .content h4 a, .content h5 a, .content h6 a, .content .h1 a, .content .h2 a, .content .h3 a, .content .h4 a, .content .h5 a, .content .h6 a {
-  border: none !important;
   color: #222222;
+}
+.content h1 a:hover, .content h2 a:hover, .content h3 a:hover, .content h4 a:hover, .content h5 a:hover, .content h6 a:hover, .content .h1 a:hover, .content .h2 a:hover, .content .h3 a:hover, .content .h4 a:hover, .content .h5 a:hover, .content .h6 a:hover {
+  text-decoration: none;
+  color: #71c2c2;
 }
 .content ol, .content ul {
   -moz-padding-start: 1rem;
