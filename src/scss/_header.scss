@@ -41,6 +41,11 @@ header {
     border: 0 solid transparent !important;
   }
 
+  .dropdown-item {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
   @media (max-width: $grid-breakpoint-mobile) {
     .nav-item {
       border-bottom: 1px solid $border-color;
