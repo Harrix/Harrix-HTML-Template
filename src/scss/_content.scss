@@ -59,6 +59,9 @@
       font-weight: bold;
       line-height: .7em;
     }
+
+    @media (max-width: $grid-breakpoint-mobile) {
+    }
   }
 
   .important {
