@@ -355,6 +355,11 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   font-weight: bold;
   line-height: .7em;
 }
+@media (max-width: 992px) {
+  .content blockquote {
+    font-size: 1rem;
+  }
+}
 .content .important {
   color: #de2b26;
   font-weight: bold;
