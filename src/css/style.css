@@ -358,7 +358,11 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 @media (max-width: 992px) {
   .content blockquote {
     font-size: 1rem;
+    padding-left: 1.5rem;
   }
+}
+.content blockquote:before {
+  font-size: 1.75em;
 }
 .content .important {
   color: #de2b26;
