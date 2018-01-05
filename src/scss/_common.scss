@@ -79,11 +79,11 @@ h6, .h6 {
   font-size: 1.25rem;
   line-height: 3.125rem;
   background-color: map-get($colors, grey-color);
-  opacity: 0.9;  
+  opacity: 0.9;
   color: $text-color-in-dark;
   cursor: pointer;
   text-align: center;
-  text-decoration: none;  
+  text-decoration: none;
   z-index: $z-index-lightbox - 1;
   display: none;
 
