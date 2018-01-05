@@ -243,6 +243,9 @@ header .dropdown-item:focus, header .dropdown-item:hover, header .dropdown-item.
   text-decoration: none;
   background-color: #ffffff;
 }
+header .icon {
+  height: 1rem;
+}
 
 .header-section {
   padding-top: 1rem;
