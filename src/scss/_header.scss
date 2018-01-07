@@ -92,5 +92,9 @@ header {
 
   .icon {
     height: 0.875rem;
+
+    @media (max-width: $grid-breakpoint-mobile) {
+      height: 1.125rem;
+    }
   }
 }

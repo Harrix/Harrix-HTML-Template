@@ -246,6 +246,11 @@ header .dropdown-item:focus, header .dropdown-item:hover, header .dropdown-item.
 header .icon {
   height: 0.875rem;
 }
+@media (max-width: 992px) {
+  header .icon {
+    height: 1.125rem;
+  }
+}
 
 .header-section {
   padding-top: 1rem;
