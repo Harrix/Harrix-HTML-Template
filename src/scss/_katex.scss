@@ -1,18 +1,20 @@
 .tex {
-    //font-size: 16px;
-    overflow: auto;
+  overflow: auto;
 }
 
 .tex::-webkit-scrollbar {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
+
 .tex::-webkit-scrollbar:vertical {
-    width: 6px;
+  width: 6px;
 }
+
 .tex::-webkit-scrollbar:horizontal {
-    height: 6px;
+  height: 6px;
 }
+
 .tex::-webkit-scrollbar-thumb {
-    background-color: #cdcdcd;
-    border-radius: 3px;
+  background-color: #cdcdcd;
+  border-radius: 3px;
 }
