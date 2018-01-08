@@ -256,10 +256,6 @@ header .icon {
   padding-left: 10%;
   padding-right: 10%;
 }
-.header-section .button-row {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
 .header-section h1:after {
   background: #19a5a5;
   bottom: 0;
