@@ -17,7 +17,7 @@
 
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a {
     color: $text-color;
-    
+
     &:hover {
       text-decoration: none;
       color: $hover-link-color;
@@ -64,12 +64,13 @@
       font-size: 1rem;
       padding-left: 1.5rem;
     }
-    
+
     &:before {
       font-size: 1.75em;
     }
   }
 
+  //NEW class
   .important {
     color: $main-color;
     font-weight: bold;
