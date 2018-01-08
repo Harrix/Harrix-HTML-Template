@@ -20,12 +20,6 @@ $(function() {
         }
     });
 
-    //Подготавливаем сплойеры
-    $('.spoiler-text').hide();
-    $('.spoiler').click(function() {
-        $(this).toggleClass("folded").toggleClass("unfolded").next().slideToggle();
-    });
-
     //Скрываем или показываем кнопку "Наверх"
     $(window).scroll(function() {
         if ($(this).scrollTop() > 200) {
