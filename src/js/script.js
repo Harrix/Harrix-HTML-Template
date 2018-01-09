@@ -10,16 +10,15 @@ jQuery(function() {
         hljs.highlightBlock(block);
     });
 
-    //Change the size of the logo when scroll
+    
     jQuery(window).scroll(function() {
+        //Change the size of the logo when scroll
         if (jQuery(this).scrollTop() >= 50)
             jQuery("#logo").addClass("shrink");
         else
             jQuery("#logo").removeClass("shrink");
-    });
 
-    //Hide or show the button "Back to up"
-    jQuery(window).scroll(function() {
+        //Hide or show the button "Back to up"
         if (jQuery(this).scrollTop() > 200)
             jQuery('#back-to-top').fadeIn();
         else
