@@ -5,12 +5,12 @@
  */
 
 $(function() {
-    //Запускаем подсветку синтаксиса
+    //Run syntax highlighting
     $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
     });
 
-    //Размеры логотипа при скроле
+    //Change the size of the logo when scroll
     $(window).scroll(function() {
         var bo = $(this).scrollTop();
         if (bo >= 50) {
@@ -20,7 +20,7 @@ $(function() {
         }
     });
 
-    //Скрываем или показываем кнопку "Наверх"
+    //Hide or show the button "Back to up"
     $(window).scroll(function() {
         if ($(this).scrollTop() > 200) {
             $('#back-to-top').fadeIn();
@@ -29,7 +29,7 @@ $(function() {
         }
     });
 
-    //При нажатии на кнопку "Наверх" анимируем переход
+    //When you press the "Back to up" animated transition
     $('#back-to-top').click(function() {
         $('html, body').animate({
             scrollTop: 0
@@ -37,13 +37,13 @@ $(function() {
         return false;
     });
 
-    //Включаем авторазмер iframe, которые есть на странице
+    //Turn on the auto-size iframe which is on the page
     iFrameResize({});
 
-    //TODO: Работаем с левой панелью
+    //TODO: Working with the left pane
     //if ($('*').is('#sidebar')) forNavigationDrawer();//
 
-    //Галереи
+    //Gallery
     changeSizeFiguraInPhotoswipeGallery();
     $(window).resize(function() {
         //При изменении размеров окна тоже нужно поменять размеры изображений в галереях 
@@ -59,7 +59,7 @@ $(function() {
         fitWidth: true,
     });
 
-    //Плавная прокрутка по якорям
+    //Smooth scrolling to anchors
     $('a[href*="#"]:not([href="#"])').click(function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
@@ -94,7 +94,7 @@ $(function() {
      $('.hamburger').click();
   });
   
-  //Свайпы
+  //Swipes
   var forSwipe = document.getElementById('for-swipe');
   var hammertimeForSwipe = new Hammer(forSwipe);
   hammertimeForSwipe.on('swipeleft', function(ev) {
@@ -126,7 +126,7 @@ $(function() {
 
 //TODO:
 /*function forcedDisplaySidebar() {
-  //Функция принудительного показа боковой панели при увеличении размера окна
+  //Function forced showing in the sidebar when you increase the window size
   var width_content = $("body").width();
   
   if (width_content > 992) {
@@ -138,7 +138,7 @@ $(function() {
 }*/
 
 function changeSizeFiguraInPhotoswipeGallery() {
-    //Функция подсчета ширины рисунков в галереях
+    //The counting function of the width of the pictures in the galleries
     var width_content = $(".content-with-gallery").width();
     var w_figura = (width_content - 40) / 3;
     $(".msnry_item").width(w_figura);
