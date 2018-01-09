@@ -55,7 +55,7 @@ jQuery(function() {
     });
 
     //Smooth scrolling to anchors
-    jQuery('a[href*="#"]:not([href="#"])').click(function() {
+    jQuery('li a[href*="#"], h2 a[href*="#"]').not('[href="#"]').click(function() {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = jQuery(this.hash);
             target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
