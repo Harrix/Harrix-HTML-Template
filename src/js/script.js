@@ -30,7 +30,6 @@ jQuery(function() {
         jQuery('html, body').animate({
             scrollTop: 0
         }, 800);
-        return false;
     });
 
     //Turn on the auto-size iframe which is on the page
