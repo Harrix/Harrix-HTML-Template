@@ -336,25 +336,25 @@ Nikolaev Dima he bought a house 12 9
 Tokmin Lev he does not know programming 96 75
 */
  
-#include "stdafx.h"//Visual Studio может попросить
+#include &quot;stdafx.h&quot;//Visual Studio может попросить
  
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
  
 using namespace std;
  
 int main()
 {
- setlocale(LC_ALL, "RUSSIAN");//Чтобы русский текст поддерживался
+ setlocale(LC_ALL, &quot;RUSSIAN&quot;);//Чтобы русский текст поддерживался
  
  //Создаем файловый поток и связываем его с файлом
- ifstream file("input.txt");
+ ifstream file(&quot;input.txt&quot;);
  
  if (file.is_open())//Если открытие файла прошло успешно
  {
-  cout << "Файл открыт." << endl;
+  cout &lt;&lt; &quot;Файл открыт.&quot; &lt;&lt; endl;
  
   string line;//Строчка текста
  
@@ -363,7 +363,7 @@ int main()
  
   while (getline(file, line))
   {
-   //cout << line << endl;//Можно посмотреть, что в строчке считалось
+   //cout &lt;&lt; line &lt;&lt; endl;//Можно посмотреть, что в строчке считалось
  
    //Теперь в line хранится содержимое строчки из файла.
    //Будем её разбирать на составные части.
@@ -387,20 +387,20 @@ int main()
    }
  
    //Выведем наши данные
-   cout << "Данные из строчки:" << endl;
-   cout << "\tФамилия: " << surname << endl;
-   cout << "\tИмя: " << name << endl;
-   cout << "\tИнформация: " << info << endl;
-   cout << "\tВозраст: " << age << endl;
-   cout << "\tДеньги: " << money << endl;
+   cout &lt;&lt; &quot;Данные из строчки:&quot; &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tФамилия: &quot; &lt;&lt; surname &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tИмя: &quot; &lt;&lt; name &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tИнформация: &quot; &lt;&lt; info &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tВозраст: &quot; &lt;&lt; age &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tДеньги: &quot; &lt;&lt; money &lt;&lt; endl;
   }
  }
  else
  {
-  cout << "Не удалось открыть файл." << endl;
+  cout &lt;&lt; &quot;Не удалось открыть файл.&quot; &lt;&lt; endl;
  }
  
- system("pause");
+ system(&quot;pause&quot;);
     return 0;
 }</code></pre>
       </div>
