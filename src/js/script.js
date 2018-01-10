@@ -34,9 +34,6 @@ jQuery(function() {
     //Turn on the auto-size iframe which is on the page
     iFrameResize({});
 
-    //TODO: Working with the left pane
-    //if (jQuery('*').is('#sidebar')) forNavigationDrawer();//
-
     //Gallery
     changeSizeFiguraInPhotoswipeGallery();
     jQuery(window).resize(function() {
@@ -66,6 +63,9 @@ jQuery(function() {
             }
         }
     });
+
+    //TODO: Working with the left pane
+    //if (jQuery('*').is('#sidebar')) forNavigationDrawer();//
 });
 
 //TODO:
