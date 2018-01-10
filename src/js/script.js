@@ -18,7 +18,7 @@ jQuery(function() {
             jQuery("#logo").removeClass("shrink");
 
         //Hide or show the button "Back to up"
-        if (jQuery(this).scrollTop() > 200)
+        if (jQuery(this).scrollTop() >= 200)
             jQuery('#back-to-top').fadeIn();
         else
             jQuery('#back-to-top').fadeOut();
