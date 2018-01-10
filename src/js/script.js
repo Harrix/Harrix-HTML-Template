@@ -37,11 +37,11 @@ jQuery(function() {
     //Gallery
     changeSizeFiguraInPhotoswipeGallery();
     jQuery(window).resize(function() {
-        //При изменении размеров окна тоже нужно поменять размеры изображений в галереях 
+        //When you resize the window too, need to change the size of images in gallery 
         changeSizeFiguraInPhotoswipeGallery();
 
         //TODO:
-        //Принудительно показываем боковую панель при увеличении размера окна
+        //Forcibly show the sidebar when you increase the window size
         //forcedDisplaySidebar();
     });
     jQuery('.photoswipe_gallery').masonry({
@@ -70,14 +70,14 @@ jQuery(function() {
 
 //TODO:
 /*function forNavigationDrawer() {
-  //Клик на гамбургер
+  //Click on the hamburger
   jQuery('.hamburger').click(function() {
     jQuery('#sidebar').toggleClass("sidebar-open");
     jQuery('#dark').toggleClass("dark-open");
     jQuery('#for-swipe').toggleClass("for-swipe-open");
     jQuery('#for-swipe-in').toggleClass("for-swipe-in-open");
   });
-  //При нажатии на затемнение убираем левую панель
+  //When you click on a blackout remove the left panel
   jQuery('#dark').click(function(){
      jQuery('.hamburger').click();
   });
