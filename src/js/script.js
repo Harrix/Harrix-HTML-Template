@@ -10,7 +10,6 @@ jQuery(function() {
         hljs.highlightBlock(block);
     });
 
-
     jQuery(window).scroll(function() {
         //Change the size of the logo when scroll
         if (jQuery(this).scrollTop() >= 50)
