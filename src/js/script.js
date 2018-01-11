@@ -35,7 +35,7 @@ jQuery(function() {
     iFrameResize({});
 
     //Gallery
-    changeSizeFiguraInPhotoswipeGallery();
+    /*changeSizeFiguraInPhotoswipeGallery();
     jQuery(window).resize(function() {
         //When you resize the window too, need to change the size of images in gallery 
         changeSizeFiguraInPhotoswipeGallery();
@@ -48,7 +48,7 @@ jQuery(function() {
         // options
         itemSelector: '.msnry_item',
         fitWidth: true,
-    });
+    });*/
 
     //Smooth scrolling to anchors
     jQuery('li a[href*="#"], h2 a[href*="#"]').not('[href="#"]').click(function() {
