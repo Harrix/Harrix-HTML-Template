@@ -4,18 +4,16 @@
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
 
-function initGallery() {
-    var el = $(".lightbox");
-    el.lightGallery();
-}
-
 jQuery(function() {
     //Run syntax highlighting
     jQuery('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
     });
 
-    initGallery();
+    $(".lightbox").lightGallery();
+    $(".lightboxGallery").lightGallery({
+        selector: '.card'
+    });
 
     jQuery(window).scroll(function() {
         //Change the size of the logo when scroll
