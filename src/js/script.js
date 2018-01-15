@@ -10,9 +10,12 @@ jQuery(function() {
         hljs.highlightBlock(block);
     });
 
-    $(".lightbox").lightGallery();
+    $(".lightbox").lightGallery({
+        hash: true
+    });
     $(".lightboxGallery").lightGallery({
-        selector: '.card'
+        selector: '.card',
+        hash: true
     });
 
     jQuery(window).scroll(function() {
