@@ -31,6 +31,8 @@ green-color-light: #77cb87,
 $background-color:        map-get($colors, white-color);
 $header-background-color: map-get($colors, white-color);
 $text-color:              map-get($colors, black-color);
+$text-heading-color:      map-get($colors, red-color);
+$text-header-color:       map-get($colors, green-color);
 $text-color-in-dark:      map-get($colors, white-color);
 $link-color:              map-get($colors, teal-color);
 $hover-link-color:        map-get($colors, teal-color-light);

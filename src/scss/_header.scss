@@ -15,6 +15,7 @@
 header {
   font-size: $header-font-size;
   background-color: $header-background-color;
+  color: $text-header-color;
 
   //NEW id
   #logo {
@@ -33,7 +34,7 @@ header {
   }
 
   a, .nav-link {
-    color: $text-color !important;
+    color: $text-header-color !important;
 
     &:hover {
       color: $link-color !important;
@@ -77,7 +78,7 @@ header {
 
   .dropdown-menu {
     font-size: $header-font-size;
-    color: $text-color;
+    color: $text-header-color;
     background-color: $header-background-color;
     border: 0 solid $border-color;
     border-radius: 0rem;
