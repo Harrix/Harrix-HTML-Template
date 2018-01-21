@@ -73,7 +73,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
   overflow-x: hidden;
-  color: #333;
+  color: #474747;
   font-weight: 400;
 }
 body ::selection {
@@ -98,7 +98,7 @@ input, textarea {
   font-weight: 400;
   margin-top: 1.125rem;
   margin-bottom: 1rem;
-  color: #de2b26;
+  color: #222;
 }
 
 h1, .h1 {
@@ -177,7 +177,7 @@ h6, .h6 {
 header {
   font-size: 0.875rem;
   background-color: #ffffff;
-  color: #4abf60;
+  color: #474747;
 }
 header #logo {
   height: 3.125rem;
@@ -193,7 +193,7 @@ header .icon-hamburger {
   height: 1.125rem;
 }
 header a, header .nav-link {
-  color: #4abf60 !important;
+  color: #474747 !important;
 }
 header a:hover, header .nav-link:hover {
   color: #19a5a5 !important;
@@ -229,7 +229,7 @@ header .dropdown-item {
 }
 header .dropdown-menu {
   font-size: 0.875rem;
-  color: #4abf60;
+  color: #474747;
   background-color: #ffffff;
   border: 0 solid #eeeeee;
   border-radius: 0rem;
@@ -318,7 +318,7 @@ article a:hover {
   color: #71c2c2;
 }
 article h1 a, article h2 a, article h3 a, article h4 a, article h5 a, article h6 a, article .h1 a, article .h2 a, article .h3 a, article .h4 a, article .h5 a, article .h6 a {
-  color: #de2b26;
+  color: #222;
 }
 article h1 a:hover, article h2 a:hover, article h3 a:hover, article h4 a:hover, article h5 a:hover, article h6 a:hover, article .h1 a:hover, article .h2 a:hover, article .h3 a:hover, article .h4 a:hover, article .h5 a:hover, article .h6 a:hover {
   text-decoration: none;
