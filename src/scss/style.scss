@@ -16,7 +16,7 @@ xl: 1200px
 ) !default;
 
 $colors: (
-black-color:       #333, //#474747 //#56585E //#222222 //#24292e //#333
+black-color:       #333333, //#474747 //#56585E //#222222 //#24292e //#333
 white-color:       #ffffff,
 grey-color:        #aaaaaa,
 grey-light-color:  #eeeeee,
@@ -30,9 +30,9 @@ green-color-light: #77cb87,
 
 $background-color:        map-get($colors, white-color);
 $header-background-color: map-get($colors, white-color);
-$text-color:              #474747;
-$text-heading-color:      #222;
-$text-header-color:       #474747;
+$text-color:              map-get($colors, black-color);
+$text-heading-color:      #191919;
+$text-header-color:       map-get($colors, black-color);
 $text-color-in-dark:      map-get($colors, white-color);
 $link-color:              map-get($colors, teal-color);
 $hover-link-color:        map-get($colors, teal-color-light);
@@ -45,7 +45,7 @@ $type-animation: ease-in-out;
 $grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
 $header-font-size: 0.875rem;
 $zindex-fixed: 1030 !default;
-$h-font-weight: 400;
+$heading-font-weight: 500;
 $lead-font-weight: 400;
 $text-font-weight: 400;
 $blockquote-font-weight: 300;
