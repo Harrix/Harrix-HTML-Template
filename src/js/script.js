@@ -19,8 +19,8 @@ jQuery(function() {
     });
 
     $(".gallery").justifiedGallery({
-        rowHeight : 300,
-        margins : 10
+        rowHeight: 300,
+        margins: 10
     });
 
     jQuery(window).scroll(function() {
