@@ -44,38 +44,7 @@ jQuery(function() {
         }, 800);
     });
 
-    var ToC =
-  "<nav role='navigation' class='table-of-contents'>" +
-    "<h2>On this page:</h2>" +
-    "<ul>";
-
-var newLine, el, title, link;
-
-$("article h3").each(function() {
-
-  el = $(this);
-  title = el.text();
-  link = "#" + el.attr("id");
-
-  newLine =
-    "<li>" +
-      "<a href='" + link + "'>" +
-        title +
-      "</a>" +
-    "</li>";
-
-  ToC += newLine;
-
-});
-
-ToC +=
-   "</ul>" +
-  "</nav>";
-
-$(".all-questions").prepend(ToC);
-
-    //Turn on the auto-size iframe which is on the page
-    iFrameResize({});
+    makeTOC();
 
     //Smooth scrolling to anchors
     jQuery('li a[href*="#"], h2 a[href*="#"]').not('[href="#"]').click(function() {
@@ -91,3 +60,35 @@ $(".all-questions").prepend(ToC);
         }
     });
 });
+
+function makeTOC() {
+    var ToC =
+        "<nav role='navigation' class='table-of-contents'>" +
+        "<h2>On this page:</h2>" +
+        "<ul>";
+
+    var newLine, el, title, link;
+
+    $("article h3").each(function() {
+
+        el = $(this);
+        title = el.text();
+        link = "#" + el.attr("id");
+
+        newLine =
+            "<li>" +
+            "<a href='" + link + "'>" +
+            title +
+            "</a>" +
+            "</li>";
+
+        ToC += newLine;
+
+    });
+
+    ToC +=
+        "</ul>" +
+        "</nav>";
+
+    $(".all-questions").prepend(ToC);
+}
