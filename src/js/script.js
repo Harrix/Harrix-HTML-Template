@@ -64,7 +64,7 @@ jQuery(function() {
 function makeTOC() {
     if ($("#table-of-contents").length) {
         var ToC =
-            "<h2>On this page:</h2>" +
+            "<h2>Содержание:</h2>" +
             "<ul>";
 
         var newLine, el, title, link;
