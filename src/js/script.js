@@ -62,34 +62,33 @@ jQuery(function() {
 });
 
 function makeTOC() {
+    if ($("#table-of-contents").length) {
+        var ToC =
+            "<h2>On this page:</h2>" +
+            "<ul>";
 
-    if ( $("#table-of-contents").length ) {
-    var ToC =
-        "<h2>On this page:</h2>" +
-        "<ul>";
+        var newLine, el, title, link;
 
-    var newLine, el, title, link;
+        $("article h2").each(function() {
 
-    $("article h2").each(function() {
+            el = $(this);
+            title = el.text();
+            link = "#" + el.attr("id");
 
-        el = $(this);
-        title = el.text();
-        link = "#" + el.attr("id");
+            newLine =
+                "<li>" +
+                "<a href='" + link + "'>" +
+                title +
+                "</a>" +
+                "</li>";
 
-        newLine =
-            "<li>" +
-            "<a href='" + link + "'>" +
-            title +
-            "</a>" +
-            "</li>";
+            ToC += newLine;
 
-        ToC += newLine;
+        });
 
-    });
+        ToC +=
+            "</ul>";
 
-    ToC +=
-        "</ul>";
-
-    $("#table-of-contents").prepend(ToC);
-}
+        $("#table-of-contents").prepend(ToC);
+    }
 }
