@@ -62,14 +62,15 @@ jQuery(function() {
 });
 
 function makeTOC() {
+
+    if ( $("#table-of-contents").length ) {
     var ToC =
-        "<nav role='navigation' class='table-of-contents'>" +
         "<h2>On this page:</h2>" +
         "<ul>";
 
     var newLine, el, title, link;
 
-    $("article h3").each(function() {
+    $("article h2").each(function() {
 
         el = $(this);
         title = el.text();
@@ -87,8 +88,8 @@ function makeTOC() {
     });
 
     ToC +=
-        "</ul>" +
-        "</nav>";
+        "</ul>";
 
-    $(".all-questions").prepend(ToC);
+    $("#table-of-contents").prepend(ToC);
+}
 }
