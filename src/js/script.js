@@ -63,44 +63,22 @@ jQuery(function() {
 
 function makeTOC() {
     if ($("#table-of-contents").length) {
-        var ToC =
-            "<h2>Содержание:</h2>" +
-            "<ul>";
-
+        var ToC = "<h2>Содержание:</h2><ul>";
         var newLine, el, title, link;
         var counter = 1;
-
         $("article h2").each(function() {
-
             el = $(this);
             title = el.text();
-
             var attr = el.attr("id");
-
-            if (typeof attr !== typeof undefined && attr !== false) {
-              // Element has this attribute
-            } else {
+            if (!(typeof attr !== typeof undefined && attr !== false)) {
                 el.attr("id","heading"+counter);
                 counter++;
-            }
-            
-            link = "#" + el.attr("id");
-            
-
-            newLine =
-                "<li>" +
-                "<a href='" + link + "'>" +
-                title +
-                "</a>" +
-                "</li>";
-
+            }            
+            link = "#" + el.attr("id");          
+            newLine = "<li><a href='" + link + "'>" + title + "</a></li>";
             ToC += newLine;
-
         });
-
-        ToC +=
-            "</ul>";
-
+        ToC +="</ul>";
         $("#table-of-contents").prepend(ToC);
     }
 }
