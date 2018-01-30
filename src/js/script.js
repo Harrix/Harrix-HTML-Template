@@ -68,12 +68,24 @@ function makeTOC() {
             "<ul>";
 
         var newLine, el, title, link;
+        var counter = 1;
 
         $("article h2").each(function() {
 
             el = $(this);
             title = el.text();
+
+            var attr = el.attr("id");
+
+            if (typeof attr !== typeof undefined && attr !== false) {
+              // Element has this attribute
+            } else {
+                el.attr("id","heading"+counter);
+                counter++;
+            }
+            
             link = "#" + el.attr("id");
+            
 
             newLine =
                 "<li>" +
