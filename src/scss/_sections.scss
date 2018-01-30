@@ -49,42 +49,41 @@
   }
 
 
-@media (min-width:544px) {  
+  @media (min-width:544px) {
     padding-top: 4rem;
     padding-bottom: 4rem;
     margin-bottom: 3rem;
     text-align: left;
 
-  .carbonad {
-    margin: 2rem 0 0 !important;
+    .carbonad {
+      margin: 2rem 0 0 !important;
+    }
   }
+
+  @media (min-width:768px) {
+    h1 {
+      font-size: 4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width:992px) {
+    h1, p {
+      margin-right: 380px;
+    }
+
+    .carbonad {
+      position: absolute;
+      top: 0;
+      right: .75rem;
+      margin: 0 !important;
+    }
+  }
+
 }
-
-@media (min-width:768px) {
-  h1 {
-    font-size: 4rem;
-  }
-
-  p {
-    font-size: 1.5rem;
-  }
-}
-
-@media (min-width:992px) {
-  h1, p {
-    margin-right: 380px;
-  }
-
-  .carbonad {
-    position: absolute;
-    top: 0;
-    right: .75rem;
-    margin: 0 !important;
-  }
-}
-
-}
-
 
 .color-red-section {
   background-color: map-get($colors, red-color) !important;
