@@ -1,394 +1,389 @@
-table {
+.table_adaptive {
+  display: table;
+  width: 100% !important;
+  table-layout: fixed !important;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0 !important;
+  margin-bottom: 30px;
+  line-height: 24px;
+}
 
-  table_adaptive {
-    display: table;
-    width: 100% !important;
-    table-layout: fixed !important;
-    margin: 0;
-    padding: 0;
-    border-collapse: collapse;
-    border-spacing: 0 !important;
-    margin-bottom: 30px;
-    line-height: 24px;
+.table_adaptive caption {
+  caption-side: top;
+  color: #5f5f5f;
+  text-align: center;
+  font-weight: bold;
+}
+
+.table_adaptive tr {
+  padding: 5px;
+}
+
+.table_adaptive tr:hover {
+  background: #71c2c2;
+  color: #fff;
+}
+
+.table_adaptive tr:hover a {
+  color: #fff;
+  border-bottom: 1px dashed #fff;
+}
+
+.table_adaptive th, .table_adaptive td {
+  padding: 10px;
+  text-align: center;
+}
+
+.table_adaptive th {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: whitesmoke;
+  background-color: #19a5a5;
+  font-weight: bold;
+  border: 0px !important;
+}
+
+.table_adaptive td {
+  border-bottom: 1px solid #ededed !important;
+  border-top: 0px !important;
+  border-left: 0px !important;
+  border-right: 0px !important;
+  font-size: 14px;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+.table_adaptive td:first-child {
+  text-align: left;
+}
+
+.table_adaptive td.justify_text {
+  text-align: justify;
+}
+
+.table_adaptive td.left_text {
+  text-align: left;
+}
+
+.table_adaptive td.right_text {
+  text-align: right;
+}
+
+.table_adaptive tr.subhead {
+  background: #f1f7f7;
+  font-weight: bold;
+}
+
+.table_adaptive tr.subhead:hover {
+  background: #24c5c5;
+  color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+  .table_adaptive {
+    border: 0 !important;
   }
 
-  table_adaptive caption {
-    caption-side: top;
-    color: #5f5f5f;
-    text-align: center;
+  .table_adaptive thead {
+    display: none;
+  }
+
+  .table_adaptive tr {
+    margin-bottom: 10px;
+    display: block;
+    border: 1px solid #ededed !important;
+  }
+
+  .table_adaptive td {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    border-bottom: 1px dotted #ededed !important;
+  }
+
+  .table_adaptive td.justify_text {
+    text-align: right;
+  }
+
+  .table_adaptive td.left_text {
+    text-align: right;
+  }
+
+  .table_adaptive td:first-child {
+    text-align: right;
+  }
+
+  .table_adaptive td.right_text {
+    text-align: right;
+  }
+
+  .table_adaptive td:last-child {
+    border-bottom: 0 !important;
+  }
+
+  .table_adaptive td:before {
+    content: attr(data-label);
+    float: left;
     font-weight: bold;
   }
+}
 
-  table_adaptive tr {
-    padding: 5px;
+.table_adaptive_gray {
+  display: table;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0 !important;
+  margin-bottom: 30px;
+  line-height: 24px;
+}
+
+.table_adaptive_gray caption {
+  caption-side: top;
+  color: #5f5f5f;
+  text-align: center;
+  font-weight: bold;
+}
+
+.table_adaptive_gray tr {
+  padding: 8px;
+}
+
+.table_adaptive_gray tr:hover {
+  background: #f5f5f5;
+  color: #5f5f5f;
+}
+
+.table_adaptive_gray th, .table_adaptive_gray td {
+  padding: 8px;
+  text-align: center;
+}
+
+.table_adaptive_gray th {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #5f5f5f;
+  background-color: #f1f1f1;
+  border: 0px !important;
+}
+
+.table_adaptive_gray td {
+  border-bottom: 1px solid #eee !important;
+  border-top: 0px !important;
+  border-left: 0px !important;
+  border-right: 0px !important;
+  font-size: 14px;
+
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+.table_adaptive_gray td:first-child {
+  text-align: left;
+}
+
+.table_adaptive_gray td.justify_text {
+  text-align: justify;
+}
+
+.table_adaptive_gray td.left_text {
+  text-align: left;
+}
+
+.table_adaptive_gray td.right_text {
+  text-align: right;
+}
+
+.table_adaptive_gray tr.subhead {
+  background: #f1f1f1;
+}
+
+.table_adaptive_gray tr.subhead:hover {
+  background: #f1f1f1;
+}
+
+@media screen and (max-width: 800px) {
+  .table_adaptive_gray {
+    border: 0 !important;
   }
 
-  table_adaptive tr:hover {
-    background: #71c2c2;
-    color: #fff;
+  .table_adaptive_gray thead {
+    display: none;
   }
 
-  table_adaptive tr:hover a {
-    color: #fff;
-    border-bottom: 1px dashed #fff;
+  .table_adaptive_gray tr {
+    margin-bottom: 10px;
+    display: block;
+    border: 1px solid #ededed !important;
   }
 
-  table_adaptive th, table_adaptive td {
-    padding: 10px;
-    text-align: center;
+  .table_adaptive_gray td {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    border-bottom: 1px dotted #ededed !important;
   }
 
-  table_adaptive th {
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: whitesmoke;
-    background-color: #19a5a5;
-    font-weight: bold;
-    border: 0px !important;
+  .table_adaptive_gray td.left_text {
+    text-align: right;
   }
 
-  table_adaptive td {
-    border-bottom: 1px solid #ededed !important;
+  .table_adaptive_gray td.justify_text {
+    text-align: right;
+  }
+
+  .table_adaptive_gray td:first-child {
+    text-align: right;
+  }
+
+  .table_adaptive_gray td.right_text {
+    text-align: right;
+  }
+
+  .table_adaptive_gray td:last-child {
+    border-bottom: 0 !important;
+  }
+
+  .table_adaptive_gray td:before {
+    content: attr(data-label);
+    float: left;
+  }
+}
+
+.table_adaptive_classic {
+  display: table;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0 !important;
+  margin-bottom: 30px;
+  line-height: 24px;
+}
+
+.table_adaptive_classic caption {
+  caption-side: top;
+  color: #5f5f5f;
+  text-align: center;
+  font-weight: bold;
+}
+
+.table_adaptive_classic tr {
+  padding: 8px;
+}
+
+.table_adaptive_classic tr:hover {
+  background: #f5f5f5;
+  color: #5f5f5f;
+}
+
+.table_adaptive_classic th, .table_adaptive_classic td {
+  padding: 8px;
+  text-align: center;
+}
+
+.table_adaptive_classic th {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #5f5f5f;
+  background-color: #f1f1f1;
+  border: 0px !important;
+}
+
+.table_adaptive_classic td {
+  border: 1px solid #eee !important;
+  font-size: 14px;
+
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+.table_adaptive_classic td:first-child {
+  text-align: left;
+}
+
+.table_adaptive_classic td.left_text {
+  text-align: justify;
+}
+
+.table_adaptive_classic td.right_text {
+  text-align: right;
+}
+
+.table_adaptive_gray td.justify_text {
+  text-align: justify;
+}
+
+.table_adaptive_classic tr.subhead {
+  background: #f1f1f1;
+}
+
+.table_adaptive_classic tr.subhead:hover {
+  background: #f1f1f1;
+}
+
+@media screen and (max-width: 800px) {
+  .table_adaptive_classic {
+    border: 0 !important;
+  }
+
+  .table_adaptive_classic thead {
+    display: none;
+  }
+
+  .table_adaptive_classic tr {
+    margin-bottom: 10px;
+    display: block;
+    border: 1px solid #ededed !important;
+  }
+
+  .table_adaptive_classic td {
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    border-bottom: 1px dotted #ededed !important;
     border-top: 0px !important;
     border-left: 0px !important;
     border-right: 0px !important;
-    font-size: 14px;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
   }
 
-  table_adaptive td:first-child {
-    text-align: left;
-  }
-
-  table_adaptive td.justify_text {
-    text-align: justify;
-  }
-
-  table_adaptive td.left_text {
-    text-align: left;
-  }
-
-  table_adaptive td.right_text {
+  .table_adaptive_classic td.left_text {
     text-align: right;
   }
 
-  table_adaptive tr.subhead {
-    background: #f1f7f7;
-    font-weight: bold;
-  }
-
-  table_adaptive tr.subhead:hover {
-    background: #24c5c5;
-    color: #fff;
-  }
-
-  @media screen and (max-width: 800px) {
-    table_adaptive {
-      border: 0 !important;
-    }
-
-    table_adaptive thead {
-      display: none;
-    }
-
-    table_adaptive tr {
-      margin-bottom: 10px;
-      display: block;
-      border: 1px solid #ededed !important;
-    }
-
-    table_adaptive td {
-      display: block;
-      text-align: right;
-      font-size: 13px;
-      border-bottom: 1px dotted #ededed !important;
-    }
-
-    table_adaptive td.justify_text {
-      text-align: right;
-    }
-
-    table_adaptive td.left_text {
-      text-align: right;
-    }
-
-    table_adaptive td:first-child {
-      text-align: right;
-    }
-
-    table_adaptive td.right_text {
-      text-align: right;
-    }
-
-    table_adaptive td:last-child {
-      border-bottom: 0 !important;
-    }
-
-    table_adaptive td:before {
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-    }
-  }
-
-  // Adaptive table - Gray
-  table_adaptive_gray {
-    display: table;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border-collapse: collapse;
-    border-spacing: 0 !important;
-    margin-bottom: 30px;
-    line-height: 24px;
-  }
-
-  table_adaptive_gray caption {
-    caption-side: top;
-    color: #5f5f5f;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  table_adaptive_gray tr {
-    padding: 8px;
-  }
-
-  table_adaptive_gray tr:hover {
-    background: #f5f5f5;
-    color: #5f5f5f;
-  }
-
-  table_adaptive_gray th, table_adaptive_gray td {
-    padding: 8px;
-    text-align: center;
-  }
-
-  table_adaptive_gray th {
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: #5f5f5f;
-    background-color: #f1f1f1;
-    border: 0px !important;
-  }
-
-  table_adaptive_gray td {
-    border-bottom: 1px solid #eee !important;
-    border-top: 0px !important;
-    border-left: 0px !important;
-    border-right: 0px !important;
-    font-size: 14px;
-
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
-  }
-
-  table_adaptive_gray td:first-child {
-    text-align: left;
-  }
-
-  table_adaptive_gray td.justify_text {
-    text-align: justify;
-  }
-
-  table_adaptive_gray td.left_text {
-    text-align: left;
-  }
-
-  table_adaptive_gray td.right_text {
+  .table_adaptive_gray td.justify_text {
     text-align: right;
   }
 
-  table_adaptive_gray tr.subhead {
-    background: #f1f1f1;
-  }
-
-  table_adaptive_gray tr.subhead:hover {
-    background: #f1f1f1;
-  }
-
-  @media screen and (max-width: 800px) {
-    table_adaptive_gray {
-      border: 0 !important;
-    }
-
-    table_adaptive_gray thead {
-      display: none;
-    }
-
-    table_adaptive_gray tr {
-      margin-bottom: 10px;
-      display: block;
-      border: 1px solid #ededed !important;
-    }
-
-    table_adaptive_gray td {
-      display: block;
-      text-align: right;
-      font-size: 13px;
-      border-bottom: 1px dotted #ededed !important;
-    }
-
-    table_adaptive_gray td.left_text {
-      text-align: right;
-    }
-
-    table_adaptive_gray td.justify_text {
-      text-align: right;
-    }
-
-    table_adaptive_gray td:first-child {
-      text-align: right;
-    }
-
-    table_adaptive_gray td.right_text {
-      text-align: right;
-    }
-
-    table_adaptive_gray td:last-child {
-      border-bottom: 0 !important;
-    }
-
-    table_adaptive_gray td:before {
-      content: attr(data-label);
-      float: left;
-    }
-  }
-
-  // Adaptive table - Classic
-  table_adaptive_classic {
-    display: table;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border-collapse: collapse;
-    border-spacing: 0 !important;
-    margin-bottom: 30px;
-    line-height: 24px;
-  }
-
-  table_adaptive_classic caption {
-    caption-side: top;
-    color: #5f5f5f;
-    text-align: center;
-    font-weight: bold;
-  }
-
-  table_adaptive_classic tr {
-    padding: 8px;
-  }
-
-  table_adaptive_classic tr:hover {
-    background: #f5f5f5;
-    color: #5f5f5f;
-  }
-
-  table_adaptive_classic th, table_adaptive_classic td {
-    padding: 8px;
-    text-align: center;
-  }
-
-  table_adaptive_classic th {
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: #5f5f5f;
-    background-color: #f1f1f1;
-    border: 0px !important;
-  }
-
-  table_adaptive_classic td {
-    border: 1px solid #eee !important;
-    font-size: 14px;
-
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    hyphens: auto;
-  }
-
-  table_adaptive_classic td:first-child {
-    text-align: left;
-  }
-
-  table_adaptive_classic td.left_text {
-    text-align: justify;
-  }
-
-  table_adaptive_classic td.right_text {
+  .table_adaptive_classic td:first-child {
     text-align: right;
   }
 
-  table_adaptive_gray td.justify_text {
-    text-align: justify;
+  .table_adaptive_classic td.right_text {
+    text-align: right;
   }
 
-  table_adaptive_classic tr.subhead {
-    background: #f1f1f1;
+  .table_adaptive_classic td:last-child {
+    border-bottom: 0 !important;
   }
 
-  table_adaptive_classic tr.subhead:hover {
-    background: #f1f1f1;
-  }
-
-  @media screen and (max-width: 800px) {
-    table_adaptive_classic {
-      border: 0 !important;
-    }
-
-    table_adaptive_classic thead {
-      display: none;
-    }
-
-    table_adaptive_classic tr {
-      margin-bottom: 10px;
-      display: block;
-      border: 1px solid #ededed !important;
-    }
-
-    table_adaptive_classic td {
-      display: block;
-      text-align: right;
-      font-size: 13px;
-      border-bottom: 1px dotted #ededed !important;
-      border-top: 0px !important;
-      border-left: 0px !important;
-      border-right: 0px !important;
-    }
-
-    table_adaptive_classic td.left_text {
-      text-align: right;
-    }
-
-    table_adaptive_gray td.justify_text {
-      text-align: right;
-    }
-
-    table_adaptive_classic td:first-child {
-      text-align: right;
-    }
-
-    table_adaptive_classic td.right_text {
-      text-align: right;
-    }
-
-    table_adaptive_classic td:last-child {
-      border-bottom: 0 !important;
-    }
-
-    table_adaptive_classic td:before {
-      content: attr(data-label);
-      float: left;
-    }
+  .table_adaptive_classic td:before {
+    content: attr(data-label);
+    float: left;
   }
 }

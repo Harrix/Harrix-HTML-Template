@@ -420,7 +420,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   color: #4abf60;
 }
 
-table table_adaptive {
+.table_adaptive {
   display: table;
   width: 100% !important;
   table-layout: fixed !important;
@@ -431,28 +431,34 @@ table table_adaptive {
   margin-bottom: 30px;
   line-height: 24px;
 }
-table table_adaptive caption {
+
+.table_adaptive caption {
   caption-side: top;
   color: #5f5f5f;
   text-align: center;
   font-weight: bold;
 }
-table table_adaptive tr {
+
+.table_adaptive tr {
   padding: 5px;
 }
-table table_adaptive tr:hover {
+
+.table_adaptive tr:hover {
   background: #71c2c2;
   color: #fff;
 }
-table table_adaptive tr:hover a {
+
+.table_adaptive tr:hover a {
   color: #fff;
   border-bottom: 1px dashed #fff;
 }
-table table_adaptive th, table table_adaptive td {
+
+.table_adaptive th, .table_adaptive td {
   padding: 10px;
   text-align: center;
 }
-table table_adaptive th {
+
+.table_adaptive th {
   font-size: 14px;
   letter-spacing: 1px;
   color: whitesmoke;
@@ -460,7 +466,8 @@ table table_adaptive th {
   font-weight: bold;
   border: 0px !important;
 }
-table table_adaptive td {
+
+.table_adaptive td {
   border-bottom: 1px solid #ededed !important;
   border-top: 0px !important;
   border-left: 0px !important;
@@ -473,66 +480,82 @@ table table_adaptive td {
   -moz-hyphens: auto;
   hyphens: auto;
 }
-table table_adaptive td:first-child {
+
+.table_adaptive td:first-child {
   text-align: left;
 }
-table table_adaptive td.justify_text {
+
+.table_adaptive td.justify_text {
   text-align: justify;
 }
-table table_adaptive td.left_text {
+
+.table_adaptive td.left_text {
   text-align: left;
 }
-table table_adaptive td.right_text {
+
+.table_adaptive td.right_text {
   text-align: right;
 }
-table table_adaptive tr.subhead {
+
+.table_adaptive tr.subhead {
   background: #f1f7f7;
   font-weight: bold;
 }
-table table_adaptive tr.subhead:hover {
+
+.table_adaptive tr.subhead:hover {
   background: #24c5c5;
   color: #fff;
 }
+
 @media screen and (max-width: 800px) {
-  table table_adaptive {
+  .table_adaptive {
     border: 0 !important;
   }
-  table table_adaptive thead {
+
+  .table_adaptive thead {
     display: none;
   }
-  table table_adaptive tr {
+
+  .table_adaptive tr {
     margin-bottom: 10px;
     display: block;
     border: 1px solid #ededed !important;
   }
-  table table_adaptive td {
+
+  .table_adaptive td {
     display: block;
     text-align: right;
     font-size: 13px;
     border-bottom: 1px dotted #ededed !important;
   }
-  table table_adaptive td.justify_text {
+
+  .table_adaptive td.justify_text {
     text-align: right;
   }
-  table table_adaptive td.left_text {
+
+  .table_adaptive td.left_text {
     text-align: right;
   }
-  table table_adaptive td:first-child {
+
+  .table_adaptive td:first-child {
     text-align: right;
   }
-  table table_adaptive td.right_text {
+
+  .table_adaptive td.right_text {
     text-align: right;
   }
-  table table_adaptive td:last-child {
+
+  .table_adaptive td:last-child {
     border-bottom: 0 !important;
   }
-  table table_adaptive td:before {
+
+  .table_adaptive td:before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
   }
 }
-table table_adaptive_gray {
+.table_adaptive_gray {
   display: table;
   width: 100%;
   margin: 0;
@@ -542,31 +565,37 @@ table table_adaptive_gray {
   margin-bottom: 30px;
   line-height: 24px;
 }
-table table_adaptive_gray caption {
+
+.table_adaptive_gray caption {
   caption-side: top;
   color: #5f5f5f;
   text-align: center;
   font-weight: bold;
 }
-table table_adaptive_gray tr {
+
+.table_adaptive_gray tr {
   padding: 8px;
 }
-table table_adaptive_gray tr:hover {
+
+.table_adaptive_gray tr:hover {
   background: #f5f5f5;
   color: #5f5f5f;
 }
-table table_adaptive_gray th, table table_adaptive_gray td {
+
+.table_adaptive_gray th, .table_adaptive_gray td {
   padding: 8px;
   text-align: center;
 }
-table table_adaptive_gray th {
+
+.table_adaptive_gray th {
   font-size: 14px;
   letter-spacing: 1px;
   color: #5f5f5f;
   background-color: #f1f1f1;
   border: 0px !important;
 }
-table table_adaptive_gray td {
+
+.table_adaptive_gray td {
   border-bottom: 1px solid #eee !important;
   border-top: 0px !important;
   border-left: 0px !important;
@@ -579,63 +608,79 @@ table table_adaptive_gray td {
   -moz-hyphens: auto;
   hyphens: auto;
 }
-table table_adaptive_gray td:first-child {
+
+.table_adaptive_gray td:first-child {
   text-align: left;
 }
-table table_adaptive_gray td.justify_text {
+
+.table_adaptive_gray td.justify_text {
   text-align: justify;
 }
-table table_adaptive_gray td.left_text {
+
+.table_adaptive_gray td.left_text {
   text-align: left;
 }
-table table_adaptive_gray td.right_text {
+
+.table_adaptive_gray td.right_text {
   text-align: right;
 }
-table table_adaptive_gray tr.subhead {
+
+.table_adaptive_gray tr.subhead {
   background: #f1f1f1;
 }
-table table_adaptive_gray tr.subhead:hover {
+
+.table_adaptive_gray tr.subhead:hover {
   background: #f1f1f1;
 }
+
 @media screen and (max-width: 800px) {
-  table table_adaptive_gray {
+  .table_adaptive_gray {
     border: 0 !important;
   }
-  table table_adaptive_gray thead {
+
+  .table_adaptive_gray thead {
     display: none;
   }
-  table table_adaptive_gray tr {
+
+  .table_adaptive_gray tr {
     margin-bottom: 10px;
     display: block;
     border: 1px solid #ededed !important;
   }
-  table table_adaptive_gray td {
+
+  .table_adaptive_gray td {
     display: block;
     text-align: right;
     font-size: 13px;
     border-bottom: 1px dotted #ededed !important;
   }
-  table table_adaptive_gray td.left_text {
+
+  .table_adaptive_gray td.left_text {
     text-align: right;
   }
-  table table_adaptive_gray td.justify_text {
+
+  .table_adaptive_gray td.justify_text {
     text-align: right;
   }
-  table table_adaptive_gray td:first-child {
+
+  .table_adaptive_gray td:first-child {
     text-align: right;
   }
-  table table_adaptive_gray td.right_text {
+
+  .table_adaptive_gray td.right_text {
     text-align: right;
   }
-  table table_adaptive_gray td:last-child {
+
+  .table_adaptive_gray td:last-child {
     border-bottom: 0 !important;
   }
-  table table_adaptive_gray td:before {
+
+  .table_adaptive_gray td:before {
     content: attr(data-label);
     float: left;
   }
 }
-table table_adaptive_classic {
+.table_adaptive_classic {
   display: table;
   width: 100%;
   margin: 0;
@@ -645,31 +690,37 @@ table table_adaptive_classic {
   margin-bottom: 30px;
   line-height: 24px;
 }
-table table_adaptive_classic caption {
+
+.table_adaptive_classic caption {
   caption-side: top;
   color: #5f5f5f;
   text-align: center;
   font-weight: bold;
 }
-table table_adaptive_classic tr {
+
+.table_adaptive_classic tr {
   padding: 8px;
 }
-table table_adaptive_classic tr:hover {
+
+.table_adaptive_classic tr:hover {
   background: #f5f5f5;
   color: #5f5f5f;
 }
-table table_adaptive_classic th, table table_adaptive_classic td {
+
+.table_adaptive_classic th, .table_adaptive_classic td {
   padding: 8px;
   text-align: center;
 }
-table table_adaptive_classic th {
+
+.table_adaptive_classic th {
   font-size: 14px;
   letter-spacing: 1px;
   color: #5f5f5f;
   background-color: #f1f1f1;
   border: 0px !important;
 }
-table table_adaptive_classic td {
+
+.table_adaptive_classic td {
   border: 1px solid #eee !important;
   font-size: 14px;
   -ms-word-break: break-all;
@@ -679,37 +730,47 @@ table table_adaptive_classic td {
   -moz-hyphens: auto;
   hyphens: auto;
 }
-table table_adaptive_classic td:first-child {
+
+.table_adaptive_classic td:first-child {
   text-align: left;
 }
-table table_adaptive_classic td.left_text {
+
+.table_adaptive_classic td.left_text {
   text-align: justify;
 }
-table table_adaptive_classic td.right_text {
+
+.table_adaptive_classic td.right_text {
   text-align: right;
 }
-table table_adaptive_gray td.justify_text {
+
+.table_adaptive_gray td.justify_text {
   text-align: justify;
 }
-table table_adaptive_classic tr.subhead {
+
+.table_adaptive_classic tr.subhead {
   background: #f1f1f1;
 }
-table table_adaptive_classic tr.subhead:hover {
+
+.table_adaptive_classic tr.subhead:hover {
   background: #f1f1f1;
 }
+
 @media screen and (max-width: 800px) {
-  table table_adaptive_classic {
+  .table_adaptive_classic {
     border: 0 !important;
   }
-  table table_adaptive_classic thead {
+
+  .table_adaptive_classic thead {
     display: none;
   }
-  table table_adaptive_classic tr {
+
+  .table_adaptive_classic tr {
     margin-bottom: 10px;
     display: block;
     border: 1px solid #ededed !important;
   }
-  table table_adaptive_classic td {
+
+  .table_adaptive_classic td {
     display: block;
     text-align: right;
     font-size: 13px;
@@ -718,27 +779,32 @@ table table_adaptive_classic tr.subhead:hover {
     border-left: 0px !important;
     border-right: 0px !important;
   }
-  table table_adaptive_classic td.left_text {
+
+  .table_adaptive_classic td.left_text {
     text-align: right;
   }
-  table table_adaptive_gray td.justify_text {
+
+  .table_adaptive_gray td.justify_text {
     text-align: right;
   }
-  table table_adaptive_classic td:first-child {
+
+  .table_adaptive_classic td:first-child {
     text-align: right;
   }
-  table table_adaptive_classic td.right_text {
+
+  .table_adaptive_classic td.right_text {
     text-align: right;
   }
-  table table_adaptive_classic td:last-child {
+
+  .table_adaptive_classic td:last-child {
     border-bottom: 0 !important;
   }
-  table table_adaptive_classic td:before {
+
+  .table_adaptive_classic td:before {
     content: attr(data-label);
     float: left;
   }
 }
-
 .hljs {
   display: block;
   overflow-x: auto;
