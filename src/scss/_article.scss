@@ -68,9 +68,7 @@ article {
     &:before {
       font-size: 1.75em;
     }
-  }
-
-  //NEW class
+  } //NEW class
   .important {
     color: $main-color;
     font-weight: bold;
@@ -79,5 +77,46 @@ article {
 
   .fa-ul {
     margin-left: 0.5em;
+  }
+
+  .changes {
+    display: table;
+    list-style: none !important;
+  }
+
+  .change-label-container {
+    float: left;
+    margin-left: -100px;
+    width: 80px;
+    text-align: right;
+  }
+
+  .changes li {
+    padding-left: 100px;
+    margin: 0 0 8px;
+  }
+
+  .change-label {
+    font-style: normal;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 14px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 12px;
+    border-radius: $button-border-radius;
+  }
+
+  .change-new, .change-added {
+    background-color: map-get($colors, green-color);
+  }
+  .change-fixed {
+    background-color: map-get($colors, teal-color-light);
+  }
+  .change-improved, .change-updated {
+    background-color: map-get($colors, teal-color);
+  }
+  .change-removed {
+    background-color: #f5944c;
   }
 }

@@ -374,6 +374,42 @@ article .important {
 article .fa-ul {
   margin-left: 0.5em;
 }
+article .changes {
+  display: table;
+  list-style: none !important;
+}
+article .change-label-container {
+  float: left;
+  margin-left: -100px;
+  width: 80px;
+  text-align: right;
+}
+article .changes li {
+  padding-left: 100px;
+  margin: 0 0 8px;
+}
+article .change-label {
+  font-style: normal;
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 14px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 3px;
+}
+article .change-new, article .change-added {
+  background-color: #4abf60;
+}
+article .change-fixed {
+  background-color: #71c2c2;
+}
+article .change-improved, article .change-updated {
+  background-color: #19a5a5;
+}
+article .change-removed {
+  background-color: #f5944c;
+}
 
 .tex {
   overflow: auto;
