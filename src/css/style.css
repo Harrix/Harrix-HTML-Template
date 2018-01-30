@@ -392,20 +392,16 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 
 .btn-blue {
   background-color: #19a5a5 !important;
-  border: 2px solid #19a5a5 !important;
 }
 .btn-blue:hover, .btn-blue:focus, .btn-blue:active {
   background-color: #71c2c2 !important;
-  border: 2px solid #71c2c2 !important;
 }
 
 .btn-green {
   background-color: #4abf60 !important;
-  border: 2px solid #4abf60 !important;
 }
 .btn-green:hover, .btn-green:focus, .btn-green:active {
   background-color: #77cb87 !important;
-  border: 2px solid #77cb87 !important;
 }
 
 .alert {

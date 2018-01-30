@@ -34,22 +34,20 @@ button, .btn {
   min-width: 8.125rem;
 }
 
+//NEW class
 .btn-blue {
   background-color: map-get($colors, teal-color) !important;
-  border: 2px solid map-get($colors, teal-color) !important;
 
   &:hover, &:focus, &:active {
     background-color: map-get($colors, teal-color-light) !important;
-    border: 2px solid map-get($colors, teal-color-light) !important;
   }
 }
 
+//NEW class
 .btn-green {
   background-color: map-get($colors, green-color) !important;
-  border: 2px solid map-get($colors, green-color) !important;
 
   &:hover, &:focus, &:active {
     background-color: map-get($colors, green-color-light) !important;
-    border: 2px solid map-get($colors, green-color-light) !important;
   }
 }
