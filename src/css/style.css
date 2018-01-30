@@ -427,7 +427,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 }
 .table_adaptive caption {
   caption-side: top;
-  color: #5f5f5f;
+  color: #222222;
   text-align: center;
   font-weight: bold;
 }
@@ -461,7 +461,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   text-align: center;
 }
 .table_adaptive td {
-  border-bottom: 1px solid #ededed !important;
+  border-bottom: 1px solid #eeeeee !important;
   border-top: 0px !important;
   border-left: 0px !important;
   border-right: 0px !important;
@@ -489,13 +489,13 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   .table_adaptive tr {
     margin-bottom: 10px;
     display: block;
-    border: 1px solid #ededed !important;
+    border: 1px solid #eeeeee !important;
   }
   .table_adaptive td {
     display: block;
     text-align: right;
     font-size: 13px;
-    border-bottom: 1px dotted #ededed !important;
+    border-bottom: 1px dotted #eeeeee !important;
   }
   .table_adaptive td:first-child {
     text-align: right;
@@ -521,7 +521,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 }
 .table_adaptive_gray caption {
   caption-side: top;
-  color: #5f5f5f;
+  color: #222222;
   text-align: center;
   font-weight: bold;
 }
@@ -530,7 +530,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 }
 .table_adaptive_gray tr:hover {
   background: #f5f5f5;
-  color: #5f5f5f;
+  color: #222222;
 }
 .table_adaptive_gray tr .subhead {
   background: #f1f1f1;
@@ -541,7 +541,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 .table_adaptive_gray th {
   font-size: 14px;
   letter-spacing: 1px;
-  color: #5f5f5f;
+  color: #222222;
   background-color: #f1f1f1;
   border: 0px !important;
   padding: 8px;
@@ -576,13 +576,13 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   .table_adaptive_gray tr {
     margin-bottom: 10px;
     display: block;
-    border: 1px solid #ededed !important;
+    border: 1px solid #eeeeee !important;
   }
   .table_adaptive_gray td {
     display: block;
     text-align: right;
     font-size: 13px;
-    border-bottom: 1px dotted #ededed !important;
+    border-bottom: 1px dotted #eeeeee !important;
   }
   .table_adaptive_gray td:first-child {
     text-align: right;
@@ -607,7 +607,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 }
 .table_adaptive_classic caption {
   caption-side: top;
-  color: #5f5f5f;
+  color: #222222;
   text-align: center;
   font-weight: bold;
 }
@@ -616,7 +616,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 }
 .table_adaptive_classic tr:hover {
   background: #f5f5f5;
-  color: #5f5f5f;
+  color: #222222;
 }
 .table_adaptive_classic tr .subhead {
   background: #f1f1f1;
@@ -627,7 +627,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 .table_adaptive_classic th {
   font-size: 14px;
   letter-spacing: 1px;
-  color: #5f5f5f;
+  color: #222222;
   background-color: #f1f1f1;
   border: 0px !important;
   padding: 8px;
@@ -659,13 +659,13 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   .table_adaptive_classic tr {
     margin-bottom: 10px;
     display: block;
-    border: 1px solid #ededed !important;
+    border: 1px solid #eeeeee !important;
   }
   .table_adaptive_classic td {
     display: block;
     text-align: right;
     font-size: 13px;
-    border-bottom: 1px dotted #ededed !important;
+    border-bottom: 1px dotted #eeeeee !important;
     border-top: 0px !important;
     border-left: 0px !important;
     border-right: 0px !important;

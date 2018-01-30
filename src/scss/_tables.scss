@@ -11,7 +11,7 @@
 
   caption {
     caption-side: top;
-    color: #5f5f5f;
+    color: $text-color;
     text-align: center;
     font-weight: bold;
   }
@@ -20,7 +20,7 @@
     padding: 5px;
 
     &:hover {
-      background: #71c2c2;
+      background: map-get($colors, teal-color-light);
       color: #fff;
 
       a {
@@ -44,7 +44,7 @@
     font-size: 14px;
     letter-spacing: 1px;
     color: whitesmoke;
-    background-color: #19a5a5;
+    background-color: map-get($colors, teal-color);
     font-weight: bold;
     border: 0px !important;
     padding: 10px;
@@ -52,7 +52,7 @@
   }
 
   td {
-    border-bottom: 1px solid #ededed !important;
+    border-bottom: 1px solid map-get($colors, grey-light-color) !important;
     border-top: 0px !important;
     border-left: 0px !important;
     border-right: 0px !important;
@@ -83,14 +83,14 @@
     tr {
       margin-bottom: 10px;
       display: block;
-      border: 1px solid #ededed !important;
+      border: 1px solid map-get($colors, grey-light-color) !important;
     }
 
     td {
       display: block;
       text-align: right;
       font-size: 13px;
-      border-bottom: 1px dotted #ededed !important;
+      border-bottom: 1px dotted map-get($colors, grey-light-color) !important;
 
       &:first-child {
         text-align: right;
@@ -121,7 +121,7 @@
 
   caption {
     caption-side: top;
-    color: #5f5f5f;
+    color: $text-color;
     text-align: center;
     font-weight: bold;
   }
@@ -131,7 +131,7 @@
 
     &:hover {
       background: #f5f5f5;
-      color: #5f5f5f;
+      color: $text-color;
     }
 
     .subhead {
@@ -146,7 +146,7 @@
   th {
     font-size: 14px;
     letter-spacing: 1px;
-    color: #5f5f5f;
+    color: $text-color;
     background-color: #f1f1f1;
     border: 0px !important;
     padding: 8px;
@@ -185,14 +185,14 @@
     tr {
       margin-bottom: 10px;
       display: block;
-      border: 1px solid #ededed !important;
+      border: 1px solid map-get($colors, grey-light-color) !important;
     }
 
     td {
       display: block;
       text-align: right;
       font-size: 13px;
-      border-bottom: 1px dotted #ededed !important;
+      border-bottom: 1px dotted map-get($colors, grey-light-color) !important;
 
       &:first-child {
         text-align: right;
@@ -222,7 +222,7 @@
 
   caption {
     caption-side: top;
-    color: #5f5f5f;
+    color: $text-color;
     text-align: center;
     font-weight: bold;
   }
@@ -232,7 +232,7 @@
 
     &:hover {
       background: #f5f5f5;
-      color: #5f5f5f;
+      color: $text-color;
     }
 
     .subhead {
@@ -247,7 +247,7 @@
   th {
     font-size: 14px;
     letter-spacing: 1px;
-    color: #5f5f5f;
+    color: $text-color;
     background-color: #f1f1f1;
     border: 0px !important;
     padding: 8px;
@@ -284,14 +284,14 @@
     tr {
       margin-bottom: 10px;
       display: block;
-      border: 1px solid #ededed !important;
+      border: 1px solid map-get($colors, grey-light-color) !important;
     }
 
     td {
       display: block;
       text-align: right;
       font-size: 13px;
-      border-bottom: 1px dotted #ededed !important;
+      border-bottom: 1px dotted map-get($colors, grey-light-color) !important;
       border-top: 0px !important;
       border-left: 0px !important;
       border-right: 0px !important;
