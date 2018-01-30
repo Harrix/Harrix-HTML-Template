@@ -28,7 +28,7 @@
   margin-bottom: 1.5rem;
   color: #cdbfe3;
   text-align: center;
-  background-color: #19a5a5;
+  background-color: map-get($colors, teal-color);
   line-height: 28px;
 
   .container {
@@ -47,37 +47,35 @@
     font-weight: 300;
     color: #fff;
   }
-}
 
-@media (min-width:544px) {
-  .color-section {
+
+@media (min-width:544px) {  
     padding-top: 4rem;
     padding-bottom: 4rem;
     margin-bottom: 3rem;
     text-align: left;
-  }
 
-  .color-section .carbonad {
+  .carbonad {
     margin: 2rem 0 0 !important;
   }
 }
 
 @media (min-width:768px) {
-  .color-section h1 {
+  h1 {
     font-size: 4rem;
   }
 
-  .color-section p {
+  p {
     font-size: 1.5rem;
   }
 }
 
 @media (min-width:992px) {
-  .color-section h1, .color-section p {
+  h1, p {
     margin-right: 380px;
   }
 
-  .color-section .carbonad {
+  .carbonad {
     position: absolute;
     top: 0;
     right: .75rem;
@@ -85,7 +83,9 @@
   }
 }
 
+}
+
 
 .color-red-section {
-  background-color: #de2b26 !important;
+  background-color: map-get($colors, red-color) !important;
 }
