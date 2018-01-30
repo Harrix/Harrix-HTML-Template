@@ -62,7 +62,7 @@ jQuery(function() {
 });
 
 function makeTOC($heading) {
-    if ($("#table-of-contents").length) {
+    if ($("#js-table-of-contents").length) {
         var ToC = "<h2>Содержание:</h2><ul>";
         var newLine, el, title, link;
         var counter = 1;
@@ -79,6 +79,6 @@ function makeTOC($heading) {
             ToC += newLine;
         });
         ToC += "</ul>";
-        $("#table-of-contents").prepend(ToC);
+        $("#js-table-of-contents").prepend(ToC);
     }
 }
