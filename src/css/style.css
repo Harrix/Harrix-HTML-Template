@@ -272,6 +272,69 @@ header .icon {
   width: 3rem;
 }
 
+.color-section {
+  padding: 2rem .9375rem;
+  margin-bottom: 1.5rem;
+  color: #cdbfe3;
+  text-align: center;
+  background-color: #19a5a5;
+  line-height: 28px;
+}
+
+.color-section .container {
+  position: relative;
+}
+
+.color-section h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #fff;
+}
+
+.color-section p {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #fff;
+}
+
+@media (min-width: 544px) {
+  .color-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: 3rem;
+    text-align: left;
+  }
+
+  .color-section .carbonad {
+    margin: 2rem 0 0 !important;
+  }
+}
+@media (min-width: 768px) {
+  .color-section h1 {
+    font-size: 4rem;
+  }
+
+  .color-section p {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .color-section h1, .color-section p {
+    margin-right: 380px;
+  }
+
+  .color-section .carbonad {
+    position: absolute;
+    top: 0;
+    right: .75rem;
+    margin: 0 !important;
+  }
+}
+.color-red-section {
+  background-color: #de2b26 !important;
+}
+
 button:active, button:focus, .btn:active, .btn:focus {
   outline: none;
   box-shadow: none;
