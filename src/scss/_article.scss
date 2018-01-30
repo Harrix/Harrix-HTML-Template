@@ -68,7 +68,9 @@ article {
     &:before {
       font-size: 1.75em;
     }
-  } //NEW class
+  } 
+  
+  //NEW class
   .important {
     color: $main-color;
     font-weight: bold;

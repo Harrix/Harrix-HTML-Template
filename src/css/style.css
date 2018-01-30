@@ -302,7 +302,6 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   min-width: 8.125rem;
 }
 
-/* --------------------------- Adaptive table --------------------------- */
 table.table_adaptive {
   display: table;
   width: 100% !important;
@@ -438,8 +437,6 @@ table.table_adaptive tr.subhead:hover {
     font-weight: bold;
   }
 }
-/* --------------------------- Adaptive table - End --------------------------- */
-/* --------------------------- Adaptive table - Gray --------------------------- */
 table.table_adaptive_gray {
   display: table;
   width: 100%;
@@ -565,8 +562,6 @@ table.table_adaptive_gray tr.subhead:hover {
     float: left;
   }
 }
-/* --------------------------- Adaptive table - Gray - End --------------------------- */
-/* --------------------------- Adaptive table - Classic --------------------------- */
 table.table_adaptive_classic {
   display: table;
   width: 100%;
@@ -692,7 +687,6 @@ table.table_adaptive_classic tr.subhead:hover {
     float: left;
   }
 }
-/* --------------------------- Adaptive table - Classic - End --------------------------- */
 article {
   -webkit-hyphens: auto;
   -moz-hyphens: auto;

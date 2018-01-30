@@ -1,4 +1,4 @@
-/* --------------------------- Adaptive table --------------------------- */
+// Adaptive table
 
 table.table_adaptive {
   display: table;
@@ -136,9 +136,7 @@ table.table_adaptive tr.subhead:hover {
   }
 }
 
-/* --------------------------- Adaptive table - End --------------------------- */
-
-/* --------------------------- Adaptive table - Gray --------------------------- */
+// Adaptive table - Gray
 
 table.table_adaptive_gray {
   display: table;
@@ -267,9 +265,7 @@ table.table_adaptive_gray tr.subhead:hover {
   }
 }
 
-/* --------------------------- Adaptive table - Gray - End --------------------------- */
-
-/* --------------------------- Adaptive table - Classic --------------------------- */
+// Adaptive table - Classic
 
 table.table_adaptive_classic {
   display: table;
@@ -397,5 +393,3 @@ table.table_adaptive_classic tr.subhead:hover {
     float: left;
   }
 }
-
-/* --------------------------- Adaptive table - Classic - End --------------------------- */
