@@ -85,7 +85,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media (max-width: $grid-breakpoint-mobile) {
   .table_adaptive {
     border: 0 !important;
 
@@ -213,7 +213,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media (max-width: $grid-breakpoint-mobile) {
   .table_adaptive_gray {
     border: 0 !important;
 
@@ -337,7 +337,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media (max-width: $grid-breakpoint-mobile) {
   .table_adaptive_classic {
     border: 0 !important;
 

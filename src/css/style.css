@@ -494,7 +494,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   text-align: right;
 }
 
-@media screen and (max-width: 800px) {
+@media (max-width: 992px) {
   .table_adaptive {
     border: 0 !important;
   }
@@ -599,7 +599,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   text-align: right;
 }
 
-@media screen and (max-width: 800px) {
+@media (max-width: 992px) {
   .table_adaptive_gray {
     border: 0 !important;
   }
@@ -700,7 +700,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   text-align: left;
 }
 
-@media screen and (max-width: 800px) {
+@media (max-width: 992px) {
   .table_adaptive_classic {
     border: 0 !important;
   }
