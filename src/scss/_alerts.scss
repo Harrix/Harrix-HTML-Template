@@ -1,57 +1,55 @@
 .alert {
-    border: 0px;
-    border-radius: 0px;
-    position: relative;
+  border: 0px;
+  border-radius: 0px;
+  position: relative;
+
+  @media (max-width: $grid-breakpoint-mobile) {
+    line-height: 1.3;
+  }
 }
 
 .alert>i.fa {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
 .alert .after-icon {
-    margin-left: 50px;
+  margin-left: 50px;
 }
 
 .alert-danger {
-    background-color: #f54d4c;
-    color: #fff;
+  background-color: #f54d4c;
+  color: #fff;
 }
 
 .alert-info {
-    background-color: #71c2c2;
-    color: #fff;
+  background-color: #71c2c2;
+  color: #fff;
 }
 
 .alert-warning {
-    background-color: #f5944c;
-    color: #fff;
+  background-color: #f5944c;
+  color: #fff;
 }
 
 .alert-success {
-    background-color: #4abf60;
-    color: #fff;
+  background-color: #4abf60;
+  color: #fff;
 }
 
 .color-danger {
-    color: #f54d4c;
+  color: #f54d4c;
 }
 
 .color-info {
-    color: #71c2c2;
+  color: #71c2c2;
 }
 
 .color-warning {
-    color: #f5944c;
+  color: #f5944c;
 }
 
 .color-success {
-    color: #4abf60;
-}
-
-@media (max-width:990px){
-.alert {
-    line-height: 1.3;
-}
+  color: #4abf60;
 }
