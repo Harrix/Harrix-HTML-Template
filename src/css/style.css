@@ -694,13 +694,14 @@ table.table_adaptive_classic tr.subhead:hover {
   color: #002D7A;
   background: #f5f6f8;
   font-family: 'Roboto Mono', monospace;
-  font-size: 12px;
+  font-size: 14px;
   margin: 0px;
-  line-height: 15px;
+  line-height: 18px;
   white-space: pre-wrap;
   border-width: 0px;
   border-color: #eee;
   border-style: solid;
+  font-weight: 400;
 }
 
 .hljs-comment,
@@ -857,6 +858,7 @@ article code {
   color: #de2b26;
   font-weight: bold;
   font-family: "Roboto Mono", monospace;
+  font-size: 1rem;
 }
 article .fa-ul {
   margin-left: 0.5em;
