@@ -71,14 +71,14 @@ function makeTOC() {
             title = el.text();
             var attr = el.attr("id");
             if (!(typeof attr !== typeof undefined && attr !== false)) {
-                el.attr("id","heading"+counter);
+                el.attr("id", "heading" + counter);
                 counter++;
-            }            
-            link = "#" + el.attr("id");          
+            }
+            link = "#" + el.attr("id");
             newLine = "<li><a href='" + link + "'>" + title + "</a></li>";
             ToC += newLine;
         });
-        ToC +="</ul>";
+        ToC += "</ul>";
         $("#table-of-contents").prepend(ToC);
     }
 }
