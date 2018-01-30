@@ -4,43 +4,33 @@ footer {
   font-size: 14px;
   text-align: center;
   margin-bottom: 40px;
-}
 
-footer a {
-  color: #25292c !important;
-  text-decoration: none;
-}
+  a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #55595c;
 
-footer a:visited {
-  color: #25292c !important;
-  text-decoration: none;
-}
+    &:visited {
+      color: #25292c !important;
+      text-decoration: none;
+    }
 
-footer a:hover {
-  color: #19a5a5 !important;
-  text-decoration: none;
-}
+    &:hover {
+      color: #19a5a5 !important;
+      text-decoration: none;
+    }
 
-footer a:active {
-  color: #19a5a5 !important;
-  text-decoration: none;
-}
+    &:active {
+      color: #19a5a5 !important;
+      text-decoration: none;
+    }
+  }
 
-footer a {
-  font-weight: 500;
-  color: #55595c;
-}
+  p {
+    margin-bottom: 0;
+  }
 
-footer a:hover {
-  color: #0275d8;
-}
-
-footer p {
-  margin-bottom: 0;
-}
-
-@media (min-width:544px) {
-  footer {
+  @media (min-width:544px) {
     text-align: left;
   }
 }
