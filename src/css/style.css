@@ -751,7 +751,7 @@ article blockquote:before {
 article blockquote:before {
   font-size: 1.75em;
 }
-article .important {
+article code {
   color: #de2b26;
   font-weight: bold;
   font-family: "Roboto Mono", monospace;
