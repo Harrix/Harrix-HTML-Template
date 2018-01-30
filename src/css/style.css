@@ -135,7 +135,7 @@ h6, .h6 {
   margin-bottom: 1rem;
 }
 
-#back-to-top {
+#js-back-to-top {
   height: 3.125rem;
   width: 3.125rem;
   right: 3.75rem;
@@ -152,11 +152,11 @@ h6, .h6 {
   z-index: 999;
   display: none;
 }
-#back-to-top:hover {
+#js-back-to-top:hover {
   background-color: #19a5a5;
 }
 @media (max-width: 992px) {
-  #back-to-top {
+  #js-back-to-top {
     bottom: 1.25rem !important;
     right: 1.25rem !important;
   }

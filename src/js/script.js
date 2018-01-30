@@ -32,13 +32,13 @@ jQuery(function() {
 
         //Hide or show the button "Back to up"
         if (jQuery(this).scrollTop() >= 200)
-            jQuery('#back-to-top').fadeIn();
+            jQuery('#js-back-to-top').fadeIn();
         else
-            jQuery('#back-to-top').fadeOut();
+            jQuery('#js-back-to-top').fadeOut();
     });
 
     //When you press the "Back to up" animated transition
-    jQuery('#back-to-top').click(function() {
+    jQuery('#js-back-to-top').click(function() {
         jQuery('html, body').animate({
             scrollTop: 0
         }, 800);
