@@ -390,10 +390,10 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   min-width: 8.125rem;
 }
 
-.btn-blue {
+.btn-teal {
   background-color: #19a5a5 !important;
 }
-.btn-blue:hover, .btn-blue:focus, .btn-blue:active {
+.btn-teal:hover, .btn-teal:focus, .btn-teal:active {
   background-color: #71c2c2 !important;
 }
 
