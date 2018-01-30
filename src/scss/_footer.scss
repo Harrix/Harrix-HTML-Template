@@ -1,27 +1,25 @@
 footer {
   padding-top: 0px;
-  color: #25292c !important;
-  font-size: 14px;
-  text-align: center;
+  text-align: left;
   margin-bottom: 40px;
 
   a {
     text-decoration: none;
     font-weight: 500;
-    color: #55595c;
+    color: $text-color;
 
     &:visited {
-      color: #25292c !important;
+      color: $text-color !important;
       text-decoration: none;
     }
 
     &:hover {
-      color: #19a5a5 !important;
+      color: $link-hover-color !important;
       text-decoration: none;
     }
 
     &:active {
-      color: #19a5a5 !important;
+      color: $link-hover-color !important;
       text-decoration: none;
     }
   }
@@ -30,7 +28,7 @@ footer {
     margin-bottom: 0;
   }
 
-  @media (min-width:544px) {
-    text-align: left;
+  @media (max-width: $grid-breakpoint-mobile) {
+    text-align: center;
   }
 }
