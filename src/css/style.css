@@ -482,15 +482,6 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 .table_adaptive td:first-child {
   text-align: left;
 }
-.table_adaptive td .justify_text {
-  text-align: justify;
-}
-.table_adaptive td .left_text {
-  text-align: left;
-}
-.table_adaptive td .right_text {
-  text-align: right;
-}
 
 @media (max-width: 992px) {
   .table_adaptive {
@@ -509,15 +500,6 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
     text-align: right;
     font-size: 13px;
     border-bottom: 1px dotted #ededed !important;
-  }
-  .table_adaptive td .justify_text {
-    text-align: right;
-  }
-  .table_adaptive td .left_text {
-    text-align: right;
-  }
-  .table_adaptive td .right_text {
-    text-align: right;
   }
   .table_adaptive td:first-child {
     text-align: right;
@@ -587,15 +569,6 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 .table_adaptive_gray td:first-child {
   text-align: left;
 }
-.table_adaptive_gray td .justify_text {
-  text-align: justify;
-}
-.table_adaptive_gray td .left_text {
-  text-align: left;
-}
-.table_adaptive_gray td .right_text {
-  text-align: right;
-}
 
 @media (max-width: 992px) {
   .table_adaptive_gray {
@@ -614,15 +587,6 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
     text-align: right;
     font-size: 13px;
     border-bottom: 1px dotted #ededed !important;
-  }
-  .table_adaptive_gray td .left_text {
-    text-align: right;
-  }
-  .table_adaptive_gray td .justify_text {
-    text-align: right;
-  }
-  .table_adaptive_gray td .right_text {
-    text-align: right;
   }
   .table_adaptive_gray td:first-child {
     text-align: right;
@@ -685,15 +649,6 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   -moz-hyphens: auto;
   hyphens: auto;
 }
-.table_adaptive_classic td .left_text {
-  text-align: justify;
-}
-.table_adaptive_classic td .right_text {
-  text-align: right;
-}
-.table_adaptive_classic td .justify_text {
-  text-align: justify;
-}
 .table_adaptive_classic td:first-child {
   text-align: left;
 }
@@ -718,15 +673,6 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
     border-top: 0px !important;
     border-left: 0px !important;
     border-right: 0px !important;
-  }
-  .table_adaptive_classic td .left_text {
-    text-align: right;
-  }
-  .table_adaptive_classic td .justify_text {
-    text-align: right;
-  }
-  .table_adaptive_classic td .right_text {
-    text-align: right;
   }
   .table_adaptive_classic td:first-child {
     text-align: right;
