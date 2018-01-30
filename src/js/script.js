@@ -44,7 +44,7 @@ jQuery(function() {
         }, 800);
     });
 
-    makeTOC();
+    makeTOC("h2");
 
     //Smooth scrolling to anchors
     jQuery('li a[href*="#"], h2 a[href*="#"]').not('[href="#"]').click(function() {
@@ -61,12 +61,12 @@ jQuery(function() {
     });
 });
 
-function makeTOC() {
+function makeTOC($heading) {
     if ($("#table-of-contents").length) {
         var ToC = "<h2>Содержание:</h2><ul>";
         var newLine, el, title, link;
         var counter = 1;
-        $("article h2").each(function() {
+        $("article " + $heading).each(function() {
             el = $(this);
             title = el.text();
             var attr = el.attr("id");
