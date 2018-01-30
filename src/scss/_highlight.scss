@@ -4,8 +4,8 @@
     padding: 10px;
     color: #002D7A;
     background: #f7f7f7;
-    font-family: 'Roboto Mono', monospace;
-    font-size: $code-font-size;
+    font-family: $font-stack-code;
+    font-size: $code-highlight-font-size;
     margin: 0px;
     line-height: 20px;
     white-space: pre-wrap;

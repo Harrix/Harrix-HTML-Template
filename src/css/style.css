@@ -745,7 +745,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   padding: 10px;
   color: #002D7A;
   background: #f7f7f7;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 0.875rem;
   margin: 0px;
   line-height: 20px;
@@ -910,7 +910,7 @@ article code {
   color: #de2b26;
   font-weight: bold;
   font-family: "Roboto Mono", monospace;
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 article .fa-ul {
   margin-left: 1.5rem;
