@@ -11,7 +11,7 @@ article {
 
     &:hover {
       text-decoration: underline;
-      color: $hover-link-color;
+      color: $link-hover-color;
     }
   }
 
@@ -20,7 +20,7 @@ article {
 
     &:hover {
       text-decoration: none;
-      color: $hover-link-color;
+      color: $link-hover-color;
     }
   }
 
