@@ -280,17 +280,14 @@ header .icon {
   background-color: #19a5a5;
   line-height: 28px;
 }
-
 .color-section .container {
   position: relative;
 }
-
 .color-section h1 {
   font-size: 3rem;
   font-weight: 400;
   color: #fff;
 }
-
 .color-section p {
   margin-bottom: 0;
   font-size: 1.25rem;
