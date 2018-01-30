@@ -692,9 +692,9 @@ table.table_adaptive_classic tr.subhead:hover {
   overflow-x: auto;
   padding: 10px;
   color: #002D7A;
-  background: #f5f6f8;
+  background: #f7f7f7;
   font-family: 'Roboto Mono', monospace;
-  font-size: 1rem;
+  font-size: 0.875rem;
   margin: 0px;
   line-height: 20px;
   white-space: pre-wrap;
@@ -858,7 +858,7 @@ article code {
   color: #de2b26;
   font-weight: bold;
   font-family: "Roboto Mono", monospace;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 article .fa-ul {
   margin-left: 0.5em;
