@@ -694,7 +694,7 @@ table.table_adaptive_classic tr.subhead:hover {
   color: #002D7A;
   background: #f5f6f8;
   font-family: 'Roboto Mono', monospace;
-  font-size: 14px;
+  font-size: 1rem;
   margin: 0px;
   line-height: 20px;
   white-space: pre-wrap;

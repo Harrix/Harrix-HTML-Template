@@ -43,6 +43,7 @@ $blockquote-color:        map-get($colors, teal-color);
 $duration-animation: 0.2s;
 $type-animation: ease-in-out;
 $grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
+$code-font-size: 1rem;
 $header-font-size: 0.875rem;
 $heading-h1-font-size: 1.75rem;
 $heading-h2-font-size: 1.625rem;
