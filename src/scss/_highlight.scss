@@ -92,13 +92,16 @@ article pre  code {
   color: #3193c6;
 }
 
-/////////////
+.hljs-regexp {
+  color: #05ad97;
+}
 
-.hljs-regexp,
-.hljs-link,
-.hljs-selector-attr,
-.hljs-selector-pseudo {
-  color: #009926;
+.hljs-link {
+  color: #474747;
+}
+
+.hljs-selector-attr, .hljs-selector-pseudo {
+  color: #a15ebb;
 }
 
 /////////////
@@ -114,6 +117,8 @@ article pre  code {
 .hljs-formula {
   color: #009926;
 }
+
+/////////////
 
 .hljs-symbol,
 .hljs-bullet,
