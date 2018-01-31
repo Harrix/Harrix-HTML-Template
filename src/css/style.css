@@ -777,12 +777,24 @@ article pre code {
   color: #444444;
 }
 
-.hljs-number,
-.hljs-literal,
-.hljs-variable,
-.hljs-tag,
-.hljs-attr {
+.hljs-number {
+  color: #d35400;
+}
+
+.hljs-literal {
+  color: #ed2b38;
+}
+
+.hljs-variable {
   color: #4ABF60;
+}
+
+.hljs-tag {
+  color: #474747;
+}
+
+.hljs-attr {
+  color: #a15ebb;
 }
 
 .hljs-string,
