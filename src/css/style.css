@@ -763,9 +763,13 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   font-weight: normal;
 }
 
-.hljs-selector-tag,
+.hljs-selector-tag {
+  color: #3193c6;
+  font-weight: normal;
+}
+
 .hljs-subst {
-  color: #05ad97;
+  color: #444444;
   font-weight: normal;
 }
 
