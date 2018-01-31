@@ -19,6 +19,7 @@ article pre  code {
   border-color: #aaaaaa;
   border-style: solid;
   font-weight: 400;
+  font-weight: normal;
 }
 
 .hljs-comment,
@@ -30,17 +31,14 @@ article pre  code {
 .hljs-keyword,
 .hljs-meta-keyword {
   color: #05ad97;
-  font-weight: normal;
 }
 
 .hljs-selector-tag {
   color: #3193c6;
-  font-weight: normal;
 }
 
 .hljs-subst {
   color: #444444;
-  font-weight: normal;
 }
 
 .hljs-number,
@@ -61,19 +59,16 @@ article pre  code {
 .hljs-selector-id,
 .hljs-selector-class {
   color: #4ABF60;
-  font-weight: normal;
 }
 
 .hljs-type,
 .hljs-class {
   color: #458;
-  font-weight: normal;
 }
 
 .hljs-name,
 .hljs-attribute {
   color: #000080;
-  font-weight: normal;
 }
 
 .hljs-regexp,
@@ -107,7 +102,6 @@ article pre  code {
 
 .hljs-meta {
   color: #1990b8;
-  font-weight: normal;
 }
 
 .hljs-deletion {
