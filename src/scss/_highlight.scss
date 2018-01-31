@@ -66,13 +66,20 @@ article pre  code {
   color: #05ad97;
 }
 
-/////////////
+.hljs-title {
+  color: #9914c9;
+}
 
-.hljs-title,
-.hljs-section,
-.hljs-selector-id,
+.hljs-section {
+  color: #474747;
+}
+
+.hljs-selector-id {
+  color: #a15ebb;
+}
+
 .hljs-selector-class {
-  color: #4ABF60;
+  color: #a15ebb;
 }
 
 /////////////
@@ -81,6 +88,8 @@ article pre  code {
 .hljs-class {
   color: #458;
 }
+
+/////////////
 
 .hljs-name,
 .hljs-attribute {
