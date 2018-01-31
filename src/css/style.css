@@ -63,6 +63,12 @@
   font-weight: 700;
   src: url(../fonts/RobotoMono-Bold.ttf);
 }
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/RobotoMono-Italic.ttf);
+}
 .lightbox img {
   max-width: 100%;
   height: auto;
@@ -732,29 +738,34 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   display: block;
   overflow-x: auto;
   padding: 10px;
-  color: #002D7A;
-  background: #f7f7f7;
+  color: #474747;
+  background: #fafafa;
   font-family: "Roboto Mono", monospace;
-  font-size: 0.875rem;
+  font-size: 13px;
   margin: 0px;
-  line-height: 20px;
+  line-height: 18px;
   white-space: pre-wrap;
   border-width: 0px;
-  border-color: #eee;
+  border-color: #aaaaaa;
   border-style: solid;
   font-weight: 400;
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: #90a1b5;
+  color: #616161;
   font-style: italic;
 }
 
 .hljs-keyword,
+.hljs-meta-keyword {
+  color: #05ad97;
+  font-weight: normal;
+}
+
 .hljs-selector-tag,
 .hljs-subst {
-  color: #ec4444;
+  color: #ff00ff;
   font-weight: normal;
 }
 
@@ -762,18 +773,21 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 .hljs-literal,
 .hljs-variable,
 .hljs-template-variable,
-.hljs-tag .hljs-attr {
+.hljs-tag,
+.hljs-attr {
   color: #4ABF60;
 }
 
 .hljs-string,
 .hljs-doctag {
-  color: #55A1FB;
+  color: #04a58e;
 }
 
 .hljs-title,
 .hljs-section,
-.hljs-selector-id {
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-template-tag {
   color: #4ABF60;
   font-weight: normal;
 }
@@ -796,12 +810,15 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 }
 
 .hljs-regexp,
-.hljs-link {
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
   color: #009926;
 }
 
 .hljs-symbol,
-.hljs-bullet {
+.hljs-bullet,
+.hljs-code {
   color: #990073;
 }
 
@@ -821,6 +838,10 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 
 .hljs-addition {
   background: #dfd;
+}
+
+.hljs-meta-string {
+  color: #4d99bf;
 }
 
 .hljs-emphasis {
