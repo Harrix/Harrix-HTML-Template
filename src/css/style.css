@@ -734,6 +734,12 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
     float: left;
   }
 }
+article pre code {
+  font-size: 13px;
+  color: #474747;
+  font-weight: normal;
+}
+
 .hljs {
   display: block;
   overflow-x: auto;
