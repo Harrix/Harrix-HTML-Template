@@ -316,13 +316,13 @@ footer p {
 .color-section h1 {
   font-size: 3rem;
   font-weight: 400;
-  color: #fff;
+  color: #ffffff;
 }
 .color-section p {
   margin-bottom: 0;
   font-size: 1.25rem;
   font-weight: 300;
-  color: #fff;
+  color: #ffffff;
 }
 @media (min-width: 544px) {
   .color-section {
