@@ -2,9 +2,11 @@
   padding-top: 1rem;
   padding-bottom: 2rem;
 
-  .container {
-    padding-left: 10%;
-    padding-right: 10%;
+  @media (min-width: $grid-breakpoint-mobile) {
+    .container {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
   }
 
   h1 {

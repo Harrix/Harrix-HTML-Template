@@ -286,9 +286,11 @@ footer p {
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
-.header-section .container {
-  padding-left: 10%;
-  padding-right: 10%;
+@media (min-width: 992px) {
+  .header-section .container {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 .header-section h1:after {
   background: #19a5a5;
