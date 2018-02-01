@@ -734,7 +734,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
     float: left;
   }
 }
-article pre code {
+article pre code, pre code {
   font-size: 13px;
   color: #474747;
   font-weight: normal;
@@ -808,6 +808,7 @@ article pre code {
 
 .hljs-section {
   color: #474747;
+  font-weight: normal;
 }
 
 .hljs-selector-id {
@@ -852,14 +853,20 @@ article pre code {
   color: #474747;
 }
 
-.hljs-symbol,
-.hljs-bullet,
+.hljs-symbol {
+  color: #1990b8;
+}
+
+.hljs-bullet {
+  color: #474747;
+}
+
 .hljs-code {
-  color: #990073;
+  color: #1990b8;
 }
 
 .hljs-built_in {
-  color: #ec4444;
+  color: #474747;
 }
 
 .hljs-meta {
@@ -875,7 +882,7 @@ article pre code {
 }
 
 .hljs-meta-string {
-  color: #4d99bf;
+  color: #05ad97;
 }
 
 .hljs-emphasis {
