@@ -725,27 +725,27 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   }
 }
 article pre code, pre code {
-  font-size: 13px;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
   color: #474747;
+  background: #fafafa;
+  border-width: 0px;
+  border-color: #e9e8e8;
+  border-style: solid;
   font-weight: normal;
+  white-space: pre-wrap;
+  padding: 1rem;
+}
+@media (max-width: 992px) {
+  article pre code, pre code {
+    padding: 0.625rem;
+  }
 }
 
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 10px;
-  color: #474747;
-  background: #fafafa;
-  font-family: "Roboto Mono", monospace;
-  font-size: 13px;
-  margin: 0px;
-  line-height: 18px;
-  white-space: pre-wrap;
-  border-width: 0px;
-  border-color: #aaaaaa;
-  border-style: solid;
-  font-weight: 400;
-  font-weight: normal;
 }
 
 .hljs-comment,

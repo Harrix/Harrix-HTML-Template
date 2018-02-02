@@ -1,25 +1,24 @@
-article pre  code, pre code {
-  font-size: 13px;
+article pre code, pre code {
+  font-family: $font-stack-code;
+  font-size: $code-highlight-font-size;
+  line-height: 1.125rem;
   color: #474747;
+  background: #fafafa;
+  border-width: 0px;
+  border-color: #e9e8e8;
+  border-style: solid;
   font-weight: normal;
+  white-space: pre-wrap;
+  padding: 1rem;
+
+  @media (max-width: $grid-breakpoint-mobile) {
+    padding: 0.625rem;
+  }
 }
 
 .hljs {
   display: block;
   overflow-x: auto;
-  padding: 10px;
-  color: #474747;
-  background: #fafafa;
-  font-family: $font-stack-code;
-  font-size: 13px;
-  margin: 0px;
-  line-height: 18px;
-  white-space: pre-wrap;
-  border-width: 0px;
-  border-color: #aaaaaa;
-  border-style: solid;
-  font-weight: 400;
-  font-weight: normal;
 }
 
 .hljs-comment,
@@ -56,7 +55,7 @@ article pre  code, pre code {
   color: #4ABF60;
 }
 
-.hljs-name, 
+.hljs-name,
 .hljs-attribute,
 .hljs-selector-tag {
   color: #3193c6;
