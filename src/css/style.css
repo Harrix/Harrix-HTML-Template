@@ -137,6 +137,19 @@ h6, .h6 {
   font-weight: 400;
 }
 
+.short-undeline:after {
+  background: #19a5a5;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  right: 0;
+  margin: 1.25rem auto;
+  position: relative;
+  width: 3rem;
+}
+
 .row div {
   margin-bottom: 1rem;
 }
