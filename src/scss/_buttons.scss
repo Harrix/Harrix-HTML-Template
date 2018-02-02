@@ -11,7 +11,7 @@ button, .btn {
 
 .btn {
   background-color: $primary-color;
-  color: $text-color-in-dark !important;
+  color: $text-in-dark-color !important;
   border: 0;
   border-radius: $button-border-radius;
   text-transform: uppercase;
@@ -24,7 +24,7 @@ button, .btn {
 
   &:hover, &:focus, &:active {
     background-color: $primary-light-color;
-    color: $text-color-in-dark !important;
+    color: $text-in-dark-color !important;
     border: 0;
   }
 }
@@ -39,7 +39,7 @@ button, .btn {
   background-color: map-get($colors, teal-color) !important;
 
   &:hover, &:focus, &:active {
-    background-color: map-get($colors, teal-color-light) !important;
+    background-color: map-get($colors, teal-light-color) !important;
   }
 }
 

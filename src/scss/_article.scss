@@ -33,7 +33,7 @@ article {
 
   kbd {
     font-size: 0.875rem;
-    color: $text-color-in-dark;
+    color: $text-in-dark-color;
     background-color: $primary-color;
     border-radius: 0.1875rem;
     font-family: $font-stack-code;
@@ -113,7 +113,7 @@ article {
     background-color: map-get($colors, green-color);
   }
   .change-fixed {
-    background-color: map-get($colors, teal-color-light);
+    background-color: map-get($colors, teal-light-color);
   }
   .change-improved, .change-updated {
     background-color: map-get($colors, teal-color);

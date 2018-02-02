@@ -5,12 +5,12 @@ body {
   font-weight: $text-font-weight;
 
    ::selection {
-    color: $text-color-in-dark;
+    color: $text-in-dark-color;
     background: $primary-color;
   }
 
    ::-moz-selection {
-    color: $text-color-in-dark;
+    color: $text-in-dark-color;
     background: $primary-color;
   }
 }
@@ -94,7 +94,7 @@ h6, .h6 {
   line-height: 3.125rem;
   background-color: $secondary-color;
   opacity: 0.9;
-  color: $text-color-in-dark;
+  color: $text-in-dark-color;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
