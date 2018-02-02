@@ -301,29 +301,6 @@ footer p {
   }
 }
 
-.header-section {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-}
-@media (min-width: 992px) {
-  .header-section .container {
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-}
-.header-section h1:after {
-  background: #19a5a5;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 1px;
-  left: 0;
-  right: 0;
-  margin: 1.25rem auto;
-  position: relative;
-  width: 3rem;
-}
-
 .color-section {
   padding: 2rem .9375rem;
   margin-bottom: 1.5rem;
