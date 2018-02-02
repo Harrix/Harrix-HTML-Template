@@ -33,7 +33,6 @@ $primary-color:           map-get($colors, red-color);
 $primary-light-color:     map-get($colors, red-color-light);
 $secondary-color:         map-get($colors, teal-color);
 $secondary-light-color:   map-get($colors, teal-color-light);
-
 $background-color:        map-get($colors, white-color);
 $header-background-color: map-get($colors, white-color);
 $text-color:              map-get($colors, black-color);
@@ -45,6 +44,7 @@ $link-hover-color:        map-get($colors, teal-color-light);
 $border-color:            map-get($colors, grey-light-color);
 $hr-color:                $secondary-color;
 $blockquote-color:        $secondary-color;
+
 $duration-animation: 0.2s;
 $type-animation: ease-in-out;
 $grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
