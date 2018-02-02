@@ -6,12 +6,12 @@ body {
 
    ::selection {
     color: $text-color-in-dark;
-    background: $main-color;
+    background: $primary-color;
   }
 
    ::-moz-selection {
     color: $text-color-in-dark;
-    background: $main-color;
+    background: $primary-color;
   }
 }
 
@@ -92,7 +92,7 @@ h6, .h6 {
   position: fixed;
   font-size: 1.25rem;
   line-height: 3.125rem;
-  background-color: map-get($colors, grey-color);
+  background-color: $secondary-color;
   opacity: 0.9;
   color: $text-color-in-dark;
   cursor: pointer;
@@ -102,7 +102,7 @@ h6, .h6 {
   display: none;
 
   &:hover {
-    background-color: map-get($colors, teal-color);
+    background-color: $secondary-color;
   }
 
   @media (max-width: $grid-breakpoint-mobile) {

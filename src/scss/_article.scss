@@ -34,7 +34,7 @@ article {
   kbd {
     font-size: 0.875rem;
     color: $text-color-in-dark;
-    background-color: $main-color;
+    background-color: $primary-color;
     border-radius: 0.1875rem;
     font-family: $font-stack-code;
   }
@@ -52,7 +52,7 @@ article {
       position: absolute;
       left: 0;
       top: 0.625rem;
-      color: $main-color;
+      color: $primary-color;
       content: open-quote;
       font-family: georgia, serif;
       font-size: 2em;
@@ -71,7 +71,7 @@ article {
   } 
   
   code {
-    color: $main-color;
+    color: $primary-color;
     font-weight: bold;
     font-family: $font-stack-code;
     font-size: $code-font-size;

@@ -29,18 +29,22 @@ green-color-light: #77cb87,
 orange-color:      #f5944c,
 ) !default;
 
+$primary-color:           map-get($colors, red-color);
+$primary-light-color:     map-get($colors, red-color-light);
+$secondary-color:         map-get($colors, teal-color);
+$secondary-light-color:   map-get($colors, teal-color-light);
+
 $background-color:        map-get($colors, white-color);
 $header-background-color: map-get($colors, white-color);
 $text-color:              map-get($colors, black-color);
 $text-heading-color:      map-get($colors, black-color);
 $text-header-color:       map-get($colors, black-color);
 $text-color-in-dark:      map-get($colors, white-color);
-$link-color:              map-get($colors, teal-color);
+$link-color:              $secondary-color;
 $link-hover-color:        map-get($colors, teal-color-light);
-$main-color:              map-get($colors, red-color);
 $border-color:            map-get($colors, grey-light-color);
-$hr-color:                map-get($colors, teal-color);
-$blockquote-color:        map-get($colors, teal-color);
+$hr-color:                $secondary-color;
+$blockquote-color:        $secondary-color;
 $duration-animation: 0.2s;
 $type-animation: ease-in-out;
 $grid-breakpoint-mobile: map-get($grid-breakpoints, lg);

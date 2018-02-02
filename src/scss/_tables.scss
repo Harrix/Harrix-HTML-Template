@@ -44,7 +44,7 @@
     font-size: 14px;
     letter-spacing: 1px;
     color: whitesmoke;
-    background-color: map-get($colors, teal-color);
+    background-color: $secondary-color;
     font-weight: bold;
     border: 0px !important;
     padding: 10px;

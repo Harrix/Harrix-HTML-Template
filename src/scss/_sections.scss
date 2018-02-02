@@ -2,7 +2,7 @@
   padding: 2rem .9375rem;
   margin-bottom: 1.5rem;
   text-align: center;
-  background-color: map-get($colors, teal-color);
+  background-color: $secondary-color;
   line-height: 28px;
 
   .container {
@@ -60,5 +60,5 @@
 }
 
 .color-red-section {
-  background-color: map-get($colors, red-color) !important;
+  background-color: $primary-color !important;
 }
