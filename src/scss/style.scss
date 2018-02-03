@@ -45,9 +45,6 @@ $border-color:            map-get($colors, grey-light-color);
 $hr-color:                $secondary-color;
 $blockquote-color:        $secondary-color;
 
-$duration-animation: 0.2s;
-$type-animation: ease-in-out;
-$grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
 $code-font-size: 1rem;
 $code-highlight-font-size: 0.8125rem;
 $header-font-size: 0.875rem;
@@ -57,13 +54,18 @@ $heading-h3-font-size: 1.5rem;
 $heading-h4-font-size: 1.375rem;
 $heading-h5-font-size: 1.25rem;
 $heading-h6-font-size: 1.125rem;
-$zindex-fixed: 1030 !default;
+
 $heading-font-weight: 400;
 $lead-font-weight: 400;
 $text-font-weight: 400;
 $blockquote-font-weight: 300;
-$button-border-radius: 3px;
+
+$grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
+$duration-animation: 0.2s;
+$type-animation: ease-in-out;
+$zindex-fixed: 1030 !default;
 $z-index-lightbox: 1000;
+$button-border-radius: 3px;
 
 @mixin animation() {
   transition:         all $duration-animation $type-animation;
