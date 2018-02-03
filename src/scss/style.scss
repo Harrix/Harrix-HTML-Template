@@ -7,15 +7,14 @@
 $font-stack: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 $font-stack-code: 'Roboto Mono', monospace;
 
-$grid-breakpoints: (
+$grid-breakpoints: ( 
 xs: 0,
 sm: 576px,
 md: 768px,
 lg: 992px,
-xl: 1200px
-) !default;
+xl: 1200px) !default;
 
-$colors: (
+$colors: ( 
 black-color:       #222222,
 white-color:       #ffffff,
 grey-color:        #aaaaaa,
@@ -45,21 +44,21 @@ $link-hover-color:        $secondary-light-color;
 $hr-color:                $secondary-color;
 $blockquote-color:        $secondary-color;
 
-$code-font-size: 1rem;
-$code-highlight-font-size: 0.8125rem;
-$header-font-size: 0.875rem;
-$heading-h1-font-size: 1.75rem;
-$heading-h2-font-size: 1.625rem;
-$heading-h3-font-size: 1.5rem;
-$heading-h4-font-size: 1.375rem;
-$heading-h5-font-size: 1.25rem;
-$heading-h6-font-size: 1.125rem;
-$blockquote-font-size: 1.125rem;
+$code-font-size:              1rem;
+$code-highlight-font-size:    0.8125rem;
+$header-font-size:            0.875rem;
+$heading-h1-font-size:        1.75rem;
+$heading-h2-font-size:        1.625rem;
+$heading-h3-font-size:        1.5rem;
+$heading-h4-font-size:        1.375rem;
+$heading-h5-font-size:        1.25rem;
+$heading-h6-font-size:        1.125rem;
+$blockquote-font-size:        1.125rem;
 $blockquote-mobile-font-size: 1rem;
 
-$heading-font-weight: 400;
-$lead-font-weight: 400;
-$text-font-weight: 400;
+$heading-font-weight:    400;
+$lead-font-weight:       400;
+$text-font-weight:       400;
 $blockquote-font-weight: 400;
 
 $grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
@@ -69,10 +68,10 @@ $z-index-fixed: 1030 !default;
 $button-border-radius: 3px;
 
 @mixin animation() {
-  transition:         all $duration-animation $type-animation;
+  transition: all $duration-animation $type-animation;
   -webkit-transition: all $duration-animation $type-animation;
-  -moz-transition:    all $duration-animation $type-animation;
-  -o-transition:      all $duration-animation $type-animation;
+  -moz-transition: all $duration-animation $type-animation;
+  -o-transition: all $duration-animation $type-animation;
 }
 
 @import "fonts";
