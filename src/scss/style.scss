@@ -7,14 +7,13 @@
 $font-stack: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 $font-stack-code: 'Roboto Mono', monospace;
 
-$grid-breakpoints: ( 
-xs: 0,
+$grid-breakpoints: ( xs: 0,
 sm: 576px,
 md: 768px,
 lg: 992px,
 xl: 1200px) !default;
 
-$colors: ( 
+$colors: (
 black-color:       #222222,
 white-color:       #ffffff,
 grey-color:        #aaaaaa,
@@ -62,16 +61,16 @@ $text-font-weight:       400;
 $blockquote-font-weight: 400;
 
 $grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
-$duration-animation: 0.2s;
-$type-animation: ease-in-out;
-$z-index-fixed: 1030 !default;
-$button-border-radius: 3px;
+$duration-animation:     0.2s;
+$type-animation:         ease-in-out;
+$z-index-fixed:          1030 !default;
+$button-border-radius:   3px;
 
 @mixin animation() {
-  transition: all $duration-animation $type-animation;
+  transition:         all $duration-animation $type-animation;
   -webkit-transition: all $duration-animation $type-animation;
-  -moz-transition: all $duration-animation $type-animation;
-  -o-transition: all $duration-animation $type-animation;
+  -moz-transition:    all $duration-animation $type-animation;
+  -o-transition:      all $duration-animation $type-animation;
 }
 
 @import "fonts";
