@@ -98,7 +98,6 @@ h6, .h6 {
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  z-index: $z-index-lightbox - 1;
   display: none;
 
   &:hover {

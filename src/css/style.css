@@ -168,7 +168,6 @@ h6, .h6 {
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  z-index: 999;
   display: none;
 }
 #js-back-to-top:hover {

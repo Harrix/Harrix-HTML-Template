@@ -44,7 +44,7 @@ article {
     padding: 0 0 0 2em;
     position: relative;
     quotes: "\201c" "\201d";
-    font-size: 1.25rem;
+    font-size: $blockquote-font-size;
     color: $blockquote-color;
     font-weight: $blockquote-font-weight;
 
@@ -61,7 +61,7 @@ article {
     }
 
     @media (max-width: $grid-breakpoint-mobile) {
-      font-size: 1rem;
+      font-size: $blockquote-mobile-font-size;
       padding-left: 1.5rem;
     }
 
