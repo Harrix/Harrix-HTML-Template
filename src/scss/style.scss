@@ -36,12 +36,12 @@ $secondary-light-color:   map-get($colors, teal-light-color);
 $background-color:        map-get($colors, white-color);
 $header-background-color: map-get($colors, white-color);
 $text-color:              map-get($colors, black-color);
-$text-heading-color:      map-get($colors, black-color);
-$text-header-color:       map-get($colors, black-color);
+$text-heading-color:      $text-color;
+$text-header-color:       $text-color;
 $text-in-dark-color:      map-get($colors, white-color);
+$border-color:            map-get($colors, grey-light-color);
 $link-color:              $secondary-color;
 $link-hover-color:        $secondary-light-color;
-$border-color:            map-get($colors, grey-light-color);
 $hr-color:                $secondary-color;
 $blockquote-color:        $secondary-color;
 
