@@ -371,7 +371,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   border-radius: 3px;
   text-transform: uppercase;
   font-size: 0.75rem;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 1px;
   margin-right: 0.625rem;
   padding: 0.5625rem 1.4375rem;
@@ -471,7 +471,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   caption-side: top;
   color: #222222;
   text-align: center;
-  font-weight: bold;
+  font-weight: 700;
 }
 .table_adaptive tr {
   padding: 5px;
@@ -486,7 +486,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
 }
 .table_adaptive tr .subhead {
   background: #f1f7f7;
-  font-weight: bold;
+  font-weight: 700;
 }
 .table_adaptive tr .subhead:hover {
   background: #24c5c5;
@@ -497,7 +497,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   letter-spacing: 1px;
   color: whitesmoke;
   background-color: #19a5a5;
-  font-weight: bold;
+  font-weight: 700;
   border: 0px !important;
   padding: 10px;
   text-align: center;
@@ -548,7 +548,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   .table_adaptive td:before {
     content: attr(data-label);
     float: left;
-    font-weight: bold;
+    font-weight: 700;
   }
 }
 .table_adaptive_gray {
@@ -565,7 +565,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   caption-side: top;
   color: #222222;
   text-align: center;
-  font-weight: bold;
+  font-weight: 700;
 }
 .table_adaptive_gray tr {
   padding: 8px;
@@ -651,7 +651,7 @@ button ::-moz-focus-inner, .btn ::-moz-focus-inner {
   caption-side: top;
   color: #222222;
   text-align: center;
-  font-weight: bold;
+  font-weight: 700;
 }
 .table_adaptive_classic tr {
   padding: 8px;
@@ -887,7 +887,7 @@ article blockquote:before {
   content: open-quote;
   font-family: georgia, serif;
   font-size: 2em;
-  font-weight: bold;
+  font-weight: 700;
   line-height: .7em;
 }
 @media (max-width: 992px) {
@@ -901,7 +901,7 @@ article blockquote:before {
 }
 article code {
   color: #de2b26;
-  font-weight: bold;
+  font-weight: 700;
   font-family: "Roboto Mono", monospace;
   font-size: 1rem;
 }

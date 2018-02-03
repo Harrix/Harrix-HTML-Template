@@ -56,7 +56,7 @@ article {
       content: open-quote;
       font-family: georgia, serif;
       font-size: 2em;
-      font-weight: bold;
+      font-weight: 700;
       line-height: .7em;
     }
 
@@ -72,7 +72,7 @@ article {
   
   code {
     color: $primary-color;
-    font-weight: bold;
+    font-weight: 700;
     font-family: $font-stack-code;
     font-size: $code-font-size;
   }
