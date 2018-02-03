@@ -869,9 +869,9 @@ article blockquote {
   padding: 0 0 0 2em;
   position: relative;
   quotes: "\201c" "\201d";
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   color: #19a5a5;
-  font-weight: 300;
+  font-weight: 400;
 }
 article blockquote:before {
   position: absolute;
