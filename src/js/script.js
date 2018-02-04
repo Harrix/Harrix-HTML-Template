@@ -5,16 +5,9 @@
  */
 
 jQuery(function() {
-    //Run syntax highlighting
-    jQuery('pre code').each(function(i, block) {
-        hljs.highlightBlock(block);
-    });
+    initSyntaxHighlighting();
 
     $(".lightbox").lightGallery({
-        hash: true
-    });
-    $(".lightboxGallery").lightGallery({
-        selector: '.card',
         hash: true
     });
 
@@ -60,6 +53,12 @@ jQuery(function() {
         }
     });
 });
+
+function initSyntaxHighlighting() {
+    jQuery('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+}
 
 function makeTOC($heading) {
     if ($("#js-table-of-contents").length) {
