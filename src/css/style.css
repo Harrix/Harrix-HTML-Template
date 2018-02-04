@@ -169,10 +169,10 @@ h6, .h6 {
     z-index: 1030;
   }
 }
-.navbar a, .navbar .nav-link {
+.navbar .nav-link {
   color: #222222;
 }
-.navbar a:hover, .navbar .nav-link:hover {
+.navbar .nav-link:hover {
   color: #19a5a5;
 }
 .navbar .navbar-toggler {
