@@ -2,20 +2,20 @@
   body {
     padding-top: 5.0rem;
   }
-
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;    
-    z-index: $z-index-navbar;
-  }
 }
 
 .navbar {
   font-size: $header-font-size;
   background-color: $background-header-color;
   color: $text-header-color;
+
+  @media (min-width: $grid-breakpoint-mobile) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;    
+    z-index: $z-index-navbar;
+  }
 
   //NEW id
   #js-logo {
