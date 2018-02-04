@@ -13,7 +13,7 @@ jQuery(function() {
 
     initBackToTop();
 
-    makeTOC("h2");
+    initTableOfContents("h2");
 
     //Smooth scrolling to anchors
     jQuery('li a[href*="#"], h2 a[href*="#"]').not('[href="#"]').click(function() {
@@ -74,7 +74,7 @@ function initBackToTop() {
     });
 }
 
-function makeTOC(heading) {
+function initTableOfContents(heading) {
     if ($("#js-table-of-contents").length) {
         var ToC = "<h2>Содержание:</h2><ul>";
         var newLine, el, title, link;
