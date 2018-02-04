@@ -32,7 +32,6 @@ function initLightGallery(rowHeight, margins) {
 
 function initShrinkLogo() {
     jQuery(window).scroll(function() {
-        //Change the size of the logo when scroll
         if (jQuery(this).scrollTop() >= 50)
             jQuery("#js-logo").addClass("js-shrink");
         else
