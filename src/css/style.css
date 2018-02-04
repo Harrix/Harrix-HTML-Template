@@ -169,19 +169,6 @@ h6, .h6 {
     z-index: 1030;
   }
 }
-.navbar #js-logo {
-  height: 3.125rem;
-  transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-}
-.navbar .js-shrink {
-  height: 2.5rem;
-}
-.navbar .icon-hamburger {
-  height: 1.125rem;
-}
 .navbar a, .navbar .nav-link {
   color: #222222;
 }
@@ -230,6 +217,19 @@ h6, .h6 {
   color: #19a5a5;
   text-decoration: none;
   background-color: #ffffff;
+}
+.navbar #js-logo {
+  height: 3.125rem;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+.navbar .js-shrink {
+  height: 2.5rem;
+}
+.navbar .icon-hamburger {
+  height: 1.125rem;
 }
 .navbar .icon {
   height: 0.875rem;

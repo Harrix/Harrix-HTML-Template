@@ -17,22 +17,6 @@
     z-index: $z-index-navbar;
   }
 
-  #js-logo {
-    //NEW id
-    height: 3.125rem;
-    @include animation();
-  }
-
-  .js-shrink {
-    //NEW class
-    height: 2.5rem;
-  }
-
-  .icon-hamburger {
-    //NEW class
-    height: 1.125rem;
-  }
-
   a, .nav-link {
     color: $text-header-color;
 
@@ -92,6 +76,22 @@
       text-decoration: none;
       background-color: $background-header-color;
     }
+  }
+
+  #js-logo {
+    //NEW id
+    height: 3.125rem;
+    @include animation();
+  }
+
+  .js-shrink {
+    //NEW class
+    height: 2.5rem;
+  }
+
+  .icon-hamburger {
+    //NEW class
+    height: 1.125rem;
   }
 
   .icon {
