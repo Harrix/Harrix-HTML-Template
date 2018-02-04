@@ -53,23 +53,23 @@ function initSyntaxHighlighting() {
     });
 }
 
-function initLightGallery($rowHeight, $margins) {
+function initLightGallery(rowHeight, margins) {
     $(".lightbox").lightGallery({
         hash: true
     });
 
     $(".gallery").justifiedGallery({
-        rowHeight: $rowHeight,
-        margins: $margins
+        rowHeight: rowHeight,
+        margins: margins
     });
 }
 
-function makeTOC($heading) {
+function makeTOC(heading) {
     if ($("#js-table-of-contents").length) {
         var ToC = "<h2>Содержание:</h2><ul>";
         var newLine, el, title, link;
         var counter = 1;
-        $("article " + $heading).each(function() {
+        $("article " + heading).each(function() {
             el = $(this);
             title = el.text();
             var attr = el.attr("id");
