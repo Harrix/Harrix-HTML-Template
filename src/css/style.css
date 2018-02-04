@@ -107,7 +107,7 @@ h6, .h6 {
   font-weight: 400;
 }
 
-.short-undeline:after {
+.short-underline:after {
   background: #19a5a5;
   bottom: 0;
   content: "";
