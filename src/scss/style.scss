@@ -40,6 +40,8 @@ $text-in-dark-color:      map-get($colors, white-color);
 $border-color:            map-get($colors, grey-light-color);
 $link-color:              $secondary-color;
 $link-hover-color:        $secondary-light-color;
+$link-header-color:       $text-color;
+$link-hover-header-color: $secondary-color;
 $hr-color:                $secondary-color;
 $blockquote-color:        $secondary-color;
 

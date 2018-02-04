@@ -18,10 +18,10 @@
   }
 
   .nav-link {
-    color: $text-header-color;
+    color: $link-header-color;
 
     &:hover {
-      color: $link-color;
+      color: $link-hover-header-color;
     }
   }
 
