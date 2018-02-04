@@ -32,7 +32,7 @@ $primary-light-color:     map-get($colors, red-light-color);
 $secondary-color:         map-get($colors, teal-color);
 $secondary-light-color:   map-get($colors, teal-light-color);
 $background-color:        map-get($colors, white-color);
-$header-background-color: map-get($colors, white-color);
+$background-header-color: map-get($colors, white-color);
 $text-color:              map-get($colors, black-color);
 $text-heading-color:      $text-color;
 $text-header-color:       $text-color;

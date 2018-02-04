@@ -14,7 +14,7 @@
 
 header {
   font-size: $header-font-size;
-  background-color: $header-background-color;
+  background-color: $background-header-color;
   color: $text-header-color;
 
   //NEW id
@@ -79,7 +79,7 @@ header {
   .dropdown-menu {
     font-size: $header-font-size;
     color: $text-header-color;
-    background-color: $header-background-color;
+    background-color: $background-header-color;
     border: 0 solid $border-color;
     border-radius: 0rem;
     box-shadow: none;
@@ -90,7 +90,7 @@ header {
     &:focus, &:hover, &.active, &:active {
       color: $link-color;
       text-decoration: none;
-      background-color: $header-background-color;
+      background-color: $background-header-color;
     }
   }
 
