@@ -6,15 +6,10 @@
 
 jQuery(function() {
     initSyntaxHighlighting();
-
     initLightGallery(300, 10);
-
     initShrinkLogo();
-
     initBackToTop();
-
     initTableOfContents("h2");
-
     initSmoothScrollingToAnchors();
 });
 
