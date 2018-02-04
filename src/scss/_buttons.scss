@@ -29,13 +29,13 @@ button, .btn {
   }
 }
 
-//NEW class
 .btn-title {
+  //NEW class
   min-width: 8.125rem;
 }
 
-//NEW class
 .btn-teal {
+  //NEW class
   background-color: map-get($colors, teal-color) !important;
 
   &:hover, &:focus, &:active {
@@ -43,8 +43,8 @@ button, .btn {
   }
 }
 
-//NEW class
 .btn-green {
+  //NEW class
   background-color: map-get($colors, green-color) !important;
 
   &:hover, &:focus, &:active {

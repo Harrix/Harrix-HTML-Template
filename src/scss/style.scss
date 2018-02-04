@@ -63,7 +63,7 @@ $blockquote-font-weight: 400;
 $grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
 $duration-animation:     0.2s;
 $type-animation:         ease-in-out;
-$z-index-navbar:          1030 !default;
+$z-index-navbar:         1030 !default;
 $button-border-radius:   3px;
 
 @mixin animation() {

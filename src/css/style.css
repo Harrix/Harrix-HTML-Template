@@ -154,7 +154,13 @@ h6, .h6 {
   body {
     padding-top: 5.0rem;
   }
-
+}
+.navbar {
+  font-size: 0.875rem;
+  background-color: #ffffff;
+  color: #222222;
+}
+@media (min-width: 992px) {
   .navbar {
     position: fixed;
     top: 0;
@@ -162,11 +168,6 @@ h6, .h6 {
     right: 0;
     z-index: 1030;
   }
-}
-.navbar {
-  font-size: 0.875rem;
-  background-color: #ffffff;
-  color: #222222;
 }
 .navbar #js-logo {
   height: 3.125rem;

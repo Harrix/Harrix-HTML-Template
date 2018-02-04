@@ -4,12 +4,12 @@ body {
   color: $text-color;
   font-weight: $text-font-weight;
 
-   ::selection {
+  ::selection {
     color: $text-in-dark-color;
     background: $primary-color;
   }
 
-   ::-moz-selection {
+  ::-moz-selection {
     color: $text-in-dark-color;
     background: $primary-color;
   }
@@ -61,8 +61,8 @@ h6, .h6 {
   font-weight: $lead-font-weight;
 }
 
-//NEW class
 .short-undeline {
+  //NEW class
   &:after {
     background: $hr-color;
     bottom: 0;
@@ -83,8 +83,8 @@ h6, .h6 {
   }
 }
 
-//NEW id
 #js-back-to-top {
+  //NEW id
   height: 3.125rem;
   width: 3.125rem;
   right: 3.75rem;

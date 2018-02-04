@@ -13,23 +13,23 @@
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;    
+    right: 0;
     z-index: $z-index-navbar;
   }
 
-  //NEW id
   #js-logo {
+    //NEW id
     height: 3.125rem;
     @include animation();
   }
 
-  //NEW class
   .js-shrink {
+    //NEW class
     height: 2.5rem;
   }
 
-  //NEW class
   .icon-hamburger {
+    //NEW class
     height: 1.125rem;
   }
 
@@ -94,8 +94,8 @@
     }
   }
 
-  //NEW class
   .icon {
+    //NEW class
     height: 0.875rem;
 
     @media (max-width: $grid-breakpoint-mobile) {
