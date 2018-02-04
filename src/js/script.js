@@ -9,26 +9,9 @@ jQuery(function() {
 
     initLightGallery(300, 10);
 
-    jQuery(window).scroll(function() {
-        //Change the size of the logo when scroll
-        if (jQuery(this).scrollTop() >= 50)
-            jQuery("#js-logo").addClass("js-shrink");
-        else
-            jQuery("#js-logo").removeClass("js-shrink");
+    initShrinkLogo();
 
-        //Hide or show the button "Back to up"
-        if (jQuery(this).scrollTop() >= 200)
-            jQuery('#js-back-to-top').fadeIn();
-        else
-            jQuery('#js-back-to-top').fadeOut();
-    });
-
-    //When you press the "Back to up" animated transition
-    jQuery('#js-back-to-top').click(function() {
-        jQuery('html, body').animate({
-            scrollTop: 0
-        }, 800);
-    });
+    initBackToTop();
 
     makeTOC("h2");
 
@@ -61,6 +44,33 @@ function initLightGallery(rowHeight, margins) {
     $(".gallery").justifiedGallery({
         rowHeight: rowHeight,
         margins: margins
+    });
+}
+
+function initShrinkLogo() {
+    jQuery(window).scroll(function() {
+        //Change the size of the logo when scroll
+        if (jQuery(this).scrollTop() >= 50)
+            jQuery("#js-logo").addClass("js-shrink");
+        else
+            jQuery("#js-logo").removeClass("js-shrink");
+    });
+}
+
+function initBackToTop() {
+    jQuery(window).scroll(function() {
+        //Hide or show the button "Back to up"
+        if (jQuery(this).scrollTop() >= 200)
+            jQuery('#js-back-to-top').fadeIn();
+        else
+            jQuery('#js-back-to-top').fadeOut();
+    });
+
+    //When you press the "Back to top" animated transition
+    jQuery('#js-back-to-top').click(function() {
+        jQuery('html, body').animate({
+            scrollTop: 0
+        }, 800);
     });
 }
 
