@@ -193,8 +193,8 @@ h6, .h6 {
   }
   .navbar .dropdown-item {
     border-bottom: 1px solid #eeeeee;
-    padding-bottom: 1.0rem;
-    padding-top: 1.0rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
   }
   .navbar .dropdown-item:last-child {
     border-bottom: 0 solid transparent;
