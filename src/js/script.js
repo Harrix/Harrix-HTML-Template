@@ -7,14 +7,7 @@
 jQuery(function() {
     initSyntaxHighlighting();
 
-    $(".lightbox").lightGallery({
-        hash: true
-    });
-
-    $(".gallery").justifiedGallery({
-        rowHeight: 300,
-        margins: 10
-    });
+    initLightGallery(300, 10);
 
     jQuery(window).scroll(function() {
         //Change the size of the logo when scroll
@@ -57,6 +50,17 @@ jQuery(function() {
 function initSyntaxHighlighting() {
     jQuery('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
+    });
+}
+
+function initLightGallery($rowHeight, $margins) {
+    $(".lightbox").lightGallery({
+        hash: true
+    });
+
+    $(".gallery").justifiedGallery({
+        rowHeight: $rowHeight,
+        margins: $margins
     });
 }
 
