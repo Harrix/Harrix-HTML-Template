@@ -163,60 +163,60 @@ h6, .h6 {
     z-index: 1030;
   }
 }
-header {
+.navbar {
   font-size: 0.875rem;
   background-color: #ffffff;
   color: #222222;
 }
-header #js-logo {
+.navbar #js-logo {
   height: 3.125rem;
   transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
 }
-header .js-shrink {
-  height: 2.5rem !important;
+.navbar .js-shrink {
+  height: 2.5rem;
 }
-header .icon-hamburger {
+.navbar .icon-hamburger {
   height: 1.125rem;
 }
-header a, header .nav-link {
-  color: #222222 !important;
+.navbar a, .navbar .nav-link {
+  color: #222222;
 }
-header a:hover, header .nav-link:hover {
-  color: #19a5a5 !important;
+.navbar a:hover, .navbar .nav-link:hover {
+  color: #19a5a5;
 }
-header .navbar-toggler {
-  border: 0 solid transparent !important;
+.navbar .navbar-toggler {
+  border: 0 solid transparent;
 }
-header .dropdown-item {
+.navbar .dropdown-item {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
 @media (max-width: 992px) {
-  header .nav-item {
+  .navbar .nav-item {
     border-bottom: 1px solid #eeeeee;
     padding-bottom: 0.5rem;
     padding-top: 0.5rem;
   }
-  header .nav-item:last-child {
+  .navbar .nav-item:last-child {
     border-bottom: 0 solid transparent;
   }
-  header .dropdown-item {
+  .navbar .dropdown-item {
     border-bottom: 1px solid #eeeeee;
     padding-bottom: 1.0rem;
     padding-top: 1.0rem;
   }
-  header .dropdown-item:last-child {
+  .navbar .dropdown-item:last-child {
     border-bottom: 0 solid transparent;
     padding-bottom: 0rem;
   }
-  header .dropdown-item:first-child {
+  .navbar .dropdown-item:first-child {
     padding-top: 0rem;
   }
 }
-header .dropdown-menu {
+.navbar .dropdown-menu {
   font-size: 0.875rem;
   color: #222222;
   background-color: #ffffff;
@@ -225,16 +225,16 @@ header .dropdown-menu {
   box-shadow: none;
   padding-top: 0rem;
 }
-header .dropdown-item:focus, header .dropdown-item:hover, header .dropdown-item.active, header .dropdown-item:active {
+.navbar .dropdown-item:focus, .navbar .dropdown-item:hover, .navbar .dropdown-item.active, .navbar .dropdown-item:active {
   color: #19a5a5;
   text-decoration: none;
   background-color: #ffffff;
 }
-header .icon {
+.navbar .icon {
   height: 0.875rem;
 }
 @media (max-width: 992px) {
-  header .icon {
+  .navbar .icon {
     height: 1.125rem;
   }
 }

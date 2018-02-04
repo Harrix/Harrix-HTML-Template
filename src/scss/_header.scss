@@ -12,7 +12,7 @@
   }
 }
 
-header {
+.navbar {
   font-size: $header-font-size;
   background-color: $background-header-color;
   color: $text-header-color;
@@ -25,7 +25,7 @@ header {
 
   //NEW class
   .js-shrink {
-    height: 2.5rem !important;
+    height: 2.5rem;
   }
 
   //NEW class
@@ -34,15 +34,15 @@ header {
   }
 
   a, .nav-link {
-    color: $text-header-color !important;
+    color: $text-header-color;
 
     &:hover {
-      color: $link-color !important;
+      color: $link-color;
     }
   }
 
   .navbar-toggler {
-    border: 0 solid transparent !important;
+    border: 0 solid transparent;
   }
 
   .dropdown-item {
