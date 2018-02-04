@@ -168,14 +168,14 @@ header {
   background-color: #ffffff;
   color: #222222;
 }
-header #logo {
+header #js-logo {
   height: 3.125rem;
   transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
 }
-header .shrink {
+header .js-shrink {
   height: 2.5rem !important;
 }
 header .icon-hamburger {

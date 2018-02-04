@@ -18,13 +18,13 @@ header {
   color: $text-header-color;
 
   //NEW id
-  #logo {
+  #js-logo {
     height: 3.125rem;
     @include animation();
   }
 
   //NEW class
-  .shrink {
+  .js-shrink {
     height: 2.5rem !important;
   }
 

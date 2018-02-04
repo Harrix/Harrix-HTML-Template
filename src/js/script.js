@@ -26,9 +26,9 @@ jQuery(function() {
     jQuery(window).scroll(function() {
         //Change the size of the logo when scroll
         if (jQuery(this).scrollTop() >= 50)
-            jQuery("#logo").addClass("shrink");
+            jQuery("#js-logo").addClass("js-shrink");
         else
-            jQuery("#logo").removeClass("shrink");
+            jQuery("#js-logo").removeClass("js-shrink");
 
         //Hide or show the button "Back to up"
         if (jQuery(this).scrollTop() >= 200)
