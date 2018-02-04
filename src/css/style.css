@@ -226,7 +226,7 @@ h6, .h6 {
   -o-transition: all 0.2s ease-in-out;
 }
 .navbar .js-shrink {
-  height: 2.5rem;
+  height: 2.5rem !important;
 }
 .navbar .icon-hamburger {
   height: 1.125rem;
