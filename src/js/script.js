@@ -20,11 +20,11 @@ function initSyntaxHighlighting() {
 }
 
 function initLightGallery(rowHeight, margins) {
-    $(".lightbox").lightGallery({
+    $(".js-lightbox").lightGallery({
         hash: true
     });
 
-    $(".gallery").justifiedGallery({
+    $(".js-gallery").justifiedGallery({
         rowHeight: rowHeight,
         margins: margins
     });

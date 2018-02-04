@@ -39,11 +39,11 @@
   font-weight: 400;
   src: url(../fonts/RobotoMono-Italic.ttf);
 }
-.lightbox img {
+.js-lightbox img {
   max-width: 100%;
   height: auto;
 }
-.lightbox figcaption {
+.js-lightbox figcaption {
   display: none;
 }
 
