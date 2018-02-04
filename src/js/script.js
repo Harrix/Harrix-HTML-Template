@@ -15,19 +15,7 @@ jQuery(function() {
 
     initTableOfContents("h2");
 
-    //Smooth scrolling to anchors
-    jQuery('li a[href*="#"], h2 a[href*="#"]').not('[href="#"]').click(function() {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = jQuery(this.hash);
-            target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                jQuery('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 800);
-                return false;
-            }
-        }
-    });
+    initSmoothScrollingToAnchors();
 });
 
 function initSyntaxHighlighting() {
@@ -94,4 +82,19 @@ function initTableOfContents(heading) {
         ToC += "</ul>";
         $("#js-table-of-contents").prepend(ToC);
     }
+}
+
+function initSmoothScrollingToAnchors() {
+    jQuery('li a[href*="#"], h2 a[href*="#"]').not('[href="#"]').click(function() {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = jQuery(this.hash);
+            target = target.length ? target : jQuery('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                jQuery('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 800);
+                return false;
+            }
+        }
+    });
 }
