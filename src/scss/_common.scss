@@ -13,6 +13,10 @@ body {
     color: $text-in-dark-color;
     background: $primary-color;
   }
+
+  @media (min-width: $grid-breakpoint-mobile) {
+      padding-top: 5rem;
+  }
 }
 
 @media (max-width: $grid-breakpoint-mobile) {
