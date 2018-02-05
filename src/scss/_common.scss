@@ -51,7 +51,7 @@ body {
   }
 
   @media (max-width: $grid-breakpoint-mobile) {
-    bottom: 1.25rem !important;
-    right: 1.25rem !important;
+    bottom: 1.25rem;
+    right: 1.25rem;
   }
 }

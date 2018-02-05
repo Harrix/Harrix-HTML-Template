@@ -97,8 +97,8 @@ body ::-moz-selection {
 }
 @media (max-width: 992px) {
   #js-back-to-top {
-    bottom: 1.25rem !important;
-    right: 1.25rem !important;
+    bottom: 1.25rem;
+    right: 1.25rem;
   }
 }
 
