@@ -60,22 +60,6 @@ h6, .h6 {
   margin-bottom: 1rem;
 }
 
-.short-underline {
-  //NEW class
-  &:after {
-    background: $hr-color;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 1px;
-    left: 0;
-    right: 0;
-    margin: 1.25rem auto;
-    position: relative;
-    width: 3rem;
-  }
-}
-
 #js-back-to-top {
   //NEW id
   height: 3.125rem;

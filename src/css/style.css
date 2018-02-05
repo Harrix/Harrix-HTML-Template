@@ -107,19 +107,6 @@ h6, .h6 {
   margin-bottom: 1rem;
 }
 
-.short-underline:after {
-  background: #19a5a5;
-  bottom: 0;
-  content: "";
-  display: block;
-  height: 1px;
-  left: 0;
-  right: 0;
-  margin: 1.25rem auto;
-  position: relative;
-  width: 3rem;
-}
-
 #js-back-to-top {
   height: 3.125rem;
   width: 3.125rem;
@@ -869,6 +856,18 @@ article code {
 }
 article .fa-ul {
   margin-left: 1.5rem;
+}
+article .short-underline:after {
+  background: #19a5a5;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 0;
+  right: 0;
+  margin: 1.25rem auto;
+  position: relative;
+  width: 3rem;
 }
 article .changes {
   display: table;
