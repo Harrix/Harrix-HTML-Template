@@ -7,11 +7,13 @@
 $font-stack: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 $font-stack-code: 'Roboto Mono', monospace;
 
-$grid-breakpoints: ( xs: 0,
+$grid-breakpoints: ( 
+xs: 0,
 sm: 576px,
 md: 768px,
 lg: 992px,
-xl: 1200px) !default;
+xl: 1200px
+) !default;
 
 $colors: (
 black-color:       #222222,
