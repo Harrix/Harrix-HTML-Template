@@ -4,3 +4,12 @@
     height: auto;
   }
 }
+
+.lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
+  border-radius: 0;
+  border-width: 0;
+  
+  &:hover {
+    @include saturate();
+  }
+}
