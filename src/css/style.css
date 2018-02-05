@@ -43,9 +43,6 @@
   max-width: 100%;
   height: auto;
 }
-.js-lightbox figcaption {
-  display: none;
-}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
