@@ -172,7 +172,7 @@ body ::-moz-selection {
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
 }
-.navbar .js-shrink {
+.navbar .js-logo-shrink {
   height: 2.5rem !important;
 }
 .navbar .icon-hamburger {

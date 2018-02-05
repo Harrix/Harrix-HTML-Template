@@ -33,9 +33,9 @@ function initLightGallery(rowHeight, margins) {
 function initShrinkLogo() {
     jQuery(window).scroll(function() {
         if (jQuery(this).scrollTop() >= 50)
-            jQuery("#js-logo").addClass("js-shrink");
+            jQuery("#js-logo").addClass("js-logo-shrink");
         else
-            jQuery("#js-logo").removeClass("js-shrink");
+            jQuery("#js-logo").removeClass("js-logo-shrink");
     });
 }
 
