@@ -72,37 +72,6 @@ body ::-moz-selection {
     max-width: 100%;
   }
 }
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
-  margin-top: 1.125rem;
-  margin-bottom: 1rem;
-  color: #222222;
-}
-
-h1, .h1 {
-  font-size: 1.75rem;
-}
-
-h2, .h2 {
-  font-size: 1.625rem;
-}
-
-h3, .h3 {
-  font-size: 1.5rem;
-}
-
-h4, .h4 {
-  font-size: 1.375rem;
-}
-
-h5, .h5 {
-  font-size: 1.25rem;
-}
-
-h6, .h6 {
-  font-size: 1.125rem;
-}
-
 .row div {
   margin-bottom: 1rem;
 }
@@ -799,6 +768,30 @@ article a:hover {
   text-decoration: underline;
   color: #71c2c2;
 }
+article .h1, article .h2, article .h3, article .h4, article .h5, article .h6, article h1, article h2, article h3, article h4, article h5, article h6 {
+  font-weight: 400;
+  margin-top: 1.125rem;
+  margin-bottom: 1rem;
+  color: #222222;
+}
+article h1, article .h1 {
+  font-size: 1.75rem;
+}
+article h2, article .h2 {
+  font-size: 1.625rem;
+}
+article h3, article .h3 {
+  font-size: 1.5rem;
+}
+article h4, article .h4 {
+  font-size: 1.375rem;
+}
+article h5, article .h5 {
+  font-size: 1.25rem;
+}
+article h6, article .h6 {
+  font-size: 1.125rem;
+}
 article h1 a, article h2 a, article h3 a, article h4 a, article h5 a, article h6 a, article .h1 a, article .h2 a, article .h3 a, article .h4 a, article .h5 a, article .h6 a {
   color: #222222;
 }
@@ -848,7 +841,7 @@ article blockquote:before {
 article blockquote:before {
   font-size: 1.75em;
 }
-article code {
+article code, article var {
   color: #de2b26;
   font-weight: 700;
   font-family: "Roboto Mono", monospace;
