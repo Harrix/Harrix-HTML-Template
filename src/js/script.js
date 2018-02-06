@@ -21,7 +21,8 @@ function initSyntaxHighlighting() {
 
 function initLightGallery(rowHeight, margins) {
     $('.js-lightbox').lightGallery({
-        hash: true
+        hash: true,
+        share: false
     });
 
     $('.js-gallery').justifiedGallery({
