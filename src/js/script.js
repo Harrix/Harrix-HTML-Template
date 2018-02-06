@@ -7,7 +7,7 @@
 jQuery(function() {
     initSyntaxHighlighting();
     initLightGallery(200, 10);
-    initShrinkLogo();
+    initShrinkLogo(50);
     initBackToTop();
     initTableOfContents("h2");
     initSmoothScrollingToAnchors();
@@ -31,9 +31,9 @@ function initLightGallery(rowHeight, margins) {
     });
 }
 
-function initShrinkLogo() {
+function initShrinkLogo(scrollTop) {
     jQuery(window).scroll(function() {
-        if (jQuery(this).scrollTop() >= 50)
+        if (jQuery(this).scrollTop() >= scrollTop)
             jQuery("#js-logo").addClass("js-logo-shrink");
         else
             jQuery("#js-logo").removeClass("js-logo-shrink");
