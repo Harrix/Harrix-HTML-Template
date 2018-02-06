@@ -9,7 +9,7 @@ jQuery(function() {
     initLightGallery(200, 10);
     initShrinkLogo(50);
     initBackToTop(200);
-    initTableOfContents("h2");
+    initTableOfContents('h2');
     initSmoothScrollingToAnchors();
 });
 
@@ -20,11 +20,11 @@ function initSyntaxHighlighting() {
 }
 
 function initLightGallery(rowHeight, margins) {
-    $(".js-lightbox").lightGallery({
+    $('.js-lightbox').lightGallery({
         hash: true
     });
 
-    $(".js-gallery").justifiedGallery({
+    $('.js-gallery').justifiedGallery({
         rowHeight: rowHeight,
         margins: margins,
         border: 0
@@ -34,22 +34,20 @@ function initLightGallery(rowHeight, margins) {
 function initShrinkLogo(scrollTop) {
     jQuery(window).scroll(function() {
         if (jQuery(this).scrollTop() >= scrollTop)
-            jQuery("#js-logo").addClass("js-logo-shrink");
+            jQuery('#js-logo').addClass('js-logo-shrink');
         else
-            jQuery("#js-logo").removeClass("js-logo-shrink");
+            jQuery('#js-logo').removeClass('js-logo-shrink');
     });
 }
 
 function initBackToTop(scrollTop) {
     jQuery(window).scroll(function() {
-        //Hide or show the button "Back to up"
         if (jQuery(this).scrollTop() >= scrollTop)
             jQuery('#js-back-to-top').fadeIn();
         else
             jQuery('#js-back-to-top').fadeOut();
     });
 
-    //When you press the "Back to top" animated transition
     jQuery('#js-back-to-top').click(function() {
         jQuery('html, body').animate({
             scrollTop: 0
