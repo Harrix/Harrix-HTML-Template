@@ -6,7 +6,7 @@
 
 jQuery(function() {
     initSyntaxHighlighting();
-    initLightGallery(300, 10);
+    initLightGallery(200, 10);
     initShrinkLogo();
     initBackToTop();
     initTableOfContents("h2");
@@ -26,7 +26,8 @@ function initLightGallery(rowHeight, margins) {
 
     $(".js-gallery").justifiedGallery({
         rowHeight: rowHeight,
-        margins: margins
+        margins: margins,
+        border: 0
     });
 }
 
