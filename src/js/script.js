@@ -8,7 +8,7 @@ jQuery(function() {
     initSyntaxHighlighting();
     initLightGallery(200, 10);
     initShrinkLogo(50);
-    initBackToTop();
+    initBackToTop(200);
     initTableOfContents("h2");
     initSmoothScrollingToAnchors();
 });
@@ -40,10 +40,10 @@ function initShrinkLogo(scrollTop) {
     });
 }
 
-function initBackToTop() {
+function initBackToTop(scrollTop) {
     jQuery(window).scroll(function() {
         //Hide or show the button "Back to up"
-        if (jQuery(this).scrollTop() >= 200)
+        if (jQuery(this).scrollTop() >= scrollTop)
             jQuery('#js-back-to-top').fadeIn();
         else
             jQuery('#js-back-to-top').fadeOut();
