@@ -49,11 +49,7 @@
   border-width: 0;
 }
 .lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item:hover {
-  filter: saturate(140%);
-  -webkit-filter: saturate(140%);
-  -moz-filter: saturate(140%);
-  -o-filter: saturate(140%);
-  -ms-filter: saturate(140%);
+  opacity: 0.8;
 }
 
 body {
