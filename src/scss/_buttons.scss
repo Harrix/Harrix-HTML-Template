@@ -11,7 +11,7 @@ button, .btn {
 
 .btn {
   background-color: $primary-color;
-  color: $text-in-dark-color !important;
+  color: $text-in-dark-color;
   border: 0;
   border-radius: $button-border-radius;
   margin-right: 0.625rem;
@@ -19,7 +19,7 @@ button, .btn {
 
   &:hover, &:focus, &:active {
     background-color: $primary-light-color;
-    color: $text-in-dark-color !important;
+    color: $text-in-dark-color;
     border: 0;
   }
 }
@@ -31,18 +31,18 @@ button, .btn {
 
 .btn-teal {
   //NEW class
-  background-color: map-get($colors, teal-color) !important;
+  background-color: map-get($colors, teal-color);
 
   &:hover, &:focus, &:active {
-    background-color: map-get($colors, teal-light-color) !important;
+    background-color: map-get($colors, teal-light-color);
   }
 }
 
 .btn-green {
   //NEW class
-  background-color: map-get($colors, green-color) !important;
+  background-color: map-get($colors, green-color);
 
   &:hover, &:focus, &:active {
-    background-color: map-get($colors, green-color-light) !important;
+    background-color: map-get($colors, green-color-light);
   }
 }
