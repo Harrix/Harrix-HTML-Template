@@ -646,10 +646,11 @@ article pre code, pre code {
   font-size: 0.8125rem;
   line-height: 1.125rem;
   color: #474747;
-  background: #f7f7f7;
-  border-width: 0;
+  background: #f8f8f8;
+  border-width: 1px;
   border-color: #e9e8e8;
   border-style: solid;
+  border-radius: 3px;
   font-weight: normal;
   white-space: pre-wrap;
   padding: 1rem;
@@ -668,7 +669,7 @@ article pre code, pre code {
 
 .hljs-comment,
 .hljs-quote {
-  color: #616161;
+  color: #888a85;
   font-style: italic;
 }
 
