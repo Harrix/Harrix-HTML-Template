@@ -9,7 +9,7 @@ jQuery(function() {
     initLightGallery(200, 10);
     initShrinkLogo(50);
     initBackToTop(200, 0.8);
-    initTableOfContents('article ', 'h2');
+    initTableOfContents('article', 'h2');
     initSmoothScrollingToAnchors();
 });
 
@@ -59,18 +59,17 @@ function initBackToTop(scrollTop, duration) {
 function initTableOfContents(mainTag, heading) {
     if ($('#js-table-of-contents').length) {
         var result = '<h2>' + translate('Table of contents') + '</h2>\n<ul>';
-        var newLine, el, title, link;
-        var counter = 1;
-        $(mainTag + heading).each(function() {
-            el = $(this);
-            title = el.text();
-            var attr = el.attr('id');
+        var newLine, element, title;
+        var numberHeadingWithoutId = 1;
+        $(mainTag + ' ' + heading).each(function() {
+            element = $(this);
+            title = element.text();
+            var attr = element.attr('id');
             if (!(typeof attr !== typeof undefined && attr !== false)) {
-                el.attr('id', 'heading' + counter);
-                counter++;
+                element.attr('id', 'heading' + numberHeadingWithoutId);
+                numberHeadingWithoutId++;
             }
-            link = '#' + el.attr('id');
-            newLine = "<li><a href='" + link + "'>" + title + "</a></li>\n";
+            newLine = "<li><a href='#" + element.attr("id") + "'>" + title + "</a></li>\n";
             result += newLine;
         });
         result += '\n</ul>';
