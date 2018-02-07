@@ -57,24 +57,24 @@ function initBackToTop(scrollTop) {
 }
 
 function initTableOfContents(heading) {
-    if ($("#js-table-of-contents").length) {
+    if ($('#js-table-of-contents').length) {
         var ToC = '<h2>' + translate('Table of contents') + '</h2><ul>';
         var newLine, el, title, link;
         var counter = 1;
-        $("article " + heading).each(function() {
+        $('article ' + heading).each(function() {
             el = $(this);
             title = el.text();
-            var attr = el.attr("id");
+            var attr = el.attr('id');
             if (!(typeof attr !== typeof undefined && attr !== false)) {
-                el.attr("id", "heading" + counter);
+                el.attr('id', 'heading' + counter);
                 counter++;
             }
-            link = "#" + el.attr("id");
+            link = '#' + el.attr('id');
             newLine = "<li><a href='" + link + "'>" + title + "</a></li>";
             ToC += newLine;
         });
-        ToC += "</ul>";
-        $("#js-table-of-contents").prepend(ToC);
+        ToC += '</ul>';
+        $('#js-table-of-contents').prepend(ToC);
     }
 }
 
@@ -94,7 +94,7 @@ function initSmoothScrollingToAnchors() {
 }
 
 var locale = {
-    "Table of contents": "Содержание",
+    'Table of contents': 'Содержание',
 };
 var lang = $('html').attr('lang');
 
