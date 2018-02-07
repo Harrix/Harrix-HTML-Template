@@ -58,7 +58,7 @@ function initBackToTop(scrollTop) {
 
 function initTableOfContents(heading) {
     if ($("#js-table-of-contents").length) {
-        var ToC = '<h2>' + gettext('Table of contents') + '</h2><ul>';
+        var ToC = '<h2>' + translate('Table of contents') + '</h2><ul>';
         var newLine, el, title, link;
         var counter = 1;
         $("article " + heading).each(function() {
@@ -93,12 +93,11 @@ function initSmoothScrollingToAnchors() {
     });
 }
 
-var LOCALE = {
+var locale = {
     "Table of contents": "Содержание",
-  };
-  
-  function gettext(string) {
-    var theLanguage = $('html').attr('lang');
-    console.log(theLanguage);
-    return theLanguage =='en' ? string : LOCALE[string];
-  }
+};
+var lang = $('html').attr('lang');
+
+function translate(string) {
+    return lang == 'en' ? string : locale[string];
+}
