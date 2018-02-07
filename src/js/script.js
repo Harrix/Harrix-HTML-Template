@@ -8,7 +8,7 @@ jQuery(function() {
     initSyntaxHighlighting();
     initLightGallery(200, 10);
     initShrinkLogo(50);
-    initBackToTop(200);
+    initBackToTop(200, 0.8);
     initTableOfContents('h2');
     initSmoothScrollingToAnchors();
 });
@@ -41,7 +41,7 @@ function initShrinkLogo(scrollTop) {
     });
 }
 
-function initBackToTop(scrollTop) {
+function initBackToTop(scrollTop, duration) {
     jQuery(window).scroll(function() {
         if (jQuery(this).scrollTop() >= scrollTop)
             jQuery('#js-back-to-top').fadeIn();
@@ -52,7 +52,7 @@ function initBackToTop(scrollTop) {
     jQuery('#js-back-to-top').click(function() {
         jQuery('html, body').animate({
             scrollTop: 0
-        }, 800);
+        }, duration * 1000);
     });
 }
 
