@@ -653,6 +653,7 @@ article pre code, pre code {
   font-weight: normal;
   white-space: pre-wrap;
   padding: 1rem;
+  text-align: left;
 }
 @media (max-width: 992px) {
   article pre code, pre code {

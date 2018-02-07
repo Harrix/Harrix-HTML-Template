@@ -10,6 +10,7 @@ article pre code, pre code {
   font-weight: normal;
   white-space: pre-wrap;
   padding: 1rem;
+  text-align: left;
 
   @media (max-width: $grid-breakpoint-mobile) {
     padding: 0.625rem;
