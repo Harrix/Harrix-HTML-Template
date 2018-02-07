@@ -15,7 +15,7 @@ body {
   }
 
   @media (min-width: $grid-breakpoint-mobile) {
-      padding-top: 5rem;
+    padding-top: 5rem;
   }
 }
 
@@ -25,7 +25,7 @@ body {
   }
 }
 
-.row div {
+.row>div {
   margin-bottom: 1rem;
 }
 
