@@ -14,12 +14,7 @@ button, .btn {
   color: $text-in-dark-color !important;
   border: 0;
   border-radius: $button-border-radius;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1px;
   margin-right: 0.625rem;
-  padding: 0.5625rem 1.4375rem;
   margin-bottom: 0.625rem;
 
   &:hover, &:focus, &:active {
