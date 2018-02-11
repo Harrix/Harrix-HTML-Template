@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Harrix/Harrix-HTML-Template/issues"
   },
-  "homepage": "https://github.com/Harrix/Harrix-HTML-Template#readme"
+  "homepage": "https://github.com/Harrix/Harrix-HTML-Template#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
 }
