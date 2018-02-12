@@ -2,7 +2,7 @@
   "name": "harrix-html-template",
   "version": "1.0.0",
   "description": "HTML template",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Harrix/Harrix-HTML-Template#readme",
   "dependencies": {
+    "bulma": "^0.6.2",
     "jquery": "^3.3.1"
   }
 }
