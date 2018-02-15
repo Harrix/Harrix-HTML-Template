@@ -16270,10 +16270,20 @@ return zhTw;
 /* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var moment = __webpack_require__(0);
+"use strict";
+
+
+var _moment = __webpack_require__(0);
+
+var _moment2 = _interopRequireDefault(_moment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 console.log("Hello from JavaScript!");
-console.log(moment().startOf('day').fromNow());
+console.log((0, _moment2.default)().startOf('day').fromNow());
+var name = "Bob",
+    time = "today";
+console.log('Hello ' + name + ', how are you ' + time + '?');
 
 /***/ }),
 /* 121 */
