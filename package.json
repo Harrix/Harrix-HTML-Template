@@ -20,9 +20,14 @@
   },
   "homepage": "https://github.com/Harrix/Harrix-HTML-Template#readme",
   "dependencies": {
-    "bulma": "^0.6.2",
+    "@fortawesome/fontawesome": "^1.1.3",
+    "bootstrap": "^4.0.0",
+    "highlight.js": "^9.12.0",
     "jquery": "^3.3.1",
-    "moment": "^2.20.1"
+    "jquery-mousewheel": "^3.1.13",
+    "justifiedGallery": "^3.6.3",
+    "katex": "^0.9.0-beta1",
+    "lightgallery": "^1.6.7"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
