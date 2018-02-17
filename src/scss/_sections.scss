@@ -1,0 +1,64 @@
+.color-section {
+  padding: 2rem .9375rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background-color: $secondary-color;
+  line-height: 28px;
+
+  .container {
+    position: relative;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    color: $text-in-dark-color;
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: $text-in-dark-color;
+  }
+
+
+  @media (min-width:544px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: 3rem;
+    text-align: left;
+
+    .carbonad {
+      margin: 2rem 0 0 !important;
+    }
+  }
+
+  @media (min-width:768px) {
+    h1 {
+      font-size: 4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width:992px) {
+    h1, p {
+      margin-right: 380px;
+    }
+
+    .carbonad {
+      position: absolute;
+      top: 0;
+      right: .75rem;
+      margin: 0 !important;
+    }
+  }
+
+}
+
+.color-red-section {
+  background-color: $primary-color !important;
+}

@@ -1,0 +1,90 @@
+/*!
+ * Harrix HTML Template (https://github.com/Harrix/Harrix-HTML-Template)
+ * Copyright 2018 Sergienko Anton
+ * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
+ */
+
+$font-stack: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-stack-code: 'Roboto Mono', monospace;
+
+$grid-breakpoints: ( 
+xs: 0,
+sm: 576px,
+md: 768px,
+lg: 992px,
+xl: 1200px
+) !default;
+
+$colors: (
+black-color:       #222222,
+white-color:       #ffffff,
+grey-color:        #aaaaaa,
+grey-light-color:  #eeeeee,
+teal-color:        #19a5a5,
+teal-light-color:  #71c2c2,
+red-color:         #de2b26,
+red-light-color:   #f54d4c,
+green-color:       #4abf60,
+green-color-light: #77cb87,
+orange-color:      #f5944c,
+) !default;
+
+$primary-color:           map-get($colors, red-color);
+$primary-light-color:     map-get($colors, red-light-color);
+$secondary-color:         map-get($colors, teal-color);
+$secondary-light-color:   map-get($colors, teal-light-color);
+$background-color:        map-get($colors, white-color);
+$background-header-color: map-get($colors, white-color);
+$text-color:              map-get($colors, black-color);
+$text-heading-color:      $text-color;
+$text-header-color:       $text-color;
+$text-in-dark-color:      map-get($colors, white-color);
+$border-color:            map-get($colors, grey-light-color);
+$link-color:              $secondary-color;
+$link-hover-color:        $secondary-light-color;
+$link-header-color:       $text-color;
+$link-hover-header-color: $secondary-color;
+$hr-color:                $secondary-color;
+$blockquote-color:        $secondary-color;
+
+$code-font-size:              1rem;
+$code-highlight-font-size:    0.8125rem;
+$header-font-size:            0.875rem;
+$heading-h1-font-size:        1.75rem;
+$heading-h2-font-size:        1.625rem;
+$heading-h3-font-size:        1.5rem;
+$heading-h4-font-size:        1.375rem;
+$heading-h5-font-size:        1.25rem;
+$heading-h6-font-size:        1.125rem;
+$blockquote-font-size:        1.125rem;
+$blockquote-mobile-font-size: 1rem;
+
+$heading-font-weight:    400;
+$lead-font-weight:       400;
+$text-font-weight:       400;
+$blockquote-font-weight: 400;
+
+$grid-breakpoint-mobile: map-get($grid-breakpoints, lg);
+$duration-animation:     0.2s;
+$type-animation:         ease-in-out;
+$z-index-navbar:         1030;
+$button-border-radius:   3px;
+
+@mixin animation() {
+  transition:         all $duration-animation $type-animation;
+  -webkit-transition: all $duration-animation $type-animation;
+  -moz-transition:    all $duration-animation $type-animation;
+  -o-transition:      all $duration-animation $type-animation;
+}
+
+@import "fonts";
+@import "lightbox";
+@import "common";
+@import "header";
+@import "footer";
+@import "sections";
+@import "buttons";
+@import "alerts";
+@import "tables";
+@import "highlight";
+@import "article";
