@@ -75,7 +75,7 @@
   #js-logo {
     //NEW id
     height: 3.125rem;
-    @include animation();
+    @include animationHarrix();
   }
 
   .js-logo-shrink {

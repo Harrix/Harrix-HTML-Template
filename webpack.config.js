@@ -35,7 +35,7 @@ module.exports = {
       {
         test: /\.(woff2?|ttf|otf|eot|svg)$/,
         include: [
-          path.resolve(__dirname, "src")
+          path.resolve(__dirname, "src/fonts")
         ],
         loader: 'file-loader',
         options: {
@@ -48,7 +48,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: 'dist/style.bundle.css',
+      filename: 'dist/css/style.bundle.css',
       allChunks: true,
     }),
   ],
