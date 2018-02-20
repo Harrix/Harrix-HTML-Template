@@ -29,13 +29,13 @@ module.exports = {
         ],
         use: ExtractTextPlugin.extract({
           //fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: ['css-loader?-url', 'sass-loader']
         })
-      },
+      }/*,,
       {
         test: /\.(woff2?|ttf|otf|eot|svg)$/,
         include: [
-          path.resolve(__dirname, "src/fonts")
+          path.resolve(__dirname, "src")
         ],
         loader: 'file-loader',
         options: {
@@ -44,6 +44,19 @@ module.exports = {
           outputPath: 'dist/fonts/'
         }
       }
+      {
+        test: /\.(png|jpg|gif)$/,
+        include: [
+          path.resolve(__dirname, "node_modules/lightgallery/src/img")
+          //"./node_modules/lightgallery/src/img"
+        ],
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          useRelativePath: true,
+          outputPath: 'dist/img/'
+        }
+      }*/
     ]
   },
   plugins: [
