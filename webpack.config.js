@@ -13,14 +13,9 @@ module.exports = {
   module: {
     rules: [{
         test: /\.js$/,
-        include: [
-          path.resolve(__dirname, "src")
-        ],
+        include: path.resolve(__dirname, 'src'),
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env']
-          }
+          loader: 'babel-loader?presets=env'
         }
       },
       {
@@ -32,32 +27,7 @@ module.exports = {
           //fallback: 'style-loader',
           use: ['css-loader?-url', 'sass-loader']
         })
-      }/*,,
-      {
-        test: /\.(woff2?|ttf|otf|eot|svg)$/,
-        include: [
-          path.resolve(__dirname, "src")
-        ],
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          useRelativePath: true,
-          outputPath: 'dist/fonts/'
-        }
       }
-      {
-        test: /\.(png|jpg|gif)$/,
-        include: [
-          path.resolve(__dirname, "node_modules/lightgallery/src/img")
-          //"./node_modules/lightgallery/src/img"
-        ],
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          useRelativePath: true,
-          outputPath: 'dist/img/'
-        }
-      }*/
     ]
   },
   plugins: [
