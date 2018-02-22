@@ -4,28 +4,25 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: [
-    './src/index.js',
+    './src/js/index.js',
     './src/scss/style.scss'
   ],
   output: {
-    filename: './dist/bundle.js'
+    filename: './dist/js/bundle.js'
   },
   module: {
     rules: [{
         test: /\.js$/,
-        include: path.resolve(__dirname, 'src'),
+        include: path.resolve(__dirname, 'src/js'),
         use: {
           loader: 'babel-loader?presets=env'
         }
       },
       {
         test: /\.(sass|scss)$/,
-        include: [
-          path.resolve(__dirname, "src")
-        ],
+        include: path.resolve(__dirname, 'src/scss'),
         use: ExtractTextPlugin.extract({
-          //fallback: 'style-loader',
-          use: ['css-loader?-url', 'sass-loader']
+          use: ['css-loader?url=false', 'sass-loader']
         })
       }
     ]
@@ -35,8 +32,9 @@ module.exports = {
       filename: 'dist/css/style.bundle.css',
       allChunks: true,
     }),
-    new CopyWebpackPlugin([
-      {from:'./node_modules/lightgallery/src/img',to:'./dist/img'} 
-  ]),
+    new CopyWebpackPlugin([{
+      from: './node_modules/lightgallery/src/img',
+      to: './dist/img'
+    }]),
   ],
 };
