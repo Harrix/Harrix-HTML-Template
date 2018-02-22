@@ -33,8 +33,29 @@ module.exports = {
       allChunks: true,
     }),
     new CopyWebpackPlugin([{
-      from: './node_modules/lightgallery/src/img',
-      to: './dist/img'
-    }]),
+        from: './node_modules/lightgallery/src/img',
+        to: './dist/img'
+      },
+      {
+        from: './node_modules/lightgallery/src/fonts',
+        to: './dist/fonts'
+      },
+      {
+        from: './src/fonts',
+        to: './dist/fonts'
+      },
+      {
+        from: './src/favicon',
+        to: './dist/favicon'
+      },
+      {
+        from: './src/img',
+        to: './dist/img'
+      },
+      {
+        from: './src/uploads',
+        to: './dist/uploads'
+      }
+    ]),
   ],
 };
