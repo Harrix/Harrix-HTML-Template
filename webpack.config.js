@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -55,6 +56,10 @@ module.exports = {
       {
         from: './src/uploads',
         to: './dist/uploads'
+      },
+      {
+        from: './src/index.html',
+        to: './dist'
       }
     ]),
   ],
