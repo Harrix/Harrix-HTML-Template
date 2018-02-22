@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -64,5 +65,8 @@ module.exports = {
       filename: 'dist/css/style.bundle.css',
       allChunks: true,
     }),
+    new CopyWebpackPlugin([
+      {from:'./node_modules/lightgallery/src/img',to:'./dist/img'} 
+  ]),
   ],
 };
