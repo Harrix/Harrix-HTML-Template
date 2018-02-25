@@ -33,6 +33,11 @@ module.exports = {
       filename: 'dist/css/style.bundle.css',
       allChunks: true,
     }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      filename: './dist/index.html',
+      inject: false
+    }),
     new CopyWebpackPlugin([{
         from: './node_modules/lightgallery/src/img',
         to: './dist/img'
@@ -56,10 +61,6 @@ module.exports = {
       {
         from: './src/uploads',
         to: './dist/uploads'
-      },
-      {
-        from: './src/index.html',
-        to: './dist'
       }
     ]),
   ],
