@@ -9,7 +9,7 @@ module.exports = {
     './src/scss/style.scss'
   ],
   output: {
-    filename: './dist/js/bundle.js'
+    filename: './js/bundle.js'
   },
   module: {
     rules: [{
@@ -30,37 +30,37 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: 'dist/css/style.bundle.css',
+      filename: './css/style.bundle.css',
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      filename: './dist/index.html',
+      filename: './index.html',
       inject: false
     }),
     new CopyWebpackPlugin([{
         from: './node_modules/lightgallery/src/img',
-        to: './dist/img'
+        to: './img'
       },
       {
         from: './node_modules/lightgallery/src/fonts',
-        to: './dist/fonts'
+        to: './fonts'
       },
       {
         from: './src/fonts',
-        to: './dist/fonts'
+        to: './fonts'
       },
       {
         from: './src/favicon',
-        to: './dist/favicon'
+        to: './favicon'
       },
       {
         from: './src/img',
-        to: './dist/img'
+        to: './img'
       },
       {
         from: './src/uploads',
-        to: './dist/uploads'
+        to: './uploads'
       }
     ]),
   ],
