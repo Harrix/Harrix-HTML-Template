@@ -25,6 +25,26 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           use: ['css-loader?url=false', 'sass-loader']
         })
+      },
+      {
+        test: /\.html$/,
+        include: path.resolve(__dirname, 'src/templates'),
+        loader: 'html-loader',
+        options: {
+          minimize: false,
+        }
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              outputPath: 'assets/'
+            }  
+          }
+        ]
       }
     ]
   },
@@ -36,9 +56,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: './index.html',
-      inject: false
+      title: 'My Awesome application',
+      inject: false,
     }),
-    new CopyWebpackPlugin([{
+    /*new CopyWebpackPlugin([{
         from: './node_modules/lightgallery/src/img',
         to: './img'
       },
@@ -62,6 +83,6 @@ module.exports = {
         from: './src/uploads',
         to: './uploads'
       }
-    ]),
+    ]),*/
   ],
 };
