@@ -1,3 +1,4 @@
+<% htmlWebpackPlugin.options.title = '123' %>
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +13,7 @@
     <header>
         <hgroup>
             <h1>
-                <%= require('./templates/b.html') %>
+                <%= require('raw-loader!./templates/b.html') %>
                     <img src="img/logo.svg" id="js-logo" alt="Harrix">
             </h1>
             <h2>

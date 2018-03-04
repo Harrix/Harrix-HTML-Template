@@ -26,26 +26,25 @@ module.exports = {
           use: ['css-loader?url=false', 'sass-loader']
         })
       },
-      {
+      /*{
         test: /\.html$/,
         include: path.resolve(__dirname, 'src/templates'),
         loader: 'html-loader',
         options: {
           minimize: false,
         }
-      },
-      {
+      },*/
+      /*{
         test: /\.(png|jpg|gif|svg)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[path][name].[ext]',
-              outputPath: 'assets/'
             }  
           }
         ]
-      }
+      }*/
     ]
   },
   plugins: [
