@@ -13,7 +13,9 @@
     <header>
         <hgroup>
             <h1>
-                    ${require('string-replace-loader?search=foo&replace=Harrix!./templates/b.html')}
+                    <% let t = require('./templates/b.html').replace('{{foo}}', 'Harrix'); %>
+
+                    <%= require('./templates/b.html').replace('{{foo}}', 'Harrix') %>
                     <img src="img/logo.svg" id="js-logo" alt="Harrix">
             </h1>
             <h2>

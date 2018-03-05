@@ -51,7 +51,7 @@ module.exports = {
               search: '{{foo}}',
               replace: 'window.jQuery',
             }
-          }*/
+          },*/
         ]
       },
       /*{
