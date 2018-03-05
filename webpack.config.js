@@ -26,14 +26,33 @@ module.exports = {
           use: ['css-loader?url=false', 'sass-loader']
         })
       },
+      /*{
+        test: /\.html$/,
+        include: path.resolve(__dirname, 'src/templates'),
+        loader: 'underscore-template-loader',
+        query: {
+          engine: 'lodash',
+        }
+      },*/
       {
         test: /\.html$/,
         include: path.resolve(__dirname, 'src/templates'),
-        loader: 'html-loader',
-        options: {
-          minimize: false,
-          attrs: false,
-        }
+        use: [{
+            loader: 'html-loader',
+            options: {
+              minimize: false,
+              attrs: false,
+              interpolate: true,
+            }
+          },
+          {
+            loader: 'string-replace-loader',
+            options: {
+              search: '{{foo}}',
+              replace: 'window.jQuery',
+            }
+          }
+        ]
       },
       /*{
         test: /\.(png|jpg|gif|svg)$/,

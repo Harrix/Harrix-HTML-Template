@@ -36,6 +36,7 @@
     "babel-preset-env": "^1.6.1",
     "copy-webpack-plugin": "^4.5.0",
     "css-loader": "^0.28.9",
+    "ejs-compiled-loader": "^1.1.0",
     "ejs-loader": "^0.3.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-loader": "^0.5.5",
@@ -44,6 +45,7 @@
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
     "string-replace-loader": "^2.1.1",
+    "underscore-template-loader": "^1.0.0",
     "webpack": "^4.0.1",
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^3.1.0"
