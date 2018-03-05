@@ -26,30 +26,11 @@ module.exports = {
           use: ['css-loader?url=false', 'sass-loader']
         })
       },
-      /*{
-        test: /\.html$/,
-        include: path.resolve(__dirname, 'src/templates'),
-        loader: 'underscore-template-loader',
-        query: {
-          engine: 'lodash',
-        }
-      },*/
       {
         test: /\.html$/,
         include: path.resolve(__dirname, 'src/templates'),
-            loader: 'raw-loader',
+        loader: 'raw-loader',
       },
-      /*{
-        test: /\.(png|jpg|gif|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]',
-            }  
-          }
-        ]
-      }*/
     ]
   },
   plugins: [
