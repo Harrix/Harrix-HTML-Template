@@ -59,13 +59,12 @@ var data = {
             </details>
         </article>
     </section>
-    <% 
-    var tmpl = _.template(require('./templates/footer.html'));
-    var data = {
-      name: "Harrix"
-    }; 
-    %>
-    <%= tmpl(data) %>
+<% 
+var tmpl = _.template(require('./templates/footer.html'));
+var data = {
+    name: "Harrix"
+}; 
+%>
+<%= tmpl(data) %>
 </body>
-
 </html>

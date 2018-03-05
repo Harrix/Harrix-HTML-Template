@@ -37,19 +37,7 @@ module.exports = {
       {
         test: /\.html$/,
         include: path.resolve(__dirname, 'src/templates'),
-        use: [
-          {
             loader: 'raw-loader',
-          },
-          /*{
-            loader: 'html-loader',
-            options: {
-              minimize: false,
-              attrs: false,
-              interpolate: true,
-            }
-          },*/
-        ]
       },
       /*{
         test: /\.(png|jpg|gif|svg)$/,
