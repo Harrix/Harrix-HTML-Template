@@ -45,13 +45,13 @@ module.exports = {
               interpolate: true,
             }
           },
-          {
+          /*{
             loader: 'string-replace-loader',
             options: {
               search: '{{foo}}',
               replace: 'window.jQuery',
             }
-          }
+          }*/
         ]
       },
       /*{
