@@ -37,19 +37,16 @@ module.exports = {
       {
         test: /\.html$/,
         include: path.resolve(__dirname, 'src/templates'),
-        use: [{
+        use: [
+          {
+            loader: 'raw-loader',
+          },
+          /*{
             loader: 'html-loader',
             options: {
               minimize: false,
               attrs: false,
               interpolate: true,
-            }
-          },
-          /*{
-            loader: 'string-replace-loader',
-            options: {
-              search: '{{foo}}',
-              replace: 'window.jQuery',
             }
           },*/
         ]

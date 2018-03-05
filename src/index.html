@@ -13,9 +13,13 @@
     <header>
         <hgroup>
             <h1>
-                    <% let t = require('./templates/b.html').replace('{{foo}}', 'Harrix'); %>
-
-                    <%= require('./templates/b.html').replace('{{foo}}', 'Harrix') %>
+<% 
+var tmpl = _.template(require('./templates/b.html'));
+var data = {
+  foo: "Заголовок"
+}; 
+%>
+<%= tmpl(data) %>
                     <img src="img/logo.svg" id="js-logo" alt="Harrix">
             </h1>
             <h2>
@@ -55,14 +59,13 @@
             </details>
         </article>
     </section>
-    <footer>
-        <time>
-            Содержимое тега "time" блока "footer"
-        </time>
-        <p>
-            Содержимое абзаца из блока "footer"
-        </p>
-    </footer>
+    <% 
+    var tmpl = _.template(require('./templates/footer.html'));
+    var data = {
+      name: "Harrix"
+    }; 
+    %>
+    <%= tmpl(data) %>
 </body>
 
 </html>
