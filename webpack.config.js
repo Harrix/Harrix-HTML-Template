@@ -29,7 +29,7 @@ module.exports = {
       {
         test: /\.html$/,
         include: path.resolve(__dirname, 'src/templates'),
-        loader: 'raw-loader',
+        use: ['raw-loader']
       },
     ]
   },
