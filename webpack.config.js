@@ -2,6 +2,7 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   entry: [
@@ -44,6 +45,7 @@ module.exports = {
       title: 'My Awesome application',
       inject: false,
     }),
+    new CleanWebpackPlugin(['dist','build']),
     /*new CopyWebpackPlugin([{
         from: './node_modules/lightgallery/src/img',
         to: './img'
