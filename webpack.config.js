@@ -57,7 +57,7 @@ module.exports = {
       allChunks: true,
     }),
     new CleanWebpackPlugin(['dist', 'build']),
-    /*new CopyWebpackPlugin([{
+    new CopyWebpackPlugin([{
         from: './node_modules/lightgallery/src/img',
         to: './img'
       },
@@ -81,6 +81,6 @@ module.exports = {
         from: './src/uploads',
         to: './uploads'
       }
-    ]),*/
+    ]),
   ].concat(htmlPlugins)
 };

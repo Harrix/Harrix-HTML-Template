@@ -1,67 +1,805 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ru">
 
 <head>
   <meta charset="utf-8">
-  <title>
-    8555
-  </title>
+  <title>Заголовок | Проект</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="icon" type="image/svg+xml" sizes="any" href="favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="favicon/manifest.json">
+  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#de2b26">
+  <link rel="shortcut icon" href="favicon/favicon.ico">
+  <meta name="msapplication-config" content="favicon/browserconfig.xml">
+  <meta name="theme-color" content="#de2b26">
+
+  <link rel="stylesheet" href="katex/katex.min.css">
+  <link rel="stylesheet" href="katex/katex.custom.min.css">
+  <link rel="stylesheet" href="css/style.bundle.css">
 </head>
 
 <body>
-  <header>
-    <hgroup>
-      <h1>
-
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        Заголовок
-        <h1>{{foo}}</h1>
-        <img src="/img/logo.svg" id="js-logo" alt="Harrix">
-        <p>Hello</p>
-        <img src="img/logo.svg" id="js-logo" alt="Harrix">
-      </h1>
-      <h2>
-        Заголовок "h2" из hgroup
-      </h2>
-    </hgroup>
+  <header class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img src="img/logo.svg" id="js-logo" alt="Harrix"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="img/hamburger.svg" alt="Hamburger icon" class="icon-hamburger">
+      </button>
+      <nav class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a class="nav-link" href="https://harrix.org/projects/">Проекты</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://harrix.org/">Harrix.org</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://harrix.org/rss">RSS</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://harrix.org/contacts">Контакты</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://github.com/Harrix"><img src="img/github.svg" alt="GitHub icon" class="icon">  GitHub</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuExample" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Подменю</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuExample">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLanguage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/rus.svg" alt="Russian icon" class="icon"> Русский</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLanguage">
+              <a class="dropdown-item" href="#"><img src="img/eng.svg" alt="English icon" class="icon"> English</a>
+              <a class="dropdown-item" href="#"><img src="img/rus.svg" alt="Russian icon" class="icon"> Русский</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <nav>
-    <menu>
-      <li>
-        <a href="link1.html">
-                    Первая ссылка из блока "nav"
-                </a>
-      </li>
-      <li>
-        <a href="link2.html">
-                    Вторая ссылка из блока "nav"
-                </a>
-      </li>
-    </menu>
-  </nav>
-  <section>
-    <article>
-      <h1>
-        Заголовок статьи из блока "article"
-      </h1>
-      <p>
-        Текст абзаца статьи из блока "article"
-      </p>
-      <details>
-        <summary>
-          Блок "details", текст тега "summary"
-        </summary>
-        <p>
-          Абзац из блока "details"
-        </p>
-      </details>
-    </article>
-  </section>
 
-  <footer>Harrix </footer>
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 text-center">
+          <h1 class="short-underline">Заголовок страницы</h1>
+          <p>Тут может располагаться одно-три предложение о продукте. Тут может располагаться одно-три предложение о продукте. Тут может располагаться одно-три предложение о продукте.</p>
+          <p class="mt-4 mb-4">
+            <a class="btn btn-title" href="files/example.zip"><i class="fas fa-file-archive" aria-hidden="true"></i> Демо</a>
+            <a class="btn btn-title" href="files/example.zip"><i class="fas fa-download" aria-hidden="true"></i> Скачать</a>
+            <a class="btn btn-title" href="https://github.com/Harrix/Harrix-HTML-Template-For-Harrix-Sites"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+          </p>
+          <div class="js-lightbox">
+            <a href="uploads/header-image.png"><img src="uploads/header-image.png" alt="Цветы на берегу острова Татышев в городе Красноярск."/></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p>Это первый абзац после аннотации страницы. Здесь кратко описывается о том, что будет содержаться в статье.</p>
+
+          <a class="anchor" id="contents"></a>
+
+          <nav id='js-table-of-contents'></nav>
+
+          <h2 id="typography"><a href="#">#</a>Типографика</h2>
+
+          <p>В данном блоке пример использования обычного текста в несколько абзацев. Непосредственно в данном абзаце не будет применения никаких дополнительных украшательств текста. Просто несколько строк в абзаце. Поэтому мне надо о чем-нибудь тут написать,
+            чтобы текста было побольше. Например, можно написать о том, что угол наклона оси вращения Земли составляет 23,44°. Именно такой угол наклона в моём логотипе.</p>
+
+          <p>А теперь начнем показывать некоторые возможности оформления текста. Например, можно показать сочетания клавиш с помощью такой конструкции
+            <kbd>Ctrl</kbd> +
+            <kbd>V</kbd>. Таким же образом можно оформлять и вызов пунктов меню:
+            <kbd>File</kbd> →
+            <kbd>Open</kbd>.</p>
+
+          <p>Для выделения текста используется тэг <code>code</code> и <var>var</var>. Например, название тэга именно так и оформлено. А это выделение <strong>обычным жирным</strong>.</p>
+
+          <p>Ссылки (<a href="https://harrix.org">harrix.org</a>) отображаются другим цветом и подчеркиваются. При наведении на них цвет ссылки меняется на более светлый.</p>
+
+          <p>Списки оформляются вот таким вот образом:</p>
+          <ul>
+            <li>Меркурий</li>
+            <li>Венера</li>
+            <li>Земля
+              <ul>
+                <li>Луна</li>
+              </ul>
+            </li>
+            <li>Марс
+              <ul>
+                <li>Фобос</li>
+                <li>Деймос</li>
+              </ul>
+            </li>
+          </ul>
+
+          <p>А это абзац текста после списка. Он тут для того, чтобы можно было оценить расстояние от списка до последующего текста.</p>
+
+          <p>Приведем пример использования цитат в тексте:</p>
+
+          <blockquote>Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела. Если он отвергнет предложенные
+            деньги, то денег не получит ни один из игроков. В этом случае игроки тоже не знают друг друга и никогда больше не встретятся. Если второй игрок отвергнет предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно
+            отвергает предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?</blockquote>
+
+          <p>
+            <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fas fa-angle-right"></i> Показать сплойер
+          </a>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col mb-0">
+          <h2 id="columns">Колонки</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела. Если он отвергнет предложенные деньги,
+          то денег не получит ни один из игроков. В этом случае игроки тоже не знают друг друга и никогда больше не встретятся. Если второй игрок отвергнет предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает
+          предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?
+        </div>
+        <div class="col-md">
+          Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела. Если он отвергнет предложенные деньги,
+          то денег не получит ни один из игроков. В этом случае игроки тоже не знают друг друга и никогда больше не встретятся. Если второй игрок отвергнет предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает
+          предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела. Если он отвергнет предложенные деньги,
+          то денег не получит ни один из игроков. В этом случае игроки тоже не знают друг друга и никогда больше не встретятся. Если второй игрок отвергнет предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает
+          предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?
+        </div>
+        <div class="col-md-6">
+          <div class="js-lightbox">
+            <a href="uploads/07.jpg"><img src="uploads/07-thumbnail.jpg" alt="Цветы на берегу острова Татышев в городе Красноярск."/></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col content-with-gallery">
+          <h2 id="lightbox">Lightbox</h2>
+
+          <h3>Одиночное изображение слева</h3>
+
+          <div class="js-lightbox">
+            <a href="uploads/09.jpg"><img src="uploads/09-thumbnail.jpg" alt="Робот."/></a>
+          </div>
+
+          <h3>Одиночное изображение по центру</h3>
+
+          <div class="js-lightbox text-center">
+            <a href="uploads/10.jpg"><img src="uploads/10-thumbnail.jpg" alt="Скафандр."/></a>
+          </div>
+
+          <h3>Галерея</h3>
+
+          <div class="js-lightbox js-gallery">
+            <a href="uploads/01.jpg"><img src="uploads/01-thumbnail.jpg" alt="" /></a>
+            <a href="uploads/02.jpg"><img src="uploads/02-thumbnail.jpg" alt="" /></a>
+            <a href="uploads/03.jpg"><img src="uploads/03-thumbnail.jpg" alt="" /></a>
+            <a href="uploads/04.jpg"><img src="uploads/04-thumbnail.jpg" alt="" /></a>
+            <a href="uploads/05.jpg"><img src="uploads/05-thumbnail.jpg" alt="" /></a>
+            <a href="uploads/06.jpg"><img src="uploads/06-thumbnail.jpg" alt="" /></a>
+            <a href="uploads/07.jpg"><img src="uploads/07-thumbnail.jpg" alt="" /></a>
+            <a href="uploads/08.jpg"><img src="uploads/08-thumbnail.jpg" alt="" /></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2 id="fontawesome">Font Awesome</h2>
+
+          <ul class="fa-ul">
+            <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Математические функции</li>
+            <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Возможность задать свою функцию в виде кода</li>
+            <li><span class="fa-li"><i class="fas fa-spinner fa-pulse"></i></span>Поддержка C++11</li>
+            <li><span class="fa-li"><i class="far fa-square"></i></span>Использование шаблонов</li>
+          </ul>
+
+          <p class="fa-3x">
+            <i class="fas fa-spinner fa-spin"></i>
+            <i class="fas fa-circle-notch fa-spin"></i>
+            <i class="fas fa-sync fa-spin"></i>
+            <i class="fas fa-cog fa-spin"></i>
+            <i class="fas fa-spinner fa-pulse"></i>
+          </p>
+
+          <p>
+            <i class="fas fa-shield-alt color-blue"></i> Обычное состояние
+            <br>
+            <i class="fas fa-shield-alt fa-rotate-90 color-blue"></i> fa-rotate-90
+            <br>
+            <i class="fas fa-shield-alt fa-rotate-180 color-blue"></i> fa-rotate-180
+            <br>
+            <i class="fas fa-shield-alt fa-rotate-270 color-blue"></i> fa-rotate-270
+            <br>
+            <i class="fas fa-shield-alt fa-flip-horizontal color-blue"></i> fa-flip-horizontal
+            <br>
+            <i class="fas fa-shield-alt fa-flip-vertical color-blue"></i> fa-flip-vertical
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2 id="katex">KaTeX</h2>
+
+          <div class="tex" data-expr="c = \pm\sqrt{a^2 + b^2}"></div>
+          <div class="tex" data-expr="\Gamma\ \Delta\ \Theta\ \Lambda\ \Xi\ \Pi\ \Sigma\ \Upsilon\ \Phi\ \Psi\ \Omega"></div>
+          <div class="tex" data-expr="f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi i \xi x} \,d\xi"></div>
+          <div class="tex" data-expr="\left( \sum_{k=1}^n a_k b_k \right)^3 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)\leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2 id="highlightjs">highlight.js</h2>
+
+          <pre><code class="cpp">//Содержимое файла input.txt
+/*
+Aslapova Nastya she did not come to class 29 5
+Nikolaev Dima he bought a house 12 9
+Tokmin Lev he does not know programming 96 75
+*/
+ 
+#include &quot;stdafx.h&quot;//Visual Studio может попросить
+ 
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+ 
+using namespace std;
+ 
+int main()
+{
+ setlocale(LC_ALL, &quot;RUSSIAN&quot;);//Чтобы русский текст поддерживался
+ 
+ //Создаем файловый поток и связываем его с файлом
+ ifstream file(&quot;input.txt&quot;);
+ 
+ if (file.is_open())//Если открытие файла прошло успешно
+ {
+  cout &lt;&lt; &quot;Файл открыт.&quot; &lt;&lt; endl;
+ 
+  string line;//Строчка текста
+ 
+  //Будем считывать информацию построчно до тех пор,
+  //пока не закончится файл
+ 
+  while (getline(file, line))
+  {
+   //cout &lt;&lt; line &lt;&lt; endl;//Можно посмотреть, что в строчке считалось
+ 
+   //Теперь в line хранится содержимое строчки из файла.
+   //Будем её разбирать на составные части.
+ 
+   //В нашем файле идут две строчки, а потом два числа
+   string name, surname, info;
+   int age, money;
+ 
+   //Создадим поток для считывания данных из строчки
+   istringstream iss(line);
+ 
+   string token;
+   int i = 0;
+   while (getline(iss, token, '\t')) {
+    if (i == 0) surname = token;
+    if (i == 1) name = token;
+    if (i == 2) info = token;
+    if (i == 3) age = atoi(token.c_str());//перевод string в int
+    if (i == 4) money = atoi(token.c_str());//перевод string в int
+    i++;
+   }
+ 
+   //Выведем наши данные
+   cout &lt;&lt; &quot;Данные из строчки:&quot; &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tФамилия: &quot; &lt;&lt; surname &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tИмя: &quot; &lt;&lt; name &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tИнформация: &quot; &lt;&lt; info &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tВозраст: &quot; &lt;&lt; age &lt;&lt; endl;
+   cout &lt;&lt; &quot;\tДеньги: &quot; &lt;&lt; money &lt;&lt; endl;
+  }
+ }
+ else
+ {
+  cout &lt;&lt; &quot;Не удалось открыть файл.&quot; &lt;&lt; endl;
+ }
+ 
+ system(&quot;pause&quot;);
+    return 0;
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-section color-red-section">
+      <div class="container">
+        <a class="anchor" id="color-red-section"></a>
+        <h1>Важный блок</h1>
+        <p class="lead">
+          Сообщаем что-то такое, что должно привлечь ваше внимание. Это очень важно! Обязательно прочитайте этот текст, так как он о чем-то сообщает.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2 id="buttons-and-alerts">Кнопки и сообщения</h2>
+
+          <p class="text-left">
+            <a class="btn" href="files/example.zip"><i class="fas fa-file-archive" aria-hidden="true"></i> Демо</a>
+            <a class="btn" href="https://github.com"><i class="fas fa-link" aria-hidden="true"></i> Ссылка</a>
+            <a class="btn" href="files/example.zip"><i class="fas fa-download" aria-hidden="true"></i> Скачать</a>
+            <a class="btn" href="https://github.com/Harrix/Harrix-HTML-Template-For-Harrix-Sites"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+            <a class="btn" href="files/example.zip"><i class="fab fa-windows" aria-hidden="true"></i> Скачать</a>
+          </p>
+
+          <p class="text-left">
+            <a class="btn btn-teal" href="files/example.zip"><i class="fas fa-file-archive" aria-hidden="true"></i> Демо</a>
+            <a class="btn btn-teal" href="https://github.com"><i class="fas fa-link" aria-hidden="true"></i> Ссылка</a>
+            <a class="btn btn-teal" href="files/example.zip"><i class="fas fa-download" aria-hidden="true"></i> Скачать</a>
+            <a class="btn btn-teal" href="https://github.com/Harrix/Harrix-HTML-Template-For-Harrix-Sites"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+            <a class="btn btn-teal" href="files/example.zip"><i class="fab fa-windows" aria-hidden="true"></i> Скачать</a>
+          </p>
+
+          <p class="text-left">
+            <a class="btn btn-green" href="files/example.zip"><i class="fas fa-file-archive" aria-hidden="true"></i> Демо</a>
+            <a class="btn btn-green" href="https://github.com"><i class="fas fa-link" aria-hidden="true"></i> Ссылка</a>
+            <a class="btn btn-green" href="files/example.zip"><i class="fas fa-download" aria-hidden="true"></i> Скачать</a>
+            <a class="btn btn-green" href="https://github.com/Harrix/Harrix-HTML-Template-For-Harrix-Sites"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+            <a class="btn btn-green" href="files/example.zip"><i class="fab fa-windows" aria-hidden="true"></i> Скачать</a>
+          </p>
+
+          <p>Ссылки ниже не работают. Только для демонстрации иконок.</p>
+
+          <p><a href="example.docx"><i class="far fa-file-word fa-lg" aria-hidden="true"></i> <span class="dot">example.docx</span></a></p>
+
+          <p><a href="example.xls"><i class="far fa-file-excel fa-lg" aria-hidden="true"></i> <span class="dot">example.xls</span></a></p>
+
+          <p><a href="example.txt"><i class="far fa-file-alt fa-lg" aria-hidden="true"></i> <span class="dot">example.txt</span></a></p>
+
+          <p><a href="example.java"><i class="far fa-file-code fa-lg" aria-hidden="true"></i> <span class="dot">example.java</span></a></p>
+
+          <p><a href="example.mp4"><i class="far fa-file-video fa-lg" aria-hidden="true"></i> <span class="dot">example.mp4</span></a></p>
+
+          <p><a href="example.ppt"><i class="far fa-file-powerpoint fa-lg" aria-hidden="true"></i> <span class="dot">example.ppt</span></a></p>
+
+          <p><a href="example.pdf"><i class="far fa-file-pdf fa-lg" aria-hidden="true"></i> <span class="dot">example.pdf</span></a></p>
+
+          <p><a href="example.zip"><i class="far fa-file-archive fa-lg" aria-hidden="true"></i> <span class="dot">example.zip</span></a></p>
+
+          <div class="alert alert-danger" role="alert"><i class="fa fa-2x pull-left fa-exclamation-circle"></i>
+            <div class="after-icon">Опасное предупреждение. Например, тут сообщается, что файл не открылся, и это плохо. Что-нибудь сделайте.</div>
+          </div>
+
+          <div class="alert alert-success" role="alert"><i class="fa fa-2x pull-left fa-check-circle"></i>
+            <div class="after-icon">Успех! Что-то получилось именно так, как и хотелось. Вот и сообщается, что всё получилось, как нужно.</div>
+          </div>
+
+          <div class="alert alert-info" role="alert"><i class="fa fa-2x pull-left fa-info-circle"></i>
+            <div class="after-icon">Информационное сообщение. Здесь о чем-то мы сообщаем. Мало ли что нужно сообщить. Например, что смысл жизни заключен в числе 42.</div>
+          </div>
+
+          <div class="alert alert-warning" role="alert"><i class="fa fa-2x pull-left fa-exclamation-triangle"></i>
+            <div class="after-icon">Предупреждение. Это не обязательно ошибка, но стоит сообщить об этом пользователю. И в данный момент сообщяем об этом.</div>
+          </div>
+
+          <ul class="fa-ul">
+            <li class="color-danger"><i class="fa-li fa fa-exclamation-circle fa-lg" aria-hidden="true"></i>Опасное предупреждение. Например, тут сообщается, что файл не открылся, и это плохо. Что-нибудь сделайте? а то с программой случится что-то плохое.</li>
+            <li class="color-success"><i class="fa-li fa fa-check-circle fa-lg" aria-hidden="true"></i>Успех! Что-то получилось именно так, как и хотелось. Вот и сообщается, что всё получилось, как нужно.</li>
+            <li class="color-info"><i class="fa-li fa fa-info-circle fa-lg" aria-hidden="true"></i>Информационное сообщение. Здесь о чем-то мы сообщаем. Мало ли что нужно сообщить. Например, что смысл жизни заключен в числе 42.</li>
+            <li class="color-warning"><i class="fa-li fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i>Рядовое обычное сообщение, в котором о чем-то говорится. Например, что завершился цикл, и так далее.</li>
+            <li>
+              <i class="fa-li fa fa-info-circle fa-lg" aria-hidden="true"></i>Рядовое обычное сообщение, в котором о чем-то говорится. Например, что завершился цикл, и так далее.</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2 id="history">Список изменений</h2>
+
+          <ul class="changes">
+            <li>
+              <div class="change-label-container"><em class="change-label change-new">New</em></div>Dark theme now available from Options menu.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-added">Added</em></div>Icons indicating whether a file was added, removed or modified.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Unable to add repository which exists at drive root.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Crash due to incorrect handling of input arguments on launch.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Crash due to COM exception when interacting with Taskbar.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Crash when scanning filesystem for local repositories.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Created SSH keys not added to ssh-agent on first launch.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-fixed">Fixed</em></div>Crash due to decoding malformed parameters on restart.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-updated">Updated</em></div>Posh-Git now includes new icons in prompt.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-updated">Updated</em></div>Git Shell updated to v2.8.1.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-updated">Updated</em></div>Git LFS updated to v1.2.0.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-updated">Updated</em></div>Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</li>
+            <li>
+              <div class="change-label-container"><em class="change-label change-removed">Removed</em></div>Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2 id="adaptive-tables">Адаптивные таблицы</h2>
+
+          <table class="table_adaptive_classic">
+            <caption>Учет товаров</caption>
+            <thead>
+              <tr>
+                <th>ФИО</th>
+                <th>Оплата</th>
+                <th>Наличие ноутбука</th>
+                <th>Наличие паспорта</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="ФИО">Сергиенко Антон Борисович</td>
+                <td data-label="Наличие ноутбука">1 123 руб.</td>
+                <td data-label="Оплата">&#9679;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Владимиров Пётр Васильевич</td>
+                <td data-label="Оплата">411 руб.</td>
+                <td data-label="Наличие ноутбука">&nbsp;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Воротцов Игорь Витальевич</td>
+                <td data-label="Оплата">8 010 руб.</td>
+                <td data-label="Наличие ноутбука">&#9679;</td>
+                <td data-label="Наличие паспорта">&nbsp;</td>
+              </tr>
+              <tr class="subhead">
+                <td colspan="4">Вне обработки</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Уваров Борис Тимофеевич</td>
+                <td data-label="Наличие ноутбука">999 руб.</td>
+                <td data-label="Оплата">&#9679;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Клесин Алексей Алексеевич</td>
+                <td data-label="Оплата">48 458 руб.</td>
+                <td class="circle_in_table" data-label="Наличие ноутбука">&#9679;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Кизоров Антоний Егорьевич</td>
+                <td data-label="Оплата">0 руб.</td>
+                <td data-label="Наличие ноутбука">&nbsp;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table_adaptive_classic">
+            <caption>Учет товаров</caption>
+            <thead>
+              <tr>
+                <th>ФИО</th>
+                <th>Оплата</th>
+                <th>Наличие ноутбука</th>
+                <th>Наличие паспорта</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="ФИО">Сергиенко Антон Борисович</td>
+                <td data-label="Наличие ноутбука">1 123 руб.</td>
+                <td data-label="Оплата"><i class="fas fa-circle fa-xs"></i></td>
+                <td data-label="Наличие паспорта"><i class="fas fa-circle fa-xs"></i></td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Владимиров Пётр Васильевич</td>
+                <td data-label="Оплата">411 руб.</td>
+                <td data-label="Наличие ноутбука"><i class="fas fa-circle fa-xs"></i></td>
+                <td data-label="Наличие паспорта"><i class="fas fa-circle fa-xs"></i></td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Воротцов Игорь Витальевич</td>
+                <td data-label="Оплата">8 010 руб.</td>
+                <td data-label="Наличие ноутбука"><i class="fas fa-circle fa-xs"></i></td>
+                <td data-label="Наличие паспорта"><i class="fas fa-circle fa-xs"></i></td>
+              </tr>
+              <tr class="subhead">
+                <td colspan="4">Вне обработки</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Уваров Борис Тимофеевич</td>
+                <td data-label="Наличие ноутбука">999 руб.</td>
+                <td data-label="Оплата"><i class="fas fa-circle fa-xs"></i></td>
+                <td data-label="Наличие паспорта"><i class="fas fa-circle fa-xs"></i></td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Клесин Алексей Алексеевич</td>
+                <td data-label="Оплата">48 458 руб.</td>
+                <td class="circle_in_table" data-label="Наличие ноутбука"><i class="fa fa-circle fa-xs"></i></td>
+                <td data-label="Наличие паспорта"><i class="fas fa-circle fa-xs"></i></td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Кизоров Антоний Егорьевич</td>
+                <td data-label="Оплата">0 руб.</td>
+                <td data-label="Наличие ноутбука"><i class="fas fa-circle fa-xs"></i></td>
+                <td data-label="Наличие паспорта"><i class="fas fa-circle fa-xs"></i></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table_adaptive_gray">
+            <caption>Учет товаров</caption>
+            <thead>
+              <tr>
+                <th>ФИО</th>
+                <th>Оплата</th>
+                <th>Наличие ноутбука</th>
+                <th>Наличие паспорта</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="ФИО">Сергиенко Антон Борисович</td>
+                <td data-label="Наличие ноутбука">1 123 руб.</td>
+                <td data-label="Оплата">&#9679;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Владимиров Пётр Васильевич</td>
+                <td data-label="Оплата">411 руб.</td>
+                <td data-label="Наличие ноутбука">&nbsp;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Воротцов Игорь Витальевич</td>
+                <td data-label="Оплата">8 010 руб.</td>
+                <td data-label="Наличие ноутбука">&#9679;</td>
+                <td data-label="Наличие паспорта">&nbsp;</td>
+              </tr>
+              <tr class="subhead">
+                <td colspan="4">Вне обработки</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Уваров Борис Тимофеевич</td>
+                <td data-label="Наличие ноутбука">999 руб.</td>
+                <td data-label="Оплата">&#9679;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Клесин Алексей Алексеевич</td>
+                <td data-label="Оплата">48 458 руб.</td>
+                <td class="circle_in_table" data-label="Наличие ноутбука">&#9679;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Кизоров Антоний Егорьевич</td>
+                <td data-label="Оплата">0 руб.</td>
+                <td data-label="Наличие ноутбука">&nbsp;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table_adaptive">
+            <caption>Учет товаров</caption>
+            <thead>
+              <tr>
+                <th>ФИО</th>
+                <th>Оплата</th>
+                <th>Наличие ноутбука</th>
+                <th>Наличие паспорта</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="ФИО">Сергиенко Антон Борисович</td>
+                <td data-label="Наличие ноутбука">1 123 руб.</td>
+                <td data-label="Оплата">&#9679;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Владимиров Пётр Васильевич</td>
+                <td data-label="Оплата">411 руб.</td>
+                <td data-label="Наличие ноутбука">&nbsp;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Воротцов Игорь Витальевич</td>
+                <td data-label="Оплата">8 010 руб.</td>
+                <td data-label="Наличие ноутбука">&#9679;</td>
+                <td data-label="Наличие паспорта">&nbsp;</td>
+              </tr>
+              <tr class="subhead">
+                <td colspan="4">Вне обработки</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Уваров Борис Тимофеевич</td>
+                <td data-label="Наличие ноутбука">999 руб.</td>
+                <td data-label="Оплата">&#9679;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Клесин Алексей Алексеевич</td>
+                <td data-label="Оплата">48 458 руб.</td>
+                <td class="circle_in_table" data-label="Наличие ноутбука">&#9679;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+              <tr>
+                <td data-label="ФИО">Кизоров Антоний Егорьевич</td>
+                <td data-label="Оплата">0 руб.</td>
+                <td data-label="Наличие ноутбука">&nbsp;</td>
+                <td data-label="Наличие паспорта">&#9679;</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table_adaptive">
+            <caption>Учет товаров</caption>
+            <thead>
+              <tr>
+                <th>RSS канал</th>
+                <th>Ссылка на сайт</th>
+                <th>Описание</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrix">feeds.feedburner.com/harrix</a></td>
+                <td data-label="Ссылка на сайт"><a href="http://blog.harrix.org">Harrix Блог</a></td>
+                <td data-label="Описание" class="text-left">Ос­нов­ной блог со ста­тья­ми на раз­ные те­мы: IT, AI, на­ука и др.</td>
+              </tr>
+              <tr>
+                <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrixgames">feeds.feedburner.com/harrixgames</a></td>
+                <td data-label="Ссылка на сайт"><a href="http://games.harrix.org">Harrix Games</a></td>
+                <td data-label="Описание" class="text-left">Иг­ры и го­ло­во­лом­ки с интел­лек­ту­аль­ным укл­он­ом и не то­лько.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table_adaptive_gray">
+            <caption>Учет товаров</caption>
+            <thead>
+              <tr>
+                <th>RSS канал</th>
+                <th>Ссылка на сайт</th>
+                <th>Описание</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrix">feeds.feedburner.com/harrix</a></td>
+                <td data-label="Ссылка на сайт"><a href="http://blog.harrix.org">Harrix Блог</a></td>
+                <td data-label="Описание" class="text-left">Ос­нов­ной блог со ста­тья­ми на раз­ные те­мы: IT, AI, на­ука и др.</td>
+              </tr>
+              <tr>
+                <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrixgames">feeds.feedburner.com/harrixgames</a></td>
+                <td data-label="Ссылка на сайт"><a href="http://games.harrix.org">Harrix Games</a></td>
+                <td data-label="Описание" class="text-left">Иг­ры и го­ло­во­лом­ки с интел­лек­ту­аль­ным укл­он­ом и не то­лько.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table_adaptive_classic">
+            <caption>Учет товаров</caption>
+            <thead>
+              <tr>
+                <th>RSS канал</th>
+                <th>Ссылка на сайт</th>
+                <th>Описание</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrix">feeds.feedburner.com/harrix</a></td>
+                <td data-label="Ссылка на сайт" class="text-left"><a href="http://blog.harrix.org">Harrix Блог</a></td>
+                <td data-label="Описание" class="text-left">Ос­нов­ной блог со ста­тья­ми на раз­ные те­мы: IT, AI, на­ука и др.</td>
+              </tr>
+              <tr>
+                <td data-label="RSS канал"><a href="https://feeds.feedburner.com/harrixgames">feeds.feedburner.com/harrixgames</a></td>
+                <td data-label="Ссылка на сайт" class="text-left"><a href="http://games.harrix.org">Harrix Games</a></td>
+                <td data-label="Описание" class="text-left">Иг­ры и го­ло­во­лом­ки с интел­лек­ту­аль­ным укл­он­ом и не то­лько.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Таблица без границ.</p>
+          <table>
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Текст</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Текст.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Текст.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Текст.</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="color-section">
+      <div class="container">
+        <a class="anchor" id="color-section"></a>
+        <h1>Важный блок</h1>
+        <p class="lead">
+          Сообщаем что-то такое, что должно привлечь ваше внимание. Это очень важно! Обязательно прочитайте этот текст, так как он о чем-то сообщает.
+        </p>
+      </div>
+    </div>
+  </article>
+
+
+  <a href="#top" id="js-back-to-top"><i class="fa fa-angle-up"></i></a>
+
+  <footer>
+    <div class="container">
+      <p>© 2014
+        <script>
+          new Date().getFullYear() > 2014 && document.write("-" + new Date().getFullYear());
+        </script> <a href="https://harrix.org">Harrix</a></p>
+    </div>
+  </footer>
+
+  <script src="js/bundle.js"></script>
 </body>
 
 </html>
