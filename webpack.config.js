@@ -3,6 +3,26 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const fs = require('fs')
+
+function generateHtmlPlugins (templateDir) {
+  // Read files in template directory
+  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
+  return templateFiles.map(item => {
+    // Split names and extension
+    const parts = item.split('.')
+    const name = parts[0]
+    const extension = parts[1]
+    // Create new HtmlWebpackPlugin with options
+    return new HtmlWebpackPlugin({
+      filename: `${name}.html`,
+      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+      inject: false,
+    })
+  })
+}
+
+const htmlPlugins = generateHtmlPlugins('./src/html/views')
 
 module.exports = {
   entry: [
@@ -29,7 +49,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        include: path.resolve(__dirname, 'src/templates'),
+        include: path.resolve(__dirname, 'src/html/includes'),
         use: ['raw-loader']
       },
     ]
@@ -39,12 +59,12 @@ module.exports = {
       filename: './css/style.bundle.css',
       allChunks: true,
     }),
-    new HtmlWebpackPlugin({
+    /*new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: './index.html',
       title: 'My Awesome application',
       inject: false,
-    }),
+    }),*/
     new CleanWebpackPlugin(['dist','build']),
     /*new CopyWebpackPlugin([{
         from: './node_modules/lightgallery/src/img',
@@ -71,5 +91,5 @@ module.exports = {
         to: './uploads'
       }
     ]),*/
-  ],
+  ].concat(htmlPlugins)
 };

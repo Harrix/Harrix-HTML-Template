@@ -1,11 +1,10 @@
-<% htmlWebpackPlugin.options.title = '123' %>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>
-            <%= htmlWebpackPlugin.options.title %>
+            8555
     </title>
 </head>
 
@@ -14,7 +13,7 @@
         <hgroup>
             <h1>
 <% 
-var tmpl = _.template(require('./templates/b.html'));
+var tmpl = _.template(require('./../includes/b.html'));
 var data = {
   foo: "Заголовок"
 }; 
@@ -60,7 +59,7 @@ var data = {
         </article>
     </section>
 <% 
-var tmpl = _.template(require('./templates/footer.html'));
+var tmpl = _.template(require('./../includes/footer.html'));
 var data = {
     name: "Harrix"
 }; 
