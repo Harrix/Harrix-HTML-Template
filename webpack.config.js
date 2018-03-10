@@ -35,7 +35,10 @@ module.exports = {
         test: /\.js$/,
         include: path.resolve(__dirname, 'src/js'),
         use: {
-          loader: 'babel-loader?presets=env'
+          loader: 'babel-loader',
+          options: {
+            presets: 'env'
+          }
         }
       },
       {
