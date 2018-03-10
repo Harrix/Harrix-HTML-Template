@@ -29,6 +29,7 @@ module.exports = {
   output: {
     filename: './js/bundle.js'
   },
+  devtool: "source-map",
   module: {
     rules: [{
         test: /\.js$/,
@@ -41,7 +42,20 @@ module.exports = {
         test: /\.(sass|scss)$/,
         include: path.resolve(__dirname, 'src/scss'),
         use: ExtractTextPlugin.extract({
-          use: ['css-loader?url=false', 'sass-loader']
+          use: [{
+              loader: "css-loader",
+              options: {
+                sourceMap: true,
+                url: false
+              }
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: true
+              }
+            }
+          ]
         })
       },
       {
