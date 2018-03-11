@@ -1,10 +1,7 @@
-<% 
-var data = {
+<% var data = {
   title: "Заголовок | Проект"
-};
-var tmpl = _.template(require('./../includes/header.html'));
-%>
-<%= tmpl(data) %>
+}; %>
+<%= _.template(require('./../includes/header.html'))(data) %>
 
 <article>
     <div class="container">
@@ -726,7 +723,4 @@ int main()
       </div>
     </div>
   </article>
-<% 
-var tmpl = _.template(require('./../includes/footer.html'));
-%>
-<%= tmpl(data) %>
+<%= _.template(require('./../includes/footer.html'))(data) %>
