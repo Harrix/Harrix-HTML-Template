@@ -4,10 +4,11 @@
   "description": "HTML template",
   "main": "src/index.js",
   "scripts": {
-    "build": "webpack --progress -p",
-    "build-and-beautify": "webpack --progress -p && html dist/*.html --indent-size 2",
-    "watch": "webpack --progress --watch",
-    "start": "webpack-dev-server --open",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "build-and-beautify": "webpack --mode production && html dist/*.html --indent-size 2",
+    "watch": "webpack --mode development --watch",
+    "start": "webpack-dev-server --mode development --open",
     "beautify": "html dist/*.html --indent-size 2"
   },
   "repository": {
