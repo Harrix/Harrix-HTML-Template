@@ -77,8 +77,8 @@ $button-border-radius:   3px;
   -o-transition:      all $duration-animation $type-animation;
 }
 
-@import "node_modules/bootstrap/scss/bootstrap";
-@import "node_modules/lightgallery/src/sass/lightgallery";
+@import "~bootstrap/scss/bootstrap";
+@import "~lightgallery/src/sass/lightgallery";
 @import "fonts";
 @import "lightbox";
 @import "common";
