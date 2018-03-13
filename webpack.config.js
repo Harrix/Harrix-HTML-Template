@@ -49,6 +49,7 @@ module.exports = {
               loader: "css-loader",
               options: {
                 sourceMap: true,
+                minimize: true,
                 url: false
               }
             },
@@ -73,7 +74,7 @@ module.exports = {
       filename: './css/style.bundle.css',
       allChunks: true,
     }),
-    new CleanWebpackPlugin(['dist', 'build']),
+    new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([{
         from: './node_modules/lightgallery/src/img',
         to: './img'
