@@ -9,14 +9,10 @@ import bootstrap from 'bootstrap';
 import hljs from 'highlight.js';
 import lightgallery from 'lightgallery';
 
-// import fontawesome from '@fortawesome/fontawesome'
-// import faUser from '@fortawesome/fontawesome-free-solid/faUser'
-// import faCircle from '@fortawesome/fontawesome-free-regular/faCircle'
-// import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook'
-
-// fontawesome.library.add(faUser)
-// fontawesome.library.add(faCircle)
-// fontawesome.library.add(faFacebook)
+import fontawesome from '@fortawesome/fontawesome'
+import fontawesomeFreeSolid from '@fortawesome/fontawesome-free-solid'
+import fontawesomeFreeRegular from '@fortawesome/fontawesome-free-regular'
+import fontawesomeFreeBrands from '@fortawesome/fontawesome-free-brands'
 
 jQuery(function() {
     initSyntaxHighlighting();
