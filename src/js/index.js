@@ -34,6 +34,12 @@ function initLightGallery(rowHeight, margins) {
         share: false
     });
 
+    jQuery('.js-gallery').lightGallery({
+        hash: true,
+        share: false,
+        selector: '.item'
+    });
+
     /*jQuery('.js-gallery').justifiedGallery({
         rowHeight: rowHeight,
         margins: margins,
