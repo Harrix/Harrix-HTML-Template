@@ -9,10 +9,6 @@ import bootstrap from 'bootstrap';
 import hljs from 'highlight.js';
 import lightgallery from 'lightgallery';
 
-console.log("HelloTot! from JavaScript!");
-var name = "Bob", time = "today";
-console.log(`Hello ${name}, how ar465466e you ${time}?`);
-
 jQuery(function() {
     initSyntaxHighlighting();
     initLightGallery(200, 10);
