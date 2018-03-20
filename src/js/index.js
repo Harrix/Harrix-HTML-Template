@@ -7,7 +7,6 @@ import jQuery from 'jquery';
 import popper from 'popper.js';
 import bootstrap from 'bootstrap';
 import hljs from 'highlight.js';
-//require("justifiedGallery");
 import lightgallery from 'lightgallery';
 
 console.log("HelloTot! from JavaScript!");
