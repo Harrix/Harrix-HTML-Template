@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const fs = require('fs')
+var webpack = require('webpack');
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -22,12 +23,14 @@ function generateHtmlPlugins(templateDir) {
 const htmlPlugins = generateHtmlPlugins('./src/html/views')
 
 module.exports = {
-  entry: [
-    './src/js/index.js',
-    './src/scss/style.scss'
-  ],
+  entry: {
+    bundle: './src/js/index.js',
+    katex: './src/js/katex.js',
+    style: './src/scss/style.scss',
+    stylekatex: './src/scss/katex.scss'
+  },
   output: {
-    filename: './js/bundle.js'
+    filename: './js/[name].js'
   },
   devtool: "source-map",
   module: {
@@ -71,10 +74,15 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: './css/style.bundle.css',
+      filename: './css/[name].css',
       allChunks: true,
     }),
     new CleanWebpackPlugin(['dist']),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+  }),
     new CopyWebpackPlugin([{
         from: './node_modules/lightgallery/src/img',
         to: './img'
@@ -82,6 +90,10 @@ module.exports = {
       {
         from: './node_modules/lightgallery/src/fonts',
         to: './fonts'
+      },
+      {
+        from: './node_modules/katex/dist/fonts',
+        to: './css/fonts'
       },
       {
         from: './src/fonts',
