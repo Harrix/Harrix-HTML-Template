@@ -82,7 +82,7 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery",
       "window.jQuery": "jquery"
-  }),
+    }),
     new CopyWebpackPlugin([{
         from: './node_modules/lightgallery/src/img',
         to: './img'
