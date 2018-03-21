@@ -24,10 +24,10 @@ const htmlPlugins = generateHtmlPlugins('./src/html/views')
 
 module.exports = {
   entry: {
-    bundle: './src/js/index.js',
-    katex: './src/js/katex.js',
-    style: './src/scss/style.scss',
-    stylekatex: './src/scss/katex.scss'
+    'app': './src/js/index.js',
+    'style': './src/scss/style.scss',
+    '../katex/app': './src/js/katex.js',
+    '../katex/style': './src/scss/katex.scss'
   },
   output: {
     filename: './js/[name].js'
@@ -93,7 +93,7 @@ module.exports = {
       },
       {
         from: './node_modules/katex/dist/fonts',
-        to: './css/fonts'
+        to: './katex/fonts'
       },
       {
         from: './src/fonts',
