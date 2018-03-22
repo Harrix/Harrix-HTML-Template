@@ -15,6 +15,7 @@ import lgFullscreen from 'lg-fullscreen';
 import lgPager from 'lg-pager';
 import lgZoom from 'lg-zoom';
 import lgHash from 'lg-hash';
+import jqueryMousewheel from 'jquery-mousewheel';
 
 import fontawesome from '@fortawesome/fontawesome'
 import fontawesomeFreeSolid from '@fortawesome/fontawesome-free-solid'
