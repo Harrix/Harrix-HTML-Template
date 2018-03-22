@@ -24,10 +24,14 @@ const htmlPlugins = generateHtmlPlugins('./src/html/views')
 
 module.exports = {
   entry: {
-    'app': './src/js/index.js',
-    'style': './src/scss/style.scss',
-    '../katex/app': './src/js/katex.js',
-    '../katex/style': './src/scss/katex.scss'
+    'app': [
+      './src/js/index.js',
+      './src/scss/style.scss'
+    ],
+    '../katex/katex': [
+      './src/js/katex.js',
+      './src/scss/katex.scss'
+    ]
   },
   output: {
     filename: './js/[name].js'
