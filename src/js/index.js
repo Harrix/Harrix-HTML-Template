@@ -3,7 +3,6 @@
  * Copyright 2018 Sergienko Anton
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
-//import jQuery from 'jquery';
 import popper from 'popper.js';
 import bootstrap from 'bootstrap';
 import hljs from 'highlight.js';
