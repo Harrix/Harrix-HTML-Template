@@ -7,7 +7,15 @@
 import popper from 'popper.js';
 import bootstrap from 'bootstrap';
 import hljs from 'highlight.js';
+
 import lightgallery from 'lightgallery';
+import lgThumbnail from 'lg-thumbnail';
+import lgAutoplay from 'lg-autoplay';
+import lgVideo from 'lg-video';
+import lgFullscreen from 'lg-fullscreen';
+import lgPager from 'lg-pager';
+import lgZoom from 'lg-zoom';
+import lgHash from 'lg-hash';
 
 import fontawesome from '@fortawesome/fontawesome'
 import fontawesomeFreeSolid from '@fortawesome/fontawesome-free-solid'

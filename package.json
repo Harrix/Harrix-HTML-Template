@@ -31,6 +31,13 @@
     "jquery": "^3.3.1",
     "jquery-mousewheel": "^3.1.13",
     "katex": "^0.9.0",
+    "lg-autoplay": "^1.0.4",
+    "lg-fullscreen": "^1.0.1",
+    "lg-hash": "^1.0.4",
+    "lg-pager": "^1.0.2",
+    "lg-thumbnail": "^1.1.0",
+    "lg-video": "^1.2.1",
+    "lg-zoom": "^1.1.0",
     "lightgallery": "^1.6.8",
     "popper.js": "^1.14.1"
   },
