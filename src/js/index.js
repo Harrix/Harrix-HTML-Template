@@ -10,9 +10,7 @@ import fontawesomeFreeRegular from '@fortawesome/fontawesome-free-regular'
 import fontawesomeFreeBrands from '@fortawesome/fontawesome-free-brands'
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Toggles
-  
+ 
     const $burgers = getAll('.burger');
   
     if ($burgers.length > 0) {
@@ -26,21 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   
-    // Modals
-  
-    const rootEl = document.documentElement;
-    const $modals = getAll('.modal');
-    const $modalButtons = getAll('.modal-button');
-    const $modalCloses = getAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button');
-  
-    
-    // Functions
-  
     function getAll(selector) {
       return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
     }
-  
-    // Scrolling
   
     const navbarEl = document.getElementById('navbar');
     const navbarBurger = document.getElementById('navbarBurger');
@@ -146,28 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   
       ticking = true;
-    });
-
-    const navbarTopEl = document.getElementById('navbar');
-    const navbarBottomEl = document.getElementById('navbarBottom');
-    const fixBottomEl = document.getElementById('navbarFixBottom');
-    const fixBottomElIcon = fixBottomEl.querySelector('.fa');
-    let fixedBottom = false;
-  
-    fixBottomEl.addEventListener('click', event => {
-      fixedBottom = !fixedBottom;
-  
-      if (fixedBottom) {
-        fixBottomEl.className = 'button is-success';
-        fixBottomElIcon.className = 'far fa-check-square';
-        rootEl.classList.add('has-navbar-fixed-bottom');
-        navbarBottomEl.classList.remove('is-hidden');
-      } else {
-        fixBottomEl.className = 'button is-link';
-        fixBottomElIcon.className = 'far fa-square';
-        rootEl.classList.remove('has-navbar-fixed-bottom');
-        navbarBottomEl.classList.add('is-hidden');
-      }
     });
   
   });
