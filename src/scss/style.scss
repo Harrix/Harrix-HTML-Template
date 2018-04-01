@@ -30,13 +30,26 @@
  $primary-invert: $pink-invert;
  
  // 4. Import the rest of Bulma
-
- @media screen and (max-width: 1023px) {
-.bd-is-clipped-touch {
-    overflow: hidden !important;
-}
- }
-
  
  @import "~bulma/bulma";
+
+ @media screen and (max-width: 1023px) {
+    .bd-is-clipped-touch {
+        overflow: hidden !important;
+    }
+     }
+    
+
+ .bd-special-shadow {
+  //background-image: linear-gradient(rgba(#000, 0.1), rgba(#000, 0));
+  background-color: blue;
+  height: 8px;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  //transform: scaleY(0);
+  transform-origin: center top;
+ }
  

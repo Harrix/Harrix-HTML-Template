@@ -9,6 +9,18 @@ import fontawesomeFreeSolid from '@fortawesome/fontawesome-free-solid'
 import fontawesomeFreeRegular from '@fortawesome/fontawesome-free-regular'
 import fontawesomeFreeBrands from '@fortawesome/fontawesome-free-brands'
 
+function getAll(selector) {
+    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+}
+
+specialShadow.onmouseover = function(event) {
+    var target = event.target;
+    target.style.background = 'pink';
+    //text.value += "mouseover " + target.tagName + "\n";
+    //text.scrollTop = text.scrollHeight;
+    translateHeader(currentY, true);
+  };
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const $burgers = getAll('.burger');
@@ -22,10 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 $target.classList.toggle('is-active');
             });
         });
-    }
-
-    function getAll(selector) {
-        return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
     }
 
     const navbarEl = document.getElementById('navbar');
@@ -111,8 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const translateFactor = 1 + translateValue / NAVBAR_HEIGHT;
-        specialShadow.style.opacity = scrollFactor;
-        specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
+       // specialShadow.style.opacity = scrollFactor;
+        //specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
     }
 
     translateHeader(window.scrollY, false);
