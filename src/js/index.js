@@ -25,20 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const $burgers = getAll('.burger');
 
-    if ($burgers.length > 0) {
-        $burgers.forEach($el => {
-            $el.addEventListener('click', () => {
-                const target = $el.dataset.target;
-                const $target = document.getElementById(target);
-                $el.classList.toggle('is-active');
-                $target.classList.toggle('is-active');
-            });
-        });
-    }
-
     const navbarEl = document.getElementById('navbar');
     const navbarBurger = document.getElementById('navbarBurger');
     const specialShadow = document.getElementById('specialShadow');
+    const rootEl = document.documentElement;
     const NAVBAR_HEIGHT = 52;
     const THRESHOLD = 160;
     let navbarOpen = false;
@@ -48,13 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTranslate = 0;
 
     navbarBurger.addEventListener('click', el => {
-        navbarOpen = !navbarOpen;
+        rootEl.classList.toggle('bd-is-clipped-touch');
 
-        if (navbarOpen) {
-            rootEl.classList.add('bd-is-clipped-touch');
-        } else {
-            rootEl.classList.remove('bd-is-clipped-touch');
-        }
+        const target = document.getElementById(navbarBurger.dataset.target);
+        navbarBurger.classList.toggle('is-active');
+        target.classList.toggle('is-active');
     });
 
     function upOrDown(lastY, currentY) {
