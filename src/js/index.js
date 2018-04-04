@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let scrollFactor = 0;
     let currentTranslate = 0;
 
-    navbarBurger.addEventListener('click', el => {
+    navbarBurger.addEventListener('click', () => {
         rootEl.classList.toggle('bd-is-clipped-touch');
 
         const target = document.getElementById(navbarBurger.dataset.target);
