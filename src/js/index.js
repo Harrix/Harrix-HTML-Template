@@ -14,31 +14,16 @@ function getAll(selector) {
 }
 
 specialShadow.onmouseover = function(event) {
-    var target = event.target;
-    target.style.background = 'pink';
-    //text.value += "mouseover " + target.tagName + "\n";
-    //text.scrollTop = text.scrollHeight;
-    //translateHeader(currentY, true);
     const navbarEl = document.getElementById('navbar');
     navbarEl.classList.remove('translateY-hide');
     navbarEl.classList.add('translateY-show');
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    const $burgers = getAll('.burger');
-
     const navbarEl = document.getElementById('navbar');
     const navbarBurger = document.getElementById('navbarBurger');
     const specialShadow = document.getElementById('specialShadow');
     const rootEl = document.documentElement;
-    const NAVBAR_HEIGHT = 52;
-    const THRESHOLD = 160;
-    let navbarOpen = false;
-    let horizon = NAVBAR_HEIGHT;
-    let whereYouStoppedScrolling = 0;
-    let scrollFactor = 0;
-    let currentTranslate = 0;
     let lastY = 0;
     let currentY = 0;
 
@@ -52,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', function() {
         lastY = currentY;
-
         currentY = window.scrollY;
 
         if (currentY >= lastY) {
