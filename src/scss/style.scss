@@ -52,4 +52,8 @@
   //transform: scaleY(0);
   transform-origin: center top;
  }
+
+ .translateY-hide {
+    transform: translateY(-100%);
+ }
  
