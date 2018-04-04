@@ -33,6 +33,16 @@
  
  @import "~bulma/bulma";
 
+ $duration-animation:     0.2s;
+ $type-animation:         ease-in-out;
+ 
+  @mixin animationHarrix() {
+     transition:         all $duration-animation $type-animation;
+     -webkit-transition: all $duration-animation $type-animation;
+     -moz-transition:    all $duration-animation $type-animation;
+     -o-transition:      all $duration-animation $type-animation;
+   }
+
  @media screen and (max-width: 1023px) {
     .bd-is-clipped-touch {
         overflow: hidden !important;
@@ -55,5 +65,15 @@
 
  .translateY-hide {
     transform: translateY(-100%);
+    @include animationHarrix();
  }
+
+ .translateY-show {
+    transform: translateY(0);
+    @include animationHarrix();
+ }
+
+  navbar {
+    @include animationHarrix();
+  }
  

@@ -18,8 +18,11 @@ specialShadow.onmouseover = function(event) {
     target.style.background = 'pink';
     //text.value += "mouseover " + target.tagName + "\n";
     //text.scrollTop = text.scrollHeight;
-    translateHeader(currentY, true);
-  };
+    //translateHeader(currentY, true);
+    const navbarEl = document.getElementById('navbar');
+    navbarEl.classList.remove('translateY-hide');
+    navbarEl.classList.add('translateY-show');
+};
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -36,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let whereYouStoppedScrolling = 0;
     let scrollFactor = 0;
     let currentTranslate = 0;
+    let lastY = 0;
+    let currentY = 0;
 
     navbarBurger.addEventListener('click', () => {
         rootEl.classList.toggle('bd-is-clipped-touch');
@@ -45,89 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
         target.classList.toggle('is-active');
     });
 
-    function upOrDown(lastY, currentY) {
-        if (currentY >= lastY) {
-            return goingDown(currentY);
-        }
-        return goingUp(currentY);
-    }
-
-    function goingDown(currentY) {
-        const trigger = NAVBAR_HEIGHT;
-        whereYouStoppedScrolling = currentY;
-
-        if (currentY > horizon) {
-            horizon = currentY;
-        }
-
-        translateHeader(currentY, false);
-    }
-
-    function goingUp(currentY) {
-        const trigger = 0;
-
-        if (currentY < (whereYouStoppedScrolling - NAVBAR_HEIGHT)) {
-            horizon = currentY + NAVBAR_HEIGHT;
-        }
-
-        translateHeader(currentY, true);
-    }
-
-    function constrainDelta(delta) {
-        return Math.max(0, Math.min(delta, NAVBAR_HEIGHT));
-    }
-
-    function translateHeader(currentY, upwards) {
-        // let topTranslateValue;
-        let translateValue;
-
-        if (upwards && currentTranslate == 0) {
-            translateValue = 0;
-        } else if (currentY <= NAVBAR_HEIGHT) {
-            translateValue = currentY * -1;
-        } else {
-            const delta = constrainDelta(Math.abs(currentY - horizon));
-            translateValue = delta - NAVBAR_HEIGHT;
-        }
-
-        if (translateValue != currentTranslate) {
-            const navbarStyle = `
-          transform: translateY(${translateValue}px);
-        `;
-            currentTranslate = translateValue;
-            navbarEl.setAttribute('style', navbarStyle);
-        }
-
-        if (currentY > THRESHOLD * 2) {
-            scrollFactor = 1;
-        } else if (currentY > THRESHOLD) {
-            scrollFactor = (currentY - THRESHOLD) / THRESHOLD;
-        } else {
-            scrollFactor = 0;
-        }
-
-        const translateFactor = 1 + translateValue / NAVBAR_HEIGHT;
-       // specialShadow.style.opacity = scrollFactor;
-        //specialShadow.style.transform = 'scaleY(' + translateFactor + ')';
-    }
-
-    translateHeader(window.scrollY, false);
-
-    let ticking = false;
-    let lastY = 0;
-
     window.addEventListener('scroll', function() {
-        const currentY = window.scrollY;
+        lastY = currentY;
 
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                upOrDown(lastY, currentY);
-                ticking = false;
-                lastY = currentY;
-            });
+        currentY = window.scrollY;
+
+        if (currentY >= lastY) {
+            navbarEl.classList.remove('translateY-show');
+            navbarEl.classList.add('translateY-hide');
+            //console.log('add ' + lastY + " " + currentY);           
+        } else {
+            navbarEl.classList.remove('translateY-hide');
+            navbarEl.classList.add('translateY-show');
+            //console.log('remove ' + lastY + " " + currentY);
         }
-
-        ticking = true;
     });
 
 });
