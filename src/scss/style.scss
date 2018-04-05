@@ -4,53 +4,38 @@
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
 
- @charset "utf-8";
+@charset "utf-8"; // Customization
+// You can easily customize Bulma with your own variables.
+// Just uncomment the following block to see the result.
+// 1. Import the initial variables
+@import "~bulma/sass/utilities/initial-variables"; // 2. Set your own initial variables
+// Update the blue shade, used for links
+$blue: #06bcef; // Add pink and its invert
+$pink: #ff8080;
+$pink-invert: #fff; // Update the sans-serif font family
+$family-sans-serif: "Helvetica", "Arial", sans-serif; // 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $pink;
+$primary-invert: $pink-invert; // 4. Import the rest of Bulma
+@import "~bulma/bulma";
 
- // Customization
- 
- // You can easily customize Bulma with your own variables.
- // Just uncomment the following block to see the result.
- 
+$duration-animation : 0.2s;
+$type-animation : ease-in-out;
 
- // 1. Import the initial variables
- @import "~bulma/sass/utilities/initial-variables";
- 
- // 2. Set your own initial variables
- // Update the blue shade, used for links
- $blue: #06bcef;
- // Add pink and its invert
- $pink: #ff8080;
- $pink-invert: #fff;
- // Update the sans-serif font family
- $family-sans-serif: "Helvetica", "Arial", sans-serif;
- 
- // 3. Set the derived variables
- // Use the new pink as the primary color
- $primary: $pink;
- $primary-invert: $pink-invert;
- 
- // 4. Import the rest of Bulma
- 
- @import "~bulma/bulma";
+@mixin animationHarrix() {
+  transition: all $duration-animation $type-animation;
+  -webkit-transition: all $duration-animation $type-animation;
+  -moz-transition: all $duration-animation $type-animation;
+  -o-transition: all $duration-animation $type-animation;
+}
 
- $duration-animation:     0.2s;
- $type-animation:         ease-in-out;
- 
-  @mixin animationHarrix() {
-     transition:         all $duration-animation $type-animation;
-     -webkit-transition: all $duration-animation $type-animation;
-     -moz-transition:    all $duration-animation $type-animation;
-     -o-transition:      all $duration-animation $type-animation;
-   }
+@media screen and (max-width: 1023px) {
+  .bd-is-clipped-touch {
+    overflow: hidden !important;
+  }
+}
 
- @media screen and (max-width: 1023px) {
-    .bd-is-clipped-touch {
-        overflow: hidden !important;
-    }
-     }
-    
-
- .bd-special-shadow {
+.bd-special-shadow {
   //background-image: linear-gradient(rgba(#000, 0.1), rgba(#000, 0));
   background-color: rgba(#fff, 0);
   height: 8px;
@@ -58,28 +43,25 @@
   opacity: 1;
   position: absolute;
   right: 0;
-  top: 100%;
-  //transform: scaleY(0);
+  top: 100%; //transform: scaleY(0);
   transform-origin: center top;
- }
-
- .translateY-hide {
-    transform: translateY(-100%);
- }
-
-  .navbar {
-    @include animationHarrix();
-  }
-
-  .logo-shrink {
-    height: 2.5rem !important;
-    max-height: 2.5rem !important;
-   // opacity: 0.5;
-  }
-
-  .navbar-item img  {
-    height: 3.125rem;
-    max-height: 3.125rem;
-    @include animationHarrix();
 }
- 
+
+.translateY-hide {
+  transform: translateY(-100%);
+}
+
+.navbar {
+  @include animationHarrix();
+}
+
+.logo-shrink {
+  height: 2.5rem !important;
+  max-height: 2.5rem !important; // opacity: 0.5;
+}
+
+.navbar-item img {
+  height: 3.125rem;
+  max-height: 3.125rem;
+  @include animationHarrix();
+}
