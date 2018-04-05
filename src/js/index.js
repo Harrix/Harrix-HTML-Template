@@ -16,7 +16,6 @@ function getAll(selector) {
 specialShadow.onmouseover = function(event) {
     const navbarEl = document.getElementById('navbar');
     navbarEl.classList.remove('translateY-hide');
-    navbarEl.classList.add('translateY-show');
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,13 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
         currentY = window.scrollY;
 
         if (currentY >= lastY) {
-            navbarEl.classList.remove('translateY-show');
             navbarEl.classList.add('translateY-hide');
-            //console.log('add ' + lastY + " " + currentY);           
+            console.log('add ' + lastY + " " + currentY);           
         } else {
             navbarEl.classList.remove('translateY-hide');
-            navbarEl.classList.add('translateY-show');
-            //console.log('remove ' + lastY + " " + currentY);
+            console.log('remove ' + lastY + " " + currentY);
         }
     });
 

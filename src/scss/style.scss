@@ -65,15 +65,9 @@
 
  .translateY-hide {
     transform: translateY(-100%);
-    @include animationHarrix();
  }
 
- .translateY-show {
-    transform: translateY(0);
-    @include animationHarrix();
- }
-
-  navbar {
+  .navbar {
     @include animationHarrix();
   }
  
