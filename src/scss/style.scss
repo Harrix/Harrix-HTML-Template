@@ -52,7 +52,7 @@
 
  .bd-special-shadow {
   //background-image: linear-gradient(rgba(#000, 0.1), rgba(#000, 0));
-  background-color: blue;
+  background-color: rgba(#fff, 0);
   height: 8px;
   left: 0;
   opacity: 1;
@@ -72,9 +72,9 @@
   }
 
   .logo-shrink {
-    height: 1.5rem !important;
-    max-height: 1.5rem !important;
-    opacity: 0.5;
+    height: 2.5rem !important;
+    max-height: 2.5rem !important;
+   // opacity: 0.5;
   }
 
   .navbar-item img  {

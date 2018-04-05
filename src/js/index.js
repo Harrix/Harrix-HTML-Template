@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
         if (currentY >= lastY) {
-            if (currentY > 100) {
+            if (currentY > 200) {
             navbarEl.classList.add('translateY-hide');
             console.log('add ' + lastY + " " + currentY);
             }       
