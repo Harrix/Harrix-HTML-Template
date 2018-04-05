@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbarBurger = document.getElementById('navbarBurger');
     const specialShadow = document.getElementById('specialShadow');
     const rootEl = document.documentElement;
+    const logo = document.getElementById('logo');
     let lastY = 0;
     let currentY = 0;
 
@@ -38,9 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
         lastY = currentY;
         currentY = window.scrollY;
 
+        if (currentY >= 50) {
+            logo.classList.add('logo-shrink');
+        } else {
+            logo.classList.remove('logo-shrink');
+    }
+
         if (currentY >= lastY) {
+            if (currentY > 100) {
             navbarEl.classList.add('translateY-hide');
-            console.log('add ' + lastY + " " + currentY);           
+            console.log('add ' + lastY + " " + currentY);
+            }       
         } else {
             navbarEl.classList.remove('translateY-hide');
             console.log('remove ' + lastY + " " + currentY);

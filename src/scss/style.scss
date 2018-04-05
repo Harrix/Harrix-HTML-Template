@@ -70,4 +70,16 @@
   .navbar {
     @include animationHarrix();
   }
+
+  .logo-shrink {
+    height: 1.5rem !important;
+    max-height: 1.5rem !important;
+    opacity: 0.5;
+  }
+
+  .navbar-item img  {
+    height: 3.125rem;
+    max-height: 3.125rem;
+    @include animationHarrix();
+}
  
