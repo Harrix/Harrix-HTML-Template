@@ -13,9 +13,12 @@ function getAll(selector) {
     return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
 }
 
+let hasClassHide;
+
 specialShadow.onmouseover = function(event) {
     const navbarEl = document.getElementById('navbar');
     navbarEl.classList.remove('translateY-hide');
+    hasClassHide = false;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const logo = document.getElementById('logo');
     let lastY = 0;
     let currentY = 0;
+
+    hasClassHide = logo.classList.contains('translateY-hide');    
 
     navbarBurger.addEventListener('click', () => {
         rootEl.classList.toggle('bd-is-clipped-touch');
@@ -45,14 +50,23 @@ document.addEventListener('DOMContentLoaded', () => {
             logo.classList.remove('logo-shrink');
         }
 
-        if (currentY >= lastY) {
-            if (currentY > 300) {
+        if (currentY > 300) {
+        if (currentY > lastY) {
+           
+            if (!hasClassHide) {
                 navbarEl.classList.add('translateY-hide');
+                hasClassHide = true;
                 console.log('add ' + lastY + " " + currentY);
             }
-        } else {
+            }
+        } 
+        
+        if (currentY < lastY) {
+            if (hasClassHide) {
             navbarEl.classList.remove('translateY-hide');
+            hasClassHide = false;
             console.log('remove ' + lastY + " " + currentY);
+            }
         }
     });
 
