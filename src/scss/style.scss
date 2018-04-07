@@ -4,12 +4,11 @@
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
 
-@charset "utf-8"; // Customization
-// You can easily customize Bulma with your own variables.
-// Just uncomment the following block to see the result.
-// 1. Import the initial variables
+@charset "utf-8";
+
 @import "~bulma/sass/utilities/initial-variables"; // 2. Set your own initial variables
-// Update the blue shade, used for links
+@import "~bulma/sass/utilities/functions";
+
 $blue: #06bcef; // Add pink and its invert
 $pink: #ff8080;
 $pink-invert: #fff; // Update the sans-serif font family
@@ -17,6 +16,11 @@ $family-sans-serif: "Helvetica", "Arial", sans-serif; // 3. Set the derived vari
 // Use the new pink as the primary color
 $primary: $pink;
 $primary-invert: $pink-invert; // 4. Import the rest of Bulma
+
+@import "~bulma/sass/utilities/derived-variables";
+
+//
+
 @import "~bulma/bulma";
 
 $duration-animation : 0.2s;
