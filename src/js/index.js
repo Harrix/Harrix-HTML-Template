@@ -9,28 +9,26 @@ import fontawesomeFreeSolid from '@fortawesome/fontawesome-free-solid'
 import fontawesomeFreeRegular from '@fortawesome/fontawesome-free-regular'
 import fontawesomeFreeBrands from '@fortawesome/fontawesome-free-brands'
 
-function getAll(selector) {
-    return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
-}
-
-let hasClassHide;
-
-specialShadow.onmouseover = function(event) {
-    const navbarEl = document.getElementById('navbar');
-    navbarEl.classList.remove('translateY-hide');
-    hasClassHide = false;
-};
-
 document.addEventListener('DOMContentLoaded', () => {
+    initNavbar(50, 300);
+});
+
+function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
+    const rootEl = document.documentElement;
     const navbarEl = document.getElementById('navbar');
     const navbarBurger = document.getElementById('navbarBurger');
-    const specialShadow = document.getElementById('specialShadow');
-    const rootEl = document.documentElement;
+    const specialShadow = document.getElementById('specialShadow');    
     const logo = document.getElementById('logo');
     let lastY = 0;
     let currentY = 0;
 
-    hasClassHide = logo.classList.contains('translateY-hide');    
+    let hasClassHide = logo.classList.contains('translateY-hide');
+
+    specialShadow.onmouseover = function(event) {
+        const navbarEl = document.getElementById('navbar');
+        navbarEl.classList.remove('translateY-hide');
+        hasClassHide = false;
+    };
 
     navbarBurger.addEventListener('click', () => {
         rootEl.classList.toggle('bd-is-clipped-touch');
@@ -44,32 +42,26 @@ document.addEventListener('DOMContentLoaded', () => {
         lastY = currentY;
         currentY = window.scrollY;
 
-        if (currentY >= 50) {
+        if (currentY >= scrollTopLogoShrink)
             logo.classList.add('logo-shrink');
-            console.log('logo-shrink ' + currentY);
-        } else {
+        else
             logo.classList.remove('logo-shrink');
-            console.log('logo-shrink remove' + currentY);
+
+        if (currentY > scrollTopNavbarHide) {
+            if (currentY > lastY) {
+
+                if (!hasClassHide) {
+                    navbarEl.classList.add('translateY-hide');
+                    hasClassHide = true;
+                }
+            }
         }
 
-        if (currentY > 300) {
-        if (currentY > lastY) {
-           
-            if (!hasClassHide) {
-                navbarEl.classList.add('translateY-hide');
-                hasClassHide = true;
-                console.log('add ' + lastY + " " + currentY);
-            }
-            }
-        } 
-        
         if (currentY < lastY) {
             if (hasClassHide) {
-            navbarEl.classList.remove('translateY-hide');
-            hasClassHide = false;
-            console.log('remove ' + lastY + " " + currentY);
+                navbarEl.classList.remove('translateY-hide');
+                hasClassHide = false;
             }
         }
     });
-
-});
+}
