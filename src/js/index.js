@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     const rootEl = document.documentElement;
-    const navbarEl = document.getElementById('navbar');
+    const navbarEl = document.getElementById('h-navbar');
     const navbarBurger = document.getElementById('navbarBurger');
-    const bottomNavbar = document.getElementById('bottom-navbar');
-    const logo = document.getElementById('logo');
+    const bottomNavbar = document.getElementById('h-bottom-navbar');
+    const logo = document.getElementById('h-logo');
     let lastY = 0;
     let currentY = 0;
 
