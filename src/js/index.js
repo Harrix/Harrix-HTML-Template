@@ -46,8 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (currentY >= 50) {
             logo.classList.add('logo-shrink');
+            console.log('logo-shrink ' + currentY);
         } else {
             logo.classList.remove('logo-shrink');
+            console.log('logo-shrink remove' + currentY);
         }
 
         if (currentY > 300) {
