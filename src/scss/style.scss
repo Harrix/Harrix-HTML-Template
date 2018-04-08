@@ -45,14 +45,12 @@ $type-animation : ease-in-out;
 }
 
 .harrix-is-bottom-navbar {
-  background-color: rgba(#fff, 0);
+  position: absolute;
+  background-color: transparent;
   height: 8px;
   left: 0;
-  opacity: 1;
-  position: absolute;
   right: 0;
   top: 100%;
-  transform-origin: center top;
 }
 
 .harrix-is-hidden-navbar {
