@@ -22,6 +22,12 @@ $family-monospace: 'Roboto Mono', monospace;
 
 @import "fonts";
 
+body {
+  @include from($widescreen) {
+    padding-top: 3rem;
+  }
+}
+
 $duration-animation : 0.2s;
 $type-animation : ease-in-out;
 
