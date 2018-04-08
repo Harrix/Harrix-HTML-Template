@@ -22,11 +22,11 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     let lastY = 0;
     let currentY = 0;
 
-    let hasClassHide = logo.classList.contains('harrix-is-hidden-navbar');
+    let hasClassHide = logo.classList.contains('h-is-hidden-navbar');
 
     bottomNavbar.onmouseover = function(event) {
         const navbarEl = document.getElementById('navbar');
-        navbarEl.classList.remove('harrix-is-hidden-navbar');
+        navbarEl.classList.remove('h-is-hidden-navbar');
         hasClassHide = false;
     };
 
@@ -47,12 +47,12 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
             logo.classList.remove('logo-shrink');
 
         if ((currentY > scrollTopNavbarHide) && (currentY > lastY) && (!hasClassHide)) {
-            navbarEl.classList.add('harrix-is-hidden-navbar');
+            navbarEl.classList.add('h-is-hidden-navbar');
             hasClassHide = true;
         }
 
         if ((currentY < lastY) && (hasClassHide)) {
-            navbarEl.classList.remove('harrix-is-hidden-navbar');
+            navbarEl.classList.remove('h-is-hidden-navbar');
             hasClassHide = false;
         }
     });

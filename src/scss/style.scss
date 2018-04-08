@@ -44,7 +44,7 @@ $type-animation : ease-in-out;
   }
 }
 
-.harrix-is-bottom-navbar {
+.h-is-bottom-navbar {
   position: absolute;
   background-color: transparent;
   height: 8px;
@@ -53,7 +53,7 @@ $type-animation : ease-in-out;
   top: 100%;
 }
 
-.harrix-is-hidden-navbar {
+.h-is-hidden-navbar {
   transform: translateY(-100%);
 }
 
