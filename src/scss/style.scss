@@ -44,19 +44,18 @@ $type-animation : ease-in-out;
   }
 }
 
-.bd-special-shadow {
-  //background-image: linear-gradient(rgba(#000, 0.1), rgba(#000, 0));
+.harrix-is-bottom-navbar {
   background-color: rgba(#fff, 0);
   height: 8px;
   left: 0;
   opacity: 1;
   position: absolute;
   right: 0;
-  top: 100%; //transform: scaleY(0);
+  top: 100%;
   transform-origin: center top;
 }
 
-.harrix-is-hidden-fixed-top {
+.harrix-is-hidden-navbar {
   transform: translateY(-100%);
 }
 
