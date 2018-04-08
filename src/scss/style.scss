@@ -69,3 +69,7 @@ $type-animation : ease-in-out;
   max-height: 3.125rem;
   @include animationHarrix();
 }
+
+.container {
+  //max-width: 1140px;
+}
