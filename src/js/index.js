@@ -17,22 +17,21 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     const rootEl = document.documentElement;
     const navbarEl = document.getElementById('navbar');
     const navbarBurger = document.getElementById('navbarBurger');
-    const specialShadow = document.getElementById('specialShadow');    
+    const specialShadow = document.getElementById('specialShadow');
     const logo = document.getElementById('logo');
     let lastY = 0;
     let currentY = 0;
 
-    let hasClassHide = logo.classList.contains('translateY-hide');
+    let hasClassHide = logo.classList.contains('harrix-is-hidden-fixed-top');
 
     specialShadow.onmouseover = function(event) {
         const navbarEl = document.getElementById('navbar');
-        navbarEl.classList.remove('translateY-hide');
+        navbarEl.classList.remove('harrix-is-hidden-fixed-top');
         hasClassHide = false;
     };
 
     navbarBurger.addEventListener('click', () => {
         rootEl.classList.toggle('bd-is-clipped-touch');
-
         const target = document.getElementById(navbarBurger.dataset.target);
         navbarBurger.classList.toggle('is-active');
         target.classList.toggle('is-active');
@@ -47,21 +46,14 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
         else
             logo.classList.remove('logo-shrink');
 
-        if (currentY > scrollTopNavbarHide) {
-            if (currentY > lastY) {
-
-                if (!hasClassHide) {
-                    navbarEl.classList.add('translateY-hide');
-                    hasClassHide = true;
-                }
-            }
+        if ((currentY > scrollTopNavbarHide) && (currentY > lastY) && (!hasClassHide)) {
+            navbarEl.classList.add('harrix-is-hidden-fixed-top');
+            hasClassHide = true;
         }
 
-        if (currentY < lastY) {
-            if (hasClassHide) {
-                navbarEl.classList.remove('translateY-hide');
-                hasClassHide = false;
-            }
+        if ((currentY < lastY) && (hasClassHide)) {
+            navbarEl.classList.remove('harrix-is-hidden-fixed-top');
+            hasClassHide = false;
         }
     });
 }
