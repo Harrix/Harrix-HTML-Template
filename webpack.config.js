@@ -81,7 +81,6 @@ module.exports = {
       filename: './css/[name].css',
       allChunks: true,
     }),
-    new CleanWebpackPlugin(['dist']),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
