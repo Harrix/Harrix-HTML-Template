@@ -61,7 +61,7 @@ $type-animation : ease-in-out;
   @include animationHarrix();
 }
 
-.logo-shrink {
+.h-js-logo-shrink {
   height: 2.5rem !important;
   max-height: 2.5rem !important; // opacity: 0.5;
 }
@@ -72,9 +72,9 @@ $type-animation : ease-in-out;
   @include animationHarrix();
 }
 
-.bd-icon {
+.h-icon {
   margin-right: 0.5em;
-  margin-top: 2px;
+ // margin-top: 2px;
 }
 
 .container {

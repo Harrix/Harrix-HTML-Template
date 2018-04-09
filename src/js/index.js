@@ -41,9 +41,9 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
         currentY = window.scrollY;
 
         if (currentY >= scrollTopLogoShrink)
-            logo.classList.add('logo-shrink');
+            logo.classList.add('h-js-logo-shrink');
         else
-            logo.classList.remove('logo-shrink');
+            logo.classList.remove('h-js-logo-shrink');
 
         if ((currentY > scrollTopNavbarHide) && (currentY > lastY) && (!hasClassHide)) {
             navbarEl.classList.add('h-is-hidden-navbar');
