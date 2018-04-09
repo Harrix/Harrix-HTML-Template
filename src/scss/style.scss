@@ -22,16 +22,10 @@ $duration-animation: 0.2s;
 $type-animation: ease-in-out;
 
 @import "fonts";
+@import "mixins";
 
 body {
   padding-top: 3rem;
-}
-
-@mixin animationHarrix() {
-  transition: all $duration-animation $type-animation;
-  -webkit-transition: all $duration-animation $type-animation;
-  -moz-transition: all $duration-animation $type-animation;
-  -o-transition: all $duration-animation $type-animation;
 }
 
 .h-is-hidden-scrollbars {
