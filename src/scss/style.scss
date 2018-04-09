@@ -28,6 +28,10 @@ body {
   padding-top: 3rem;
 }
 
+.navbar {
+  @include h-animation();
+}
+
 .h-is-hidden-scrollbars {
   @include from($widescreen) {
     overflow: hidden !important;
@@ -47,10 +51,6 @@ body {
   transform: translateY(-100%);
 }
 
-.navbar {
-  @include animationHarrix();
-}
-
 .h-js-logo-shrink {
   height: 2.5rem !important;
   max-height: 2.5rem !important; // opacity: 0.5;
@@ -59,7 +59,7 @@ body {
 .navbar-item img {
   height: 3.125rem;
   max-height: 3.125rem;
-  @include animationHarrix();
+  @include h-animation();
 }
 
 .icon {

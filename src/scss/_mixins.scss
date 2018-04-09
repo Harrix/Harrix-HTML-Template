@@ -1,4 +1,4 @@
-@mixin animationHarrix() {
+@mixin h-animation {
     transition: all $duration-animation $type-animation;
     -webkit-transition: all $duration-animation $type-animation;
     -moz-transition: all $duration-animation $type-animation;
