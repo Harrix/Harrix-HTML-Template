@@ -10,26 +10,22 @@
 @import "~bulma/sass/utilities/functions";
 
 // Typography
-
 $family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 $family-monospace: 'Roboto Mono', monospace;
 
 @import "~bulma/sass/utilities/derived-variables";
 
 //
-
 @import "~bulma/bulma";
+
+$duration-animation: 0.2s;
+$type-animation: ease-in-out;
 
 @import "fonts";
 
 body {
-  @include from($widescreen) {
-    padding-top: 3rem;
-  }
+  padding-top: 3rem;
 }
-
-$duration-animation : 0.2s;
-$type-animation : ease-in-out;
 
 @mixin animationHarrix() {
   transition: all $duration-animation $type-animation;
@@ -38,8 +34,8 @@ $type-animation : ease-in-out;
   -o-transition: all $duration-animation $type-animation;
 }
 
-@include from($widescreen) {
-  .h-is-hidden-scrollbars {
+.h-is-hidden-scrollbars {
+  @include from($widescreen) {
     overflow: hidden !important;
   }
 }
@@ -72,21 +68,12 @@ $type-animation : ease-in-out;
   @include animationHarrix();
 }
 
-.h-icon {
-  margin-right: 0.5em;
- // margin-top: 2px;
-}
+.icon {
+  img {
+    height: 0.875rem !important;
 
-.icon2 {
-  //NEW class
-  height: 0.875rem  !important;
-
-  @media (max-width: 1100px) {
-    height: 1.125rem  !important;
+    @include until($widescreen) {
+      height: 1.125rem !important;
+    }
   }
-}
-
-.icon-hamburger {
-  //NEW class
-  height: 1.125rem !important;
 }
