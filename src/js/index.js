@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     const rootEl = document.documentElement;
-    const navbarEl = document.getElementById('h-js-navbar');
-    const navbarBurger = document.getElementById('h-js-burger');
-    const bottomNavbar = document.getElementById('h-js-bottom-navbar');
-    const logo = document.getElementById('h-js-logo');
+    const navbarEl = document.getElementById('h-navbar');
+    const navbarBurger = document.getElementById('h-burger');
+    const bottomNavbar = document.getElementById('h-bottom-navbar');
+    const logo = document.getElementById('h-logo');
     let lastY = 0;
     let currentY = 0;
 
@@ -41,9 +41,9 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
         currentY = window.scrollY;
 
         if (currentY >= scrollTopLogoShrink)
-            logo.classList.add('h-js-logo-shrink');
+            logo.classList.add('h-logo-shrink');
         else
-            logo.classList.remove('h-js-logo-shrink');
+            logo.classList.remove('h-logo-shrink');
 
         if ((currentY > scrollTopNavbarHide) && (currentY > lastY) && (!hasClassHide)) {
             navbarEl.classList.add('h-is-hidden-navbar');
