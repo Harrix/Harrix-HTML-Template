@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     const rootEl = document.documentElement;
     const navbarEl = document.getElementById('h-js-navbar');
-    const navbarBurger = document.getElementById('h-js-hamburger');
+    const navbarBurger = document.getElementById('h-js-burger');
     const bottomNavbar = document.getElementById('h-js-bottom-navbar');
     const logo = document.getElementById('h-js-logo');
     let lastY = 0;
@@ -30,7 +30,7 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     };
 
     navbarBurger.addEventListener('click', () => {
-        rootEl.classList.toggle('bd-is-clipped-touch');
+        rootEl.classList.toggle('h-is-hidden-scrollbars');
         const target = document.getElementById(navbarBurger.dataset.target);
         navbarBurger.classList.toggle('is-active');
         target.classList.toggle('is-active');

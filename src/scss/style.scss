@@ -38,8 +38,8 @@ $type-animation : ease-in-out;
   -o-transition: all $duration-animation $type-animation;
 }
 
-@media screen and (max-width: 1023px) {
-  .bd-is-clipped-touch {
+@include from($widescreen) {
+  .h-is-hidden-scrollbars {
     overflow: hidden !important;
   }
 }
