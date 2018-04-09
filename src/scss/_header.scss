@@ -1,0 +1,33 @@
+.navbar {
+  @include h-animation();
+}
+
+.h-is-hidden-scrollbars {
+  @include from($widescreen) {
+    overflow: hidden !important;
+  }
+}
+
+#h-js-bottom-navbar {
+  position: absolute;
+  background-color: transparent;
+  height: 8px;
+  left: 0;
+  right: 0;
+  top: 100%;
+}
+
+.h-is-hidden-navbar {
+  transform: translateY(-100%);
+}
+
+.h-js-logo-shrink {
+  height: 2.5rem !important;
+  max-height: 2.5rem !important; // opacity: 0.5;
+}
+
+.navbar-item img {
+  height: 3.125rem;
+  max-height: 3.125rem;
+  @include h-animation();
+}
