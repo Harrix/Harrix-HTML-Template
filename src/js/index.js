@@ -25,7 +25,6 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     let hasClassHide = logo.classList.contains('h-is-hidden-navbar');
 
     bottomNavbar.onmouseover = function(event) {
-        const navbarEl = document.getElementById('h-js-navbar');
         navbarEl.classList.remove('h-is-hidden-navbar');
         hasClassHide = false;
     };
