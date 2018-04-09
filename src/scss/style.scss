@@ -23,17 +23,8 @@ $type-animation: ease-in-out;
 
 @import "fonts";
 @import "mixins";
+@import "header";
 
 body {
   padding-top: 3rem;
-}
-
-.icon {
-  img {
-    height: 0.875rem !important;
-
-    @include until($widescreen) {
-      height: 1.125rem !important;
-    }
-  }
 }

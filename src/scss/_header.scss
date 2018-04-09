@@ -3,7 +3,7 @@
 }
 
 .h-is-hidden-scrollbars {
-  @include from($widescreen) {
+  @include until($desktop) {
     overflow: hidden !important;
   }
 }
@@ -30,4 +30,14 @@
   height: 3.125rem;
   max-height: 3.125rem;
   @include h-animation();
+}
+
+.icon {
+  img {
+    height: 0.875rem !important;
+
+    @include until($desktop) {
+      height: 1.125rem !important;
+    }
+  }
 }
