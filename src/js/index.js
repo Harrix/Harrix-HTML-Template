@@ -22,10 +22,10 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     let lastY = 0;
     let currentY = 0;
 
-    let hasClassHide = logo.classList.contains('h-is-hidden-navbar');
+    let hasClassHide = logo.classList.contains('h-is-hidden');
 
     navbarBottom.onmouseover = function(event) {
-        navbar.classList.remove('h-is-hidden-navbar');
+        navbar.classList.remove('h-is-hidden');
         hasClassHide = false;
     };
 
@@ -46,12 +46,12 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
             logo.classList.remove('h-logo-shrink');
 
         if ((currentY > scrollTopNavbarHide) && (currentY > lastY) && (!hasClassHide)) {
-            navbar.classList.add('h-is-hidden-navbar');
+            navbar.classList.add('h-is-hidden');
             hasClassHide = true;
         }
 
         if ((currentY < lastY) && (hasClassHide)) {
-            navbar.classList.remove('h-is-hidden-navbar');
+            navbar.classList.remove('h-is-hidden');
             hasClassHide = false;
         }
     });

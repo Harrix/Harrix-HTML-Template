@@ -1,5 +1,9 @@
 .navbar {
   @include h-animation();
+
+  &.navbar.h-is-hidden {
+    transform: translateY(-100%);
+  }  
 }
 
 .h-is-hidden-scrollbars {
@@ -15,10 +19,6 @@
   left: 0;
   right: 0;
   top: 100%;
-}
-
-.h-is-hidden-navbar {
-  transform: translateY(-100%);
 }
 
 #h-logo {
