@@ -14,23 +14,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
-    const rootEl = document.documentElement;
-    const navbarEl = document.getElementById('h-navbar');
+    const root = document.documentElement;
+    const navbar = document.getElementById('h-navbar');
     const navbarBurger = document.getElementById('h-burger');
-    const bottomNavbar = document.getElementById('h-bottom-navbar');
+    const navbarBottom = document.getElementById('h-navbar-bottom');
     const logo = document.getElementById('h-logo');
     let lastY = 0;
     let currentY = 0;
 
     let hasClassHide = logo.classList.contains('h-is-hidden-navbar');
 
-    bottomNavbar.onmouseover = function(event) {
-        navbarEl.classList.remove('h-is-hidden-navbar');
+    navbarBottom.onmouseover = function(event) {
+        navbar.classList.remove('h-is-hidden-navbar');
         hasClassHide = false;
     };
 
     navbarBurger.addEventListener('click', () => {
-        rootEl.classList.toggle('h-is-hidden-scrollbars');
+        root.classList.toggle('h-is-hidden-scrollbars');
         const target = document.getElementById(navbarBurger.dataset.target);
         navbarBurger.classList.toggle('is-active');
         target.classList.toggle('is-active');
@@ -46,12 +46,12 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
             logo.classList.remove('h-logo-shrink');
 
         if ((currentY > scrollTopNavbarHide) && (currentY > lastY) && (!hasClassHide)) {
-            navbarEl.classList.add('h-is-hidden-navbar');
+            navbar.classList.add('h-is-hidden-navbar');
             hasClassHide = true;
         }
 
         if ((currentY < lastY) && (hasClassHide)) {
-            navbarEl.classList.remove('h-is-hidden-navbar');
+            navbar.classList.remove('h-is-hidden-navbar');
             hasClassHide = false;
         }
     });

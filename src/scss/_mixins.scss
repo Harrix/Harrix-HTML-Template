@@ -1,6 +1,6 @@
 @mixin h-animation {
-  transition: all $duration-animation $type-animation;
-  -webkit-transition: all $duration-animation $type-animation;
-  -moz-transition: all $duration-animation $type-animation;
-  -o-transition: all $duration-animation $type-animation;
+  transition: all $animation-duration $animation-type;
+  -webkit-transition: all $animation-duration $animation-type;
+  -moz-transition: all $animation-duration $animation-type;
+  -o-transition: all $animation-duration $animation-type;
 }

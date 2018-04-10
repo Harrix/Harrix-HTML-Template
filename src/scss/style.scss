@@ -18,8 +18,8 @@ $family-monospace: 'Roboto Mono', monospace;
 //
 @import "~bulma/bulma";
 
-$duration-animation: 0.2s;
-$type-animation: ease-in-out;
+$animation-duration: 0.2s;
+$animation-type: ease-in-out;
 
 @import "fonts";
 @import "mixins";
