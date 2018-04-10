@@ -3,41 +3,41 @@
 
   &.navbar.h-is-hidden {
     transform: translateY(-100%);
-  }  
+  }
+
+  #h-navbar-bottom {
+    position: absolute;
+    background-color: transparent;
+    height: 0.5rem;
+    left: 0;
+    right: 0;
+    top: 100%;
+  }
+  
+  #h-logo {
+    height: 3.125rem;
+    max-height: 3.125rem;
+    @include h-animation();
+  }
+  
+  .h-logo-shrink {
+    height: 2.5rem !important;
+    max-height: 2.5rem !important;
+  }
+  
+  .icon {
+    img {
+      height: 0.875rem !important;
+  
+      @include until($desktop) {
+        height: 1.125rem !important;
+      }
+    }
+  }
 }
 
 .h-is-hidden-scrollbars {
   @include until($desktop) {
     overflow: hidden !important;
-  }
-}
-
-#h-navbar-bottom {
-  position: absolute;
-  background-color: transparent;
-  height: 0.5rem;
-  left: 0;
-  right: 0;
-  top: 100%;
-}
-
-#h-logo {
-  height: 3.125rem;
-  max-height: 3.125rem;
-  @include h-animation();
-}
-
-.h-logo-shrink {
-  height: 2.5rem !important;
-  max-height: 2.5rem !important;
-}
-
-.icon {
-  img {
-    height: 0.875rem !important;
-
-    @include until($desktop) {
-      height: 1.125rem !important;
-    }
   }
 }
