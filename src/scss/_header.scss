@@ -18,12 +18,15 @@
     height: 3.125rem;
     max-height: 3.125rem;
     @include h-animation();
+    
+    &.h-is-shrink {
+      height: 2.5rem !important;
+      max-height: 2.5rem !important;
+    }
+    
   }
-  
-  .h-logo-shrink {
-    height: 2.5rem !important;
-    max-height: 2.5rem !important;
-  }
+
+ 
   
   .icon {
     img {
