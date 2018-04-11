@@ -1,9 +1,15 @@
 .navbar {
   @include h-animation();
+  font-size: 14px;
 
   &.navbar.h-is-hidden {
     transform: translateY(-100%);
   }
+
+  .navbar-item,
+.navbar-link {
+  padding: 0.5rem;
+}
 
   #h-navbar-bottom {
     position: absolute;
@@ -22,11 +28,8 @@
     &.h-is-shrink {
       height: 2.5rem !important;
       max-height: 2.5rem !important;
-    }
-    
+    }    
   }
-
- 
   
   .icon {
     img {
