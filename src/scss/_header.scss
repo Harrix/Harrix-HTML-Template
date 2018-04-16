@@ -1,40 +1,44 @@
 .navbar {
   @include h-animation();
-  font-size: 14px;
+  //font-size: 0.875rem;
 
   &.navbar.h-is-hidden {
     transform: translateY(-100%);
   }
 
-  .navbar-item,
-.navbar-link {
-  padding: 0.5rem;
-}
+  /*.navbar-item,
+  .navbar-link {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }*/
 
   #h-navbar-bottom {
     position: absolute;
+    color: transparent;
     background-color: transparent;
     height: 0.5rem;
     left: 0;
     right: 0;
     top: 100%;
   }
-  
+
   #h-logo {
     height: 3.125rem;
     max-height: 3.125rem;
     @include h-animation();
-    
+
     &.h-is-shrink {
       height: 2.5rem !important;
       max-height: 2.5rem !important;
-    }    
+    }
   }
-  
+
   .icon {
     img {
       height: 0.875rem !important;
-  
+
       @include until($desktop) {
         height: 1.125rem !important;
       }

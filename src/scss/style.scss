@@ -13,9 +13,15 @@
 $family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 $family-monospace: 'Roboto Mono', monospace;
 
+$teal: #19a5a5;
+$teal-light: #71c2c2;
+
 @import "~bulma/sass/utilities/derived-variables";
 
+$link: $teal;
+
 $navbar-dropdown-boxed-shadow: none;
+$navbar-box-shadow-size: 0;
 
 //
 @import "~bulma/bulma";
@@ -26,7 +32,3 @@ $animation-type: ease-in-out;
 @import "fonts";
 @import "mixins";
 @import "header";
-
-body {
-  padding-top: 3rem;
-}
