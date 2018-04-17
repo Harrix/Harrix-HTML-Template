@@ -1,6 +1,6 @@
 .navbar {
   @include h-animation();
-  //font-size: 0.875rem;
+  font-size: 0.875rem;
 
   &.navbar.h-is-hidden {
     transform: translateY(-100%);
@@ -25,25 +25,51 @@
   }
 
   #h-logo {
-    height: 3.125rem;
-    max-height: 3.125rem;
+    height: $logo-height;
+    max-height: $logo-height;
     @include h-animation();
 
     &.h-is-shrink {
-      height: 2.5rem !important;
-      max-height: 2.5rem !important;
+      height: $logo-height-shrink !important;
+      max-height: $logo-height-shrink !important;
     }
   }
 
-  .icon {
+ .icon {
+   // padding-right: 0.25rem;
+
     img {
       height: 0.875rem !important;
+      //padding-right: 0.25rem;
 
       @include until($desktop) {
-        height: 1.125rem !important;
+       // height: 1.125rem !important;
       }
     }
   }
+
+  .navbar-item, .navbar-link{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.navbar-item.has-dropdown {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar-link {
+  padding-right: 2.25em;
+}
+
+/*
+.navbar-link {
+  padding-right: 2.5em;
+  &::after {
+    @include arrow($navbar-dropdown-arrow);
+    margin-top: -0.375em;
+    right: 1.125em; } }
+    */
 }
 
 .h-is-hidden-scrollbars {

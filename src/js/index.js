@@ -9,6 +9,11 @@ import fontawesomeFreeSolid from '@fortawesome/fontawesome-free-solid'
 import fontawesomeFreeRegular from '@fortawesome/fontawesome-free-regular'
 import fontawesomeFreeBrands from '@fortawesome/fontawesome-free-brands'
 
+/*import faCustomIcons from './fa-custom-icons.js'
+fontawesome.library.add(faCustomIcons)*/
+
+import faCustomIcons from './fah.js'
+
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar(50, 300);
 });
