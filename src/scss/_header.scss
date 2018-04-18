@@ -27,38 +27,38 @@
     }
   }
 
-  .icon {
-    // padding-right: 0.25rem;
-    img {
-      height: 0.875rem !important; //padding-right: 0.25rem;
-      @include until($desktop) {
-        // height: 1.125rem !important;
-      }
-    }
-  }
-
   .navbar-item, .navbar-link {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-  }
 
-  .navbar-item.has-dropdown {
-    padding-left: 0;
-    padding-right: 0;
+    &.has-dropdown {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .icon {
+      &:only-child {
+        margin-right: -0.125rem;
+      }
+
+      img {
+        height: 0.875rem;
+        @include until($desktop) {
+          // height: 1.125rem !important;
+        }
+      }
+
+    }
   }
 
   .navbar-link {
-    padding-right: 2.25em;
-  }
+    padding-right: 1.75em;
 
-  /*
-.navbar-link {
-  padding-right: 2.5em;
-  &::after {
-    @include arrow($navbar-dropdown-arrow);
-    margin-top: -0.375em;
-    right: 1.125em; } }
-    */
+    &:after {
+      border-color: $navbar-item-color;
+      right: 0.625rem;
+    }
+  }
 }
 
 .h-is-hidden-overflow {
