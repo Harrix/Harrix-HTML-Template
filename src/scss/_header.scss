@@ -61,7 +61,7 @@
     */
 }
 
-.h-is-hidden-scrollbars {
+.h-is-hidden-overflow {
   @include until($desktop) {
     overflow: hidden !important;
   }
