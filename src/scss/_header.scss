@@ -59,10 +59,25 @@
       right: 0.625rem;
     }
   }
+
+  @include touch {
+    .navbar-menu {
+      box-shadow: none;
+    }
+  }
+}
+
+.navbar-burger span {
+  height: 2px;
+  width: 18px;
+}
+
+.navbar-burger:hover {
+  background-color: transparent;
 }
 
 .h-is-hidden-overflow {
-  @include until($desktop) {
+  @include touch {
     overflow: hidden !important;
   }
 }
