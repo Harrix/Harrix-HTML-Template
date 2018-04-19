@@ -17,13 +17,23 @@
   }
 
   #h-logo {
-    height: $logo-height;
-    max-height: $logo-height;
+
+    font-size: 2.25rem;
     @include h-animation();
 
+    img {
+      height: 3.125rem;
+      max-height: 3.125rem;
+      @include h-animation();
+      padding-right: 0.4375rem;
+    }
+
     &.h-is-shrink {
-      height: $logo-height-shrink !important;
-      max-height: $logo-height-shrink !important;
+      font-size: 1.625rem;
+      img {
+      height: 2.5rem !important;
+      max-height: 2.5rem !important;
+      }
     }
   }
 
