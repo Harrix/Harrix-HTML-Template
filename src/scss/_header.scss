@@ -36,8 +36,8 @@
     &.h-is-shrink {
       font-size: 1.625rem;
       img {
-      height: 2.5rem !important;
-      max-height: 2.5rem !important;
+        height: 2.5rem !important;
+        max-height: 2.5rem !important;
       }
     }
   }
@@ -81,11 +81,11 @@
 
 .navbar-burger {
   span {
-  height: 2px;
-  width: 18px;
-}
+    height: 2px;
+    width: 18px;
+  }
 
-&:hover {
-  background-color: transparent;
-}
+  &:hover {
+    background-color: transparent;
+  }
 }
