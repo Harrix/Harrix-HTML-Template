@@ -1,3 +1,9 @@
+.h-is-hidden-overflow {
+  @include touch {
+    overflow: hidden !important;
+  }
+}
+
 .navbar {
   @include h-animation();
   font-size: 0.875rem;
@@ -17,7 +23,6 @@
   }
 
   #h-logo {
-
     font-size: 2.25rem;
     @include h-animation();
 
@@ -53,9 +58,6 @@
 
       img {
         height: 0.875rem;
-        @include until($desktop) {
-          // height: 1.125rem !important;
-        }
       }
 
     }
@@ -77,17 +79,13 @@
   }
 }
 
-.navbar-burger span {
+.navbar-burger {
+  span {
   height: 2px;
   width: 18px;
 }
 
-.navbar-burger:hover {
+&:hover {
   background-color: transparent;
 }
-
-.h-is-hidden-overflow {
-  @include touch {
-    overflow: hidden !important;
-  }
 }
