@@ -31,7 +31,7 @@
 
       <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/"><img src="img/logo.svg" id="h-logo" alt="Harrix"></a>
+          <a class="navbar-item" href="/" id="h-logo"><img src="img/logo.svg" alt="Harrix"> Harrix</a>
 
           <div id="h-burger" class="navbar-burger" data-target="h-navbar-menu">
             <span></span>
@@ -61,7 +61,24 @@
               <a class="navbar-link" href="#"><span class="icon"><img src="img/rus.svg" alt="Russian language"></span> Русский</a>
               <div class="navbar-dropdown is-boxed">
                 <a class="navbar-item" href="#"><span class="icon"><img src="img/eng.svg" alt="English language"></span> English</a>
-                <a class="navbar-item" href="#"><span class="icon"><img src="img/rus.svg" alt="Russian language"></span> Русский</a>
+              </div>
+            </div>
+
+            <div class="navbar-item">
+              <div class="control">
+                <button class="button is-white" id="h-button-search"><span class="icon"><i class="fas fa-search"></i></span></button>
+              </div>
+            </div>
+
+            <div class="navbar-item">
+              <div class="control has-icons-left has-icons-right">
+                <input class="input" type="text" placeholder="Search..." value="">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-search"></i>
+                </span>
+                <span class="icon is-small is-right" id="h-button-search-close">
+                  <i class="fas fa-times-circle"></i>
+                </span>
               </div>
             </div>
           </div>
