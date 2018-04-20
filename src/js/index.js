@@ -11,7 +11,20 @@ import fontawesomeFreeBrands from '@fortawesome/fontawesome-free-brands'
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar(50, 300);
+    initSearchPanel();
 });
+
+function initSearchPanel() {
+    const navbarMenu = document.getElementById('h-navbar-menu');
+    const buttonSearch = document.getElementById('h-button-search');
+    const buttonSearchClose = document.getElementById('h-button-search-close');
+    buttonSearch.addEventListener('click', () => {
+        navbarMenu.classList.toggle('h-is-search');
+    });
+    buttonSearchClose.addEventListener('click', () => {
+        navbarMenu.classList.toggle('h-is-search');
+    });
+}
 
 function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     const root = document.documentElement;

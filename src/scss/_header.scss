@@ -77,6 +77,28 @@
       box-shadow: none;
     }
   }
+
+  .navbar-menu {
+    .navbar-item {
+      &:last-child {
+        display: none;
+      }
+    }
+
+    &.h-is-search {
+      .navbar-item {
+        display: none;
+        &:last-child {
+          display: flex;
+        }
+      }
+    }
+
+    #h-button-search-close {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+  }
 }
 
 .navbar-burger {
