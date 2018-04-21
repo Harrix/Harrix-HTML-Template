@@ -1,9 +1,3 @@
-.h-is-clipped-touch {
-  @include touch {
-    overflow: hidden !important;
-  }
-}
-
 .navbar {
   @include h-animation();
   font-size: 0.875rem;
