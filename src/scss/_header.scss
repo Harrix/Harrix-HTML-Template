@@ -1,4 +1,4 @@
-.navbar {  
+.navbar {
   font-size: $navbar-font-size;
   @include h-animation();
 
@@ -22,7 +22,7 @@
 
     img {
       height: 3.125rem;
-      max-height: 3.125rem;      
+      max-height: 3.125rem;
       padding-right: 0.4375rem;
       @include h-animation();
     }
@@ -37,41 +37,37 @@
     }
   }
 
-  .navbar-menu {
+  .h-has-search-panel {
+    display: none;
+    opacity: 0;
+
+    @include h-animation();
+    @include touch {
+      opacity: 1;
+      display: flex;
+    }
+  }
+
+  .h-has-visible-search-panel {
     .navbar-item {
+      display: none;
+
       &.h-has-search-panel {
-        display: none;
-        opacity: 0;
-
-        @include h-animation();
-        @include touch {
-          opacity: 1;
-          display: flex;
-        }
-      }
-    }
-
-    &.h-is-search {
-      .navbar-item {
-        display: none;
-
-        &.h-has-search-panel {
-          opacity: 1;
-          display: flex;
-        }
-      }
-    }
-
-    #h-button-search-panel-open {
-      @include touch {
-        display: none;
-        opacity: 0;
+        opacity: 1;
+        display: flex;
       }
     }
   }
 
-  @include touch {
-    .navbar-menu {
+  #h-button-search-panel-open {
+    @include touch {
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  .navbar-menu {
+    @include touch {
       box-shadow: none;
     }
   }
@@ -110,7 +106,7 @@
       height: 2px;
       width: 18px;
     }
-  
+
     &:hover {
       background-color: transparent;
     }

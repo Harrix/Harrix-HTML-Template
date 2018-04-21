@@ -63,9 +63,9 @@ function initSearchPanel() {
     const buttonSearchOpen = document.getElementById('h-button-search-panel-open');
     const buttonSearchClose = document.getElementById('h-button-search-panel-close');
     buttonSearchOpen.addEventListener('click', () => {
-        navbarMenu.classList.add('h-is-search');
+        navbarMenu.classList.add('h-has-visible-search-panel');
     });
     buttonSearchClose.addEventListener('click', () => {
-        navbarMenu.classList.remove('h-is-search');
+        navbarMenu.classList.remove('h-has-visible-search-panel');
     });
 }
