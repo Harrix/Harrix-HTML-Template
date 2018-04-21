@@ -31,7 +31,7 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     };
 
     navbarBurger.addEventListener('click', () => {
-        root.classList.toggle('h-is-hidden-overflow');
+        root.classList.toggle('h-is-clipped-touch');
         const target = document.getElementById(navbarBurger.dataset.target);
         navbarBurger.classList.toggle('is-active');
         target.classList.toggle('is-active');

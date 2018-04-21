@@ -1,4 +1,4 @@
-.h-is-hidden-overflow {
+.h-is-clipped-touch {
   @include touch {
     overflow: hidden !important;
   }
