@@ -82,13 +82,17 @@
     .navbar-item {
       &:last-child {
         display: none;
+        opacity: 0;
+        @include h-animation();
       }
     }
 
     &.h-is-search {
       .navbar-item {
         display: none;
+
         &:last-child {
+          opacity: 1;
           display: flex;
         }
       }
