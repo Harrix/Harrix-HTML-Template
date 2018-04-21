@@ -1,5 +1,5 @@
 .h-is-clipped-touch {
-    @include touch {
-      overflow: hidden !important;
-    }
+  @include touch {
+    overflow: hidden !important;
   }
+}
