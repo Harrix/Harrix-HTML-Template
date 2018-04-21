@@ -14,18 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSearchPanel();
 });
 
-function initSearchPanel() {
-    const navbarMenu = document.getElementById('h-navbar-menu');
-    const buttonSearch = document.getElementById('h-button-search');
-    const buttonSearchClose = document.getElementById('h-button-search-close');
-    buttonSearch.addEventListener('click', () => {
-        navbarMenu.classList.toggle('h-is-search');
-    });
-    buttonSearchClose.addEventListener('click', () => {
-        navbarMenu.classList.toggle('h-is-search');
-    });
-}
-
 function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     const root = document.documentElement;
     const navbar = document.getElementById('h-navbar');
@@ -67,5 +55,17 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
             navbar.classList.remove('h-is-hidden');
             hasClassHide = false;
         }
+    });
+}
+
+function initSearchPanel() {
+    const navbarMenu = document.getElementById('h-navbar-menu');
+    const buttonSearchOpen = document.getElementById('h-button-search-open');
+    const buttonSearchClose = document.getElementById('h-button-search-close');
+    buttonSearchOpen.addEventListener('click', () => {
+        navbarMenu.classList.add('h-is-search');
+    });
+    buttonSearchClose.addEventListener('click', () => {
+        navbarMenu.classList.remove('h-is-search');
     });
 }

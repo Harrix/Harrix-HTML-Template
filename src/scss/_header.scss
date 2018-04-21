@@ -83,7 +83,12 @@
       &.h-has-search-panel {
         display: none;
         opacity: 0;
+        
         @include h-animation();
+        @include touch {
+          opacity: 1;
+          display: flex;
+        }
       }
     }
 
@@ -101,6 +106,13 @@
     #h-button-search-close {
       pointer-events: auto;
       cursor: pointer;
+    }
+
+    #h-button-search-open {
+      @include touch {
+        display: none;
+        opacity: 0;
+      }
     }
   }
 }
