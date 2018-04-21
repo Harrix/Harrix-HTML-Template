@@ -60,8 +60,8 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
 
 function initSearchPanel() {
     const navbarMenu = document.getElementById('h-navbar-menu');
-    const buttonSearchOpen = document.getElementById('h-button-search-open');
-    const buttonSearchClose = document.getElementById('h-button-search-close');
+    const buttonSearchOpen = document.getElementById('h-button-search-panel-open');
+    const buttonSearchClose = document.getElementById('h-button-search-panel-close');
     buttonSearchOpen.addEventListener('click', () => {
         navbarMenu.classList.add('h-is-search');
     });
