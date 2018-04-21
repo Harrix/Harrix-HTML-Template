@@ -40,8 +40,8 @@
   .h-has-search-panel {
     display: none;
     opacity: 0;
-
     @include h-animation();
+
     @include touch {
       opacity: 1;
       display: flex;
@@ -53,16 +53,19 @@
       display: none;
 
       &.h-has-search-panel {
-        opacity: 1;
-        display: flex;
+       display: flex;
+       opacity: 1;
+       animation-duration: 3s;
+       animation-name: fadeInFromNone;
       }
+
+
     }
   }
 
   #h-button-search-panel-open {
     @include touch {
       display: none;
-      opacity: 0;
     }
   }
 

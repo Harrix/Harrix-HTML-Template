@@ -1,6 +1,22 @@
 @mixin h-animation {
-  transition: all $animation-duration $animation-type;
-  -webkit-transition: all $animation-duration $animation-type;
-  -moz-transition: all $animation-duration $animation-type;
-  -o-transition: all $animation-duration $animation-type;
+  transition: all $animation-duration $animation-type; // -webkit-transition: all $animation-duration $animation-type;
+  // -moz-transition: all $animation-duration $animation-type;
+  // -o-transition: all $animation-duration $animation-type;
+}
+
+@keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: flex;
+    opacity: 0;
+  }
+
+  100% {
+    display: flex;
+    opacity: 1;
+  }
 }
