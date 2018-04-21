@@ -15,6 +15,9 @@ $family-monospace: 'Roboto Mono', monospace;
 $teal: #19a5a5;
 $teal-light: #71c2c2;
 
+$animation-duration: 1.2s;
+$animation-type: ease-in-out;
+
 @import "~bulma/sass/utilities/derived-variables";
 
 $link: $teal;
@@ -23,9 +26,6 @@ $navbar-dropdown-boxed-shadow: none;
 $navbar-item-hover-background-color: transparent;
 
 @import "~bulma/bulma";
-
-$animation-duration: 0.2s;
-$animation-type: ease-in-out;
 
 @import "fonts";
 @import "mixins";
