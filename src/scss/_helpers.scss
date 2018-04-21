@@ -3,3 +3,8 @@
     overflow: hidden !important;
   }
 }
+
+.h-is-clickable {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
