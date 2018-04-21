@@ -1,6 +1,6 @@
-.navbar {
+.navbar {  
+  font-size: $navbar-font-size;
   @include h-animation();
-  font-size: 0.875rem;
 
   &.h-is-hidden {
     transform: translateY(-100%);
@@ -22,53 +22,18 @@
 
     img {
       height: 3.125rem;
-      max-height: 3.125rem;
-      @include h-animation();
+      max-height: 3.125rem;      
       padding-right: 0.4375rem;
+      @include h-animation();
     }
 
     &.h-is-shrink {
       font-size: 1.625rem;
+
       img {
         height: 2.5rem !important;
         max-height: 2.5rem !important;
       }
-    }
-  }
-
-  .navbar-item, .navbar-link {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-
-    &.has-dropdown {
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    .icon {
-      &:only-child {
-        margin-right: -0.125rem;
-      }
-
-      img {
-        height: 0.875rem;
-      }
-
-    }
-  }
-
-  .navbar-link {
-    padding-right: 1.75em;
-
-    &:after {
-      border-color: $navbar-item-color;
-      right: 0.625rem;
-    }
-  }
-
-  @include touch {
-    .navbar-menu {
-      box-shadow: none;
     }
   }
 
@@ -109,15 +74,50 @@
       }
     }
   }
-}
 
-.navbar-burger {
-  span {
-    height: 2px;
-    width: 18px;
+  @include touch {
+    .navbar-menu {
+      box-shadow: none;
+    }
   }
 
-  &:hover {
-    background-color: transparent;
+  .navbar-item, .navbar-link {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    &.has-dropdown {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .icon {
+      &:only-child {
+        margin-right: -0.125rem;
+      }
+
+      img {
+        height: 0.875rem;
+      }
+    }
+  }
+
+  .navbar-link {
+    padding-right: 1.75em;
+
+    &:after {
+      border-color: $navbar-item-color;
+      right: 0.625rem;
+    }
+  }
+
+  .navbar-burger {
+    span {
+      height: 2px;
+      width: 18px;
+    }
+  
+    &:hover {
+      background-color: transparent;
+    }
   }
 }
