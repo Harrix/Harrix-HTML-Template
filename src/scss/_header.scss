@@ -80,7 +80,7 @@
 
   .navbar-menu {
     .navbar-item {
-      &:last-child {
+      &.h-is-search-panel {
         display: none;
         opacity: 0;
         @include h-animation();
@@ -91,7 +91,7 @@
       .navbar-item {
         display: none;
 
-        &:last-child {
+        &.h-is-search-panel {
           opacity: 1;
           display: flex;
         }
