@@ -1,5 +1,5 @@
 @mixin h-animation {
-  transition: all $animation-duration $animation-type; 
+  transition: all $animation-duration $animation-type;
 }
 
 @keyframes fadeInFromNone {
