@@ -55,7 +55,7 @@
       &.h-has-search-panel {
        display: flex;
        opacity: 1;
-       animation: fadeInFromNone 3s ease-out;
+       animation: fadeInFromNone $animation-duration $animation-type;
       }
     }
   }

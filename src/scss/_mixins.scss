@@ -6,15 +6,18 @@
   0% {
     display: none;
     opacity: 0;
+    transform: translateY(-50%);
   }
 
   1% {
     display: flex;
     opacity: 0;
+    transform: translateY(-50%);
   }
 
   100% {
     display: flex;
     opacity: 1;
+    transform: translateY(0);
   }
 }
