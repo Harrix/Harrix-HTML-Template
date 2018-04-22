@@ -55,11 +55,8 @@
       &.h-has-search-panel {
        display: flex;
        opacity: 1;
-       animation-duration: 3s;
-       animation-name: fadeInFromNone;
+       animation: fadeInFromNone 3s ease-out;
       }
-
-
     }
   }
 
