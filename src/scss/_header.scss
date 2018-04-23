@@ -37,35 +37,6 @@
     }
   }
 
-  .h-has-search-panel {
-    display: none;
-    opacity: 0;
-    @include h-animation();
-
-    @include touch {
-      opacity: 1;
-      display: flex;
-    }
-  }
-
-  .h-has-visible-search-panel {
-    .navbar-item {
-      display: none;
-
-      &.h-has-search-panel {
-       display: flex;
-       opacity: 1;
-       animation: fadeInFromNone $animation-duration $animation-type;
-      }
-    }
-  }
-
-  #h-button-search-panel-open {
-    @include touch {
-      display: none;
-    }
-  }
-
   .navbar-menu {
     @include touch {
       box-shadow: none;
