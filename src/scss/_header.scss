@@ -18,21 +18,27 @@
 
   #h-logo {
     font-size: 2.25rem;
+    line-height: 0;
     @include h-animation();
 
     img {
-      height: 3.125rem;
-      max-height: 3.125rem;
+      height: 3rem;
+      max-height: 3rem;
       padding-right: 0.4375rem;
       @include h-animation();
+    }
+
+    .is-sub {
+      padding-left: 5px;
+      font-weight: 300;
     }
 
     &.h-is-shrink {
       font-size: 1.625rem;
 
       img {
-        height: 2.5rem !important;
-        max-height: 2.5rem !important;
+        height: 2rem !important;
+        max-height: 2rem !important;
       }
     }
   }
