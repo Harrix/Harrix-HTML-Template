@@ -29,12 +29,6 @@
     }
   }
 
-  #h-button-search-panel-open {
-    @include touch {
-      display: none;
-    }
-  }
-
   .input, .textarea {
     border: 0;
     box-shadow: none;
