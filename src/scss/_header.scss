@@ -21,9 +21,9 @@
     line-height: 0;
     @include h-animation();
 
-   &:hover {
-     color: $navbar-item-color;
-   }
+    &:hover {
+      color: $navbar-item-color;
+    }
 
     img {
       height: $navbar-height;
@@ -91,3 +91,12 @@
     }
   }
 }
+
+/*@include desktop {
+  .navbar > .container,
+  .container > .navbar {
+    .navbar-brand {
+      margin-left: 0 !important; }
+    .navbar-menu {
+      margin-right: 0 !important; } }
+    }*/
