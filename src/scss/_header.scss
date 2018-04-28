@@ -21,6 +21,10 @@
     line-height: 0;
     @include h-animation();
 
+   &:hover {
+     color: $navbar-item-color;
+   }
+
     img {
       height: $navbar-height;
       padding-right: 0.4375rem;
