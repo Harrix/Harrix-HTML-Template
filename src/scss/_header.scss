@@ -17,13 +17,12 @@
   }
 
   #h-logo {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
     line-height: 0;
     @include h-animation();
 
     img {
-      height: 3rem;
-      max-height: 3rem;
+      height: $navbar-height;
       padding-right: 0.4375rem;
       @include h-animation();
     }
@@ -34,11 +33,10 @@
     }
 
     &.h-is-shrink {
-      font-size: 1.625rem;
+      font-size: 1.25rem;
 
       img {
-        height: 2rem !important;
-        max-height: 2rem !important;
+        height: 1.5625rem !important;
       }
     }
   }
