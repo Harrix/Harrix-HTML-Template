@@ -37,3 +37,10 @@ $navbar-font-size: 0.875rem;
 @import "helpers";
 @import "header";
 @import "search-panel";
+
+@include touch {
+.section {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+}
+}
