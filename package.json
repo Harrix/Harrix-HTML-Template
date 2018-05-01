@@ -36,9 +36,9 @@
     "lg-hash": "^1.0.4",
     "lg-pager": "^1.0.2",
     "lg-thumbnail": "^1.1.0",
-    "lg-video": "^1.2.1",
+    "lg-video": "^1.2.2",
     "lg-zoom": "^1.1.0",
-    "lightgallery": "^1.6.9",
+    "lightgallery": "^1.6.10",
     "popper.js": "^1.14.3"
   },
   "devDependencies": {
