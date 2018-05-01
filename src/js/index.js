@@ -63,11 +63,15 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
 function initSearchPanel() {
     const navbarMenu = document.getElementById('h-navbar-menu');
     const buttonSearchOpen = document.getElementById('h-button-search-panel-open');
-    const buttonSearchClose = document.getElementById('h-button-search-panel-close');
-    buttonSearchOpen.addEventListener('click', () => {
+    const buttonSearch = document.getElementById('h-button-search-panel');
+    const searchinput = document.getElementById('h-input-search');
+    buttonSearch.addEventListener('click', () => {
+        searchinput.classList.toggle('h-is-nullwidth');
+    });
+    /*buttonSearchOpen.addEventListener('click', () => {
         navbarMenu.classList.add('h-has-visible-search-panel');
     });
     buttonSearchClose.addEventListener('click', () => {
         navbarMenu.classList.remove('h-has-visible-search-panel');
-    });
+    });*/
 }
