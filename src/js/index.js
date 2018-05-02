@@ -13,7 +13,7 @@ import faCustomIcons from './_fah.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar(50, 300);
-    //initSearchPanel();
+    initSearchPanel();
 });
 
 function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
@@ -59,8 +59,12 @@ function initSearchPanel() {
     const navbarMenu = document.getElementById('h-navbar-menu');
     const buttonSearchOpen = document.getElementById('h-button-search-panel-open');
     const buttonSearchClose = document.getElementById('h-button-search-panel-close');
+    const hdivsearch = document.getElementById('h-div-search');
+    const hinputsearch = document.getElementById('h-input-search');
     buttonSearchOpen.addEventListener('click', () => {
-        navbarMenu.classList.add('h-has-visible-search-panel');
+        //navbarMenu.classList.add('h-has-visible-search-panel');
+        //navbarMenu.classList.add('h-has-visible-search-panel');
+        hinputsearch.classList.toggle('h-www');
     });
     buttonSearchClose.addEventListener('click', () => {
         navbarMenu.classList.remove('h-has-visible-search-panel');

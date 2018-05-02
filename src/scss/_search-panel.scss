@@ -1,4 +1,19 @@
 .navbar {
+  .h-has-search-panel {
+    transition: all $animation-duration ease-in-out;
+  }
+
+  #h-input-search {
+    width: 75px;
+    transition: all 2s ease-in-out;
+  }
+  /*#h-input-search:focus {
+    width: 200px;
+ }*/
+
+ .h-www {
+  width: 200px !important;
+ }
    /* .h-has-search-panel {
     display: none;
     opacity: 0;
