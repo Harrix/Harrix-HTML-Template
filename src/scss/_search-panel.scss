@@ -1,7 +1,4 @@
 .navbar {
-  #h-input-search {
-    @include h-animation();
-  }
    /* .h-has-search-panel {
     display: none;
     opacity: 0;
@@ -38,3 +35,23 @@
     font-size: $navbar-font-size;
 }
 }
+
+@keyframes fadeInFromNone {
+    0% {
+      display: none;
+      opacity: 0;
+      transform: translateY(-50%);
+    }
+  
+    1% {
+      display: flex;
+      opacity: 0;
+      transform: translateY(-50%);
+    }
+  
+    100% {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
