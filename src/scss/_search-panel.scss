@@ -5,15 +5,27 @@
 
   #h-input-search {
     width: 75px;
-    transition: all 2s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
-  /*#h-input-search:focus {
+  #h-input-search:focus {
     width: 200px;
- }*/
+   &+#h-logo {
+      display: none !important;
+    }
+ }
 
  .h-www {
   width: 200px !important;
  }
+
+#h-navbar-menu-end {
+&.hideItems {
+  .navbar-item:not(:last-child) {
+    opacity:0;
+}
+}
+}
+ 
    /* .h-has-search-panel {
     display: none;
     opacity: 0;
