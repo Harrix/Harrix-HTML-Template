@@ -13,7 +13,7 @@ import faCustomIcons from './_fah.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar(50, 300);
-    initSearchPanel();
+    //initSearchPanel();
 });
 
 function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
@@ -42,11 +42,6 @@ function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
     window.addEventListener('scroll', function() {
         lastY = currentY;
         currentY = window.scrollY;
-
-        if (currentY >= scrollTopLogoShrink)
-            logo.classList.add('h-is-shrink');
-        else
-            logo.classList.remove('h-is-shrink');
 
         if ((currentY > scrollTopNavbarHide) && (currentY > lastY) && (!hasClassHide)) {
             navbar.classList.add('h-is-hidden');
