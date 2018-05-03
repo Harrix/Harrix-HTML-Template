@@ -63,16 +63,13 @@ function initSearchPanel() {
     const hdivsearch = document.getElementById('h-div-search');
     const hinputsearch = document.getElementById('h-input-search');
     buttonSearchOpen.addEventListener('click', () => {
-        //navbarMenu.classList.add('h-has-visible-search-panel');
-        //navbarMenu.classList.add('h-has-visible-search-panel');
-        //hinputsearch.classList.toggle('h-www');
         var ww = navbarMenuEnd.clientWidth;
-        //hinputsearch.style.width = 500;
-        console.log(" w = " + navbarMenuEnd.clientWidth);
         hinputsearch.style.width = navbarMenuEnd.clientWidth + "px";
         navbarMenuEnd.classList.toggle('hideItems');
     });
     buttonSearchClose.addEventListener('click', () => {
-        navbarMenu.classList.remove('h-has-visible-search-panel');
+        var ww = navbarMenuEnd.clientWidth;
+        hinputsearch.style.width = navbarMenuEnd.clientWidth + "px";
+        navbarMenuEnd.classList.toggle('hideItems');
     });
 }
