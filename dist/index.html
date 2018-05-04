@@ -32,7 +32,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="/" id="h-logo">
-            <img src="img/logo.svg" alt="Harrix"> Harrix
+            <img src="img/logo.svg" alt="Harrix"> Harrix <span class="is-sub">Блог</span>
           </a>
 
           <div id="h-burger" class="navbar-burger" data-target="h-navbar-menu">
@@ -43,7 +43,27 @@
         </div>
 
         <div id="h-navbar-menu" class="navbar-menu">
-          <div class="navbar-end">
+
+          <div class="navbar-end h-has-search-panel" id="h-div-search">
+
+            <div class="navbar-item">
+              <div class="control has-icons-left has-icons-right ">
+                <input class="input h-has-animation" type="text" placeholder="Search..." value="" id="h-input-search">
+                <span class="icon is-small is-left">
+                              <i class="fas fa-search"></i>
+                            </span>
+                <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-button-search-panel-close">
+                              <i class="fah fa-close"></i>
+                            </span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="navbar-end" id="h-navbar-menu-end">
+            <div class="navbar-item h-is-clickable is-hidden-touch" id="h-button-search-panel-open">
+              <span class="icon is-small"><i class="fas fa-search"></i></span>
+            </div>
             <a class="navbar-item is-active" href="https://harrix.org/projects/">Проекты</a>
             <a class="navbar-item" href="https://harrix.org/">Harrix.org</a>
             <a class="navbar-item" href="https://harrix.org/rss">RSS</a>
@@ -65,21 +85,10 @@
                 <a class="navbar-item" href="#"><span class="icon"><img src="img/eng.svg" alt="English language"></span> English</a>
               </div>
             </div>
-            <div class="navbar-item h-is-clickable" id="h-button-search-panel-open">
-              <span class="icon is-small"><i class="fas fa-search"></i></span>
-            </div>
 
-            <div class="navbar-item h-has-search-panel">
-              <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Search..." value="">
-                <span class="icon is-small is-left">
-                  <i class="fas fa-search"></i>
-                </span>
-                <span class="icon is-small is-right h-is-clickable" id="h-button-search-panel-close">
-                  <i class="fah fa-close"></i>
-                </span>
-              </div>
-            </div>
+
+
+
           </div>
         </div>
 
@@ -159,6 +168,11 @@
         </ol>
         <p>
           The page background should turn <strong class="has-text-success">green</strong>!
+        </p>
+        <p>
+          Every widget in the framework and support library has a default style. For example, when you style your app using a theme from the support lbrary, an instance of Button is styled using the Widget.AppCompat.Button style. If you'd like to apply a different
+          widget style to a button, then you can do so with the style attribute in your layout file. For example, the following applies the library's borderless button style. To discover all of the alternative widget styles available from the support
+          library, look at the R.style reference for fields that begin with Widget. (Ignore the styles that begin with Base_Widget.) Remember to replace all underscores with periods when using the style name in your resources.
         </p>
         <h3>Get started</h3>
         <p>
