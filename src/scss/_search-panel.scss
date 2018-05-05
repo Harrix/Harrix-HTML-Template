@@ -1,44 +1,48 @@
 .navbar {
   @include desktop {
     .navbar-end {
-      position:relative;
-    }
-  .h-has-search-panel {    
-    transition: all $animation-duration ease-in-out;
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    z-index: 10;
-    div {
-      width: 100%;
-    }
-    } 
+      position: relative;
+      transition: all 0.5s ease-in-out;
 
-  /*#h-input-search {
-    width: 0;
-    transition: all 0.5s ease-in-out;
-  }*/
-}
-  /*#h-input-search:focus {
-    width: 200px;
- }*/
 
-#h-navbar-menu-end {
-&.hideItems {
-  .navbar-item {
-    transition: all $animation-duration ease-in-out;
+    }
+    .h-has-search-panel {
+      transition: all $animation-duration ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+
+      &.h-is-hidden {
+        transform: translateY(-100%);
+      }
+
+      div {
+        width: 100%;
+      }
+    }
+
+    #h-input-search {
+      transition: all 0.5s ease-in-out;
+    }
   }
-  .navbar-item:not(:last-child) {
-    opacity:0;
-}
-}
-}
+  
+  #h-navbar-menu-end {
+    &.hideItems {
+      .navbar-item {
+        transition: all $animation-duration ease-in-out;
+      }
+      .navbar-item:not(:first-child) {
+        opacity: 0;
+      }
+    }
+  }
 
   .input, .textarea {
     border: 0;
     box-shadow: none;
     font-size: $navbar-font-size;
-}
+  }
 }

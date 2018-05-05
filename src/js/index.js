@@ -62,14 +62,17 @@ function initSearchPanel() {
     const buttonSearchClose = document.getElementById('h-button-search-panel-close');
     const hdivsearch = document.getElementById('h-div-search');
     const hinputsearch = document.getElementById('h-input-search');
+    const hsearchpanel = document.getElementById('h-search-panel');
     buttonSearchOpen.addEventListener('click', () => {
-        var ww = navbarMenuEnd.clientWidth;
-        hinputsearch.style.width = navbarMenuEnd.clientWidth + "px";
+        hsearchpanel.classList.toggle("h-is-hidden");
+        hinputsearch.focus();
+        
         navbarMenuEnd.classList.toggle('hideItems');
     });
     buttonSearchClose.addEventListener('click', () => {
-        var ww = navbarMenuEnd.clientWidth;
-        hinputsearch.style.width = navbarMenuEnd.clientWidth + "px";
+        hsearchpanel.classList.toggle("h-is-hidden");
+        hinputsearch.blur();
+        
         navbarMenuEnd.classList.toggle('hideItems');
     });
 }

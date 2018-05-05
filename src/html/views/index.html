@@ -44,7 +44,7 @@
 
         <div id="h-navbar-menu" class="navbar-menu">
           <div class="navbar-end" id="h-navbar-menu-end">
-            <div class="navbar-item h-has-search-panel">
+            <div class="navbar-item h-has-search-panel h-is-hidden" id="h-search-panel">
               <div class="control has-icons-left has-icons-right ">
                 <input class="input h-has-animation" type="text" placeholder="Search..." value="" id="h-input-search">
                 <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
@@ -52,9 +52,6 @@
               </div>
             </div>
 
-            <div class="navbar-item h-is-clickable is-hidden-touch" id="h-button-search-panel-open">
-              <span class="icon is-small"><i class="fas fa-search"></i></span>
-            </div>
             <a class="navbar-item is-active" href="https://harrix.org/projects/">Проекты</a>
             <a class="navbar-item" href="https://harrix.org/">Harrix.org</a>
             <a class="navbar-item" href="https://harrix.org/rss">RSS</a>
@@ -76,10 +73,9 @@
                 <a class="navbar-item" href="#"><span class="icon"><img src="img/eng.svg" alt="English language"></span> English</a>
               </div>
             </div>
-
-
-
-
+            <div class="navbar-item h-is-clickable is-hidden-touch" id="h-button-search-panel-open">
+                <span class="icon is-small"><i class="fas fa-search"></i></span>
+              </div>
           </div>
         </div>
 
