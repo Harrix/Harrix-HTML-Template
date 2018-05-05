@@ -1,16 +1,25 @@
 .navbar {
   @include desktop {
+    .navbar-end {
+      position:relative;
+    }
   .h-has-search-panel {    
     transition: all $animation-duration ease-in-out;
-    position: absolute;
-    right: 0;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
     z-index: 10;
+    div {
+      width: 100%;
+    }
     } 
 
-  #h-input-search {
+  /*#h-input-search {
     width: 0;
     transition: all 0.5s ease-in-out;
-  }
+  }*/
 }
   /*#h-input-search:focus {
     width: 200px;
