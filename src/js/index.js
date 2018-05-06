@@ -63,6 +63,9 @@ function initSearchPanel() {
     const hdivsearch = document.getElementById('h-div-search');
     const hinputsearch = document.getElementById('h-input-search');
     const hsearchpanel = document.getElementById('h-search-panel');
+
+    hinputsearch.placeholder = translate('Search…');
+
     buttonSearchOpen.addEventListener('click', () => {
         hsearchpanel.classList.toggle("h-is-hidden");
         hinputsearch.focus();
@@ -75,4 +78,14 @@ function initSearchPanel() {
 
         navbarMenuEnd.classList.toggle('hideItems');
     });
+}
+
+var locale = {
+    'Table of contents': 'Содержание',
+    'Search…': 'Поиск…',
+};
+var lang = jQuery('html').attr('lang');
+
+function translate(string) {
+    return lang == 'en' ? string : locale[string];
 }
