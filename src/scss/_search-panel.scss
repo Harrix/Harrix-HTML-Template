@@ -2,12 +2,12 @@
   @include desktop {
     .navbar-end {
       position: relative;
-      @include h-animation();
+      @include h-animation;
     }
 
     .h-has-search {
-      @include h-animation();
-      @include h-overlay();
+      @include h-animation;
+      @include h-overlay;
       z-index: 10;
 
       &.h-is-hidden {
@@ -19,7 +19,7 @@
     #h-navbar-menu-end {
       &.hideItems {
         .navbar-item {
-          @include h-animation();
+          @include h-animation;
         }
 
         .navbar-item:not(:first-child) {
