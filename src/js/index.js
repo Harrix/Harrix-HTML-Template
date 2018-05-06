@@ -58,22 +58,22 @@ function initNavbar(scrollTopNavbarHide) {
 function initSearchPanel() {
     const navbarMenu = document.getElementById('h-navbar-menu');
     const navbarMenuEnd = document.getElementById('h-navbar-menu-end');
-    const buttonSearchOpen = document.getElementById('h-button-search-open');
-    const buttonSearchClose = document.getElementById('h-button-search-close');
-    const hinputsearch = document.getElementById('h-input-search');
+    const buttonSearchOpen = document.getElementById('h-search-button-open');
+    const buttonSearchClose = document.getElementById('h-search-button-close');
+    const searchInput = document.getElementById('h-search-input');
     const hsearchpanel = document.getElementById('h-search');
 
-    hinputsearch.placeholder = translate('Search…');
+    searchInput.placeholder = translate('Search…');
 
     buttonSearchOpen.addEventListener('click', () => {
         hsearchpanel.classList.toggle("h-is-hidden");
-        hinputsearch.focus();
+        searchInput.focus();
 
         navbarMenuEnd.classList.toggle('hideItems');
     });
     buttonSearchClose.addEventListener('click', () => {
         hsearchpanel.classList.toggle("h-is-hidden");
-        hinputsearch.blur();
+        searchInput.blur();
 
         navbarMenuEnd.classList.toggle('hideItems');
     });
