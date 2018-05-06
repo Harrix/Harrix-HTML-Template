@@ -3,9 +3,8 @@
     .navbar-end {
       position: relative;
       transition: all 0.5s ease-in-out;
-
-
     }
+
     .h-has-search-panel {
       transition: all $animation-duration ease-in-out;
       position: absolute;
@@ -28,22 +27,23 @@
     #h-input-search {
       transition: all 0.5s ease-in-out;
     }
-  }
 
-  #h-navbar-menu-end {
-    &.hideItems {
-      .navbar-item {
-        transition: all $animation-duration ease-in-out;
-      }
-      .navbar-item:not(:first-child) {
-        opacity: 0;
+    #h-navbar-menu-end {
+      &.hideItems {
+        .navbar-item {
+          transition: all $animation-duration ease-in-out;
+        }
+
+        .navbar-item:not(:first-child) {
+          opacity: 0;
+        }
       }
     }
-  }
 
-  .input, .textarea {
-    border: 0;
-    box-shadow: none;
-    font-size: $navbar-font-size;
+    .input, .textarea {
+      border: 0;
+      box-shadow: none;
+      font-size: $navbar-font-size;
+    }
   }
 }
