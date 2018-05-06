@@ -4,12 +4,7 @@
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
 
-import fontawesome from '@fortawesome/fontawesome'
-import fontawesomeFreeSolid from '@fortawesome/fontawesome-free-solid'
-import fontawesomeFreeRegular from '@fortawesome/fontawesome-free-regular'
-import fontawesomeFreeBrands from '@fortawesome/fontawesome-free-brands'
-
-import faCustomIcons from './_fah.js'
+import fontawesomeCollection from './_fontawesome-collection.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar(100);
