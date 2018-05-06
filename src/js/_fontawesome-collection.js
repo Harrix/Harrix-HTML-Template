@@ -1,7 +1,11 @@
 import fontawesome from '@fortawesome/fontawesome'
 
-import fontawesomeFreeSolid from '@fortawesome/fontawesome-free-solid'
-import fontawesomeFreeRegular from '@fortawesome/fontawesome-free-regular'
-import fontawesomeFreeBrands from '@fortawesome/fontawesome-free-brands'
+//import fontawesomeFreeRegular from '@fortawesome/fontawesome-free-regular'
+
+import faSearch from '@fortawesome/fontawesome-free-solid/faSearch'
+import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
 
 import faCustomIcons from './_fontawesome-harrix-icons.js'
+
+fontawesome.library.add(faSearch)
+fontawesome.library.add(faGithub)
