@@ -32,6 +32,8 @@ $section-padding: 1.5rem;
 
 $navbar-font-size: 0.875rem;
 
+$input-shadow: none;
+
 @import "~bulma/bulma";
 
 @import "fonts";
@@ -39,14 +41,11 @@ $navbar-font-size: 0.875rem;
 @import "helpers";
 @import "header";
 @import "search-panel";
+@import "form";
 
 @include touch {
   .section {
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
   }
-}
-
-.input, .textarea {
-  box-shadow: none;
 }
