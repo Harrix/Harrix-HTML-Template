@@ -41,8 +41,12 @@ $navbar-font-size: 0.875rem;
 @import "search-panel";
 
 @include touch {
-.section {
+  .section {
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
+  }
 }
+
+.input, .textarea {
+  box-shadow: none;
 }
