@@ -43,27 +43,18 @@
         </div>
 
         <div id="h-navbar-menu" class="navbar-menu">
+          <div class="navbar-end">
 
-          <div class="navbar-end h-has-search-panel" id="h-div-search">
-
-            <div class="navbar-item">
-              <div class="control has-icons-left has-icons-right ">
-                <input class="input h-has-animation" type="text" placeholder="Search..." value="" id="h-input-search">
-                <span class="icon is-small is-left">
-                              <i class="fas fa-search"></i>
-                            </span>
-                <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-button-search-panel-close">
-                              <i class="fah fa-close"></i>
-                            </span>
+            <div class="navbar-item h-is-hidden" id="h-search">
+              <div class="control has-icons-left has-icons-right h-is-fullwidth">
+                <form role="search" method="get" action="/">
+                  <input class="input" type="text" value="" id="h-search-input">
+                </form>
+                <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
+                <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-search-button-close"><i class="fah fa-close"></i></span>
               </div>
             </div>
 
-          </div>
-
-          <div class="navbar-end" id="h-navbar-menu-end">
-            <div class="navbar-item h-is-clickable is-hidden-touch" id="h-button-search-panel-open">
-              <span class="icon is-small"><i class="fas fa-search"></i></span>
-            </div>
             <a class="navbar-item is-active" href="https://harrix.org/projects/">Проекты</a>
             <a class="navbar-item" href="https://harrix.org/">Harrix.org</a>
             <a class="navbar-item" href="https://harrix.org/rss">RSS</a>
@@ -85,10 +76,9 @@
                 <a class="navbar-item" href="#"><span class="icon"><img src="img/eng.svg" alt="English language"></span> English</a>
               </div>
             </div>
-
-
-
-
+            <div class="navbar-item h-is-clickable is-hidden-touch" id="h-search-button-open">
+              <span class="icon is-small"><i class="fas fa-search"></i></span>
+            </div>
           </div>
         </div>
 
