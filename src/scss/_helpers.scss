@@ -10,9 +10,9 @@
 }
 
 .h-is-fullwidth {
-  width: 100%  !important;
+  width: 100% !important;
 }
 
 .h-has-animation {
-@include h-animation;
+  @include h-animation;
 }
