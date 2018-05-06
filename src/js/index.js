@@ -78,11 +78,11 @@ function focusAfterAnimation(elem, timeOfAnimation) {
     }, timeOfAnimation);
 }
 
-var locale = {
+let locale = {
     'Table of contents': 'Содержание',
     'Search…': 'Поиск…',
 };
-var lang = jQuery('html').attr('lang');
+let lang = jQuery('html').attr('lang');
 
 function translate(string) {
     return lang == 'en' ? string : locale[string];
