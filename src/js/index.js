@@ -52,7 +52,6 @@ function initNavbar(scrollTopNavbarHide) {
 
 function initSearchPanel() {
     const navbarMenu = document.getElementById('h-navbar-menu');
-    const navbarMenuEnd = document.getElementById('h-navbar-menu-end');
     const buttonSearchOpen = document.getElementById('h-search-button-open');
     const buttonSearchClose = document.getElementById('h-search-button-close');
     const searchInput = document.getElementById('h-search-input');
@@ -64,13 +63,13 @@ function initSearchPanel() {
         hsearchpanel.classList.toggle("h-is-hidden");
         searchInput.focus();
 
-        navbarMenuEnd.classList.toggle('hideItems');
+        navbarMenu.classList.toggle('has-hidden-items');
     });
     buttonSearchClose.addEventListener('click', () => {
         hsearchpanel.classList.toggle("h-is-hidden");
         searchInput.blur();
 
-        navbarMenuEnd.classList.toggle('hideItems');
+        navbarMenu.classList.toggle('has-hidden-items');
     });
 }
 

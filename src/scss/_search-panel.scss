@@ -5,7 +5,7 @@
       @include h-animation;
     }
 
-    .h-has-search {
+    #h-search {
       @include h-animation;
       @include h-overlay;
       z-index: 10;
@@ -16,8 +16,8 @@
       }
     }
 
-    #h-navbar-menu-end {
-      &.hideItems {
+    #h-navbar-menu {
+      &.has-hidden-items {
         .navbar-item {
           @include h-animation;
         }
