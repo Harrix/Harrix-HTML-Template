@@ -12,11 +12,11 @@ import fontawesomeFreeBrands from '@fortawesome/fontawesome-free-brands'
 import faCustomIcons from './_fah.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-    initNavbar(50, 300);
+    initNavbar(100);
     initSearchPanel();
 });
 
-function initNavbar(scrollTopLogoShrink, scrollTopNavbarHide) {
+function initNavbar(scrollTopNavbarHide) {
     const root = document.documentElement;
     const navbar = document.getElementById('h-navbar');
     const navbarBurger = document.getElementById('h-burger');
@@ -66,13 +66,13 @@ function initSearchPanel() {
     buttonSearchOpen.addEventListener('click', () => {
         hsearchpanel.classList.toggle("h-is-hidden");
         hinputsearch.focus();
-        
+
         navbarMenuEnd.classList.toggle('hideItems');
     });
     buttonSearchClose.addEventListener('click', () => {
         hsearchpanel.classList.toggle("h-is-hidden");
         hinputsearch.blur();
-        
+
         navbarMenuEnd.classList.toggle('hideItems');
     });
 }
