@@ -58,11 +58,10 @@ function initNavbar(scrollTopNavbarHide) {
 function initSearchPanel() {
     const navbarMenu = document.getElementById('h-navbar-menu');
     const navbarMenuEnd = document.getElementById('h-navbar-menu-end');
-    const buttonSearchOpen = document.getElementById('h-button-search-panel-open');
-    const buttonSearchClose = document.getElementById('h-button-search-panel-close');
-    const hdivsearch = document.getElementById('h-div-search');
+    const buttonSearchOpen = document.getElementById('h-button-search-open');
+    const buttonSearchClose = document.getElementById('h-button-search-close');
     const hinputsearch = document.getElementById('h-input-search');
-    const hsearchpanel = document.getElementById('h-search-panel');
+    const hsearchpanel = document.getElementById('h-search');
 
     hinputsearch.placeholder = translate('Search…');
 
