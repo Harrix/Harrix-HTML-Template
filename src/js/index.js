@@ -52,25 +52,30 @@ function initNavbar(scrollTopNavbarHide) {
 
 function initSearchPanel() {
     const navbarMenu = document.getElementById('h-navbar-menu');
-    const buttonSearchOpen = document.getElementById('h-search-button-open');
-    const buttonSearchClose = document.getElementById('h-search-button-close');
+    const searchButtonOpen = document.getElementById('h-search-button-open');
+    const searchButtonClose = document.getElementById('h-search-button-close');
     const searchInput = document.getElementById('h-search-input');
     const hsearchpanel = document.getElementById('h-search');
+    let timeOfAnimation = 500;
 
     searchInput.placeholder = translate('Search…');
 
-    buttonSearchOpen.addEventListener('click', () => {
-        hsearchpanel.classList.toggle("h-is-hidden");
-        searchInput.focus();
-
-        navbarMenu.classList.toggle('has-hidden-items');
+    searchButtonOpen.addEventListener('click', () => {
+        hsearchpanel.classList.remove("h-is-hidden");
+        navbarMenu.classList.add('has-hidden-items');
+        focusAfterAnimation(searchInput, timeOfAnimation);
     });
-    buttonSearchClose.addEventListener('click', () => {
-        hsearchpanel.classList.toggle("h-is-hidden");
+    searchButtonClose.addEventListener('click', () => {
+        hsearchpanel.classList.add("h-is-hidden");
+        navbarMenu.classList.remove('has-hidden-items');
         searchInput.blur();
-
-        navbarMenu.classList.toggle('has-hidden-items');
     });
+}
+
+function focusAfterAnimation(elem, timeOfAnimation) {
+    window.setTimeout(function() {
+        elem.focus();
+    }, timeOfAnimation);
 }
 
 var locale = {
