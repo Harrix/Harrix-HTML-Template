@@ -1,3 +1,20 @@
 @mixin h-animation {
   transition: all $animation-duration $animation-type;
 }
+
+@mixin h-clickable {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+@mixin h-fullwidth {
+  width: 100%  !important;
+}
+
+@mixin h-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;  
+  right: 0;
+  top: 0;
+}
