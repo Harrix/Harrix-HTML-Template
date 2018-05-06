@@ -82,7 +82,7 @@ let locale = {
     'Table of contents': 'Содержание',
     'Search…': 'Поиск…',
 };
-let lang = jQuery('html').attr('lang');
+let lang = document.documentElement.lang;
 
 function translate(string) {
     return lang == 'en' ? string : locale[string];
