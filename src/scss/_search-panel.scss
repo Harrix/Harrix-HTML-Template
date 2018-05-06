@@ -1,14 +1,9 @@
 .navbar {
   @include desktop {
-    .navbar-end {
-      position: relative;
-      @include h-animation;
-    }
-
     #h-search {
       @include h-animation;
       @include h-overlay;
-      z-index: 10;
+      z-index: $navbar-fixed-z + 1;
 
       &.h-is-hidden {
         transform: translateY(-100%);
@@ -20,10 +15,10 @@
       &.has-hidden-items {
         .navbar-item {
           @include h-animation;
-        }
 
-        .navbar-item:not(:first-child) {
-          opacity: 0;
+          &:not(:first-child) {
+            opacity: 0;
+          }
         }
       }
     }
@@ -32,6 +27,10 @@
       border: 0;
       box-shadow: none;
       font-size: $navbar-font-size;
+    }
+
+    .navbar-end {
+      position: relative;
     }
   }
 }
