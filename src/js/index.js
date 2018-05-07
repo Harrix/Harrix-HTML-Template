@@ -55,18 +55,18 @@ function initSearchPanel() {
     const searchButtonOpen = document.getElementById('h-search-button-open');
     const searchButtonClose = document.getElementById('h-search-button-close');
     const searchInput = document.getElementById('h-search-input');
-    const hsearchpanel = document.getElementById('h-search-form');
+    const searchForm = document.getElementById('h-search-form');
     let timeOfAnimation = 500;
 
     searchInput.placeholder = translate('Search…');
 
     searchButtonOpen.addEventListener('click', () => {
-        hsearchpanel.classList.remove("h-is-hidden");
+        searchForm.classList.remove("h-is-hidden");
         navbarMenu.classList.add('has-visible-search');
         focusAfterAnimation(searchInput, timeOfAnimation);
     });
     searchButtonClose.addEventListener('click', () => {
-        hsearchpanel.classList.add("h-is-hidden");
+        searchForm.classList.add("h-is-hidden");
         navbarMenu.classList.remove('has-visible-search');
         searchInput.blur();
     });
