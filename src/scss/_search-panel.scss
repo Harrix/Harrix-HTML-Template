@@ -4,22 +4,20 @@
       @include h-animation;
       @include h-overlay;
       z-index: $navbar-fixed-z + 1;
-
-      &.h-is-hidden {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
+      transform: translateY(-100%);
+      opacity: 0;
     }
 
-    #h-navbar-menu {
-      &.has-hidden-items {
-        .navbar-item {
-          @include h-animation;
-
-          &:not(:first-child) {
-            opacity: 0;
-          }
+    .has-visible-search {
+      .navbar-item {
+        &:not(:first-child) {
+          opacity: 0;
         }
+      }
+
+      #h-search {
+        transform: translateY(0);
+        opacity: 1;
       }
     }
 
@@ -31,6 +29,10 @@
 
     .navbar-end {
       position: relative;
+    }
+
+    .navbar-item {
+      @include h-animation;
     }
   }
 }

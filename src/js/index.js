@@ -62,12 +62,12 @@ function initSearchPanel() {
 
     searchButtonOpen.addEventListener('click', () => {
         hsearchpanel.classList.remove("h-is-hidden");
-        navbarMenu.classList.add('has-hidden-items');
+        navbarMenu.classList.add('has-visible-search');
         focusAfterAnimation(searchInput, timeOfAnimation);
     });
     searchButtonClose.addEventListener('click', () => {
         hsearchpanel.classList.add("h-is-hidden");
-        navbarMenu.classList.remove('has-hidden-items');
+        navbarMenu.classList.remove('has-visible-search');
         searchInput.blur();
     });
 }
