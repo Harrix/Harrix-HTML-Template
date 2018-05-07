@@ -55,7 +55,7 @@ function initSearchPanel() {
     const searchButtonOpen = document.getElementById('h-search-button-open');
     const searchButtonClose = document.getElementById('h-search-button-close');
     const searchInput = document.getElementById('h-search-input');
-    const hsearchpanel = document.getElementById('h-search');
+    const hsearchpanel = document.getElementById('h-search-form');
     let timeOfAnimation = 500;
 
     searchInput.placeholder = translate('Search…');
