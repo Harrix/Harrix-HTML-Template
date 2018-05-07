@@ -6,6 +6,10 @@
       z-index: $navbar-fixed-z + 1;
       transform: translateY(-100%);
       opacity: 0;
+      
+      div {
+        width: 100%;
+      }
     }
 
     .has-visible-search {
