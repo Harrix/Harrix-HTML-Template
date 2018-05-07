@@ -51,25 +51,27 @@ function initNavbar(scrollTopNavbarHide) {
 }
 
 function initSearchPanel() {
-    const navbarMenu = document.getElementById('h-navbar-menu');
-    const searchButtonOpen = document.getElementById('h-search-button-open');
-    const searchButtonClose = document.getElementById('h-search-button-close');
-    const searchInput = document.getElementById('h-search-input');
     const searchForm = document.getElementById('h-search-form');
-    let timeOfAnimation = 500;
+    if (!!searchForm) {
+        const navbarMenu = document.getElementById('h-navbar-menu');
+        const searchButtonOpen = document.getElementById('h-search-button-open');
+        const searchButtonClose = document.getElementById('h-search-button-close');
+        const searchInput = document.getElementById('h-search-input');
+        let timeOfAnimation = 500;
 
-    searchInput.placeholder = translate('Search…');
+        searchInput.placeholder = translate('Search…');
 
-    searchButtonOpen.addEventListener('click', () => {
-        searchForm.classList.remove("h-is-hidden");
-        navbarMenu.classList.add('has-visible-search');
-        focusAfterAnimation(searchInput, timeOfAnimation);
-    });
-    searchButtonClose.addEventListener('click', () => {
-        searchForm.classList.add("h-is-hidden");
-        navbarMenu.classList.remove('has-visible-search');
-        searchInput.blur();
-    });
+        searchButtonOpen.addEventListener('click', () => {
+            searchForm.classList.remove("h-is-hidden");
+            navbarMenu.classList.add('has-visible-search');
+            focusAfterAnimation(searchInput, timeOfAnimation);
+        });
+        searchButtonClose.addEventListener('click', () => {
+            searchForm.classList.add("h-is-hidden");
+            navbarMenu.classList.remove('has-visible-search');
+            searchInput.blur();
+        });
+    }
 }
 
 function focusAfterAnimation(elem, timeOfAnimation) {
