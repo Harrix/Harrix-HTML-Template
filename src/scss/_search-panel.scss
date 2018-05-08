@@ -6,10 +6,6 @@
       z-index: $navbar-fixed-z + 1;
       transform: translateY(-100%);
       opacity: 0;
-      
-      div {
-        width: 100%;
-      }
     }
 
     .has-visible-search-from {
@@ -25,10 +21,18 @@
       }
     }
 
-    .input, .textarea {
-      border: 0;
-      box-shadow: none;
-      font-size: $navbar-font-size;
+    .control {
+      width: 100%;
+
+      .input {
+        border: 0;
+        box-shadow: none;
+        font-size: $navbar-font-size;
+      }
+
+      .icon {
+        height: 2rem;
+      }
     }
 
     .navbar-end {
