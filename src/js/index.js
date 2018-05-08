@@ -65,11 +65,22 @@ function initSearchPanel() {
             searchForm.classList.remove("h-is-hidden");
             navbarMenu.classList.add('has-visible-search-from');
             focusAfterAnimation(searchInput, timeOfAnimation);
+            showOrHideSearchButtonClose();
         });
+
         searchButtonClose.addEventListener('click', () => {
-            searchForm.classList.add("h-is-hidden");
-            navbarMenu.classList.remove('has-visible-search-from');
-            searchInput.blur();
+            if (searchInput.value.length >= 1) {
+                searchInput.value = "";
+                showOrHideSearchButtonClose();
+            } else {
+                searchForm.classList.add("h-is-hidden");
+                navbarMenu.classList.remove('has-visible-search-from');
+                searchInput.blur();
+            }
+        });
+
+        searchInput.addEventListener('input', () => {
+            showOrHideSearchButtonClose();
         });
     }
 }
@@ -78,6 +89,16 @@ function focusAfterAnimation(elem, timeOfAnimation) {
     window.setTimeout(function() {
         elem.focus();
     }, timeOfAnimation);
+}
+
+function showOrHideSearchButtonClose() {
+    const searchInput = document.getElementById('h-search-input');
+    const searchButtonClose = document.getElementById('h-search-button-close');
+    if (searchInput.value.length >= 1) {
+        searchButtonClose.classList.remove('is-hidden-touch');
+    } else {
+        searchButtonClose.classList.add('is-hidden-touch');
+    }
 }
 
 let locale = {
