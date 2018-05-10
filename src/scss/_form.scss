@@ -1,7 +1,7 @@
 .input, .textarea {
-    &::-ms-clear, &::-ms-reveal {
-      display: none;
-      width: 0;
-      height: 0;
-    }
+  &::-ms-clear, &::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
   }
+}
