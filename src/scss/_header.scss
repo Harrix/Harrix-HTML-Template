@@ -68,9 +68,19 @@
   .navbar-link {
     &:after {
       border-width: 2px;
-      border-color: $navbar-item-color;
+      border-color: $h-navbar-icon-color; //$navbar-item-color;
       width: .5rem;
       height: .5rem;
+    }
+  }
+
+  .icon {
+    color: $h-navbar-icon-color;
+  }
+
+  .control {
+    .icon {
+      color: $h-navbar-icon-color;
     }
   }
 
