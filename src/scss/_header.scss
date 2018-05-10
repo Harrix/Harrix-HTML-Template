@@ -1,5 +1,5 @@
 .navbar {
-  font-size: $navbar-font-size;
+  font-size: $h-navbar-font-size;
   @include h-animation;
 
   &.h-is-hidden {
