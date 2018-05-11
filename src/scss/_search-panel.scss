@@ -6,6 +6,7 @@
       z-index: $navbar-fixed-z + 1;
       transform: translateY(-100%);
       opacity: 0;
+      margin-right: -0.75rem;
     }
 
     .has-visible-search-from {
@@ -28,10 +29,12 @@
         border: 0;
         box-shadow: none;
         font-size: $h-navbar-font-size;
+        color: $h-navbar-icon-color;
       }
 
       .icon {
         height: 2rem;
+        color: $h-navbar-icon-color;
       }
     }
 
