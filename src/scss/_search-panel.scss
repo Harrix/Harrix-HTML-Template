@@ -29,7 +29,16 @@
         border: 0;
         box-shadow: none;
         font-size: $h-navbar-font-size;
-        color: $h-navbar-icon-color;
+        //color: $h-navbar-icon-color;
+
+        &::placeholder {
+          color: $h-navbar-icon-color;
+          opacity: 1;
+        }
+
+        &::-ms-input-placeholder {
+          color: $h-navbar-icon-color;
+        }
       }
 
       .icon {
