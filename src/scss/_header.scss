@@ -68,9 +68,9 @@
   .navbar-link {
     &:after {
       border-width: 2px;
-      border-color: $h-navbar-icon-color; //$navbar-item-color;
-      width: .5rem;
-      height: .5rem;
+      border-color: $h-navbar-icon-color;
+      width: 0.375rem;
+      height: 0.375rem;
     }
   }
 

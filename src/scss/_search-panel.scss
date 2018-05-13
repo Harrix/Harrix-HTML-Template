@@ -29,7 +29,7 @@
         border: 0;
         box-shadow: none;
         font-size: $h-navbar-font-size;
-        //color: $h-navbar-icon-color;
+        color: $navbar-item-color;
 
         &::placeholder {
           color: $h-navbar-icon-color;
