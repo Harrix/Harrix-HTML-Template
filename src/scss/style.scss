@@ -12,15 +12,15 @@
 $family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 $family-monospace: 'Roboto Mono', monospace;
 
-$teal: #19a5a5;
-$teal-light: #71c2c2;
+$h-teal: #19a5a5;
+$h-teal-light: #71c2c2;
 
 $h-animation-duration: 0.5s;
 $h-animation-type: ease-in-out;
 
 @import "~bulma/sass/utilities/derived-variables";
 
-$link: $teal;
+$link: $h-teal;
 
 $navbar-dropdown-boxed-shadow: none;
 $navbar-item-hover-background-color: transparent;
