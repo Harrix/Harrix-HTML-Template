@@ -19,9 +19,10 @@
   #h-logo {
     font-size: 1.75rem;
     line-height: 0;
+    color: $text-strong;
 
     &:hover {
-      color: $navbar-item-color;
+      color: $text-strong;
     }
 
     img {
