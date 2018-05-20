@@ -55,4 +55,10 @@
       @include h-animation;
     }
   }
+
+  .control {
+    .icon {
+      color: $h-navbar-icon-color;
+    }
+  }
 }
