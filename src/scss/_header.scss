@@ -55,6 +55,16 @@
   }
 
   @include desktop {
+    .has-dropdown {
+      .navbar-link {
+        padding-right: 1.75rem;
+
+        &:after {
+          right: 0.8125rem;
+        }
+      }
+    }
+
     .navbar-dropdown {
       .navbar-item {
         &:hover {
