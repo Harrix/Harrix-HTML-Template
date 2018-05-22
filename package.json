@@ -38,7 +38,7 @@
     "lg-thumbnail": "^1.1.0",
     "lg-video": "^1.2.2",
     "lg-zoom": "^1.1.0",
-    "lightgallery": "^1.6.10",
+    "lightgallery": "^1.6.11",
     "popper.js": "^1.14.3"
   },
   "devDependencies": {
