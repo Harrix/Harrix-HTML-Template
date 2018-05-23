@@ -19,9 +19,9 @@ function initNavbar(scrollTopNavbarHide) {
         const navbarBurger = document.getElementById('h-burger');
         const navbarBottom = document.getElementById('h-navbar-bottom');
         const logo = document.getElementById('h-logo');
+
         let lastY = 0;
         let currentY = 0;
-
         let hasClassHide = logo.classList.contains('h-is-hidden');
 
         navbarBottom.onmouseover = function(event) {
@@ -60,6 +60,7 @@ function initSearchPanel() {
         const searchButtonOpen = document.getElementById('h-search-button-open');
         const searchButtonClose = document.getElementById('h-search-button-close');
         const searchInput = document.getElementById('h-search-input');
+        
         let timeOfAnimation = 500;
 
         searchInput.placeholder = translate('Search…');
