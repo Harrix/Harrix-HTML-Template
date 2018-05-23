@@ -12,42 +12,45 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initNavbar(scrollTopNavbarHide) {
-    const root = document.documentElement;
     const navbar = document.getElementById('h-navbar');
-    const navbarBurger = document.getElementById('h-burger');
-    const navbarBottom = document.getElementById('h-navbar-bottom');
-    const logo = document.getElementById('h-logo');
-    let lastY = 0;
-    let currentY = 0;
 
-    let hasClassHide = logo.classList.contains('h-is-hidden');
+    if (!!navbar) {
+        const root = document.documentElement;
+        const navbarBurger = document.getElementById('h-burger');
+        const navbarBottom = document.getElementById('h-navbar-bottom');
+        const logo = document.getElementById('h-logo');
+        let lastY = 0;
+        let currentY = 0;
 
-    navbarBottom.onmouseover = function(event) {
-        navbar.classList.remove('h-is-hidden');
-        hasClassHide = false;
-    };
+        let hasClassHide = logo.classList.contains('h-is-hidden');
 
-    navbarBurger.addEventListener('click', () => {
-        root.classList.toggle('h-is-clipped-touch');
-        const target = document.getElementById(navbarBurger.dataset.target);
-        navbarBurger.classList.toggle('is-active');
-        target.classList.toggle('is-active');
-    });
-
-    window.addEventListener('scroll', function() {
-        lastY = currentY;
-        currentY = window.scrollY;
-
-        if ((currentY > scrollTopNavbarHide) && (currentY > lastY) && (!hasClassHide)) {
-            navbar.classList.add('h-is-hidden');
-            hasClassHide = true;
-        }
-
-        if ((currentY < lastY) && (hasClassHide)) {
+        navbarBottom.onmouseover = function(event) {
             navbar.classList.remove('h-is-hidden');
             hasClassHide = false;
-        }
-    });
+        };
+
+        navbarBurger.addEventListener('click', () => {
+            root.classList.toggle('h-is-clipped-touch');
+            const target = document.getElementById(navbarBurger.dataset.target);
+            navbarBurger.classList.toggle('is-active');
+            target.classList.toggle('is-active');
+        });
+
+        window.addEventListener('scroll', function() {
+            lastY = currentY;
+            currentY = window.scrollY;
+
+            if ((currentY > scrollTopNavbarHide) && (currentY > lastY) && (!hasClassHide)) {
+                navbar.classList.add('h-is-hidden');
+                hasClassHide = true;
+            }
+
+            if ((currentY < lastY) && (hasClassHide)) {
+                navbar.classList.remove('h-is-hidden');
+                hasClassHide = false;
+            }
+        });
+    }
 }
 
 function initSearchPanel() {
