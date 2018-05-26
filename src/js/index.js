@@ -5,6 +5,7 @@
  */
 
 import fontawesomeCollection from './_fontawesome-collection.js'
+import {locale} from './_locale-ru.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar(100);
@@ -105,12 +106,7 @@ function showOrHideSearchButtonClose() {
     }
 }
 
-let locale = {
-    'Table of contents': 'Содержание',
-    'Search…': 'Поиск…',
-};
-let lang = document.documentElement.lang;
-
 function translate(string) {
+    let lang = document.documentElement.lang;
     return lang == 'en' ? string : locale[string];
 }
