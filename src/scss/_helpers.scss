@@ -8,11 +8,3 @@
   pointer-events: auto !important;
   cursor: pointer !important;
 }
-
-.h-is-fullwidth {
-  width: 100% !important;
-}
-
-.h-has-animation {
-  @include h-animation;
-}
