@@ -1,6 +1,6 @@
 .navbar {
   font-size: $h-navbar-font-size;
-  @include h-animation;
+  @include h-animation(transform);
 
   &.h-is-hidden {
     transform: translateY(-100%);

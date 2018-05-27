@@ -1,5 +1,5 @@
-@mixin h-animation {
-  transition: all $h-animation-duration $h-animation-type;
+@mixin h-animation($property: all) {
+  transition: $property $h-animation-duration $h-animation-type;
 }
 
 @mixin h-clickable {
