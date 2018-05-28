@@ -77,6 +77,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin('dist'),
     new ExtractTextPlugin({
       filename: './css/[name].css',
       allChunks: true,
