@@ -4,10 +4,10 @@
   "description": "HTML template",
   "main": "src/index.js",
   "scripts": {
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production && html dist/*.html --indent-size 2",
-    "watch": "webpack --mode development --watch",
-    "start": "webpack-dev-server --mode development --open",
+    "dev": "webpack --config webpack.dev.js",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js && html dist/*.html --indent-size 2",
     "beautify": "html dist/*.html --indent-size 2"
   },
   "repository": {
@@ -53,6 +53,7 @@
     "sass-loader": "^7.0.1",
     "webpack": "^4.10.2",
     "webpack-cli": "^2.1.4",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2"
   }
 }
