@@ -4,12 +4,22 @@
  * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
  */
 
+import lightgallery from 'lightgallery.js';
+import lgThumbnail from 'lg-thumbnail.js';
+import lgAutoplay from 'lg-autoplay.js';
+import lgVideo from 'lg-video.js';
+import lgFullscreen from 'lg-fullscreen.js';
+import lgPager from 'lg-pager.js';
+import lgZoom from 'lg-zoom.js';
+import lgHash from 'lg-hash.js';
+
 import fontawesomeCollection from './_fontawesome-collection.js'
 import {locale} from './_locale-ru.js'
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar(100);
     initSearchPanel();
+    initLightGallery(200, 10);
 });
 
 function initNavbar(scrollTopNavbarHide) {
@@ -88,6 +98,28 @@ function initSearchPanel() {
             showOrHideSearchButtonClose();
         });
     }
+}
+
+function initLightGallery(rowHeight, margins) {
+
+    lightGallery(document.getElementById('test-lightbox')); 
+
+    /*jQuery('.js-lightbox').lightGallery({
+        hash: true,
+        share: false
+    });*/
+
+    /*jQuery('.js-gallery').lightGallery({
+        hash: true,
+        share: false,
+        selector: '.item'
+    });*/
+
+    /*jQuery('.js-gallery').justifiedGallery({
+        rowHeight: rowHeight,
+        margins: margins,
+        border: 0
+    });*/
 }
 
 function focusAfterAnimation(elem, timeOfAnimation) {

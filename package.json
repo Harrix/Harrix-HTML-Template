@@ -29,14 +29,14 @@
     "bulma": "^0.7.1",
     "highlight.js": "^9.12.0",
     "katex": "^0.10.0-alpha",
-    "lg-autoplay": "^1.0.4",
-    "lg-fullscreen": "^1.0.1",
-    "lg-hash": "^1.0.4",
-    "lg-pager": "^1.0.2",
-    "lg-thumbnail": "^1.1.0",
-    "lg-video": "^1.2.2",
-    "lg-zoom": "^1.1.0",
-    "lightgallery": "^1.6.11"
+    "lg-autoplay.js": "^1.0.0",
+    "lg-fullscreen.js": "^1.0.0",
+    "lg-hash.js": "^1.0.0",
+    "lg-pager.js": "^1.0.0",
+    "lg-thumbnail.js": "^1.0.0",
+    "lg-video.js": "^1.0.0",
+    "lg-zoom.js": "^1.0.1",
+    "lightgallery.js": "^1.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

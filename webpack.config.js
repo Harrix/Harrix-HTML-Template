@@ -88,11 +88,11 @@ module.exports = {
       "window.jQuery": "jquery"
     }),
     new CopyWebpackPlugin([{
-        from: './node_modules/lightgallery/src/img',
+        from: './node_modules/lightgallery.js/src/img',
         to: './img'
       },
       {
-        from: './node_modules/lightgallery/src/fonts',
+        from: './node_modules/lightgallery.js/src/fonts',
         to: './fonts'
       },
       {
