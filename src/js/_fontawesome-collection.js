@@ -1,9 +1,9 @@
-import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
 
-import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
+import { faSearch }      from '@fortawesome/free-solid-svg-icons/faSearch';
 import { faFileArchive } from '@fortawesome/free-solid-svg-icons/faFileArchive';
-import { faDownload } from '@fortawesome/free-solid-svg-icons/faDownload';
-import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
+import { faDownload }    from '@fortawesome/free-solid-svg-icons/faDownload';
+import { faGithub }      from '@fortawesome/free-brands-svg-icons/faGithub';
 
 library.add(
     faSearch,
@@ -29,4 +29,4 @@ library.add(
     faHarrix
 );
 
-dom.watch()
+dom.watch();
