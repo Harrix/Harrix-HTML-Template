@@ -40,6 +40,7 @@ $h-navbar-icon-color: $grey;
 $h-navbar-icon-github-color: #24292e;
 
 @import "~bulma/bulma";
+@import "~lightgallery.js/src/sass/lightgallery";
 
 @import "fonts";
 @import "mixins";
@@ -47,6 +48,7 @@ $h-navbar-icon-github-color: #24292e;
 @import "header";
 @import "search-panel";
 @import "form";
+@import "lightbox";
 
 @include touch {
   .section {
@@ -54,5 +56,3 @@ $h-navbar-icon-github-color: #24292e;
     padding-right: 0.9375rem;
   }
 }
-
-@import "~lightgallery.js/src/sass/lightgallery";

@@ -1,0 +1,28 @@
+.js-lightbox {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
+  border-radius: 0;
+  border-width: 0;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+/*.js-gallery {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(2, 300px);
+}
+
+.js-gallery>div>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}*/
