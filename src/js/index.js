@@ -81,6 +81,7 @@ function initSearchPanel() {
       navbarMenu.classList.add('has-visible-search-from');
       focusAfterAnimation(searchInput, timeOfAnimation);
       showOrHideSearchButtonClose();
+      throw "Error2";
     });
 
     searchButtonClose.addEventListener('click', () => {
