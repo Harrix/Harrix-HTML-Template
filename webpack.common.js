@@ -79,11 +79,6 @@ module.exports = {
       filename: './css/[name].css',
       allChunks: true,
     }),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery"
-    }),
     new CopyWebpackPlugin([{
         from: './node_modules/lightgallery.js/src/img',
         to: './img'
