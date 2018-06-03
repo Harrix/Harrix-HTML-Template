@@ -6,15 +6,13 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
-  devtool: "source-map",
+  devtool: 'source-map',
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
         sourceMap: true,
         uglifyOptions: {
-          output: {
-            comments: false,
-          }
+          output: { comments: false }
         },
       })
     ]
