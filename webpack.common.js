@@ -13,7 +13,7 @@ function generateHtmlPlugins(templateDir) {
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      inject: false,
+      inject: false
     })
   })
 }
@@ -31,18 +31,14 @@ module.exports = {
       './src/scss/katex.scss'
     ]
   },
-  output: {
-    filename: './js/[name].js'
-  },
+  output: { filename: './js/[name].js' },
   module: {
     rules: [{
         test: /\.js$/,
         include: path.resolve(__dirname, 'src/js'),
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: 'env'
-          }
+          options: { presets: 'env' }
         }
       },
       {
@@ -62,9 +58,7 @@ module.exports = {
             },
             {
               loader: "sass-loader",
-              options: {
-                sourceMap: true
-              }
+              options: { sourceMap: true }
             }
           ]
         })
@@ -81,34 +75,14 @@ module.exports = {
       filename: './css/[name].css',
       allChunks: true,
     }),
-    new CopyWebpackPlugin([{
-        from: './node_modules/lightgallery.js/src/img',
-        to: './img'
-      },
-      {
-        from: './node_modules/lightgallery.js/src/fonts',
-        to: './fonts'
-      },
-      {
-        from: './node_modules/katex/dist/fonts',
-        to: './katex/fonts'
-      },
-      {
-        from: './src/fonts',
-        to: './fonts'
-      },
-      {
-        from: './src/favicon',
-        to: './favicon'
-      },
-      {
-        from: './src/img',
-        to: './img'
-      },
-      {
-        from: './src/uploads',
-        to: './uploads'
-      }
+    new CopyWebpackPlugin([
+      { from: './node_modules/lightgallery.js/src/img', to: './img' },
+      { from: './node_modules/lightgallery.js/src/fonts', to: './fonts' },
+      { from: './node_modules/katex/dist/fonts', to: './katex/fonts' },
+      { from: './src/fonts', to: './fonts' },
+      { from: './src/favicon', to: './favicon' },
+      { from: './src/img', to: './img' },
+      { from: './src/uploads', to: './uploads' }
     ]),
   ].concat(htmlPlugins)
 };
