@@ -3,7 +3,6 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs');
-var webpack = require('webpack');
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -55,7 +54,10 @@ module.exports = {
               options: {
                 sourceMap: true,
                 minimize: true,
-                url: false
+                url: false,
+                minimize: {
+                  discardComments: { removeAll: true }
+                }
               }
             },
             {
