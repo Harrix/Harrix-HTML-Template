@@ -39,6 +39,8 @@ $h-navbar-icon-color: $grey;
 
 $h-navbar-icon-github-color: #24292e;
 
+$h-hr-special-background-color: $h-teal;
+
 @import "~bulma/bulma";
 @import "~lightgallery.js/src/sass/lightgallery";
 
@@ -47,6 +49,7 @@ $h-navbar-icon-github-color: #24292e;
 @import "helpers";
 @import "header";
 @import "search-panel";
+@import "sections";
 @import "form";
 @import "lightbox";
 
