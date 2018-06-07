@@ -52,6 +52,7 @@ $h-hr-special-background-color: $h-teal;
 @import "sections";
 @import "form";
 @import "lightbox";
+@import "content";
 
 @include touch {
   .section {
