@@ -102,7 +102,7 @@ function initSearchPanel() {
 
 function initLightGallery(rowHeight, margins) {
 
-  var inputs = document.getElementsByClassName('js-lightbox');
+  var inputs = document.getElementsByClassName('h-lightbox');
 
   Array.from(inputs).forEach(el => {
     lightGallery(el, {
