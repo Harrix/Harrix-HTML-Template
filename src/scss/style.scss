@@ -18,6 +18,8 @@ $h-teal-light: #71c2c2;
 $h-animation-duration: 0.5s;
 $h-animation-type: ease-in-out;
 
+$primary: $h-teal;
+
 @import "~bulma/sass/utilities/derived-variables";
 
 $link: $h-teal;

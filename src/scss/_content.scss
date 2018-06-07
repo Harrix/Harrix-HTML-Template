@@ -1,4 +1,11 @@
 .content {
+
+  .h-has-buttons {
+    .button {
+      margin-right: .625rem;
+    }
+  }
+
   h1 {
     font-size: $h-heading-h1-font-size;
   }
