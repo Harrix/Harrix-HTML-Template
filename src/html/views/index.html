@@ -1,90 +1,7 @@
-<!doctype html>
-<html lang="ru">
-
-<head>
-  <meta charset="utf-8">
-  <title>
-    Заголовок | Harrix Проект
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link rel="icon" type="image/svg+xml" sizes="any" href="favicon/favicon.svg">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192x192.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-  <link rel="manifest" href="favicon/manifest.json">
-  <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#de2b26">
-  <link rel="shortcut icon" href="favicon/favicon.ico">
-  <meta name="msapplication-config" content="favicon/browserconfig.xml">
-  <meta name="theme-color" content="#de2b26">
-
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="katex/katex.css">
-</head>
-
-<body class="has-navbar-fixed-top">
-  <header>
-    <nav id="h-navbar" class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-      <div id="h-navbar-bottom"></div>
-
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/" id="h-logo">
-            <img src="img/logo.svg" alt="Harrix"> Harrix <span class="is-sub">Проект</span>
-          </a>
-
-          <div id="h-burger" class="navbar-burger" data-target="h-navbar-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-
-        <div id="h-navbar-menu" class="navbar-menu">
-          <div class="navbar-end">
-
-            <div class="navbar-item" id="h-search-form">
-              <div class="control has-icons-left has-icons-right">
-                <form role="search" method="get" action="/">
-                  <input class="input" type="text" value="" id="h-search-input">
-                </form>
-                <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
-                <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-search-button-close"><i class="fah fa-close"></i></span>
-              </div>
-            </div>
-
-            <a class="navbar-item is-active" href="https://harrix.org/projects/">Проекты</a>
-            <a class="navbar-item" href="https://harrix.org/">Harrix.org</a>
-            <a class="navbar-item" href="https://harrix.org/rss">RSS</a>
-            <a class="navbar-item" href="https://harrix.org/contacts">Контакты</a>
-            <a class="navbar-item" href="https://github.com/Harrix">
-              <span class="icon is-github-icon"><i class="fab fa-github"></i></span> GitHub
-            </a>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="#">Подменю</a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="#">Action</a>
-                <a class="navbar-item" href="#">Another action</a>
-                <a class="navbar-item" href="#">Something else here</a>
-              </div>
-            </div>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="#"><span class="icon"><img src="img/eng.svg" alt="English language"></span> Eng</a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="#"><span class="icon"><img src="img/rus.svg" alt="Russian language"></span> Ru</a>
-              </div>
-            </div>
-            <div class="navbar-item h-is-clickable is-hidden-touch" id="h-search-button-open">
-              <span class="icon is-small"><i class="fas fa-search"></i></span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </nav>
-  </header>
+<% var data = {
+  title: "Заголовок | Harrix Проект"
+}; %>
+<%= _.template(require('./../includes/header.html'))(data) %>
 
   <article>
     <section class="section h-is-section-headline">
@@ -280,17 +197,4 @@
     </section>
   </article>
 
-  <footer class="footer has-text-centered">
-    <div class="container">
-      <p>© 2014
-        <script>
-        new Date().getFullYear() > 2014 && document.write("-" + new Date().getFullYear());
-        </script> <a href="https://harrix.org">Harrix</a></p>
-    </div>
-  </footer>
-
-  <script src="js/app.js"></script>
-  <script src="katex/katex.js"></script>
-</body>
-
-</html>
+<%= _.template(require('./../includes/footer.html'))(data) %>
