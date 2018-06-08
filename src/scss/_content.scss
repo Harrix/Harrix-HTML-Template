@@ -1,7 +1,7 @@
 .content {
 
   .h-has-buttons {
-    .button {
+    .button:not(:last-child) {
       margin-right: .625rem;
     }
   }
