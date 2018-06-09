@@ -6,16 +6,17 @@ $red: #de2b26;
 $family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 $family-monospace: 'Roboto Mono', monospace;
 
+$easing: ease-in-out;
+
 $h-teal:       #19a5a5;
 $h-teal-light: #71c2c2;
 $h-github:     #24292e;
 
 $h-animation-duration: 0.5s;
-$h-animation-type: ease-in-out;
-
-$primary: $h-teal;
 
 @import "~bulma/sass/utilities/derived-variables";
+
+$primary: $h-teal;
 
 $link: $h-teal;
 
