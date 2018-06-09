@@ -1,9 +1,3 @@
-/*!
- * Harrix HTML Template (https://github.com/Harrix/Harrix-HTML-Template)
- * Copyright 2018 Sergienko Anton
- * Licensed under MIT (https://github.com/Harrix/Harrix-HTML-Template/blob/master/LICENSE)
- */
-
 import lightgallery from 'lightgallery.js';
 import lgThumbnail from 'lg-thumbnail.js';
 import lgAutoplay from 'lg-autoplay.js';
