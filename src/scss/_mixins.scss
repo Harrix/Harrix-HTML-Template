@@ -1,5 +1,5 @@
 @mixin h-animation($property: all) {
-  transition: $property $h-animation-duration $easing;
+  transition: $property $h-speed-normal $easing;
 }
 
 @mixin h-clickable {
