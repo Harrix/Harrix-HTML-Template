@@ -1,6 +1,8 @@
 @import "~bulma/sass/utilities/initial-variables";
 @import "~bulma/sass/utilities/functions";
 
+$red: #de2b26;
+
 $family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 $family-monospace: 'Roboto Mono', monospace;
 
@@ -59,10 +61,3 @@ $h-heading-h6-font-size:        1.125rem;
 @import "form";
 @import "lightbox";
 @import "content";
-
-@include touch {
-  .section {
-    padding-left: 0.9375rem;
-    padding-right: 0.9375rem;
-  }
-}
