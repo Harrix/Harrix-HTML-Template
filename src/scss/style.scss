@@ -1,13 +1,6 @@
 @import "~bulma/sass/utilities/initial-variables";
 @import "~bulma/sass/utilities/functions";
 
-$red: #de2b26;
-$family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-$family-monospace: 'Roboto Mono', monospace;
-$easing: ease-in-out;
-
-@import "~bulma/sass/utilities/derived-variables";
-
 $h-teal:       #19a5a5;
 $h-teal-light: #71c2c2;
 $h-github:     #24292e;
@@ -20,24 +13,22 @@ $h-navbar-font-size: 0.875rem;
 $h-navbar-logo-font-size: 1.75rem;
 $h-navbar-icon-color: $grey;
 $h-hr-special-background-color: $h-teal;
+$h-heading-h1-font-size: 1.75rem;
+$h-heading-h2-font-size: 1.625rem;
+$h-heading-h3-font-size: 1.5rem;
+$h-heading-h4-font-size: 1.375rem;
+$h-heading-h5-font-size: 1.25rem;
+$h-heading-h6-font-size: 1.125rem;
 //$h-code-font-size:              1rem;
 //$h-code-highlight-font-size:    0.8125rem;
 //$h-header-font-size:            0.875rem;
-$h-heading-h1-font-size : 1.75rem;
-$h-heading-h2-font-size : 1.625rem;
-$h-heading-h3-font-size : 1.5rem;
-$h-heading-h4-font-size : 1.375rem;
-$h-heading-h5-font-size : 1.25rem;
-$h-heading-h6-font-size : 1.125rem;
 //$h-blockquote-font-size:        1.125rem;
 //$h-blockquote-mobile-font-size: 1rem;
 
-$addColors: (
-  "h-teal":($h-teal, $h-teal-invert),
-  "h-teal-light": ($h-teal-light, $h-teal-light-invert),
-  "github": ($h-github, $h-github-invert)
-);
-$colors: map-merge($colors, $addColors);
+$red: #de2b26;
+$family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+$family-monospace: 'Roboto Mono', monospace;
+$easing: ease-in-out;
 
 $primary: $h-teal;
 $link: $h-teal;
@@ -49,6 +40,15 @@ $navbar-item-img-max-height: 2rem;
 $section-padding: 1.5rem;
 $input-shadow: none;
 $content-heading-weight: $weight-normal;
+
+@import "~bulma/sass/utilities/derived-variables";
+
+$addColors: (
+  "h-teal":($h-teal, $h-teal-invert),
+  "h-teal-light": ($h-teal-light, $h-teal-light-invert),
+  "github": ($h-github, $h-github-invert)
+);
+$colors: map-merge($colors, $addColors);
 
 @import "~bulma/bulma";
 @import "~lightgallery.js/src/sass/lightgallery";
