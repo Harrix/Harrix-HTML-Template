@@ -8,8 +8,7 @@
     "watch": "webpack --watch --config webpack.dev.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js && html dist/*.html --indent-size 2",
-    "beautify": "html dist/*.html --indent-size 2",
-    "clear-css": "uncss dist/css/app.css dist/index.html"
+    "beautify": "html dist/*.html --indent-size 2"
   },
   "repository": {
     "type": "git",
@@ -52,7 +51,6 @@
     "node-sass": "^4.9.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^7.0.3",
-    "uncss": "^0.16.2",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.3",
     "webpack-dev-server": "^3.1.4",
