@@ -26,12 +26,12 @@ $h-heading-h6-font-size: 1.125rem;
 //$h-blockquote-mobile-font-size: 1rem;
 
 $red: #de2b26;
+$primary: $h-teal;
+$link: $h-teal;
+
 $family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 $family-monospace: 'Roboto Mono', monospace;
 $easing: ease-in-out;
-
-$primary: $h-teal;
-$link: $h-teal;
 
 $navbar-dropdown-boxed-shadow: none;
 $navbar-item-hover-background-color: transparent;
