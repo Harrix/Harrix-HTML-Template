@@ -36,12 +36,6 @@
     }
   }
 
-  .navbar-menu {
-    @include touch {
-      box-shadow: none;
-    }
-  }
-
   .navbar-item, .navbar-link {
     .icon {
       &:only-child {
