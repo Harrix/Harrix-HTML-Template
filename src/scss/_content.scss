@@ -22,4 +22,10 @@
   h6 {
     font-size: $h-heading-h6-font-size;
   }
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
