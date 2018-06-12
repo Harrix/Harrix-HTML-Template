@@ -48,7 +48,7 @@
             <div class="navbar-item" id="h-search-form">
               <div class="control has-icons-left has-icons-right">
                 <form role="search" method="get" action="/">
-                  <input class="input" type="text" value="" id="h-search-input">
+                  <input class="input is-shadowless" type="text" value="" id="h-search-input">
                 </form>
                 <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
                 <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-search-button-close"><i class="fah fa-close"></i></span>
@@ -87,13 +87,13 @@
   </header>
 
   <article>
-    <section class="section h-is-headline">
+    <section class="section">
       <div class="container">
         <div class="columns">
           <div class="column is-8-desktop is-offset-2-desktop">
             <div class="content has-text-centered">
-              <h1>Заголовок страницы</h1>
-              <p>
+              <h1 class="title h-has-special-hr">Заголовок страницы</h1>
+              <p class="subtitle">
                 Тут может располагаться одно-три предложение о продукте. Тут может располагаться одно-три предложение о продукте. Тут может располагаться одно-три предложение продукте.
               </p>
               <p class="buttons is-centered">
@@ -118,7 +118,7 @@
               </p>
               <div class="h-lightbox">
                 <a href="uploads/header-image.png">
-                <img src="uploads/header-image.png" alt="Цветы на берегу острова Татышев в городе Красноярск."/>
+                <img src="uploads/header-image.png" alt="Цветы на берегу острова Татышев в городе Красноярск.">
               </a>
               </div>
             </div>
@@ -136,7 +136,7 @@
 
           <nav id='js-table-of-contents'></nav>
 
-          Типографика</h2>
+          <h2>Типографика</h2>
 
           <p>В данном блоке пример использования обычного текста в несколько абзацев. Непосредственно в данном абзаце не будет применения никаких дополнительных украшательств текста. Просто несколько строк в абзаце. Поэтому мне надо о чем-нибудь тут написать,
             чтобы текста было побольше. Например, можно написать о том, что угол наклона оси вращения Земли составляет 23,44°. Именно такой угол наклона в моём логотипе.</p>
@@ -194,7 +194,33 @@
     <section class="section">
       <div class="container">
         <div class="content">
+          <h2 id="columns">Колонки</h2>
 
+          <div class="columns">
+            <div class="column">
+              Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела. Если он отвергнет предложенные деньги,
+              то денег не получит ни один из игроков. В этом случае игроки тоже не знают друг друга и никогда больше не встретятся. Если второй игрок отвергнет предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно
+              отвергает предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?
+            </div>
+            <div class="column">
+              Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела. Если он отвергнет предложенные деньги,
+              то денег не получит ни один из игроков. В этом случае игроки тоже не знают друг друга и никогда больше не встретятся. Если второй игрок отвергнет предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно
+              отвергает предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?
+            </div>
+          </div>
+
+          <div class="columns">
+            <div class="column">
+              Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела. Если он отвергнет предложенные деньги,
+              то денег не получит ни один из игроков. В этом случае игроки тоже не знают друг друга и никогда больше не встретятся. Если второй игрок отвергнет предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно
+              отвергает предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?
+            </div>
+            <div class="column">
+              <div class="h-lightbox">
+                <a href="uploads/07.jpg"><img src="uploads/07-thumbnail.jpg" alt="Цветы на берегу острова Татышев в городе Красноярск."></a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -347,24 +373,6 @@
             </tr>
           </tbody>
         </table>
-
-        <div class="content">
-          <p>
-            If you want to <strong>learn more</strong>, follow these links:
-          </p>
-        </div>
-        <div class="field is-grouped">
-          <p class="control">
-            <a class="button is-medium is-primary" href="http://bulma.io">
-                <strong class="has-text-weight-semibold">Bulma homepage</strong>
-              </a>
-          </p>
-          <p class="control">
-            <a class="button is-medium is-link" href="http://bulma.io/documentation/overview/start/">
-                <strong class="has-text-weight-semibold">Documentation</strong>
-              </a>
-          </p>
-        </div>
       </div>
     </section>
   </article>
