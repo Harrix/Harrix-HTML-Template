@@ -33,13 +33,13 @@ $family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Hel
 $family-monospace: 'Roboto Mono', monospace;
 $easing: ease-in-out;
 
+$content-heading-weight: $weight-normal;
 $navbar-dropdown-boxed-shadow: none;
 $navbar-item-hover-background-color: transparent;
 $navbar-height: 3rem;
 $navbar-item-img-max-height: 2rem;
 $section-padding: 1.5rem;
 $input-shadow: none;
-$content-heading-weight: $weight-normal;
 
 @import "~bulma/sass/utilities/derived-variables";
 
