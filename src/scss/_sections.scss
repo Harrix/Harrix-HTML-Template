@@ -1,21 +1,4 @@
 .section {
-  &.h-is-headline {
-    h1 {
-      &:after {
-        background: $h-hr-special-background-color;
-        bottom: 0;
-        content: "";
-        display: block;
-        height: 1px;
-        left: 0;
-        right: 0;
-        margin: 1.25rem auto;
-        position: relative;
-        width: 3rem;
-      }
-    }
-  }
-
   @include touch {
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
