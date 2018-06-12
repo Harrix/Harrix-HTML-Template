@@ -29,6 +29,12 @@
     &:hover {
       text-decoration: underline;
     }
+
+    &.button {
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 
   hr.h-is-special {
@@ -36,7 +42,7 @@
     border: none;
     display: block;
     height: 1px;
-    text-align:center;
+    text-align: center;
     margin: 1.25rem auto;
     width: 3rem;
   }
