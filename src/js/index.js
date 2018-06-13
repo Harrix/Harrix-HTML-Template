@@ -96,25 +96,24 @@ function initSearchPanel() {
 
 function initLightGallery(rowHeight, margins) {
 
-  var inputs = document.getElementsByClassName('h-lightbox');
+  var lightboxes = document.getElementsByClassName('h-lightbox');
 
-  Array.from(inputs).forEach(el => {
+  Array.from(lightboxes).forEach(el => {
     lightGallery(el, {
       hash: true,
       share: false
     });
   });
 
-  /*jQuery('.js-lightbox').lightGallery({
-      hash: true,
-      share: false
-  });*/
+  var galleries = document.getElementsByClassName('h-gallery');
 
-  /*jQuery('.js-gallery').lightGallery({
+  Array.from(galleries).forEach(el => {
+    lightGallery(el, {
       hash: true,
       share: false,
       selector: '.item'
-  });*/
+    });
+  });
 
   /*jQuery('.js-gallery').justifiedGallery({
       rowHeight: rowHeight,
