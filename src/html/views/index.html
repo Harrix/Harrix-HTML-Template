@@ -2,10 +2,11 @@
 <%= _.template(require('./../includes/header.html'))(data) %>
 
 <div class="section">
-  <div class="container">
-    <div class="columns">
-      <div class="column is-8-desktop is-offset-2-desktop">
-        <div class="content has-text-centered">
+  <article class="container">
+
+    <header class="content has-text-centered">
+      <div class="columns">
+        <div class="column is-8-desktop is-offset-2-desktop">
           <h1 class="title h-has-special-hr">Заголовок страницы</h1>
           <p class="subtitle">
             Тут может располагаться одно-три предложение о продукте. Тут может располагаться одно-три предложение о продукте. Тут может располагаться одно-три предложение продукте.
@@ -37,12 +38,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </header>
 
-<div class="section">
-  <div class="container">
     <div class="content">
       <p>Это первый абзац после аннотации страницы. Здесь кратко описывается о том, что будет содержаться в статье.</p>
 
@@ -98,7 +95,9 @@
           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
         </div>
       </div>
+    </div>
 
+    <div class="content">
       <h2 id="columns">Колонки</h2>
 
       <div class="columns">
@@ -120,7 +119,9 @@
           </div>
         </div>
       </div>
+    </div>
 
+    <div class="content">
       <h2 id="lightbox">Lightbox</h2>
 
       <h3>Одиночное изображение слева</h3>
@@ -147,7 +148,9 @@
         <div class="item" data-src="uploads/07.jpg"><img src="uploads/07-thumbnail.jpg" alt="" /></div>
         <div class="item" data-src="uploads/08.jpg"><img src="uploads/08-thumbnail.jpg" alt="" /></div>
       </div>
+    </div>
 
+    <div class="content">
       <h2>What's included</h2>
       <p>
         The <code>npm</code> dependencies included in <code>package.json</code> are:
@@ -224,55 +227,59 @@
         <br> For example, this page is <strong>only</strong> built with the following <strong>Bulma elements</strong>:
       </p>
     </div>
-    <table class="table is-bordered is-fullwidth">
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>CSS class</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>Columns</th>
-          <td>
-            <code><a href="http://bulma.io/documentation/columns/basics">columns</a></code>
-            <code><a href="http://bulma.io/documentation/columns/basics">column</a></code>
-          </td>
-        </tr>
-        <tr>
-          <th>Layout</th>
-          <td>
-            <code><a href="http://bulma.io/documentation/layout/section">section</a></code>
-            <code><a href="http://bulma.io/documentation/layout/container">container</a></code>
-            <code><a href="http://bulma.io/documentation/layout/footer">footer</a></code>
-          </td>
-        </tr>
-        <tr>
-          <th>Elements</th>
-          <td>
-            <code><a href="http://bulma.io/documentation/elements/button">button</a></code>
-            <code><a href="http://bulma.io/documentation/elements/content">content</a></code>
-            <code><a href="http://bulma.io/documentation/elements/title">title</a></code>
-            <code><a href="http://bulma.io/documentation/elements/title">subtitle</a></code>
-          </td>
-        </tr>
-        <tr>
-          <th>Form</th>
-          <td>
-            <code><a href="http://bulma.io/documentation/form/general">field</a></code>
-            <code><a href="http://bulma.io/documentation/form/general">control</a></code>
-          </td>
-        </tr>
-        <tr>
-          <th>Helpers</th>
-          <td>
-            <code><a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-centered</a></code>
-            <code><a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-weight-semibold</a></code>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+
+    <div class="content">
+      <table class="table is-bordered is-fullwidth">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>CSS class</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Columns</th>
+            <td>
+              <code><a href="http://bulma.io/documentation/columns/basics">columns</a></code>
+              <code><a href="http://bulma.io/documentation/columns/basics">column</a></code>
+            </td>
+          </tr>
+          <tr>
+            <th>Layout</th>
+            <td>
+              <code><a href="http://bulma.io/documentation/layout/section">section</a></code>
+              <code><a href="http://bulma.io/documentation/layout/container">container</a></code>
+              <code><a href="http://bulma.io/documentation/layout/footer">footer</a></code>
+            </td>
+          </tr>
+          <tr>
+            <th>Elements</th>
+            <td>
+              <code><a href="http://bulma.io/documentation/elements/button">button</a></code>
+              <code><a href="http://bulma.io/documentation/elements/content">content</a></code>
+              <code><a href="http://bulma.io/documentation/elements/title">title</a></code>
+              <code><a href="http://bulma.io/documentation/elements/title">subtitle</a></code>
+            </td>
+          </tr>
+          <tr>
+            <th>Form</th>
+            <td>
+              <code><a href="http://bulma.io/documentation/form/general">field</a></code>
+              <code><a href="http://bulma.io/documentation/form/general">control</a></code>
+            </td>
+          </tr>
+          <tr>
+            <th>Helpers</th>
+            <td>
+              <code><a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-centered</a></code>
+              <code><a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-weight-semibold</a></code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </article>
 </div>
 
 <%= _.template(require('./../includes/footer.html'))(data) %>
