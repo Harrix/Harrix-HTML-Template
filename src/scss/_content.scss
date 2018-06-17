@@ -43,10 +43,18 @@
 
   kbd {
     font-family: $family-code;
-    font-size: 0.875rem;
+    font-size: $code-size;
     color: $red-invert;
     background-color: $red;
-    border-radius: 0.1875rem;
+    border-radius: $radius;
     padding: .2rem .4rem;
+  }
+
+  code, var {
+    background-color: $code-background;
+    color: $code;
+    font-size: $code-size;
+    font-weight: $code-weight;
+    padding: $code-padding; 
   }
 }

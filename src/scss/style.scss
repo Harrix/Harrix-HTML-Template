@@ -33,7 +33,7 @@ $family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Hel
 $family-monospace: 'Roboto Mono', monospace;
 $easing: ease-in-out;
 
-$content-heading-weight: $weight-normal;
+$content-heading-weight: 500;
 $navbar-dropdown-boxed-shadow: none;
 $navbar-item-hover-background-color: transparent;
 $navbar-height: 3rem;
@@ -42,6 +42,8 @@ $section-padding: 1.5rem;
 $input-shadow: none;
 $subtitle-size: 1rem;
 $subtitle-line-height: 1.5;
+$code-size: 0.875rem;
+$code-weight: 500;
 
 @import "~bulma/sass/utilities/derived-variables";
 
