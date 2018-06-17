@@ -20,6 +20,7 @@
     font-size: $h-navbar-logo-font-size;
     line-height: 0;
     color: $text-strong;
+    font-weight: 500;
 
     &:hover {
       color: $text-strong;
@@ -32,7 +33,7 @@
 
     .is-sub {
       padding-left: 0.3125rem;
-      font-weight: 300;
+      font-weight: 400;
     }
   }
 
