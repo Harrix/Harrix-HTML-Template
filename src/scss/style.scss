@@ -46,7 +46,7 @@ $subtitle-line-height: 1.5;
 @import "~bulma/sass/utilities/derived-variables";
 
 $addColors: (
-  "h-teal":($h-teal, $h-teal-invert),
+  "teal":($h-teal, $h-teal-invert),
   "github": ($h-github, $h-github-invert)
 );
 $colors: map-merge($colors, $addColors);
