@@ -58,4 +58,8 @@
     background-color: $code-background;        
     padding: $code-padding; 
   }
+
+  blockquote {
+    font-style: italic;
+  }
 }
