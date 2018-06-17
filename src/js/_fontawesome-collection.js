@@ -3,12 +3,16 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 import { faFileArchive } from '@fortawesome/free-solid-svg-icons/faFileArchive';
 import { faDownload } from '@fortawesome/free-solid-svg-icons/faDownload';
+import { faPlusSquare } from '@fortawesome/free-regular-svg-icons/faPlusSquare';
+import { faMinusSquare } from '@fortawesome/free-regular-svg-icons/faMinusSquare';
 import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
 
 library.add(
   faSearch,
   faFileArchive,
   faDownload,
+  faPlusSquare,
+  faMinusSquare,
   faGithub,
 );
 
