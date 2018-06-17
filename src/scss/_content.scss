@@ -47,14 +47,15 @@
     color: $red-invert;
     background-color: $red;
     border-radius: $radius;
-    padding: .2rem .4rem;
+    padding: $code-padding;
   }
 
   code, var {
-    background-color: $code-background;
-    color: $code;
+    font-family: $family-code;
     font-size: $code-size;
     font-weight: $code-weight;
+    color: $code;
+    background-color: $code-background;        
     padding: $code-padding; 
   }
 }
