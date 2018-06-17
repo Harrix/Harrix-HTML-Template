@@ -126,9 +126,6 @@ function initLightGallery(rowHeight, margins) {
 
 function initSyntaxHighlighting() {
   hljs.initHighlightingOnLoad();
-  /*jQuery('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
-  });*/
 }
 
 function focusAfterAnimation(elem, timeOfAnimation) {
