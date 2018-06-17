@@ -6,6 +6,7 @@ import lgFullscreen from 'lg-fullscreen.js';
 import lgPager from 'lg-pager.js';
 import lgZoom from 'lg-zoom.js';
 import lgHash from 'lg-hash.js';
+import hljs from 'highlight.js';
 
 import fontawesomeCollection from './_fontawesome-collection.js'
 import { locale } from './_locale-ru.js'
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbar(100);
   initSearchPanel();
   initLightGallery(200, 10);
+  initSyntaxHighlighting();
 });
 
 function initNavbar(scrollTopNavbarHide) {
@@ -119,6 +121,13 @@ function initLightGallery(rowHeight, margins) {
       rowHeight: rowHeight,
       margins: margins,
       border: 0
+  });*/
+}
+
+function initSyntaxHighlighting() {
+  hljs.initHighlightingOnLoad();
+  /*jQuery('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
   });*/
 }
 
