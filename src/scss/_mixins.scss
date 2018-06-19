@@ -18,3 +18,22 @@
   right: 0;
   top: 0;
 }
+
+@mixin h-scrollbars {
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  
+  &::-webkit-scrollbar:vertical {
+    width: $radius;
+  }
+  
+  &::-webkit-scrollbar:horizontal {
+    height: $radius;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: $grey;
+    border-radius: $radius-small;
+  }
+}
