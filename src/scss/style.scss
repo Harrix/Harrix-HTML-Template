@@ -20,6 +20,7 @@ $h-h6-font-size: 1.125rem;
 
 $red: #de2b26;
 $green: #4abf60;
+$white-ter: #f8f8f8;
 $primary: $h-teal;
 $link: $h-teal;
 $link-hover: lighten($link, 5%);
@@ -55,6 +56,7 @@ $colors: map-merge($colors, $addColors);
 @import "fonts";
 @import "mixins";
 @import "helpers";
+@import "common";
 @import "header";
 @import "search-panel";
 @import "sections";
