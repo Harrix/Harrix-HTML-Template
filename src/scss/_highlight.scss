@@ -1,21 +1,14 @@
-
 .content pre code, pre code, .content pre, pre {
   font-weight: 400;
   color: $body-color;
-  //background: #f8f8f8;
-  //border-width: 1px;
-  //border-color: #e9e8e8;
-  //border-style: solid;
-  //border-radius: $button-border-radius;
-  //white-space: pre-wrap;
   line-height: 1.25rem;
+  //white-space: pre-wrap;
 
   @include h-scrollbars;
 
   @include touch {
-    font-size: 12px;
+    font-size: 12px; 
     //line-height: 1.5em;
-   // padding: 0.625rem;
   }
 }
 
@@ -26,7 +19,7 @@
 
 .hljs-comment,
 .hljs-quote {
-  color: #888a85; //#17a81a;//#616161;
+  color: #888a85; //#17a81a;//#616161; //#888a85; //#90a1b5
   font-style: italic;
 }
 
@@ -47,11 +40,14 @@
 
 .hljs-keyword,
 .hljs-meta-keyword,
-.hljs-string,
 .hljs-doctag,
 .hljs-regexp,
 .hljs-meta-string {
-  color: #18a2c1;//#05ad97;
+  color: #18a2c1;//#18a2c1; //#05ad97; //#e96900
+}
+
+.hljs-string {
+  color: #18a2c1;//#55A1FB; //#18a2c1
 }
 
 .hljs-variable {
