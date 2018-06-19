@@ -1,1 +1,10 @@
 @import "~katex/dist/katex.css";
+@import "~bulma/sass/utilities/initial-variables";
+
+@import "mixins";
+
+.tex {
+  overflow: auto;
+
+  @include h-scrollbars;
+}
