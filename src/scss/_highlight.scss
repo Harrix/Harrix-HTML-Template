@@ -1,22 +1,23 @@
-/*article pre code, pre code {
-  font-family: $font-stack-code;
-  font-size: $code-highlight-font-size;
-  line-height: 1.125rem;
-  color: #474747;
-  background: #f8f8f8;
-  border-width: 1px;
-  border-color: #e9e8e8;
-  border-style: solid;
-  border-radius: $button-border-radius;
-  font-weight: normal;
-  white-space: pre-wrap;
-  padding: 1rem;
-  text-align: left;
 
-  @media (max-width: $grid-breakpoint-mobile) {
-    padding: 0.625rem;
+.content pre code, pre code, .content pre, pre {
+  font-weight: 400;
+  color: $body-color;
+  //background: #f8f8f8;
+  //border-width: 1px;
+  //border-color: #e9e8e8;
+  //border-style: solid;
+  //border-radius: $button-border-radius;
+  //white-space: pre-wrap;
+  line-height: 1.25rem;
+
+  @include h-scrollbars;
+
+  @include touch {
+    font-size: 12px;
+    //line-height: 1.5em;
+   // padding: 0.625rem;
   }
-}*/
+}
 
 .hljs {
   display: block;
@@ -25,7 +26,7 @@
 
 .hljs-comment,
 .hljs-quote {
-  color: #888a85;//#17a81a;//#616161;
+  color: #888a85; //#17a81a;//#616161;
   font-style: italic;
 }
 
@@ -50,7 +51,7 @@
 .hljs-doctag,
 .hljs-regexp,
 .hljs-meta-string {
-  color: #05ad97;
+  color: #18a2c1;//#05ad97;
 }
 
 .hljs-variable {
