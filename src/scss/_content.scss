@@ -1,5 +1,9 @@
 .content {
   text-align: justify;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 
   h1 {
     font-size: $h-h1-font-size;
@@ -55,8 +59,9 @@
     font-size: $code-size;
     font-weight: $code-weight;
     color: $code;
-    background-color: $code-background;        
-    padding: $code-padding; 
+    background-color: $code-background;
+    padding: $code-padding;
+    word-break: break-all;
   }
 
   blockquote {
