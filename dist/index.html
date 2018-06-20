@@ -349,6 +349,86 @@ int main()
  system(&quot;pause&quot;);
     return 0;
 }</code></pre>
+
+            <pre><code class="java">package org.harrix.buttoncreatebutton;
+ 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+ 
+public class MainActivity extends AppCompatActivity {
+ 
+    private Button button;
+    private LinearLayout linearLayout;
+ 
+    private final int USERID = 6000;
+    private int countID;
+ 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+ 
+        button = (Button) findViewById(R.id.button);
+        linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
+         
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button b = new Button(getApplicationContext());
+                b.setText("Удалить данную кнопку №" + Integer.toString(countID + 1));
+                b.setLayoutParams(
+                        new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT)
+                );
+                b.setId(USERID + countID);
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        linearLayout.removeView(v);
+                    }
+                });
+                linearLayout.addView(b);
+                countID++;
+            }
+        });
+    }
+}</code></pre>
+
+            <pre><code class="java">public class MyActivity extends Activity {
+     ...
+
+     static final int PICK_CONTACT_REQUEST = 0;
+
+     public boolean onKeyDown(int keyCode, KeyEvent event) {
+         if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+             // When the user center presses, let them pick a contact.
+             startActivityForResult(
+                 new Intent(Intent.ACTION_PICK,
+                 new Uri("content://contacts")),
+                 PICK_CONTACT_REQUEST);
+            return true;
+         }
+         return false;
+     }
+
+     protected void onActivityResult(int requestCode, int resultCode,
+             Intent data) {
+         if (requestCode == PICK_CONTACT_REQUEST) {
+             if (resultCode == RESULT_OK) {
+                 // A contact was picked.  Here we will just display it
+                 // to the user.
+                 startActivity(new Intent(Intent.ACTION_VIEW, data));
+             }
+         }
+     }
+ }</code></pre>
+            <p>
+              Пример длинного пути к файлу <code>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\ServiceHub\node_modules\werapiwindows\build\Release\WerAPIWin.node</code>.
+            </p>
           </div>
         </div>
       </div>
