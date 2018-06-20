@@ -25,15 +25,15 @@
   }
   
   &::-webkit-scrollbar:vertical {
-    width: $radius;
+    width: $radius-large;
   }
   
   &::-webkit-scrollbar:horizontal {
-    height: $radius;
+    height: $radius-large;
   }
   
   &::-webkit-scrollbar-thumb {
-    background-color: $grey;
+    background-color: $grey-light;
     border-radius: $radius-small;
   }
 }
