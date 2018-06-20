@@ -1,7 +1,8 @@
 .content pre code, pre code, .content pre, pre {
   font-weight: 400;
-  color: $body-color;
-  line-height: 1.25rem;
+  //font-size: 0.8125rem;
+  color: #002D7A;//$body-color;
+  line-height: 1.25rem;//1.1875rem;
   //white-space: pre-wrap;
 
   @include h-scrollbars;
@@ -19,7 +20,7 @@
 
 .hljs-comment,
 .hljs-quote {
-  color: #888a85; //#17a81a;//#616161; //#888a85; //#90a1b5
+  color: #d81b60; //#17a81a;//#616161; //#888a85; //#90a1b5 //#d81b60
   font-style: italic;
 }
 
@@ -43,11 +44,11 @@
 .hljs-doctag,
 .hljs-regexp,
 .hljs-meta-string {
-  color: #18a2c1;//#18a2c1; //#05ad97; //#e96900
+  color: #3b78e7;//#18a2c1; //#05ad97; //#e96900 //#4ABF60 //#3b78e7
 }
 
 .hljs-string {
-  color: #18a2c1;//#55A1FB; //#18a2c1
+  color: #0d904f;//#55A1FB; //#18a2c1 //#0d904f
 }
 
 .hljs-variable {
