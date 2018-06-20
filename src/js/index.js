@@ -11,12 +11,27 @@ import hljs from 'highlight.js';
 import fontawesomeCollection from './_fontawesome-collection.js'
 import { locale } from './_locale-ru.js'
 
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
   initNavbar(100);
   initSearchPanel();
   initLightGallery(200, 10);
+  initGalleryGrid();
   initSyntaxHighlighting();
-});
+
+  const checkClick = document.getElementById('checkClick');
+  checkClick.onclick = initGalleryGrid;
+});*/
+
+window.onload = function() {
+  initNavbar(100);
+  initSearchPanel();
+  initLightGallery(200, 10);
+  initGalleryGrid();
+  initSyntaxHighlighting();
+
+  const checkClick = document.getElementById('checkClick');
+  checkClick.onclick = initGalleryGrid;
+};
 
 function initNavbar(scrollTopNavbarHide) {
   const navbar = document.getElementById('h-navbar');
@@ -122,7 +137,9 @@ function initLightGallery(rowHeight, margins) {
       margins: margins,
       border: 0
   });*/
+}
 
+function initGalleryGrid() {
     /*var o = {};
     $("#masonry img").each(function(){
       o.base = parseInt($(this).data("width"),10)/parseInt($(this).data("height"),10);
@@ -139,6 +156,8 @@ function initLightGallery(rowHeight, margins) {
     Array.from(images).forEach(el => {
       var width = el.clientWidth;
       var height = el.clientHeight;
+      console.log("el.clientWidth = " + el.clientWidth);
+      console.log("el.clientHeight = " + el.clientHeight);
 
       o.base = parseInt(width,10)/parseInt(height,10);
       
@@ -146,8 +165,12 @@ function initLightGallery(rowHeight, margins) {
       o.h    = Math.round(190*o.base);
 
       el.parentElement.style.flex = o.grow+" "+o.h+"px";
-      el.parentElement.style.minHeight = Math.round(o.h/o.base);
-      console.log("bla")
+      el.parentElement.style.minHeight = Math.round(o.h/o.base)+"px";
+      console.log("el.parentElement.style.flex = " + el.parentElement.style.flex);
+      console.log("o.grow+' '+o.h+'px' = " + o.grow+" "+o.h+"px");
+      console.log("el.parentElement.style.minHeight = " + el.parentElement.style.minHeight);
+      console.log("Math.round(o.h/o.base) = " + Math.round(o.h/o.base));
+      console.log("-------------");
     });
 }
 
