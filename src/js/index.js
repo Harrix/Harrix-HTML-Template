@@ -122,6 +122,33 @@ function initLightGallery(rowHeight, margins) {
       margins: margins,
       border: 0
   });*/
+
+    /*var o = {};
+    $("#masonry img").each(function(){
+      o.base = parseInt($(this).data("width"),10)/parseInt($(this).data("height"),10);
+      
+      o.grow = Math.round(o.base*1e3)/100;
+      o.h    = Math.round(190*o.base);
+      
+      $(this).parent().css("flex",o.grow+" "+o.h+"px");
+      $(this).parent().css("min-height",Math.round(o.h/o.base));
+    });*/
+    var o = {};
+    var images = document.querySelectorAll("#masonry img");
+    console.log(images)
+    Array.from(images).forEach(el => {
+      var width = el.clientWidth;
+      var height = el.clientHeight;
+
+      o.base = parseInt(width,10)/parseInt(height,10);
+      
+      o.grow = Math.round(o.base*1e3)/100;
+      o.h    = Math.round(190*o.base);
+
+      el.parentElement.style.flex = o.grow+" "+o.h+"px";
+      el.parentElement.style.minHeight = Math.round(o.h/o.base);
+      console.log("bla")
+    });
 }
 
 function initSyntaxHighlighting() {
