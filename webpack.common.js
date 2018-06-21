@@ -38,7 +38,12 @@ module.exports = {
         include: path.resolve(__dirname, 'src/js'),
         use: {
           loader: 'babel-loader',
-          options: { presets: 'env' }
+          options: {
+            presets: [
+              ['@babel/preset-env', { modules: false }],
+            ],
+            plugins: ['@babel/plugin-proposal-class-properties'],
+          }
         }
       },
       {
