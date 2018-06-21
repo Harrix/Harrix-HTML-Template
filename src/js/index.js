@@ -11,27 +11,16 @@ import hljs from 'highlight.js';
 import fontawesomeCollection from './_fontawesome-collection.js'
 import { locale } from './_locale-ru.js'
 
-/*document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   initNavbar(100);
   initSearchPanel();
   initLightGallery(200, 10);
-  initGalleryGrid();
   initSyntaxHighlighting();
+});
 
-  const checkClick = document.getElementById('checkClick');
-  checkClick.onclick = initGalleryGrid;
-});*/
-
-window.onload = function() {
-  initNavbar(100);
-  initSearchPanel();
-  initLightGallery(200, 10);
+window.addEventListener("load", function(event) {
   initGalleryGrid();
-  initSyntaxHighlighting();
-
-  const checkClick = document.getElementById('checkClick');
-  checkClick.onclick = initGalleryGrid;
-};
+});
 
 function initNavbar(scrollTopNavbarHide) {
   const navbar = document.getElementById('h-navbar');
