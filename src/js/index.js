@@ -8,7 +8,7 @@ import lgZoom from 'lg-zoom.js';
 import lgHash from 'lg-hash.js';
 import hljs from 'highlight.js';
 
-import fontawesomeCollection from './_fontawesome-collection.js'
+import initFontawesomeCollection from './_fontawesome-collection.js'
 import { locale } from './_locale-ru.js'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearchPanel();
   initLightGallery(200, 10);
   initSyntaxHighlighting();
+  initFontawesomeCollection();
 });
 
 window.addEventListener("load", function(event) {
