@@ -101,7 +101,6 @@ function initSearchPanel() {
 }
 
 function initLightGallery(rowHeight, margins) {
-
   var lightboxes = document.getElementsByClassName('h-lightbox');
 
   Array.from(lightboxes).forEach(el => {
@@ -120,46 +119,21 @@ function initLightGallery(rowHeight, margins) {
       selector: '.item'
     });
   });
-
-  /*jQuery('.js-gallery').justifiedGallery({
-      rowHeight: rowHeight,
-      margins: margins,
-      border: 0
-  });*/
 }
 
 function initGalleryGrid() {
-    /*var o = {};
-    $("#masonry img").each(function(){
-      o.base = parseInt($(this).data("width"),10)/parseInt($(this).data("height"),10);
-      
-      o.grow = Math.round(o.base*1e3)/100;
-      o.h    = Math.round(190*o.base);
-      
-      $(this).parent().css("flex",o.grow+" "+o.h+"px");
-      $(this).parent().css("min-height",Math.round(o.h/o.base));
-    });*/
     var o = {};
     var images = document.querySelectorAll("#masonry img");
-    console.log(images)
     Array.from(images).forEach(el => {
       var width = el.clientWidth;
       var height = el.clientHeight;
-      console.log("el.clientWidth = " + el.clientWidth);
-      console.log("el.clientHeight = " + el.clientHeight);
 
-      o.base = parseInt(width,10)/parseInt(height,10);
-      
+      o.base = parseInt(width,10)/parseInt(height,10);      
       o.grow = Math.round(o.base*1e3)/100;
       o.h    = Math.round(190*o.base);
 
       el.parentElement.style.flex = o.grow+" "+o.h+"px";
       el.parentElement.style.minHeight = Math.round(o.h/o.base)+"px";
-      console.log("el.parentElement.style.flex = " + el.parentElement.style.flex);
-      console.log("o.grow+' '+o.h+'px' = " + o.grow+" "+o.h+"px");
-      console.log("el.parentElement.style.minHeight = " + el.parentElement.style.minHeight);
-      console.log("Math.round(o.h/o.base) = " + Math.round(o.h/o.base));
-      console.log("-------------");
     });
 }
 
