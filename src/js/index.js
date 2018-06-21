@@ -122,19 +122,24 @@ function initLightGallery(rowHeight, margins) {
 }
 
 function initGalleryGrid() {
+  var galleries = document.getElementsByClassName('h-gallery');
+
+  Array.from(galleries).forEach(gallery => {
     var o = {};
-    var images = document.querySelectorAll("#masonry img");
-    Array.from(images).forEach(el => {
-      var width = el.clientWidth;
-      var height = el.clientHeight;
+    var images = gallery.querySelectorAll("img");
+    
+    Array.from(images).forEach(img => {
+      var width = img.clientWidth;
+      var height = img.clientHeight;
 
       o.base = parseInt(width,10)/parseInt(height,10);      
       o.grow = Math.round(o.base*1e3)/100;
       o.h    = Math.round(190*o.base);
 
-      el.parentElement.style.flex = o.grow+" "+o.h+"px";
-      el.parentElement.style.minHeight = Math.round(o.h/o.base)+"px";
+      img.parentElement.style.flex = o.grow+" "+o.h+"px";
+      img.parentElement.style.minHeight = Math.round(o.h/o.base)+"px";
     });
+  });
 }
 
 function initSyntaxHighlighting() {

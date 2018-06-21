@@ -5,20 +5,7 @@
   }
 }
 
-/*.h-gallery {
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: repeat(2, 300px);
-}
-
-.h-gallery>figure>img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}*/
-
-div#masonry {
+div.h-gallery {
   display: -webkit-flex;
   -webkit-flex-wrap: wrap;
   -webkit-align-items: stretch;
@@ -29,7 +16,7 @@ div#masonry {
   justify-content: space-around;
 }
 
-div#masonry img {
+div.h-gallery img {
   position: static !important;
   bottom: auto !important;
   width: 100%;
@@ -37,7 +24,7 @@ div#masonry img {
   height: auto;
 }
 
-#masonry div {
+.h-gallery div {
   display: -webkit-flex;
   -webkit-align-items: flex-end;
   -webkit-justify-content: space-around;
@@ -53,7 +40,7 @@ div#masonry img {
   float: left;
 }
 
-#masonry:after {
+.h-gallery:after {
   -ms-flex: 20 150px;
   -webkit-flex: 20 150px;
   flex: 20 150px;
@@ -63,7 +50,7 @@ div#masonry img {
 }
 
 @media only screen and (min-width: 1200px) {
-  #masonry:after {
+  .h-gallery:after {
     -ms-flex: 500 300px;
     -webkit-flex: 500 300px;
     flex: 500 300px;
@@ -71,7 +58,7 @@ div#masonry img {
 }
 
 @media only screen and (min-width: 992px) {
-  #masonry:after {
+  .h-gallery:after {
     -ms-flex: 100 250px;
     -webkit-flex: 100 250px;
     flex: 100 250px;
@@ -79,7 +66,7 @@ div#masonry img {
 }
 
 @media only screen and (min-width: 768px) {
-  #masonry:after {
+  .h-gallery:after {
     -ms-flex: 50 200px;
     -webkit-flex: 50 200px;
     flex: 50 200px;
