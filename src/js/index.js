@@ -125,6 +125,7 @@ function initGalleryGrid(imgHeight) {
   var galleries = document.getElementsByClassName('h-gallery');
 
   Array.from(galleries).forEach(gallery => {
+    gallery.style.display = 'flex';
     var images = gallery.querySelectorAll("img");
 
     Array.from(images).forEach(img => {
@@ -137,7 +138,7 @@ function initGalleryGrid(imgHeight) {
 
       img.parentElement.style.flex = grow + " " + h + "px";
       img.parentElement.style.minHeight = Math.round(h / base) + "px";
-    });
+    });    
   });
 }
 
