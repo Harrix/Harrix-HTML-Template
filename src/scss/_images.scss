@@ -5,7 +5,7 @@
   }
 }
 
-div.h-gallery {
+.h-gallery {
   display: -webkit-flex;
   -webkit-flex-wrap: wrap;
   -webkit-align-items: stretch;
@@ -14,62 +14,65 @@ div.h-gallery {
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: space-around;
-}
 
-div.h-gallery img {
-  position: static !important;
-  bottom: auto !important;
-  width: 100%;
-  display: block;
-  height: auto;
-}
-
-.h-gallery div {
-  display: -webkit-flex;
-  -webkit-align-items: flex-end;
-  -webkit-justify-content: space-around;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  width: 100%;
-  height: auto;
-  position: relative;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 10px;
-  float: left;
-}
-
-.h-gallery:after {
-  -ms-flex: 20 150px;
-  -webkit-flex: 20 150px;
-  flex: 20 150px;
-  display: block;
-  content: ' ';
-  height: 1px;
-}
-
-@media only screen and (min-width: 1200px) {
-  .h-gallery:after {
-    -ms-flex: 500 300px;
-    -webkit-flex: 500 300px;
-    flex: 500 300px;
+  img {
+    position: static !important;
+    bottom: auto !important;
+    width: 100%;
+    display: block;
+    height: auto;
   }
-}
 
-@media only screen and (min-width: 992px) {
-  .h-gallery:after {
-    -ms-flex: 100 250px;
-    -webkit-flex: 100 250px;
-    flex: 100 250px;
+  div {
+    display: -webkit-flex;
+    -webkit-align-items: flex-end;
+    -webkit-justify-content: space-around;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    position: relative;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+    float: left;
+
+    cursor: pointer;
+
+    width: 100%;
+    height: auto;
   }
-}
 
-@media only screen and (min-width: 768px) {
-  .h-gallery:after {
-    -ms-flex: 50 200px;
-    -webkit-flex: 50 200px;
-    flex: 50 200px;
+  &:after {
+    -ms-flex: 20 150px;
+    -webkit-flex: 20 150px;
+    flex: 20 150px;
+    display: block;
+    content: ' ';
+    height: 1px;
+  }
+
+  @include widescreen {
+    &:after {
+      -ms-flex: 500 300px;
+      -webkit-flex: 500 300px;
+      flex: 500 300px;
+    }
+  }
+
+  @include desktop {
+    &:after {
+      -ms-flex: 100 250px;
+      -webkit-flex: 100 250px;
+      flex: 100 250px;
+    }
+  }
+
+  @include tablet {
+    &:after {
+      -ms-flex: 50 200px;
+      -webkit-flex: 50 200px;
+      flex: 50 200px;
+    }
   }
 }
 
