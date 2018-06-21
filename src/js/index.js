@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener("load", function(event) {
-  initGalleryGrid();
+  initGalleryGrid(200);
 });
 
 function initNavbar(scrollTopNavbarHide) {
@@ -121,23 +121,22 @@ function initLightGallery(rowHeight, margins) {
   });
 }
 
-function initGalleryGrid() {
+function initGalleryGrid(imgHeight) {
   var galleries = document.getElementsByClassName('h-gallery');
 
   Array.from(galleries).forEach(gallery => {
-    var o = {};
     var images = gallery.querySelectorAll("img");
-    
+
     Array.from(images).forEach(img => {
       var width = img.clientWidth;
       var height = img.clientHeight;
 
-      o.base = parseInt(width,10)/parseInt(height,10);      
-      o.grow = Math.round(o.base*1e3)/100;
-      o.h    = Math.round(190*o.base);
+      var base = width / height;
+      var grow = Math.round(base * 1000) / 100;
+      var h = Math.round(imgHeight * base);
 
-      img.parentElement.style.flex = o.grow+" "+o.h+"px";
-      img.parentElement.style.minHeight = Math.round(o.h/o.base)+"px";
+      img.parentElement.style.flex = grow + " " + h + "px";
+      img.parentElement.style.minHeight = Math.round(h / base) + "px";
     });
   });
 }
