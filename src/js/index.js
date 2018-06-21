@@ -139,7 +139,7 @@ function initGalleryGrid(imgHeight) {
 
       img.parentElement.style.flex = grow + " " + h + "px";
       img.parentElement.style.minHeight = Math.round(h / base) + "px";
-    });    
+    });
   });
 }
 
@@ -156,11 +156,10 @@ function focusAfterAnimation(elem, timeOfAnimation) {
 function showOrHideSearchButtonClose() {
   const searchInput = document.getElementById('h-search-input');
   const searchButtonClose = document.getElementById('h-search-button-close');
-  if (searchInput.value.length >= 1) {
+  if (searchInput.value.length >= 1)
     searchButtonClose.classList.remove('is-hidden-touch');
-  } else {
+  else
     searchButtonClose.classList.add('is-hidden-touch');
-  }
 }
 
 function translate(string) {
