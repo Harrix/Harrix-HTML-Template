@@ -9,7 +9,7 @@ import lgHash from 'lg-hash.js';
 import hljs from 'highlight.js';
 
 import initFontawesomeCollection from './_fontawesome-collection.js'
-import { locale } from './_locale-ru.js'
+import locale from './_locale-ru.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar(100);

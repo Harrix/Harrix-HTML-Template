@@ -3,4 +3,4 @@ let locale = {
   'Search…': 'Поиск…',
 };
 
-export { locale };
+export default { locale };
