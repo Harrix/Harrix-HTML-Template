@@ -130,8 +130,8 @@ function initGalleryGrid(imgHeight) {
     var images = gallery.querySelectorAll("img");
 
     Array.from(images).forEach(img => {
-      var width = img.clientWidth;
-      var height = img.clientHeight;
+      var width = img.naturalWidth;
+      var height = img.naturalHeight;
 
       var base = width / height;
       var grow = Math.round(base * 1000) / 100;
