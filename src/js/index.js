@@ -117,7 +117,7 @@ function initLightGallery(rowHeight, margins) {
     lightGallery(el, {
       hash: true,
       share: false,
-      selector: '.item'
+      selector: '.h-is-item'
     });
   });
 }
