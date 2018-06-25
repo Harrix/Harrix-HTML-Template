@@ -34,19 +34,6 @@ module.exports = {
   output: { filename: './js/[name].js' },
   module: {
     rules: [{
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src/js'),
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { modules: false }],
-            ],
-            plugins: ['@babel/plugin-proposal-class-properties'],
-          }
-        }
-      },
-      {
         test: /\.(sass|scss)$/,
         include: path.resolve(__dirname, 'src/scss'),
         use: ExtractTextPlugin.extract({
