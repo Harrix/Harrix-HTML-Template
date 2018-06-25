@@ -6,7 +6,7 @@ import lgFullscreen from 'lg-fullscreen.js';
 import lgPager from 'lg-pager.js';
 import lgZoom from 'lg-zoom.js';
 import lgHash from 'lg-hash.js';
-import hljs from 'highlight.js/lib/highlight.js';//import hljs from 'highlight.js';
+import hljs from 'highlight.js';
 
 import initFontawesomeCollection from './_fontawesome-collection.js'
 import locale from './_locale-ru.js'
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbar(100);
   initSearchPanel();
   initLightGallery(200, 10);
-  //initSyntaxHighlighting();
+  initSyntaxHighlighting();
   initFontawesomeCollection();
 });
 
@@ -144,30 +144,6 @@ function initGalleryGrid(imgHeight) {
 }
 
 function initSyntaxHighlighting() {
-  hljs.registerLanguage('cpp', require('highlight.js/lib/languages/cpp'));
-  hljs.registerLanguage('cs', require('highlight.js/lib/languages/cs'));
-  hljs.registerLanguage('css', require('highlight.js/lib/languages/css'));
-  hljs.registerLanguage('delphi', require('highlight.js/lib/languages/delphi'));
-  hljs.registerLanguage('diff', require('highlight.js/lib/languages/diff'));
-  hljs.registerLanguage('dos', require('highlight.js/lib/languages/dos'));
-  hljs.registerLanguage('http', require('highlight.js/lib/languages/http'));
-  hljs.registerLanguage('ini', require('highlight.js/lib/languages/ini'));
-  hljs.registerLanguage('java', require('highlight.js/lib/languages/java'));
-  hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
-  hljs.registerLanguage('json', require('highlight.js/lib/languages/json'));
-  hljs.registerLanguage('kotlin', require('highlight.js/lib/languages/kotlin'));
-  hljs.registerLanguage('markdown', require('highlight.js/lib/languages/markdown'));
-  hljs.registerLanguage('php', require('highlight.js/lib/languages/php'));
-  hljs.registerLanguage('powershell', require('highlight.js/lib/languages/powershell'));
-  hljs.registerLanguage('python', require('highlight.js/lib/languages/python'));
-  hljs.registerLanguage('qml', require('highlight.js/lib/languages/qml'));
-  hljs.registerLanguage('scss', require('highlight.js/lib/languages/scss'));
-  hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell'));
-  hljs.registerLanguage('sql', require('highlight.js/lib/languages/sql'));
-  hljs.registerLanguage('sql', require('highlight.js/lib/languages/sql'));
-  hljs.registerLanguage('tex', require('highlight.js/lib/languages/tex'));
-  hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
-
   hljs.initHighlightingOnLoad();
 }
 
