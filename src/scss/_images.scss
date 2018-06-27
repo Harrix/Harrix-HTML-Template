@@ -11,16 +11,16 @@
   -webkit-flex-wrap: wrap;
   -webkit-align-items: stretch;
   -webkit-justify-content: space-around;
-  display: none;
+  display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  justify-content: space-around;
+  justify-content: flex-start;//space-around;
   width: calc(100% + $h-gallery-gap);
 
   img {
-    width: 100%;
     display: block;
-    height: auto;
+    width: auto;
+    height: 200px;
   }
 
   div {
@@ -32,11 +32,10 @@
     justify-content: space-around;
     margin-right: $h-gallery-gap;
     margin-bottom: $h-gallery-gap;
+    width: auto;
+    height: auto;
 
     cursor: zoom-in;
-
-    width: 100%;
-    height: auto;
   }
 
   &:after {

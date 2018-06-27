@@ -17,9 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLightGallery(200, 10);
   initSyntaxHighlighting();
   initFontawesomeCollection();
-});
-
-window.addEventListener("load", function(event) {
   initGalleryGrid(200);
 });
 
@@ -126,19 +123,29 @@ function initGalleryGrid(imgHeight) {
   var galleries = document.getElementsByClassName('h-gallery');
 
   Array.from(galleries).forEach(gallery => {
-    gallery.style.display = 'flex';
     var images = gallery.querySelectorAll("img");
 
     Array.from(images).forEach(img => {
-      var width = img.naturalWidth;
-      var height = img.naturalHeight;
+      if (img.complete)
+        imgLoaded();
+      else
+        img.addEventListener('load', imgLoaded);
 
-      var base = width / height;
-      var grow = Math.round(base * 1000) / 100;
-      var h = Math.round(imgHeight * base);
+      function imgLoaded() {
+        var width = img.naturalWidth;
+        var height = img.naturalHeight;
 
-      img.parentElement.style.flex = grow + " " + h + "px";
-      img.parentElement.style.minHeight = Math.round(h / base) + "px";
+        var base = width / height;
+        var grow = Math.round(base * 1000) / 100;
+        var h = Math.round(imgHeight * base);
+
+        img.parentElement.style.flex = grow + " " + h + "px";
+        img.parentElement.style.minHeight = Math.round(h / base) + "px";
+        img.parentElement.style.width = '100%';
+
+        img.style.width = '100%';
+        img.style.height = 'auto';
+      }
     });
   });
 }
