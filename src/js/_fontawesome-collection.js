@@ -3,7 +3,8 @@ import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import {
   faSearch,
   faFileArchive,
-  faDownload
+  faDownload,
+  faGlobeAmericas
 } from '@fortawesome/free-solid-svg-icons';
 
 import { 
@@ -23,6 +24,7 @@ export default function initFontawesomeCollection() {
     faPlusSquare,
     faMinusSquare,
     faGithub,
+    faGlobeAmericas
   );
 
   var faHarrix = {
