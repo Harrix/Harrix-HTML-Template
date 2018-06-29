@@ -82,5 +82,15 @@
 }
 
 .content figure {
-  margin: 0 !important;
+  @include h-fix-margin;
+
+  &.is-pulled-left {
+    @include h-fix-margin(0);
+    margin-right: 1rem;
+  }
+
+  &.is-pulled-right {
+    @include h-fix-margin(0);
+    margin-left: 1rem;
+  }
 }

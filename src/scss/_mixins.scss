@@ -37,3 +37,16 @@
     border-radius: $radius-small;
   }
 }
+
+@mixin h-fix-margin($margin: 0) {
+  margin-left: $margin;
+  margin-right: $margin;
+
+  &:not(:first-child) {
+    margin-top: $margin;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: $margin;
+  }
+}
