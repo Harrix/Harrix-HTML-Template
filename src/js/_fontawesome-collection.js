@@ -4,7 +4,8 @@ import {
   faSearch,
   faFileArchive,
   faDownload,
-  faGlobeAmericas
+  faGlobeAmericas,
+  faRss
 } from '@fortawesome/free-solid-svg-icons';
 
 import { 
@@ -24,7 +25,8 @@ export default function initFontawesomeCollection() {
     faPlusSquare,
     faMinusSquare,
     faGithub,
-    faGlobeAmericas
+    faGlobeAmericas,
+    faRss
   );
 
   var faHarrix = {
