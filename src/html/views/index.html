@@ -2,11 +2,12 @@
 <%= _.template(require('./../includes/header.html'))(data) %>
 
 <article>
-  <header>
-    <div class="section h-is-padding-bottomless">
-      <div class="container">
-        <div class="columns content has-text-centered">
-          <div class="column is-8-desktop is-offset-2-desktop">
+
+  <div class="section h-is-padding-bottomless">
+    <div class="container">
+      <div class="columns content has-text-centered">
+        <div class="column is-8-desktop is-offset-2-desktop">
+          <header>
             <h1 class="title h-has-special-hr">Заголовок страницы</h1>
             <p class="subtitle">
               Тут может располагаться одно-три предложение о продукте. Тут может располагаться одно-три предложение о продукте. Тут может располагаться одно-три предложение продукте.
@@ -36,11 +37,11 @@
                 <img src="uploads/header-image.png" alt="Цветы на берегу острова Татышев в городе Красноярск.">
               </a>
             </figure>
-          </div>
+          </header>
         </div>
       </div>
     </div>
-  </header>
+  </div>
 
   <div class="section">
     <div class="container">
@@ -65,7 +66,8 @@
           <p>Для выделения текста используется тэг <code>code</code> и
             <var>var</var>. Например, название тэга именно так и оформлено. А это выделение <strong>обычным жирным</strong>.</p>
 
-          <p>Ссылки (<a href="https://harrix.org">harrix.org</a>) отображаются другим цветом и подчеркиваются. При наведении на них цвет ссылки меняется на более светлый.</p>
+          <p>Ссылки (
+            <a href="https://harrix.org">harrix.org</a>) отображаются другим цветом и подчеркиваются. При наведении на них цвет ссылки меняется на более светлый.</p>
 
           <p>Списки оформляются вот таким вот образом:</p>
           <ul>
@@ -97,23 +99,15 @@
 
           <p>
             <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            <span class="icon is-small"><i class="far fa-plus-square"></i> </span> Показать сплойер
-        </a>
+              <span class="icon is-small"><i class="far fa-plus-square"></i> </span> Показать сплойер
+            </a>
           </p>
           <div class="collapse" id="collapseExample">
             <div class="card card-body">
               Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="section">
-    <div class="container">
-      <div class="columns content">
-        <div class="column is-10-desktop is-offset-1-desktop">
           <h2 id="columns">Колонки</h2>
 
           <div class="columns">
@@ -135,15 +129,7 @@
               </figure>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="section">
-    <div class="container">
-      <div class="columns content">
-        <div class="column is-10-desktop is-offset-1-desktop">
           <h2 id="columns">Рисунок с подписью внутри текста</h2>
 
           <p>
@@ -167,15 +153,6 @@
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum ac maximus sapien, ac ultrices sem. Integer ultricies ornare venenatis. Nullam posuere mattis risus, eu viverra purus scelerisque quis. Vivamus facilisis facilisis eros, fringilla sagittis ipsum vehicula nec. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque at orci egestas, pretium metus eget, suscipit diam.
           </p>
 
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="container">
-      <div class="columns content">
-        <div class="column is-10-desktop is-offset-1-desktop">
           <h2 id="lightbox">Lightbox</h2>
 
           <h3>Одиночное изображение слева</h3>
@@ -202,16 +179,8 @@
             <div class="h-is-item" data-src="uploads/07.jpg"><img src="uploads/07-thumbnail.jpg" alt=""></div>
             <div class="h-is-item" data-src="uploads/08.jpg"><img src="uploads/08-thumbnail.jpg" alt=""></div>
           </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="section">
-    <div class="container">
-      <div class="columns content">
-        <div class="column is-10-desktop is-offset-1-desktop">
+
           <h2 id="katex">KaTeX</h2>
 
           <div class="tex" data-expr="c = \pm\sqrt{a^2 + b^2}"></div>
@@ -219,15 +188,7 @@
           <div class="tex" data-expr="f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi i \xi x} \,d\xi"></div>
           <div class="tex" data-expr="\left( \sum_{k=1}^n a_k b_k \right)^3 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)\leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)"></div>
           <div class="tex" data-expr="\tag{hi} x+y^{2x}"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="section">
-    <div class="container">
-      <div class="columns content">
-        <div class="column is-10-desktop is-offset-1-desktop">
           <h2 id="highlightjs">highlight.js</h2>
 
           <pre><code class="cpp">//Содержимое файла input.txt
@@ -384,15 +345,7 @@ public class MainActivity extends AppCompatActivity {
           <p>
             Пример длинного пути к файлу <code>C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\ServiceHub\node_modules\werapiwindows\build\Release\WerAPIWin.node</code>.
           </p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="section">
-    <div class="container">
-      <div class="columns content">
-        <div class="column is-10-desktop is-offset-1-desktop">
           <h2>What's included</h2>
 
           <p>
@@ -419,10 +372,12 @@ public class MainActivity extends AppCompatActivity {
           </p>
           <ul>
             <li>
-              <code>.babelrc</code> configuration file for <a href="https://babeljs.io/">Babel</a>
+              <code>.babelrc</code> configuration file for
+              <a href="https://babeljs.io/">Babel</a>
             </li>
             <li>
-              <code>.gitignore</code> common <a href="https://git-scm.com/">Git</a> ignored files
+              <code>.gitignore</code> common
+              <a href="https://git-scm.com/">Git</a> ignored files
             </li>
             <li>
               <code>index.html</code> this HTML5 file
@@ -469,15 +424,7 @@ public class MainActivity extends AppCompatActivity {
             You're <strong>ready</strong> to create your own designs with Bulma. Just edit or duplicate this page, or simply create a new one!
             <br> For example, this page is <strong>only</strong> built with the following <strong>Bulma elements</strong>:
           </p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="section">
-    <div class="container">
-      <div class="columns content">
-        <div class="column is-10-desktop is-offset-1-desktop">
           <table class="table is-bordered is-fullwidth">
             <thead>
               <tr>
