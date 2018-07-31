@@ -53,15 +53,15 @@ module.exports = {
               ident: 'postcss',
               sourceMap: true,
               plugins: () => [
-                require( 'cssnano')({
+                require('cssnano')({
                   preset: ['default', {
-                      discardComments: {
-                          removeAll: true,
-                      },
+                    discardComments: {
+                      removeAll: true,
+                    },
                   }]
-              })
+                })
               ]
-             }
+            }
           },
           {
             loader: "sass-loader",
