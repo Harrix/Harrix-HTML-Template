@@ -17,7 +17,7 @@
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: flex-start;//space-around;
-  width: calc(100% + 10px);//width: calc(100% + $h-gallery-gap);
+  width: calc(100% + #{$h-gallery-gap});
 
   img {
     display: block;
