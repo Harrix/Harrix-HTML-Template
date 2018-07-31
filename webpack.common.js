@@ -4,8 +4,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs');
 
-const cssnano  = require( 'cssnano');
-
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
   return templateFiles.map(item => {
@@ -55,7 +53,7 @@ module.exports = {
               ident: 'postcss',
               sourceMap: true,
               plugins: () => [
-                cssnano({
+                require( 'cssnano')({
                   preset: ['default', {
                       discardComments: {
                           removeAll: true,
