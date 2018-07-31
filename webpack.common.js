@@ -1,8 +1,10 @@
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs');
+
+const cssnano  = require( 'cssnano');
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -36,25 +38,38 @@ module.exports = {
     rules: [{
         test: /\.(sass|scss)$/,
         include: path.resolve(__dirname, 'src/scss'),
-        use: ExtractTextPlugin.extract({
-          use: [{
-              loader: "css-loader",
-              options: {
-                sourceMap: true,
-                minimize: true,
-                url: false,
-                minimize: {
-                  discardComments: { removeAll: true }
-                }
-              }
-            },
-            { loader: 'postcss-loader', options: { sourceMap: true } },
-            {
-              loader: "sass-loader",
-              options: { sourceMap: true }
+        use: [{
+            loader: MiniCssExtractPlugin.loader,
+            options: {}
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              url: false
             }
-          ]
-        })
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
+              plugins: () => [
+                cssnano({
+                  preset: ['default', {
+                      discardComments: {
+                          removeAll: true,
+                      },
+                  }]
+              })
+              ]
+             }
+          },
+          {
+            loader: "sass-loader",
+            options: { sourceMap: true }
+          }
+        ]
       },
       {
         test: /\.html$/,
@@ -64,9 +79,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: './css/[name].css',
-      allChunks: true,
+    new MiniCssExtractPlugin({
+      filename: "./css/[name].css"
     }),
     new CopyWebpackPlugin([
       { from: './node_modules/lightgallery.js/src/img', to: './img' },
