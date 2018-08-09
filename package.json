@@ -34,10 +34,10 @@
     "lg-fullscreen.js": "^1.0.0",
     "lg-hash.js": "^1.0.0",
     "lg-pager.js": "^1.0.0",
-    "lg-thumbnail.js": "^1.0.0",
+    "lg-thumbnail.js": "^1.1.0",
     "lg-video.js": "^1.0.0",
     "lg-zoom.js": "^1.0.1",
-    "lightgallery.js": "^1.0.3"
+    "lightgallery.js": "^1.1.1"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
