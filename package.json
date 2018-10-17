@@ -28,7 +28,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.4.1",
     "@fortawesome/free-solid-svg-icons": "^5.4.1",
     "bulma": "^0.7.2",
-    "highlight.js": "^9.13.0",
+    "highlight.js": "^9.13.1",
     "katex": "^0.10.0-rc.1",
     "lg-autoplay.js": "^1.0.0",
     "lg-fullscreen.js": "^1.0.0",
@@ -52,7 +52,7 @@
     "purify-css": "^1.2.5",
     "raw-loader": "^0.5.1",
     "sass-loader": "^7.1.0",
-    "webpack": "^4.20.2",
+    "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4"
