@@ -23,10 +23,10 @@
   "homepage": "https://github.com/Harrix/Harrix-HTML-Template#readme",
   "sideEffects": false,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.7",
-    "@fortawesome/free-brands-svg-icons": "^5.4.2",
-    "@fortawesome/free-regular-svg-icons": "^5.4.2",
-    "@fortawesome/free-solid-svg-icons": "^5.4.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.8",
+    "@fortawesome/free-brands-svg-icons": "^5.5.0",
+    "@fortawesome/free-regular-svg-icons": "^5.5.0",
+    "@fortawesome/free-solid-svg-icons": "^5.5.0",
     "bulma": "^0.7.2",
     "highlight.js": "^9.13.1",
     "katex": "^0.10.0",
@@ -52,7 +52,7 @@
     "purify-css": "^1.2.5",
     "raw-loader": "^0.5.1",
     "sass-loader": "^7.1.0",
-    "webpack": "^4.23.1",
+    "webpack": "^4.24.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.4"
