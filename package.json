@@ -37,7 +37,7 @@
     "lg-thumbnail.js": "^1.1.0",
     "lg-video.js": "^1.0.0",
     "lg-zoom.js": "^1.0.1",
-    "lightgallery.js": "^1.1.1"
+    "lightgallery.js": "^1.1.2"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^1.0.0",
