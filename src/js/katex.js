@@ -1,4 +1,4 @@
-import katex from 'katex';
+import katex from "katex";
 
 document.addEventListener("DOMContentLoaded", function() {
   var tex = document.getElementsByClassName("tex");

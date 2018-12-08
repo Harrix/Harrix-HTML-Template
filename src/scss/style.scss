@@ -1,10 +1,10 @@
 @import "~bulma/sass/utilities/initial-variables";
 @import "~bulma/sass/utilities/functions";
 
-$h-teal : #18a2c1;
-$h-github : #24292e;
-$h-teal-invert : findColorInvert($h-teal);
-$h-github-invert : findColorInvert($h-github);
+$h-teal: #18a2c1;
+$h-github: #24292e;
+$h-teal-invert: findColorInvert($h-teal);
+$h-github-invert: findColorInvert($h-github);
 
 $h-speed-normal: 0.5s;
 $h-navbar-font-size: 0.875rem;
@@ -26,8 +26,8 @@ $primary: $h-teal;
 $link: $h-teal;
 $link-hover: lighten($link, 5%);
 
-$family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-$family-monospace: 'Roboto Mono', monospace;
+$family-sans-serif: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", sans-serif;
+$family-monospace: "Roboto Mono", monospace;
 $easing: ease-in-out;
 
 $content-heading-weight: 400;
@@ -47,8 +47,14 @@ $content-pre-padding: 6px;
 @import "~bulma/sass/utilities/derived-variables";
 
 $addColors: (
-  "teal":($h-teal, $h-teal-invert),
-  "github": ($h-github, $h-github-invert)
+  "teal": (
+    $h-teal,
+    $h-teal-invert
+  ),
+  "github": (
+    $h-github,
+    $h-github-invert
+  )
 );
 $colors: map-merge($colors, $addColors);
 

@@ -2,8 +2,10 @@
   min-width: 8.125rem;
 }
 
-.input, .textarea {
-  &::-ms-clear, &::-ms-reveal {
+.input,
+.textarea {
+  &::-ms-clear,
+  &::-ms-reveal {
     display: none;
     width: 0;
     height: 0;

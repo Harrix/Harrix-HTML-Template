@@ -14,7 +14,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  justify-content: flex-start;//space-around;
+  justify-content: flex-start; //space-around;
   width: calc(100% + #{$h-gallery-gap});
 
   img {
@@ -43,7 +43,7 @@
     -webkit-flex: 20 150px;
     flex: 20 150px;
     display: block;
-    content: ' ';
+    content: " ";
     height: 1px;
   }
 

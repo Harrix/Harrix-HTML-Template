@@ -41,7 +41,8 @@
     }
   }
 
-  ol, ul {
+  ol,
+  ul {
     margin-left: 1rem;
   }
 
@@ -54,7 +55,8 @@
     padding: $code-padding;
   }
 
-  code, var {
+  code,
+  var {
     font-family: $family-code;
     font-size: $code-size;
     font-weight: $code-weight;
