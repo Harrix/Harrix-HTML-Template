@@ -1,44 +1,40 @@
-const path = require('path');
-const fs = require('fs');
+const path = require("path");
+const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
   return templateFiles.map(item => {
-    const parts = item.split('.');
+    const parts = item.split(".");
     const name = parts[0];
     const extension = parts[1];
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
       inject: false
-    })
-  })
+    });
+  });
 }
 
-const htmlPlugins = generateHtmlPlugins('./src/html/views');
+const htmlPlugins = generateHtmlPlugins("./src/html/views");
 
 const config = {
   entry: {
-    'app': [
-      './src/js/index.js',
-      './src/scss/style.scss'
-    ],
-    '../katex/katex': [
-      './src/js/katex.js',
-      './src/scss/katex.scss'
-    ]
+    app: ["./src/js/index.js", "./src/scss/style.scss"],
+    "../katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"]
   },
-  output: { filename: './js/[name].js' },
+  output: { filename: "./js/[name].js" },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.(sass|scss)$/,
-        include: path.resolve(__dirname, 'src/scss'),
-        use: [{
+        include: path.resolve(__dirname, "src/scss"),
+        use: [
+          {
             loader: MiniCssExtractPlugin.loader,
             options: {}
           },
@@ -50,17 +46,20 @@ const config = {
             }
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              ident: 'postcss',
+              ident: "postcss",
               sourceMap: true,
               plugins: () => [
-                require('cssnano')({
-                  preset: ['default', {
-                    discardComments: {
-                      removeAll: true,
-                    },
-                  }]
+                require("cssnano")({
+                  preset: [
+                    "default",
+                    {
+                      discardComments: {
+                        removeAll: true
+                      }
+                    }
+                  ]
                 })
               ]
             }
@@ -73,9 +72,9 @@ const config = {
       },
       {
         test: /\.html$/,
-        include: path.resolve(__dirname, 'src/html/includes'),
-        use: ['raw-loader']
-      },
+        include: path.resolve(__dirname, "src/html/includes"),
+        use: ["raw-loader"]
+      }
     ]
   },
   plugins: [
@@ -83,24 +82,24 @@ const config = {
       filename: "./css/[name].css"
     }),
     new CopyWebpackPlugin([
-      { from: './node_modules/lightgallery.js/src/img', to: './img' },
-      { from: './node_modules/lightgallery.js/src/fonts', to: './fonts' },
-      { from: './node_modules/katex/dist/fonts', to: './katex/fonts' },
-      { from: './src/fonts', to: './fonts' },
-      { from: './src/favicon', to: './favicon' },
-      { from: './src/img', to: './img' },
-      { from: './src/uploads', to: './uploads' }
-    ]),
+      { from: "./node_modules/lightgallery.js/src/img", to: "./img" },
+      { from: "./node_modules/lightgallery.js/src/fonts", to: "./fonts" },
+      { from: "./node_modules/katex/dist/fonts", to: "./katex/fonts" },
+      { from: "./src/fonts", to: "./fonts" },
+      { from: "./src/favicon", to: "./favicon" },
+      { from: "./src/img", to: "./img" },
+      { from: "./src/uploads", to: "./uploads" }
+    ])
   ].concat(htmlPlugins)
 };
 
 module.exports = (env, argv) => {
-  if (argv.mode === 'development') {
-    config.devtool = 'source-map';
+  if (argv.mode === "development") {
+    config.devtool = "source-map";
   }
 
   if (argv.mode === "production") {
-    config.devtool ='source-map';
+    config.devtool = "source-map";
     config.optimization = {
       minimizer: [
         new TerserPlugin({
@@ -108,7 +107,7 @@ module.exports = (env, argv) => {
           extractComments: true
         })
       ]
-    }
+    };
     config.plugins.push(new CleanWebpackPlugin("dist"));
   }
   return config;
