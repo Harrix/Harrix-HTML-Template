@@ -4,10 +4,10 @@
   "description": "HTML template",
   "main": "src/index.js",
   "scripts": {
-    "dev": "webpack --config webpack.dev.js",
-    "watch": "webpack --watch --config webpack.dev.js",
-    "start": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js &&  prettier --print-width=120 --parser html --write dist/*.html",
+    "dev": "webpack --mode development",
+    "watch": "webpack --mode development --watch",
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production && prettier --print-width=120 --parser html --write dist/*.html",
     "clear-css": "purifycss dist/css/app.css dist/js/app.js dist/index.html --min --info --out dist/css/app.optimize.css"
   },
   "repository": {

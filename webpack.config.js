@@ -1,8 +1,10 @@
 const path = require('path');
+const fs = require('fs');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const fs = require('fs');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -20,7 +22,7 @@ function generateHtmlPlugins(templateDir) {
 
 const htmlPlugins = generateHtmlPlugins('./src/html/views');
 
-module.exports = {
+const config = {
   entry: {
     'app': [
       './src/js/index.js',
@@ -90,4 +92,24 @@ module.exports = {
       { from: './src/uploads', to: './uploads' }
     ]),
   ].concat(htmlPlugins)
+};
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'source-map';
+  }
+
+  if (argv.mode === "production") {
+    config.devtool ='source-map';
+    config.optimization = {
+      minimizer: [
+        new TerserPlugin({
+          sourceMap: true,
+          extractComments: true
+        })
+      ]
+    }
+    config.plugins.push(new CleanWebpackPlugin("dist"));
+  }
+  return config;
 };
