@@ -107,7 +107,7 @@ module.exports = (env, argv) => {
         })
       ]
     };
-    config.plugins.push(new CleanWebpackPlugin("dist"));
+    config.plugins.push(new CleanWebpackPlugin());
   }
   return config;
 };
