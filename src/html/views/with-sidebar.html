@@ -1,5 +1,5 @@
 <% var data = { title: "Заголовок | Harrix Проект"}; %>
-<%= _.template(require('./../includes/header.html'))(data) %>
+<%= _.template(require('./../includes/header.html').default)(data) %>
 
 <article>
   <div class="section h-is-padding-bottomless">
@@ -541,4 +541,4 @@ public class MainActivity extends AppCompatActivity {
   </div>
 </article>
 
-<%= _.template(require('./../includes/footer.html'))(data) %>
+<%= _.template(require('./../includes/footer.html').default)(data) %>
