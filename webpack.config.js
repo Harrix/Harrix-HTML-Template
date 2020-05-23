@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -81,7 +81,8 @@ const config = {
     new MiniCssExtractPlugin({
       filename: "./css/[name].css"
     }),
-    new CopyWebpackPlugin([
+    new CopyPlugin({
+      patterns: [
       { from: "./node_modules/lightgallery.js/src/img", to: "./img" },
       { from: "./node_modules/lightgallery.js/src/fonts", to: "./fonts" },
       { from: "./node_modules/katex/dist/fonts", to: "./katex/fonts" },
@@ -89,7 +90,8 @@ const config = {
       { from: "./src/favicon", to: "./favicon" },
       { from: "./src/img", to: "./img" },
       { from: "./src/uploads", to: "./uploads" }
-    ])
+    ],
+  })
   ].concat(htmlPlugins)
 };
 
