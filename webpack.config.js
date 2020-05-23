@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -8,14 +8,14 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
-  return templateFiles.map(item => {
+  return templateFiles.map((item) => {
     const parts = item.split(".");
     const name = parts[0];
     const extension = parts[1];
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      inject: false
+      inject: false,
     });
   });
 }
@@ -25,7 +25,7 @@ const htmlPlugins = generateHtmlPlugins("./src/html/views");
 const config = {
   entry: {
     app: ["./src/js/index.js", "./src/scss/style.scss"],
-    "../katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"]
+    "../katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
   },
   output: { filename: "./js/[name].js" },
   module: {
@@ -36,14 +36,14 @@ const config = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {}
+            options: {},
           },
           {
             loader: "css-loader",
             options: {
               sourceMap: true,
-              url: false
-            }
+              url: false,
+            },
           },
           {
             loader: "postcss-loader",
@@ -56,43 +56,43 @@ const config = {
                     "default",
                     {
                       discardComments: {
-                        removeAll: true
-                      }
-                    }
-                  ]
-                })
-              ]
-            }
+                        removeAll: true,
+                      },
+                    },
+                  ],
+                }),
+              ],
+            },
           },
           {
             loader: "sass-loader",
-            options: { sourceMap: true }
-          }
-        ]
+            options: { sourceMap: true },
+          },
+        ],
       },
       {
         test: /\.html$/,
         include: path.resolve(__dirname, "src/html/includes"),
-        use: ["raw-loader"]
-      }
-    ]
+        use: ["raw-loader"],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "./css/[name].css"
+      filename: "./css/[name].css",
     }),
     new CopyPlugin({
       patterns: [
-      { from: "./node_modules/lightgallery.js/src/img", to: "./img" },
-      { from: "./node_modules/lightgallery.js/src/fonts", to: "./fonts" },
-      { from: "./node_modules/katex/dist/fonts", to: "./katex/fonts" },
-      { from: "./src/fonts", to: "./fonts" },
-      { from: "./src/favicon", to: "./favicon" },
-      { from: "./src/img", to: "./img" },
-      { from: "./src/uploads", to: "./uploads" }
-    ],
-  })
-  ].concat(htmlPlugins)
+        { from: "./node_modules/lightgallery.js/src/img", to: "./img" },
+        { from: "./node_modules/lightgallery.js/src/fonts", to: "./fonts" },
+        { from: "./node_modules/katex/dist/fonts", to: "./katex/fonts" },
+        { from: "./src/fonts", to: "./fonts" },
+        { from: "./src/favicon", to: "./favicon" },
+        { from: "./src/img", to: "./img" },
+        { from: "./src/uploads", to: "./uploads" },
+      ],
+    }),
+  ].concat(htmlPlugins),
 };
 
 module.exports = (env, argv) => {
@@ -105,9 +105,9 @@ module.exports = (env, argv) => {
       minimizer: [
         new TerserPlugin({
           sourceMap: true,
-          extractComments: true
-        })
-      ]
+          extractComments: true,
+        }),
+      ],
     };
     config.plugins.push(new CleanWebpackPlugin());
   }
