@@ -36,14 +36,14 @@
     "lg-thumbnail.js": "^1.2.0",
     "lg-video.js": "^1.2.0",
     "lg-zoom.js": "^1.2.0",
-    "lightgallery.js": "^1.2.0"
+    "lightgallery.js": "^1.3.0"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^6.0.4",
+    "copy-webpack-plugin": "^6.1.0",
     "css-loader": "^4.2.2",
     "cssnano": "^4.1.10",
-    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-plugin": "^4.4.1",
     "mini-css-extract-plugin": "^0.10.1",
     "node-sass": "^4.14.1",
     "postcss-loader": "^3.0.0",
@@ -55,6 +55,6 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.1.2"
+    "webpack-merge": "^5.1.3"
   }
 }
