@@ -52,10 +52,10 @@
     "purify-css": "^1.2.5",
     "raw-loader": "^4.0.1",
     "sass-loader": "^10.0.2",
-    "terser-webpack-plugin": "^4.2.2",
+    "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.1.4"
+    "webpack-merge": "^5.2.0"
   }
 }
