@@ -2,3 +2,52 @@
  * Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
+
+/**!
+ * lg-autoplay.js | 1.2.0 | May 20th 2020
+ * http://sachinchoolur.github.io/lg-autoplay.js
+ * Copyright (c) 2016 Sachin N; 
+ * @license GPLv3 
+ */
+
+/**!
+ * lg-fullscreen.js | 1.2.0 | May 20th 2020
+ * http://sachinchoolur.github.io/lg-fullscreen.js
+ * Copyright (c) 2016 Sachin N; 
+ * @license GPLv3 
+ */
+
+/**!
+ * lg-hash.js | 1.0.0 | October 5th 2016
+ * http://sachinchoolur.github.io/lg-hash.js
+ * Copyright (c) 2016 Sachin N; 
+ * @license GPLv3 
+ */
+
+/**!
+ * lg-pager.js | 1.0.0 | October 5th 2016
+ * http://sachinchoolur.github.io/lg-pager.js
+ * Copyright (c) 2016 Sachin N; 
+ * @license GPLv3 
+ */
+
+/**!
+ * lg-thumbnail.js | 1.2.0 | May 20th 2020
+ * http://sachinchoolur.github.io/lg-thumbnail.js
+ * Copyright (c) 2016 Sachin N; 
+ * @license GPLv3 
+ */
+
+/**!
+ * lg-video.js | 1.2.1 | September 15th 2020
+ * http://sachinchoolur.github.io/lg-video.js
+ * Copyright (c) 2016 Sachin N; 
+ * @license GPLv3 
+ */
+
+/**!
+ * lg-zoom.js | 1.3.0 | October 14th 2020
+ * http://sachinchoolur.github.io/lg-zoom.js
+ * Copyright (c) 2016 Sachin N; 
+ * @license GPLv3 
+ */
