@@ -5,6 +5,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const CssnanoPlugin = require('cssnano-webpack-plugin')
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -27,7 +28,10 @@ const config = {
     app: ["./src/js/index.js", "./src/scss/style.scss"],
     "../katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
   },
-  output: { filename: "./js/[name].js" },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: "./js/[name].js"
+  },
   module: {
     rules: [
       {
@@ -43,26 +47,6 @@ const config = {
             options: {
               sourceMap: true,
               url: false,
-            },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              sourceMap: true,
-              postcssOptions: {
-                plugins: () => [
-                  require("cssnano")({
-                    preset: [
-                      "default",
-                      {
-                        discardComments: {
-                          removeAll: true,
-                        },
-                      },
-                    ],
-                  }),
-                ],
-              },
             },
           },
           {
@@ -93,6 +77,14 @@ const config = {
         { from: "./src/uploads", to: "./uploads" },
       ],
     }),
+    new CssnanoPlugin({
+      sourceMap: true,
+      cssnanoOptions: {
+          preset: ['default', {
+            discardComments: { removeAll: true }
+          }]
+        }
+    })
   ].concat(htmlPlugins),
 };
 
