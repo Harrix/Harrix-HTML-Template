@@ -5,7 +5,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const cssnano = require("cssnano");
 
 function generateHtmlPlugins(templateDir) {
@@ -30,8 +30,8 @@ const config = {
     "../katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: "./js/[name].js"
+    path: path.resolve(__dirname, "dist"),
+    filename: "./js/[name].js",
   },
   module: {
     rules: [
@@ -69,16 +69,11 @@ const config = {
     }),
     new OptimizeCSSAssetsPlugin({
       cssProcessor: cssnano,
-      cssProcessorOptions:  {
-              map: {
-                inline: false,
-                annotation: true
-              },
-              discardComments: {
-                removeAll: true,
-              },
-              safe: true,
-            },
+      cssProcessorOptions: {
+        map: { inline: false, annotation: true },
+        discardComments: { removeAll: true },
+        safe: true,
+      },
       canPrint: true,
     }),
     new CopyPlugin({
