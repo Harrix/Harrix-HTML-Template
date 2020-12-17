@@ -5,7 +5,8 @@ const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const CssnanoPlugin = require('cssnano-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const cssnano = require("cssnano");
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
@@ -66,6 +67,20 @@ const config = {
     new MiniCssExtractPlugin({
       filename: "./css/[name].css",
     }),
+    new OptimizeCSSAssetsPlugin({
+      cssProcessor: cssnano,
+      cssProcessorOptions:  {
+              map: {
+                inline: false,
+                annotation: true
+              },
+              discardComments: {
+                removeAll: true,
+              },
+              safe: true,
+            },
+      canPrint: true,
+    }),
     new CopyPlugin({
       patterns: [
         { from: "./node_modules/lightgallery.js/src/img", to: "./img" },
@@ -77,14 +92,6 @@ const config = {
         { from: "./src/uploads", to: "./uploads" },
       ],
     }),
-    new CssnanoPlugin({
-      sourceMap: true,
-      cssnanoOptions: {
-          preset: ['default', {
-            discardComments: { removeAll: true }
-          }]
-        }
-    })
   ].concat(htmlPlugins),
 };
 
