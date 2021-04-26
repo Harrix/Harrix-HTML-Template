@@ -28,7 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "bulma": "^0.9.2",
     "highlight.js": "^10.7.2",
-    "katex": "^0.13.2",
+    "katex": "^0.13.3",
     "lg-autoplay.js": "^1.2.0",
     "lg-fullscreen.js": "^1.2.0",
     "lg-hash.js": "^1.0.0",
