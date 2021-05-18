@@ -47,7 +47,7 @@
     "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^6.0.0",
     "prettier": "^2.3.0",
-    "purify-css": "^1.1.9",
+    "purify-css": "^1.2.5",
     "raw-loader": "^4.0.2",
     "sass-loader": "^11.1.1",
     "terser-webpack-plugin": "^5.1.2",
