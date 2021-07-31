@@ -33,7 +33,7 @@ function initNavbar(scrollTopNavbarHide) {
     let currentY = 0;
     let hasClassHide = logo.classList.contains("h-is-hidden");
 
-    navbarBottom.onmouseover = function(event) {
+    navbarBottom.onmouseover = function (event) {
       navbar.classList.remove("h-is-hidden");
       hasClassHide = false;
     };
@@ -45,7 +45,7 @@ function initNavbar(scrollTopNavbarHide) {
       target.classList.toggle("is-active");
     });
 
-    window.addEventListener("scroll", function() {
+    window.addEventListener("scroll", function () {
       lastY = currentY;
       currentY = window.scrollY;
 
@@ -101,20 +101,20 @@ function initSearchPanel() {
 function initLightGallery(rowHeight, margins) {
   var lightboxes = document.getElementsByClassName("h-lightbox");
 
-  Array.from(lightboxes).forEach(el => {
+  Array.from(lightboxes).forEach((el) => {
     lightGallery(el, {
       hash: true,
-      share: false
+      share: false,
     });
   });
 
   var galleries = document.getElementsByClassName("h-gallery");
 
-  Array.from(galleries).forEach(el => {
+  Array.from(galleries).forEach((el) => {
     lightGallery(el, {
       hash: true,
       share: false,
-      selector: ".h-is-item"
+      selector: ".h-is-item",
     });
   });
 }
@@ -122,10 +122,10 @@ function initLightGallery(rowHeight, margins) {
 function initGalleryGrid(imgHeight) {
   var galleries = document.getElementsByClassName("h-gallery");
 
-  Array.from(galleries).forEach(gallery => {
+  Array.from(galleries).forEach((gallery) => {
     var images = gallery.querySelectorAll("img");
 
-    Array.from(images).forEach(img => {
+    Array.from(images).forEach((img) => {
       if (img.complete) imgLoaded();
       else img.addEventListener("load", imgLoaded);
 
@@ -153,7 +153,7 @@ function initSyntaxHighlighting() {
 }
 
 function focusAfterAnimation(elem, timeOfAnimation) {
-  window.setTimeout(function() {
+  window.setTimeout(function () {
     elem.focus();
   }, timeOfAnimation);
 }
@@ -161,7 +161,8 @@ function focusAfterAnimation(elem, timeOfAnimation) {
 function showOrHideSearchButtonClose() {
   const searchInput = document.getElementById("h-search-input");
   const searchButtonClose = document.getElementById("h-search-button-close");
-  if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
+  if (searchInput.value.length >= 1)
+    searchButtonClose.classList.remove("is-hidden-touch");
   else searchButtonClose.classList.add("is-hidden-touch");
 }
 
