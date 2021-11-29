@@ -21,7 +21,7 @@ function generateHtmlPlugins(templateDir) {
   });
 }
 
-const htmlPlugins = generateHtmlPlugins("./src/html/views");
+const htmlPlugins = generateHtmlPlugins("src/html/views");
 
 const config = {
   entry: {
@@ -64,17 +64,17 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "./css/[name].css",
+      filename: "css/[name].css",
     }),
     new CopyPlugin({
       patterns: [
-        { from: "./node_modules/lightgallery.js/src/img", to: "./img" },
-        { from: "./node_modules/lightgallery.js/src/fonts", to: "./fonts" },
-        { from: "./node_modules/katex/dist/fonts", to: "./katex/fonts" },
-        { from: "./src/fonts", to: "./fonts" },
-        { from: "./src/favicon", to: "./favicon" },
-        { from: "./src/img", to: "./img" },
-        { from: "./src/uploads", to: "./uploads" },
+        { from: "node_modules/lightgallery.js/src/img", to: "img" },
+        { from: "node_modules/lightgallery.js/src/fonts", to: "fonts" },
+        { from: "node_modules/katex/dist/fonts", to: "katex/fonts" },
+        { from: "src/fonts", to: "fonts" },
+        { from: "src/favicon", to: "favicon" },
+        { from: "src/img", to: "img" },
+        { from: "src/uploads", to: "uploads" },
       ],
     }),
   ].concat(htmlPlugins),
