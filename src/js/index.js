@@ -161,8 +161,7 @@ function focusAfterAnimation(elem, timeOfAnimation) {
 function showOrHideSearchButtonClose() {
   const searchInput = document.getElementById("h-search-input");
   const searchButtonClose = document.getElementById("h-search-button-close");
-  if (searchInput.value.length >= 1)
-    searchButtonClose.classList.remove("is-hidden-touch");
+  if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
   else searchButtonClose.classList.add("is-hidden-touch");
 }
 
