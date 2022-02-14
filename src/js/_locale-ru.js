@@ -1,6 +1,6 @@
 let locale = {
   "Table of contents": "Содержание",
-  "Search…": "Поиск…"
+  "Search…": "Поиск…",
 };
 
 export default locale;
