@@ -1,3 +1,3 @@
 # Harrix-HTML-Template
 
-Шаблон сайта.
+Template of a HTML page
