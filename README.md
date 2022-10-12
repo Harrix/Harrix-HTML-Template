@@ -1,3 +1,3 @@
 # Harrix-HTML-Template
 
-Template of a HTML page
+Template of a HTML page.
