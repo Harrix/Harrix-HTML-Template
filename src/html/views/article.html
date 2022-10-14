@@ -1,4 +1,5 @@
-<% var data = { title: "Заголовок | Harrix Проект"}; %> <%= _.template(require('./../includes/header.html').default)(data) %>
+<% var data = { title: "Заголовок | Harrix Проект"}; %> <%=
+_.template(require('./../includes/header.html').default)(data) %>
 
 <article>
   <div class="section h-is-padding-bottomless">
@@ -29,8 +30,7 @@
           <p>
             В данном блоке пример использования обычного текста в несколько абзацев. Непосредственно в данном абзаце не
             будет применения никаких дополнительных украшательств текста. Просто несколько строк в абзаце. Поэтому мне
-            надо о чем-нибудь тут написать, чтобы текста было побольше. Например, можно написать о том, что угол
-            наклона
+            надо о чем-нибудь тут написать, чтобы текста было побольше. Например, можно написать о том, что угол наклона
             оси вращения Земли составляет 23,44°. Именно такой угол наклона в моём логотипе.
           </p>
 
@@ -41,8 +41,7 @@
           </p>
 
           <p>
-            Для выделения текста используется тэг <code>code</code> и <var>var</var>. Например, название тэга именно
-            так
+            Для выделения текста используется тэг <code>code</code> и <var>var</var>. Например, название тэга именно так
             и оформлено. А это выделение <strong>обычным жирным</strong>.
           </p>
 
@@ -88,14 +87,19 @@
           </details>
 
           <p>
-            <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <a
+              data-toggle="collapse"
+              href="#collapseExample"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
               <span class="icon is-small"><i class="far fa-plus-square"></i> </span> Показать сплойер
             </a>
           </p>
           <div class="collapse" id="collapseExample">
             <div class="card card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil
-              anim
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
               keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
             </div>
           </div>
@@ -132,7 +136,9 @@
             </div>
             <div class="column">
               <figure class="h-lightbox">
-                <a href="uploads/07.jpg"><img src="uploads/07-thumbnail.jpg" alt="Цветы на берегу острова Татышев в городе Красноярск." /></a>
+                <a href="uploads/07.jpg"
+                  ><img src="uploads/07-thumbnail.jpg" alt="Цветы на берегу острова Татышев в городе Красноярск."
+                /></a>
               </figure>
             </div>
           </div>
@@ -140,12 +146,10 @@
           <h2 id="columns">Рисунок с подписью внутри текста</h2>
 
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus tellus velit, ultrices
-            consectetur
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus tellus velit, ultrices consectetur
             sem fringilla sit amet. Aliquam erat volutpat. Phasellus pellentesque nibh quis rhoncus lacinia. Donec at
             massa lacus. Suspendisse eget mauris efficitur, commodo justo id, blandit metus. Integer placerat lacus non
-            est convallis, ac porttitor velit elementum. Vestibulum eget lacus eget velit fermentum blandit. Donec
-            justo
+            est convallis, ac porttitor velit elementum. Vestibulum eget lacus eget velit fermentum blandit. Donec justo
             quam, ultrices ut est a, egestas tempus nulla. Sed malesuada turpis at fringilla dictum. Mauris ante quam,
             eleifend efficitur ipsum vitae, bibendum consequat leo. Duis et volutpat turpis, id hendrerit est. In eu
             libero id odio euismod euismod hendrerit in metus. Fusce pretium posuere nisl non volutpat. Cras finibus,
@@ -161,8 +165,7 @@
           <p>
             Nullam gravida nunc eu sem tincidunt, sit amet viverra nisi iaculis. Suspendisse ut vulputate tortor. Nulla
             a iaculis lacus. Vestibulum lobortis ante quis ex bibendum tincidunt. Integer non volutpat urna. Morbi
-            pulvinar finibus ante, a sollicitudin lacus semper nec. Sed auctor dignissim hendrerit. Ut blandit velit
-            vel
+            pulvinar finibus ante, a sollicitudin lacus semper nec. Sed auctor dignissim hendrerit. Ut blandit velit vel
             fringilla consequat. Cras ullamcorper, nibh id commodo tincidunt, eros sapien maximus felis, varius tempor
             justo turpis maximus justo. Donec tristique nisl at ex lacinia, at sagittis elit tristique. Etiam ante ex,
             lobortis a cursus nec, faucibus ut quam. Vivamus ut pellentesque velit, eget condimentum leo. Integer
@@ -170,13 +173,11 @@
             laoreet velit. Vestibulum sodales blandit augue sagittis sodales. Nullam gravida nunc eu sem tincidunt, sit
             amet viverra nisi iaculis. Suspendisse ut vulputate tortor. Nulla a iaculis lacus. Vestibulum lobortis ante
             quis ex bibendum tincidunt. Integer non volutpat urna. Morbi pulvinar finibus ante, a sollicitudin lacus
-            semper nec. Sed auctor dignissim hendrerit. Ut blandit velit vel fringilla consequat. Cras ullamcorper,
-            nibh
+            semper nec. Sed auctor dignissim hendrerit. Ut blandit velit vel fringilla consequat. Cras ullamcorper, nibh
             id commodo tincidunt, eros sapien maximus felis, varius tempor justo turpis maximus justo. Donec tristique
             nisl at ex lacinia, at sagittis elit tristique. Etiam ante ex, lobortis a cursus nec, faucibus ut quam.
             Vivamus ut pellentesque velit, eget condimentum leo. Integer lobortis, leo in malesuada euismod, nisi felis
-            dignissim nisl, at efficitur elit lorem commodo massa. Ut in laoreet velit. Vestibulum sodales blandit
-            augue
+            dignissim nisl, at efficitur elit lorem commodo massa. Ut in laoreet velit. Vestibulum sodales blandit augue
             sagittis sodales.
           </p>
 
@@ -189,10 +190,8 @@
 
           <p>
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum ac
-            maximus sapien, ac ultrices sem. Integer ultricies ornare venenatis. Nullam posuere mattis risus, eu
-            viverra
-            purus scelerisque quis. Vivamus facilisis facilisis eros, fringilla sagittis ipsum vehicula nec. Interdum
-            et
+            maximus sapien, ac ultrices sem. Integer ultricies ornare venenatis. Nullam posuere mattis risus, eu viverra
+            purus scelerisque quis. Vivamus facilisis facilisis eros, fringilla sagittis ipsum vehicula nec. Interdum et
             malesuada fames ac ante ipsum primis in faucibus. Quisque at orci egestas, pretium metus eget, suscipit
             diam.
           </p>
@@ -227,9 +226,15 @@
           <h2 id="katex">KaTeX</h2>
 
           <div class="tex" data-expr="c = \pm\sqrt{a^2 + b^2}"></div>
-          <div class="tex" data-expr="\Gamma\ \Delta\ \Theta\ \Lambda\ \Xi\ \Pi\ \Sigma\ \Upsilon\ \Phi\ \Psi\ \Omega"></div>
+          <div
+            class="tex"
+            data-expr="\Gamma\ \Delta\ \Theta\ \Lambda\ \Xi\ \Pi\ \Sigma\ \Upsilon\ \Phi\ \Psi\ \Omega"
+          ></div>
           <div class="tex" data-expr="f(x) = \int_{-\infty}^\infty \hat f(\xi)\,e^{2 \pi i \xi x} \,d\xi"></div>
-          <div class="tex" data-expr="\left( \sum_{k=1}^n a_k b_k \right)^3 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)\leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)"></div>
+          <div
+            class="tex"
+            data-expr="\left( \sum_{k=1}^n a_k b_k \right)^3 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)\leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)"
+          ></div>
           <div class="tex" data-expr="\tag{hi} x+y^{2x}"></div>
 
           <h2 id="highlightjs">highlight.js</h2>
@@ -387,8 +392,10 @@ public class MainActivity extends AppCompatActivity {
  }</code></pre>
           <p>
             Пример длинного пути к файлу
-            <code>C:\Program Files (x86)\Microsoft Visual
-              Studio\2017\Community\Common7\ServiceHub\node_modules\werapiwindows\build\Release\WerAPIWin.node</code>.
+            <code
+              >C:\Program Files (x86)\Microsoft Visual
+              Studio\2017\Community\Common7\ServiceHub\node_modules\werapiwindows\build\Release\WerAPIWin.node</code
+            >.
           </p>
 
           <h2>What's included</h2>
@@ -407,7 +414,8 @@ public class MainActivity extends AppCompatActivity {
               browsers
             </li>
             <li>
-              <code><a href="https://babeljs.io/docs/usage/cli/">babel-cli</a></code>, <code><a href="https://github.com/babel/babel-preset-env">babel-preset-env</a></code>
+              <code><a href="https://babeljs.io/docs/usage/cli/">babel-cli</a></code
+              >, <code><a href="https://github.com/babel/babel-preset-env">babel-preset-env</a></code>
               and
               <code><a href="https://github.com/jmcriffey/babel-preset-es2015-ie">babel-preset-es2015-ie</a></code> for
               compiling ES6 JavaScript files
@@ -502,10 +510,14 @@ public class MainActivity extends AppCompatActivity {
               <tr>
                 <th>Helpers</th>
                 <td>
-                  <code><a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-centered</a></code>
-                  <code><a href="http://bulma.io/documentation/modifiers/typography-helpers/"
+                  <code
+                    ><a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-centered</a></code
+                  >
+                  <code
+                    ><a href="http://bulma.io/documentation/modifiers/typography-helpers/"
                       >has-text-weight-semibold</a
-                    ></code>
+                    ></code
+                  >
                 </td>
               </tr>
             </tbody>
