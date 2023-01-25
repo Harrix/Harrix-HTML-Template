@@ -2,7 +2,6 @@
 
 Template of a HTML page based on Node.js.
 
-
 ## Выбор CSS фреймворка
 
 | Название         | Скачивания в неделю | Ссылка                                           |
