@@ -4,7 +4,7 @@ Template of a HTML page based on [Node.js](https://nodejs.org/en/).
 
 ## Choosing a CSS framework
 
-| Name         | Скачивания в неделю | Link                                           |
+| Name         | Downloads | Link                                           |
 | ---------------- | ------------------- | ------------------------------------------------ |
 | bootstrap        | 4 510 227           | <https://www.npmjs.com/package/bootstrap>        |
 | Bulma            | 241 741             | <https://www.npmjs.com/package/bulma>            |
