@@ -8,5 +8,5 @@ Template of a HTML page based on [Node.js](https://nodejs.org/en/).
 | ---------------- | ------------------ | ------------------------------------------------ |
 | bootstrap        | 5 472 305          | <https://www.npmjs.com/package/bootstrap>        |
 | Bulma            | 224 207            | <https://www.npmjs.com/package/bulma>            |
-| tailwindcss      | 4 612 801          | <https://www.npmjs.com/package/tailwindcss>      |
-| foundation-sites | 140 353            | <https://www.npmjs.com/package/foundation-sites> |
+| tailwindcss      | 6 577 678          | <https://www.npmjs.com/package/tailwindcss>      |
+| foundation-sites | 121 227            | <https://www.npmjs.com/package/foundation-sites> |
