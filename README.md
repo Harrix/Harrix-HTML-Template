@@ -9,4 +9,4 @@ Template of a HTML page based on [Node.js](https://nodejs.org/en/).
 | bootstrap        | 5 426 191          | <https://www.npmjs.com/package/bootstrap>        |
 | Bulma            | 220 052            | <https://www.npmjs.com/package/bulma>            |
 | tailwindcss      | 6 409 392          | <https://www.npmjs.com/package/tailwindcss>      |
-| foundation-sites | 114 364            | <https://www.npmjs.com/package/foundation-sites> |
+| foundation-sites | 111 630            | <https://www.npmjs.com/package/foundation-sites> |
