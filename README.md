@@ -2,7 +2,7 @@
 
 Template of a HTML page based on [Node.js](https://nodejs.org/en/).
 
-## Choosing a CSS framework asdASD
+## Choosing a CSS framework
 
 | Name             | Downloads per week | Link                                             |
 | ---------------- | ------------------ | ------------------------------------------------ |
