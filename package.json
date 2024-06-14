@@ -48,7 +48,7 @@
     "prettier": "^3.3.2",
     "purify-css": "^1.2.5",
     "raw-loader": "^4.0.2",
-    "sass": "^1.77.4",
+    "sass": "^1.77.5",
     "sass-loader": "^14.2.1",
     "terser-webpack-plugin": "^5.3.10",
     "webpack": "^5.92.0",
