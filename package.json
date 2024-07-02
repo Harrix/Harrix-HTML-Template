@@ -28,7 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "bulma": "^1.0.1",
     "highlight.js": "^11.9.0",
-    "katex": "^0.16.10",
+    "katex": "^0.16.11",
     "lg-autoplay.js": "^1.2.0",
     "lg-fullscreen.js": "^1.2.0",
     "lg-hash.js": "^1.0.0",
@@ -54,6 +54,6 @@
     "webpack": "^5.92.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
-    "webpack-merge": "^5.10.0"
+    "webpack-merge": "^6.0.1"
   }
 }
