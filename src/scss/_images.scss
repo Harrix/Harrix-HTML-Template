@@ -1,3 +1,7 @@
+@use "~bulma/sass/utilities/mixins" as mixins;
+@use "variables" as hvars;
+@use "mixins" as hmixins;
+
 .h-lightbox {
   img {
     max-width: 100%;
@@ -15,7 +19,7 @@
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: flex-start; //space-around;
-  width: calc(100% + #{$h-gallery-gap});
+  width: calc(100% + #{hvars.$h-gallery-gap});
 
   img {
     display: block;
@@ -30,8 +34,8 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
-    margin-right: $h-gallery-gap;
-    margin-bottom: $h-gallery-gap;
+    margin-right: hvars.$h-gallery-gap;
+    margin-bottom: hvars.$h-gallery-gap;
     width: auto;
     height: auto;
 
@@ -47,7 +51,7 @@
     height: 1px;
   }
 
-  @include widescreen {
+  @include mixins.widescreen {
     &:after {
       -ms-flex: 500 300px;
       -webkit-flex: 500 300px;
@@ -55,7 +59,7 @@
     }
   }
 
-  @include desktop {
+  @include mixins.desktop {
     &:after {
       -ms-flex: 100 250px;
       -webkit-flex: 100 250px;
@@ -63,7 +67,7 @@
     }
   }
 
-  @include tablet {
+  @include mixins.tablet {
     &:after {
       -ms-flex: 50 200px;
       -webkit-flex: 50 200px;
@@ -82,15 +86,15 @@
 }
 
 .content figure {
-  @include h-fix-margin;
+  @include hmixins.h-fix-margin;
 
   &.is-pulled-left {
-    @include h-fix-margin(0);
+    @include hmixins.h-fix-margin(0);
     margin-right: 1rem;
   }
 
   &.is-pulled-right {
-    @include h-fix-margin(0);
+    @include hmixins.h-fix-margin(0);
     margin-left: 1rem;
   }
 }

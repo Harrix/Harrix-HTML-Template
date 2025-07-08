@@ -1,6 +1,10 @@
+@use "~bulma/sass/utilities/initial-variables" as initial-variables;
+@use "~bulma/sass/utilities/derived-variables" as derived-variables;
+@use "variables" as hvars;
+
 .content {
   text-align: justify;
-  
+
   hyphens: auto;
   hyphenate-limit-chars: 6 3 3;
   hyphenate-limit-lines: 2;
@@ -8,27 +12,27 @@
   hyphenate-limit-zone: 8%;
 
   h1 {
-    font-size: $h-h1-font-size;
+    font-size: hvars.$h-h1-font-size;
   }
 
   h2 {
-    font-size: $h-h2-font-size;
+    font-size: hvars.$h-h2-font-size;
   }
 
   h3 {
-    font-size: $h-h3-font-size;
+    font-size: hvars.$h-h3-font-size;
   }
 
   h4 {
-    font-size: $h-h4-font-size;
+    font-size: hvars.$h-h4-font-size;
   }
 
   h5 {
-    font-size: $h-h5-font-size;
+    font-size: hvars.$h-h5-font-size;
   }
 
   h6 {
-    font-size: $h-h6-font-size;
+    font-size: hvars.$h-h6-font-size;
   }
 
   a {
@@ -49,22 +53,22 @@
   }
 
   kbd {
-    font-family: $family-code;
-    font-size: $code-size;
-    color: $red-invert;
-    background-color: $red;
-    border-radius: $radius;
-    padding: $code-padding;
+    font-family: derived-variables.$family-code;
+    font-size: derived-variables.$size-small;
+    color: initial-variables.$white;
+    background-color: initial-variables.$red;
+    border-radius: initial-variables.$radius;
+    padding: 0.25em 0.5em;
   }
 
   code,
   var {
-    font-family: $family-code;
-    font-size: $code-size;
-    font-weight: $code-weight;
-    color: $code;
-    background-color: $code-background;
-    padding: $code-padding;
+    font-family: derived-variables.$family-code;
+    font-size: derived-variables.$size-small;
+    font-weight: 400;
+    color: derived-variables.$code;
+    background-color: derived-variables.$code-background;
+    padding: 0.25em 0.5em;
     word-break: break-all;
   }
 

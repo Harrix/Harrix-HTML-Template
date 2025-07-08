@@ -1,3 +1,6 @@
+@use "~bulma/sass/utilities/mixins" as mixins;
+@use "mixins" as hmixins;
+
 .content pre code,
 pre code,
 .content pre,
@@ -8,9 +11,9 @@ pre {
   line-height: 1.25rem; //1.1875rem;
   //white-space: pre-wrap;
 
-  @include h-scrollbars;
+  @include hmixins.h-scrollbars;
 
-  @include touch {
+  @include mixins.touch {
     font-size: 12px;
     line-height: 1.125rem;
   }

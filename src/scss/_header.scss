@@ -1,6 +1,12 @@
+@use "~bulma/sass/utilities/initial-variables" as initial-variables;
+@use "~bulma/sass/utilities/derived-variables" as derived-variables;
+@use "~bulma/sass/utilities/mixins" as mixins;
+@use "variables" as hvars;
+@use "mixins" as hmixins;
+
 .navbar {
-  font-size: $h-navbar-font-size;
-  @include h-animation(transform);
+  font-size: hvars.$h-navbar-font-size;
+  @include hmixins.h-animation(transform);
 
   &.h-is-hidden {
     transform: translateY(-100%);
@@ -17,18 +23,18 @@
   }
 
   #h-logo {
-    font-size: $h-navbar-logo-font-size;
+    font-size: hvars.$h-navbar-logo-font-size;
     line-height: 0;
-    color: $text-strong;
+    color: derived-variables.$text-strong;
     font-weight: 500;
 
     &:hover {
-      color: $text-strong;
+      color: derived-variables.$text-strong;
     }
 
     img {
       padding-right: 0.4375rem;
-      height: $navbar-item-img-max-height;
+      height: 1.75rem;
     }
 
     .is-sub {
@@ -50,7 +56,7 @@
     }
   }
 
-  @include desktop {
+  @include mixins.desktop {
     .has-dropdown {
       .navbar-link {
         padding-right: 1.75rem;
@@ -64,8 +70,8 @@
     .navbar-dropdown {
       .navbar-item {
         &:hover {
-          background-color: $navbar-item-hover-background-color;
-          color: $navbar-item-hover-color;
+          background-color: transparent;
+          color: derived-variables.$link;
           transition: none;
         }
       }
@@ -75,22 +81,22 @@
   .navbar-link {
     &:after {
       border-width: 2px;
-      border-color: $h-navbar-icon-color;
+      border-color: hvars.$h-navbar-icon-color;
       width: 0.375rem;
       height: 0.375rem;
     }
   }
 
   .icon {
-    color: $h-navbar-icon-color;
+    color: hvars.$h-navbar-icon-color;
   }
 
   .navbar-burger {
-    color: $h-navbar-icon-color;
+    color: hvars.$h-navbar-icon-color;
   }
 
   .is-github-icon {
-    color: $h-github;
+    color: hvars.$h-github;
   }
 
   .navbar-burger {

@@ -1,5 +1,8 @@
+@use "~bulma/sass/utilities/initial-variables" as initial-variables;
+@use "variables" as hvars;
+
 @mixin h-animation($property: all) {
-  transition: $property $h-speed-normal $easing;
+  transition: $property hvars.$h-speed-normal initial-variables.$easing;
 }
 
 @mixin h-clickable {
@@ -25,16 +28,16 @@
   }
 
   &::-webkit-scrollbar:vertical {
-    width: $radius-large;
+    width: initial-variables.$radius-large;
   }
 
   &::-webkit-scrollbar:horizontal {
-    height: $radius-large;
+    height: initial-variables.$radius-large;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $grey-light;
-    border-radius: $radius-small;
+    background-color: initial-variables.$grey-light;
+    border-radius: initial-variables.$radius-small;
   }
 }
 

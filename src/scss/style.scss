@@ -1,20 +1,18 @@
 @use "~bulma/sass/utilities/initial-variables" as initial-variables;
 @use "~bulma/sass/utilities/functions" as functions;
 @use "~bulma/sass/utilities/mixins" as mixins;
+@use "~bulma/sass/utilities/derived-variables" as derived-variables;
+@use "variables" as hvars;
 
-
-$h-teal: #18a2c1;
-$h-boston-blue: #2e86b7;//#2e8db2;
-$h-github: #24292e;
-$h-teal-invert: findColorInvert($h-teal);
-$h-boston-blue-invert: findColorInvert($h-boston-blue);
-$h-github-invert: findColorInvert($h-github);
+$h-teal-invert: functions.bulmaFindColorInvert(hvars.$h-teal);
+$h-boston-blue-invert: functions.bulmaFindColorInvert(hvars.$h-boston-blue);
+$h-github-invert: functions.bulmaFindColorInvert(hvars.$h-github);
 
 $h-speed-normal: 0.5s;
 $h-navbar-font-size: 0.875rem;
 $h-navbar-logo-font-size: 1.75rem;
 $h-navbar-icon-color: initial-variables.$grey;
-$h-hr-special-background-color: $h-boston-blue;
+$h-hr-special-background-color: hvars.$h-boston-blue;
 $h-h1-font-size: 1.75rem;
 $h-h2-font-size: 1.625rem;
 $h-h3-font-size: 1.5rem;
@@ -50,8 +48,6 @@ $h-gallery-gap: 10px;
 // $content-pre-padding: 6px
 // );
 
-@use "~bulma/sass/utilities/derived-variables";
-
 // $addColors: (
 //   "teal": (
 //     $h-boston-blue,
@@ -67,14 +63,13 @@ $h-gallery-gap: 10px;
 @use "~bulma/bulma";
 @use "~lightgallery.js/src/sass/lightgallery";
 
-// @use "fonts";
-// @use "mixins";
-// @use "helpers";
-// @use "common";
-// // @use "header"; // Тут проблема
-// // @use "search-panel"; // Тут проблема
-// @use "sections";
-// @use "form";
-// @use "images";
-// // @use "content"; // Тут проблема
-// @use "highlight";
+@use "fonts";
+@use "helpers";
+@use "common";
+@use "header";
+@use "search-panel";
+@use "sections";
+@use "form";
+@use "images";
+@use "content";
+@use "highlight";
