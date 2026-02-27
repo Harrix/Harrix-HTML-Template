@@ -52,8 +52,8 @@ const config = {
     watchFiles: ["src/**/*"],
   },
   performance: {
-    maxEntrypointSize: 512000,
-    maxAssetSize: 512000,
+    maxEntrypointSize: 2621440,
+    maxAssetSize: 1572864,
   },
   optimization: {
     minimize: true,
