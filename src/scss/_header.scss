@@ -56,6 +56,11 @@
     }
   }
 
+  .navbar-item.is-active {
+    color: inherit;
+    background-color: transparent;
+  }
+
   @include mixins.desktop {
     .has-dropdown {
       .navbar-link {
