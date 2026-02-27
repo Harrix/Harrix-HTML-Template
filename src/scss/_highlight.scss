@@ -182,3 +182,71 @@ pre {
 .hljs-strong {
   font-weight: bold;
 }
+
+.h-code-block {
+  position: relative;
+
+  .h-code-block-inner {
+    margin: 0;
+    display: block;
+  }
+
+  .h-code-copy {
+    position: absolute;
+    z-index: 2;
+    right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease, visibility 0.2s ease, color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      color: #363636;
+      background-color: #fff;
+      border-color: rgba(0, 0, 0, 0.15);
+    }
+
+    &:focus {
+      outline: 1px dotted #3273dc;
+      outline-offset: 2px;
+    }
+
+    &.h-code-copy-done {
+      color: #2e7d32;
+      background-color: rgba(232, 245, 233, 0.95);
+      border-color: rgba(46, 125, 50, 0.3);
+    }
+
+    &.h-code-copy--top {
+      top: 0.5rem;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &.h-code-copy--bottom {
+      bottom: 0.5rem;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  &.h-code-block--show-copy .h-code-copy--bottom {
+    opacity: 1;
+    visibility: visible;
+  }
+}

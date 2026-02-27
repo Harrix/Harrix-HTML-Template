@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSearchPanel();
   initLightGallery(200, 10);
   initSyntaxHighlighting();
+  initCodeCopyButtons();
   initFontawesomeCollection();
   initGalleryGrid(200);
 });
@@ -152,6 +153,92 @@ function initSyntaxHighlighting() {
   if (typeof hljs.highlightAll === "function") {
     hljs.highlightAll();
   }
+}
+
+function initCodeCopyButtons() {
+  const codeBlocks = document.querySelectorAll("pre > code");
+  codeBlocks.forEach((codeEl) => {
+    const pre = codeEl.parentElement;
+    if (!pre || pre.classList.contains("h-code-block-inner")) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "h-code-block";
+
+    const labelCopy = translate("Copy");
+    const labelCopied = translate("Copied!");
+
+    function doCopy(btn) {
+      const text = codeEl.textContent || "";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          () => {
+            btn.setAttribute("aria-label", labelCopied);
+            btn.classList.add("h-code-copy-done");
+            setTimeout(() => {
+              btn.setAttribute("aria-label", labelCopy);
+              btn.classList.remove("h-code-copy-done");
+            }, 2000);
+          },
+          () => fallbackCopy(text, btn, labelCopy, labelCopied)
+        );
+      } else {
+        fallbackCopy(text, btn, labelCopy, labelCopied);
+      }
+    }
+
+    function createButton(position) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "h-code-copy h-code-copy--" + position;
+      btn.setAttribute("aria-label", labelCopy);
+      btn.innerHTML = '<span class="icon is-small"><i class="fas fa-copy" aria-hidden="true"></i></span>';
+      btn.addEventListener("click", () => doCopy(btn));
+      return btn;
+    }
+
+    const preClone = pre.cloneNode(true);
+    preClone.classList.add("h-code-block-inner");
+    wrapper.appendChild(preClone);
+    wrapper.appendChild(createButton("top"));
+    wrapper.appendChild(createButton("bottom"));
+
+    const bottomThreshold = 80;
+    wrapper.addEventListener("mousemove", (e) => {
+      const rect = wrapper.getBoundingClientRect();
+      const fromBottom = rect.bottom - e.clientY;
+      if (fromBottom <= bottomThreshold) {
+        wrapper.classList.add("h-code-block--show-copy");
+      } else {
+        wrapper.classList.remove("h-code-block--show-copy");
+      }
+    });
+    wrapper.addEventListener("mouseleave", () => {
+      wrapper.classList.remove("h-code-block--show-copy");
+    });
+
+    pre.parentNode.insertBefore(wrapper, pre);
+    pre.remove();
+  });
+}
+
+function fallbackCopy(text, btn, labelCopy, labelCopied) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.position = "fixed";
+  ta.style.left = "-9999px";
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand("copy");
+    btn.setAttribute("aria-label", labelCopied);
+    btn.classList.add("h-code-copy-done");
+    setTimeout(() => {
+      btn.setAttribute("aria-label", labelCopy);
+      btn.classList.remove("h-code-copy-done");
+    }, 2000);
+  } catch (err) {}
+  document.body.removeChild(ta);
 }
 
 function focusAfterAnimation(elem, timeOfAnimation) {
