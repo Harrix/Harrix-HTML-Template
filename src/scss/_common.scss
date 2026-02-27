@@ -1,7 +1,19 @@
+@use "~bulma/sass/utilities/mixins" as mixins;
+
 body {
   overflow-x: hidden;
 }
 
 .container {
-  max-width: 1115px;
+  @include mixins.desktop {
+    max-width: 1115px;
+  }
+}
+
+.h-sidebar {
+  font-size: 0.875rem;
+}
+
+.h-columns-with-sidebar {
+  align-items: flex-start;
 }

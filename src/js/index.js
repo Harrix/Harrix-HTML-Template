@@ -149,7 +149,9 @@ function initGalleryGrid(imgHeight) {
 }
 
 function initSyntaxHighlighting() {
-  hljs.initHighlightingOnLoad();
+  if (typeof hljs.highlightAll === "function") {
+    hljs.highlightAll();
+  }
 }
 
 function focusAfterAnimation(elem, timeOfAnimation) {

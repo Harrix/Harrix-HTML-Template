@@ -9,7 +9,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 export default function initFontawesomeCollection() {
   library.add(faSearch, faFileArchive, faDownload, faPlusSquare, faMinusSquare, faGithub, faGlobeAmericas, faRss);
 
-  var faHarrix = {
+  const faHarrix = {
     prefix: "fah",
     iconName: "harrix",
     icon: [
@@ -21,7 +21,7 @@ export default function initFontawesomeCollection() {
     ],
   };
 
-  var faClose = {
+  const faClose = {
     prefix: "fah",
     iconName: "close",
     icon: [
