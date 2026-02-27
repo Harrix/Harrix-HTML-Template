@@ -20,7 +20,10 @@
     "url": "https://github.com/Harrix/Harrix-HTML-Template/issues"
   },
   "homepage": "https://github.com/Harrix/Harrix-HTML-Template#readme",
-  "sideEffects": ["*.scss", "*.css"],
+  "sideEffects": [
+    "*.scss",
+    "*.css"
+  ],
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
