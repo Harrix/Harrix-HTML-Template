@@ -1,6 +1,5 @@
 const path = require("path");
 const fs = require("fs");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -10,13 +9,14 @@ const TerserPlugin = require("terser-webpack-plugin");
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
   return templateFiles.map((item) => {
-    const parts = item.split(".");
-    const name = parts[0];
-    const extension = parts[1];
+    const parsedPath = path.parse(item);
+    const name = parsedPath.name;
+    const extension = parsedPath.ext.substring(1);
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      inject: false,
+      inject: "body",
+      scriptLoading: "defer",
     });
   });
 }
@@ -31,6 +31,63 @@ const config = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "./js/[name].js",
+    clean: true,
+    assetModuleFilename: "assets/[name][ext]",
+  },
+  cache: {
+    type: "filesystem",
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
+  devtool: "source-map",
+  mode: "production",
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    port: 9000,
+    hot: true,
+    open: true,
+    watchFiles: ["src/**/*"],
+  },
+  performance: {
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            "default",
+            {
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
+      new TerserPlugin({
+        extractComments: true,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
+        },
+      }),
+    ],
+    splitChunks: {
+      chunks: "all",
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all",
+        },
+      },
+    },
+    runtimeChunk: "single",
   },
   module: {
     rules: [
@@ -51,7 +108,10 @@ const config = {
           },
           {
             loader: "sass-loader",
-            options: { sourceMap: true },
+            options: {
+              implementation: require("sass"),
+              sourceMap: true,
+            },
           },
         ],
       },
@@ -59,6 +119,32 @@ const config = {
         test: /\.html$/,
         include: path.resolve(__dirname, "src/html/includes"),
         use: ["raw-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024,
+          },
+        },
+        generator: {
+          filename: "img/[name][ext]",
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]",
+        },
+      },
+      {
+        test: /\.(ico|pdf)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "[name][ext]",
+        },
       },
     ],
   },
@@ -71,40 +157,29 @@ const config = {
         { from: "node_modules/lightgallery.js/src/img", to: "img" },
         { from: "node_modules/lightgallery.js/src/fonts", to: "fonts" },
         { from: "node_modules/katex/dist/fonts", to: "katex/fonts" },
-        { from: "src/fonts", to: "fonts" },
-        { from: "src/favicon", to: "favicon" },
-        { from: "src/img", to: "img" },
-        { from: "src/uploads", to: "uploads" },
+        { from: "src/fonts", to: "fonts", noErrorOnMissing: true },
+        { from: "src/favicon", to: "favicon", noErrorOnMissing: true },
+        { from: "src/img", to: "img", noErrorOnMissing: true },
+        { from: "src/uploads", to: "uploads", noErrorOnMissing: true },
       ],
     }),
   ].concat(htmlPlugins),
 };
 
 module.exports = (env, argv) => {
-  if (argv.mode === "development") {
-    config.devtool = "source-map";
-  }
   if (argv.mode === "production") {
-    config.devtool = "source-map";
-    config.optimization = {
-      minimize: true,
-      minimizer: [
-        new CssMinimizerPlugin({
-          minimizerOptions: {
-            preset: [
-              "default",
-              {
-                discardComments: { removeAll: true },
-              },
-            ],
-          },
-        }),
-        new TerserPlugin({
-          extractComments: true,
-        }),
-      ],
-    };
-    config.plugins.push(new CleanWebpackPlugin());
+    config.output.filename = "./js/[name].js";
+    config.output.assetModuleFilename = "assets/[name][ext]";
+    config.optimization.moduleIds = "named";
+    config.optimization.chunkIds = "named";
+  } else {
+    config.devtool = "eval-source-map";
+    config.optimization.minimize = false;
+    config.output.filename = "./js/[name].js";
+    config.output.assetModuleFilename = "assets/[name][ext]";
+    config.optimization.splitChunks = false;
+    config.optimization.runtimeChunk = false;
   }
+
   return config;
 };

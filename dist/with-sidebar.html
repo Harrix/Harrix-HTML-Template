@@ -15,8 +15,9 @@
     <link rel="shortcut icon" href="favicon/favicon.ico" />
     <meta name="msapplication-config" content="favicon/browserconfig.xml" />
     <meta name="theme-color" content="#de2b26" />
-    <link rel="stylesheet" href="css/app.css" />
-    <link rel="stylesheet" href="katex/katex.css" />
+    <link href="css/vendors.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="css/../katex/katex.css" rel="stylesheet" />
   </head>
   <body class="has-navbar-fixed-top">
     <nav id="h-navbar" class="navbar is-fixed-top" aria-label="main navigation">
@@ -600,7 +601,9 @@ public class MainActivity extends AppCompatActivity {
         </p>
       </div>
     </footer>
-    <script src="js/app.js"></script>
-    <script src="katex/katex.js"></script>
+    <script defer="defer" src="./js/runtime.js"></script>
+    <script defer="defer" src="./js/vendors.js"></script>
+    <script defer="defer" src="./js/app.js"></script>
+    <script defer="defer" src="./js/../katex/katex.js"></script>
   </body>
 </html>
