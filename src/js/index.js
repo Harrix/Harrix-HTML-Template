@@ -1,12 +1,12 @@
-import lightgallery from "lightgallery.js";
-import lgThumbnail from "lg-thumbnail.js";
-import lgAutoplay from "lg-autoplay.js";
-import lgVideo from "lg-video.js";
-import lgFullscreen from "lg-fullscreen.js";
-import lgPager from "lg-pager.js";
-import lgZoom from "lg-zoom.js";
-import lgHash from "lg-hash.js";
+import lightGallery from "lightgallery";
+import lgHash from "lightgallery/plugins/hash";
+import lgZoom from "lightgallery/plugins/zoom";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
 import hljs from "highlight.js";
+
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-thumbnail.css";
+import "lightgallery/css/lg-zoom.css";
 
 import initFontawesomeCollection from "./_fontawesome-collection.js";
 import locale from "./_locale-ru.js";
@@ -100,22 +100,48 @@ function initSearchPanel() {
 }
 
 function initLightGallery(rowHeight, margins) {
-  var lightboxes = document.getElementsByClassName("h-lightbox");
+  var items = [];
+  var triggers = [];
 
-  Array.from(lightboxes).forEach((el) => {
-    lightGallery(el, {
-      hash: true,
-      share: false,
+  // Single images: .h-lightbox > a[href]
+  document.querySelectorAll(".h-lightbox").forEach(function (figure) {
+    var a = figure.querySelector("a[href]");
+    if (!a) return;
+    var img = a.querySelector("img");
+    items.push({
+      src: a.getAttribute("href"),
+      thumb: (img && img.getAttribute("src")) || a.getAttribute("href"),
+      subHtml: (img && img.getAttribute("alt")) || "",
     });
+    triggers.push(a);
   });
 
-  var galleries = document.getElementsByClassName("h-gallery");
+  // Gallery items: .h-gallery .h-is-item
+  document.querySelectorAll(".h-gallery .h-is-item").forEach(function (el) {
+    var src = el.getAttribute("data-src");
+    if (!src) return;
+    var img = el.querySelector("img");
+    items.push({
+      src: src,
+      thumb: (img && img.getAttribute("src")) || src,
+      subHtml: (img && img.getAttribute("alt")) || "",
+    });
+    triggers.push(el);
+  });
 
-  Array.from(galleries).forEach((el) => {
-    lightGallery(el, {
-      hash: true,
-      share: false,
-      selector: ".h-is-item",
+  if (items.length === 0) return;
+
+  var container = document.body;
+  var instance = lightGallery(container, {
+    dynamic: true,
+    dynamicEl: items,
+    plugins: [lgHash, lgZoom, lgThumbnail],
+  });
+
+  triggers.forEach(function (el, index) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      instance.openGallery(index);
     });
   });
 }

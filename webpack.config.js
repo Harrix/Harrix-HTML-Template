@@ -116,6 +116,20 @@ const config = {
         ],
       },
       {
+        test: /\.css$/,
+        include: path.resolve(__dirname, "node_modules/lightgallery"),
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              url: false,
+            },
+          },
+        ],
+      },
+      {
         test: /\.html$/,
         include: path.resolve(__dirname, "src/html/includes"),
         use: ["raw-loader"],
@@ -154,8 +168,8 @@ const config = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: "node_modules/lightgallery.js/src/img", to: "img" },
-        { from: "node_modules/lightgallery.js/src/fonts", to: "fonts" },
+        { from: "node_modules/lightgallery/fonts", to: "fonts" },
+        { from: "node_modules/lightgallery/images", to: "images" },
         { from: "node_modules/katex/dist/fonts", to: "katex/fonts" },
         { from: "src/fonts", to: "fonts", noErrorOnMissing: true },
         { from: "src/favicon", to: "favicon", noErrorOnMissing: true },

@@ -32,14 +32,7 @@
     "bulma": "^1.0.4",
     "highlight.js": "^11.11.1",
     "katex": "^0.16.33",
-    "lg-autoplay.js": "^1.2.0",
-    "lg-fullscreen.js": "^1.2.0",
-    "lg-hash.js": "^1.0.0",
-    "lg-pager.js": "^1.0.0",
-    "lg-thumbnail.js": "^1.2.0",
-    "lg-video.js": "^1.3.0",
-    "lg-zoom.js": "^1.3.0",
-    "lightgallery.js": "^1.4.0"
+    "lightgallery": "^2.9.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^13.0.1",
