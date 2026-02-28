@@ -1,7 +1,5 @@
 @use "~bulma/sass/utilities/initial-variables" as initial-variables;
 @use "mixins";
-@import "~katex/dist/katex.css";
-
 .tex {
   overflow: auto;
 

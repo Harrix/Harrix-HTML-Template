@@ -81,7 +81,7 @@ const config = {
       chunks: "all",
       cacheGroups: {
         vendor: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]node_modules[\\/](?!katex)/,
           name: "vendors",
           chunks: "all",
         },
@@ -118,6 +118,20 @@ const config = {
       {
         test: /\.css$/,
         include: path.resolve(__dirname, "node_modules/lightgallery"),
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              url: false,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        include: path.resolve(__dirname, "node_modules/katex"),
         use: [
           MiniCssExtractPlugin.loader,
           {
