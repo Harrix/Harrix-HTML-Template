@@ -60,13 +60,15 @@ $h-gallery-gap: 10px;
 // );
 // $colors: map-merge($colors, $addColors);
 
-@use "~bulma/bulma";
+// Load full Bulma (use "~bulma/sass" with (...) for customization — see commented block above)
+@use "~bulma/sass";
 
 @use "fonts";
 @use "helpers";
 @use "common";
 @use "header";
 @use "search-panel";
+@use "theme-dark";
 @use "sections";
 @use "form";
 @use "images";

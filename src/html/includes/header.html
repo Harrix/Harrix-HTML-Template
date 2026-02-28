@@ -17,6 +17,14 @@
     <meta name="msapplication-config" content="favicon/browserconfig.xml" />
     <meta name="theme-color" content="#de2b26" />
 
+    <script>
+      (function () {
+        var stored = localStorage.getItem("h-theme");
+        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
   </head>
 
   <body class="has-navbar-fixed-top">
@@ -63,6 +71,10 @@
             <a class="navbar-item" href="https://harrix.org/">
               <span class="icon"><i class="fas fa-globe-americas"></i></span> Eng
             </a>
+            <div class="navbar-item h-is-clickable" id="h-theme-toggle" role="button" aria-label="Переключить светлую/тёмную тему">
+              <span class="icon is-small h-theme-icon h-theme-icon--light" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              <span class="icon is-small h-theme-icon h-theme-icon--dark" aria-hidden="true"><i class="fas fa-sun"></i></span>
+            </div>
             <div class="navbar-item h-is-clickable is-hidden-touch" id="h-search-button-open">
               <span class="icon is-small"><i class="fas fa-search"></i></span>
             </div>

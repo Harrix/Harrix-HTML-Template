@@ -14,6 +14,7 @@ import locale from "./_locale-ru.js";
 document.addEventListener("DOMContentLoaded", () => {
   initNavbar(100);
   initSearchPanel();
+  initThemeToggle();
   initLightGallery(200, 10);
   initSyntaxHighlighting();
   initCodeCopyButtons();
@@ -99,6 +100,12 @@ function initSearchPanel() {
   }
 }
 
+function getDownloadFilename(src) {
+  if (!src) return "image";
+  var parts = src.split("/");
+  return parts[parts.length - 1] || "image";
+}
+
 function initLightGallery(rowHeight, margins) {
   var items = [];
   var triggers = [];
@@ -108,10 +115,12 @@ function initLightGallery(rowHeight, margins) {
     var a = figure.querySelector("a[href]");
     if (!a) return;
     var img = a.querySelector("img");
+    var href = a.getAttribute("href");
     items.push({
-      src: a.getAttribute("href"),
-      thumb: (img && img.getAttribute("src")) || a.getAttribute("href"),
+      src: href,
+      thumb: (img && img.getAttribute("src")) || href,
       subHtml: (img && img.getAttribute("alt")) || "",
+      download: getDownloadFilename(href),
     });
     triggers.push(a);
   });
@@ -125,6 +134,7 @@ function initLightGallery(rowHeight, margins) {
       src: src,
       thumb: (img && img.getAttribute("src")) || src,
       subHtml: (img && img.getAttribute("alt")) || "",
+      download: getDownloadFilename(src),
     });
     triggers.push(el);
   });
@@ -137,6 +147,16 @@ function initLightGallery(rowHeight, margins) {
     dynamicEl: items,
     plugins: [lgHash, lgZoom, lgThumbnail],
   });
+
+  function removeDownloadTarget() {
+    var $download = instance.getElementById("lg-download");
+    if ($download && $download.length) {
+      $download.removeAttr("target");
+    }
+  }
+
+  instance.LGel.on("lgAfterOpen.lg-download-fix", removeDownloadTarget);
+  instance.LGel.on("lgAfterSlide.lg-download-fix", removeDownloadTarget);
 
   triggers.forEach(function (el, index) {
     el.addEventListener("click", function (e) {
@@ -278,6 +298,29 @@ function showOrHideSearchButtonClose() {
   const searchButtonClose = document.getElementById("h-search-button-close");
   if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
   else searchButtonClose.classList.add("is-hidden-touch");
+}
+
+function initThemeToggle() {
+  const toggle = document.getElementById("h-theme-toggle");
+  if (!toggle) return;
+
+  function getTheme() {
+    const fromDom = document.documentElement.getAttribute("data-theme");
+    if (fromDom === "dark" || fromDom === "light") return fromDom;
+    const stored = localStorage.getItem("h-theme");
+    if (stored === "dark" || stored === "light") return stored;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("h-theme", theme);
+  }
+
+  toggle.addEventListener("click", () => {
+    const current = getTheme();
+    setTheme(current === "dark" ? "light" : "dark");
+  });
 }
 
 function translate(string) {
