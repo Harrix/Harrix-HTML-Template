@@ -1,3 +1,6 @@
+@use "theme-dark-variables" as dark;
+@use "variables" as hvars;
+
 // Theme toggle: show sun in light mode, moon in dark mode
 .h-theme-icon--dark {
   display: none;
@@ -18,33 +21,33 @@
   color-scheme: dark;
 
   body {
-    background-color: #1a1a1a;
-    color: #e4e4e4;
+    background-color: dark.$h-dark-bg;
+    color: dark.$h-dark-text;
   }
 
   .navbar {
-    background-color: #242424 !important;
+    background-color: dark.$h-dark-surface !important;
 
     .navbar-item,
     .navbar-link {
-      color: #e4e4e4;
+      color: dark.$h-dark-text;
 
       &:hover {
         background-color: transparent;
-        color: #e4e4e4;
+        color: dark.$h-dark-text;
       }
     }
 
     #h-logo {
-      color: #e4e4e4;
+      color: dark.$h-dark-text;
 
       &:hover {
-        color: #e4e4e4;
+        color: dark.$h-dark-text;
       }
     }
 
     .navbar-dropdown.is-boxed {
-      background-color: #242424 !important;
+      background-color: dark.$h-dark-surface !important;
       border: none !important;
       border-top: none !important;
       overflow: hidden;
@@ -53,75 +56,75 @@
       &,
       &::before,
       &::after {
-        background-color: #242424;
+        background-color: dark.$h-dark-surface;
       }
 
       .navbar-item {
-        color: #e4e4e4;
+        color: dark.$h-dark-text;
         background-color: transparent;
 
         &:hover {
           background-color: transparent;
-          color: #e4e4e4;
+          color: dark.$h-dark-text;
         }
       }
     }
 
     .icon,
     .navbar-burger {
-      color: rgba(228, 228, 228, 0.9);
+      color: dark.$h-dark-icon;
     }
 
     .input,
     .textarea,
     .select select {
-      background-color: #363636;
-      border-color: #4a4a4a;
-      color: #e4e4e4;
+      background-color: dark.$h-dark-input-bg;
+      border-color: dark.$h-dark-border;
+      color: dark.$h-dark-text;
 
       &::placeholder {
-        color: rgba(228, 228, 228, 0.5);
+        color: dark.$h-dark-placeholder;
       }
     }
   }
 
   .section {
-    background-color: #1a1a1a;
+    background-color: dark.$h-dark-bg;
   }
 
   .content {
-    color: #e4e4e4;
+    color: dark.$h-dark-text;
 
     h1, h2, h3, h4, h5, h6 {
-      color: #f5f5f5;
+      color: dark.$h-dark-text-strong;
     }
 
     a {
-      color: #7eb8da;
+      color: dark.$h-dark-link;
 
       &:hover {
-        color: #9ecef0;
+        color: dark.$h-dark-link-hover;
       }
     }
 
     code {
-      background-color: #363636;
-      color: #e4e4e4;
+      background-color: dark.$h-dark-input-bg;
+      color: dark.$h-dark-text;
     }
 
     blockquote {
-      border-left-color: #4a4a4a;
+      border-left-color: dark.$h-dark-border;
       background-color: rgba(255, 255, 255, 0.03);
     }
 
     kbd {
-      background-color: #363636;
-      border-color: #4a4a4a;
-      color: #e4e4e4;
+      background-color: dark.$h-dark-input-bg;
+      border-color: dark.$h-dark-border;
+      color: dark.$h-dark-text;
     }
 
     pre {
-      background-color: #242424;
+      background-color: dark.$h-dark-surface;
 
       code {
         background-color: transparent;
@@ -129,19 +132,19 @@
     }
 
     hr {
-      background-color: #4a4a4a;
+      background-color: dark.$h-dark-border;
     }
 
     strong {
-      color: #f5f5f5;
+      color: dark.$h-dark-text-strong;
     }
 
     table {
-      color: #e4e4e4;
+      color: dark.$h-dark-text;
 
       th,
       td {
-        border-color: #4a4a4a;
+        border-color: dark.$h-dark-border;
       }
 
       tr:hover {
@@ -151,28 +154,28 @@
   }
 
   .card {
-    background-color: #242424;
-    color: #e4e4e4;
+    background-color: dark.$h-dark-surface;
+    color: dark.$h-dark-text;
 
     .card-header {
-      background-color: #2d2d2d;
-      border-bottom-color: #4a4a4a;
+      background-color: dark.$h-dark-surface-elevated;
+      border-bottom-color: dark.$h-dark-border;
 
       .card-header-title {
-        color: #f5f5f5;
+        color: dark.$h-dark-text-strong;
       }
     }
 
     .card-content {
-      border-bottom-color: #4a4a4a;
+      border-bottom-color: dark.$h-dark-border;
     }
 
     .card-footer {
-      border-top-color: #4a4a4a;
+      border-top-color: dark.$h-dark-border;
 
       .card-footer-item {
-        color: #7eb8da;
-        border-right-color: #4a4a4a;
+        color: dark.$h-dark-link;
+        border-right-color: dark.$h-dark-border;
 
         &:hover {
           background-color: rgba(255, 255, 255, 0.05);
@@ -184,66 +187,66 @@
   .button {
     &.is-primary,
     &.is-link {
-      background-color: #2e86b7;
+      background-color: hvars.$h-boston-blue;
       border-color: transparent;
       color: #fff;
 
       &:hover {
-        background-color: #2570a0;
+        background-color: hvars.$h-primary-hover;
         color: #fff;
       }
     }
 
     &.is-light {
-      background-color: #363636;
-      color: #e4e4e4;
-      border-color: #4a4a4a;
+      background-color: dark.$h-dark-input-bg;
+      color: dark.$h-dark-text;
+      border-color: dark.$h-dark-border;
 
       &:hover {
-        background-color: #4a4a4a;
+        background-color: dark.$h-dark-border;
         color: #fff;
       }
     }
   }
 
   .box {
-    background-color: #242424;
-    color: #e4e4e4;
+    background-color: dark.$h-dark-surface;
+    color: dark.$h-dark-text;
     border-color: transparent;
   }
 
   .message {
-    background-color: #242424;
+    background-color: dark.$h-dark-surface;
 
     .message-header {
-      background-color: #363636;
-      color: #e4e4e4;
+      background-color: dark.$h-dark-input-bg;
+      color: dark.$h-dark-text;
     }
 
     .message-body {
-      border-color: #4a4a4a;
-      color: #e4e4e4;
+      border-color: dark.$h-dark-border;
+      color: dark.$h-dark-text;
     }
   }
 
   .title,
   .subtitle {
-    color: #f5f5f5;
+    color: dark.$h-dark-text-strong;
   }
 
   .footer {
-    background-color: #242424;
-    color: #e4e4e4;
+    background-color: dark.$h-dark-surface;
+    color: dark.$h-dark-text;
   }
 
   .h-code-block {
     .h-code-copy {
-      background-color: #363636;
-      color: #e4e4e4;
-      border-color: #4a4a4a;
+      background-color: dark.$h-dark-input-bg;
+      color: dark.$h-dark-text;
+      border-color: dark.$h-dark-border;
 
       &:hover {
-        background-color: #4a4a4a;
+        background-color: dark.$h-dark-border;
         color: #fff;
       }
     }

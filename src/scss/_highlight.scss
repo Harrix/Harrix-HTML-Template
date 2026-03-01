@@ -6,10 +6,8 @@ pre code,
 .content pre,
 pre {
   font-weight: 400;
-  //font-size: 0.8125rem;
-  color: #002d7a; //$body-color;
-  line-height: 1.25rem; //1.1875rem;
-  //white-space: pre-wrap;
+  color: #002d7a;
+  line-height: 1.25rem;
 
   @include hmixins.h-scrollbars;
 

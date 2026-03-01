@@ -23,7 +23,7 @@ a {
   color: hvars.$h-boston-blue;
 }
 a:hover {
-  color: #358cbc;
+  color: hvars.$h-link-hover;
 }
 
 // Primary buttons: boston blue (#2e86b7) with white text (as in old Bulma 0 version)
@@ -33,7 +33,7 @@ a:hover {
   color: #fff;
 
   &:hover {
-    background-color: #2570a0;
+    background-color: hvars.$h-primary-hover;
     color: #fff;
   }
 }

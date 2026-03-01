@@ -1,5 +1,7 @@
+@use "variables" as hvars;
+
 .h-has-min-width {
-  min-width: 8.125rem;
+  min-width: hvars.$h-form-min-width;
 }
 
 .input,

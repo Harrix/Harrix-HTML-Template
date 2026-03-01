@@ -1,4 +1,5 @@
 @use "~bulma/sass/utilities/mixins" as mixins;
+@use "mixins" as hmixins;
 
 .h-is-clipped-touch {
   @include mixins.touch {
@@ -7,8 +8,7 @@
 }
 
 .h-is-clickable {
-  pointer-events: auto !important;
-  cursor: pointer !important;
+  @include hmixins.h-clickable;
 }
 
 .h-is-padding-bottomless {
