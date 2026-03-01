@@ -11,10 +11,6 @@
 }
 
 .h-gallery {
-  display: -webkit-flex;
-  -webkit-flex-wrap: wrap;
-  -webkit-align-items: stretch;
-  -webkit-justify-content: space-around;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
@@ -28,9 +24,6 @@
   }
 
   div {
-    display: -webkit-flex;
-    -webkit-align-items: flex-end;
-    -webkit-justify-content: space-around;
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
@@ -43,8 +36,6 @@
   }
 
   &:after {
-    -ms-flex: 20 150px;
-    -webkit-flex: 20 150px;
     flex: 20 150px;
     display: block;
     content: " ";
@@ -53,24 +44,18 @@
 
   @include mixins.widescreen {
     &:after {
-      -ms-flex: 500 300px;
-      -webkit-flex: 500 300px;
       flex: 500 300px;
     }
   }
 
   @include mixins.desktop {
     &:after {
-      -ms-flex: 100 250px;
-      -webkit-flex: 100 250px;
       flex: 100 250px;
     }
   }
 
   @include mixins.tablet {
     &:after {
-      -ms-flex: 50 200px;
-      -webkit-flex: 50 200px;
       flex: 50 200px;
     }
   }
