@@ -11,21 +11,27 @@ import "lightgallery/css/lg-zoom.css";
 import initFontawesomeCollection from "./_fontawesome-collection.js";
 import locale from "./_locale-ru.js";
 
+const NAVBAR_HIDE_SCROLL_THRESHOLD = 100;
+const GALLERY_ROW_HEIGHT = 200;
+const SEARCH_ANIMATION_MS = 500;
+const CODE_COPY_FEEDBACK_MS = 2000;
+const CODE_BLOCK_BOTTOM_THRESHOLD = 80;
+
 document.addEventListener("DOMContentLoaded", () => {
-  initNavbar(100);
+  initNavbar(NAVBAR_HIDE_SCROLL_THRESHOLD);
   initSearchPanel();
   initThemeToggle();
-  initLightGallery(200, 10);
+  initLightGallery();
   initSyntaxHighlighting();
   initCodeCopyButtons();
   initFontawesomeCollection();
-  initGalleryGrid(200);
+  initGalleryGrid(GALLERY_ROW_HEIGHT);
 });
 
-function initNavbar(scrollTopNavbarHide) {
+function initNavbar(scrollThreshold) {
   const navbar = document.getElementById("h-navbar");
 
-  if (!!navbar) {
+  if (navbar) {
     const root = document.documentElement;
     const navbarBurger = document.getElementById("h-burger");
     const navbarBottom = document.getElementById("h-navbar-bottom");
@@ -33,11 +39,11 @@ function initNavbar(scrollTopNavbarHide) {
 
     let lastY = 0;
     let currentY = 0;
-    let hasClassHide = logo.classList.contains("h-is-hidden");
+    let isNavbarHidden = logo.classList.contains("h-is-hidden");
 
-    navbarBottom.onmouseover = function (event) {
+    navbarBottom.onmouseover = function () {
       navbar.classList.remove("h-is-hidden");
-      hasClassHide = false;
+      isNavbarHidden = false;
     };
 
     navbarBurger.addEventListener("click", () => {
@@ -51,14 +57,14 @@ function initNavbar(scrollTopNavbarHide) {
       lastY = currentY;
       currentY = window.scrollY;
 
-      if (currentY > scrollTopNavbarHide && currentY > lastY && !hasClassHide) {
+      if (currentY > scrollThreshold && currentY > lastY && !isNavbarHidden) {
         navbar.classList.add("h-is-hidden");
-        hasClassHide = true;
+        isNavbarHidden = true;
       }
 
-      if (currentY < lastY && hasClassHide) {
+      if (currentY < lastY && isNavbarHidden) {
         navbar.classList.remove("h-is-hidden");
-        hasClassHide = false;
+        isNavbarHidden = false;
       }
     });
   }
@@ -66,20 +72,18 @@ function initNavbar(scrollTopNavbarHide) {
 
 function initSearchPanel() {
   const searchForm = document.getElementById("h-search-form");
-  if (!!searchForm) {
+  if (searchForm) {
     const navbarMenu = document.getElementById("h-navbar-menu");
     const searchButtonOpen = document.getElementById("h-search-button-open");
     const searchButtonClose = document.getElementById("h-search-button-close");
     const searchInput = document.getElementById("h-search-input");
-
-    let timeOfAnimation = 500;
 
     searchInput.placeholder = translate("Search…");
 
     searchButtonOpen.addEventListener("click", () => {
       searchForm.classList.remove("h-is-hidden");
       navbarMenu.classList.add("has-visible-search-form");
-      focusAfterAnimation(searchInput, timeOfAnimation);
+      focusAfterAnimation(searchInput, SEARCH_ANIMATION_MS);
       showOrHideSearchButtonClose();
     });
 
@@ -102,20 +106,20 @@ function initSearchPanel() {
 
 function getDownloadFilename(src) {
   if (!src) return "image";
-  var parts = src.split("/");
+  const parts = src.split("/");
   return parts[parts.length - 1] || "image";
 }
 
-function initLightGallery(rowHeight, margins) {
-  var items = [];
-  var triggers = [];
+function initLightGallery() {
+  const items = [];
+  const triggers = [];
 
   // Single images: .h-lightbox > a[href]
   document.querySelectorAll(".h-lightbox").forEach(function (figure) {
-    var a = figure.querySelector("a[href]");
+    const a = figure.querySelector("a[href]");
     if (!a) return;
-    var img = a.querySelector("img");
-    var href = a.getAttribute("href");
+    const img = a.querySelector("img");
+    const href = a.getAttribute("href");
     items.push({
       src: href,
       thumb: (img && img.getAttribute("src")) || href,
@@ -127,9 +131,9 @@ function initLightGallery(rowHeight, margins) {
 
   // Gallery items: .h-gallery .h-is-item
   document.querySelectorAll(".h-gallery .h-is-item").forEach(function (el) {
-    var src = el.getAttribute("data-src");
+    const src = el.getAttribute("data-src");
     if (!src) return;
-    var img = el.querySelector("img");
+    const img = el.querySelector("img");
     items.push({
       src: src,
       thumb: (img && img.getAttribute("src")) || src,
@@ -141,17 +145,17 @@ function initLightGallery(rowHeight, margins) {
 
   if (items.length === 0) return;
 
-  var container = document.body;
-  var instance = lightGallery(container, {
+  const container = document.body;
+  const instance = lightGallery(container, {
     dynamic: true,
     dynamicEl: items,
     plugins: [lgHash, lgZoom, lgThumbnail],
   });
 
   function removeDownloadTarget() {
-    var $download = instance.getElementById("lg-download");
-    if ($download && $download.length) {
-      $download.removeAttr("target");
+    const downloadEl = instance.getElementById("lg-download");
+    if (downloadEl && downloadEl.length) {
+      downloadEl.removeAttr("target");
     }
   }
 
@@ -166,23 +170,23 @@ function initLightGallery(rowHeight, margins) {
   });
 }
 
-function initGalleryGrid(imgHeight) {
-  var galleries = document.getElementsByClassName("h-gallery");
+function initGalleryGrid(rowHeight) {
+  const galleries = document.getElementsByClassName("h-gallery");
 
   Array.from(galleries).forEach((gallery) => {
-    var images = gallery.querySelectorAll("img");
+    const images = gallery.querySelectorAll("img");
 
     Array.from(images).forEach((img) => {
       if (img.complete) imgLoaded();
       else img.addEventListener("load", imgLoaded);
 
       function imgLoaded() {
-        var width = img.naturalWidth;
-        var height = img.naturalHeight;
+        const width = img.naturalWidth;
+        const height = img.naturalHeight;
 
-        var base = width / height;
-        var grow = Math.round(base * 1000) / 100;
-        var h = Math.round(imgHeight * base);
+        const base = width / height;
+        const grow = Math.round(base * 1000) / 100;
+        const h = Math.round(rowHeight * base);
 
         img.parentElement.style.flex = grow + " " + h + "px";
         img.parentElement.style.minHeight = Math.round(h / base) + "px";
@@ -223,7 +227,7 @@ function initCodeCopyButtons() {
             setTimeout(() => {
               btn.setAttribute("aria-label", labelCopy);
               btn.classList.remove("h-code-copy-done");
-            }, 2000);
+            }, CODE_COPY_FEEDBACK_MS);
           },
           () => fallbackCopy(text, btn, labelCopy, labelCopied)
         );
@@ -248,11 +252,10 @@ function initCodeCopyButtons() {
     wrapper.appendChild(createButton("top"));
     wrapper.appendChild(createButton("bottom"));
 
-    const bottomThreshold = 80;
     wrapper.addEventListener("mousemove", (e) => {
       const rect = wrapper.getBoundingClientRect();
       const fromBottom = rect.bottom - e.clientY;
-      if (fromBottom <= bottomThreshold) {
+      if (fromBottom <= CODE_BLOCK_BOTTOM_THRESHOLD) {
         wrapper.classList.add("h-code-block--show-copy");
       } else {
         wrapper.classList.remove("h-code-block--show-copy");
@@ -268,13 +271,13 @@ function initCodeCopyButtons() {
 }
 
 function fallbackCopy(text, btn, labelCopy, labelCopied) {
-  const ta = document.createElement("textarea");
-  ta.value = text;
-  ta.setAttribute("readonly", "");
-  ta.style.position = "fixed";
-  ta.style.left = "-9999px";
-  document.body.appendChild(ta);
-  ta.select();
+  const tempTextarea = document.createElement("textarea");
+  tempTextarea.value = text;
+  tempTextarea.setAttribute("readonly", "");
+  tempTextarea.style.position = "fixed";
+  tempTextarea.style.left = "-9999px";
+  document.body.appendChild(tempTextarea);
+  tempTextarea.select();
   try {
     document.execCommand("copy");
     btn.setAttribute("aria-label", labelCopied);
@@ -282,20 +285,23 @@ function fallbackCopy(text, btn, labelCopy, labelCopied) {
     setTimeout(() => {
       btn.setAttribute("aria-label", labelCopy);
       btn.classList.remove("h-code-copy-done");
-    }, 2000);
-  } catch (err) {}
-  document.body.removeChild(ta);
+    }, CODE_COPY_FEEDBACK_MS);
+  } catch {
+    // execCommand("copy") can throw in some environments
+  }
+  document.body.removeChild(tempTextarea);
 }
 
-function focusAfterAnimation(elem, timeOfAnimation) {
+function focusAfterAnimation(elem, delayMs) {
   window.setTimeout(function () {
     elem.focus();
-  }, timeOfAnimation);
+  }, delayMs);
 }
 
 function showOrHideSearchButtonClose() {
   const searchInput = document.getElementById("h-search-input");
   const searchButtonClose = document.getElementById("h-search-button-close");
+  if (!searchInput || !searchButtonClose) return;
   if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
   else searchButtonClose.classList.add("is-hidden-touch");
 }
@@ -324,6 +330,7 @@ function initThemeToggle() {
 }
 
 function translate(string) {
-  let lang = document.documentElement.lang;
-  return lang == "en" ? string : locale[string];
+  const lang = document.documentElement.lang;
+  if (lang === "en") return string;
+  return locale[string] ?? string;
 }
