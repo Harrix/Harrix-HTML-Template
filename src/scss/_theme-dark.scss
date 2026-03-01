@@ -46,6 +46,9 @@
     .navbar-dropdown {
       background-color: #242424;
       border-top-color: rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      box-shadow: none;
+      border-radius: 0;
 
       .navbar-item {
         color: #e4e4e4;
