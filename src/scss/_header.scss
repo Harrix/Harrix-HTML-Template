@@ -38,7 +38,7 @@
 
     img {
       padding-right: 0.4375rem;
-      height: 2rem;
+      height: hvars.$h-navbar-logo-img-height;
     }
 
     .is-sub {
@@ -49,6 +49,8 @@
 
   .navbar-item,
   .navbar-link {
+    gap: 0;
+
     &:hover {
       background-color: transparent;
     }
