@@ -6,6 +6,9 @@
 
 .navbar {
   min-height: 3rem;
+  height: 3rem;
+  padding-top: 0;
+  padding-bottom: 0;
   font-size: hvars.$h-navbar-font-size;
   @include hmixins.h-animation(transform);
 
@@ -35,7 +38,7 @@
 
     img {
       padding-right: 0.4375rem;
-      height: 1.75rem;
+      height: 2rem;
     }
 
     .is-sub {
@@ -49,6 +52,9 @@
     &:hover {
       background-color: transparent;
     }
+
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
 
     img {
       max-height: 2rem;
