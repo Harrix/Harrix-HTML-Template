@@ -1,7 +1,20 @@
 @use "~bulma/sass/utilities/mixins" as mixins;
+@use "variables" as hvars;
 
 body {
   overflow-x: hidden;
+}
+
+// Primary buttons: boston blue (#2e86b7) with white text (as in old Bulma 0 version)
+.button.is-primary {
+  background-color: hvars.$h-boston-blue;
+  border-color: transparent;
+  color: #fff;
+
+  &:hover {
+    background-color: #2570a0;
+    color: #fff;
+  }
 }
 
 .container {
