@@ -7,6 +7,12 @@ body {
   font-weight: 400;
 }
 
+// Heading weight 400 (replaces Bulma $content-heading-weight when variables are not passed)
+.title,
+.subtitle {
+  font-weight: 400;
+}
+
 // Primary buttons: boston blue (#2e86b7) with white text (as in old Bulma 0 version)
 .button.is-primary {
   background-color: hvars.$h-boston-blue;
