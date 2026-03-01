@@ -69,13 +69,17 @@
 
   code,
   var {
-    font-family: derived-variables.$family-code;
-    font-size: derived-variables.$size-small;
-    font-weight: 400;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.1875rem 0.4rem;
     color: derived-variables.$code;
     background-color: derived-variables.$code-background;
-    padding: 0.25em 0.5em;
     word-break: break-all;
+  }
+
+  pre {
+    padding: 6px;
   }
 
   blockquote {

@@ -5,6 +5,7 @@
 @use "mixins" as hmixins;
 
 .navbar {
+  min-height: 3rem;
   font-size: hvars.$h-navbar-font-size;
   @include hmixins.h-animation(transform);
 
@@ -45,6 +46,14 @@
 
   .navbar-item,
   .navbar-link {
+    &:hover {
+      background-color: transparent;
+    }
+
+    img {
+      max-height: 2rem;
+    }
+
     .icon {
       &:only-child {
         margin-right: -0.125rem;
@@ -73,6 +82,8 @@
     }
 
     .navbar-dropdown {
+      box-shadow: none;
+
       .navbar-item {
         &:hover {
           background-color: transparent;

@@ -13,6 +13,19 @@ body {
   font-weight: 400;
 }
 
+.subtitle {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+// Link colors (replaces Bulma $link, $link-hover when variables are not passed)
+a {
+  color: hvars.$h-boston-blue;
+}
+a:hover {
+  color: #358cbc;
+}
+
 // Primary buttons: boston blue (#2e86b7) with white text (as in old Bulma 0 version)
 .button.is-primary {
   background-color: hvars.$h-boston-blue;
