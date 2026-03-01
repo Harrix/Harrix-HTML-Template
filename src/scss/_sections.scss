@@ -4,6 +4,10 @@
 .section {
   padding: 1.5rem 0;
 
+  @include mixins.desktop {
+    padding: 3rem;
+  }
+
   .h-has-special-hr {
     margin-bottom: 2.5rem;
 
