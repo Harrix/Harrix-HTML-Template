@@ -43,15 +43,22 @@
       }
     }
 
-    .navbar-dropdown {
-      background-color: #242424;
-      border-top-color: rgba(255, 255, 255, 0.1);
+    .navbar-dropdown.is-boxed {
+      background-color: #242424 !important;
+      border: none !important;
+      border-top: none !important;
       overflow: hidden;
-      box-shadow: none;
-      border-radius: 0;
+      box-shadow: none !important;
+      // Единый фон в закруглённых углах: перекрыть любую тень/рамку Bulma
+      &,
+      &::before,
+      &::after {
+        background-color: #242424;
+      }
 
       .navbar-item {
         color: #e4e4e4;
+        background-color: transparent;
 
         &:hover {
           background-color: transparent;
