@@ -146,10 +146,56 @@ function initLightGallery() {
   if (items.length === 0) return;
 
   const container = document.body;
+  const GALLERY_ID = "1";
   const instance = lightGallery(container, {
     dynamic: true,
     dynamicEl: items,
     plugins: [lgHash, lgZoom, lgThumbnail],
+    galleryId: GALLERY_ID,
+    hash: true,
+  });
+
+  let isGalleryOpen = false;
+
+  function getHashForIndex(index) {
+    return "#lg=" + GALLERY_ID + "&slide=" + index;
+  }
+
+  function pushSlideToHistory(index) {
+    const hash = getHashForIndex(index);
+    if (typeof history !== "undefined" && history.pushState) {
+      history.pushState({ lg: GALLERY_ID, slide: index }, "", window.location.pathname + window.location.search + hash);
+    }
+  }
+
+  instance.LGel.on("lgAfterOpen.lg-history", function (e) {
+    isGalleryOpen = true;
+    const index = e.detail?.index ?? instance.index ?? 0;
+    pushSlideToHistory(index);
+  });
+  instance.LGel.on("lgAfterSlide.lg-history", function (e) {
+    const index = e.detail?.index ?? 0;
+    pushSlideToHistory(index);
+  });
+  instance.LGel.on("lgAfterClose.lg-history", function () {
+    isGalleryOpen = false;
+  });
+
+  window.addEventListener("popstate", function () {
+    const hash = window.location.hash || "";
+    const match = hash.match(/lg=([^&]+)&slide=(\d+)/);
+    if (match && match[1] === GALLERY_ID) {
+      const index = parseInt(match[2], 10);
+      if (!isNaN(index) && index >= 0 && index < items.length) {
+        if (isGalleryOpen) {
+          instance.slide(index);
+        } else {
+          instance.openGallery(index);
+        }
+      }
+    } else if (isGalleryOpen) {
+      instance.closeGallery();
+    }
   });
 
   function removeDownloadTarget() {
