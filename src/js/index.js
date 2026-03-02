@@ -35,11 +35,10 @@ function initNavbar(scrollThreshold) {
     const root = document.documentElement;
     const navbarBurger = document.getElementById("h-burger");
     const navbarBottom = document.getElementById("h-navbar-bottom");
-    const logo = document.getElementById("h-logo");
 
     let lastY = 0;
     let currentY = 0;
-    let isNavbarHidden = logo.classList.contains("h-is-hidden");
+    let isNavbarHidden = navbar.classList.contains("h-is-hidden");
 
     navbarBottom.onmouseover = function () {
       navbar.classList.remove("h-is-hidden");
@@ -81,8 +80,7 @@ function initSearchPanel() {
     searchInput.placeholder = translate("Search…");
 
     searchButtonOpen.addEventListener("click", () => {
-      searchForm.classList.remove("h-is-hidden");
-      navbarMenu.classList.add("has-visible-search-form");
+      navbarMenu.classList.add("h-has-visible-search-form");
       focusAfterAnimation(searchInput, SEARCH_ANIMATION_MS);
       showOrHideSearchButtonClose();
     });
@@ -92,8 +90,7 @@ function initSearchPanel() {
         searchInput.value = "";
         showOrHideSearchButtonClose();
       } else {
-        searchForm.classList.add("h-is-hidden");
-        navbarMenu.classList.remove("has-visible-search-form");
+        navbarMenu.classList.remove("h-has-visible-search-form");
         searchInput.blur();
       }
     });
@@ -269,10 +266,10 @@ function initCodeCopyButtons() {
         navigator.clipboard.writeText(text).then(
           () => {
             btn.setAttribute("aria-label", labelCopied);
-            btn.classList.add("h-code-copy-done");
+            btn.classList.add("h-code-copy--done");
             setTimeout(() => {
               btn.setAttribute("aria-label", labelCopy);
-              btn.classList.remove("h-code-copy-done");
+              btn.classList.remove("h-code-copy--done");
             }, CODE_COPY_FEEDBACK_MS);
           },
           () => fallbackCopy(text, btn, labelCopy, labelCopied)
@@ -327,10 +324,10 @@ function fallbackCopy(text, btn, labelCopy, labelCopied) {
   try {
     document.execCommand("copy");
     btn.setAttribute("aria-label", labelCopied);
-    btn.classList.add("h-code-copy-done");
+    btn.classList.add("h-code-copy--done");
     setTimeout(() => {
       btn.setAttribute("aria-label", labelCopy);
-      btn.classList.remove("h-code-copy-done");
+      btn.classList.remove("h-code-copy--done");
     }, CODE_COPY_FEEDBACK_MS);
   } catch {
     // execCommand("copy") can throw in some environments

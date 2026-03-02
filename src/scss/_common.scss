@@ -20,7 +20,7 @@ body {
 
 // Link colors (replaces Bulma $link, $link-hover when variables are not passed)
 a {
-  color: hvars.$h-boston-blue;
+  color: hvars.$h-primary;
 }
 a:hover {
   color: hvars.$h-link-hover;
@@ -28,7 +28,7 @@ a:hover {
 
 // Primary buttons: boston blue (#2e86b7) with white text (as in old Bulma 0 version)
 .button.is-primary {
-  background-color: hvars.$h-boston-blue;
+  background-color: hvars.$h-primary;
   border-color: transparent;
   color: #fff;
 

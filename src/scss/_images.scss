@@ -42,9 +42,9 @@
     height: 1px;
   }
 
-  @include mixins.widescreen {
+  @include mixins.tablet {
     &:after {
-      flex: 500 300px;
+      flex: 50 200px;
     }
   }
 
@@ -54,9 +54,9 @@
     }
   }
 
-  @include mixins.tablet {
+  @include mixins.widescreen {
     &:after {
-      flex: 50 200px;
+      flex: 500 300px;
     }
   }
 }
@@ -71,15 +71,15 @@
 }
 
 .content figure {
-  @include hmixins.h-fix-margin;
+  @include hmixins.h-reset-margin;
 
   &.is-pulled-left {
-    @include hmixins.h-fix-margin(0);
+    @include hmixins.h-reset-margin(0);
     margin-right: 1rem;
   }
 
   &.is-pulled-right {
-    @include hmixins.h-fix-margin(0);
+    @include hmixins.h-reset-margin(0);
     margin-left: 1rem;
   }
 }

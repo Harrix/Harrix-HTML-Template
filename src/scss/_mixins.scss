@@ -1,17 +1,13 @@
 @use "~bulma/sass/utilities/initial-variables" as initial-variables;
 @use "variables" as hvars;
 
-@mixin h-animation($property: all) {
-  transition: $property hvars.$h-speed-normal initial-variables.$easing;
+@mixin h-transition($property: all) {
+  transition: $property hvars.$h-transition-duration initial-variables.$easing;
 }
 
 @mixin h-clickable {
   pointer-events: auto !important;
   cursor: pointer !important;
-}
-
-@mixin h-fullwidth {
-  width: 100%;
 }
 
 @mixin h-overlay {
@@ -41,7 +37,7 @@
   }
 }
 
-@mixin h-fix-margin($margin: 0) {
+@mixin h-reset-margin($margin: 0) {
   margin-left: $margin;
   margin-right: $margin;
 

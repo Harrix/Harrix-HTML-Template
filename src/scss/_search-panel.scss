@@ -6,7 +6,7 @@
 .navbar {
   @include mixins.desktop {
     #h-search-form {
-      @include hmixins.h-animation;
+      @include hmixins.h-transition;
       transition-property: transform, opacity;
       @include hmixins.h-overlay;
       z-index: 31;
@@ -15,7 +15,7 @@
       margin-right: -0.75rem;
     }
 
-    .has-visible-search-form {
+    .h-has-visible-search-form {
       .navbar-item {
         &:not(:first-child) {
           opacity: 0;
@@ -53,7 +53,7 @@
     }
 
     .navbar-item {
-      @include hmixins.h-animation(opacity);
+      @include hmixins.h-transition(opacity);
     }
   }
 

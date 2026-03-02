@@ -22,8 +22,8 @@ pre {
   overflow-x: auto;
 }
 
-@at-root .hljs-comment,
-  .hljs-quote {
+.hljs-comment,
+.hljs-quote {
   color: #abb8c6;
 }
 
@@ -125,7 +125,7 @@ pre {
       outline-offset: 2px;
     }
 
-    &.h-code-copy-done {
+    &.h-code-copy--done {
       color: #2e7d32;
       background-color: rgba(232, 245, 233, 0.95);
       border-color: rgba(46, 125, 50, 0.3);

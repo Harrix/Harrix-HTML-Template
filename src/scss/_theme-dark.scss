@@ -52,7 +52,7 @@
       border-top: none !important;
       overflow: hidden;
       box-shadow: none !important;
-      // Единый фон в закруглённых углах: перекрыть любую тень/рамку Bulma
+      // Unified background for rounded corners: override any Bulma shadow/border
       &,
       &::before,
       &::after {
@@ -187,7 +187,7 @@
   .button {
     &.is-primary,
     &.is-link {
-      background-color: hvars.$h-boston-blue;
+      background-color: hvars.$h-primary;
       border-color: transparent;
       color: #fff;
 

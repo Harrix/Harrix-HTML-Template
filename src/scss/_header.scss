@@ -10,7 +10,7 @@
   padding-top: 0;
   padding-bottom: 0;
   font-size: hvars.$h-navbar-font-size;
-  @include hmixins.h-animation(transform);
+  @include hmixins.h-transition(transform);
 
   &.h-is-hidden {
     transform: translateY(-100%);
@@ -41,7 +41,7 @@
       height: hvars.$h-navbar-logo-img-height;
     }
 
-    .is-sub {
+    .h-is-sub {
       padding-left: 0.3125rem;
       font-weight: 400;
     }
@@ -117,13 +117,7 @@
 
   .navbar-burger {
     color: hvars.$h-navbar-icon-color;
-  }
 
-  .is-github-icon {
-    color: hvars.$h-github;
-  }
-
-  .navbar-burger {
     span {
       height: 2px;
       width: 18px;
@@ -132,5 +126,9 @@
     &:hover {
       background-color: transparent;
     }
+  }
+
+  .h-is-github-icon {
+    color: hvars.$h-github;
   }
 }
