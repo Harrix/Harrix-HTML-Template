@@ -16,6 +16,9 @@ const GALLERY_ROW_HEIGHT = 200;
 const SEARCH_ANIMATION_MS = 500;
 const CODE_COPY_FEEDBACK_MS = 2000;
 const CODE_BLOCK_BOTTOM_THRESHOLD = 80;
+const GALLERY_ID = "1";
+
+const lang = document.documentElement.lang;
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavbar(NAVBAR_HIDE_SCROLL_THRESHOLD);
@@ -36,14 +39,16 @@ function initNavbar(scrollThreshold) {
     const navbarBurger = document.getElementById("h-burger");
     const navbarBottom = document.getElementById("h-navbar-bottom");
 
+    if (!navbarBurger || !navbarBottom) return;
+
     let lastY = 0;
     let currentY = 0;
     let isNavbarHidden = navbar.classList.contains("h-is-hidden");
 
-    navbarBottom.onmouseover = function () {
+    navbarBottom.addEventListener("mouseover", () => {
       navbar.classList.remove("h-is-hidden");
       isNavbarHidden = false;
-    };
+    });
 
     navbarBurger.addEventListener("click", () => {
       root.classList.toggle("h-is-clipped-touch");
@@ -52,7 +57,7 @@ function initNavbar(scrollThreshold) {
       target.classList.toggle("is-active");
     });
 
-    window.addEventListener("scroll", function () {
+    window.addEventListener("scroll", () => {
       lastY = currentY;
       currentY = window.scrollY;
 
@@ -78,6 +83,11 @@ function initSearchPanel() {
     const searchInput = document.getElementById("h-search-input");
 
     searchInput.placeholder = translate("Search…");
+
+    function showOrHideSearchButtonClose() {
+      if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
+      else searchButtonClose.classList.add("is-hidden-touch");
+    }
 
     searchButtonOpen.addEventListener("click", () => {
       navbarMenu.classList.add("h-has-visible-search-form");
@@ -111,8 +121,7 @@ function initLightGallery() {
   const items = [];
   const triggers = [];
 
-  // Single images: .h-lightbox > a[href]
-  document.querySelectorAll(".h-lightbox").forEach(function (figure) {
+  document.querySelectorAll(".h-lightbox").forEach((figure) => {
     const a = figure.querySelector("a[href]");
     if (!a) return;
     const img = a.querySelector("img");
@@ -126,8 +135,7 @@ function initLightGallery() {
     triggers.push(a);
   });
 
-  // Gallery items: .h-gallery .h-is-item
-  document.querySelectorAll(".h-gallery .h-is-item").forEach(function (el) {
+  document.querySelectorAll(".h-gallery .h-is-item").forEach((el) => {
     const src = el.getAttribute("data-src");
     if (!src) return;
     const img = el.querySelector("img");
@@ -143,7 +151,6 @@ function initLightGallery() {
   if (items.length === 0) return;
 
   const container = document.body;
-  const GALLERY_ID = "1";
   const instance = lightGallery(container, {
     dynamic: true,
     dynamicEl: items,
@@ -160,25 +167,23 @@ function initLightGallery() {
 
   function pushSlideToHistory(index) {
     const hash = getHashForIndex(index);
-    if (typeof history !== "undefined" && history.pushState) {
-      history.pushState({ lg: GALLERY_ID, slide: index }, "", window.location.pathname + window.location.search + hash);
-    }
+    history.pushState({ lg: GALLERY_ID, slide: index }, "", window.location.pathname + window.location.search + hash);
   }
 
-  instance.LGel.on("lgAfterOpen.lg-history", function (e) {
+  instance.LGel.on("lgAfterOpen.lg-history", (e) => {
     isGalleryOpen = true;
     const index = e.detail?.index ?? instance.index ?? 0;
     pushSlideToHistory(index);
   });
-  instance.LGel.on("lgAfterSlide.lg-history", function (e) {
+  instance.LGel.on("lgAfterSlide.lg-history", (e) => {
     const index = e.detail?.index ?? 0;
     pushSlideToHistory(index);
   });
-  instance.LGel.on("lgAfterClose.lg-history", function () {
+  instance.LGel.on("lgAfterClose.lg-history", () => {
     isGalleryOpen = false;
   });
 
-  window.addEventListener("popstate", function () {
+  window.addEventListener("popstate", () => {
     const hash = window.location.hash || "";
     const match = hash.match(/lg=([^&]+)&slide=(\d+)/);
     if (match && match[1] === GALLERY_ID) {
@@ -205,8 +210,8 @@ function initLightGallery() {
   instance.LGel.on("lgAfterOpen.lg-download-fix", removeDownloadTarget);
   instance.LGel.on("lgAfterSlide.lg-download-fix", removeDownloadTarget);
 
-  triggers.forEach(function (el, index) {
-    el.addEventListener("click", function (e) {
+  triggers.forEach((el, index) => {
+    el.addEventListener("click", (e) => {
       e.preventDefault();
       instance.openGallery(index);
     });
@@ -214,25 +219,20 @@ function initLightGallery() {
 }
 
 function initGalleryGrid(rowHeight) {
-  const galleries = document.getElementsByClassName("h-gallery");
-
-  Array.from(galleries).forEach((gallery) => {
+  document.querySelectorAll(".h-gallery").forEach((gallery) => {
     const images = gallery.querySelectorAll("img");
 
-    Array.from(images).forEach((img) => {
+    images.forEach((img) => {
       if (img.complete) imgLoaded();
       else img.addEventListener("load", imgLoaded);
 
       function imgLoaded() {
-        const width = img.naturalWidth;
-        const height = img.naturalHeight;
+        const aspectRatio = img.naturalWidth / img.naturalHeight;
+        const flexGrow = Math.round(aspectRatio * 1000) / 100;
+        const flexBasis = Math.round(rowHeight * aspectRatio);
 
-        const base = width / height;
-        const grow = Math.round(base * 1000) / 100;
-        const h = Math.round(rowHeight * base);
-
-        img.parentElement.style.flex = grow + " " + h + "px";
-        img.parentElement.style.minHeight = Math.round(h / base) + "px";
+        img.parentElement.style.flex = flexGrow + " " + flexBasis + "px";
+        img.parentElement.style.minHeight = Math.round(flexBasis / aspectRatio) + "px";
         img.parentElement.style.width = "100%";
 
         img.style.width = "100%";
@@ -262,21 +262,14 @@ function initCodeCopyButtons() {
 
     function doCopy(btn) {
       const text = codeEl.textContent || "";
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(
-          () => {
-            btn.setAttribute("aria-label", labelCopied);
-            btn.classList.add("h-code-copy--done");
-            setTimeout(() => {
-              btn.setAttribute("aria-label", labelCopy);
-              btn.classList.remove("h-code-copy--done");
-            }, CODE_COPY_FEEDBACK_MS);
-          },
-          () => fallbackCopy(text, btn, labelCopy, labelCopied)
-        );
-      } else {
-        fallbackCopy(text, btn, labelCopy, labelCopied);
-      }
+      navigator.clipboard.writeText(text).then(() => {
+        btn.setAttribute("aria-label", labelCopied);
+        btn.classList.add("h-code-copy--done");
+        setTimeout(() => {
+          btn.setAttribute("aria-label", labelCopy);
+          btn.classList.remove("h-code-copy--done");
+        }, CODE_COPY_FEEDBACK_MS);
+      });
     }
 
     function createButton(position) {
@@ -313,40 +306,10 @@ function initCodeCopyButtons() {
   });
 }
 
-function fallbackCopy(text, btn, labelCopy, labelCopied) {
-  const tempTextarea = document.createElement("textarea");
-  tempTextarea.value = text;
-  tempTextarea.setAttribute("readonly", "");
-  tempTextarea.style.position = "fixed";
-  tempTextarea.style.left = "-9999px";
-  document.body.appendChild(tempTextarea);
-  tempTextarea.select();
-  try {
-    document.execCommand("copy");
-    btn.setAttribute("aria-label", labelCopied);
-    btn.classList.add("h-code-copy--done");
-    setTimeout(() => {
-      btn.setAttribute("aria-label", labelCopy);
-      btn.classList.remove("h-code-copy--done");
-    }, CODE_COPY_FEEDBACK_MS);
-  } catch {
-    // execCommand("copy") can throw in some environments
-  }
-  document.body.removeChild(tempTextarea);
-}
-
 function focusAfterAnimation(elem, delayMs) {
-  window.setTimeout(function () {
+  setTimeout(() => {
     elem.focus();
   }, delayMs);
-}
-
-function showOrHideSearchButtonClose() {
-  const searchInput = document.getElementById("h-search-input");
-  const searchButtonClose = document.getElementById("h-search-button-close");
-  if (!searchInput || !searchButtonClose) return;
-  if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
-  else searchButtonClose.classList.add("is-hidden-touch");
 }
 
 function initThemeToggle() {
@@ -373,7 +336,6 @@ function initThemeToggle() {
 }
 
 function translate(string) {
-  const lang = document.documentElement.lang;
   if (lang === "en") return string;
   return locale[string] ?? string;
 }

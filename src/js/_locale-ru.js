@@ -1,4 +1,4 @@
-let locale = {
+const locale = {
   "Table of contents": "Содержание",
   "Search…": "Поиск…",
   "Copy": "Копировать",
