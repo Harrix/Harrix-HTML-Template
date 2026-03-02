@@ -1,6 +1,6 @@
-@use "mixins" as mixins;
+@use "mixins" as hmixins;
 .tex {
   overflow: auto;
 
-  @include mixins.h-scrollbars;
+  @include hmixins.h-scrollbars;
 }
