@@ -41,7 +41,6 @@ const config = {
     },
   },
   devtool: "source-map",
-  mode: "production",
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
@@ -109,7 +108,6 @@ const config = {
           {
             loader: "sass-loader",
             options: {
-              implementation: require("sass"),
               sourceMap: true,
             },
           },
