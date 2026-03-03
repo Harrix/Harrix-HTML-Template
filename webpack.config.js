@@ -8,15 +8,19 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
+  const baseChunks = ["runtime", "vendors", "app", "../katex/katex"];
   return templateFiles.map((item) => {
     const parsedPath = path.parse(item);
     const name = parsedPath.name;
     const extension = parsedPath.ext.substring(1);
+    const chunks =
+      name === "index" ? [...baseChunks, "../stl-viewer/stl-viewer"] : baseChunks;
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
       inject: "body",
       scriptLoading: "defer",
+      chunks,
     });
   });
 }
@@ -27,6 +31,7 @@ const config = {
   entry: {
     app: ["./src/js/index.js", "./src/scss/style.scss"],
     "../katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
+    "../stl-viewer/stl-viewer": ["./src/js/stl-viewer.js", "./src/scss/stl-viewer.scss"],
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -80,7 +85,7 @@ const config = {
       chunks: "all",
       cacheGroups: {
         vendor: {
-          test: /[\\/]node_modules[\\/](?!katex)/,
+          test: /[\\/]node_modules[\\/](?!katex|three)/,
           name: "vendors",
           chunks: "all",
         },
