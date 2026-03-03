@@ -1,12 +1,25 @@
 @use "~bulma/sass/utilities/mixins" as mixins;
 @use "mixins" as hmixins;
 
+// Цвета подсветки кода — гамма как в VSCode (Default Light Modern)
+$h-code-comment: #1cb978;
+$h-code-keyword: #0f0fbd;
+$h-code-string: #1cb978;
+$h-code-variable: #d07826;
+$h-code-constant: #3861b2;
+$h-code-entity: #4c43c2;
+$h-code-attr: #d07826;
+$h-code-number: #1f2939;
+$h-code-invalid: #ad1c48;
+$h-code-regexp: #1acd82;
+$h-code-default: #1f2939;
+
 .content pre code,
 pre code,
 .content pre,
 pre {
   font-weight: 400;
-  color: #002d7a;
+  color: $h-code-default;
   line-height: 1.25rem;
 
   @include hmixins.h-scrollbars;
@@ -20,58 +33,72 @@ pre {
 .hljs {
   display: block;
   overflow-x: auto;
+  color: $h-code-default;
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: #abb8c6;
+  font-style: italic;
+  color: $h-code-comment;
 }
 
-.hljs-variable,
-.hljs-template-variable,
-.hljs-regexp,
-.hljs-deletion,
-.hljs-keyword {
-  color: #e38800;
-}
-
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-  color: #8d44eb;
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-doctag {
+  color: $h-code-keyword;
 }
 
 .hljs-selector-id,
-.hljs-selector-class,
-.hljs-selector-tag,
-.hljs-attr {
-  color: #e77600;
-}
-
-.hljs-attribute {
-  color: #108de8;
+.hljs-selector-class {
+  color: $h-code-entity;
 }
 
 .hljs-string,
 .hljs-symbol,
 .hljs-bullet,
 .hljs-addition {
-  color: #2aab51;
+  color: $h-code-string;
 }
 
-.hljs-subst,
-.hljs-number {
-  color: #ed6e55;
+.hljs-variable,
+.hljs-template-variable {
+  color: $h-code-variable;
+}
+
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-meta,
+.hljs-link,
+.hljs-meta .hljs-meta-string {
+  color: $h-code-constant;
+}
+
+.hljs-attr,
+.hljs-attribute {
+  color: $h-code-attr;
+}
+
+.hljs-number,
+.hljs-params,
+.hljs-subst {
+  color: $h-code-number;
 }
 
 .hljs-title,
+.hljs-title.class_,
 .hljs-section,
 .hljs-name {
-  color: #fa3d58;
+  color: $h-code-entity;
+}
+
+.hljs-deletion {
+  color: $h-code-invalid;
+}
+
+.hljs-regexp {
+  color: $h-code-regexp;
 }
 
 .hljs-emphasis {
