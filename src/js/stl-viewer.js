@@ -6,6 +6,13 @@ function initViewer(container) {
   const src = container.getAttribute("data-src");
   if (!src) return;
 
+  if (window.location.protocol === "file:") {
+    container.classList.add("h-stl-viewer--no-fetch");
+    container.innerHTML =
+      '<p class="h-stl-viewer__message">Для просмотра 3D-модели откройте страницу через веб-сервер (например, <code>npm run start</code>). При открытии файла напрямую (file://) загрузка STL блокируется браузером.</p>';
+    return;
+  }
+
   const width = container.clientWidth;
   const height = container.clientHeight;
 
