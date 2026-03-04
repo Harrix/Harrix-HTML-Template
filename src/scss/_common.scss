@@ -16,7 +16,7 @@ body {
 }
 
 .subtitle {
-  font-size: 1rem;
+  font-size: inherit;
   line-height: 1.5;
 }
 
@@ -47,7 +47,7 @@ a:hover {
 }
 
 .h-sidebar {
-  font-size: 0.875rem;
+  font-size: hvars.$h-navbar-font-size;
 }
 
 .h-columns-with-sidebar {
