@@ -1,7 +1,3 @@
-@use "~bulma/sass/utilities/mixins" as mixins;
-@use "variables" as hvars;
-@use "mixins" as hmixins;
-
 .h-lightbox {
   img {
     max-width: 100%;
@@ -11,11 +7,15 @@
 }
 
 .h-gallery {
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  -webkit-align-items: stretch;
+  -webkit-justify-content: space-around;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: flex-start; //space-around;
-  width: calc(100% + #{hvars.$h-gallery-gap});
+  width: calc(100% + #{$h-gallery-gap});
 
   img {
     display: block;
@@ -24,11 +24,14 @@
   }
 
   div {
+    display: -webkit-flex;
+    -webkit-align-items: flex-end;
+    -webkit-justify-content: space-around;
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
-    margin-right: hvars.$h-gallery-gap;
-    margin-bottom: hvars.$h-gallery-gap;
+    margin-right: $h-gallery-gap;
+    margin-bottom: $h-gallery-gap;
     width: auto;
     height: auto;
 
@@ -36,27 +39,35 @@
   }
 
   &:after {
+    -ms-flex: 20 150px;
+    -webkit-flex: 20 150px;
     flex: 20 150px;
     display: block;
     content: " ";
     height: 1px;
   }
 
-  @include mixins.tablet {
+  @include widescreen {
     &:after {
-      flex: 50 200px;
+      -ms-flex: 500 300px;
+      -webkit-flex: 500 300px;
+      flex: 500 300px;
     }
   }
 
-  @include mixins.desktop {
+  @include desktop {
     &:after {
+      -ms-flex: 100 250px;
+      -webkit-flex: 100 250px;
       flex: 100 250px;
     }
   }
 
-  @include mixins.widescreen {
+  @include tablet {
     &:after {
-      flex: 500 300px;
+      -ms-flex: 50 200px;
+      -webkit-flex: 50 200px;
+      flex: 50 200px;
     }
   }
 }
@@ -70,20 +81,16 @@
   }
 }
 
-.lg-outer {
-  font-family: -apple-system, BlinkMacSystemFont, "Fira Sans", "Open Sans", "Helvetica Neue", sans-serif;
-}
-
 .content figure {
-  @include hmixins.h-reset-margin;
+  @include h-fix-margin;
 
   &.is-pulled-left {
-    @include hmixins.h-reset-margin(0);
+    @include h-fix-margin(0);
     margin-right: 1rem;
   }
 
   &.is-pulled-right {
-    @include hmixins.h-reset-margin(0);
+    @include h-fix-margin(0);
     margin-left: 1rem;
   }
 }

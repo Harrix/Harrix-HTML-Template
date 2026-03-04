@@ -1,11 +1,13 @@
-@use "variables" as hvars;
-
 .h-has-min-width {
-  min-width: hvars.$h-form-min-width;
+  min-width: 8.125rem;
 }
 
 .input,
-.textarea,
-.select select {
-  box-shadow: none;
+.textarea {
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 }

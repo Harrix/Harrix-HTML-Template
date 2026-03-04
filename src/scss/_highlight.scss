@@ -1,30 +1,16 @@
-@use "~bulma/sass/utilities/mixins" as mixins;
-@use "mixins" as hmixins;
-
-// Цвета подсветки кода — гамма как в VSCode (Default Light Modern)
-$h-code-comment: #1cb978;
-$h-code-keyword: #0f0fbd;
-$h-code-string: #1cb978;
-$h-code-variable: #d07826;
-$h-code-constant: #3861b2;
-$h-code-entity: #4c43c2;
-$h-code-attr: #d07826;
-$h-code-number: #1f2939;
-$h-code-invalid: #ad1c48;
-$h-code-regexp: #1acd82;
-$h-code-default: #1f2939;
-
 .content pre code,
 pre code,
 .content pre,
 pre {
   font-weight: 400;
-  color: $h-code-default;
-  line-height: 1.25rem;
+  //font-size: 0.8125rem;
+  color: #002d7a; //$body-color;
+  line-height: 1.25rem; //1.1875rem;
+  //white-space: pre-wrap;
 
-  @include hmixins.h-scrollbars;
+  @include h-scrollbars;
 
-  @include mixins.touch {
+  @include touch {
     font-size: 12px;
     line-height: 1.125rem;
   }
@@ -33,72 +19,157 @@ pre {
 .hljs {
   display: block;
   overflow-x: auto;
-  color: $h-code-default;
 }
 
-.hljs-comment,
+/*.hljs-comment,
 .hljs-quote {
+  color: #d81b60; //#17a81a;//#616161; //#888a85; //#90a1b5 //#d81b60
   font-style: italic;
-  color: $h-code-comment;
+}
+
+.hljs-section {
+  color: #474747;
+  font-weight: normal;
+}
+
+.hljs-link,
+.hljs-params,
+.hljs-formula,
+.hljs-bullet,
+.hljs-tag,
+.hljs-built_in,
+.hljs-subst {
+  color: #474747;
 }
 
 .hljs-keyword,
-.hljs-selector-tag,
-.hljs-doctag {
-  color: $h-code-keyword;
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-regexp,
+.hljs-meta-string {
+  color: #3b78e7;//#18a2c1; //#05ad97; //#e96900 //#4ABF60 //#3b78e7
 }
 
+.hljs-string {
+  color: #0d904f;//#55A1FB; //#18a2c1 //#0d904f
+}
+
+.hljs-variable {
+  color: #4abf60;
+}
+
+.hljs-name,
+.hljs-attribute,
+.hljs-selector-tag {
+  color: #3193c6;
+}
+
+.hljs-code,
+.hljs-meta,
+.hljs-symbol {
+  color: #1990b8;
+}
+
+.hljs-number {
+  color: #d35400;
+}
+
+.hljs-literal {
+  color: #ed2b38;
+}
+
+.hljs-function {
+  color: #bd0747;
+}
+
+.hljs-attr,
 .hljs-selector-id,
-.hljs-selector-class {
-  color: $h-code-entity;
+.hljs-selector-class,
+.hljs-type,
+.hljs-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #a15ebb;
 }
 
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
+.hljs-title {
+  color: #9914c9;
+}
+
+.hljs-deletion {
+  background: #ffdddd;
+}
+
 .hljs-addition {
-  color: $h-code-string;
+  background: #ddffdd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: normal;
+}*/
+@at-root .hljs-comment,
+  .hljs-quote {
+  color: #abb8c6;
 }
 
 .hljs-variable,
-.hljs-template-variable {
-  color: $h-code-variable;
+.hljs-template-variable,
+.hljs-regexp,
+.hljs-deletion,
+.hljs-keyword,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-tag,
+.hljs-attr {
+  color: #e38800;
 }
 
 .hljs-built_in,
 .hljs-builtin-name,
 .hljs-literal,
 .hljs-type,
-.hljs-meta,
-.hljs-link,
-.hljs-meta .hljs-meta-string {
-  color: $h-code-constant;
-}
-
-.hljs-attr,
-.hljs-attribute {
-  color: $h-code-attr;
-}
-
-.hljs-number,
 .hljs-params,
-.hljs-subst {
-  color: $h-code-number;
+.hljs-meta,
+.hljs-link {
+  color: #8d44eb;
+}
+
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-tag,
+.hljs-attr {
+  color: #e77600;
+}
+
+.hljs-attribute {
+  color: #108de8;
+}
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #2aab51;
+}
+
+.hljs-subst,
+.hljs-number {
+  color: #ed6e55;
 }
 
 .hljs-title,
-.hljs-title.class_,
 .hljs-section,
 .hljs-name {
-  color: $h-code-entity;
+  color: #fa3d58;
 }
 
-.hljs-deletion {
-  color: $h-code-invalid;
-}
-
-.hljs-regexp {
-  color: $h-code-regexp;
+.hljs {
+  display: block;
+  overflow-x: auto;
 }
 
 .hljs-emphasis {
@@ -107,72 +178,4 @@ pre {
 
 .hljs-strong {
   font-weight: bold;
-}
-
-.h-code-block {
-  position: relative;
-
-  .h-code-block-inner {
-    margin: 0;
-    display: block;
-  }
-
-  .h-code-copy {
-    position: absolute;
-    z-index: 2;
-    right: 0.5rem;
-    width: 2rem;
-    height: 2rem;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.875rem;
-    color: rgba(0, 0, 0, 0.5);
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: opacity 0.2s ease, visibility 0.2s ease, color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
-
-    .icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    &:hover {
-      color: #363636;
-      background-color: #fff;
-      border-color: rgba(0, 0, 0, 0.15);
-    }
-
-    &:focus {
-      outline: 1px dotted #3273dc;
-      outline-offset: 2px;
-    }
-
-    &.h-code-copy--done {
-      color: #2e7d32;
-      background-color: rgba(232, 245, 233, 0.95);
-      border-color: rgba(46, 125, 50, 0.3);
-    }
-
-    &.h-code-copy--top {
-      top: 0.5rem;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    &.h-code-copy--bottom {
-      bottom: 0.5rem;
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-
-  &.h-code-block--show-copy .h-code-copy--bottom {
-    opacity: 1;
-    visibility: visible;
-  }
 }

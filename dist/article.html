@@ -10,31 +10,13 @@
     <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192x192.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="favicon/manifest.json" />
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#de2b26" />
     <link rel="shortcut icon" href="favicon/favicon.ico" />
     <meta name="msapplication-config" content="favicon/browserconfig.xml" />
     <meta name="theme-color" content="#de2b26" />
-    <script>
-      (function () {
-        if (window.location.protocol === "http:" || window.location.protocol === "https:") {
-          var link = document.createElement("link");
-          link.rel = "manifest";
-          link.href = "favicon/manifest.json";
-          document.head.appendChild(link);
-        }
-      })();
-    </script>
-    <script>
-      (function () {
-        var stored = localStorage.getItem("h-theme");
-        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        var theme = stored === "dark" || stored === "light" ? stored : prefersDark ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", theme);
-      })();
-    </script>
-    <link href="css/vendors.css" rel="stylesheet" />
-    <link href="css/app.css" rel="stylesheet" />
-    <link href="css/../katex/katex.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="katex/katex.css" />
   </head>
   <body class="has-navbar-fixed-top">
     <nav id="h-navbar" class="navbar is-fixed-top" aria-label="main navigation">
@@ -42,10 +24,10 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="/" id="h-logo"
-            ><img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span></a
+            ><img src="img/logo.svg" alt="Harrix" /> Harrix <span class="is-sub">Проект</span></a
           >
           <div id="h-burger" class="navbar-burger" data-target="h-navbar-menu">
-            <span></span> <span></span> <span></span> <span></span>
+            <span></span> <span></span> <span></span>
           </div>
         </div>
         <div id="h-navbar-menu" class="navbar-menu">
@@ -55,18 +37,17 @@
                 <form role="search" action="/"><input class="input is-shadowless" value="" id="h-search-input" /></form>
                 <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
                 <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-search-button-close"
-                  ><i class="fah fa-close" data-prefix="fah" data-icon="close"></i
+                  ><i class="fah fa-close"></i
                 ></span>
               </div>
             </div>
             <a class="navbar-item is-active" href="https://harrix.org/projects/">Проекты</a>
             <a class="navbar-item" href="https://harrix.org/"
-              ><span class="icon"><i class="fah fa-harrix" data-prefix="fah" data-icon="harrix"></i></span>
-              Harrix.org</a
+              ><span class="icon"><i class="fah fa-harrix"></i></span> Harrix.org</a
             >
             <a class="navbar-item" href="https://harrix.org/contacts">Контакты</a>
             <a class="navbar-item" href="https://github.com/Harrix"
-              ><span class="icon h-is-github-icon"><i class="fab fa-github"></i></span> GitHub</a
+              ><span class="icon is-github-icon"><i class="fab fa-github"></i></span> GitHub</a
             >
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="#">Подменю</a>
@@ -80,19 +61,6 @@
             ><a class="navbar-item" href="https://harrix.org/"
               ><span class="icon"><i class="fas fa-globe-americas"></i></span> Eng</a
             >
-            <div
-              class="navbar-item h-is-clickable"
-              id="h-theme-toggle"
-              role="button"
-              aria-label="Переключить светлую/тёмную тему"
-            >
-              <span class="icon is-small h-theme-icon h-theme-icon--light" aria-hidden="true"
-                ><i class="fas fa-sun"></i
-              ></span>
-              <span class="icon is-small h-theme-icon h-theme-icon--dark" aria-hidden="true"
-                ><i class="fas fa-moon"></i
-              ></span>
-            </div>
             <div class="navbar-item h-is-clickable is-hidden-touch" id="h-search-button-open">
               <span class="icon is-small"><i class="fas fa-search"></i></span>
             </div>
@@ -609,12 +577,7 @@ public class MainActivity extends AppCompatActivity {
         </p>
       </div>
     </footer>
-    <script defer="defer" src="./js/runtime.js"></script>
-    <script
-      defer="defer"
-      src="./js/vendors-node_modules_lightgallery_lightgallery_es5_js-node_modules_lightgallery_plugins_hash_-e623b3.js"
-    ></script>
-    <script defer="defer" src="./js/app.js"></script>
-    <script defer="defer" src="./js/../katex/katex.js"></script>
+    <script src="js/app.js"></script>
+    <script src="katex/katex.js"></script>
   </body>
 </html>

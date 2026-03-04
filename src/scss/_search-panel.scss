@@ -1,21 +1,16 @@
-@use "~bulma/sass/utilities/derived-variables" as derived-variables;
-@use "~bulma/sass/utilities/mixins" as mixins;
-@use "variables" as hvars;
-@use "mixins" as hmixins;
-
 .navbar {
-  @include mixins.desktop {
+  @include desktop {
     #h-search-form {
-      @include hmixins.h-transition;
+      @include h-animation;
       transition-property: transform, opacity;
-      @include hmixins.h-overlay;
-      z-index: 31;
+      @include h-overlay;
+      z-index: $navbar-fixed-z + 1;
       transform: translateY(-100%);
       opacity: 0;
       margin-right: -0.75rem;
     }
 
-    .h-has-visible-search-form {
+    .has-visible-search-from {
       .navbar-item {
         &:not(:first-child) {
           opacity: 0;
@@ -33,18 +28,22 @@
 
       .input {
         border: 0;
-        font-size: hvars.$h-navbar-font-size;
-        color: derived-variables.$text;
+        font-size: $h-navbar-font-size;
+        color: $navbar-item-color;
 
         &::placeholder {
-          color: hvars.$h-navbar-icon-color;
+          color: $h-navbar-icon-color;
           opacity: 1;
+        }
+
+        &::-ms-input-placeholder {
+          color: $h-navbar-icon-color;
         }
       }
 
       .icon {
         height: 2rem;
-        color: hvars.$h-navbar-icon-color;
+        color: $h-navbar-icon-color;
       }
     }
 
@@ -53,13 +52,13 @@
     }
 
     .navbar-item {
-      @include hmixins.h-transition(opacity);
+      @include h-animation(opacity);
     }
   }
 
   .control {
     .icon {
-      color: hvars.$h-navbar-icon-color;
+      color: $h-navbar-icon-color;
     }
   }
 }

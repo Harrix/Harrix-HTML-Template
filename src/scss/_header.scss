@@ -1,16 +1,6 @@
-@use "~bulma/sass/utilities/initial-variables" as initial-variables;
-@use "~bulma/sass/utilities/derived-variables" as derived-variables;
-@use "~bulma/sass/utilities/mixins" as mixins;
-@use "variables" as hvars;
-@use "mixins" as hmixins;
-
 .navbar {
-  min-height: 3rem;
-  height: 3rem;
-  padding-top: 0;
-  padding-bottom: 0;
-  font-size: hvars.$h-navbar-font-size;
-  @include hmixins.h-transition(transform);
+  font-size: $h-navbar-font-size;
+  @include h-animation(transform);
 
   &.h-is-hidden {
     transform: translateY(-100%);
@@ -27,21 +17,21 @@
   }
 
   #h-logo {
-    font-size: hvars.$h-navbar-logo-font-size;
+    font-size: $h-navbar-logo-font-size;
     line-height: 0;
-    color: derived-variables.$text-strong;
+    color: $text-strong;
     font-weight: 500;
 
     &:hover {
-      color: derived-variables.$text-strong;
+      color: $text-strong;
     }
 
     img {
       padding-right: 0.4375rem;
-      height: hvars.$h-navbar-logo-img-height;
+      height: $navbar-item-img-max-height;
     }
 
-    .h-is-sub {
+    .is-sub {
       padding-left: 0.3125rem;
       font-weight: 400;
     }
@@ -49,19 +39,6 @@
 
   .navbar-item,
   .navbar-link {
-    gap: 0;
-
-    &:hover {
-      background-color: transparent;
-    }
-
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-
-    img {
-      max-height: 2rem;
-    }
-
     .icon {
       &:only-child {
         margin-right: -0.125rem;
@@ -73,12 +50,7 @@
     }
   }
 
-  .navbar-item.is-active {
-    color: inherit;
-    background-color: transparent;
-  }
-
-  @include mixins.desktop {
+  @include desktop {
     .has-dropdown {
       .navbar-link {
         padding-right: 1.75rem;
@@ -92,8 +64,8 @@
     .navbar-dropdown {
       .navbar-item {
         &:hover {
-          background-color: transparent;
-          color: derived-variables.$link;
+          background-color: $navbar-item-hover-background-color;
+          color: $navbar-item-hover-color;
           transition: none;
         }
       }
@@ -103,19 +75,25 @@
   .navbar-link {
     &:after {
       border-width: 2px;
-      border-color: hvars.$h-navbar-icon-color;
+      border-color: $h-navbar-icon-color;
       width: 0.375rem;
       height: 0.375rem;
     }
   }
 
   .icon {
-    color: hvars.$h-navbar-icon-color;
+    color: $h-navbar-icon-color;
   }
 
   .navbar-burger {
-    color: hvars.$h-navbar-icon-color;
+    color: $h-navbar-icon-color;
+  }
 
+  .is-github-icon {
+    color: $h-github;
+  }
+
+  .navbar-burger {
     span {
       height: 2px;
       width: 18px;
@@ -124,9 +102,5 @@
     &:hover {
       background-color: transparent;
     }
-  }
-
-  .h-is-github-icon {
-    color: hvars.$h-github;
   }
 }

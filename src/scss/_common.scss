@@ -1,55 +1,7 @@
-@use "~bulma/sass/utilities/mixins" as mixins;
-@use "variables" as hvars;
-
 body {
   overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Fira Sans", "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: 400;
-  font-size: hvars.$h-body-font-size;
-  line-height: 1.6;
-}
-
-// Heading weight 400 (replaces Bulma $content-heading-weight when variables are not passed)
-.title,
-.subtitle {
-  font-weight: 400;
-}
-
-.subtitle {
-  font-size: inherit;
-  line-height: 1.5;
-}
-
-// Link colors (replaces Bulma $link, $link-hover when variables are not passed)
-a {
-  color: hvars.$h-primary;
-}
-a:hover {
-  color: hvars.$h-link-hover;
-}
-
-// Primary buttons: boston blue (#2e86b7) with white text (as in old Bulma 0 version)
-.button.is-primary {
-  background-color: hvars.$h-primary;
-  border-color: transparent;
-  color: #fff;
-
-  &:hover {
-    background-color: hvars.$h-primary-hover;
-    color: #fff;
-  }
 }
 
 .container {
-  @include mixins.desktop {
-    max-width: 1115px;
-  }
-}
-
-.h-sidebar {
-  font-size: hvars.$h-navbar-font-size;
-}
-
-.h-columns-with-sidebar {
-  align-items: flex-start;
+  max-width: 1115px;
 }
