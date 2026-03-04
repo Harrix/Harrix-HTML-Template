@@ -8,6 +8,11 @@
     height: auto;
     cursor: zoom-in;
   }
+
+  img[src$=".svg"] {
+    max-width: min(100%, 20rem);
+    width: auto;
+  }
 }
 
 .h-gallery {

@@ -113,30 +113,16 @@ _.template(require('./../includes/header.html').default)(data) %>
             долларов и может выдать часть из них другому игроку. Здесь от второго игрока зависит исход этого дела.
           </blockquote>
 
-          <details>
-            <summary>Под спойлером скрытый тест.</summary>
-            <p>Пример скрытого текста.</p>
-            <p>Пример скрытого текста.</p>
-            <p>Пример скрытого текста.</p>
-          </details>
-
-          <p>
-            <a
-              data-toggle="collapse"
-              href="#collapseExample"
-              role="button"
-              aria-expanded="false"
-              aria-controls="collapseExample"
-            >
-              <span class="icon is-small"><i class="far fa-plus-square"></i> </span> Показать спойлер
-            </a>
-          </p>
-          <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
-              keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          <details class="h-spoiler">
+            <summary class="h-spoiler__summary">Под спойлером скрытый текст</summary>
+            <div class="h-spoiler__content">
+              <div class="h-spoiler__inner">
+                <p>Пример скрытого текста.</p>
+                <p>Пример скрытого текста.</p>
+                <p>Пример скрытого текста.</p>
+              </div>
             </div>
-          </div>
+          </details>
 
           <h2 id="columns">Колонки</h2>
 

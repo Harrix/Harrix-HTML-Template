@@ -1,0 +1,88 @@
+@use "variables" as hvars;
+
+// Spoiler on native <details>: smooth height animation and clear styling
+.h-spoiler {
+  border: 1px solid var(--bulma-border, #dbdbdb);
+  border-radius: 4px;
+  margin: 1rem 0;
+
+  &__summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.6rem 1rem;
+    padding-left: 2.25rem;
+    font-weight: 500;
+    position: relative;
+    user-select: none;
+    transition: background-color 0.2s ease;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 5px solid hvars.$h-primary;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      transition: transform hvars.$h-transition-duration ease;
+    }
+
+    &:hover {
+      background-color: rgba(46, 134, 183, 0.06);
+    }
+  }
+
+  &[open] &__summary::before {
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  &__content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows hvars.$h-transition-duration ease-out;
+  }
+
+  &[open] &__content {
+    grid-template-rows: 1fr;
+  }
+
+  &__inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  &__inner > *:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  &__inner > *:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .h-spoiler__inner p,
+  &__inner > p {
+    padding: 0 1rem 0.75rem;
+    margin: 0 0 0.5rem;
+
+    &:last-child {
+      padding-bottom: 1rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.content .h-spoiler {
+  .h-spoiler__inner p,
+  .h-spoiler__inner > p {
+    margin: 0 0 0.5rem;
+  }
+}
