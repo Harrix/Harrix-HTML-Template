@@ -44,6 +44,12 @@ a:hover {
   @include mixins.desktop {
     max-width: 1115px;
   }
+  @include mixins.widescreen {
+    max-width: 1115px;
+  }
+  @include mixins.fullhd {
+    max-width: 1115px;
+  }
 }
 
 .h-sidebar {
