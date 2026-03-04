@@ -51,7 +51,7 @@
       border: none !important;
       border-top: none !important;
       overflow: hidden;
-      box-shadow: none !important;
+      box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3) !important;
       // Unified background for rounded corners: override any Bulma shadow/border
       &,
       &::before,
