@@ -70,6 +70,10 @@
   }
 }
 
+.lg-outer {
+  font-family: -apple-system, BlinkMacSystemFont, "Fira Sans", "Open Sans", "Helvetica Neue", sans-serif;
+}
+
 .content figure {
   @include hmixins.h-reset-margin;
 
