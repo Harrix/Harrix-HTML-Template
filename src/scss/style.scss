@@ -1,4 +1,6 @@
-@use "~bulma/sass";
+@use "~bulma/sass" with (
+  $container-max-width: 1179px
+);
 
 @use "fonts";
 @use "helpers";
