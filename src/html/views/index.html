@@ -4,32 +4,32 @@ _.template(require('./../includes/header.html').default)(data) %>
 <article>
   <div class="section h-is-padding-bottomless">
     <div class="container">
-      <div class="columns content has-text-centered">
-        <div class="column is-10-desktop is-offset-1-desktop">
+      <div class="row content text-center">
+        <div class="col-lg-10 offset-lg-1">
           <header>
             <h1 class="title h-has-special-hr">Заголовок страницы</h1>
             <p class="subtitle">
               Тут может располагаться одно-три предложение о продукте. Тут может располагаться одно-три предложение о
               продукте. Тут может располагаться одно-три предложение продукте.
             </p>
-            <p class="buttons is-centered">
-              <a class="button is-primary h-has-min-width" href="files/example.zip">
+            <p class="d-flex justify-content-center gap-2 flex-wrap">
+              <a class="btn btn-primary h-has-min-width" href="files/example.zip">
                 <span class="icon">
                   <i class="fas fa-file-archive" aria-hidden="true"></i>
                 </span>
                 <span>Демо</span>
               </a>
-              <a class="button is-primary h-has-min-width" href="files/example.zip">
+              <a class="btn btn-primary h-has-min-width" href="files/example.zip">
                 <span class="icon">
                   <i class="fas fa-download" aria-hidden="true"></i>
                 </span>
                 <span>Скачать</span>
               </a>
               <a
-                class="button is-primary h-has-min-width"
+                class="btn btn-primary h-has-min-width"
                 href="https://github.com/Harrix/Harrix-HTML-Template-For-Harrix-Sites"
               >
-                <span class="icon is-small">
+                <span class="icon">
                   <i class="fab fa-github" aria-hidden="true"></i>
                 </span>
                 <span>GitHub</span>
@@ -48,8 +48,8 @@ _.template(require('./../includes/header.html').default)(data) %>
 
   <div class="section">
     <div class="container">
-      <div class="columns content">
-        <div class="column">
+      <div class="row content">
+        <div class="col">
           <p>
             Это первый абзац после аннотации страницы. Здесь кратко описывается о том, что будет содержаться в статье. Test.
           </p>
@@ -126,8 +126,8 @@ _.template(require('./../includes/header.html').default)(data) %>
 
           <h2 id="columns">Колонки</h2>
 
-          <div class="columns">
-            <div class="column">
+          <div class="row">
+            <div class="col">
               Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100
               долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела.
               Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом случае игроки тоже
@@ -135,7 +135,7 @@ _.template(require('./../includes/header.html').default)(data) %>
               вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает предложенные деньги, если их
               меньше, чем примерно 30 долларов. Почему?
             </div>
-            <div class="column">
+            <div class="col">
               Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100
               долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела.
               Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом случае игроки тоже
@@ -145,8 +145,8 @@ _.template(require('./../includes/header.html').default)(data) %>
             </div>
           </div>
 
-          <div class="columns">
-            <div class="column">
+          <div class="row">
+            <div class="col">
               Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100
               долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела.
               Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом случае игроки тоже
@@ -154,7 +154,7 @@ _.template(require('./../includes/header.html').default)(data) %>
               вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает предложенные деньги, если их
               меньше, чем примерно 30 долларов. Почему?
             </div>
-            <div class="column">
+            <div class="col">
               <figure class="h-lightbox">
                 <a href="uploads/07.webp"
                   ><img src="uploads/07-thumbnail.webp" alt="Цветы на берегу острова Татышев в городе Красноярск"
@@ -177,7 +177,7 @@ _.template(require('./../includes/header.html').default)(data) %>
             rhoncus nec auctor ac, euismod nec turpis. In semper rutrum rhoncus.
           </p>
 
-          <figure class="h-lightbox is-pulled-right">
+          <figure class="h-lightbox float-end">
             <a href="uploads/09.webp"><img src="uploads/09-thumbnail.webp" alt="Робот" /></a>
             <figcaption>Рис 1. Подпись к необычными рисунку в тексте</figcaption>
           </figure>
@@ -220,11 +220,11 @@ _.template(require('./../includes/header.html').default)(data) %>
 
           <h3>Одиночная картинка слева</h3>
 
-          <figure class="h-lightbox has-text-left">
+          <figure class="h-lightbox text-start">
             <a href="uploads/09.webp"><img src="uploads/09-thumbnail.webp" alt="Робот" /></a>
           </figure>
 
-          <figure class="h-lightbox has-text-left">
+          <figure class="h-lightbox text-start">
             <a href="uploads/object__alarm_01.svg"><img src="uploads/object__alarm_01.svg" alt="Будильник" /></a>
           </figure>
 
@@ -484,36 +484,24 @@ kbd.menu {
           <p>The <code>npm</code> dependencies included in <code>package.json</code> are:</p>
           <ul>
             <li>
-              <code><a href="https://github.com/jgthms/bulma">Bulma</a></code>
+              <code><a href="https://github.com/twbs/bootstrap">Bootstrap</a></code>
             </li>
             <li>
-              <code><a href="https://github.com/sass/node-sass">node-sass</a></code> to compile your own Sass file
+              <code><a href="https://github.com/sass/dart-sass">sass</a></code> to compile your own Sass file
             </li>
             <li>
-              <code><a href="https://github.com/postcss/postcss-cli">postcss-cli</a></code> and
-              <code><a href="https://github.com/postcss/autoprefixer">autoprefixer</a></code>
-              to add support for older browsers
-            </li>
-            <li>
-              <code><a href="https://babeljs.io/docs/usage/cli/">babel-cli</a></code
-              >, <code><a href="https://github.com/babel/babel-preset-env">babel-preset-env</a></code> and
-              <code><a href="https://github.com/jmcriffey/babel-preset-es2015-ie">babel-preset-es2015-ie</a></code> for
-              compiling ES6 JavaScript files
+              <code><a href="https://webpack.js.org/">webpack</a></code> for bundling assets
             </li>
           </ul>
           <p>Apart from <code>package.json</code>, the following files are included:</p>
           <ul>
-            <li>
-              <code>.babelrc</code> configuration file for
-              <a href="https://babeljs.io/">Babel</a>
-            </li>
             <li><code>.gitignore</code> common <a href="https://git-scm.com/">Git</a> ignored files</li>
             <li><code>index.html</code> this HTML5 file</li>
             <li>
-              <code>_sass/main.scss</code> a basic SCSS file that <strong>imports Bulma</strong> and explains how to
-              <strong>customize</strong> your styles, and compiles to <code>css/main.css </code>
+              <code>src/scss/style.scss</code> a basic SCSS file that <strong>imports Bootstrap</strong> and explains how to
+              <strong>customize</strong> your styles
             </li>
-            <li><code>_javascript/main.js</code> an ES6 JavaScript that compiles to <code>lib/main.js</code></li>
+            <li><code>src/js/index.js</code> the main JavaScript entry point</li>
           </ul>
           <h3>Try it out!</h3>
           <p>To see if your setup works, follow these steps:</p>
@@ -523,19 +511,11 @@ kbd.menu {
               <pre><code>npm install</code></pre>
             </li>
             <li>
-              <p><strong>Start</strong> the CSS and JS watchers:</p>
+              <p><strong>Start</strong> the dev server:</p>
               <pre><code>npm start</code></pre>
             </li>
-            <li>
-              <p>
-                <strong>Edit</strong> <code>_sass/main.scss</code> by adding the following rule at the
-                <strong>end</strong>
-                of the file:
-              </p>
-              <pre><code>html { background-color: $green;}</code></pre>
-            </li>
           </ol>
-          <p>The page background should turn <strong class="has-text-success">green</strong>!</p>
+          <p>The page background should turn <strong class="text-success">green</strong>!</p>
           <p>
             Every widget in the framework and support library has a default style. For example, when you style your app
             using a theme from the support lbrary, an instance of tton is styled using the Widget.AppCompat.Button
@@ -547,12 +527,12 @@ kbd.menu {
           </p>
           <h3>Get started</h3>
           <p>
-            You're <strong>ready</strong> to create your own designs with Bulma. Just edit or duplicate this page, or
+            You're <strong>ready</strong> to create your own designs with Bootstrap. Just edit or duplicate this page, or
             simply create a new one! <br />
-            For example, this page is <strong>only</strong> built with the following <strong>Bulma elements</strong>:
+            For example, this page is <strong>only</strong> built with the following <strong>Bootstrap elements</strong>:
           </p>
 
-          <table class="table is-bordered is-fullwidth">
+          <table class="table table-bordered w-100">
             <thead>
               <tr>
                 <th>Type</th>
@@ -561,47 +541,36 @@ kbd.menu {
             </thead>
             <tbody>
               <tr>
-                <th>Columns</th>
+                <th>Grid</th>
                 <td>
-                  <code><a href="http://bulma.io/documentation/columns/basics">columns</a></code>
-                  <code><a href="http://bulma.io/documentation/columns/basics">column</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/layout/grid/">row</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/layout/grid/">col</a></code>
                 </td>
               </tr>
               <tr>
                 <th>Layout</th>
                 <td>
-                  <code><a href="http://bulma.io/documentation/layout/section">section</a></code>
-                  <code><a href="http://bulma.io/documentation/layout/container">container</a></code>
-                  <code><a href="http://bulma.io/documentation/layout/footer">footer</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/layout/containers/">container</a></code>
                 </td>
               </tr>
               <tr>
-                <th>Elements</th>
+                <th>Components</th>
                 <td>
-                  <code><a href="http://bulma.io/documentation/elements/button">button</a></code>
-                  <code><a href="http://bulma.io/documentation/elements/content">content</a></code>
-                  <code><a href="http://bulma.io/documentation/elements/title">title</a></code>
-                  <code><a href="http://bulma.io/documentation/elements/title">subtitle</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/components/buttons/">btn</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/components/navbar/">navbar</a></code>
                 </td>
               </tr>
               <tr>
-                <th>Form</th>
+                <th>Content</th>
                 <td>
-                  <code><a href="http://bulma.io/documentation/form/general">field</a></code>
-                  <code><a href="http://bulma.io/documentation/form/general">control</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/content/tables/">table</a></code>
                 </td>
               </tr>
               <tr>
-                <th>Helpers</th>
+                <th>Utilities</th>
                 <td>
-                  <code
-                    ><a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-centered</a></code
-                  >
-                  <code
-                    ><a href="http://bulma.io/documentation/modifiers/typography-helpers/"
-                      >has-text-weight-semibold</a
-                    ></code
-                  >
+                  <code><a href="https://getbootstrap.com/docs/5.3/utilities/text/">text-center</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/utilities/text/">fw-semibold</a></code>
                 </td>
               </tr>
             </tbody>

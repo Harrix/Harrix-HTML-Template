@@ -29,82 +29,104 @@
         var stored = localStorage.getItem("h-theme");
         var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         var theme = stored === "dark" || stored === "light" ? stored : prefersDark ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.setAttribute("data-bs-theme", theme);
       })();
     </script>
     <link href="css/vendors.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/../katex/katex.css" rel="stylesheet" />
   </head>
-  <body class="has-navbar-fixed-top">
-    <nav id="h-navbar" class="navbar is-fixed-top" aria-label="main navigation">
+  <body>
+    <nav id="h-navbar" class="navbar fixed-top navbar-expand-lg" aria-label="main navigation">
       <div id="h-navbar-bottom"></div>
       <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/" id="h-logo"
-            ><img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span></a
-          >
-          <div id="h-burger" class="navbar-burger" data-target="h-navbar-menu">
-            <span></span> <span></span> <span></span> <span></span>
-          </div>
-        </div>
-        <div id="h-navbar-menu" class="navbar-menu">
-          <div class="navbar-end">
-            <div class="navbar-item" id="h-search-form">
-              <div class="control has-icons-left has-icons-right">
-                <form role="search" action="/"><input class="input is-shadowless" value="" id="h-search-input" /></form>
-                <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
-                <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-search-button-close"
+        <a class="navbar-brand" href="/" id="h-logo"
+          ><img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span> </a
+        ><button
+          id="h-burger"
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#h-navbar-menu"
+          aria-controls="h-navbar-menu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="h-navbar-menu" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item" id="h-search-form">
+              <div class="h-search-control input-group">
+                <form role="search" action="/" class="w-100">
+                  <input class="form-control shadow-none" value="" id="h-search-input" />
+                </form>
+                <span class="icon input-group-text"><i class="fas fa-search"></i></span>
+                <span class="icon input-group-text h-is-clickable d-none d-lg-inline-flex" id="h-search-button-close"
                   ><i class="fah fa-close" data-prefix="fah" data-icon="close"></i
                 ></span>
               </div>
-            </div>
-            <a class="navbar-item is-active" href="https://harrix.org/projects/">Проекты</a>
-            <a class="navbar-item" href="https://harrix.org/"
-              ><span class="icon"><i class="fah fa-harrix" data-prefix="fah" data-icon="harrix"></i></span>
-              Harrix.org</a
-            >
-            <a class="navbar-item" href="https://harrix.org/contacts">Контакты</a>
-            <a class="navbar-item" href="https://github.com/Harrix"
-              ><span class="icon h-is-github-icon"><i class="fab fa-github"></i></span> GitHub</a
-            >
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="#">Подменю</a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="#">Action</a> <a class="navbar-item" href="#">Another action</a>
-                <a class="navbar-item" href="#">Something else here</a>
-              </div>
-            </div>
-            <a class="navbar-item" href="https://github.com/Harrix"
-              ><span class="icon"><i class="fas fa-rss"></i></span> RSS </a
-            ><a class="navbar-item" href="https://harrix.org/"
-              ><span class="icon"><i class="fas fa-globe-americas"></i></span> Eng</a
-            >
-            <div
-              class="navbar-item h-is-clickable"
+            </li>
+            <li class="nav-item"><a class="nav-link active" href="https://harrix.org/projects/">Проекты</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://harrix.org/"
+                ><span class="icon"><i class="fah fa-harrix" data-prefix="fah" data-icon="harrix"></i></span>
+                Harrix.org</a
+              >
+            </li>
+            <li class="nav-item"><a class="nav-link" href="https://harrix.org/contacts">Контакты</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/Harrix"
+                ><span class="icon h-is-github-icon"><i class="fab fa-github"></i></span> GitHub</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                >Подменю</a
+              >
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/Harrix"
+                ><span class="icon"><i class="fas fa-rss"></i></span> RSS</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://harrix.org/"
+                ><span class="icon"><i class="fas fa-globe-americas"></i></span> Eng</a
+              >
+            </li>
+            <li
+              class="nav-item h-is-clickable"
               id="h-theme-toggle"
               role="button"
               aria-label="Переключить светлую/тёмную тему"
             >
-              <span class="icon is-small h-theme-icon h-theme-icon--light" aria-hidden="true"
-                ><i class="fas fa-sun"></i
+              <span class="nav-link"
+                ><span class="icon h-theme-icon h-theme-icon--light" aria-hidden="true"
+                  ><i class="fas fa-sun"></i
+                ></span>
+                <span class="icon h-theme-icon h-theme-icon--dark" aria-hidden="true"><i class="fas fa-moon"></i></span
               ></span>
-              <span class="icon is-small h-theme-icon h-theme-icon--dark" aria-hidden="true"
-                ><i class="fas fa-moon"></i
+            </li>
+            <li class="nav-item h-is-clickable d-none d-lg-inline-flex" id="h-search-button-open">
+              <span class="nav-link"
+                ><span class="icon"><i class="fas fa-search"></i></span
               ></span>
-            </div>
-            <div class="navbar-item h-is-clickable is-hidden-touch" id="h-search-button-open">
-              <span class="icon is-small"><i class="fas fa-search"></i></span>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
     <article>
       <div class="section h-is-padding-bottomless">
         <div class="container">
-          <div class="columns content">
-            <div class="column">
+          <div class="row content">
+            <div class="col">
               <header>
                 <h1 class="title">
                   Взаимодействие между фрагментами и активностью в Android Studio. Часть 5. Несколько фрагментов
@@ -182,12 +204,12 @@
               </details>
               <p>
                 <a
-                  data-toggle="collapse"
+                  data-bs-toggle="collapse"
                   href="#collapseExample"
                   role="button"
                   aria-expanded="false"
                   aria-controls="collapseExample"
-                  ><span class="icon is-small"><i class="far fa-plus-square"></i> </span>Показать спойлер.</a
+                  ><span class="icon"><i class="far fa-plus-square"></i> </span>Показать спойлер.</a
                 >
               </p>
               <div class="collapse" id="collapseExample">
@@ -197,8 +219,8 @@
                 </div>
               </div>
               <h2 id="columns">Колонки</h2>
-              <div class="columns">
-                <div class="column">
+              <div class="row">
+                <div class="col">
                   Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает
                   100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход
                   этого дела. Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом
@@ -206,7 +228,7 @@
                   предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает
                   предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?
                 </div>
-                <div class="column">
+                <div class="col">
                   Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает
                   100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход
                   этого дела. Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом
@@ -215,8 +237,8 @@
                   предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?
                 </div>
               </div>
-              <div class="columns">
-                <div class="column">
+              <div class="row">
+                <div class="col">
                   Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает
                   100 долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход
                   этого дела. Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом
@@ -224,7 +246,7 @@
                   предложенные деньги, он вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает
                   предложенные деньги, если их меньше, чем примерно 30 долларов. Почему?
                 </div>
-                <div class="column">
+                <div class="col">
                   <figure class="h-lightbox">
                     <a href="uploads/07.jpg"
                       ><img src="uploads/07-thumbnail.jpg" alt="Цветы на берегу острова Татышев в городе Красноярск."
@@ -245,7 +267,7 @@
                 nulla, ac semper lorem tortor nec mi. Morbi orci metus, rhoncus nec auctor ac, euismod nec turpis. In
                 semper rutrum rhoncus.
               </p>
-              <figure class="h-lightbox is-pulled-right">
+              <figure class="h-lightbox float-end">
                 <a href="uploads/09.jpg"><img src="uploads/09-thumbnail.jpg" alt="Робот." /></a>
                 <figcaption>Рис 1. Подпись к необычному рисунку в тексте</figcaption>
               </figure>
@@ -282,7 +304,7 @@
               </p>
               <h2 id="lightbox">Lightbox</h2>
               <h3>Одиночное изображение слева</h3>
-              <figure class="h-lightbox has-text-left">
+              <figure class="h-lightbox text-start">
                 <a href="uploads/09.jpg"><img src="uploads/09-thumbnail.jpg" alt="Робот." /></a>
               </figure>
               <h3>Одиночное изображение по центру</h3>
@@ -473,7 +495,7 @@ public class MainActivity extends AppCompatActivity {
               <p>The <code>npm</code> dependencies included in <code>package.json</code> are:</p>
               <ul>
                 <li>
-                  <code><a href="https://github.com/jgthms/bulma">bulma</a></code>
+                  <code><a href="https://github.com/twbs/bootstrap">Bootstrap</a></code>
                 </li>
                 <li>
                   <code><a href="https://github.com/sass/node-sass">node-sass</a></code> to compile your own Sass file
@@ -496,8 +518,8 @@ public class MainActivity extends AppCompatActivity {
                 <li><code>.gitignore</code> common <a href="https://git-scm.com/">Git</a> ignored files</li>
                 <li><code>index.html</code> this HTML5 file</li>
                 <li>
-                  <code>_sass/main.scss</code> a basic SCSS file that <strong>imports Bulma</strong> and explains how to
-                  <strong>customize</strong> your styles, and compiles to <code>css/main.css</code>
+                  <code>_sass/main.scss</code> a basic SCSS file that <strong>imports Bootstrap</strong> and explains
+                  how to <strong>customize</strong> your styles, and compiles to <code>css/main.css</code>
                 </li>
                 <li><code>_javascript/main.js</code> an ES6 JavaScript that compiles to <code>lib/main.js</code></li>
               </ul>
@@ -520,7 +542,7 @@ public class MainActivity extends AppCompatActivity {
                   <pre><code>html { background-color: $green;}</code></pre>
                 </li>
               </ol>
-              <p>The page background should turn <strong class="has-text-success">green</strong>!</p>
+              <p>The page background should turn <strong class="text-success">green</strong>!</p>
               <p>
                 Every widget in the framework and support library has a default style. For example, when you style your
                 app using a theme from the support lbrary, an instance of tton is styled using the
@@ -533,11 +555,11 @@ public class MainActivity extends AppCompatActivity {
               </p>
               <h3>Get started</h3>
               <p>
-                You're <strong>ready</strong> to create your own designs with Bulma. Just edit or duplicate this page,
-                or simply create a new one!<br />For example, this page is <strong>only</strong> built with the
-                following <strong>Bulma elements</strong>:
+                You're <strong>ready</strong> to create your own designs with Bootstrap. Just edit or duplicate this
+                page, or simply create a new one!<br />For example, this page is <strong>only</strong> built with the
+                following <strong>Bootstrap elements</strong>:
               </p>
-              <table class="table is-bordered is-fullwidth">
+              <table class="table table-bordered w-100">
                 <thead>
                   <tr>
                     <th>Type</th>
@@ -548,47 +570,34 @@ public class MainActivity extends AppCompatActivity {
                   <tr>
                     <th>Columns</th>
                     <td>
-                      <code><a href="http://bulma.io/documentation/columns/basics">columns</a></code>
-                      <code><a href="http://bulma.io/documentation/columns/basics">column</a></code>
+                      <code><a href="https://getbootstrap.com/docs/5.3/layout/grid/">row</a></code>
+                      <code><a href="https://getbootstrap.com/docs/5.3/layout/grid/">col</a></code>
                     </td>
                   </tr>
                   <tr>
                     <th>Layout</th>
                     <td>
-                      <code><a href="http://bulma.io/documentation/layout/section">section</a></code>
-                      <code><a href="http://bulma.io/documentation/layout/container">container</a></code>
-                      <code><a href="http://bulma.io/documentation/layout/footer">footer</a></code>
+                      <code><a href="https://getbootstrap.com/docs/5.3/layout/containers/">container</a></code>
                     </td>
                   </tr>
                   <tr>
                     <th>Elements</th>
                     <td>
-                      <code><a href="http://bulma.io/documentation/elements/button">button</a></code>
-                      <code><a href="http://bulma.io/documentation/elements/content">content</a></code>
-                      <code><a href="http://bulma.io/documentation/elements/title">title</a></code>
-                      <code><a href="http://bulma.io/documentation/elements/title">subtitle</a></code>
+                      <code><a href="https://getbootstrap.com/docs/5.3/components/buttons/">btn</a></code>
+                      <code><a href="https://getbootstrap.com/docs/5.3/components/navbar/">navbar</a></code>
                     </td>
                   </tr>
                   <tr>
                     <th>Form</th>
                     <td>
-                      <code><a href="http://bulma.io/documentation/form/general">field</a></code>
-                      <code><a href="http://bulma.io/documentation/form/general">control</a></code>
+                      <code><a href="https://getbootstrap.com/docs/5.3/forms/overview/">form-control</a></code>
                     </td>
                   </tr>
                   <tr>
                     <th>Helpers</th>
                     <td>
-                      <code
-                        ><a href="http://bulma.io/documentation/modifiers/typography-helpers/"
-                          >has-text-centered</a
-                        ></code
-                      >
-                      <code
-                        ><a href="http://bulma.io/documentation/modifiers/typography-helpers/"
-                          >has-text-weight-semibold</a
-                        ></code
-                      >
+                      <code><a href="https://getbootstrap.com/docs/5.3/utilities/text/">text-center</a></code>
+                      <code><a href="https://getbootstrap.com/docs/5.3/utilities/text/">fw-semibold</a></code>
                     </td>
                   </tr>
                 </tbody>
@@ -598,7 +607,7 @@ public class MainActivity extends AppCompatActivity {
         </div>
       </div>
     </article>
-    <footer class="footer has-text-centered">
+    <footer class="footer text-center py-4">
       <div class="container">
         <p>
           © 2022
@@ -612,7 +621,7 @@ public class MainActivity extends AppCompatActivity {
     <script defer="defer" src="./js/runtime.js"></script>
     <script
       defer="defer"
-      src="./js/vendors-node_modules_lightgallery_lightgallery_es5_js-node_modules_lightgallery_plugins_hash_-e623b3.js"
+      src="./js/vendors-node_modules_bootstrap_js_dist_collapse_js-node_modules_bootstrap_js_dist_dropdown_js-dcd168.js"
     ></script>
     <script defer="defer" src="./js/app.js"></script>
     <script defer="defer" src="./js/../katex/katex.js"></script>

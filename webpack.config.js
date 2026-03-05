@@ -114,6 +114,9 @@ const config = {
             loader: "sass-loader",
             options: {
               sourceMap: true,
+              sassOptions: {
+                silenceDeprecations: ["import", "global-builtin", "color-functions"],
+              },
             },
           },
         ],

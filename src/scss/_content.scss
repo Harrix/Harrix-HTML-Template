@@ -1,5 +1,4 @@
-@use "~bulma/sass/utilities/initial-variables" as initial-variables;
-@use "~bulma/sass/utilities/derived-variables" as derived-variables;
+@use "bs";
 @use "variables" as hvars;
 
 .content {
@@ -46,7 +45,7 @@
       text-decoration: underline;
     }
 
-    &.button {
+    &.btn {
       &:hover {
         text-decoration: none;
       }
@@ -59,11 +58,11 @@
   }
 
   kbd {
-    font-family: derived-variables.$family-code;
-    font-size: derived-variables.$size-small;
-    color: initial-variables.$white;
-    background-color: initial-variables.$red;
-    border-radius: initial-variables.$radius;
+    font-family: bs.$font-family-code;
+    font-size: bs.$small-font-size;
+    color: bs.$white;
+    background-color: bs.$red;
+    border-radius: bs.$border-radius;
     padding: 0.25em 0.5em;
   }
 
@@ -73,8 +72,8 @@
     font-size: 0.875rem;
     font-weight: 500;
     padding: 0.1875rem 0.4rem;
-    color: derived-variables.$code;
-    background-color: derived-variables.$code-background;
+    color: bs.$code-color;
+    background-color: bs.$code-bg;
     word-break: break-all;
   }
 

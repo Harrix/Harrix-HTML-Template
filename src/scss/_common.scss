@@ -1,4 +1,3 @@
-@use "~bulma/sass/utilities/mixins" as mixins;
 @use "variables" as hvars;
 
 body {
@@ -9,18 +8,6 @@ body {
   line-height: 1.6;
 }
 
-// Heading weight 400 (replaces Bulma $content-heading-weight when variables are not passed)
-.title,
-.subtitle {
-  font-weight: 400;
-}
-
-.subtitle {
-  font-size: inherit;
-  line-height: 1.5;
-}
-
-// Link colors (replaces Bulma $link, $link-hover when variables are not passed)
 a {
   color: hvars.$h-primary;
 }
@@ -28,14 +15,14 @@ a:hover {
   color: hvars.$h-link-hover;
 }
 
-// Primary buttons: boston blue (#2e86b7) with white text (as in old Bulma 0 version)
-.button.is-primary {
+.btn.btn-primary {
   background-color: hvars.$h-primary;
   border-color: transparent;
   color: #fff;
 
   &:hover {
     background-color: hvars.$h-primary-hover;
+    border-color: transparent;
     color: #fff;
   }
 }

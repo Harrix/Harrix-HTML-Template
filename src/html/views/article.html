@@ -4,8 +4,8 @@ _.template(require('./../includes/header.html').default)(data) %>
 <article>
   <div class="section h-is-padding-bottomless">
     <div class="container">
-      <div class="columns content">
-        <div class="column">
+      <div class="row content">
+        <div class="col">
           <header>
             <h1 class="title">
               Взаимодействие между фрагментами и активностью в Android Studio. Часть 5. Несколько фрагментов
@@ -94,13 +94,13 @@ _.template(require('./../includes/header.html').default)(data) %>
 
           <p>
             <a
-              data-toggle="collapse"
+              data-bs-toggle="collapse"
               href="#collapseExample"
               role="button"
               aria-expanded="false"
               aria-controls="collapseExample"
             >
-              <span class="icon is-small"><i class="far fa-plus-square"></i> </span> Показать спойлер.
+              <span class="icon"><i class="far fa-plus-square"></i> </span> Показать спойлер.
             </a>
           </p>
           <div class="collapse" id="collapseExample">
@@ -112,8 +112,8 @@ _.template(require('./../includes/header.html').default)(data) %>
 
           <h2 id="columns">Колонки</h2>
 
-          <div class="columns">
-            <div class="column">
+          <div class="row">
+            <div class="col">
               Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100
               долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела.
               Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом случае игроки тоже
@@ -121,7 +121,7 @@ _.template(require('./../includes/header.html').default)(data) %>
               вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает предложенные деньги, если их
               меньше, чем примерно 30 долларов. Почему?
             </div>
-            <div class="column">
+            <div class="col">
               Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100
               долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела.
               Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом случае игроки тоже
@@ -131,8 +131,8 @@ _.template(require('./../includes/header.html').default)(data) %>
             </div>
           </div>
 
-          <div class="columns">
-            <div class="column">
+          <div class="row">
+            <div class="col">
               Есть и еще одна очень похожая игра, которая называется «Ультиматум». В ней первый игрок тоже получает 100
               долларов и может выдать часть из них другому игроку. Но здесь от второго игрока зависит исход этого дела.
               Если он отвергнет предложенные деньги, то денег не получит ни один из игроков. В этом случае игроки тоже
@@ -140,7 +140,7 @@ _.template(require('./../includes/header.html').default)(data) %>
               вообще ничего не получит. Но, несмотря на это, второй игрок обычно отвергает предложенные деньги, если их
               меньше, чем примерно 30 долларов. Почему?
             </div>
-            <div class="column">
+            <div class="col">
               <figure class="h-lightbox">
                 <a href="uploads/07.jpg">
                   <img src="uploads/07-thumbnail.jpg" alt="Цветы на берегу острова Татышев в городе Красноярск." />
@@ -163,7 +163,7 @@ _.template(require('./../includes/header.html').default)(data) %>
             rhoncus nec auctor ac, euismod nec turpis. In semper rutrum rhoncus.
           </p>
 
-          <figure class="h-lightbox is-pulled-right">
+          <figure class="h-lightbox float-end">
             <a href="uploads/09.jpg"><img src="uploads/09-thumbnail.jpg" alt="Робот." /></a>
             <figcaption>Рис 1. Подпись к необычному рисунку в тексте</figcaption>
           </figure>
@@ -206,7 +206,7 @@ _.template(require('./../includes/header.html').default)(data) %>
 
           <h3>Одиночное изображение слева</h3>
 
-          <figure class="h-lightbox has-text-left">
+          <figure class="h-lightbox text-start">
             <a href="uploads/09.jpg"><img src="uploads/09-thumbnail.jpg" alt="Робот." /></a>
           </figure>
 
@@ -409,7 +409,7 @@ public class MainActivity extends AppCompatActivity {
           <p>The <code>npm</code> dependencies included in <code>package.json</code> are:</p>
           <ul>
             <li>
-              <code><a href="https://github.com/jgthms/bulma">bulma</a></code>
+              <code><a href="https://github.com/twbs/bootstrap">Bootstrap</a></code>
             </li>
             <li>
               <code><a href="https://github.com/sass/node-sass">node-sass</a></code> to compile your own Sass file
@@ -433,7 +433,7 @@ public class MainActivity extends AppCompatActivity {
             <li><code>.gitignore</code> common <a href="https://git-scm.com/">Git</a> ignored files</li>
             <li><code>index.html</code> this HTML5 file</li>
             <li>
-              <code>_sass/main.scss</code> a basic SCSS file that <strong>imports Bulma</strong> and explains how to
+              <code>_sass/main.scss</code> a basic SCSS file that <strong>imports Bootstrap</strong> and explains how to
               <strong>customize</strong> your styles, and compiles to <code>css/main.css </code>
             </li>
             <li><code>_javascript/main.js</code> an ES6 JavaScript that compiles to <code>lib/main.js</code></li>
@@ -457,7 +457,7 @@ public class MainActivity extends AppCompatActivity {
               <pre><code>html { background-color: $green;}</code></pre>
             </li>
           </ol>
-          <p>The page background should turn <strong class="has-text-success">green</strong>!</p>
+          <p>The page background should turn <strong class="text-success">green</strong>!</p>
           <p>
             Every widget in the framework and support library has a default style. For example, when you style your app
             using a theme from the support lbrary, an instance of tton is styled using the Widget.AppCompat.Button
@@ -469,12 +469,12 @@ public class MainActivity extends AppCompatActivity {
           </p>
           <h3>Get started</h3>
           <p>
-            You're <strong>ready</strong> to create your own designs with Bulma. Just edit or duplicate this page, or
+            You're <strong>ready</strong> to create your own designs with Bootstrap. Just edit or duplicate this page, or
             simply create a new one! <br />
-            For example, this page is <strong>only</strong> built with the following <strong>Bulma elements</strong>:
+            For example, this page is <strong>only</strong> built with the following <strong>Bootstrap elements</strong>:
           </p>
 
-          <table class="table is-bordered is-fullwidth">
+          <table class="table table-bordered w-100">
             <thead>
               <tr>
                 <th>Type</th>
@@ -485,43 +485,38 @@ public class MainActivity extends AppCompatActivity {
               <tr>
                 <th>Columns</th>
                 <td>
-                  <code><a href="http://bulma.io/documentation/columns/basics">columns</a></code>
-                  <code><a href="http://bulma.io/documentation/columns/basics">column</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/layout/grid/">row</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/layout/grid/">col</a></code>
                 </td>
               </tr>
               <tr>
                 <th>Layout</th>
                 <td>
-                  <code><a href="http://bulma.io/documentation/layout/section">section</a></code>
-                  <code><a href="http://bulma.io/documentation/layout/container">container</a></code>
-                  <code><a href="http://bulma.io/documentation/layout/footer">footer</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/layout/containers/">container</a></code>
                 </td>
               </tr>
               <tr>
                 <th>Elements</th>
                 <td>
-                  <code><a href="http://bulma.io/documentation/elements/button">button</a></code>
-                  <code><a href="http://bulma.io/documentation/elements/content">content</a></code>
-                  <code><a href="http://bulma.io/documentation/elements/title">title</a></code>
-                  <code><a href="http://bulma.io/documentation/elements/title">subtitle</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/components/buttons/">btn</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/components/navbar/">navbar</a></code>
                 </td>
               </tr>
               <tr>
                 <th>Form</th>
                 <td>
-                  <code><a href="http://bulma.io/documentation/form/general">field</a></code>
-                  <code><a href="http://bulma.io/documentation/form/general">control</a></code>
+                  <code><a href="https://getbootstrap.com/docs/5.3/forms/overview/">form-control</a></code>
                 </td>
               </tr>
               <tr>
                 <th>Helpers</th>
                 <td>
                   <code
-                    ><a href="http://bulma.io/documentation/modifiers/typography-helpers/">has-text-centered</a></code
+                    ><a href="https://getbootstrap.com/docs/5.3/utilities/text/">text-center</a></code
                   >
                   <code
-                    ><a href="http://bulma.io/documentation/modifiers/typography-helpers/"
-                      >has-text-weight-semibold</a
+                    ><a href="https://getbootstrap.com/docs/5.3/utilities/text/"
+                      >fw-semibold</a
                     ></code
                   >
                 </td>

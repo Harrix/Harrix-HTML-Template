@@ -4,8 +4,8 @@
   min-width: hvars.$h-form-min-width;
 }
 
-.input,
-.textarea,
-.select select {
+.form-control,
+textarea.form-control,
+.form-select {
   box-shadow: none;
 }

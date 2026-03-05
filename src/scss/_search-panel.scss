@@ -1,10 +1,9 @@
-@use "~bulma/sass/utilities/derived-variables" as derived-variables;
-@use "~bulma/sass/utilities/mixins" as mixins;
+@use "bs";
 @use "variables" as hvars;
 @use "mixins" as hmixins;
 
 .navbar {
-  @include mixins.desktop {
+  @include bs.desktop {
     #h-search-form {
       @include hmixins.h-transition;
       transition-property: transform, opacity;
@@ -16,7 +15,8 @@
     }
 
     .h-has-visible-search-form {
-      .navbar-item {
+      .nav-link,
+      .nav-item {
         &:not(:first-child) {
           opacity: 0;
         }
@@ -28,13 +28,13 @@
       }
     }
 
-    .control {
+    .h-search-control {
       width: 100%;
 
-      .input {
+      .form-control {
         border: 0;
         font-size: hvars.$h-navbar-font-size;
-        color: derived-variables.$text;
+        color: bs.$body-color;
 
         &::placeholder {
           color: hvars.$h-navbar-icon-color;
@@ -48,16 +48,17 @@
       }
     }
 
-    .navbar-end {
+    .navbar-nav {
       position: relative;
     }
 
-    .navbar-item {
+    .nav-link,
+    .nav-item {
       @include hmixins.h-transition(opacity);
     }
   }
 
-  .control {
+  .h-search-control {
     .icon {
       color: hvars.$h-navbar-icon-color;
     }

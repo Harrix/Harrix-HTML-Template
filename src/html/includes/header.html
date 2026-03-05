@@ -31,63 +31,70 @@
         var stored = localStorage.getItem("h-theme");
         var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
         var theme = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
-        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.setAttribute("data-bs-theme", theme);
       })();
     </script>
   </head>
 
-  <body class="has-navbar-fixed-top">
-    <nav id="h-navbar" class="navbar is-fixed-top" aria-label="main navigation">
+  <body>
+    <nav id="h-navbar" class="navbar fixed-top navbar-expand-lg" aria-label="main navigation">
       <div id="h-navbar-bottom"></div>
       <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/" id="h-logo">
-            <img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span>
-          </a>
-          <div id="h-burger" class="navbar-burger" data-target="h-navbar-menu">
-            <span></span> <span></span> <span></span> <span></span>
-          </div>
-        </div>
-        <div id="h-navbar-menu" class="navbar-menu">
-          <div class="navbar-end">
-            <div class="navbar-item" id="h-search-form">
-              <div class="control has-icons-left has-icons-right">
-                <form role="search" method="get" action="/">
-                  <input class="input is-shadowless" type="text" value="" id="h-search-input" />
+        <a class="navbar-brand" href="/" id="h-logo">
+          <img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span>
+        </a>
+        <button id="h-burger" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#h-navbar-menu" aria-controls="h-navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="h-navbar-menu" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item" id="h-search-form">
+              <div class="h-search-control input-group">
+                <form role="search" method="get" action="/" class="w-100">
+                  <input class="form-control shadow-none" type="text" value="" id="h-search-input" />
                 </form>
-                <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
-                <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-search-button-close"
+                <span class="icon input-group-text"><i class="fas fa-search"></i></span>
+                <span class="icon input-group-text h-is-clickable d-none d-lg-inline-flex" id="h-search-button-close"
                   ><i class="fah fa-close" data-prefix="fah" data-icon="close"></i
                 ></span>
               </div>
-            </div>
-            <a class="navbar-item is-active" href="https://harrix.org/projects/">Проекты</a>
-            <a class="navbar-item" href="https://harrix.org/"><span class="icon"><i class="fah fa-harrix" data-prefix="fah" data-icon="harrix"></i></span> Harrix.org</a>
-            <a class="navbar-item" href="https://harrix.org/contacts">Контакты</a>
-            <a class="navbar-item" href="https://github.com/Harrix">
-              <span class="icon h-is-github-icon"><i class="fab fa-github"></i></span> GitHub
-            </a>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="#">Подменю</a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="#">Action</a> <a class="navbar-item" href="#">Another action</a>
-                <a class="navbar-item" href="#">Something else here</a>
-              </div>
-            </div>
-            <a class="navbar-item" href="https://github.com/Harrix">
-              <span class="icon"><i class="fas fa-rss"></i></span> RSS
-            </a>
-            <a class="navbar-item" href="https://harrix.org/">
-              <span class="icon"><i class="fas fa-globe-americas"></i></span> Eng
-            </a>
-            <div class="navbar-item h-is-clickable" id="h-theme-toggle" role="button" aria-label="Переключить светлую/тёмную тему">
-              <span class="icon is-small h-theme-icon h-theme-icon--light" aria-hidden="true"><i class="fas fa-sun"></i></span>
-              <span class="icon is-small h-theme-icon h-theme-icon--dark" aria-hidden="true"><i class="fas fa-moon"></i></span>
-            </div>
-            <div class="navbar-item h-is-clickable is-hidden-touch" id="h-search-button-open">
-              <span class="icon is-small"><i class="fas fa-search"></i></span>
-            </div>
-          </div>
+            </li>
+            <li class="nav-item"><a class="nav-link active" href="https://harrix.org/projects/">Проекты</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://harrix.org/"><span class="icon"><i class="fah fa-harrix" data-prefix="fah" data-icon="harrix"></i></span> Harrix.org</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://harrix.org/contacts">Контакты</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/Harrix">
+                <span class="icon h-is-github-icon"><i class="fab fa-github"></i></span> GitHub
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Подменю</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/Harrix">
+                <span class="icon"><i class="fas fa-rss"></i></span> RSS
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://harrix.org/">
+                <span class="icon"><i class="fas fa-globe-americas"></i></span> Eng
+              </a>
+            </li>
+            <li class="nav-item h-is-clickable" id="h-theme-toggle" role="button" aria-label="Переключить светлую/тёмную тему">
+              <span class="nav-link">
+                <span class="icon h-theme-icon h-theme-icon--light" aria-hidden="true"><i class="fas fa-sun"></i></span>
+                <span class="icon h-theme-icon h-theme-icon--dark" aria-hidden="true"><i class="fas fa-moon"></i></span>
+              </span>
+            </li>
+            <li class="nav-item h-is-clickable d-none d-lg-inline-flex" id="h-search-button-open">
+              <span class="nav-link"><span class="icon"><i class="fas fa-search"></i></span></span>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

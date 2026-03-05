@@ -1,8 +1,7 @@
 @use "variables" as hvars;
 
-// Spoiler on native <details>: smooth height animation and clear styling
 .h-spoiler {
-  border: 1px solid var(--bulma-border, #dbdbdb);
+  border: 1px solid var(--bs-border-color, #dee2e6);
   border-radius: 4px;
   margin: 1rem 0;
 

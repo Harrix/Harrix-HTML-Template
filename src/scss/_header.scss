@@ -1,12 +1,9 @@
-@use "~bulma/sass/utilities/initial-variables" as initial-variables;
-@use "~bulma/sass/utilities/derived-variables" as derived-variables;
-@use "~bulma/sass/utilities/mixins" as mixins;
+@use "bs";
 @use "variables" as hvars;
 @use "mixins" as hmixins;
 
 .navbar {
   min-height: 3rem;
-  height: 3rem;
   padding-top: 0;
   padding-bottom: 0;
   font-size: hvars.$h-navbar-font-size;
@@ -29,11 +26,12 @@
   #h-logo {
     font-size: hvars.$h-navbar-logo-font-size;
     line-height: 0;
-    color: derived-variables.$text-strong;
+    color: bs.$body-emphasis-color;
     font-weight: 500;
+    text-decoration: none;
 
     &:hover {
-      color: derived-variables.$text-strong;
+      color: bs.$body-emphasis-color;
     }
 
     img {
@@ -47,16 +45,14 @@
     }
   }
 
-  .navbar-item,
-  .navbar-link {
+  .nav-link {
     gap: 0;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
 
     &:hover {
       background-color: transparent;
     }
-
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
 
     img {
       max-height: 2rem;
@@ -73,14 +69,14 @@
     }
   }
 
-  .navbar-item.is-active {
+  .nav-link.active {
     color: inherit;
     background-color: transparent;
   }
 
-  @include mixins.desktop {
-    .has-dropdown {
-      .navbar-link {
+  @include bs.desktop {
+    .dropdown {
+      .nav-link.dropdown-toggle {
         padding-right: 1.75rem;
 
         &:after {
@@ -89,23 +85,14 @@
       }
     }
 
-    .navbar-dropdown {
-      .navbar-item {
+    .dropdown-menu {
+      .dropdown-item {
         &:hover {
           background-color: transparent;
-          color: derived-variables.$link;
+          color: hvars.$h-primary;
           transition: none;
         }
       }
-    }
-  }
-
-  .navbar-link {
-    &:after {
-      border-width: 2px;
-      border-color: hvars.$h-navbar-icon-color;
-      width: 0.375rem;
-      height: 0.375rem;
     }
   }
 
@@ -113,16 +100,17 @@
     color: hvars.$h-navbar-icon-color;
   }
 
-  .navbar-burger {
+  .navbar-toggler {
     color: hvars.$h-navbar-icon-color;
-
-    span {
-      height: 2px;
-      width: 18px;
-    }
+    border: none;
+    padding: 0.25rem 0.5rem;
 
     &:hover {
       background-color: transparent;
+    }
+
+    &:focus {
+      box-shadow: none;
     }
   }
 

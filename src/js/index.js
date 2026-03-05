@@ -1,3 +1,6 @@
+import "bootstrap/js/dist/collapse";
+import "bootstrap/js/dist/dropdown";
+
 import lightGallery from "lightgallery";
 import lgHash from "lightgallery/plugins/hash";
 import lgZoom from "lightgallery/plugins/zoom";
@@ -35,11 +38,9 @@ function initNavbar(scrollThreshold) {
   const navbar = document.getElementById("h-navbar");
 
   if (navbar) {
-    const root = document.documentElement;
-    const navbarBurger = document.getElementById("h-burger");
     const navbarBottom = document.getElementById("h-navbar-bottom");
 
-    if (!navbarBurger || !navbarBottom) return;
+    if (!navbarBottom) return;
 
     let lastY = 0;
     let currentY = 0;
@@ -48,13 +49,6 @@ function initNavbar(scrollThreshold) {
     navbarBottom.addEventListener("mouseover", () => {
       navbar.classList.remove("h-is-hidden");
       isNavbarHidden = false;
-    });
-
-    navbarBurger.addEventListener("click", () => {
-      root.classList.toggle("h-is-clipped-touch");
-      const target = document.getElementById(navbarBurger.dataset.target);
-      navbarBurger.classList.toggle("is-active");
-      target.classList.toggle("is-active");
     });
 
     window.addEventListener("scroll", () => {
@@ -85,8 +79,13 @@ function initSearchPanel() {
     searchInput.placeholder = translate("Search…");
 
     function showOrHideSearchButtonClose() {
-      if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
-      else searchButtonClose.classList.add("is-hidden-touch");
+      if (searchInput.value.length >= 1) {
+        searchButtonClose.classList.remove("d-none");
+        searchButtonClose.classList.add("d-lg-inline-flex");
+      } else {
+        searchButtonClose.classList.add("d-none");
+        searchButtonClose.classList.add("d-lg-inline-flex");
+      }
     }
 
     searchButtonOpen.addEventListener("click", () => {
@@ -277,7 +276,7 @@ function initCodeCopyButtons() {
       btn.type = "button";
       btn.className = "h-code-copy h-code-copy--" + position;
       btn.setAttribute("aria-label", labelCopy);
-      btn.innerHTML = '<span class="icon is-small"><i class="fas fa-copy" aria-hidden="true"></i></span>';
+      btn.innerHTML = '<span class="icon"><i class="fas fa-copy" aria-hidden="true"></i></span>';
       btn.addEventListener("click", () => doCopy(btn));
       return btn;
     }
@@ -317,7 +316,7 @@ function initThemeToggle() {
   if (!toggle) return;
 
   function getTheme() {
-    const fromDom = document.documentElement.getAttribute("data-theme");
+    const fromDom = document.documentElement.getAttribute("data-bs-theme");
     if (fromDom === "dark" || fromDom === "light") return fromDom;
     const stored = localStorage.getItem("h-theme");
     if (stored === "dark" || stored === "light") return stored;
@@ -325,7 +324,7 @@ function initThemeToggle() {
   }
 
   function setTheme(theme) {
-    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-bs-theme", theme);
     localStorage.setItem("h-theme", theme);
   }
 

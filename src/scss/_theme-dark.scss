@@ -1,12 +1,11 @@
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
 
-// Theme toggle: show sun in light mode, moon in dark mode
 .h-theme-icon--dark {
   display: none;
 }
 
-[data-theme="dark"] {
+[data-bs-theme="dark"] {
   .h-theme-icon--light {
     display: none;
   }
@@ -16,28 +15,8 @@
   }
 }
 
-// Dark theme overrides (Bulma 1.x compatible)
-[data-theme="dark"] {
-  color-scheme: dark;
-
-  body {
-    background-color: dark.$h-dark-bg;
-    color: dark.$h-dark-text;
-  }
-
+[data-bs-theme="dark"] {
   .navbar {
-    background-color: dark.$h-dark-surface !important;
-
-    .navbar-item,
-    .navbar-link {
-      color: dark.$h-dark-text;
-
-      &:hover {
-        background-color: transparent;
-        color: dark.$h-dark-text;
-      }
-    }
-
     #h-logo {
       color: dark.$h-dark-text;
 
@@ -46,20 +25,13 @@
       }
     }
 
-    .navbar-dropdown.is-boxed {
+    .dropdown-menu {
       background-color: dark.$h-dark-surface !important;
       border: none !important;
-      border-top: none !important;
       overflow: hidden;
       box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3) !important;
-      // Unified background for rounded corners: override any Bulma shadow/border
-      &,
-      &::before,
-      &::after {
-        background-color: dark.$h-dark-surface;
-      }
 
-      .navbar-item {
+      .dropdown-item {
         color: dark.$h-dark-text;
         background-color: transparent;
 
@@ -71,34 +43,12 @@
     }
 
     .icon,
-    .navbar-burger {
+    .navbar-toggler {
       color: dark.$h-dark-icon;
     }
-
-    .input,
-    .textarea,
-    .select select {
-      background-color: dark.$h-dark-input-bg;
-      border-color: dark.$h-dark-border;
-      color: dark.$h-dark-text;
-
-      &::placeholder {
-        color: dark.$h-dark-placeholder;
-      }
-    }
-  }
-
-  .section {
-    background-color: dark.$h-dark-bg;
   }
 
   .content {
-    color: dark.$h-dark-text;
-
-    h1, h2, h3, h4, h5, h6 {
-      color: dark.$h-dark-text-strong;
-    }
-
     a {
       color: dark.$h-dark-link;
 
@@ -110,11 +60,6 @@
     code {
       background-color: dark.$h-dark-input-bg;
       color: dark.$h-dark-text;
-    }
-
-    blockquote {
-      border-left-color: dark.$h-dark-border;
-      background-color: rgba(255, 255, 255, 0.03);
     }
 
     kbd {
@@ -130,63 +75,10 @@
         background-color: transparent;
       }
     }
-
-    hr {
-      background-color: dark.$h-dark-border;
-    }
-
-    strong {
-      color: dark.$h-dark-text-strong;
-    }
-
-    table {
-      color: dark.$h-dark-text;
-
-      th,
-      td {
-        border-color: dark.$h-dark-border;
-      }
-
-      tr:hover {
-        background-color: rgba(255, 255, 255, 0.03);
-      }
-    }
   }
 
-  .card {
-    background-color: dark.$h-dark-surface;
-    color: dark.$h-dark-text;
-
-    .card-header {
-      background-color: dark.$h-dark-surface-elevated;
-      border-bottom-color: dark.$h-dark-border;
-
-      .card-header-title {
-        color: dark.$h-dark-text-strong;
-      }
-    }
-
-    .card-content {
-      border-bottom-color: dark.$h-dark-border;
-    }
-
-    .card-footer {
-      border-top-color: dark.$h-dark-border;
-
-      .card-footer-item {
-        color: dark.$h-dark-link;
-        border-right-color: dark.$h-dark-border;
-
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.05);
-        }
-      }
-    }
-  }
-
-  .button {
-    &.is-primary,
-    &.is-link {
+  .btn {
+    &.btn-primary {
       background-color: hvars.$h-primary;
       border-color: transparent;
       color: #fff;
@@ -196,47 +88,6 @@
         color: #fff;
       }
     }
-
-    &.is-light {
-      background-color: dark.$h-dark-input-bg;
-      color: dark.$h-dark-text;
-      border-color: dark.$h-dark-border;
-
-      &:hover {
-        background-color: dark.$h-dark-border;
-        color: #fff;
-      }
-    }
-  }
-
-  .box {
-    background-color: dark.$h-dark-surface;
-    color: dark.$h-dark-text;
-    border-color: transparent;
-  }
-
-  .message {
-    background-color: dark.$h-dark-surface;
-
-    .message-header {
-      background-color: dark.$h-dark-input-bg;
-      color: dark.$h-dark-text;
-    }
-
-    .message-body {
-      border-color: dark.$h-dark-border;
-      color: dark.$h-dark-text;
-    }
-  }
-
-  .title,
-  .subtitle {
-    color: dark.$h-dark-text-strong;
-  }
-
-  .footer {
-    background-color: dark.$h-dark-surface;
-    color: dark.$h-dark-text;
   }
 
   .h-code-block {

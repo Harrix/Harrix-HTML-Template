@@ -1,18 +1,27 @@
-@use "~bulma/sass" with (
-  $container-max-width: 1179px
+$primary: #2e86b7;
+$link-color: #2e86b7;
+$link-hover-color: #358cbc;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1179px,
+  xxl: 1180px,
 );
 
-@use "fonts";
-@use "helpers";
-@use "common";
-@use "header";
-@use "search-panel";
-@use "theme-dark";
-@use "sections";
-@use "form";
-@use "images";
-@use "content";
-@use "spoiler";
-@use "highlight";
+@import "~bootstrap/scss/bootstrap";
+
+@import "fonts";
+@import "helpers";
+@import "common";
+@import "header";
+@import "search-panel";
+@import "theme-dark";
+@import "sections";
+@import "form";
+@import "images";
+@import "content";
+@import "spoiler";
+@import "highlight";
 
 @import "~@fortawesome/fontawesome-svg-core/styles.css";

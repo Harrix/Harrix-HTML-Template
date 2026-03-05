@@ -1,8 +1,8 @@
-@use "~bulma/sass/utilities/mixins" as mixins;
+@use "bs";
 @use "mixins" as hmixins;
 
 .h-is-clipped-touch {
-  @include mixins.touch {
+  @include bs.touch {
     overflow: hidden !important;
   }
 }
