@@ -1,8 +1,5 @@
-@use "~bulma/sass" with (
-  $container-max-width: 1179px
-);
-
 @use "fonts";
+@use "bulma-compat";
 @use "helpers";
 @use "common";
 @use "header";
@@ -14,5 +11,9 @@
 @use "content";
 @use "spoiler";
 @use "highlight";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @import "~@fortawesome/fontawesome-svg-core/styles.css";

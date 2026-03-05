@@ -1,6 +1,12 @@
-@use "~bulma/sass/utilities/initial-variables" as initial-variables;
-@use "~bulma/sass/utilities/derived-variables" as derived-variables;
 @use "variables" as hvars;
+
+$_family-code: monospace;
+$_size-small: 0.75rem;
+$_code-color: #f14668;
+$_code-background: #f5f5f5;
+$_white: #fff;
+$_red: #f14668;
+$_radius: 0.25rem;
 
 .content {
   text-align: justify;
@@ -59,11 +65,11 @@
   }
 
   kbd {
-    font-family: derived-variables.$family-code;
-    font-size: derived-variables.$size-small;
-    color: initial-variables.$white;
-    background-color: initial-variables.$red;
-    border-radius: initial-variables.$radius;
+    font-family: $_family-code;
+    font-size: $_size-small;
+    color: $_white;
+    background-color: $_red;
+    border-radius: $_radius;
     padding: 0.25em 0.5em;
   }
 
@@ -73,8 +79,8 @@
     font-size: 0.875rem;
     font-weight: 500;
     padding: 0.1875rem 0.4rem;
-    color: derived-variables.$code;
-    background-color: derived-variables.$code-background;
+    color: $_code-color;
+    background-color: $_code-background;
     word-break: break-all;
   }
 

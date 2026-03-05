@@ -1,5 +1,3 @@
-@use "~bulma/sass/utilities/initial-variables" as initial-variables;
-
 $h-primary: #2e86b7;
 $h-github: #24292e;
 $h-link-hover: #358cbc;
@@ -9,7 +7,7 @@ $h-body-font-size: 1.125rem; // 18px at root 16px
 $h-navbar-font-size: 1rem;
 $h-navbar-logo-font-size: 1.75rem;
 $h-navbar-logo-img-height: 2rem;
-$h-navbar-icon-color: initial-variables.$grey;
+$h-navbar-icon-color: #7a7a7a;
 $h-h1-font-size: 1.75rem;
 $h-h2-font-size: 1.625rem;
 $h-h3-font-size: 1.5rem;

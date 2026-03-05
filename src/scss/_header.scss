@@ -1,8 +1,8 @@
-@use "~bulma/sass/utilities/initial-variables" as initial-variables;
-@use "~bulma/sass/utilities/derived-variables" as derived-variables;
-@use "~bulma/sass/utilities/mixins" as mixins;
 @use "variables" as hvars;
 @use "mixins" as hmixins;
+
+$_text-strong: #363636;
+$_link: #485fc7;
 
 .navbar {
   min-height: 3rem;
@@ -29,11 +29,11 @@
   #h-logo {
     font-size: hvars.$h-navbar-logo-font-size;
     line-height: 0;
-    color: derived-variables.$text-strong;
+    color: $_text-strong;
     font-weight: 500;
 
     &:hover {
-      color: derived-variables.$text-strong;
+      color: $_text-strong;
     }
 
     img {
@@ -78,7 +78,7 @@
     background-color: transparent;
   }
 
-  @include mixins.desktop {
+  @media (min-width: 1024px) {
     .has-dropdown {
       .navbar-link {
         padding-right: 1.75rem;
@@ -93,7 +93,7 @@
       .navbar-item {
         &:hover {
           background-color: transparent;
-          color: derived-variables.$link;
+          color: $_link;
           transition: none;
         }
       }
