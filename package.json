@@ -1,6 +1,6 @@
 {
   "name": "harrix-html-template",
-  "version": "1.0.0",
+  "version": "2.0",
   "description": "HTML template",
   "main": "src/js/index.js",
   "scripts": {
