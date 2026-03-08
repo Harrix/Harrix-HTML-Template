@@ -1,132 +1,99 @@
-@use "~bulma/sass/utilities/initial-variables" as initial-variables;
-@use "~bulma/sass/utilities/derived-variables" as derived-variables;
-@use "~bulma/sass/utilities/mixins" as mixins;
-@use "variables" as hvars;
-@use "mixins" as hmixins;
-
 .navbar {
-  min-height: 3rem;
-  height: 3rem;
-  padding-top: 0;
-  padding-bottom: 0;
-  font-size: hvars.$h-navbar-font-size;
-  @include hmixins.h-transition(transform);
+  font-size: $header-font-size;
+  background-color: $background-header-color;
+  color: $text-header-color;
 
-  &.h-is-hidden {
-    transform: translateY(-100%);
-  }
-
-  #h-navbar-bottom {
-    position: absolute;
-    color: transparent;
-    background-color: transparent;
-    height: 0.5rem;
+  @media (min-width: $grid-breakpoint-mobile) {
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    top: 100%;
+    z-index: $z-index-navbar;
   }
 
-  #h-logo {
-    font-size: hvars.$h-navbar-logo-font-size;
-    line-height: 0;
-    color: derived-variables.$text-strong;
-    font-weight: 500;
+  .nav-link {
+    color: $link-header-color;
 
     &:hover {
-      color: derived-variables.$text-strong;
-    }
-
-    img {
-      padding-right: 0.4375rem;
-      height: hvars.$h-navbar-logo-img-height;
-    }
-
-    .h-is-sub {
-      padding-left: 0.3125rem;
-      font-weight: 400;
+      color: $link-hover-header-color;
     }
   }
 
-  .navbar-item,
-  .navbar-link {
-    gap: 0;
-
-    &:hover {
-      background-color: transparent;
-    }
-
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-
-    img {
-      max-height: 2rem;
-    }
-
-    .icon {
-      &:only-child {
-        margin-right: -0.125rem;
-      }
-
-      img {
-        height: 0.875rem;
-      }
-    }
+  .navbar-toggler {
+    border: 0 solid transparent;
   }
 
-  .navbar-item.is-active {
-    color: inherit;
-    background-color: transparent;
+  .dropdown-item {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
-  @include mixins.desktop {
-    .has-dropdown {
-      .navbar-link {
-        padding-right: 1.75rem;
+  @media (max-width: $grid-breakpoint-mobile) {
+    .nav-item {
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
 
-        &:after {
-          right: 0.8125rem;
-        }
+      &:last-child {
+        border-bottom: 0 solid transparent;
       }
     }
 
-    .navbar-dropdown {
-      .navbar-item {
-        &:hover {
-          background-color: transparent;
-          color: derived-variables.$link;
-          transition: none;
-        }
+    .dropdown-item {
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+
+      &:last-child {
+        border-bottom: 0 solid transparent;
+        padding-bottom: 0rem;
+      }
+      &:first-child {
+        padding-top: 0rem;
       }
     }
   }
 
-  .navbar-link {
-    &:after {
-      border-width: 2px;
-      border-color: hvars.$h-navbar-icon-color;
-      width: 0.375rem;
-      height: 0.375rem;
+  .dropdown-menu {
+    font-size: $header-font-size;
+    color: $text-header-color;
+    background-color: $background-header-color;
+    border: 0 solid $border-color;
+    border-radius: 0rem;
+    box-shadow: none;
+    padding-top: 0rem;
+  }
+
+  .dropdown-item {
+    &:focus, &:hover, &.active, &:active {
+      color: $link-color;
+      text-decoration: none;
+      background-color: $background-header-color;
     }
+  }
+
+  #js-logo {
+    //NEW id
+    height: 3.125rem;
+    @include animation();
+  }
+
+  .js-logo-shrink {
+    //NEW class
+    height: 2.5rem !important;
+  }
+
+  .icon-hamburger {
+    //NEW class
+    height: 1.125rem;
   }
 
   .icon {
-    color: hvars.$h-navbar-icon-color;
-  }
+    //NEW class
+    height: 0.875rem;
 
-  .navbar-burger {
-    color: hvars.$h-navbar-icon-color;
-
-    span {
-      height: 2px;
-      width: 18px;
+    @media (max-width: $grid-breakpoint-mobile) {
+      height: 1.125rem;
     }
-
-    &:hover {
-      background-color: transparent;
-    }
-  }
-
-  .h-is-github-icon {
-    color: hvars.$h-github;
   }
 }

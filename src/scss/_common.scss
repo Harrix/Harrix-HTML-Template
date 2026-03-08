@@ -1,49 +1,57 @@
-@use "~bulma/sass/utilities/mixins" as mixins;
-@use "variables" as hvars;
-
 body {
+  font-family: $font-stack;
   overflow-x: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Fira Sans", "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: 400;
-  font-size: hvars.$h-body-font-size;
-  line-height: 1.6;
-}
+  color: $text-color;
+  font-weight: $text-font-weight;
 
-// Heading weight 400 (replaces Bulma $content-heading-weight when variables are not passed)
-.title,
-.subtitle {
-  font-weight: 400;
-}
+  ::selection {
+    color: $text-in-dark-color;
+    background: $primary-color;
+  }
 
-.subtitle {
-  font-size: inherit;
-  line-height: 1.5;
-}
+  ::-moz-selection {
+    color: $text-in-dark-color;
+    background: $primary-color;
+  }
 
-// Link colors (replaces Bulma $link, $link-hover when variables are not passed)
-a {
-  color: hvars.$h-primary;
-}
-a:hover {
-  color: hvars.$h-link-hover;
-}
-
-// Primary buttons: boston blue (#2e86b7) with white text (as in old Bulma 0 version)
-.button.is-primary {
-  background-color: hvars.$h-primary;
-  border-color: transparent;
-  color: #fff;
-
-  &:hover {
-    background-color: hvars.$h-primary-hover;
-    color: #fff;
+  @media (min-width: $grid-breakpoint-mobile) {
+    padding-top: 5rem;
   }
 }
 
-.h-sidebar {
-  font-size: hvars.$h-navbar-font-size;
+@media (max-width: $grid-breakpoint-mobile) {
+  .container {
+    max-width: 100%;
+  }
 }
 
-.h-columns-with-sidebar {
-  align-items: flex-start;
+.row>div {
+  margin-bottom: 1rem;
+}
+
+#js-back-to-top {
+  //NEW id
+  height: 3.125rem;
+  width: 3.125rem;
+  right: 3.75rem;
+  bottom: 3.75rem;
+  position: fixed;
+  font-size: 1.25rem;
+  line-height: 3.125rem;
+  background-color: map-get($colors, grey-color);
+  opacity: 0.9;
+  color: $text-in-dark-color;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: none;
+
+  &:hover {
+    background-color: $secondary-color;
+  }
+
+  @media (max-width: $grid-breakpoint-mobile) {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
 }

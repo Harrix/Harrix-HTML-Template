@@ -1,31 +1,64 @@
-@use "~bulma/sass/utilities/mixins" as mixins;
-@use "variables" as hvars;
+.color-section {
+  padding: 2rem .9375rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background-color: $secondary-color;
+  line-height: 28px;
 
-.section {
-  padding: 1.5rem 0;
-
-  @include mixins.desktop {
-    padding: 3rem;
+  .container {
+    position: relative;
   }
 
-  .h-has-special-hr {
-    margin-bottom: 2.5rem;
+  h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    color: $text-in-dark-color;
+  }
 
-    &:after {
-      background: hvars.$h-primary;
-      bottom: 0;
-      content: "";
-      display: block;
-      height: 1px;
-      left: 0;
-      right: 0;
-      margin: 1.25rem auto;
-      position: relative;
-      width: 3rem;
+  p {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: $text-in-dark-color;
+  }
+
+
+  @media (min-width:544px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-bottom: 3rem;
+    text-align: left;
+
+    .carbonad {
+      margin: 2rem 0 0 !important;
     }
   }
 
-  @include mixins.touch {
-    padding: 1.5rem 0.9375rem;
+  @media (min-width:768px) {
+    h1 {
+      font-size: 4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
   }
+
+  @media (min-width:992px) {
+    h1, p {
+      margin-right: 380px;
+    }
+
+    .carbonad {
+      position: absolute;
+      top: 0;
+      right: .75rem;
+      margin: 0 !important;
+    }
+  }
+
+}
+
+.color-red-section {
+  background-color: $primary-color !important;
 }
