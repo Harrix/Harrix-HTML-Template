@@ -105,10 +105,11 @@ const config = {
             loader: "sass-loader",
             options: {
               sourceMap: true,
-              sassOptions: {
-                loadPaths: [path.resolve(__dirname, "node_modules")],
-                silenceDeprecations: ["import", "global-builtin", "legacy-js-api", "if-function"],
-              },
+            sassOptions: {
+              loadPaths: [path.resolve(__dirname, "node_modules")],
+              quietDeps: true,
+              silenceDeprecations: ["import", "global-builtin", "legacy-js-api", "if-function"],
+            },
             },
           },
         ],
@@ -144,7 +145,7 @@ const config = {
       {
         test: /\.html$/,
         include: path.resolve(__dirname, "src/html/includes"),
-        use: ["raw-loader"],
+        type: "asset/source",
       },
       {
         test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
