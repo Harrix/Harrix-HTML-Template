@@ -116,6 +116,7 @@ const config = {
               sourceMap: true,
               sassOptions: {
                 loadPaths: [path.resolve(__dirname, "node_modules")],
+                silenceDeprecations: ["import", "global-builtin", "legacy-js-api", "if-function"],
               },
             },
           },
