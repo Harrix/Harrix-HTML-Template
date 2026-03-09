@@ -8,7 +8,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
-  const baseChunks = ["runtime", "vendors", "app", "../katex/katex"];
+  const baseChunks = ["app", "../katex/katex"];
   return templateFiles.map((item) => {
     const parsedPath = path.parse(item);
     const name = parsedPath.name;
@@ -81,17 +81,8 @@ const config = {
         },
       }),
     ],
-    splitChunks: {
-      chunks: "all",
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/](?!katex|three)/,
-          name: "vendors",
-          chunks: "all",
-        },
-      },
-    },
-    runtimeChunk: "single",
+    splitChunks: false,
+    runtimeChunk: false,
   },
   module: {
     rules: [
