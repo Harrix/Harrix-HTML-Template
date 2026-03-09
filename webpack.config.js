@@ -7,7 +7,9 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 function generateHtmlPlugins(templateDir) {
-  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
+  const templateFiles = fs
+    .readdirSync(path.resolve(__dirname, templateDir))
+    .filter((item) => path.parse(item).ext.toLowerCase() === ".html");
   const baseChunks = ["app", "../katex/katex"];
   return templateFiles.map((item) => {
     const parsedPath = path.parse(item);

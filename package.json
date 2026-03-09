@@ -20,6 +20,9 @@
     "url": "https://github.com/Harrix/Harrix-HTML-Template/issues"
   },
   "homepage": "https://github.com/Harrix/Harrix-HTML-Template#readme",
+  "engines": {
+    "node": ">=18"
+  },
   "sideEffects": [
     "*.scss",
     "*.css"
