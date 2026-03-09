@@ -619,7 +619,8 @@ public class MainActivity extends AppCompatActivity {
     <script>
       (function () {
         var y = new Date().getFullYear();
-        if (y > 2022) document.getElementById("h-year-range").textContent = "-" + y;
+        var el = document.getElementById("h-year-range");
+        if (el && y > 2022) el.textContent = "-" + y;
       })();
     </script>
     <script defer="defer" src="./js/app.js"></script>

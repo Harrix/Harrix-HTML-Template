@@ -203,10 +203,8 @@ function initLightGallery() {
   });
 
   function removeDownloadTarget() {
-    const downloadEl = instance.getElementById("lg-download");
-    if (downloadEl && downloadEl.length) {
-      downloadEl.removeAttr("target");
-    }
+    const downloadEl = document.getElementById("lg-download");
+    if (downloadEl) downloadEl.removeAttribute("target");
   }
 
   instance.LGel.on("lgAfterOpen.lg-download-fix", removeDownloadTarget);

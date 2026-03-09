@@ -7,8 +7,8 @@
     "dev": "webpack --mode development",
     "watch": "webpack --mode development --watch",
     "start": "webpack serve --no-client-overlay-warnings",
-    "build": "webpack --mode production && prettier --print-width=120 --parser html --write dist/*.html",
-    "clear-css": "purgecss --css dist/css/app.css --content dist/*.html dist/js/app.js --output dist/css/"
+    "build": "webpack --mode production && prettier --print-width=120 --parser html --write \"dist/**/*.html\"",
+    "clear-css": "purgecss --css dist/css/app.css --content \"dist/**/*.html\" dist/js/app.js --output dist/css/"
   },
   "repository": {
     "type": "git",
