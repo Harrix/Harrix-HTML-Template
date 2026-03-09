@@ -163,43 +163,15 @@ function initLightGallery() {
 
   let isGalleryOpen = false;
 
-  function getHashForIndex(index) {
-    return "#lg=" + GALLERY_ID + "&slide=" + index;
-  }
-
-  function pushSlideToHistory(index) {
-    const hash = getHashForIndex(index);
-    history.pushState({ lg: GALLERY_ID, slide: index }, "", window.location.pathname + window.location.search + hash);
-  }
-
-  instance.LGel.on("lgAfterOpen.lg-history", (e) => {
+  instance.LGel.on("lgAfterOpen.lg-history", () => {
     isGalleryOpen = true;
-    const index = e.detail?.index ?? instance.index ?? 0;
-    pushSlideToHistory(index);
-  });
-  instance.LGel.on("lgAfterSlide.lg-history", (e) => {
-    const index = e.detail?.index ?? 0;
-    pushSlideToHistory(index);
   });
   instance.LGel.on("lgAfterClose.lg-history", () => {
     isGalleryOpen = false;
   });
 
   window.addEventListener("popstate", () => {
-    const hash = window.location.hash || "";
-    const match = hash.match(/lg=([^&]+)&slide=(\d+)/);
-    if (match && match[1] === GALLERY_ID) {
-      const index = parseInt(match[2], 10);
-      if (!isNaN(index) && index >= 0 && index < items.length) {
-        if (isGalleryOpen) {
-          instance.slide(index);
-        } else {
-          instance.openGallery(index);
-        }
-      }
-    } else if (isGalleryOpen) {
-      instance.closeGallery();
-    }
+    if (isGalleryOpen) instance.closeGallery();
   });
 
   function removeDownloadTarget() {
