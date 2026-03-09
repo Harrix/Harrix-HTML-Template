@@ -6,6 +6,7 @@
   display: none;
 }
 
+// Dark theme overrides (Bulma 1.x compatible)
 [data-theme="dark"] {
   .h-theme-icon--light {
     display: none;
@@ -14,10 +15,7 @@
   .h-theme-icon--dark {
     display: inline-flex;
   }
-}
 
-// Dark theme overrides (Bulma 1.x compatible)
-[data-theme="dark"] {
   color-scheme: dark;
 
   body {

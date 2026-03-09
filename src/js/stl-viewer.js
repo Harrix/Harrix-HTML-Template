@@ -2,6 +2,14 @@ import * as THREE from "three";
 import { STLLoader } from "three/addons/loaders/STLLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
+function isDarkTheme() {
+  return document.documentElement.getAttribute("data-theme") === "dark";
+}
+
+function getSceneBg() {
+  return isDarkTheme() ? 0x1a1a1a : 0xf0f0f0;
+}
+
 function initViewer(container) {
   const src = container.getAttribute("data-src");
   if (!src) return;
@@ -9,7 +17,7 @@ function initViewer(container) {
   if (window.location.protocol === "file:") {
     container.classList.add("h-stl-viewer--no-fetch");
     container.innerHTML =
-      '<p class="h-stl-viewer__message">Для просмотра 3D-модели откройте страницу через веб-сервер (например, <code>npm run start</code>). При открытии файла напрямую (file://) загрузка STL блокируется браузером.</p>';
+      '<p class="h-stl-viewer__message">' + getNoFetchMessage() + "</p>";
     return;
   }
 
@@ -17,7 +25,7 @@ function initViewer(container) {
   const height = container.clientHeight;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xf0f0f0);
+  scene.background = new THREE.Color(getSceneBg());
 
   const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
   camera.position.set(1.2, 1.2, 1.2);
@@ -113,7 +121,38 @@ function initViewer(container) {
   };
 }
 
+function getNoFetchMessage() {
+  const lang = document.documentElement.lang;
+  if (lang === "ru") {
+    return 'Для просмотра 3D-модели откройте страницу через веб-сервер (например, <code>npm run start</code>). При открытии файла напрямую (file://) загрузка STL блокируется браузером.';
+  }
+  return 'To view the 3D model, open the page via a web server (e.g. <code>npm run start</code>). Opening the file directly (file://) blocks STL loading in the browser.';
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const containers = document.querySelectorAll(".h-stl-viewer");
-  containers.forEach((el) => initViewer(el));
+  const cleanups = [];
+  containers.forEach((el) => {
+    const cleanup = initViewer(el);
+    if (cleanup) cleanups.push({ el, cleanup, reinit: null });
+  });
+
+  const observer = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      if (m.attributeName === "data-theme") {
+        containers.forEach((el) => {
+          const canvas = el.querySelector("canvas");
+          if (!canvas) return;
+          const entry = cleanups.find((c) => c.el === el);
+          if (entry) {
+            entry.cleanup();
+            const newCleanup = initViewer(el);
+            if (newCleanup) entry.cleanup = newCleanup;
+          }
+        });
+        break;
+      }
+    }
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 });

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title><%=title%></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="icon" type="image/svg+xml" sizes="any" href="favicon/favicon.svg" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
@@ -44,7 +44,7 @@
           <a class="navbar-item" href="/" id="h-logo">
             <img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span>
           </a>
-          <div id="h-burger" class="navbar-burger" data-target="h-navbar-menu">
+          <div id="h-burger" class="navbar-burger" role="button" aria-label="Menu" aria-expanded="false" data-target="h-navbar-menu">
             <span></span> <span></span> <span></span> <span></span>
           </div>
         </div>
@@ -53,7 +53,7 @@
             <div class="navbar-item" id="h-search-form">
               <div class="control has-icons-left has-icons-right">
                 <form role="search" method="get" action="/">
-                  <input class="input is-shadowless" type="text" value="" id="h-search-input" />
+                  <input class="input is-shadowless" type="text" value="" id="h-search-input" aria-label="Search" />
                 </form>
                 <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
                 <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-search-button-close"

@@ -30,3 +30,13 @@
     }
   }
 }
+
+[data-theme="dark"] {
+  .h-stl-viewer {
+    background: #1a1a1a;
+
+    &__message code {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}

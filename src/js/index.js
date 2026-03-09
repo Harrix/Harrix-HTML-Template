@@ -55,6 +55,8 @@ function initNavbar(scrollThreshold) {
       const target = document.getElementById(navbarBurger.dataset.target);
       navbarBurger.classList.toggle("is-active");
       target.classList.toggle("is-active");
+      const expanded = navbarBurger.classList.contains("is-active");
+      navbarBurger.setAttribute("aria-expanded", String(expanded));
     });
 
     window.addEventListener("scroll", () => {

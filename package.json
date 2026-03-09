@@ -1,6 +1,6 @@
 {
   "name": "harrix-html-template",
-  "version": "2.0",
+  "version": "2.0.0",
   "description": "HTML template",
   "main": "src/js/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "watch": "webpack --mode development --watch",
     "start": "webpack serve --no-client-overlay-warnings",
     "build": "webpack --mode production && prettier --print-width=120 --parser html --write dist/*.html",
-    "clear-css": "purifycss dist/css/app.css dist/js/app.js dist/index.html --min --info --out dist/css/app.optimize.css"
+    "clear-css": "purgecss --css dist/css/app.css --content dist/*.html dist/js/app.js --output dist/css/"
   },
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
     "html-webpack-plugin": "^5.6.6",
     "mini-css-extract-plugin": "^2.10.0",
     "prettier": "^3.8.1",
-    "purify-css": "^1.2.5",
+    "purgecss": "^7.0.2",
     "raw-loader": "^4.0.2",
     "sass": "^1.97.3",
     "sass-loader": "^16.0.7",

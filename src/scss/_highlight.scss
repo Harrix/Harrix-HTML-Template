@@ -109,6 +109,92 @@ pre {
   font-weight: bold;
 }
 
+// Dark theme — VSCode Dark Modern palette
+[data-theme="dark"] {
+  .hljs {
+    color: #d4d4d4;
+  }
+
+  .content pre code,
+  pre code,
+  .content pre,
+  pre {
+    color: #d4d4d4;
+  }
+
+  .hljs-comment,
+  .hljs-quote {
+    color: #6a9955;
+  }
+
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-doctag {
+    color: #569cd6;
+  }
+
+  .hljs-selector-id,
+  .hljs-selector-class {
+    color: #b267e6;
+  }
+
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-addition {
+    color: #ce9178;
+  }
+
+  .hljs-variable,
+  .hljs-template-variable {
+    color: #9cdcfe;
+  }
+
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-literal,
+  .hljs-type,
+  .hljs-meta,
+  .hljs-link,
+  .hljs-meta .hljs-meta-string {
+    color: #4ec9b0;
+  }
+
+  .hljs-attr,
+  .hljs-attribute {
+    color: #9cdcfe;
+  }
+
+  .hljs-number,
+  .hljs-params,
+  .hljs-subst {
+    color: #b5cea8;
+  }
+
+  .hljs-title,
+  .hljs-title.class_,
+  .hljs-section,
+  .hljs-name {
+    color: #dcdcaa;
+  }
+
+  .hljs-deletion {
+    color: #f44747;
+  }
+
+  .hljs-regexp {
+    color: #d16969;
+  }
+
+  .h-code-block .h-code-copy {
+    &.h-code-copy--done {
+      color: #81c784;
+      background-color: rgba(46, 125, 50, 0.2);
+      border-color: rgba(129, 199, 132, 0.3);
+    }
+  }
+}
+
 .h-code-block {
   position: relative;
 
