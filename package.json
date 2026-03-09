@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Harrix/Harrix-HTML-Template#readme",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "sideEffects": [
     "*.scss",
