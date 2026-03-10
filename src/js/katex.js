@@ -4,7 +4,9 @@ import katex from "katex";
 document.addEventListener("DOMContentLoaded", () => {
   const texElements = document.querySelectorAll(".tex");
   texElements.forEach((el) => {
-    katex.render(el.getAttribute("data-expr"), el, {
+    const expr = el.getAttribute("data-expr");
+    if (!expr) return;
+    katex.render(expr, el, {
       displayMode: true,
     });
   });

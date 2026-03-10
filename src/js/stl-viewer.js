@@ -10,6 +10,14 @@ function getSceneBg() {
   return isDarkTheme() ? 0x1a1a1a : 0xf0f0f0;
 }
 
+function getLoadErrorMessage() {
+  const lang = document.documentElement.lang;
+  if (lang === "ru") {
+    return "Не удалось загрузить 3D-модель.";
+  }
+  return "Failed to load 3D model.";
+}
+
 function initViewer(container) {
   const src = container.getAttribute("data-src");
   if (!src) return;
@@ -61,6 +69,8 @@ function initViewer(container) {
   controls.enableDamping = true;
   controls.dampingFactor = 0.05;
 
+  let stopped = false;
+
   const loader = new STLLoader();
   loader.load(
     src,
@@ -90,11 +100,16 @@ function initViewer(container) {
     },
     undefined,
     (err) => {
+      stopped = true;
+      container.classList.add("h-stl-viewer--load-error");
+      container.innerHTML = '<p class="h-stl-viewer__message">' + getLoadErrorMessage() + "</p>";
+      // console.* is dropped in production builds; keep this only for development visibility.
       console.error("STL load error:", err);
     }
   );
 
   function animate() {
+    if (stopped) return;
     requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
