@@ -295,6 +295,8 @@ function initThemeToggle() {
   const toggle = document.getElementById("h-theme-toggle");
   if (!toggle) return;
 
+  const labelEl = document.getElementById("h-theme-toggle-label");
+
   function getTheme() {
     const fromDom = document.documentElement.getAttribute("data-theme");
     if (fromDom === "dark" || fromDom === "light") return fromDom;
@@ -308,9 +310,21 @@ function initThemeToggle() {
     localStorage.setItem("h-theme", theme);
   }
 
+  function updateThemeLabel() {
+    if (!labelEl) return;
+    const theme = getTheme();
+    const textLight = translate("Switch to light theme");
+    const textDark = translate("Switch to dark theme");
+    labelEl.textContent = theme === "dark" ? textLight : textDark;
+    toggle.setAttribute("aria-label", theme === "dark" ? textLight : textDark);
+  }
+
+  updateThemeLabel();
+
   toggle.addEventListener("click", () => {
     const current = getTheme();
     setTheme(current === "dark" ? "light" : "dark");
+    updateThemeLabel();
   });
 }
 
