@@ -83,8 +83,15 @@ function initSearchPanel() {
     const searchButtonOpen = document.getElementById("h-search-button-open");
     const searchButtonClose = document.getElementById("h-search-button-close");
     const searchInput = document.getElementById("h-search-input");
+    const formEl = searchForm.querySelector("form");
 
     searchInput.placeholder = translate("Search…");
+
+    if (formEl) {
+      formEl.addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+    }
 
     function showOrHideSearchButtonClose() {
       if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
