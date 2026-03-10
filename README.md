@@ -69,6 +69,10 @@ src/
 | tailwindcss      | 8 817 268          | <https://www.npmjs.com/package/tailwindcss>      |
 | foundation-sites | 103 577            | <https://www.npmjs.com/package/foundation-sites> |
 
-## License
+## 📄 License
 
-[MIT](LICENSE)
+This project is licensed under the [MIT License](https://github.com/Harrix/Harrix-HTML-Template/blob/main/LICENSE.md).
+
+## 👤 Author
+
+Author: [Anton Sergienko](https://github.com/Harrix).
