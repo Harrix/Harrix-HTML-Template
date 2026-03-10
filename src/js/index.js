@@ -166,10 +166,18 @@ function initLightGallery() {
     plugins: [lgHash, lgZoom, lgThumbnail],
     galleryId: GALLERY_ID,
     hash: true,
+    showCloseIcon: true,
+    mobileSettings: {
+      showCloseIcon: true,
+      controls: true,
+    },
   });
 
   let isGalleryOpen = false;
 
+  instance.LGel.on("lgBeforeOpen.lg-history", () => {
+    window.history.pushState({ lgOpen: true }, "", window.location.href);
+  });
   instance.LGel.on("lgAfterOpen.lg-history", () => {
     isGalleryOpen = true;
   });
