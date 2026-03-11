@@ -684,6 +684,40 @@
                 ></div>
                 <div class="tex" data-expr="x^{5+y}=\frac{x+y_6}{\sqrt{x+\frac{1}{x}}}\tag{1.1}"></div>
                 <div class="tex" data-expr="x^{5+y}=\frac{x+y_6}{\sqrt{x+\frac{1}{x}}}\text{1.1}"></div>
+                <h2 id="mermaid">Mermaid (диаграммы)</h2>
+                <pre class="mermaid">
+flowchart LR
+    A[Начало] --> B{Условие}
+    B -- Да --> C[Действие 1]
+    B -- Нет --> D[Действие 2]
+    C --> E[Конец]
+    D --> E
+          </pre
+                >
+                <pre class="mermaid">
+sequenceDiagram
+    participant Клиент
+    participant Сервер
+    participant База данных
+
+    Клиент->>Сервер: GET /api/users
+    Сервер->>База данных: SELECT * FROM users
+    База данных-->>Сервер: Результаты
+    Сервер-->>Клиент: JSON ответ
+          </pre
+                >
+                <pre class="mermaid">
+gitGraph
+    commit id: "Инициализация"
+    branch feature/login
+    checkout feature/login
+    commit id: "Добавить форму"
+    commit id: "Добавить валидацию"
+    checkout main
+    merge feature/login id: "Merge feature/login"
+    commit id: "Релиз v1.0"
+          </pre
+                >
                 <h2 id="stl-viewer">Просмотр 3D-модели (STL)</h2>
                 <div class="h-stl-viewer" data-src="uploads/test.stl"></div>
                 <h2 id="highlightjs">highlight.js</h2>
@@ -1055,5 +1089,6 @@ kbd.menu {
     <script defer="defer" src="./js/app.js"></script>
     <script defer="defer" src="./js/../katex/katex.js"></script>
     <script defer="defer" src="./js/../stl-viewer/stl-viewer.js"></script>
+    <script defer="defer" src="./js/../mermaid/mermaid.js"></script>
   </body>
 </html>

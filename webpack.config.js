@@ -10,7 +10,7 @@ function generateHtmlPlugins(templateDir) {
   const templateFiles = fs
     .readdirSync(path.resolve(__dirname, templateDir))
     .filter((item) => path.parse(item).ext.toLowerCase() === ".html");
-  const baseChunks = ["app", "../katex/katex"];
+  const baseChunks = ["app", "../katex/katex", "../mermaid/mermaid"];
   return templateFiles.map((item) => {
     const parsedPath = path.parse(item);
     const name = parsedPath.name;
@@ -34,10 +34,12 @@ const config = {
     app: ["./src/js/index.js", "./src/scss/style.scss"],
     "../katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
     "../stl-viewer/stl-viewer": ["./src/js/stl-viewer.js", "./src/scss/stl-viewer.scss"],
+    "../mermaid/mermaid": ["./src/js/mermaid.js"],
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "./js/[name].js",
+    chunkFilename: "./js/chunks/[name].js",
     clean: true,
     assetModuleFilename: "assets/[name][ext]",
   },

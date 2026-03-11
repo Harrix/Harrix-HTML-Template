@@ -36,6 +36,7 @@
     "highlight.js": "^11.11.1",
     "katex": "^0.16.38",
     "lightgallery": "^2.9.0",
+    "mermaid": "^11.13.0",
     "three": "^0.183.2"
   },
   "devDependencies": {
