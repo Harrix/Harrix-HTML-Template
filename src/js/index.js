@@ -235,6 +235,40 @@ function initSyntaxHighlighting() {
   }
 }
 
+function getCodeLanguage(codeEl) {
+  if (!codeEl || !codeEl.classList) return null;
+  for (const c of codeEl.classList) {
+    if (c.startsWith("language-")) return c.slice(9);
+    if (c !== "hljs") return c;
+  }
+  return null;
+}
+
+const CODE_LANGUAGE_NAMES = {
+  cpp: "C++",
+  c: "C",
+  java: "Java",
+  javascript: "JavaScript",
+  js: "JavaScript",
+  typescript: "TypeScript",
+  ts: "TypeScript",
+  python: "Python",
+  py: "Python",
+  css: "CSS",
+  html: "HTML",
+  xml: "XML",
+  json: "JSON",
+  bash: "Bash",
+  shell: "Shell",
+  sql: "SQL",
+  plaintext: "Plain text",
+};
+
+function getLanguageDisplayName(alias) {
+  const lower = (alias || "").toLowerCase();
+  return CODE_LANGUAGE_NAMES[lower] || (alias ? alias.charAt(0).toUpperCase() + alias.slice(1) : "");
+}
+
 function initCodeCopyButtons() {
   const codeBlocks = document.querySelectorAll("pre > code");
   codeBlocks.forEach((codeEl) => {
@@ -243,6 +277,12 @@ function initCodeCopyButtons() {
 
     const wrapper = document.createElement("div");
     wrapper.className = "h-code-block";
+
+    const language = getCodeLanguage(codeEl);
+    const lineCount = (codeEl.textContent || "").trim().split("\n").length;
+    const showLanguageLabel = language && lineCount > 2;
+    const isSingleLine = lineCount <= 1;
+    if (isSingleLine) wrapper.classList.add("h-code-block--single-line");
 
     const labelCopy = translate("Copy");
     const labelCopied = translate("Copied!");
@@ -269,24 +309,33 @@ function initCodeCopyButtons() {
       return btn;
     }
 
+    if (showLanguageLabel) {
+      const langSpan = document.createElement("span");
+      langSpan.className = "h-code-lang";
+      langSpan.textContent = getLanguageDisplayName(language);
+      wrapper.appendChild(langSpan);
+    }
+
+    wrapper.appendChild(createButton("top"));
     const preClone = pre.cloneNode(true);
     preClone.classList.add("h-code-block-inner");
     wrapper.appendChild(preClone);
-    wrapper.appendChild(createButton("top"));
-    wrapper.appendChild(createButton("bottom"));
+    if (!isSingleLine) wrapper.appendChild(createButton("bottom"));
 
-    wrapper.addEventListener("mousemove", (e) => {
-      const rect = wrapper.getBoundingClientRect();
-      const fromBottom = rect.bottom - e.clientY;
-      if (fromBottom <= CODE_BLOCK_BOTTOM_THRESHOLD) {
-        wrapper.classList.add("h-code-block--show-copy");
-      } else {
+    if (!isSingleLine) {
+      wrapper.addEventListener("mousemove", (e) => {
+        const rect = wrapper.getBoundingClientRect();
+        const fromBottom = rect.bottom - e.clientY;
+        if (fromBottom <= CODE_BLOCK_BOTTOM_THRESHOLD) {
+          wrapper.classList.add("h-code-block--show-copy");
+        } else {
+          wrapper.classList.remove("h-code-block--show-copy");
+        }
+      });
+      wrapper.addEventListener("mouseleave", () => {
         wrapper.classList.remove("h-code-block--show-copy");
-      }
-    });
-    wrapper.addEventListener("mouseleave", () => {
-      wrapper.classList.remove("h-code-block--show-copy");
-    });
+      });
+    }
 
     pre.parentNode.insertBefore(wrapper, pre);
     pre.remove();

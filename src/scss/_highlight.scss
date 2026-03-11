@@ -211,10 +211,30 @@ pre {
       border-color: rgba(129, 199, 132, 0.3);
     }
   }
+
+  .h-code-block .h-code-lang {
+    color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 .h-code-block {
   position: relative;
+
+  .h-code-lang {
+    position: absolute;
+    top: 0.5rem;
+    right: 3rem;
+    z-index: 2;
+    pointer-events: none;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
 
   .h-code-block-inner {
     margin: 0;
@@ -273,6 +293,11 @@ pre {
       opacity: 0;
       visibility: hidden;
     }
+  }
+
+  &.h-code-block--single-line .h-code-copy--top {
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &.h-code-block--show-copy .h-code-copy--bottom {
