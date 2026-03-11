@@ -47,3 +47,13 @@
 .color-red-section {
   background-color: hvars.$h-color-section-red !important;
 }
+
+.hero.is-danger {
+  background-color: hvars.$h-color-section-red;
+
+  .hero-body,
+  .title,
+  .subtitle {
+    color: #fff;
+  }
+}
