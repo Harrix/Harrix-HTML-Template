@@ -366,6 +366,63 @@ _.template(require('./../includes/header.html'))(data) %>
             <li><span class="h-fa-li"><i class="fas fa-info-circle fa-lg" aria-hidden="true"></i></span>Рядовое обычное сообщение, в котором о чем-то говорится. Например, что завершился цикл, и так далее.</li>
           </ul>
 
+          <h2 id="history">Список изменений</h2>
+
+          <ul class="h-changelog content">
+            <li class="h-changelog__item">
+              <span class="tag is-warning">New</span>
+              <span class="h-changelog__text">Dark theme now available from Options menu.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-success">Added</span>
+              <span class="h-changelog__text">Icons indicating whether a file was added, removed or modified.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-info">Fixed</span>
+              <span class="h-changelog__text">Unable to add repository which exists at drive root.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-info">Fixed</span>
+              <span class="h-changelog__text">Crash due to incorrect handling of input arguments on launch.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-info">Fixed</span>
+              <span class="h-changelog__text">Crash due to COM exception when interacting with Taskbar.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-info">Fixed</span>
+              <span class="h-changelog__text">Crash when scanning filesystem for local repositories.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-info">Fixed</span>
+              <span class="h-changelog__text">Created SSH keys not added to ssh-agent on first launch.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-info">Fixed</span>
+              <span class="h-changelog__text">Crash due to decoding malformed parameters on restart.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-link">Updated</span>
+              <span class="h-changelog__text">Posh-Git now includes new icons in prompt.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-link">Updated</span>
+              <span class="h-changelog__text">Git Shell updated to v2.8.1.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-link">Updated</span>
+              <span class="h-changelog__text">Git LFS updated to v1.2.0.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-link">Updated</span>
+              <span class="h-changelog__text">Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</span>
+            </li>
+            <li class="h-changelog__item">
+              <span class="tag is-danger">Removed</span>
+              <span class="h-changelog__text">Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</span>
+            </li>
+          </ul>
+
           <h2 id="lightbox">Lightbox</h2>
 
           <h3>Одиночная картинка слева</h3>
