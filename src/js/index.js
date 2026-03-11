@@ -271,15 +271,16 @@ function getLanguageDisplayName(alias) {
 }
 
 function showCopyTooltip(button, text) {
+  const wrapper = button.parentElement;
+  if (!wrapper) return;
   const tooltip = document.createElement("div");
   tooltip.className = "h-code-copy-tooltip";
   tooltip.textContent = text;
-  document.body.appendChild(tooltip);
-  const rect = button.getBoundingClientRect();
-  tooltip.style.left = rect.left + rect.width / 2 + "px";
-  tooltip.style.transform = "translateX(-50%)";
+  wrapper.appendChild(tooltip);
   requestAnimationFrame(() => {
-    tooltip.style.top = rect.top - tooltip.offsetHeight - 8 + "px";
+    tooltip.style.left = button.offsetLeft + button.offsetWidth / 2 + "px";
+    tooltip.style.top = button.offsetTop - tooltip.offsetHeight - 8 + "px";
+    tooltip.style.transform = "translateX(-50%)";
     tooltip.classList.add("h-code-copy-tooltip--visible");
   });
   setTimeout(() => {

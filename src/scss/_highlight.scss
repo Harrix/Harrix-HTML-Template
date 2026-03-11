@@ -307,7 +307,7 @@ pre {
 }
 
 .h-code-copy-tooltip {
-  position: fixed;
+  position: absolute;
   z-index: 9999;
   padding: 0.35rem 0.6rem;
   font-size: 0.8125rem;
