@@ -15,6 +15,7 @@ const NAVBAR_HIDE_SCROLL_THRESHOLD = 100;
 const GALLERY_ROW_HEIGHT = 200;
 const SEARCH_ANIMATION_MS = 500;
 const CODE_COPY_FEEDBACK_MS = 2000;
+const CODE_COPY_TOOLTIP_MS = 700;
 const CODE_BLOCK_BOTTOM_THRESHOLD = 80;
 const GALLERY_ID = "1";
 
@@ -269,6 +270,24 @@ function getLanguageDisplayName(alias) {
   return CODE_LANGUAGE_NAMES[lower] || (alias ? alias.charAt(0).toUpperCase() + alias.slice(1) : "");
 }
 
+function showCopyTooltip(button, text) {
+  const tooltip = document.createElement("div");
+  tooltip.className = "h-code-copy-tooltip";
+  tooltip.textContent = text;
+  document.body.appendChild(tooltip);
+  const rect = button.getBoundingClientRect();
+  tooltip.style.left = rect.left + rect.width / 2 + "px";
+  tooltip.style.transform = "translateX(-50%)";
+  requestAnimationFrame(() => {
+    tooltip.style.top = rect.top - tooltip.offsetHeight - 8 + "px";
+    tooltip.classList.add("h-code-copy-tooltip--visible");
+  });
+  setTimeout(() => {
+    tooltip.classList.remove("h-code-copy-tooltip--visible");
+    setTimeout(() => tooltip.remove(), 150);
+  }, CODE_COPY_TOOLTIP_MS);
+}
+
 function initCodeCopyButtons() {
   const codeBlocks = document.querySelectorAll("pre > code");
   codeBlocks.forEach((codeEl) => {
@@ -290,6 +309,7 @@ function initCodeCopyButtons() {
     function doCopy(btn) {
       const text = codeEl.textContent || "";
       navigator.clipboard.writeText(text).then(() => {
+        showCopyTooltip(btn, labelCopied);
         btn.setAttribute("aria-label", labelCopied);
         btn.classList.add("h-code-copy--done");
         setTimeout(() => {
