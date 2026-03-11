@@ -112,6 +112,13 @@
   li {
     position: relative;
   }
+
+  // Fully suppress list marker so it never shows (e.g. blue dot in some browsers)
+  li::marker {
+    content: none;
+    font-size: 0;
+    display: none;
+  }
 }
 
 .h-fa-li {
