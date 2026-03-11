@@ -18,6 +18,8 @@ const CODE_COPY_FEEDBACK_MS = 2000;
 const CODE_COPY_TOOLTIP_MS = 700;
 const CODE_BLOCK_BOTTOM_THRESHOLD = 80;
 const GALLERY_ID = "1";
+const BACK_TO_TOP_THRESHOLD = 200;
+const BACK_TO_TOP_DURATION_MS = 800;
 
 const lang = document.documentElement.lang;
 
@@ -25,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavbar(NAVBAR_HIDE_SCROLL_THRESHOLD);
   initSearchPanel();
   initThemeToggle();
+  initBackToTop(BACK_TO_TOP_THRESHOLD, BACK_TO_TOP_DURATION_MS);
   initLightGallery();
   initSyntaxHighlighting();
   initCodeCopyButtons();
@@ -76,6 +79,24 @@ function initNavbar(scrollThreshold) {
       }
     });
   }
+}
+
+function initBackToTop(threshold, _durationMs) {
+  const btn = document.getElementById("h-back-to-top");
+  if (!btn) return;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= threshold) {
+      btn.classList.add("is-visible");
+    } else {
+      btn.classList.remove("is-visible");
+    }
+  });
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
 function initSearchPanel() {
