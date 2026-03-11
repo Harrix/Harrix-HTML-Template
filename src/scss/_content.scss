@@ -102,3 +102,34 @@
     }
   }
 }
+
+// Font Awesome list and icon sizes (demo section)
+.h-fa-ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 2em;
+
+  li {
+    position: relative;
+  }
+}
+
+.h-fa-li {
+  position: absolute;
+  left: -2em;
+  width: 2em;
+  text-align: center;
+}
+
+.h-fa-3x {
+  font-size: 3em;
+  line-height: 1;
+
+  .svg-inline--fa {
+    margin-right: 0.5rem;
+  }
+}
+
+.h-fa-lg.icon {
+  font-size: 1.33em;
+}

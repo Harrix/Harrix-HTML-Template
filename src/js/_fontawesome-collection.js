@@ -1,13 +1,13 @@
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 
-import { faSearch, faFileArchive, faDownload, faGlobeAmericas, faRss, faCopy, faMoon, faSun, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faFileArchive, faDownload, faGlobeAmericas, faRss, faCopy, faMoon, faSun, faAngleUp, faCheckSquare, faSpinner, faCircleNotch, faSync, faCog, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 
-import { faPlusSquare, faMinusSquare } from "@fortawesome/free-regular-svg-icons";
+import { faPlusSquare, faMinusSquare, faSquare } from "@fortawesome/free-regular-svg-icons";
 
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 export default function initFontawesomeCollection() {
-  library.add(faSearch, faFileArchive, faDownload, faCopy, faPlusSquare, faMinusSquare, faGithub, faGlobeAmericas, faRss, faMoon, faSun, faAngleUp);
+  library.add(faSearch, faFileArchive, faDownload, faCopy, faPlusSquare, faMinusSquare, faGithub, faGlobeAmericas, faRss, faMoon, faSun, faAngleUp, faCheckSquare, faSquare, faSpinner, faCircleNotch, faSync, faCog, faShieldAlt);
 
   const faHarrix = {
     prefix: "fah",
