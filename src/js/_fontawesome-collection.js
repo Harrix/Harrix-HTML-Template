@@ -1,13 +1,80 @@
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 
-import { faSearch, faFileArchive, faDownload, faGlobeAmericas, faRss, faCopy, faMoon, faSun, faAngleUp, faCheckSquare, faSpinner, faCircleNotch, faSync, faCog, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faFileArchive,
+  faDownload,
+  faLink,
+  faGlobeAmericas,
+  faRss,
+  faCopy,
+  faMoon,
+  faSun,
+  faAngleUp,
+  faCheckSquare,
+  faSpinner,
+  faCircleNotch,
+  faSync,
+  faCog,
+  faShieldAlt,
+  faExclamationCircle,
+  faCheckCircle,
+  faInfoCircle,
+  faExclamationTriangle,
+} from "@fortawesome/free-solid-svg-icons";
 
-import { faPlusSquare, faMinusSquare, faSquare } from "@fortawesome/free-regular-svg-icons";
+import {
+  faPlusSquare,
+  faMinusSquare,
+  faSquare,
+  faFileWord,
+  faFileExcel,
+  faFileAlt,
+  faFileCode,
+  faFileVideo,
+  faFilePowerpoint,
+  faFilePdf,
+  faFileArchive as faFileArchiveRegular,
+} from "@fortawesome/free-regular-svg-icons";
 
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faWindows } from "@fortawesome/free-brands-svg-icons";
 
 export default function initFontawesomeCollection() {
-  library.add(faSearch, faFileArchive, faDownload, faCopy, faPlusSquare, faMinusSquare, faGithub, faGlobeAmericas, faRss, faMoon, faSun, faAngleUp, faCheckSquare, faSquare, faSpinner, faCircleNotch, faSync, faCog, faShieldAlt);
+  library.add(
+    faSearch,
+    faFileArchive,
+    faDownload,
+    faLink,
+    faCopy,
+    faPlusSquare,
+    faMinusSquare,
+    faGithub,
+    faWindows,
+    faGlobeAmericas,
+    faRss,
+    faMoon,
+    faSun,
+    faAngleUp,
+    faCheckSquare,
+    faSquare,
+    faSpinner,
+    faCircleNotch,
+    faSync,
+    faCog,
+    faShieldAlt,
+    faExclamationCircle,
+    faCheckCircle,
+    faInfoCircle,
+    faExclamationTriangle,
+    faFileWord,
+    faFileExcel,
+    faFileAlt,
+    faFileCode,
+    faFileVideo,
+    faFilePowerpoint,
+    faFilePdf,
+    faFileArchiveRegular
+  );
 
   const faHarrix = {
     prefix: "fah",
