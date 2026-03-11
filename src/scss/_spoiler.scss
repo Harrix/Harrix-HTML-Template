@@ -44,17 +44,20 @@
   }
 
   &__content {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows hvars.$h-transition-duration ease-out;
+    overflow: hidden;
+    transition: height 0.35s ease-in-out;
+  }
+
+  &:not([open]) &__content {
+    height: 0;
   }
 
   &[open] &__content {
-    grid-template-rows: 1fr;
+    height: auto;
   }
 
   &__inner {
-    overflow: hidden;
+    overflow: visible;
     min-height: 0;
   }
 
