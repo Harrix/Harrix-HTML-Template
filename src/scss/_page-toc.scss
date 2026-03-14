@@ -1,0 +1,47 @@
+@use "bulma/sass/utilities/mixins" as mixins;
+@use "variables" as hvars;
+
+.h-page-toc {
+  display: none;
+  position: fixed;
+  top: 4.5rem;
+  right: 1rem;
+  width: calc((100vw - 1179px) / 2 - 2rem);
+  max-width: 16rem;
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  text-align: left;
+  z-index: 10;
+
+  @media (min-width: 1500px) {
+    display: block;
+  }
+
+  .menu-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .menu-list a {
+    padding: 0.25em 0.75em;
+    border-left: 2px solid transparent;
+    color: #666;
+    border-radius: 0;
+    white-space: normal;
+
+    &:hover {
+      background-color: transparent;
+      color: hvars.$h-primary;
+    }
+
+    &.is-active {
+      font-weight: 600;
+      color: hvars.$h-primary;
+      border-left-color: hvars.$h-primary;
+      background-color: transparent;
+    }
+  }
+}

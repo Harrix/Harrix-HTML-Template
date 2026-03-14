@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFontawesomeCollection();
   initGalleryGrid(GALLERY_ROW_HEIGHT);
   initSpoilerAnimation();
+  initPageToc();
 });
 
 function initNavbar(scrollThreshold) {
@@ -471,4 +472,67 @@ function initSpoilerAnimation() {
       }
     });
   });
+}
+
+function initPageToc() {
+  const tocList = document.getElementById("h-page-toc-list");
+  const tocLabel = document.getElementById("h-page-toc-label");
+  if (!tocList) return;
+
+  const article = document.querySelector("article");
+  if (!article) return;
+
+  const headings = article.querySelectorAll("h2");
+  if (headings.length === 0) return;
+
+  if (tocLabel) tocLabel.textContent = translate("On this page");
+
+  const usedIds = new Set();
+  headings.forEach((h, i) => {
+    if (!h.id || usedIds.has(h.id)) {
+      const base = h.textContent.trim().toLowerCase().replace(/[^a-zа-яё0-9]+/gi, "-").replace(/^-|-$/g, "");
+      let candidate = base || "section-" + i;
+      let suffix = 1;
+      while (usedIds.has(candidate) || document.getElementById(candidate)) {
+        candidate = base + "-" + suffix++;
+      }
+      h.id = candidate;
+    }
+    usedIds.add(h.id);
+
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = "#" + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  const links = tocList.querySelectorAll("a");
+  let currentActiveIndex = -1;
+
+  function setActive(index) {
+    if (index === currentActiveIndex) return;
+    if (currentActiveIndex >= 0 && currentActiveIndex < links.length) {
+      links[currentActiveIndex].classList.remove("is-active");
+    }
+    if (index >= 0 && index < links.length) {
+      links[index].classList.add("is-active");
+      currentActiveIndex = index;
+    }
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const idx = Array.from(headings).indexOf(entry.target);
+          if (idx !== -1) setActive(idx);
+        }
+      });
+    },
+    { rootMargin: "-80px 0px -70% 0px" },
+  );
+
+  headings.forEach((h) => observer.observe(h));
 }
