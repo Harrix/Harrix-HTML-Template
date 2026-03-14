@@ -1,8 +1,7 @@
 .h-chart-container {
+  width: 100%;
   max-width: 100%;
-  width: fit-content;
-  min-width: min(300px, 100%);
-  min-height: 300px;
+  min-height: 420px;
   margin: 1rem 0;
   overflow: hidden;
   box-sizing: border-box;
