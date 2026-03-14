@@ -209,6 +209,67 @@
                     </div>
                   </div>
                 </details>
+                <h2 id="tabs">Вкладки</h2>
+                <div class="h-tabs">
+                  <div class="h-tabs__nav" role="tablist" aria-label="Пример вкладок">
+                    <button
+                      class="h-tabs__tab is-active"
+                      type="button"
+                      role="tab"
+                      aria-selected="true"
+                      aria-controls="h-tab-panel-1"
+                      id="h-tab-1"
+                    >
+                      Вкладка 1
+                    </button>
+                    <button
+                      class="h-tabs__tab"
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      aria-controls="h-tab-panel-2"
+                      id="h-tab-2"
+                    >
+                      Вкладка 2
+                    </button>
+                    <button
+                      class="h-tabs__tab"
+                      type="button"
+                      role="tab"
+                      aria-selected="false"
+                      aria-controls="h-tab-panel-3"
+                      id="h-tab-3"
+                    >
+                      Вкладка 3
+                    </button>
+                  </div>
+                  <div class="h-tabs__panels">
+                    <div class="h-tabs__panel" role="tabpanel" id="h-tab-panel-1" aria-labelledby="h-tab-1">
+                      <p>
+                        Содержимое <strong>первой</strong> вкладки. Здесь можно размещать любой контент: текст,
+                        изображения, таблицы.
+                      </p>
+                      <ul>
+                        <li>Первый пункт</li>
+                        <li>Второй пункт</li>
+                        <li>Третий пункт</li>
+                      </ul>
+                    </div>
+                    <div class="h-tabs__panel" role="tabpanel" id="h-tab-panel-2" aria-labelledby="h-tab-2" hidden>
+                      <p>
+                        Содержимое <strong>второй</strong> вкладки. Вкладки удобны для группировки связанного контента
+                        без перехода на другую страницу.
+                      </p>
+                      <pre><code class="plaintext">Пример кода на второй вкладке</code></pre>
+                    </div>
+                    <div class="h-tabs__panel" role="tabpanel" id="h-tab-panel-3" aria-labelledby="h-tab-3" hidden>
+                      <p>
+                        Содержимое <strong>третьей</strong> вкладки. Количество вкладок не ограничено — при
+                        необходимости навигация прокручивается горизонтально.
+                      </p>
+                    </div>
+                  </div>
+                </div>
                 <h2 id="columns">Колонки</h2>
                 <div class="columns">
                   <div class="column">
