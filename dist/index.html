@@ -28,6 +28,7 @@
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/../katex/katex.css" rel="stylesheet" />
     <link href="css/../stl-viewer/stl-viewer.css" rel="stylesheet" />
+    <link href="css/../charts/charts.css" rel="stylesheet" />
   </head>
   <body class="has-navbar-fixed-top">
     <nav id="h-navbar" class="navbar is-fixed-top" aria-label="main navigation">
@@ -720,6 +721,18 @@ gitGraph
                 >
                 <h2 id="stl-viewer">Просмотр 3D-модели (STL)</h2>
                 <div class="h-stl-viewer" data-src="uploads/test.stl"></div>
+                <h2 id="charts">Графики (Plotly)</h2>
+                <p>
+                  Графики задаются блоком кода с языком <code>chart</code>. Внутри — JSON со спецификацией Plotly
+                  (<code>data</code>, <code>layout</code>, при необходимости <code>config</code>). В Markdown
+                  используйте <code>```chart</code> и валидный JSON.
+                </p>
+                <h3>Линейный график</h3>
+                <pre><code class="language-chart">{"data":[{"x":[1,2,3,4,5],"y":[1,4,2,5,3],"type":"scatter","mode":"lines+markers","name":"Ряд 1"},{"x":[1,2,3,4,5],"y":[2,3,4,3,4],"type":"scatter","mode":"lines+markers","name":"Ряд 2"}],"layout":{"title":{"text":"Линейный график"},"xaxis":{"title":"X"},"yaxis":{"title":"Y"}}}</code></pre>
+                <h3>Столбчатая диаграмма</h3>
+                <pre><code class="language-chart">{"data":[{"x":["Янв","Фев","Мар","Апр","Май"],"y":[20,35,30,37,42],"type":"bar","name":"2024"}],"layout":{"title":{"text":"Столбчатая диаграмма"},"xaxis":{"title":"Месяц"},"yaxis":{"title":"Значение"}}}</code></pre>
+                <h3>Круговая диаграмма</h3>
+                <pre><code class="language-chart">{"data":[{"labels":["A","B","C","D"],"values":[30,25,25,20],"type":"pie"}],"layout":{"title":{"text":"Круговая диаграмма"}}}</code></pre>
                 <h2 id="highlightjs">highlight.js</h2>
                 <pre><code class="cpp">//Содержимое файла input.txt
 /*
@@ -1170,5 +1183,6 @@ kbd.menu {
     <script defer="defer" src="./js/../katex/katex.js"></script>
     <script defer="defer" src="./js/../stl-viewer/stl-viewer.js"></script>
     <script defer="defer" src="./js/../mermaid/mermaid.js"></script>
+    <script defer="defer" src="./js/../charts/charts.js"></script>
   </body>
 </html>

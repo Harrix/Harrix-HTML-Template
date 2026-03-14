@@ -1,0 +1,18 @@
+.h-chart-container {
+  max-width: 100%;
+  width: fit-content;
+  min-width: min(300px, 100%);
+  min-height: 300px;
+  margin: 1rem 0;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .plotly,
+  .js-plotly-plot {
+    max-width: 100%;
+  }
+
+  .svg-container {
+    max-width: 100% !important;
+  }
+}

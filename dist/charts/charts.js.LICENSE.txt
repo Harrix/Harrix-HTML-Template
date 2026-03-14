@@ -1,0 +1,1 @@
+/*! For license information please see plotly.min.js.LICENSE.txt */

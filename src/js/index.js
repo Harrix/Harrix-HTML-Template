@@ -318,6 +318,7 @@ function initCodeCopyButtons() {
   codeBlocks.forEach((codeEl) => {
     const pre = codeEl.parentElement;
     if (!pre || pre.classList.contains("h-code-block-inner")) return;
+    if (codeEl.classList.contains("language-chart")) return;
 
     const wrapper = document.createElement("div");
     wrapper.className = "h-code-block";
