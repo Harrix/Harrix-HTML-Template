@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFontawesomeCollection();
   initGalleryGrid(GALLERY_ROW_HEIGHT);
   initSpoilerAnimation();
+  initTabs();
   initPageToc();
   initDocsSidebar();
 });
@@ -473,6 +474,28 @@ function initSpoilerAnimation() {
         };
         content.addEventListener("transitionend", onEnd);
       }
+    });
+  });
+}
+
+function initTabs() {
+  document.querySelectorAll(".h-tabs").forEach((tabs) => {
+    const tabBtns = tabs.querySelectorAll(".h-tabs__tab");
+    const panels = tabs.querySelectorAll(".h-tabs__panel");
+
+    tabBtns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        tabBtns.forEach((b) => {
+          b.classList.remove("is-active");
+          b.setAttribute("aria-selected", "false");
+        });
+        panels.forEach((p) => {
+          p.hidden = true;
+        });
+        btn.classList.add("is-active");
+        btn.setAttribute("aria-selected", "true");
+        panels[i].hidden = false;
+      });
     });
   });
 }
