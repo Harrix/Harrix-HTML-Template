@@ -60,16 +60,48 @@ function renderCharts() {
     pre.remove();
 
     const data = Array.isArray(spec.data) ? spec.data : [spec.data];
-    const layout = { autosize: true, ...spec.layout, ...layoutOverrides };
     const config = spec.config || { responsive: true };
-
     container._spec = { data: spec.data, layout: spec.layout, config: spec.config };
-    Plotly.newPlot(container, data, layout, config);
+
+    function draw() {
+      const width = container.offsetWidth || container.parentElement?.offsetWidth || 800;
+      const height = Math.max(container.offsetHeight || 420, 420);
+      const layout = {
+        autosize: false,
+        ...spec.layout,
+        ...layoutOverrides,
+        width,
+        height,
+      };
+      Plotly.newPlot(container, data, layout, config).then(() => {
+        Plotly.Plots.resize(container);
+      });
+    }
+
+    if (container.offsetWidth) {
+      draw();
+    } else {
+      requestAnimationFrame(() => {
+        draw();
+      });
+    }
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   renderCharts();
+
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      document.querySelectorAll(".h-chart-container").forEach((el) => {
+        if (el._spec && el.querySelector(".plotly")) {
+          Plotly.Plots.resize(el);
+        }
+      });
+    }, 100);
+  });
 
   const toggle = document.getElementById("h-theme-toggle");
   if (toggle) {
