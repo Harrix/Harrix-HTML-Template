@@ -1,0 +1,199 @@
+@use "bulma/sass/utilities/initial-variables" as initial-variables;
+@use "theme-dark-variables" as dark;
+@use "variables" as hvars;
+
+$h-docs-sidebar-breakpoint: 1024px;
+$h-docs-sidebar-width: 280px;
+$h-navbar-height: 3rem;
+
+.h-docs-body {
+  @media (min-width: $h-docs-sidebar-breakpoint) {
+    margin-left: $h-docs-sidebar-width;
+  }
+}
+
+.h-docs-sidebar {
+  position: fixed;
+  left: 0;
+  top: $h-navbar-height;
+  width: $h-docs-sidebar-width;
+  max-height: calc(100vh - #{$h-navbar-height});
+  overflow-y: auto;
+  z-index: 40;
+  padding: 1rem 0;
+  background-color: #fff;
+  border-right: 1px solid initial-variables.$grey-lighter;
+  font-size: 0.9rem;
+  transition: transform 0.25s ease;
+
+  .menu-label {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  .menu-list {
+    padding-left: 0;
+    padding-right: 0;
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      padding: 0.35em 1rem;
+      border-radius: 0;
+
+      &:hover {
+        background-color: initial-variables.$grey-light;
+      }
+    }
+
+    details {
+      margin: 0;
+
+      summary {
+        padding: 0.35em 1rem;
+        cursor: pointer;
+        list-style: none;
+        user-select: none;
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        &::before {
+          content: "";
+          display: inline-block;
+          width: 0.4em;
+          height: 0.4em;
+          margin-right: 0.5em;
+          border-right: 2px solid currentColor;
+          border-bottom: 2px solid currentColor;
+          transform: rotate(-45deg);
+          transform-origin: 60% 60%;
+          transition: transform 0.2s ease;
+          vertical-align: 0.1em;
+        }
+      }
+
+      &[open] summary::before {
+        transform: rotate(45deg);
+      }
+
+      ul.menu-list {
+        padding-left: 1rem;
+        border-left: 1px solid initial-variables.$grey-lighter;
+        margin-left: 0.75rem;
+        margin-top: 0.25em;
+        margin-bottom: 0.25em;
+      }
+    }
+  }
+
+  @media (max-width: $h-docs-sidebar-breakpoint - 1) {
+    transform: translateX(-100%);
+    box-shadow: none;
+
+    &.is-open {
+      transform: translateX(0);
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  @media (min-width: $h-docs-sidebar-breakpoint) {
+    transform: none;
+  }
+}
+
+.h-docs-sidebar-toggle {
+  display: none;
+  position: fixed;
+  left: 1rem;
+  top: calc(#{$h-navbar-height} + 0.75rem);
+  z-index: 35;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background-color: initial-variables.$grey;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: hvars.$h-primary;
+  }
+
+  .icon {
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: $h-docs-sidebar-breakpoint - 1) {
+    display: flex;
+  }
+
+  @media (min-width: $h-docs-sidebar-breakpoint) {
+    display: none !important;
+  }
+}
+
+.h-docs-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 39;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &.is-active {
+    display: block;
+  }
+
+  @media (min-width: $h-docs-sidebar-breakpoint) {
+    display: none !important;
+  }
+}
+
+[data-theme="dark"] {
+  .h-docs-sidebar {
+    background-color: dark.$h-dark-surface;
+    border-right-color: dark.$h-dark-border;
+
+    .menu-label {
+      color: dark.$h-dark-text;
+    }
+
+    .menu-list {
+      a {
+        color: dark.$h-dark-text;
+
+        &:hover {
+          background-color: dark.$h-dark-input-bg;
+          color: dark.$h-dark-link-hover;
+        }
+      }
+
+      details ul.menu-list {
+        border-left-color: dark.$h-dark-border;
+      }
+
+      summary {
+        color: dark.$h-dark-text;
+      }
+    }
+  }
+
+  .h-docs-sidebar-toggle {
+    background-color: dark.$h-dark-surface;
+    color: dark.$h-dark-text-strong;
+
+    &:hover {
+      background-color: hvars.$h-primary;
+      color: #fff;
+    }
+  }
+}

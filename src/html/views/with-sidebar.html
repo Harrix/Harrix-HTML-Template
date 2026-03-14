@@ -2,6 +2,68 @@
 _.template(require('./../includes/header.html'))(data) %>
 
 <main>
+  <div class="h-docs-layout">
+    <aside id="h-docs-sidebar" class="h-docs-sidebar menu" aria-label="Documentation">
+      <p class="menu-label">Содержание</p>
+      <ul class="menu-list" id="root_tree">
+        <li>
+          <details>
+            <summary>Functions</summary>
+            <ul class="menu-list">
+              <li>
+                <details>
+                  <summary>Matrix operations</summary>
+                  <ul class="menu-list">
+                    <li><a href="#">Add</a></li>
+                    <li><a href="#">Minus</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li>
+                <details>
+                  <summary>Vector operations</summary>
+                  <ul class="menu-list">
+                    <li><a href="#">vectorToVector</a></li>
+                    <li><a href="#">findFF</a></li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>Files</summary>
+            <ul class="menu-list">
+              <li>
+                <details>
+                  <summary>Headers</summary>
+                  <ul class="menu-list">
+                    <li><a href="#">main.h</a></li>
+                    <li><a href="#">library.h</a></li>
+                    <li><a href="#">Classic</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li>
+                <details>
+                  <summary>Other files</summary>
+                  <ul class="menu-list">
+                    <li><a href="#">There</a></li>
+                    <li><a href="#">vectors</a></li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </aside>
+    <button id="h-docs-sidebar-toggle" class="h-docs-sidebar-toggle" type="button" aria-label="Open documentation menu">
+      <span class="icon" aria-hidden="true"><i class="fas fa-bars"></i></span>
+    </button>
+    <div id="h-docs-sidebar-backdrop" class="h-docs-sidebar-backdrop"></div>
+    <div class="h-docs-body">
   <article>
     <div class="section h-is-padding-bottomless">
       <div class="container">
@@ -755,6 +817,8 @@ public class MainActivity extends AppCompatActivity {
   <ul class="menu-list" id="h-page-toc-list"></ul>
 </nav>
 
+    </div>
+  </div>
 </main>
 
 <%= _.template(require('./../includes/footer.html'))(data) %>

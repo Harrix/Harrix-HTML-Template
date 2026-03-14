@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initGalleryGrid(GALLERY_ROW_HEIGHT);
   initSpoilerAnimation();
   initPageToc();
+  initDocsSidebar();
 });
 
 function initNavbar(scrollThreshold) {
@@ -576,5 +577,37 @@ function initPageToc() {
     } else {
       toggleBtn.classList.remove("is-visible");
     }
+  });
+}
+
+function initDocsSidebar() {
+  const sidebar = document.getElementById("h-docs-sidebar");
+  const toggle = document.getElementById("h-docs-sidebar-toggle");
+  const backdrop = document.getElementById("h-docs-sidebar-backdrop");
+  if (!sidebar || !toggle || !backdrop) return;
+
+  function closeSidebar() {
+    sidebar.classList.remove("is-open");
+    backdrop.classList.remove("is-active");
+  }
+
+  function openSidebar() {
+    sidebar.classList.add("is-open");
+    backdrop.classList.add("is-active");
+  }
+
+  toggle.addEventListener("click", () => {
+    if (sidebar.classList.contains("is-open")) closeSidebar();
+    else openSidebar();
+  });
+
+  backdrop.addEventListener("click", closeSidebar);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sidebar.classList.contains("is-open")) closeSidebar();
+  });
+
+  sidebar.querySelectorAll("a[href]").forEach((a) => {
+    a.addEventListener("click", closeSidebar);
   });
 }

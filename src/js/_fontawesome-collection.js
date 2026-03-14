@@ -23,6 +23,7 @@ import {
   faExclamationTriangle,
   faList,
   faTimes,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -77,7 +78,8 @@ export default function initFontawesomeCollection() {
     faFilePdf,
     faFileArchiveRegular,
     faList,
-    faTimes
+    faTimes,
+    faBars
   );
 
   const faHarrix = {
