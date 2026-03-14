@@ -6,11 +6,6 @@ $h-docs-sidebar-breakpoint: 1024px;
 $h-docs-sidebar-width: 280px;
 $h-navbar-height: 3rem;
 
-.h-docs-body {
-  @media (min-width: $h-docs-sidebar-breakpoint) {
-    margin-left: $h-docs-sidebar-width;
-  }
-}
 
 .h-docs-sidebar {
   position: fixed;
