@@ -1,22 +1,134 @@
-@use "bulma/sass/utilities/mixins" as mixins;
+@use "bulma/sass/utilities/initial-variables" as initial-variables;
+@use "theme-dark-variables" as dark;
 @use "variables" as hvars;
 
-.h-page-toc {
+$h-page-toc-breakpoint: 1500px;
+
+// Floating toggle button (visible below breakpoint) — same vertical level as .h-back-to-top
+.h-page-toc-toggle {
+  position: fixed;
+  left: 3.75rem;
+  bottom: 3.75rem;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: initial-variables.$grey;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.15s ease;
+
+  &.is-visible {
+    opacity: 0.9;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &:hover {
+    background-color: hvars.$h-primary;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.125rem;
+  }
+
+  @media (max-width: 768px) {
+    left: 1.25rem;
+    bottom: 1.25rem;
+  }
+
+  @media (min-width: $h-page-toc-breakpoint) {
+    display: none;
+  }
+}
+
+// Backdrop overlay (mobile only)
+.h-page-toc-backdrop {
   display: none;
   position: fixed;
-  top: 4.5rem;
-  right: 1rem;
-  width: calc((100vw - 1179px) / 2 - 2rem);
-  max-width: 16rem;
-  max-height: calc(100vh - 5rem);
-  overflow-y: auto;
+  inset: 0;
+  z-index: 39;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &.is-active {
+    display: block;
+  }
+
+  @media (min-width: $h-page-toc-breakpoint) {
+    display: none !important;
+  }
+}
+
+// TOC panel
+.h-page-toc {
   font-size: 0.8125rem;
   line-height: 1.4;
   text-align: left;
-  z-index: 10;
+  z-index: 40;
 
-  @media (min-width: 1500px) {
-    display: block;
+  // --- Mobile: bottom sheet ---
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 70vh;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+  padding: 1rem 1.25rem 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  visibility: hidden;
+
+  &.is-open {
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  // --- Desktop: fixed sidebar ---
+  @media (min-width: $h-page-toc-breakpoint) {
+    top: 4.5rem;
+    left: auto;
+    bottom: auto;
+    right: 1rem;
+    width: calc((100vw - 1179px) / 2 - 2rem);
+    max-width: 16rem;
+    max-height: calc(100vh - 5rem);
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    transform: none;
+    visibility: visible;
+    transition: none;
+  }
+
+  .h-page-toc__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+
+    .menu-label {
+      margin-bottom: 0;
+    }
+
+    @media (min-width: $h-page-toc-breakpoint) {
+      .h-page-toc__close {
+        display: none;
+      }
+    }
   }
 
   .menu-label {
@@ -42,6 +154,41 @@
       color: hvars.$h-primary;
       border-left-color: hvars.$h-primary;
       background-color: transparent;
+    }
+  }
+}
+
+// Dark theme
+[data-theme="dark"] {
+  .h-page-toc-toggle {
+    background-color: dark.$h-dark-surface;
+    color: dark.$h-dark-text-strong;
+
+    &:hover {
+      background-color: hvars.$h-primary;
+      color: #fff;
+    }
+  }
+
+  .h-page-toc {
+    @media (max-width: $h-page-toc-breakpoint - 1) {
+      background-color: dark.$h-dark-surface;
+    }
+
+    .menu-label {
+      color: dark.$h-dark-text;
+    }
+
+    .menu-list a {
+      color: dark.$h-dark-text;
+
+      &:hover {
+        color: dark.$h-dark-link-hover;
+      }
+
+      &.is-active {
+        color: hvars.$h-primary;
+      }
     }
   }
 }

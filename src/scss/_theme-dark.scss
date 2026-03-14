@@ -237,24 +237,6 @@
     color: dark.$h-dark-text;
   }
 
-  .h-page-toc {
-    .menu-label {
-      color: dark.$h-dark-text;
-    }
-
-    .menu-list a {
-      color: dark.$h-dark-text;
-
-      &:hover {
-        color: dark.$h-dark-link-hover;
-      }
-
-      &.is-active {
-        color: hvars.$h-primary;
-      }
-    }
-  }
-
   .h-code-block {
     .h-code-copy {
       background-color: dark.$h-dark-input-bg;

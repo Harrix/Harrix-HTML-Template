@@ -21,6 +21,8 @@ import {
   faCheckCircle,
   faInfoCircle,
   faExclamationTriangle,
+  faList,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -73,7 +75,9 @@ export default function initFontawesomeCollection() {
     faFileVideo,
     faFilePowerpoint,
     faFilePdf,
-    faFileArchiveRegular
+    faFileArchiveRegular,
+    faList,
+    faTimes
   );
 
   const faHarrix = {

@@ -20,6 +20,7 @@ const CODE_BLOCK_BOTTOM_THRESHOLD = 80;
 const GALLERY_ID = "1";
 const BACK_TO_TOP_THRESHOLD = 200;
 const BACK_TO_TOP_DURATION_MS = 800;
+const PAGE_TOC_TOGGLE_THRESHOLD = 200;
 
 const lang = document.documentElement.lang;
 
@@ -475,9 +476,13 @@ function initSpoilerAnimation() {
 }
 
 function initPageToc() {
+  const toc = document.getElementById("h-page-toc");
   const tocList = document.getElementById("h-page-toc-list");
   const tocLabel = document.getElementById("h-page-toc-label");
-  if (!tocList) return;
+  const toggleBtn = document.getElementById("h-page-toc-toggle");
+  const closeBtn = document.getElementById("h-page-toc-close");
+  const backdrop = document.getElementById("h-page-toc-backdrop");
+  if (!toc || !tocList) return;
 
   const article = document.querySelector("article");
   if (!article) return;
@@ -535,4 +540,40 @@ function initPageToc() {
   );
 
   headings.forEach((h) => observer.observe(h));
+
+  if (!toggleBtn) return;
+
+  function openToc() {
+    toc.classList.add("is-open");
+    if (backdrop) backdrop.classList.add("is-active");
+  }
+
+  function closeToc() {
+    toc.classList.remove("is-open");
+    if (backdrop) backdrop.classList.remove("is-active");
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    if (toc.classList.contains("is-open")) closeToc();
+    else openToc();
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", closeToc);
+  if (backdrop) backdrop.addEventListener("click", closeToc);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && toc.classList.contains("is-open")) closeToc();
+  });
+
+  tocList.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", closeToc);
+  });
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= PAGE_TOC_TOGGLE_THRESHOLD) {
+      toggleBtn.classList.add("is-visible");
+    } else {
+      toggleBtn.classList.remove("is-visible");
+    }
+  });
 }
