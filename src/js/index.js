@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSearchPanel();
   initThemeToggle();
   initBackToTop(BACK_TO_TOP_THRESHOLD, BACK_TO_TOP_DURATION_MS);
+  initBottomNav();
   initLightGallery();
   initSyntaxHighlighting();
   initCodeCopyButtons();
@@ -101,6 +102,128 @@ function initBackToTop(threshold, _durationMs) {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+}
+
+function initBottomNav() {
+  const nav = document.getElementById("h-bottom-nav");
+  if (!nav) return;
+
+  const btnMenu = document.getElementById("h-bottom-nav-menu");
+  const btnSearch = document.getElementById("h-bottom-nav-search");
+  const btnToc = document.getElementById("h-bottom-nav-toc");
+  const btnSidebar = document.getElementById("h-bottom-nav-sidebar");
+
+  const labelMenu = document.getElementById("h-bottom-nav-menu-label");
+  const labelSearch = document.getElementById("h-bottom-nav-search-label");
+  const labelToc = document.getElementById("h-bottom-nav-toc-label");
+  const labelSidebar = document.getElementById("h-bottom-nav-sidebar-label");
+
+  if (labelMenu) labelMenu.textContent = translate("Menu");
+  if (labelSearch) labelSearch.textContent = translate("Search");
+  if (labelToc) labelToc.textContent = translate("Table of contents");
+  if (labelSidebar) labelSidebar.textContent = translate("Sidebar");
+
+  const searchPanel = document.getElementById("h-bottom-nav-search-panel");
+  const searchPanelInput = document.getElementById("h-bottom-nav-search-input");
+  const searchPanelClose = document.getElementById("h-bottom-nav-search-close");
+
+  const navbarMenu = document.getElementById("h-navbar-menu");
+  const burger = document.getElementById("h-burger");
+  const tocToggle = document.getElementById("h-page-toc-toggle");
+  const tocPanel = document.getElementById("h-page-toc");
+  const sidebarToggle = document.getElementById("h-docs-sidebar-toggle");
+  const sidebarPanel = document.getElementById("h-docs-sidebar");
+
+  if (!document.getElementById("h-docs-sidebar") && btnSidebar) {
+    btnSidebar.classList.add("is-hidden");
+  }
+
+  if (searchPanelInput) searchPanelInput.placeholder = translate("Search…");
+
+  function setActive(btn, active) {
+    if (!btn) return;
+    if (active) btn.classList.add("is-active");
+    else btn.classList.remove("is-active");
+  }
+
+  function openSearchPanel() {
+    if (searchPanel) {
+      searchPanel.classList.add("is-open");
+      searchPanel.setAttribute("aria-hidden", "false");
+      if (searchPanelInput) setTimeout(() => searchPanelInput.focus(), 50);
+    }
+  }
+
+  function closeSearchPanel() {
+    if (searchPanel) {
+      searchPanel.classList.remove("is-open");
+      searchPanel.setAttribute("aria-hidden", "true");
+      if (searchPanelInput) searchPanelInput.blur();
+    }
+  }
+
+  if (navbarMenu && btnMenu && burger) {
+    const observerNav = new MutationObserver(() => {
+      const menuOpen = navbarMenu.classList.contains("is-active");
+      setActive(btnMenu, menuOpen);
+    });
+    observerNav.observe(navbarMenu, { attributes: true, attributeFilter: ["class"] });
+  }
+
+  if (searchPanel && btnSearch) {
+    const observerSearch = new MutationObserver(() => {
+      setActive(btnSearch, searchPanel.classList.contains("is-open"));
+    });
+    observerSearch.observe(searchPanel, { attributes: true, attributeFilter: ["class"] });
+  }
+
+  if (tocPanel && btnToc) {
+    const observerToc = new MutationObserver(() => {
+      setActive(btnToc, tocPanel.classList.contains("is-open"));
+    });
+    observerToc.observe(tocPanel, { attributes: true, attributeFilter: ["class"] });
+  }
+
+  if (sidebarPanel && btnSidebar) {
+    const observerSidebar = new MutationObserver(() => {
+      setActive(btnSidebar, sidebarPanel.classList.contains("is-open"));
+    });
+    observerSidebar.observe(sidebarPanel, { attributes: true, attributeFilter: ["class"] });
+  }
+
+  if (btnMenu && burger) {
+    btnMenu.addEventListener("click", () => {
+      burger.click();
+    });
+  }
+
+  if (btnSearch) {
+    btnSearch.addEventListener("click", () => {
+      openSearchPanel();
+    });
+  }
+
+  if (searchPanelClose) {
+    searchPanelClose.addEventListener("click", closeSearchPanel);
+  }
+
+  if (searchPanelInput) {
+    searchPanelInput.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeSearchPanel();
+    });
+  }
+
+  if (btnToc && tocToggle) {
+    btnToc.addEventListener("click", () => {
+      tocToggle.click();
+    });
+  }
+
+  if (btnSidebar && sidebarToggle) {
+    btnSidebar.addEventListener("click", () => {
+      sidebarToggle.click();
+    });
+  }
 }
 
 function initSearchPanel() {

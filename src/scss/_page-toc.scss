@@ -47,6 +47,10 @@ $h-page-toc-breakpoint: 1500px;
     bottom: 1.25rem;
   }
 
+  @media (max-width: 1024px) {
+    display: none !important;
+  }
+
   @media (min-width: $h-page-toc-breakpoint) {
     display: none;
   }

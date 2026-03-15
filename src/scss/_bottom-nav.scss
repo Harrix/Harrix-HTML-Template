@@ -1,0 +1,208 @@
+@use "bulma/sass/utilities/initial-variables" as initial-variables;
+@use "bulma/sass/utilities/derived-variables" as derived-variables;
+@use "theme-dark-variables" as dark;
+@use "variables" as hvars;
+
+$h-bottom-nav-breakpoint: 1024px;
+$h-bottom-nav-height: 3.5rem; // 56px
+$h-bottom-nav-search-height: 3rem;
+$h-bottom-nav-safe: calc(#{$h-bottom-nav-height} + env(safe-area-inset-bottom, 0px));
+
+// Wrapper: search panel + nav (both fixed at bottom)
+.h-bottom-nav-wrap {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 35;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+
+  @media (max-width: $h-bottom-nav-breakpoint) {
+    display: block;
+  }
+}
+
+// Search panel above the nav bar
+.h-bottom-nav-search-panel {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid initial-variables.$grey-lighter;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+
+  &.is-open {
+    display: block;
+  }
+}
+
+.h-bottom-nav-search-panel__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: $h-bottom-nav-search-height;
+  padding: 0.5rem 0.75rem;
+}
+
+.h-bottom-nav-search-panel__input {
+  flex: 1;
+  min-width: 0;
+  font-size: 1rem;
+}
+
+.h-bottom-nav-search-panel__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0.25rem;
+  color: initial-variables.$grey;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background-color: initial-variables.$grey-lightest;
+    color: initial-variables.$grey-darker;
+  }
+}
+
+// Light theme (default): light background, dark text
+.h-bottom-nav {
+  background-color: #fff;
+  color: derived-variables.$text-strong;
+  box-shadow: 0 -1px 0 0 initial-variables.$grey-lighter;
+  padding-bottom: 0;
+}
+
+.h-bottom-nav__inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  min-height: $h-bottom-nav-height;
+  max-width: 100%;
+}
+
+.h-bottom-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.125rem;
+  padding: 0.375rem 0.25rem;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 0.6875rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background-color: initial-variables.$grey-lightest;
+    color: derived-variables.$text-strong;
+  }
+
+  &:focus-visible {
+    outline: 2px solid hvars.$h-primary;
+    outline-offset: -2px;
+  }
+
+  &.is-active {
+    background-color: initial-variables.$grey-light;
+    color: derived-variables.$text-strong;
+  }
+}
+
+.h-bottom-nav__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: inherit;
+}
+
+.h-bottom-nav__label {
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+// Hide sidebar item when docs sidebar is not on the page (JS adds class)
+.h-bottom-nav__item--sidebar.is-hidden {
+  display: none;
+}
+
+// Body padding so content is not under the bar
+@media (max-width: $h-bottom-nav-breakpoint) {
+  body.has-navbar-fixed-top {
+    padding-bottom: $h-bottom-nav-safe;
+  }
+
+  // Hide top navbar burger; menu opens from bottom nav
+  .navbar #h-burger {
+    display: none !important;
+  }
+
+  // Search opens from bottom nav panel; hide duplicate in navbar
+  .navbar #h-search-button-open {
+    display: none !important;
+  }
+}
+
+// Dark theme
+[data-theme="dark"] {
+  .h-bottom-nav-search-panel {
+    background-color: dark.$h-dark-surface-elevated;
+    border-bottom-color: dark.$h-dark-border;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .h-bottom-nav-search-panel__input {
+    background-color: dark.$h-dark-input-bg;
+    border-color: dark.$h-dark-border;
+    color: dark.$h-dark-text-strong;
+
+    &::placeholder {
+      color: dark.$h-dark-placeholder;
+    }
+  }
+
+  .h-bottom-nav-search-panel__close {
+    color: dark.$h-dark-icon;
+
+    &:hover {
+      background-color: dark.$h-dark-border;
+      color: dark.$h-dark-text-strong;
+    }
+  }
+
+  .h-bottom-nav {
+    background-color: dark.$h-dark-surface-elevated;
+    color: dark.$h-dark-text-strong;
+    box-shadow: 0 -1px 0 0 dark.$h-dark-border;
+  }
+
+  .h-bottom-nav__item {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+      color: dark.$h-dark-text-strong;
+    }
+
+    &.is-active {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: dark.$h-dark-text-strong;
+    }
+  }
+}

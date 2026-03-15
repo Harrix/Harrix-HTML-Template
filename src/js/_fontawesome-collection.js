@@ -24,6 +24,7 @@ import {
   faList,
   faTimes,
   faBars,
+  faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -79,7 +80,8 @@ export default function initFontawesomeCollection() {
     faFileArchiveRegular,
     faList,
     faTimes,
-    faBars
+    faBars,
+    faBookOpen
   );
 
   const faHarrix = {

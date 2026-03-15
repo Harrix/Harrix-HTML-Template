@@ -6,6 +6,10 @@ const locale = {
   "Switch to light theme": "Переключить на светлую тему",
   "Switch to dark theme": "Переключить на тёмную тему",
   "On this page": "На этой странице",
+  "Main": "Главное",
+  "Menu": "Меню",
+  "Search": "Поиск",
+  "Sidebar": "Боковая",
 };
 
 export default locale;

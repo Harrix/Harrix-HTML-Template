@@ -132,6 +132,10 @@ $h-navbar-height: 3rem;
     display: flex;
   }
 
+  @media (max-width: 1024px) {
+    display: none !important;
+  }
+
   @media (min-width: $h-docs-sidebar-breakpoint) {
     display: none !important;
   }

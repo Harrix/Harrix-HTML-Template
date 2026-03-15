@@ -1,6 +1,7 @@
 @use "bulma/sass/utilities/initial-variables" as initial-variables;
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
+@use "bottom-nav" as bnav;
 
 .h-back-to-top {
   position: fixed;
@@ -42,6 +43,11 @@
   @media (max-width: 768px) {
     right: 1.25rem;
     bottom: 1.25rem;
+  }
+
+  @media (max-width: bnav.$h-bottom-nav-breakpoint) {
+    right: 1.25rem;
+    bottom: calc(#{bnav.$h-bottom-nav-safe} + 0.5rem);
   }
 }
 
