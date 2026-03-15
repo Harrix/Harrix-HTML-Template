@@ -103,6 +103,73 @@
         </div>
       </div>
     </nav>
+    <div id="h-mobile-top-nav" class="h-mobile-top-nav" aria-label="Мобильное меню">
+      <div id="h-mobile-top-nav-search-panel" class="h-mobile-top-nav-search-panel" aria-hidden="true">
+        <div class="h-mobile-top-nav-search-panel__inner">
+          <input
+            class="h-mobile-top-nav-search-panel__input input"
+            id="h-mobile-top-nav-search-input"
+            placeholder="Поиск…"
+            aria-label="Поиск"
+            autocomplete="off"
+          />
+          <button
+            type="button"
+            class="h-mobile-top-nav-search-panel__close"
+            id="h-mobile-top-nav-search-close"
+            aria-label="Закрыть"
+          >
+            <span class="icon is-small"><i class="fas fa-times"></i></span>
+          </button>
+        </div>
+      </div>
+      <div class="h-mobile-top-nav__row1">
+        <button
+          type="button"
+          class="h-mobile-top-nav__btn h-mobile-top-nav__btn--sidebar"
+          id="h-mobile-top-nav-sidebar"
+          aria-label="Боковая панель"
+        >
+          <span class="icon" aria-hidden="true"><i class="fas fa-book-open"></i></span>
+        </button>
+        <a class="h-mobile-top-nav__logo" href="/" id="h-mobile-top-nav-logo"
+          ><img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span> </a
+        ><button type="button" class="h-mobile-top-nav__btn" id="h-mobile-top-nav-search" aria-label="Поиск">
+          <span class="icon" aria-hidden="true"><i class="fas fa-search"></i></span>
+        </button>
+        <button type="button" class="h-mobile-top-nav__btn" id="h-mobile-top-nav-menu" aria-label="Меню">
+          <span class="icon" aria-hidden="true"><i class="fas fa-bars"></i></span>
+        </button>
+      </div>
+      <div class="h-mobile-top-nav__row2">
+        <button
+          type="button"
+          class="h-mobile-top-nav__toc-trigger"
+          id="h-mobile-top-nav-toc-trigger"
+          aria-label="Содержание"
+          aria-expanded="false"
+          aria-controls="h-mobile-top-nav-dropdown"
+        >
+          <span class="icon" aria-hidden="true"><i class="fas fa-list"></i></span>
+          <span class="h-mobile-top-nav__toc-trigger-label" id="h-mobile-top-nav-toc-trigger-label">Содержание</span>
+        </button>
+      </div>
+      <div
+        id="h-mobile-top-nav-dropdown"
+        class="h-mobile-top-nav__dropdown"
+        role="region"
+        aria-label="Содержание"
+      ></div>
+      <div id="h-mobile-top-nav-dropdown-backdrop" class="h-mobile-top-nav__dropdown-backdrop" aria-hidden="true"></div>
+      <div
+        id="h-mobile-top-nav-menu-panel"
+        class="h-mobile-top-nav__menu-panel"
+        role="dialog"
+        aria-label="Меню"
+        aria-hidden="true"
+      ></div>
+      <div id="h-mobile-top-nav-menu-backdrop" class="h-mobile-top-nav__menu-backdrop" aria-hidden="true"></div>
+    </div>
     <main>
       <article>
         <div class="section h-is-padding-bottomless">
