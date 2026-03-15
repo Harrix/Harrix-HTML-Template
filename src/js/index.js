@@ -860,21 +860,21 @@ function initMobileTopNav() {
 
     const label = document.createElement("p");
     label.className = "menu-label";
-    label.textContent = translate("Table of contents");
+    label.textContent = translate("On this page");
     dropdown.appendChild(label);
 
-    if (rootTree) {
-      const treeClone = rootTree.cloneNode(true);
-      treeClone.id = "";
-      dropdown.appendChild(treeClone);
-      dropdown.querySelectorAll("a[href]").forEach((a) => a.addEventListener("click", closeDropdown));
-    } else if (pageTocList) {
+    if (pageTocList) {
       const listWrap = document.createElement("ul");
       listWrap.className = "menu-list";
       const tocClone = pageTocList.cloneNode(true);
       tocClone.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeDropdown));
       listWrap.appendChild(tocClone);
       dropdown.appendChild(listWrap);
+    } else if (rootTree) {
+      const treeClone = rootTree.cloneNode(true);
+      treeClone.id = "";
+      dropdown.appendChild(treeClone);
+      dropdown.querySelectorAll("a[href]").forEach((a) => a.addEventListener("click", closeDropdown));
     }
 
     function openDropdown() {
