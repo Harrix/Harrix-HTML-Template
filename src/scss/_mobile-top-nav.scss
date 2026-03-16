@@ -294,7 +294,7 @@ body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav_
 
 .h-mobile-top-nav__menu-panel .navbar-item {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid initial-variables.$grey-lighter;
+  border-bottom: none;
 }
 
 // Dropdown panel (TOC or sidebar tree)
@@ -509,7 +509,6 @@ body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav_
     }
 
     .h-mobile-top-nav__menu-panel .navbar-item {
-      border-bottom-color: dark.$h-dark-border;
       color: dark.$h-dark-text-strong;
     }
   }
