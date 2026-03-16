@@ -19,6 +19,8 @@ $h-h6-font-size: 1.125rem;
 $h-gallery-gap: 10px;
 $h-form-min-width: 8.125rem;
 $h-container-max-width: 1179px;
-// Viewport width at which top nav becomes two-line (mobile); sidebar and TOC use same breakpoint
+// Viewport width at which top nav becomes two-line (mobile)
 $h-mobile-nav-breakpoint: 1024px;
+// Min viewport width for sidebar + content + TOC to fit; below this show sidebar/TOC triggers in navbar
+$h-sidebar-toc-desktop-min-width: 1680px;
 $h-color-section-red: #de2b26;

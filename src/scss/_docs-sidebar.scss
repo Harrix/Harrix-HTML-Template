@@ -3,7 +3,7 @@
 @use "variables" as hvars;
 
 $h-docs-sidebar-width: 280px;
-$h-docs-sidebar-breakpoint: hvars.$h-mobile-nav-breakpoint;
+$h-docs-sidebar-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
 $h-navbar-height: 3rem;
 
 
@@ -140,6 +140,10 @@ $h-navbar-height: 3rem;
   }
 
   @media (min-width: $h-docs-sidebar-breakpoint) {
+    display: none !important;
+  }
+
+  body.h-navbar-sidebar-overlaps & {
     display: none !important;
   }
 }

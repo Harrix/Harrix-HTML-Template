@@ -33,6 +33,10 @@
     <nav id="h-navbar" class="navbar is-fixed-top" aria-label="main navigation">
       <div id="h-navbar-bottom"></div>
       <div class="container">
+        <div class="h-navbar__row1">
+          <button type="button" class="h-navbar-sidebar-btn" id="h-navbar-sidebar-btn" aria-label="Боковая панель" aria-hidden="true" tabindex="-1">
+            <span class="icon" aria-hidden="true"><i class="fas fa-book-open"></i></span>
+          </button>
         <div class="navbar-brand">
           <a class="navbar-item" href="/" id="h-logo">
             <img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span>
@@ -85,6 +89,13 @@
               <span class="icon is-small"><i class="fas fa-search"></i></span>
             </div>
           </div>
+        </div>
+        </div>
+        <div class="h-navbar-toc-row" id="h-navbar-toc-row" aria-hidden="true" hidden>
+          <button type="button" class="h-navbar-toc-trigger" id="h-navbar-toc-trigger" aria-label="Содержание" aria-expanded="false" aria-controls="h-page-toc">
+            <span class="icon" aria-hidden="true"><i class="fas fa-list"></i></span>
+            <span class="h-navbar-toc-trigger-label" id="h-navbar-toc-trigger-label">Содержание</span>
+          </button>
         </div>
       </div>
     </nav>

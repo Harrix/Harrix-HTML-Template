@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTabs();
   initPageToc();
   initDocsSidebar();
+  initNavbarSidebarTocFit();
   initMobileTopNav();
 });
 
@@ -616,6 +617,114 @@ function initPageToc() {
       toggleBtn.classList.remove("is-visible");
     }
   });
+}
+
+const CONTAINER_MAX_WIDTH = 1179;
+const SIDEBAR_WIDTH = 280;
+const TOC_MIN_SPACE = 256;
+const MOBILE_NAV_BREAKPOINT = 1024;
+const SIDEBAR_TOC_DESKTOP_MIN_WIDTH = 1680;
+
+function initNavbarSidebarTocFit() {
+  const sidebar = document.getElementById("h-docs-sidebar");
+  const sidebarBackdrop = document.getElementById("h-docs-sidebar-backdrop");
+  const toc = document.getElementById("h-page-toc");
+  const tocList = document.getElementById("h-page-toc-list");
+  const tocBackdrop = document.getElementById("h-page-toc-backdrop");
+  const navbarSidebarBtn = document.getElementById("h-navbar-sidebar-btn");
+  const navbarTocRow = document.getElementById("h-navbar-toc-row");
+  const navbarTocTrigger = document.getElementById("h-navbar-toc-trigger");
+
+  function updateFit() {
+    const vw = window.innerWidth;
+    if (vw <= MOBILE_NAV_BREAKPOINT) {
+      document.body.classList.remove("h-navbar-sidebar-overlaps", "h-navbar-toc-no-fit", "h-navbar-menu-no-fit");
+      if (navbarSidebarBtn) {
+        navbarSidebarBtn.setAttribute("aria-hidden", "true");
+        navbarSidebarBtn.setAttribute("hidden", "");
+        navbarSidebarBtn.tabIndex = -1;
+      }
+      if (navbarTocRow) {
+        navbarTocRow.setAttribute("aria-hidden", "true");
+        navbarTocRow.hidden = true;
+      }
+      return;
+    }
+
+    const contentLeft = (vw - CONTAINER_MAX_WIDTH) / 2;
+    const sidebarOverlaps = sidebar && contentLeft < SIDEBAR_WIDTH;
+    const tocNoFit = tocList && tocList.children.length > 0 && contentLeft < TOC_MIN_SPACE;
+
+    const row1 = document.querySelector(".h-navbar__row1");
+    const navbarMenu = document.getElementById("h-navbar-menu");
+    const menuNoFit =
+      row1 &&
+      navbarMenu &&
+      row1.scrollWidth > row1.clientWidth + 1;
+
+    document.body.classList.toggle("h-navbar-sidebar-overlaps", !!sidebarOverlaps);
+    document.body.classList.toggle("h-navbar-toc-no-fit", !!tocNoFit);
+    document.body.classList.toggle("h-navbar-menu-no-fit", !!menuNoFit);
+
+    if (navbarSidebarBtn) {
+      if (sidebarOverlaps) {
+        navbarSidebarBtn.removeAttribute("aria-hidden");
+        navbarSidebarBtn.removeAttribute("hidden");
+        navbarSidebarBtn.removeAttribute("tabindex");
+      } else {
+        navbarSidebarBtn.setAttribute("aria-hidden", "true");
+        navbarSidebarBtn.setAttribute("hidden", "");
+        navbarSidebarBtn.tabIndex = -1;
+      }
+    }
+    if (navbarTocRow) {
+      if (tocNoFit) {
+        navbarTocRow.removeAttribute("aria-hidden");
+        navbarTocRow.hidden = false;
+      } else {
+        navbarTocRow.setAttribute("aria-hidden", "true");
+        navbarTocRow.hidden = true;
+      }
+    }
+  }
+
+  if (navbarSidebarBtn && sidebar && sidebarBackdrop) {
+    navbarSidebarBtn.addEventListener("click", () => {
+      if (sidebar.classList.contains("is-open")) {
+        sidebar.classList.remove("is-open");
+        sidebarBackdrop.classList.remove("is-active");
+      } else {
+        sidebar.classList.add("is-open");
+        sidebarBackdrop.classList.add("is-active");
+      }
+    });
+  }
+
+  if (navbarTocTrigger && toc && tocBackdrop) {
+    function setNavbarTocExpanded(open) {
+      navbarTocTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    navbarTocTrigger.addEventListener("click", () => {
+      if (toc.classList.contains("is-open")) {
+        toc.classList.remove("is-open");
+        tocBackdrop.classList.remove("is-active");
+        setNavbarTocExpanded(false);
+      } else {
+        toc.classList.add("is-open");
+        tocBackdrop.classList.add("is-active");
+        setNavbarTocExpanded(true);
+      }
+    });
+    tocBackdrop.addEventListener("click", () => setNavbarTocExpanded(false));
+    const tocCloseBtn = document.getElementById("h-page-toc-close");
+    if (tocCloseBtn) tocCloseBtn.addEventListener("click", () => setNavbarTocExpanded(false));
+  }
+
+  const tocTriggerLabel = document.getElementById("h-navbar-toc-trigger-label");
+  if (tocTriggerLabel) tocTriggerLabel.textContent = translate("Table of contents");
+
+  updateFit();
+  window.addEventListener("resize", updateFit);
 }
 
 function initDocsSidebar() {

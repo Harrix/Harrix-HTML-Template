@@ -114,6 +114,7 @@
   }
 
   .navbar-burger {
+    display: none;
     color: hvars.$h-navbar-icon-color;
 
     span {
@@ -124,6 +125,38 @@
     &:hover {
       background-color: transparent;
     }
+
+    @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
+      body.h-navbar-menu-no-fit & {
+        display: flex;
+      }
+    }
+  }
+
+  .navbar-menu {
+    @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
+      body.h-navbar-menu-no-fit & {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        background-color: #fff;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        max-height: calc(100vh - 3rem);
+        overflow-y: auto;
+        z-index: 50;
+      }
+
+      body.h-navbar-menu-no-fit &.is-active {
+        display: block;
+      }
+
+      body.h-navbar-menu-no-fit & .navbar-end {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
   }
 
   .h-is-github-icon {
@@ -132,5 +165,101 @@
 
   .h-theme-toggle-label {
     margin-left: 0.375rem;
+  }
+
+  .h-navbar__row1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-shrink: 0;
+    min-height: 3rem;
+
+    @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
+      body.h-navbar-menu-no-fit & {
+        position: relative;
+      }
+    }
+  }
+
+  .h-navbar-sidebar-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.25rem;
+    padding: 0;
+    background: none;
+    border: none;
+    color: hvars.$h-navbar-icon-color;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background-color: initial-variables.$grey-lightest;
+      color: hvars.$h-primary;
+    }
+
+    .icon {
+      font-size: 1.125rem;
+    }
+
+    @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
+      body.h-navbar-sidebar-overlaps & {
+        display: flex;
+      }
+    }
+  }
+
+  body.h-navbar-toc-no-fit & {
+    min-height: 3rem;
+    height: auto;
+  }
+
+  body.h-navbar-toc-no-fit & .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .h-navbar-toc-row {
+    display: none;
+    flex-shrink: 0;
+    width: 100%;
+    border-top: 1px solid initial-variables.$grey-lighter;
+    min-height: 2.5rem;
+
+    @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
+      body.h-navbar-toc-no-fit & {
+        display: block;
+      }
+    }
+  }
+
+  .h-navbar-toc-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    min-height: 2.5rem;
+    padding: 0 1rem;
+    background: none;
+    border: none;
+    color: derived-variables.$text-strong;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+    text-align: left;
+
+    &:hover {
+      background-color: initial-variables.$grey-lightest;
+    }
+
+    .icon {
+      font-size: 1rem;
+      color: initial-variables.$grey;
+    }
   }
 }
