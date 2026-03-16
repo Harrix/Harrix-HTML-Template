@@ -2,7 +2,7 @@
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
 
-$h-page-toc-breakpoint: 1500px;
+$h-page-toc-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
 
 // Floating toggle button (visible below breakpoint) — same vertical level as .h-back-to-top
 .h-page-toc-toggle {
@@ -100,13 +100,13 @@ $h-page-toc-breakpoint: 1500px;
     visibility: visible;
   }
 
-  // --- Desktop: fixed sidebar ---
+  // --- Desktop: fixed sidebar, attached to content right edge ---
   @media (min-width: $h-page-toc-breakpoint) {
     top: 4.5rem;
-    left: auto;
+    left: calc((100vw + hvars.$h-container-max-width) / 2 + 1rem);
+    right: auto;
     bottom: auto;
-    right: 1rem;
-    width: calc((100vw - 1179px) / 2 - 2rem);
+    width: min(16rem, calc((100vw - hvars.$h-container-max-width) / 2 - 2rem));
     max-width: 16rem;
     max-height: calc(100vh - 5rem);
     background-color: transparent;
