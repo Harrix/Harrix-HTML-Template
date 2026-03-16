@@ -683,9 +683,10 @@ function initMobileTopNav() {
       setTimeout(() => searchInput.focus(), 50);
     }
     function closeSearch() {
+      searchInput.blur();
       searchPanel.classList.remove("is-open");
       searchPanel.setAttribute("aria-hidden", "true");
-      searchInput.blur();
+      if (btnSearch) btnSearch.focus();
     }
     if (btnSearch) btnSearch.addEventListener("click", openSearch);
     if (searchClose) searchClose.addEventListener("click", closeSearch);
