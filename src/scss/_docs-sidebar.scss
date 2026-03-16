@@ -3,7 +3,7 @@
 @use "variables" as hvars;
 
 $h-docs-sidebar-width: 280px;
-$h-docs-sidebar-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
+$h-docs-sidebar-breakpoint: hvars.$h-mobile-nav-breakpoint;
 $h-navbar-height: 3rem;
 
 
@@ -131,11 +131,11 @@ $h-navbar-height: 3rem;
     font-size: 1.125rem;
   }
 
-  @media (min-width: 1025px) and (max-width: $h-docs-sidebar-breakpoint - 1) {
+  @media (max-width: $h-docs-sidebar-breakpoint - 1) {
     display: flex;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: $h-docs-sidebar-breakpoint) {
     display: none !important;
   }
 

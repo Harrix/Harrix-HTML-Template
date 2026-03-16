@@ -2,7 +2,7 @@
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
 
-$h-page-toc-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
+$h-page-toc-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
 // Floating toggle button (visible below breakpoint) — same vertical level as .h-back-to-top
 .h-page-toc-toggle {

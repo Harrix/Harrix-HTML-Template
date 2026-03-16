@@ -3,7 +3,7 @@
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
 
-$h-mobile-top-nav-breakpoint: 1024px;
+$h-mobile-top-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 $h-mobile-top-nav-row-height: 3rem;
 $h-mobile-top-nav-search-height: 3rem;
 
