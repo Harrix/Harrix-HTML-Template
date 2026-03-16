@@ -88,6 +88,8 @@ $h-navbar-height: 3rem;
   }
 
   @media (max-width: $h-docs-sidebar-breakpoint - 1) {
+    top: 0;
+    max-height: 100vh;
     transform: translateX(-100%);
     box-shadow: none;
 
