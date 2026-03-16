@@ -707,6 +707,10 @@ function initMobileTopNav() {
     if (navbarMenu) {
       const clone = navbarMenu.cloneNode(true);
       clone.id = "";
+      const cloneSearchItem = clone.querySelector("#h-search-form");
+      if (cloneSearchItem && cloneSearchItem.parentElement) {
+        cloneSearchItem.parentElement.removeChild(cloneSearchItem);
+      }
       clone.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
       clone.classList.add("navbar-menu");
       menuPanel.appendChild(clone);
