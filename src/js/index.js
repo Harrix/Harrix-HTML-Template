@@ -525,7 +525,7 @@ function initPageToc() {
   const headings = article.querySelectorAll("h2");
   if (headings.length === 0) return;
 
-  if (tocLabel) tocLabel.textContent = translate("On this page");
+  if (tocLabel) tocLabel.textContent = translate("Table of contents");
 
   const usedIds = new Set();
   headings.forEach((h, i) => {
@@ -821,7 +821,7 @@ function initMobileTopNav() {
 
     const label = document.createElement("p");
     label.className = "menu-label";
-    label.textContent = translate("On this page");
+    label.textContent = translate("Table of contents");
     header.appendChild(label);
 
     const dropdownCloseBtn = document.createElement("button");
