@@ -49,8 +49,49 @@ function initNavbar(scrollThreshold) {
     const root = document.documentElement;
     const navbarBurger = document.getElementById("h-burger");
     const navbarBottom = document.getElementById("h-navbar-bottom");
+    const navbarMenu = document.getElementById("h-navbar-menu");
+    const menuPanelHeader = document.getElementById("h-navbar-menu-panel-header");
+    const menuPanelClose = document.getElementById("h-navbar-menu-panel-close");
+    const menuBackdrop = document.getElementById("h-navbar-menu-backdrop");
+    const menuPanelLabel = document.getElementById("h-navbar-menu-panel-label");
 
     if (!navbarBurger || !navbarBottom) return;
+
+    if (menuPanelLabel) menuPanelLabel.textContent = translate("Menu");
+
+    function closeNavbarMenu() {
+      if (!navbarMenu) return;
+      root.classList.remove("h-is-clipped-touch");
+      navbarBurger.classList.remove("is-active");
+      navbarBurger.setAttribute("aria-expanded", "false");
+      navbarMenu.classList.remove("is-active");
+      if (menuPanelHeader) {
+        menuPanelHeader.setAttribute("hidden", "");
+        menuPanelHeader.setAttribute("aria-hidden", "true");
+      }
+      if (menuBackdrop) {
+        menuBackdrop.setAttribute("hidden", "");
+        menuBackdrop.setAttribute("aria-hidden", "true");
+      }
+    }
+
+    if (menuPanelClose) {
+      menuPanelClose.addEventListener("click", closeNavbarMenu);
+    }
+    if (menuBackdrop) {
+      menuBackdrop.addEventListener("click", closeNavbarMenu);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        document.body.classList.contains("h-navbar-menu-no-fit") &&
+        navbarMenu &&
+        navbarMenu.classList.contains("is-active")
+      ) {
+        closeNavbarMenu();
+      }
+    });
 
     let lastY = 0;
     let currentY = 0;
@@ -68,6 +109,26 @@ function initNavbar(scrollThreshold) {
       target.classList.toggle("is-active");
       const expanded = navbarBurger.classList.contains("is-active");
       navbarBurger.setAttribute("aria-expanded", String(expanded));
+      if (document.body.classList.contains("h-navbar-menu-no-fit")) {
+        if (menuPanelHeader) {
+          if (expanded) {
+            menuPanelHeader.removeAttribute("hidden");
+            menuPanelHeader.setAttribute("aria-hidden", "false");
+          } else {
+            menuPanelHeader.setAttribute("hidden", "");
+            menuPanelHeader.setAttribute("aria-hidden", "true");
+          }
+        }
+        if (menuBackdrop) {
+          if (expanded) {
+            menuBackdrop.removeAttribute("hidden");
+            menuBackdrop.setAttribute("aria-hidden", "false");
+          } else {
+            menuBackdrop.setAttribute("hidden", "");
+            menuBackdrop.setAttribute("aria-hidden", "true");
+          }
+        }
+      }
     });
 
     window.addEventListener("scroll", () => {

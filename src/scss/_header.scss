@@ -136,25 +136,81 @@
   .navbar-menu {
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
       body.h-navbar-menu-no-fit & {
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 3rem;
         left: 0;
         right: 0;
         display: none;
         background-color: #fff;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
         max-height: calc(100vh - 3rem);
         overflow-y: auto;
-        z-index: 50;
+        z-index: 51;
+        border-radius: 0 0 1rem 1rem;
+        padding: 0;
       }
 
       body.h-navbar-menu-no-fit &.is-active {
         display: block;
       }
 
+      body.h-navbar-menu-no-fit & .h-navbar-menu-panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1rem 0.5rem;
+      }
+
       body.h-navbar-menu-no-fit & .navbar-end {
         flex-direction: column;
         align-items: stretch;
+      }
+
+      body.h-navbar-menu-no-fit & .navbar-item {
+        padding: 0.75rem 1rem;
+        border-bottom: none;
+      }
+    }
+  }
+
+  .h-navbar-menu-panel-header {
+    display: none;
+  }
+
+  .h-navbar-menu-panel-close {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    color: initial-variables.$grey;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background-color: initial-variables.$grey-lightest;
+      color: derived-variables.$text-strong;
+    }
+  }
+
+  .h-navbar-menu-backdrop {
+    display: none;
+    position: fixed;
+    top: 3rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
+      body.h-navbar-menu-no-fit .navbar-menu.is-active ~ & {
+        display: block;
       }
     }
   }
