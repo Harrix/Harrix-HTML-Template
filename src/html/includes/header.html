@@ -49,9 +49,12 @@
                   <input class="input is-shadowless" type="text" value="" id="h-search-input" aria-label="Search" />
                 </form>
                 <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
-                <span class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-search-button-close"
+                <button type="submit" class="icon is-small is-right h-is-clickable" id="h-search-button-submit" aria-label="Search">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="icon is-small is-right h-is-clickable is-hidden-touch" id="h-search-button-close" aria-label="Close"
                   ><i class="fah fa-close" data-prefix="fah" data-icon="close"></i
-                ></span>
+                ></button>
               </div>
             </div>
             <a class="navbar-item is-active" href="https://harrix.org/projects/">Проекты</a>
@@ -89,6 +92,9 @@
       <div id="h-mobile-top-nav-search-panel" class="h-mobile-top-nav-search-panel" aria-hidden="true">
         <div class="h-mobile-top-nav-search-panel__inner">
           <input type="text" class="h-mobile-top-nav-search-panel__input input" id="h-mobile-top-nav-search-input" placeholder="Поиск…" aria-label="Поиск" autocomplete="off" />
+          <button type="button" class="h-mobile-top-nav-search-panel__submit" id="h-mobile-top-nav-search-submit" aria-label="Поиск">
+            <span class="icon is-small" aria-hidden="true"><i class="fas fa-search"></i></span>
+          </button>
           <button type="button" class="h-mobile-top-nav-search-panel__close" id="h-mobile-top-nav-search-close" aria-label="Закрыть">
             <span class="icon is-small"><i class="fas fa-times"></i></span>
           </button>

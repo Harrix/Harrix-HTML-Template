@@ -26,6 +26,11 @@
         transform: translateY(0);
         opacity: 1;
       }
+
+      // Hide left search icon when search form is visible
+      #h-search-form .icon.is-left {
+        display: none;
+      }
     }
 
     #h-search-form .control {
@@ -62,6 +67,23 @@
           transform: translateY(-50%);
         }
       }
+    }
+
+    // Make submit icon clickable like others
+    #h-search-button-submit {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      right: 2rem;
+    }
+
+    #h-search-button-close {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      right: 0.25rem;
     }
 
     .navbar-end {

@@ -111,6 +111,7 @@ function initSearchPanel() {
     const navbarMenu = document.getElementById("h-navbar-menu");
     const searchButtonOpen = document.getElementById("h-search-button-open");
     const searchButtonClose = document.getElementById("h-search-button-close");
+    const searchButtonSubmit = document.getElementById("h-search-button-submit");
     const searchInput = document.getElementById("h-search-input");
     const formEl = searchForm.querySelector("form");
 
@@ -119,6 +120,13 @@ function initSearchPanel() {
     if (formEl) {
       formEl.addEventListener("submit", (e) => {
         e.preventDefault();
+      });
+    }
+
+    if (searchButtonSubmit) {
+      searchButtonSubmit.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (formEl) formEl.requestSubmit();
       });
     }
 
@@ -655,6 +663,7 @@ function initMobileTopNav() {
   const dropdownBackdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
   const searchPanel = document.getElementById("h-mobile-top-nav-search-panel");
   const searchInput = document.getElementById("h-mobile-top-nav-search-input");
+  const searchSubmit = document.getElementById("h-mobile-top-nav-search-submit");
   const searchClose = document.getElementById("h-mobile-top-nav-search-close");
   const menuPanel = document.getElementById("h-mobile-top-nav-menu-panel");
   const menuBackdrop = document.getElementById("h-mobile-top-nav-menu-backdrop");
@@ -709,8 +718,18 @@ function initMobileTopNav() {
     }
     if (btnSearch) btnSearch.addEventListener("click", openSearch);
     if (searchClose) searchClose.addEventListener("click", closeSearch);
+    if (searchSubmit) {
+      searchSubmit.addEventListener("click", () => {
+        const formEl = document.getElementById("h-search-form")?.querySelector("form");
+        if (formEl) formEl.requestSubmit();
+      });
+    }
     searchInput.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeSearch();
+      if (e.key === "Enter") {
+        const formEl = document.getElementById("h-search-form")?.querySelector("form");
+        if (formEl) formEl.requestSubmit();
+      }
     });
     const mainSearchInput = document.getElementById("h-search-input");
     if (mainSearchInput) {
