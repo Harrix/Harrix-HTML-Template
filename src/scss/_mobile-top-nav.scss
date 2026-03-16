@@ -296,10 +296,9 @@ body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav_
   }
 
   .menu-label {
-    padding: 1rem 1rem 0.5rem;
     font-size: 0.75rem;
     letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
+    margin: 0;
   }
 
   .menu-list {
@@ -356,6 +355,34 @@ body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav_
         transform: rotate(45deg);
       }
     }
+  }
+}
+
+.h-mobile-top-nav__panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.5rem;
+}
+
+.h-mobile-top-nav__panel-close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  color: initial-variables.$grey;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background-color: initial-variables.$grey-lightest;
+    color: derived-variables.$text-strong;
   }
 }
 

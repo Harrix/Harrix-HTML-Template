@@ -661,6 +661,7 @@ function initMobileTopNav() {
 
   const sidebarToggle = document.getElementById("h-docs-sidebar-toggle");
   const sidebarPanel = document.getElementById("h-docs-sidebar");
+  const sidebarBackdrop = document.getElementById("h-docs-sidebar-backdrop");
   const navbarMenu = document.getElementById("h-navbar-menu");
   const rootTree = document.getElementById("root_tree");
   const pageTocList = document.getElementById("h-page-toc-list");
@@ -675,9 +676,27 @@ function initMobileTopNav() {
     btnSidebar.addEventListener("click", () => sidebarToggle.click());
   }
 
+  function closeSidebarPanel() {
+    if (!sidebarPanel) return;
+    sidebarPanel.classList.remove("is-open");
+    if (sidebarBackdrop) sidebarBackdrop.classList.remove("is-active");
+  }
+
   if (searchPanel && searchInput) {
     if (searchInput) searchInput.placeholder = translate("Search…");
     function openSearch() {
+      // закрываем остальные режимы при открытии поиска
+      if (dropdown) {
+        dropdown.classList.remove("is-open");
+        if (tocTrigger) tocTrigger.setAttribute("aria-expanded", "false");
+      }
+      if (menuPanel && menuBackdrop) {
+        menuPanel.classList.remove("is-open");
+        menuPanel.setAttribute("aria-hidden", "true");
+        menuBackdrop.setAttribute("aria-hidden", "true");
+      }
+      closeSidebarPanel();
+
       searchPanel.classList.add("is-open");
       searchPanel.setAttribute("aria-hidden", "false");
       setTimeout(() => searchInput.focus(), 50);
@@ -716,7 +735,26 @@ function initMobileTopNav() {
       clone.classList.add("navbar-menu");
       menuPanel.appendChild(clone);
     }
+
+    const menuCloseBtn = document.createElement("button");
+    menuCloseBtn.type = "button";
+    menuCloseBtn.className = "h-mobile-top-nav__panel-close";
+    menuCloseBtn.setAttribute("aria-label", translate("Close"));
+    menuCloseBtn.innerHTML = '<span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>';
+    menuPanel.appendChild(menuCloseBtn);
+
     function openMenu() {
+      // закрываем остальные режимы при открытии меню
+      if (searchPanel && searchPanel.classList.contains("is-open")) {
+        searchPanel.classList.remove("is-open");
+        searchPanel.setAttribute("aria-hidden", "true");
+      }
+      if (dropdown) {
+        dropdown.classList.remove("is-open");
+        if (tocTrigger) tocTrigger.setAttribute("aria-expanded", "false");
+      }
+      closeSidebarPanel();
+
       menuPanel.classList.add("is-open");
       menuPanel.setAttribute("aria-hidden", "false");
       if (menuBackdrop) menuBackdrop.setAttribute("aria-hidden", "false");
@@ -728,6 +766,7 @@ function initMobileTopNav() {
     }
     if (btnMenu) btnMenu.addEventListener("click", () => (menuPanel.classList.contains("is-open") ? closeMenu() : openMenu()));
     menuBackdrop.addEventListener("click", closeMenu);
+    menuCloseBtn.addEventListener("click", closeMenu);
     menuPanel.querySelectorAll("a[href]").forEach((a) => {
       a.addEventListener("click", closeMenu);
     });
@@ -743,10 +782,22 @@ function initMobileTopNav() {
       tocTrigger.setAttribute("aria-expanded", "false");
     }
 
+    const header = document.createElement("div");
+    header.className = "h-mobile-top-nav__panel-header";
+
     const label = document.createElement("p");
     label.className = "menu-label";
     label.textContent = translate("On this page");
-    dropdown.appendChild(label);
+    header.appendChild(label);
+
+    const dropdownCloseBtn = document.createElement("button");
+    dropdownCloseBtn.type = "button";
+    dropdownCloseBtn.className = "h-mobile-top-nav__panel-close";
+    dropdownCloseBtn.setAttribute("aria-label", translate("Close"));
+    dropdownCloseBtn.innerHTML = '<span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>';
+    header.appendChild(dropdownCloseBtn);
+
+    dropdown.appendChild(header);
 
     if (pageTocList) {
       const listWrap = document.createElement("ul");
@@ -763,11 +814,24 @@ function initMobileTopNav() {
     }
 
     function openDropdown() {
+      // закрываем остальные режимы при открытии «Содержания»
+      if (searchPanel && searchPanel.classList.contains("is-open")) {
+        searchPanel.classList.remove("is-open");
+        searchPanel.setAttribute("aria-hidden", "true");
+      }
+      if (menuPanel && menuBackdrop) {
+        menuPanel.classList.remove("is-open");
+        menuPanel.setAttribute("aria-hidden", "true");
+        menuBackdrop.setAttribute("aria-hidden", "true");
+      }
+      closeSidebarPanel();
+
       dropdown.classList.add("is-open");
       tocTrigger.setAttribute("aria-expanded", "true");
     }
     tocTrigger.addEventListener("click", () => (dropdown.classList.contains("is-open") ? closeDropdown() : openDropdown()));
     if (dropdownBackdrop) dropdownBackdrop.addEventListener("click", closeDropdown);
+    dropdownCloseBtn.addEventListener("click", closeDropdown);
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && dropdown.classList.contains("is-open")) closeDropdown();
     });
