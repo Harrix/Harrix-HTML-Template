@@ -36,12 +36,17 @@ body.h-mobile-nav-top {
   padding-top: env(safe-area-inset-top, 0);
   background-color: #fff;
   box-shadow: 0 1px 0 0 initial-variables.$grey-lighter;
+  transition: transform 0.2s ease;
 
   @media (max-width: $h-mobile-top-nav-breakpoint) {
     body.h-mobile-nav-top & {
       display: block;
     }
   }
+}
+
+.h-mobile-top-nav--hidden {
+  transform: translateY(-100%);
 }
 
 // Search panel (above row1 when open)

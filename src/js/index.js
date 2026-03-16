@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initSearchPanel();
   initThemeToggle();
   initBackToTop(BACK_TO_TOP_THRESHOLD, BACK_TO_TOP_DURATION_MS);
-  initBottomNav();
   initLightGallery();
   initSyntaxHighlighting();
   initCodeCopyButtons();
@@ -105,128 +104,6 @@ function initBackToTop(threshold, _durationMs) {
   });
 }
 
-function initBottomNav() {
-  if (document.body.classList.contains("h-mobile-nav-top")) return;
-  const nav = document.getElementById("h-bottom-nav");
-  if (!nav) return;
-
-  const btnMenu = document.getElementById("h-bottom-nav-menu");
-  const btnSearch = document.getElementById("h-bottom-nav-search");
-  const btnToc = document.getElementById("h-bottom-nav-toc");
-  const btnSidebar = document.getElementById("h-bottom-nav-sidebar");
-
-  const labelMenu = document.getElementById("h-bottom-nav-menu-label");
-  const labelSearch = document.getElementById("h-bottom-nav-search-label");
-  const labelToc = document.getElementById("h-bottom-nav-toc-label");
-  const labelSidebar = document.getElementById("h-bottom-nav-sidebar-label");
-
-  if (labelMenu) labelMenu.textContent = translate("Menu");
-  if (labelSearch) labelSearch.textContent = translate("Search");
-  if (labelToc) labelToc.textContent = translate("Table of contents");
-  if (labelSidebar) labelSidebar.textContent = translate("Sidebar");
-
-  const searchPanel = document.getElementById("h-bottom-nav-search-panel");
-  const searchPanelInput = document.getElementById("h-bottom-nav-search-input");
-  const searchPanelClose = document.getElementById("h-bottom-nav-search-close");
-
-  const navbarMenu = document.getElementById("h-navbar-menu");
-  const burger = document.getElementById("h-burger");
-  const tocToggle = document.getElementById("h-page-toc-toggle");
-  const tocPanel = document.getElementById("h-page-toc");
-  const sidebarToggle = document.getElementById("h-docs-sidebar-toggle");
-  const sidebarPanel = document.getElementById("h-docs-sidebar");
-
-  if (!document.getElementById("h-docs-sidebar") && btnSidebar) {
-    btnSidebar.classList.add("is-hidden");
-  }
-
-  if (searchPanelInput) searchPanelInput.placeholder = translate("Search…");
-
-  function setActive(btn, active) {
-    if (!btn) return;
-    if (active) btn.classList.add("is-active");
-    else btn.classList.remove("is-active");
-  }
-
-  function openSearchPanel() {
-    if (searchPanel) {
-      searchPanel.classList.add("is-open");
-      searchPanel.setAttribute("aria-hidden", "false");
-      if (searchPanelInput) setTimeout(() => searchPanelInput.focus(), 50);
-    }
-  }
-
-  function closeSearchPanel() {
-    if (searchPanel) {
-      searchPanel.classList.remove("is-open");
-      searchPanel.setAttribute("aria-hidden", "true");
-      if (searchPanelInput) searchPanelInput.blur();
-    }
-  }
-
-  if (navbarMenu && btnMenu && burger) {
-    const observerNav = new MutationObserver(() => {
-      const menuOpen = navbarMenu.classList.contains("is-active");
-      setActive(btnMenu, menuOpen);
-    });
-    observerNav.observe(navbarMenu, { attributes: true, attributeFilter: ["class"] });
-  }
-
-  if (searchPanel && btnSearch) {
-    const observerSearch = new MutationObserver(() => {
-      setActive(btnSearch, searchPanel.classList.contains("is-open"));
-    });
-    observerSearch.observe(searchPanel, { attributes: true, attributeFilter: ["class"] });
-  }
-
-  if (tocPanel && btnToc) {
-    const observerToc = new MutationObserver(() => {
-      setActive(btnToc, tocPanel.classList.contains("is-open"));
-    });
-    observerToc.observe(tocPanel, { attributes: true, attributeFilter: ["class"] });
-  }
-
-  if (sidebarPanel && btnSidebar) {
-    const observerSidebar = new MutationObserver(() => {
-      setActive(btnSidebar, sidebarPanel.classList.contains("is-open"));
-    });
-    observerSidebar.observe(sidebarPanel, { attributes: true, attributeFilter: ["class"] });
-  }
-
-  if (btnMenu && burger) {
-    btnMenu.addEventListener("click", () => {
-      burger.click();
-    });
-  }
-
-  if (btnSearch) {
-    btnSearch.addEventListener("click", () => {
-      openSearchPanel();
-    });
-  }
-
-  if (searchPanelClose) {
-    searchPanelClose.addEventListener("click", closeSearchPanel);
-  }
-
-  if (searchPanelInput) {
-    searchPanelInput.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeSearchPanel();
-    });
-  }
-
-  if (btnToc && tocToggle) {
-    btnToc.addEventListener("click", () => {
-      tocToggle.click();
-    });
-  }
-
-  if (btnSidebar && sidebarToggle) {
-    btnSidebar.addEventListener("click", () => {
-      sidebarToggle.click();
-    });
-  }
-}
 
 function initSearchPanel() {
   const searchForm = document.getElementById("h-search-form");
@@ -765,6 +642,9 @@ function initMobileTopNav() {
 
   const topNav = document.getElementById("h-mobile-top-nav");
   if (!topNav) return;
+  let lastScrollY = window.scrollY;
+  let currentScrollY = window.scrollY;
+  const HIDE_THRESHOLD = 100;
 
   const btnSidebar = document.getElementById("h-mobile-top-nav-sidebar");
   const btnSearch = document.getElementById("h-mobile-top-nav-search");
@@ -887,4 +767,35 @@ function initMobileTopNav() {
       if (e.key === "Escape" && dropdown.classList.contains("is-open")) closeDropdown();
     });
   }
+
+  function shouldKeepVisible() {
+    const searchOpen = searchPanel && searchPanel.classList.contains("is-open");
+    const dropdownOpen = dropdown && dropdown.classList.contains("is-open");
+    const menuOpen = menuPanel && menuPanel.classList.contains("is-open");
+    return searchOpen || dropdownOpen || menuOpen;
+  }
+
+  window.addEventListener("scroll", () => {
+    currentScrollY = window.scrollY;
+
+    if (currentScrollY <= HIDE_THRESHOLD) {
+      topNav.classList.remove("h-mobile-top-nav--hidden");
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    if (shouldKeepVisible()) {
+      topNav.classList.remove("h-mobile-top-nav--hidden");
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    if (currentScrollY > lastScrollY) {
+      topNav.classList.add("h-mobile-top-nav--hidden");
+    } else if (currentScrollY < lastScrollY) {
+      topNav.classList.remove("h-mobile-top-nav--hidden");
+    }
+
+    lastScrollY = currentScrollY;
+  });
 }
