@@ -560,6 +560,11 @@ function initPageToc() {
       links[index].classList.add("is-active");
       currentActiveIndex = index;
     }
+    const mirror = document.getElementById("h-mobile-top-nav-dropdown")?.querySelector(".h-page-toc-mirror");
+    const mirrorLinks = mirror?.querySelectorAll("a");
+    if (mirrorLinks && mirrorLinks.length === links.length) {
+      mirrorLinks.forEach((a, i) => a.classList.toggle("is-active", i === index));
+    }
   }
 
   const observer = new IntersectionObserver(
@@ -832,6 +837,7 @@ function initMobileTopNav() {
       const listWrap = document.createElement("ul");
       listWrap.className = "menu-list";
       const tocClone = pageTocList.cloneNode(true);
+      tocClone.classList.add("h-page-toc-mirror");
       tocClone.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeDropdown));
       listWrap.appendChild(tocClone);
       dropdown.appendChild(listWrap);

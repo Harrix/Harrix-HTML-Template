@@ -335,6 +335,11 @@ body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav_
         background-color: transparent;
         color: hvars.$h-primary;
       }
+
+      &.is-active {
+        font-weight: 600;
+        color: hvars.$h-primary;
+      }
     }
 
     ul.menu-list {
@@ -487,6 +492,10 @@ body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav_
 
         &:hover {
           color: dark.$h-dark-link-hover;
+        }
+
+        &.is-active {
+          color: hvars.$h-primary;
         }
       }
 
