@@ -724,6 +724,23 @@ function initMobileTopNav() {
   }
 
   if (menuPanel && menuBackdrop) {
+    const menuHeader = document.createElement("div");
+    menuHeader.className = "h-mobile-top-nav__panel-header";
+
+    const menuLabel = document.createElement("p");
+    menuLabel.className = "menu-label";
+    menuLabel.textContent = translate("Menu");
+    menuHeader.appendChild(menuLabel);
+
+    const menuCloseBtn = document.createElement("button");
+    menuCloseBtn.type = "button";
+    menuCloseBtn.className = "h-mobile-top-nav__panel-close";
+    menuCloseBtn.setAttribute("aria-label", translate("Close"));
+    menuCloseBtn.innerHTML = '<span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>';
+    menuHeader.appendChild(menuCloseBtn);
+
+    menuPanel.appendChild(menuHeader);
+
     if (navbarMenu) {
       const clone = navbarMenu.cloneNode(true);
       clone.id = "";
@@ -735,13 +752,6 @@ function initMobileTopNav() {
       clone.classList.add("navbar-menu");
       menuPanel.appendChild(clone);
     }
-
-    const menuCloseBtn = document.createElement("button");
-    menuCloseBtn.type = "button";
-    menuCloseBtn.className = "h-mobile-top-nav__panel-close";
-    menuCloseBtn.setAttribute("aria-label", translate("Close"));
-    menuCloseBtn.innerHTML = '<span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>';
-    menuPanel.appendChild(menuCloseBtn);
 
     function openMenu() {
       // закрываем остальные режимы при открытии меню

@@ -213,6 +213,7 @@ body.h-mobile-nav-top {
 }
 
 $h-mobile-top-nav-header-height: calc(#{$h-mobile-top-nav-row-height} + 2.5rem + env(safe-area-inset-top, 0));
+$h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-area-inset-top, 0));
 
 // Backdrop when dropdown is open
 .h-mobile-top-nav__dropdown-backdrop {
@@ -233,7 +234,7 @@ $h-mobile-top-nav-header-height: calc(#{$h-mobile-top-nav-row-height} + 2.5rem +
   display: none;
   position: fixed;
   inset: 0;
-  top: $h-mobile-top-nav-header-height;
+  top: $h-mobile-top-nav-row1-height;
   z-index: 36;
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -243,13 +244,13 @@ $h-mobile-top-nav-header-height: calc(#{$h-mobile-top-nav-row-height} + 2.5rem +
   position: fixed;
   left: 0;
   right: 0;
-  top: $h-mobile-top-nav-header-height;
+  top: $h-mobile-top-nav-row1-height;
   bottom: 0;
   z-index: 37;
   overflow-y: auto;
   background-color: #fff;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
-  padding: 1rem 0;
+  padding: 0;
 
   &.is-open {
     display: block;
