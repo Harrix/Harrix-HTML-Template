@@ -80,7 +80,7 @@ $h-navbar-height: 3rem;
 
       ul.menu-list {
         padding-left: 1rem;
-        border-left: 1px solid initial-variables.$grey-lighter;
+        border-left: none;
         margin-left: 0.75rem;
         margin-top: 0.25em;
         margin-bottom: 0.25em;
@@ -230,10 +230,6 @@ $h-navbar-height: 3rem;
           background-color: dark.$h-dark-input-bg;
           color: dark.$h-dark-link-hover;
         }
-      }
-
-      details ul.menu-list {
-        border-left-color: dark.$h-dark-border;
       }
 
       summary {
