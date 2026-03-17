@@ -223,6 +223,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     color: #666;
     border-radius: 0;
     white-space: normal;
+    background-color: transparent;
 
     &:hover {
       background-color: transparent;
@@ -277,14 +278,28 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
     .menu-list a {
       color: dark.$h-dark-text;
+      background-color: transparent;
 
       &:hover {
+        background-color: transparent;
         color: dark.$h-dark-link-hover;
       }
 
       &.is-active {
+        background-color: transparent;
         color: hvars.$h-primary;
       }
+    }
+
+    // Ensure no background in any interactive state (without !important).
+    .menu-list a:focus,
+    .menu-list a:focus-visible,
+    .menu-list a:active,
+    .menu-list a.is-active:hover,
+    .menu-list a.is-active:focus,
+    .menu-list a.is-active:focus-visible,
+    .menu-list a.is-active:active {
+      background-color: transparent;
     }
   }
 }
