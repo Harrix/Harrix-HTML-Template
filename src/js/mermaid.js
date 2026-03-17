@@ -26,10 +26,13 @@ function renderMermaid() {
 document.addEventListener("DOMContentLoaded", () => {
   renderMermaid();
 
-  const toggles = document.querySelectorAll("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
-  toggles.forEach((toggle) => {
-    toggle.addEventListener("click", () => {
+  document.addEventListener(
+    "click",
+    (e) => {
+      const target = e.target?.closest?.("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
+      if (!target) return;
       setTimeout(renderMermaid, 50);
-    });
-  });
+    },
+    true,
+  );
 });

@@ -475,8 +475,9 @@ function focusAfterAnimation(elem, delayMs) {
 }
 
 function initThemeToggle() {
-  const toggles = Array.from(document.querySelectorAll("[data-theme-toggle], .h-theme-toggle"));
-  if (toggles.length === 0) return;
+  function getToggles() {
+    return Array.from(document.querySelectorAll("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle"));
+  }
 
   function getTheme() {
     const fromDom = document.documentElement.getAttribute("data-theme");
@@ -496,7 +497,7 @@ function initThemeToggle() {
     const textLight = translate("Switch to light theme");
     const textDark = translate("Switch to dark theme");
     const label = theme === "dark" ? textLight : textDark;
-    toggles.forEach((toggle) => {
+    getToggles().forEach((toggle) => {
       toggle.setAttribute("aria-label", label);
       const labelEl = toggle.querySelector(".h-theme-toggle-label");
       if (labelEl) labelEl.textContent = label;
@@ -505,13 +506,17 @@ function initThemeToggle() {
 
   updateThemeLabel();
 
-  toggles.forEach((toggle) => {
-    toggle.addEventListener("click", () => {
-    const current = getTheme();
-    setTheme(current === "dark" ? "light" : "dark");
-    updateThemeLabel();
-    });
-  });
+  document.addEventListener(
+    "click",
+    (e) => {
+      const target = e.target?.closest?.("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
+      if (!target) return;
+      const current = getTheme();
+      setTheme(current === "dark" ? "light" : "dark");
+      updateThemeLabel();
+    },
+    true,
+  );
 }
 
 function translate(string) {

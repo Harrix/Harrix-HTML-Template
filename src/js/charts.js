@@ -71,9 +71,11 @@ function renderCharts() {
 document.addEventListener("DOMContentLoaded", () => {
   renderCharts();
 
-  const toggles = document.querySelectorAll("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
-  toggles.forEach((toggle) => {
-    toggle.addEventListener("click", () => {
+  document.addEventListener(
+    "click",
+    (e) => {
+      const target = e.target?.closest?.("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
+      if (!target) return;
       const containers = document.querySelectorAll(".h-chart-container");
       containers.forEach((el) => {
         const spec = el._spec;
@@ -89,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         el.remove();
       });
       setTimeout(renderCharts, 50);
-    });
-  });
+    },
+    true,
+  );
 });
