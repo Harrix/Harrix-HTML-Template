@@ -71,8 +71,8 @@ function renderCharts() {
 document.addEventListener("DOMContentLoaded", () => {
   renderCharts();
 
-  const toggle = document.getElementById("h-theme-toggle");
-  if (toggle) {
+  const toggles = document.querySelectorAll("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
+  toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
       const containers = document.querySelectorAll(".h-chart-container");
       containers.forEach((el) => {
@@ -90,5 +90,5 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       setTimeout(renderCharts, 50);
     });
-  }
+  });
 });

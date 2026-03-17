@@ -437,7 +437,29 @@ body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav_
       }
     }
 
+    .h-mobile-top-nav-search-panel__submit {
+      color: dark.$h-dark-icon;
+
+      &:hover {
+        background-color: dark.$h-dark-border;
+        color: dark.$h-dark-text-strong;
+      }
+    }
+
     .h-mobile-top-nav-search-panel__close {
+      color: dark.$h-dark-icon;
+
+      &:hover {
+        background-color: dark.$h-dark-border;
+        color: dark.$h-dark-text-strong;
+      }
+    }
+
+    .h-mobile-top-nav__panel-header .menu-label {
+      color: dark.$h-dark-text;
+    }
+
+    .h-mobile-top-nav__panel-close {
       color: dark.$h-dark-icon;
 
       &:hover {

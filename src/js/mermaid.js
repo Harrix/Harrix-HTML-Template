@@ -26,10 +26,10 @@ function renderMermaid() {
 document.addEventListener("DOMContentLoaded", () => {
   renderMermaid();
 
-  const toggle = document.getElementById("h-theme-toggle");
-  if (toggle) {
+  const toggles = document.querySelectorAll("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
+  toggles.forEach((toggle) => {
     toggle.addEventListener("click", () => {
       setTimeout(renderMermaid, 50);
     });
-  }
+  });
 });

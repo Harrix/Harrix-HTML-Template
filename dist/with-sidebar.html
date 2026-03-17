@@ -118,8 +118,9 @@
                 ><span class="icon"><i class="fas fa-globe-americas"></i></span> Eng</a
               >
               <div
-                class="navbar-item h-is-clickable"
+                class="navbar-item h-is-clickable h-theme-toggle"
                 id="h-theme-toggle"
+                data-theme-toggle
                 role="button"
                 aria-label="Переключить светлую/тёмную тему"
               >
@@ -140,7 +141,44 @@
               </div>
             </div>
           </div>
+          <button
+            type="button"
+            class="h-navbar-search-btn"
+            id="h-navbar-search-btn"
+            aria-label="Поиск"
+            aria-hidden="true"
+            hidden
+          >
+            <span class="icon" aria-hidden="true"><i class="fas fa-search"></i></span>
+          </button>
           <div class="h-navbar-menu-backdrop" id="h-navbar-menu-backdrop" aria-hidden="true" hidden></div>
+        </div>
+        <div id="h-navbar-search-overlay" class="h-navbar-search-overlay" aria-hidden="true">
+          <div class="h-navbar-search-overlay__inner">
+            <input
+              class="h-navbar-search-overlay__input input"
+              id="h-navbar-search-overlay-input"
+              placeholder="Поиск…"
+              aria-label="Поиск"
+              autocomplete="off"
+            />
+            <button
+              type="button"
+              class="h-navbar-search-overlay__submit"
+              id="h-navbar-search-overlay-submit"
+              aria-label="Поиск"
+            >
+              <span class="icon is-small" aria-hidden="true"><i class="fas fa-search"></i></span>
+            </button>
+            <button
+              type="button"
+              class="h-navbar-search-overlay__close"
+              id="h-navbar-search-overlay-close"
+              aria-label="Закрыть"
+            >
+              <span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>
+            </button>
+          </div>
         </div>
         <div class="h-navbar-toc-row" id="h-navbar-toc-row" aria-hidden="true" hidden>
           <button
@@ -838,7 +876,7 @@ public class MainActivity extends AppCompatActivity {
           <nav id="h-page-toc" class="h-page-toc menu">
             <div class="h-page-toc__header">
               <p class="menu-label" id="h-page-toc-label"></p>
-              <button id="h-page-toc-close" class="h-page-toc__close delete" type="button" aria-label="Close">
+              <button id="h-page-toc-close" class="h-page-toc__close" type="button" aria-label="Close">
                 <span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>
               </button>
             </div>

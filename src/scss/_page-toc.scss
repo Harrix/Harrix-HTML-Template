@@ -77,11 +77,6 @@ $h-page-toc-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
   }
 }
 
-// In intermediate navbar TOC mode, backdrop should cover below navbar rows.
-body.h-navbar-toc-no-fit .h-page-toc-backdrop {
-  top: calc(3rem + 2.5rem);
-}
-
 // TOC panel
 .h-page-toc {
   font-size: 0.8125rem;
@@ -107,28 +102,6 @@ body.h-navbar-toc-no-fit .h-page-toc-backdrop {
   &.is-open {
     transform: translateY(0);
     visibility: visible;
-  }
-
-  // --- Intermediate: TOC grows down from under h-navbar-toc-row, width = content ---
-  body.h-navbar-toc-no-fit & {
-    top: calc(3rem + 2.5rem);
-    left: max(0px, calc((100vw - hvars.$h-container-max-width) / 2));
-    right: max(0px, calc((100vw - hvars.$h-container-max-width) / 2));
-    bottom: auto;
-    height: auto;
-    max-height: 0;
-    overflow: hidden;
-    border-radius: 0 0 1rem 1rem;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
-    padding: 0;
-    transform: none;
-    transition: max-height 0.25s ease;
-    visibility: visible;
-  }
-
-  body.h-navbar-toc-no-fit &.is-open {
-    max-height: calc(100vh - (3rem + 2.5rem));
-    overflow-y: auto;
   }
 
   // --- Desktop: fixed sidebar, attached to content right edge ---
@@ -160,31 +133,6 @@ body.h-navbar-toc-no-fit .h-page-toc-backdrop {
     }
 
     .h-page-toc__close {
-      &::before,
-      &::after {
-        content: none !important;
-      }
-    }
-
-    @media (min-width: $h-page-toc-breakpoint) {
-      .h-page-toc__close {
-        display: none;
-      }
-    }
-  }
-
-  body.h-navbar-toc-no-fit & {
-    .h-page-toc__header {
-      padding: 1rem 1rem 0.5rem;
-      margin-bottom: 0;
-
-      .menu-label {
-        margin-bottom: 0;
-      }
-    }
-
-    // Match h-mobile-top-nav-search-panel__close (same size, radius, icon)
-    .h-page-toc__close {
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -205,8 +153,10 @@ body.h-navbar-toc-no-fit .h-page-toc-backdrop {
       }
     }
 
-    .menu-list {
-      padding: 0 1rem 1rem;
+    @media (min-width: $h-page-toc-breakpoint) {
+      .h-page-toc__close {
+        display: none;
+      }
     }
   }
 
@@ -250,8 +200,19 @@ body.h-navbar-toc-no-fit .h-page-toc-backdrop {
   }
 
   .h-page-toc {
-    @media (max-width: $h-page-toc-breakpoint - 1) {
-      background-color: dark.$h-dark-surface;
+    background-color: dark.$h-dark-surface;
+
+    @media (min-width: $h-page-toc-breakpoint) {
+      background-color: transparent;
+    }
+
+    .h-page-toc__close {
+      color: dark.$h-dark-icon;
+
+      &:hover {
+        background-color: dark.$h-dark-border;
+        color: dark.$h-dark-text-strong;
+      }
     }
 
     .menu-label {

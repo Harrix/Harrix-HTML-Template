@@ -73,6 +73,9 @@ function initNavbar(scrollThreshold) {
         menuBackdrop.setAttribute("hidden", "");
         menuBackdrop.setAttribute("aria-hidden", "true");
       }
+      if (document.body.classList.contains("h-navbar-menu-no-fit")) {
+        navbarBurger.style.display = "";
+      }
     }
 
     if (menuPanelClose) {
@@ -110,6 +113,9 @@ function initNavbar(scrollThreshold) {
       const expanded = navbarBurger.classList.contains("is-active");
       navbarBurger.setAttribute("aria-expanded", String(expanded));
       if (document.body.classList.contains("h-navbar-menu-no-fit")) {
+        if (expanded) {
+          navbarBurger.style.display = "none";
+        }
         if (menuPanelHeader) {
           if (expanded) {
             menuPanelHeader.removeAttribute("hidden");
@@ -469,10 +475,8 @@ function focusAfterAnimation(elem, delayMs) {
 }
 
 function initThemeToggle() {
-  const toggle = document.getElementById("h-theme-toggle");
-  if (!toggle) return;
-
-  const labelEl = document.getElementById("h-theme-toggle-label");
+  const toggles = Array.from(document.querySelectorAll("[data-theme-toggle], .h-theme-toggle"));
+  if (toggles.length === 0) return;
 
   function getTheme() {
     const fromDom = document.documentElement.getAttribute("data-theme");
@@ -488,20 +492,25 @@ function initThemeToggle() {
   }
 
   function updateThemeLabel() {
-    if (!labelEl) return;
     const theme = getTheme();
     const textLight = translate("Switch to light theme");
     const textDark = translate("Switch to dark theme");
-    labelEl.textContent = theme === "dark" ? textLight : textDark;
-    toggle.setAttribute("aria-label", theme === "dark" ? textLight : textDark);
+    const label = theme === "dark" ? textLight : textDark;
+    toggles.forEach((toggle) => {
+      toggle.setAttribute("aria-label", label);
+      const labelEl = toggle.querySelector(".h-theme-toggle-label");
+      if (labelEl) labelEl.textContent = label;
+    });
   }
 
   updateThemeLabel();
 
-  toggle.addEventListener("click", () => {
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
     const current = getTheme();
     setTheme(current === "dark" ? "light" : "dark");
     updateThemeLabel();
+    });
   });
 }
 
@@ -695,6 +704,57 @@ function initNavbarSidebarTocFit() {
   const navbarSidebarBtn = document.getElementById("h-navbar-sidebar-btn");
   const navbarTocRow = document.getElementById("h-navbar-toc-row");
   const navbarTocTrigger = document.getElementById("h-navbar-toc-trigger");
+  const navbarSearchBtn = document.getElementById("h-navbar-search-btn");
+  const searchOverlay = document.getElementById("h-navbar-search-overlay");
+  const searchOverlayInput = document.getElementById("h-navbar-search-overlay-input");
+  const searchOverlaySubmit = document.getElementById("h-navbar-search-overlay-submit");
+  const searchOverlayClose = document.getElementById("h-navbar-search-overlay-close");
+  const mainSearchInput = document.getElementById("h-search-input");
+
+  function openSearchOverlay() {
+    if (!searchOverlay) return;
+    searchOverlay.classList.add("is-open");
+    searchOverlay.setAttribute("aria-hidden", "false");
+    if (searchOverlayInput) setTimeout(() => searchOverlayInput.focus(), 50);
+  }
+
+  function closeSearchOverlay() {
+    if (!searchOverlay) return;
+    searchOverlay.classList.remove("is-open");
+    searchOverlay.setAttribute("aria-hidden", "true");
+    if (searchOverlayInput) searchOverlayInput.blur();
+  }
+
+  if (navbarSearchBtn) {
+    navbarSearchBtn.addEventListener("click", openSearchOverlay);
+  }
+  if (searchOverlayClose) {
+    searchOverlayClose.addEventListener("click", closeSearchOverlay);
+  }
+  if (searchOverlaySubmit) {
+    searchOverlaySubmit.addEventListener("click", () => {
+      const formEl = document.getElementById("h-search-form")?.querySelector("form");
+      if (formEl) formEl.requestSubmit();
+    });
+  }
+  if (searchOverlayInput) {
+    searchOverlayInput.placeholder = translate("Search…");
+    searchOverlayInput.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeSearchOverlay();
+      if (e.key === "Enter") {
+        const formEl = document.getElementById("h-search-form")?.querySelector("form");
+        if (formEl) formEl.requestSubmit();
+      }
+    });
+    if (mainSearchInput) {
+      searchOverlayInput.addEventListener("input", () => {
+        mainSearchInput.value = searchOverlayInput.value;
+      });
+      mainSearchInput.addEventListener("input", () => {
+        searchOverlayInput.value = mainSearchInput.value;
+      });
+    }
+  }
 
   function updateFit() {
     const vw = window.innerWidth;
@@ -709,6 +769,11 @@ function initNavbarSidebarTocFit() {
         navbarTocRow.setAttribute("aria-hidden", "true");
         navbarTocRow.hidden = true;
       }
+      if (navbarSearchBtn) {
+        navbarSearchBtn.setAttribute("aria-hidden", "true");
+        navbarSearchBtn.setAttribute("hidden", "");
+      }
+      closeSearchOverlay();
       return;
     }
 
@@ -745,6 +810,16 @@ function initNavbarSidebarTocFit() {
       } else {
         navbarTocRow.setAttribute("aria-hidden", "true");
         navbarTocRow.hidden = true;
+      }
+    }
+    if (navbarSearchBtn) {
+      if (menuNoFit) {
+        navbarSearchBtn.removeAttribute("aria-hidden");
+        navbarSearchBtn.removeAttribute("hidden");
+      } else {
+        navbarSearchBtn.setAttribute("aria-hidden", "true");
+        navbarSearchBtn.setAttribute("hidden", "");
+        closeSearchOverlay();
       }
     }
   }

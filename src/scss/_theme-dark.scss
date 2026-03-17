@@ -73,11 +73,6 @@
       color: dark.$h-dark-icon;
     }
 
-    body.h-navbar-toc-no-fit .h-page-toc.is-open {
-      background-color: dark.$h-dark-surface;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-    }
-
     body.h-navbar-menu-no-fit .navbar-menu.is-active {
       background-color: dark.$h-dark-surface;
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
@@ -98,6 +93,66 @@
 
     .h-navbar-menu-backdrop {
       background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .h-navbar-toc-row {
+      border-top-color: dark.$h-dark-border;
+    }
+
+    .h-navbar-sidebar-btn {
+      color: dark.$h-dark-icon;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.06);
+        color: dark.$h-dark-text-strong;
+      }
+    }
+
+    .h-navbar-toc-trigger {
+      color: dark.$h-dark-text-strong;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.06);
+      }
+
+      .icon {
+        color: dark.$h-dark-icon;
+      }
+    }
+
+    .h-navbar-search-btn {
+      color: dark.$h-dark-icon;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.06);
+        color: dark.$h-dark-text-strong;
+      }
+    }
+
+    .h-navbar-search-overlay {
+      background-color: dark.$h-dark-surface;
+      border-top-color: dark.$h-dark-border;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .h-navbar-search-overlay__input {
+      background-color: dark.$h-dark-input-bg;
+      border-color: dark.$h-dark-border;
+      color: dark.$h-dark-text-strong;
+
+      &::placeholder {
+        color: dark.$h-dark-placeholder;
+      }
+    }
+
+    .h-navbar-search-overlay__submit,
+    .h-navbar-search-overlay__close {
+      color: dark.$h-dark-icon;
+
+      &:hover {
+        background-color: dark.$h-dark-border;
+        color: dark.$h-dark-text-strong;
+      }
     }
 
     .input,
