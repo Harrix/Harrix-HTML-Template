@@ -155,6 +155,20 @@
       }
     }
 
+    // Header search input: override light-theme color rule from _search-panel.scss
+    #h-search-form {
+      .control {
+        .input {
+          color: dark.$h-dark-text-strong;
+
+          &::placeholder {
+            color: dark.$h-dark-placeholder;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
     .input,
     .textarea,
     .select select {
