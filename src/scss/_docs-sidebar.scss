@@ -106,7 +106,12 @@ $h-navbar-height: 3rem;
       align-items: center;
       justify-content: space-between;
       padding: 1rem 1rem 0.5rem;
-      border-bottom: 1px solid initial-variables.$grey-lighter;
+      border-bottom: none;
+    }
+
+    // Mobile/intermediate sidebar: no "Documentation" label
+    #h-docs-sidebar-header-label {
+      display: none;
     }
 
     .h-docs-sidebar__close {
