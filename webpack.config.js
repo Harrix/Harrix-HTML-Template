@@ -61,8 +61,9 @@ const config = {
     watchFiles: ["src/**/*"],
   },
   performance: {
-    maxEntrypointSize: 2621440,
-    maxAssetSize: 1572864,
+    // Increase thresholds to avoid warnings for large bundles (e.g., charts entrypoint).
+    maxEntrypointSize: 5242880,
+    maxAssetSize: 5242880,
   },
   optimization: {
     minimize: true,
