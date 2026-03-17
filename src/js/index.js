@@ -24,6 +24,35 @@ const PAGE_TOC_TOGGLE_THRESHOLD = 200;
 
 const lang = document.documentElement.lang;
 
+function createUiHistoryLayer(getIsAnyOpen, closeAll) {
+  let pushed = false;
+
+  function ensure() {
+    if (pushed) return;
+    window.history.pushState({ hUiLayer: true }, "", window.location.href);
+    pushed = true;
+  }
+
+  function clearIfPresent() {
+    if (!pushed) return;
+    pushed = false;
+    // If our UI layer is the current history entry, remove it.
+    if (window.history.state && window.history.state.hUiLayer) {
+      window.history.back();
+    }
+  }
+
+  window.addEventListener("popstate", () => {
+    // Back button should close an open UI mode first.
+    if (getIsAnyOpen()) {
+      closeAll();
+    }
+    pushed = false;
+  });
+
+  return { ensure, clearIfPresent };
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNavbar(NAVBAR_HIDE_SCROLL_THRESHOLD);
   initSearchPanel();
@@ -78,11 +107,22 @@ function initNavbar(scrollThreshold) {
       }
     }
 
+    const uiHistory = createUiHistoryLayer(
+      () => !!(navbarMenu && navbarMenu.classList.contains("is-active")),
+      closeNavbarMenu,
+    );
+
     if (menuPanelClose) {
-      menuPanelClose.addEventListener("click", closeNavbarMenu);
+      menuPanelClose.addEventListener("click", () => {
+        closeNavbarMenu();
+        uiHistory.clearIfPresent();
+      });
     }
     if (menuBackdrop) {
-      menuBackdrop.addEventListener("click", closeNavbarMenu);
+      menuBackdrop.addEventListener("click", () => {
+        closeNavbarMenu();
+        uiHistory.clearIfPresent();
+      });
     }
 
     document.addEventListener("keydown", (e) => {
@@ -93,6 +133,7 @@ function initNavbar(scrollThreshold) {
         navbarMenu.classList.contains("is-active")
       ) {
         closeNavbarMenu();
+        uiHistory.clearIfPresent();
       }
     });
 
@@ -114,7 +155,10 @@ function initNavbar(scrollThreshold) {
       navbarBurger.setAttribute("aria-expanded", String(expanded));
       if (document.body.classList.contains("h-navbar-menu-no-fit")) {
         if (expanded) {
+          uiHistory.ensure();
           navbarBurger.style.display = "none";
+        } else {
+          uiHistory.clearIfPresent();
         }
         if (menuPanelHeader) {
           if (expanded) {
@@ -729,11 +773,32 @@ function initNavbarSidebarTocFit() {
   const searchOverlayClose = document.getElementById("h-navbar-search-overlay-close");
   const mainSearchInput = document.getElementById("h-search-input");
 
+  function isAnyUiOpen() {
+    const sidebarOpen = !!(sidebar && sidebar.classList.contains("is-open"));
+    const tocOpen = !!(toc && toc.classList.contains("is-open"));
+    const searchOpen = !!(searchOverlay && searchOverlay.classList.contains("is-open"));
+    return sidebarOpen || tocOpen || searchOpen;
+  }
+
+  function closeAllUi() {
+    if (sidebar) sidebar.classList.remove("is-open");
+    if (sidebarBackdrop) sidebarBackdrop.classList.remove("is-active");
+    if (toc) toc.classList.remove("is-open");
+    if (tocBackdrop) tocBackdrop.classList.remove("is-active");
+    closeSearchOverlay();
+    // Keep aria-expanded consistent if present
+    const navbarTocTrigger = document.getElementById("h-navbar-toc-trigger");
+    if (navbarTocTrigger) navbarTocTrigger.setAttribute("aria-expanded", "false");
+  }
+
+  const uiHistory = createUiHistoryLayer(isAnyUiOpen, closeAllUi);
+
   function openSearchOverlay() {
     if (!searchOverlay) return;
     searchOverlay.classList.add("is-open");
     searchOverlay.setAttribute("aria-hidden", "false");
     if (searchOverlayInput) setTimeout(() => searchOverlayInput.focus(), 50);
+    uiHistory.ensure();
   }
 
   function closeSearchOverlay() {
@@ -747,7 +812,10 @@ function initNavbarSidebarTocFit() {
     navbarSearchBtn.addEventListener("click", openSearchOverlay);
   }
   if (searchOverlayClose) {
-    searchOverlayClose.addEventListener("click", closeSearchOverlay);
+    searchOverlayClose.addEventListener("click", () => {
+      closeSearchOverlay();
+      uiHistory.clearIfPresent();
+    });
   }
   if (searchOverlaySubmit) {
     searchOverlaySubmit.addEventListener("click", () => {
@@ -847,9 +915,11 @@ function initNavbarSidebarTocFit() {
       if (sidebar.classList.contains("is-open")) {
         sidebar.classList.remove("is-open");
         sidebarBackdrop.classList.remove("is-active");
+        uiHistory.clearIfPresent();
       } else {
         sidebar.classList.add("is-open");
         sidebarBackdrop.classList.add("is-active");
+        uiHistory.ensure();
       }
     });
   }
@@ -863,15 +933,29 @@ function initNavbarSidebarTocFit() {
         toc.classList.remove("is-open");
         tocBackdrop.classList.remove("is-active");
         setNavbarTocExpanded(false);
+        uiHistory.clearIfPresent();
       } else {
         toc.classList.add("is-open");
         tocBackdrop.classList.add("is-active");
         setNavbarTocExpanded(true);
+        uiHistory.ensure();
       }
     });
-    tocBackdrop.addEventListener("click", () => setNavbarTocExpanded(false));
+    tocBackdrop.addEventListener("click", () => {
+      toc.classList.remove("is-open");
+      tocBackdrop.classList.remove("is-active");
+      setNavbarTocExpanded(false);
+      uiHistory.clearIfPresent();
+    });
     const tocCloseBtn = document.getElementById("h-page-toc-close");
-    if (tocCloseBtn) tocCloseBtn.addEventListener("click", () => setNavbarTocExpanded(false));
+    if (tocCloseBtn) {
+      tocCloseBtn.addEventListener("click", () => {
+        toc.classList.remove("is-open");
+        tocBackdrop.classList.remove("is-active");
+        setNavbarTocExpanded(false);
+        uiHistory.clearIfPresent();
+      });
+    }
   }
 
   const tocTriggerLabel = document.getElementById("h-navbar-toc-trigger-label");
@@ -879,6 +963,13 @@ function initNavbarSidebarTocFit() {
 
   updateFit();
   window.addEventListener("resize", updateFit);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!isAnyUiOpen()) return;
+    closeAllUi();
+    uiHistory.clearIfPresent();
+  });
 }
 
 function initDocsSidebar() {
@@ -950,6 +1041,14 @@ function initMobileTopNav() {
 
   if (tocTriggerLabel) tocTriggerLabel.textContent = translate("Table of contents");
 
+  function isAnyUiOpen() {
+    const searchOpen = !!(searchPanel && searchPanel.classList.contains("is-open"));
+    const dropdownOpen = !!(dropdown && dropdown.classList.contains("is-open"));
+    const menuOpen = !!(menuPanel && menuPanel.classList.contains("is-open"));
+    const sidebarOpen = !!(sidebarPanel && sidebarPanel.classList.contains("is-open"));
+    return searchOpen || dropdownOpen || menuOpen || sidebarOpen;
+  }
+
   if (!sidebarPanel && btnSidebar) {
     btnSidebar.classList.add("is-hidden");
   }
@@ -963,6 +1062,25 @@ function initMobileTopNav() {
     sidebarPanel.classList.remove("is-open");
     if (sidebarBackdrop) sidebarBackdrop.classList.remove("is-active");
   }
+
+  function closeAllUi() {
+    if (searchPanel) {
+      searchPanel.classList.remove("is-open");
+      searchPanel.setAttribute("aria-hidden", "true");
+    }
+    if (dropdown) {
+      dropdown.classList.remove("is-open");
+      if (tocTrigger) tocTrigger.setAttribute("aria-expanded", "false");
+    }
+    if (menuPanel && menuBackdrop) {
+      menuPanel.classList.remove("is-open");
+      menuPanel.setAttribute("aria-hidden", "true");
+      menuBackdrop.setAttribute("aria-hidden", "true");
+    }
+    closeSidebarPanel();
+  }
+
+  const uiHistory = createUiHistoryLayer(isAnyUiOpen, closeAllUi);
 
   if (searchPanel && searchInput) {
     if (searchInput) searchInput.placeholder = translate("Search…");
@@ -982,12 +1100,14 @@ function initMobileTopNav() {
       searchPanel.classList.add("is-open");
       searchPanel.setAttribute("aria-hidden", "false");
       setTimeout(() => searchInput.focus(), 50);
+      uiHistory.ensure();
     }
     function closeSearch() {
       searchInput.blur();
       searchPanel.classList.remove("is-open");
       searchPanel.setAttribute("aria-hidden", "true");
       if (btnSearch) btnSearch.focus();
+      uiHistory.clearIfPresent();
     }
     if (btnSearch) btnSearch.addEventListener("click", openSearch);
     if (searchClose) searchClose.addEventListener("click", closeSearch);
@@ -1060,11 +1180,13 @@ function initMobileTopNav() {
       menuPanel.classList.add("is-open");
       menuPanel.setAttribute("aria-hidden", "false");
       if (menuBackdrop) menuBackdrop.setAttribute("aria-hidden", "false");
+      uiHistory.ensure();
     }
     function closeMenu() {
       menuPanel.classList.remove("is-open");
       menuPanel.setAttribute("aria-hidden", "true");
       if (menuBackdrop) menuBackdrop.setAttribute("aria-hidden", "true");
+      uiHistory.clearIfPresent();
     }
     if (btnMenu) btnMenu.addEventListener("click", () => (menuPanel.classList.contains("is-open") ? closeMenu() : openMenu()));
     menuBackdrop.addEventListener("click", closeMenu);
@@ -1082,6 +1204,7 @@ function initMobileTopNav() {
     function closeDropdown() {
       dropdown.classList.remove("is-open");
       tocTrigger.setAttribute("aria-expanded", "false");
+      uiHistory.clearIfPresent();
     }
 
     const header = document.createElement("div");
@@ -1131,6 +1254,7 @@ function initMobileTopNav() {
 
       dropdown.classList.add("is-open");
       tocTrigger.setAttribute("aria-expanded", "true");
+      uiHistory.ensure();
     }
     tocTrigger.addEventListener("click", () => (dropdown.classList.contains("is-open") ? closeDropdown() : openDropdown()));
     if (dropdownBackdrop) dropdownBackdrop.addEventListener("click", closeDropdown);
@@ -1141,11 +1265,15 @@ function initMobileTopNav() {
   }
 
   function shouldKeepVisible() {
-    const searchOpen = searchPanel && searchPanel.classList.contains("is-open");
-    const dropdownOpen = dropdown && dropdown.classList.contains("is-open");
-    const menuOpen = menuPanel && menuPanel.classList.contains("is-open");
-    return searchOpen || dropdownOpen || menuOpen;
+    return isAnyUiOpen();
   }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!isAnyUiOpen()) return;
+    closeAllUi();
+    uiHistory.clearIfPresent();
+  });
 
   window.addEventListener("scroll", () => {
     currentScrollY = window.scrollY;
