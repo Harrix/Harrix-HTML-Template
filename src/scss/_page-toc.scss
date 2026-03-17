@@ -3,6 +3,7 @@
 @use "variables" as hvars;
 
 $h-page-toc-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
+$h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
 // Floating toggle button (visible below breakpoint) — same vertical level as .h-back-to-top
 .h-page-toc-toggle {
@@ -72,6 +73,18 @@ $h-page-toc-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
     display: block;
   }
 
+  // --- Intermediate (tablet): same as mobile top-nav dropdown backdrop ---
+  @media (min-width: calc(#{$h-page-toc-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{$h-page-toc-breakpoint} - 1px)) {
+    top: 3rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    body.h-navbar-toc-no-fit & {
+      top: 5.5rem; // 3rem navbar + 2.5rem toc row
+    }
+  }
+
   @media (min-width: $h-page-toc-breakpoint) {
     display: none !important;
   }
@@ -102,6 +115,50 @@ $h-page-toc-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
   &.is-open {
     transform: translateY(0);
     visibility: visible;
+  }
+
+  // --- Intermediate (tablet): match mobile top-nav dropdown (slide from left) ---
+  @media (min-width: calc(#{$h-page-toc-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{$h-page-toc-breakpoint} - 1px)) {
+    top: 3rem;
+    bottom: 0;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease, visibility 0.25s ease;
+
+    body.h-navbar-toc-no-fit & {
+      top: 5.5rem; // 3rem navbar + 2.5rem toc row
+    }
+
+    &.is-open {
+      transform: translateX(0);
+      visibility: visible;
+    }
+
+    .h-page-toc__header {
+      padding: 1rem 1rem 0.5rem;
+      margin-bottom: 0;
+    }
+
+    .menu-label {
+      margin: 0;
+    }
+
+    .menu-list {
+      padding: 0 1rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .menu-list a {
+      padding: 0.35em 0;
+      border-left: none;
+
+      &.is-active {
+        border-left-color: transparent;
+      }
+    }
   }
 
   // --- Desktop: fixed sidebar, attached to content right edge ---
@@ -201,6 +258,11 @@ $h-page-toc-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
 
   .h-page-toc {
     background-color: dark.$h-dark-surface;
+
+    @media (min-width: calc(#{$h-page-toc-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{$h-page-toc-breakpoint} - 1px)) {
+      background-color: dark.$h-dark-surface-elevated;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    }
 
     @media (min-width: $h-page-toc-breakpoint) {
       background-color: transparent;
