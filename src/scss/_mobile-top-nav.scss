@@ -300,6 +300,32 @@ $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-a
   }
 }
 
+// In mobile menu panel, dropdown items must stack vertically:
+// first the dropdown label, then its submenu items.
+.h-mobile-top-nav__menu-panel .navbar-item.has-dropdown {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.h-mobile-top-nav__menu-panel .navbar-item.has-dropdown > .navbar-link {
+  width: 100%;
+}
+
+.h-mobile-top-nav__menu-panel .navbar-item.has-dropdown > .navbar-dropdown {
+  position: static;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.h-mobile-top-nav__menu-panel .navbar-item.has-dropdown > .navbar-dropdown .navbar-item {
+  padding: 0.5rem 0;
+}
+
 // Dropdown panel (TOC or sidebar tree)
 .h-mobile-top-nav__dropdown {
   position: fixed;
