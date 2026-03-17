@@ -82,6 +82,10 @@
     padding: 6px;
   }
 
+  .column {
+    min-width: 0;
+  }
+
   blockquote {
     quotes: "\201C" "\201D";
     margin: 1.5em 0;
