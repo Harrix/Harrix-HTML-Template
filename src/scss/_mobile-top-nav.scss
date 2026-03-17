@@ -293,8 +293,17 @@ body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav_
 }
 
 .h-mobile-top-nav__menu-panel .navbar-item {
+  display: flex;
+  align-items: center;
   padding: 0.75rem 1rem;
   border-bottom: none;
+
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
 }
 
 // Dropdown panel (TOC or sidebar tree)
