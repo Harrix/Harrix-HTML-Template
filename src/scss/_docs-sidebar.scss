@@ -18,7 +18,7 @@ $h-navbar-height: 3rem;
   z-index: 40;
   padding: 1rem 0;
   background-color: #fff;
-  border-right: 1px solid initial-variables.$grey-lighter;
+  border-right: none;
   font-size: 0.9rem;
   transition: transform 0.25s ease;
 
@@ -197,7 +197,7 @@ $h-navbar-height: 3rem;
 [data-theme="dark"] {
   .h-docs-sidebar {
     background-color: dark.$h-dark-surface;
-    border-right-color: dark.$h-dark-border;
+    border-right: none;
 
     // Desktop (normal) mode: match main content background.
     // Do not affect intermediate/mobile sidebar (off-canvas).
