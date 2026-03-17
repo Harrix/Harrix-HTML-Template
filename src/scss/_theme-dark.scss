@@ -166,6 +166,16 @@
             opacity: 1;
           }
         }
+
+        // Make search icons/buttons match other navbar controls in dark theme
+        .icon {
+          color: dark.$h-dark-text-strong;
+        }
+      }
+
+      #h-search-button-submit,
+      #h-search-button-close {
+        color: dark.$h-dark-text-strong;
       }
     }
 

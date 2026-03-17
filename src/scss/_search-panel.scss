@@ -26,11 +26,6 @@
         transform: translateY(0);
         opacity: 1;
       }
-
-      // Hide left search icon when search form is visible
-      #h-search-form .icon.is-left {
-        display: none;
-      }
     }
 
     #h-search-form .control {
