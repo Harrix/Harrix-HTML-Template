@@ -18,6 +18,22 @@
   top: 0;
 }
 
+@mixin h-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
 @mixin h-scrollbars {
   &::-webkit-scrollbar {
     -webkit-appearance: none;

@@ -1,5 +1,6 @@
 @use "bulma/sass/utilities/mixins" as mixins;
 @use "variables" as hvars;
+@use "mixins" as hmixins;
 
 body {
   overflow-x: hidden;
@@ -46,4 +47,9 @@ a:hover {
 
 .h-columns-with-sidebar {
   align-items: flex-start;
+}
+
+// Shared backdrop animation for UI panels (sidebar/menu/toc/etc.)
+.h-backdrop {
+  @include hmixins.h-backdrop;
 }

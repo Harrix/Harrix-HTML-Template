@@ -1,6 +1,7 @@
 @use "bulma/sass/utilities/initial-variables" as initial-variables;
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
+@use "mixins" as hmixins;
 
 $h-docs-sidebar-width: 280px;
 $h-docs-sidebar-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
@@ -185,15 +186,8 @@ $h-navbar-height: 3rem;
 }
 
 .h-docs-sidebar-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
+  @include hmixins.h-backdrop;
   z-index: 39;
-  background-color: rgba(0, 0, 0, 0.5);
-
-  &.is-active {
-    display: block;
-  }
 
   @media (min-width: $h-docs-sidebar-breakpoint) {
     display: none !important;

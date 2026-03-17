@@ -2,6 +2,7 @@
 @use "bulma/sass/utilities/derived-variables" as derived-variables;
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
+@use "mixins" as hmixins;
 
 $h-mobile-top-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 $h-mobile-top-nav-row-height: 3rem;
@@ -238,30 +239,19 @@ $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-a
 
 // Backdrop when dropdown is open
 .h-mobile-top-nav__dropdown-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
   top: $h-mobile-top-nav-header-height;
+  @include hmixins.h-backdrop;
   z-index: 33;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.h-mobile-top-nav__dropdown.is-open ~ .h-mobile-top-nav__dropdown-backdrop {
-  display: block;
 }
 
 // Menu panel (clone of navbar menu)
 .h-mobile-top-nav__menu-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
   top: $h-mobile-top-nav-row1-height;
+  @include hmixins.h-backdrop;
   z-index: 36;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .h-mobile-top-nav__menu-panel {
-  display: none;
   position: fixed;
   left: 0;
   right: 0;
@@ -272,14 +262,18 @@ $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-a
   background-color: #fff;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
   padding: 0;
+  transform: translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
 
   &.is-open {
-    display: block;
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
-}
-
-body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav__menu-backdrop {
-  display: block;
 }
 
 .h-mobile-top-nav__menu-panel .navbar-menu {

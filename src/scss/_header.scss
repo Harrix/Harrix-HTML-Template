@@ -141,16 +141,23 @@
         left: 0;
         right: 0;
         bottom: 0;
-        display: none;
         background-color: #fff;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
         overflow-y: auto;
         z-index: 51;
         padding: 0;
+        transform: translateY(-8px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
       }
 
       body.h-navbar-menu-no-fit &.is-active {
-        display: block;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
       }
 
       body.h-navbar-menu-no-fit & .h-navbar-menu-panel-header {
@@ -198,18 +205,13 @@
   }
 
   .h-navbar-menu-backdrop {
-    display: none;
-    position: fixed;
+    @include hmixins.h-backdrop;
     top: 3rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
     z-index: 50;
-    background-color: rgba(0, 0, 0, 0.5);
 
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
-      body.h-navbar-menu-no-fit .navbar-menu.is-active ~ & {
-        display: block;
+      body.h-navbar-menu-no-fit & {
+        // Show via .is-active class (toggled from JS)
       }
     }
   }

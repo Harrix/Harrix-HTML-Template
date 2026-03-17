@@ -53,7 +53,325 @@ function createUiHistoryLayer(getIsAnyOpen, closeAll) {
   return { ensure, clearIfPresent };
 }
 
+function createUiModesController() {
+  const root = document.documentElement;
+
+  // Desktop/tablet shared
+  const docsSidebar = document.getElementById("h-docs-sidebar");
+  const docsSidebarBackdrop = document.getElementById("h-docs-sidebar-backdrop");
+  const docsSidebarClose = document.getElementById("h-docs-sidebar-close");
+  const docsSidebarToggle = document.getElementById("h-docs-sidebar-toggle");
+  const navbarSidebarBtn = document.getElementById("h-navbar-sidebar-btn");
+
+  const pageToc = document.getElementById("h-page-toc");
+  const pageTocBackdrop = document.getElementById("h-page-toc-backdrop");
+  const pageTocClose = document.getElementById("h-page-toc-close");
+  const pageTocToggle = document.getElementById("h-page-toc-toggle");
+  const navbarTocTrigger = document.getElementById("h-navbar-toc-trigger");
+  const mobileTocTrigger = document.getElementById("h-mobile-top-nav-toc-trigger");
+
+  const navbarBurger = document.getElementById("h-burger");
+  const navbarMenu = document.getElementById("h-navbar-menu");
+  const navbarMenuPanelHeader = document.getElementById("h-navbar-menu-panel-header");
+  const navbarMenuBackdrop = document.getElementById("h-navbar-menu-backdrop");
+  const navbarMenuPanelClose = document.getElementById("h-navbar-menu-panel-close");
+
+  // Navbar inline search (desktop)
+  const navbarSearchButtonOpen = document.getElementById("h-search-button-open");
+  const navbarSearchInput = document.getElementById("h-search-input");
+
+  const navbarSearchBtn = document.getElementById("h-navbar-search-btn");
+  const navbarSearchOverlay = document.getElementById("h-navbar-search-overlay");
+  const navbarSearchOverlayClose = document.getElementById("h-navbar-search-overlay-close");
+  const navbarSearchOverlayInput = document.getElementById("h-navbar-search-overlay-input");
+
+  // Mobile top nav
+  const mobileSearchBtn = document.getElementById("h-mobile-top-nav-search");
+  const mobileSearchPanel = document.getElementById("h-mobile-top-nav-search-panel");
+  const mobileSearchClose = document.getElementById("h-mobile-top-nav-search-close");
+  const mobileSearchInput = document.getElementById("h-mobile-top-nav-search-input");
+  const mobileSearchSubmit = document.getElementById("h-mobile-top-nav-search-submit");
+
+  const mobileMenuBtn = document.getElementById("h-mobile-top-nav-menu");
+  const mobileMenuPanel = document.getElementById("h-mobile-top-nav-menu-panel");
+  const mobileMenuBackdrop = document.getElementById("h-mobile-top-nav-menu-backdrop");
+
+  const mobileDropdown = document.getElementById("h-mobile-top-nav-dropdown");
+  const mobileDropdownBackdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
+
+  let active = null;
+
+  function isModeOpen(mode) {
+    switch (mode) {
+      case "docsSidebar":
+        return !!(docsSidebar && docsSidebar.classList.contains("is-open"));
+      case "pageToc":
+        return !!(pageToc && pageToc.classList.contains("is-open"));
+      case "navbarMenu":
+        return !!(navbarMenu && navbarMenu.classList.contains("is-active"));
+      case "navbarSearch":
+        return !!(navbarSearchOverlay && navbarSearchOverlay.classList.contains("is-open"));
+      case "mobileSearch":
+        return !!(mobileSearchPanel && mobileSearchPanel.classList.contains("is-open"));
+      case "mobileMenu":
+        return !!(mobileMenuPanel && mobileMenuPanel.classList.contains("is-open"));
+      case "mobileDropdown":
+        return !!(mobileDropdown && mobileDropdown.classList.contains("is-open"));
+      default:
+        return false;
+    }
+  }
+
+  function setTocExpanded(open) {
+    if (navbarTocTrigger) navbarTocTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+    if (mobileTocTrigger) mobileTocTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  function openMode(mode) {
+    switch (mode) {
+      case "docsSidebar": {
+        if (!docsSidebar) return;
+        docsSidebar.classList.add("is-open");
+        if (docsSidebarBackdrop) docsSidebarBackdrop.classList.add("is-active");
+        break;
+      }
+      case "pageToc": {
+        if (!pageToc) return;
+        pageToc.classList.add("is-open");
+        if (pageTocBackdrop) pageTocBackdrop.classList.add("is-active");
+        setTocExpanded(true);
+        break;
+      }
+      case "navbarMenu": {
+        if (!navbarMenu || !navbarBurger) return;
+        root.classList.add("h-is-clipped-touch");
+        navbarBurger.classList.add("is-active");
+        navbarBurger.setAttribute("aria-expanded", "true");
+        navbarMenu.classList.add("is-active");
+        if (document.body.classList.contains("h-navbar-menu-no-fit")) {
+          if (navbarMenuPanelHeader) {
+            navbarMenuPanelHeader.removeAttribute("hidden");
+            navbarMenuPanelHeader.setAttribute("aria-hidden", "false");
+          }
+          if (navbarMenuBackdrop) {
+            navbarMenuBackdrop.classList.add("is-active");
+            navbarMenuBackdrop.removeAttribute("hidden");
+            navbarMenuBackdrop.setAttribute("aria-hidden", "false");
+          }
+          navbarBurger.style.display = "none";
+        }
+        break;
+      }
+      case "navbarSearch": {
+        if (!navbarSearchOverlay) return;
+        navbarSearchOverlay.classList.add("is-open");
+        navbarSearchOverlay.setAttribute("aria-hidden", "false");
+        if (navbarSearchOverlayInput) setTimeout(() => navbarSearchOverlayInput.focus(), 50);
+        break;
+      }
+      case "mobileSearch": {
+        if (!mobileSearchPanel) return;
+        mobileSearchPanel.classList.add("is-open");
+        mobileSearchPanel.setAttribute("aria-hidden", "false");
+        if (mobileSearchInput) setTimeout(() => mobileSearchInput.focus(), 50);
+        break;
+      }
+      case "mobileMenu": {
+        if (!mobileMenuPanel) return;
+        mobileMenuPanel.classList.add("is-open");
+        mobileMenuPanel.setAttribute("aria-hidden", "false");
+        if (mobileMenuBackdrop) {
+          mobileMenuBackdrop.classList.add("is-active");
+          mobileMenuBackdrop.setAttribute("aria-hidden", "false");
+        }
+        break;
+      }
+      case "mobileDropdown": {
+        if (!mobileDropdown) return;
+        mobileDropdown.classList.add("is-open");
+        setTocExpanded(true);
+        if (mobileDropdownBackdrop) {
+          mobileDropdownBackdrop.classList.add("is-active");
+          mobileDropdownBackdrop.setAttribute("aria-hidden", "false");
+        }
+        break;
+      }
+    }
+  }
+
+  function closeMode(mode) {
+    switch (mode) {
+      case "docsSidebar": {
+        if (docsSidebar) docsSidebar.classList.remove("is-open");
+        if (docsSidebarBackdrop) docsSidebarBackdrop.classList.remove("is-active");
+        break;
+      }
+      case "pageToc": {
+        if (pageToc) pageToc.classList.remove("is-open");
+        if (pageTocBackdrop) pageTocBackdrop.classList.remove("is-active");
+        setTocExpanded(false);
+        break;
+      }
+      case "navbarMenu": {
+        if (!navbarMenu || !navbarBurger) return;
+        root.classList.remove("h-is-clipped-touch");
+        navbarBurger.classList.remove("is-active");
+        navbarBurger.setAttribute("aria-expanded", "false");
+        navbarMenu.classList.remove("is-active");
+        if (navbarMenuPanelHeader) {
+          navbarMenuPanelHeader.setAttribute("hidden", "");
+          navbarMenuPanelHeader.setAttribute("aria-hidden", "true");
+        }
+        if (navbarMenuBackdrop) {
+          navbarMenuBackdrop.classList.remove("is-active");
+          navbarMenuBackdrop.setAttribute("hidden", "");
+          navbarMenuBackdrop.setAttribute("aria-hidden", "true");
+        }
+        if (document.body.classList.contains("h-navbar-menu-no-fit")) {
+          navbarBurger.style.display = "";
+        }
+        break;
+      }
+      case "navbarSearch": {
+        if (!navbarSearchOverlay) return;
+        navbarSearchOverlay.classList.remove("is-open");
+        navbarSearchOverlay.setAttribute("aria-hidden", "true");
+        if (navbarSearchOverlayInput) navbarSearchOverlayInput.blur();
+        break;
+      }
+      case "mobileSearch": {
+        if (mobileSearchInput) mobileSearchInput.blur();
+        if (mobileSearchPanel) {
+          mobileSearchPanel.classList.remove("is-open");
+          mobileSearchPanel.setAttribute("aria-hidden", "true");
+        }
+        break;
+      }
+      case "mobileMenu": {
+        if (mobileMenuPanel) {
+          mobileMenuPanel.classList.remove("is-open");
+          mobileMenuPanel.setAttribute("aria-hidden", "true");
+        }
+        if (mobileMenuBackdrop) {
+          mobileMenuBackdrop.classList.remove("is-active");
+          mobileMenuBackdrop.setAttribute("aria-hidden", "true");
+        }
+        break;
+      }
+      case "mobileDropdown": {
+        if (mobileDropdown) mobileDropdown.classList.remove("is-open");
+        setTocExpanded(false);
+        if (mobileDropdownBackdrop) {
+          mobileDropdownBackdrop.classList.remove("is-active");
+          mobileDropdownBackdrop.setAttribute("aria-hidden", "true");
+        }
+        break;
+      }
+    }
+  }
+
+  function closeAll() {
+    // Close navbar inline search if open
+    if (navbarMenu) navbarMenu.classList.remove("h-has-visible-search-form");
+    if (navbarSearchInput) navbarSearchInput.blur();
+
+    closeMode("navbarMenu");
+    closeMode("docsSidebar");
+    closeMode("pageToc");
+    closeMode("navbarSearch");
+    closeMode("mobileSearch");
+    closeMode("mobileMenu");
+    closeMode("mobileDropdown");
+    active = null;
+  }
+
+  function isAnyOpen() {
+    return (
+      isModeOpen("navbarMenu") ||
+      isModeOpen("docsSidebar") ||
+      isModeOpen("pageToc") ||
+      isModeOpen("navbarSearch") ||
+      isModeOpen("mobileSearch") ||
+      isModeOpen("mobileMenu") ||
+      isModeOpen("mobileDropdown")
+    );
+  }
+
+  const uiHistory = createUiHistoryLayer(isAnyOpen, closeAll);
+
+  function open(mode) {
+    if (isModeOpen(mode)) return;
+    closeAll();
+    openMode(mode);
+    active = mode;
+    uiHistory.ensure();
+  }
+
+  function close(mode) {
+    if (!isModeOpen(mode)) return;
+    closeMode(mode);
+    if (active === mode) active = null;
+    uiHistory.clearIfPresent();
+  }
+
+  function toggle(mode) {
+    if (isModeOpen(mode)) close(mode);
+    else open(mode);
+  }
+
+  // --- Wire common triggers (if present) ---
+  if (docsSidebarToggle) docsSidebarToggle.addEventListener("click", () => toggle("docsSidebar"));
+  if (navbarSidebarBtn) navbarSidebarBtn.addEventListener("click", () => toggle("docsSidebar"));
+  if (docsSidebarClose) docsSidebarClose.addEventListener("click", () => close("docsSidebar"));
+  if (docsSidebarBackdrop) docsSidebarBackdrop.addEventListener("click", () => close("docsSidebar"));
+
+  if (pageTocToggle) pageTocToggle.addEventListener("click", () => toggle("pageToc"));
+  if (pageTocClose) pageTocClose.addEventListener("click", () => close("pageToc"));
+  if (pageTocBackdrop) pageTocBackdrop.addEventListener("click", () => close("pageToc"));
+  if (navbarTocTrigger) navbarTocTrigger.addEventListener("click", () => toggle("pageToc"));
+
+  if (navbarBurger) navbarBurger.addEventListener("click", () => toggle("navbarMenu"));
+  if (navbarMenuBackdrop) navbarMenuBackdrop.addEventListener("click", () => close("navbarMenu"));
+  if (navbarMenuPanelClose) navbarMenuPanelClose.addEventListener("click", () => close("navbarMenu"));
+
+  if (navbarSearchBtn) navbarSearchBtn.addEventListener("click", () => open("navbarSearch"));
+  if (navbarSearchOverlayClose) navbarSearchOverlayClose.addEventListener("click", () => close("navbarSearch"));
+
+  if (navbarSearchButtonOpen) {
+    navbarSearchButtonOpen.addEventListener("click", () => {
+      // Ensure mutual exclusion for inline search too
+      closeAll();
+    });
+  }
+
+  if (mobileSearchBtn) mobileSearchBtn.addEventListener("click", () => toggle("mobileSearch"));
+  if (mobileSearchClose) mobileSearchClose.addEventListener("click", () => close("mobileSearch"));
+  if (mobileSearchSubmit) {
+    mobileSearchSubmit.addEventListener("click", () => {
+      const formEl = document.getElementById("h-search-form")?.querySelector("form");
+      if (formEl) formEl.requestSubmit();
+    });
+  }
+
+  if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", () => toggle("mobileMenu"));
+  if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener("click", () => close("mobileMenu"));
+
+  if (mobileTocTrigger) mobileTocTrigger.addEventListener("click", () => toggle("mobileDropdown"));
+  if (mobileDropdownBackdrop) mobileDropdownBackdrop.addEventListener("click", () => close("mobileDropdown"));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (!isAnyOpen()) return;
+    closeAll();
+    uiHistory.clearIfPresent();
+  });
+
+  return { open, close, toggle, closeAll, isAnyOpen, getActive: () => active };
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Single controller to keep UI modes mutually exclusive
+  window.hUiModes = createUiModesController();
   initNavbar(NAVBAR_HIDE_SCROLL_THRESHOLD);
   initSearchPanel();
   initThemeToggle();
@@ -107,35 +425,8 @@ function initNavbar(scrollThreshold) {
       }
     }
 
-    const uiHistory = createUiHistoryLayer(
-      () => !!(navbarMenu && navbarMenu.classList.contains("is-active")),
-      closeNavbarMenu,
-    );
-
-    if (menuPanelClose) {
-      menuPanelClose.addEventListener("click", () => {
-        closeNavbarMenu();
-        uiHistory.clearIfPresent();
-      });
-    }
-    if (menuBackdrop) {
-      menuBackdrop.addEventListener("click", () => {
-        closeNavbarMenu();
-        uiHistory.clearIfPresent();
-      });
-    }
-
-    document.addEventListener("keydown", (e) => {
-      if (
-        e.key === "Escape" &&
-        document.body.classList.contains("h-navbar-menu-no-fit") &&
-        navbarMenu &&
-        navbarMenu.classList.contains("is-active")
-      ) {
-        closeNavbarMenu();
-        uiHistory.clearIfPresent();
-      }
-    });
+    // Menu open/close is now controlled by the global UI modes controller
+    // Keep closeNavbarMenu as a fallback for legacy callers only.
 
     let lastY = 0;
     let currentY = 0;
@@ -146,40 +437,7 @@ function initNavbar(scrollThreshold) {
       isNavbarHidden = false;
     });
 
-    navbarBurger.addEventListener("click", () => {
-      root.classList.toggle("h-is-clipped-touch");
-      const target = document.getElementById(navbarBurger.dataset.target);
-      navbarBurger.classList.toggle("is-active");
-      target.classList.toggle("is-active");
-      const expanded = navbarBurger.classList.contains("is-active");
-      navbarBurger.setAttribute("aria-expanded", String(expanded));
-      if (document.body.classList.contains("h-navbar-menu-no-fit")) {
-        if (expanded) {
-          uiHistory.ensure();
-          navbarBurger.style.display = "none";
-        } else {
-          uiHistory.clearIfPresent();
-        }
-        if (menuPanelHeader) {
-          if (expanded) {
-            menuPanelHeader.removeAttribute("hidden");
-            menuPanelHeader.setAttribute("aria-hidden", "false");
-          } else {
-            menuPanelHeader.setAttribute("hidden", "");
-            menuPanelHeader.setAttribute("aria-hidden", "true");
-          }
-        }
-        if (menuBackdrop) {
-          if (expanded) {
-            menuBackdrop.removeAttribute("hidden");
-            menuBackdrop.setAttribute("aria-hidden", "false");
-          } else {
-            menuBackdrop.setAttribute("hidden", "");
-            menuBackdrop.setAttribute("aria-hidden", "true");
-          }
-        }
-      }
-    });
+    // Click handling moved to createUiModesController() to guarantee mutual exclusion.
 
     window.addEventListener("scroll", () => {
       lastY = currentY;
@@ -248,6 +506,8 @@ function initSearchPanel() {
     }
 
     searchButtonOpen.addEventListener("click", () => {
+      // Close any other open UI modes first (sidebar/toc/menu/etc.)
+      window.hUiModes?.closeAll?.();
       navbarMenu.classList.add("h-has-visible-search-form");
       focusAfterAnimation(searchInput, SEARCH_ANIMATION_MS);
       showOrHideSearchButtonClose();
@@ -716,30 +976,13 @@ function initPageToc() {
 
   if (!toggleBtn) return;
 
-  function openToc() {
-    toc.classList.add("is-open");
-    if (backdrop) backdrop.classList.add("is-active");
-  }
-
-  function closeToc() {
-    toc.classList.remove("is-open");
-    if (backdrop) backdrop.classList.remove("is-active");
-  }
-
-  toggleBtn.addEventListener("click", () => {
-    if (toc.classList.contains("is-open")) closeToc();
-    else openToc();
-  });
-
-  if (closeBtn) closeBtn.addEventListener("click", closeToc);
-  if (backdrop) backdrop.addEventListener("click", closeToc);
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && toc.classList.contains("is-open")) closeToc();
-  });
-
+  // Opening/closing handled by createUiModesController() for mutual exclusion.
+  // When a TOC link is clicked, close it by clicking the close button if present.
   tocList.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", closeToc);
+    a.addEventListener("click", () => {
+      if (closeBtn) closeBtn.click();
+      else toc.classList.remove("is-open");
+    });
   });
 
   window.addEventListener("scroll", () => {
@@ -773,50 +1016,7 @@ function initNavbarSidebarTocFit() {
   const searchOverlayClose = document.getElementById("h-navbar-search-overlay-close");
   const mainSearchInput = document.getElementById("h-search-input");
 
-  function isAnyUiOpen() {
-    const sidebarOpen = !!(sidebar && sidebar.classList.contains("is-open"));
-    const tocOpen = !!(toc && toc.classList.contains("is-open"));
-    const searchOpen = !!(searchOverlay && searchOverlay.classList.contains("is-open"));
-    return sidebarOpen || tocOpen || searchOpen;
-  }
-
-  function closeAllUi() {
-    if (sidebar) sidebar.classList.remove("is-open");
-    if (sidebarBackdrop) sidebarBackdrop.classList.remove("is-active");
-    if (toc) toc.classList.remove("is-open");
-    if (tocBackdrop) tocBackdrop.classList.remove("is-active");
-    closeSearchOverlay();
-    // Keep aria-expanded consistent if present
-    const navbarTocTrigger = document.getElementById("h-navbar-toc-trigger");
-    if (navbarTocTrigger) navbarTocTrigger.setAttribute("aria-expanded", "false");
-  }
-
-  const uiHistory = createUiHistoryLayer(isAnyUiOpen, closeAllUi);
-
-  function openSearchOverlay() {
-    if (!searchOverlay) return;
-    searchOverlay.classList.add("is-open");
-    searchOverlay.setAttribute("aria-hidden", "false");
-    if (searchOverlayInput) setTimeout(() => searchOverlayInput.focus(), 50);
-    uiHistory.ensure();
-  }
-
-  function closeSearchOverlay() {
-    if (!searchOverlay) return;
-    searchOverlay.classList.remove("is-open");
-    searchOverlay.setAttribute("aria-hidden", "true");
-    if (searchOverlayInput) searchOverlayInput.blur();
-  }
-
-  if (navbarSearchBtn) {
-    navbarSearchBtn.addEventListener("click", openSearchOverlay);
-  }
-  if (searchOverlayClose) {
-    searchOverlayClose.addEventListener("click", () => {
-      closeSearchOverlay();
-      uiHistory.clearIfPresent();
-    });
-  }
+  // Open/close wiring is handled by createUiModesController().
   if (searchOverlaySubmit) {
     searchOverlaySubmit.addEventListener("click", () => {
       const formEl = document.getElementById("h-search-form")?.querySelector("form");
@@ -826,7 +1026,7 @@ function initNavbarSidebarTocFit() {
   if (searchOverlayInput) {
     searchOverlayInput.placeholder = translate("Search…");
     searchOverlayInput.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeSearchOverlay();
+      // Escape is handled globally; keep Enter behavior here.
       if (e.key === "Enter") {
         const formEl = document.getElementById("h-search-form")?.querySelector("form");
         if (formEl) formEl.requestSubmit();
@@ -859,7 +1059,6 @@ function initNavbarSidebarTocFit() {
         navbarSearchBtn.setAttribute("aria-hidden", "true");
         navbarSearchBtn.setAttribute("hidden", "");
       }
-      closeSearchOverlay();
       return;
     }
 
@@ -905,56 +1104,7 @@ function initNavbarSidebarTocFit() {
       } else {
         navbarSearchBtn.setAttribute("aria-hidden", "true");
         navbarSearchBtn.setAttribute("hidden", "");
-        closeSearchOverlay();
       }
-    }
-  }
-
-  if (navbarSidebarBtn && sidebar && sidebarBackdrop) {
-    navbarSidebarBtn.addEventListener("click", () => {
-      if (sidebar.classList.contains("is-open")) {
-        sidebar.classList.remove("is-open");
-        sidebarBackdrop.classList.remove("is-active");
-        uiHistory.clearIfPresent();
-      } else {
-        sidebar.classList.add("is-open");
-        sidebarBackdrop.classList.add("is-active");
-        uiHistory.ensure();
-      }
-    });
-  }
-
-  if (navbarTocTrigger && toc && tocBackdrop) {
-    function setNavbarTocExpanded(open) {
-      navbarTocTrigger.setAttribute("aria-expanded", open ? "true" : "false");
-    }
-    navbarTocTrigger.addEventListener("click", () => {
-      if (toc.classList.contains("is-open")) {
-        toc.classList.remove("is-open");
-        tocBackdrop.classList.remove("is-active");
-        setNavbarTocExpanded(false);
-        uiHistory.clearIfPresent();
-      } else {
-        toc.classList.add("is-open");
-        tocBackdrop.classList.add("is-active");
-        setNavbarTocExpanded(true);
-        uiHistory.ensure();
-      }
-    });
-    tocBackdrop.addEventListener("click", () => {
-      toc.classList.remove("is-open");
-      tocBackdrop.classList.remove("is-active");
-      setNavbarTocExpanded(false);
-      uiHistory.clearIfPresent();
-    });
-    const tocCloseBtn = document.getElementById("h-page-toc-close");
-    if (tocCloseBtn) {
-      tocCloseBtn.addEventListener("click", () => {
-        toc.classList.remove("is-open");
-        tocBackdrop.classList.remove("is-active");
-        setNavbarTocExpanded(false);
-        uiHistory.clearIfPresent();
-      });
     }
   }
 
@@ -963,13 +1113,6 @@ function initNavbarSidebarTocFit() {
 
   updateFit();
   window.addEventListener("resize", updateFit);
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape") return;
-    if (!isAnyUiOpen()) return;
-    closeAllUi();
-    uiHistory.clearIfPresent();
-  });
 }
 
 function initDocsSidebar() {
@@ -978,35 +1121,10 @@ function initDocsSidebar() {
   const backdrop = document.getElementById("h-docs-sidebar-backdrop");
   if (!sidebar || !toggle || !backdrop) return;
 
-  function closeSidebar() {
-    sidebar.classList.remove("is-open");
-    backdrop.classList.remove("is-active");
-  }
-
-  function openSidebar() {
-    sidebar.classList.add("is-open");
-    backdrop.classList.add("is-active");
-  }
-
-  toggle.addEventListener("click", () => {
-    if (sidebar.classList.contains("is-open")) closeSidebar();
-    else openSidebar();
-  });
-
-  backdrop.addEventListener("click", closeSidebar);
-
   const sidebarCloseBtn = document.getElementById("h-docs-sidebar-close");
   const sidebarHeaderLabel = document.getElementById("h-docs-sidebar-header-label");
-  if (sidebarCloseBtn) sidebarCloseBtn.addEventListener("click", closeSidebar);
   if (sidebarHeaderLabel) sidebarHeaderLabel.textContent = translate("Documentation");
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && sidebar.classList.contains("is-open")) closeSidebar();
-  });
-
-  sidebar.querySelectorAll("a[href]").forEach((a) => {
-    a.addEventListener("click", closeSidebar);
-  });
+  // Open/close handled by createUiModesController(); keep label translation here.
 }
 
 function initMobileTopNav() {
@@ -1057,68 +1175,12 @@ function initMobileTopNav() {
     btnSidebar.addEventListener("click", () => sidebarToggle.click());
   }
 
-  function closeSidebarPanel() {
-    if (!sidebarPanel) return;
-    sidebarPanel.classList.remove("is-open");
-    if (sidebarBackdrop) sidebarBackdrop.classList.remove("is-active");
-  }
-
-  function closeAllUi() {
-    if (searchPanel) {
-      searchPanel.classList.remove("is-open");
-      searchPanel.setAttribute("aria-hidden", "true");
-    }
-    if (dropdown) {
-      dropdown.classList.remove("is-open");
-      if (tocTrigger) tocTrigger.setAttribute("aria-expanded", "false");
-    }
-    if (menuPanel && menuBackdrop) {
-      menuPanel.classList.remove("is-open");
-      menuPanel.setAttribute("aria-hidden", "true");
-      menuBackdrop.setAttribute("aria-hidden", "true");
-    }
-    closeSidebarPanel();
-  }
-
-  const uiHistory = createUiHistoryLayer(isAnyUiOpen, closeAllUi);
+  // Open/close and history handled by createUiModesController().
 
   if (searchPanel && searchInput) {
     if (searchInput) searchInput.placeholder = translate("Search…");
-    function openSearch() {
-      // закрываем остальные режимы при открытии поиска
-      if (dropdown) {
-        dropdown.classList.remove("is-open");
-        if (tocTrigger) tocTrigger.setAttribute("aria-expanded", "false");
-      }
-      if (menuPanel && menuBackdrop) {
-        menuPanel.classList.remove("is-open");
-        menuPanel.setAttribute("aria-hidden", "true");
-        menuBackdrop.setAttribute("aria-hidden", "true");
-      }
-      closeSidebarPanel();
-
-      searchPanel.classList.add("is-open");
-      searchPanel.setAttribute("aria-hidden", "false");
-      setTimeout(() => searchInput.focus(), 50);
-      uiHistory.ensure();
-    }
-    function closeSearch() {
-      searchInput.blur();
-      searchPanel.classList.remove("is-open");
-      searchPanel.setAttribute("aria-hidden", "true");
-      if (btnSearch) btnSearch.focus();
-      uiHistory.clearIfPresent();
-    }
-    if (btnSearch) btnSearch.addEventListener("click", openSearch);
-    if (searchClose) searchClose.addEventListener("click", closeSearch);
-    if (searchSubmit) {
-      searchSubmit.addEventListener("click", () => {
-        const formEl = document.getElementById("h-search-form")?.querySelector("form");
-        if (formEl) formEl.requestSubmit();
-      });
-    }
     searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeSearch();
+      // Escape handled globally; keep Enter behavior here.
       if (e.key === "Enter") {
         const formEl = document.getElementById("h-search-form")?.querySelector("form");
         if (formEl) formEl.requestSubmit();
@@ -1165,34 +1227,17 @@ function initMobileTopNav() {
       menuPanel.appendChild(clone);
     }
 
-    function openMenu() {
-      // закрываем остальные режимы при открытии меню
-      if (searchPanel && searchPanel.classList.contains("is-open")) {
-        searchPanel.classList.remove("is-open");
-        searchPanel.setAttribute("aria-hidden", "true");
-      }
-      if (dropdown) {
-        dropdown.classList.remove("is-open");
-        if (tocTrigger) tocTrigger.setAttribute("aria-expanded", "false");
-      }
-      closeSidebarPanel();
-
-      menuPanel.classList.add("is-open");
-      menuPanel.setAttribute("aria-hidden", "false");
-      if (menuBackdrop) menuBackdrop.setAttribute("aria-hidden", "false");
-      uiHistory.ensure();
-    }
-    function closeMenu() {
-      menuPanel.classList.remove("is-open");
-      menuPanel.setAttribute("aria-hidden", "true");
-      if (menuBackdrop) menuBackdrop.setAttribute("aria-hidden", "true");
-      uiHistory.clearIfPresent();
-    }
-    if (btnMenu) btnMenu.addEventListener("click", () => (menuPanel.classList.contains("is-open") ? closeMenu() : openMenu()));
-    menuBackdrop.addEventListener("click", closeMenu);
-    menuCloseBtn.addEventListener("click", closeMenu);
+    // Open/close is handled by createUiModesController().
+    menuCloseBtn.addEventListener("click", () => {
+      const backdrop = document.getElementById("h-mobile-top-nav-menu-backdrop");
+      if (backdrop) backdrop.click();
+      else menuPanel.classList.remove("is-open");
+    });
     menuPanel.querySelectorAll("a[href]").forEach((a) => {
-      a.addEventListener("click", closeMenu);
+      a.addEventListener("click", () => {
+        const backdrop = document.getElementById("h-mobile-top-nav-menu-backdrop");
+        if (backdrop) backdrop.click();
+      });
     });
   }
 
@@ -1201,11 +1246,6 @@ function initMobileTopNav() {
   if (row2 && !hasTocContent) row2.classList.add("is-hidden");
 
   if (dropdown && tocTrigger && hasTocContent) {
-    function closeDropdown() {
-      dropdown.classList.remove("is-open");
-      tocTrigger.setAttribute("aria-expanded", "false");
-      uiHistory.clearIfPresent();
-    }
 
     const header = document.createElement("div");
     header.className = "h-mobile-top-nav__panel-header";
@@ -1229,51 +1269,37 @@ function initMobileTopNav() {
       listWrap.className = "menu-list";
       const tocClone = pageTocList.cloneNode(true);
       tocClone.classList.add("h-page-toc-mirror");
-      tocClone.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeDropdown));
+      tocClone.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          const backdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
+          if (backdrop) backdrop.click();
+        }),
+      );
       listWrap.appendChild(tocClone);
       dropdown.appendChild(listWrap);
     } else if (rootTree) {
       const treeClone = rootTree.cloneNode(true);
       treeClone.id = "";
       dropdown.appendChild(treeClone);
-      dropdown.querySelectorAll("a[href]").forEach((a) => a.addEventListener("click", closeDropdown));
+      dropdown.querySelectorAll("a[href]").forEach((a) =>
+        a.addEventListener("click", () => {
+          const backdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
+          if (backdrop) backdrop.click();
+        }),
+      );
     }
 
-    function openDropdown() {
-      // закрываем остальные режимы при открытии «Содержания»
-      if (searchPanel && searchPanel.classList.contains("is-open")) {
-        searchPanel.classList.remove("is-open");
-        searchPanel.setAttribute("aria-hidden", "true");
-      }
-      if (menuPanel && menuBackdrop) {
-        menuPanel.classList.remove("is-open");
-        menuPanel.setAttribute("aria-hidden", "true");
-        menuBackdrop.setAttribute("aria-hidden", "true");
-      }
-      closeSidebarPanel();
-
-      dropdown.classList.add("is-open");
-      tocTrigger.setAttribute("aria-expanded", "true");
-      uiHistory.ensure();
-    }
-    tocTrigger.addEventListener("click", () => (dropdown.classList.contains("is-open") ? closeDropdown() : openDropdown()));
-    if (dropdownBackdrop) dropdownBackdrop.addEventListener("click", closeDropdown);
-    dropdownCloseBtn.addEventListener("click", closeDropdown);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && dropdown.classList.contains("is-open")) closeDropdown();
+    // Open/close is handled by createUiModesController().
+    dropdownCloseBtn.addEventListener("click", () => {
+      const backdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
+      if (backdrop) backdrop.click();
+      else dropdown.classList.remove("is-open");
     });
   }
 
   function shouldKeepVisible() {
     return isAnyUiOpen();
   }
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape") return;
-    if (!isAnyUiOpen()) return;
-    closeAllUi();
-    uiHistory.clearIfPresent();
-  });
 
   window.addEventListener("scroll", () => {
     currentScrollY = window.scrollY;

@@ -1,6 +1,7 @@
 @use "bulma/sass/utilities/initial-variables" as initial-variables;
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
+@use "mixins" as hmixins;
 
 $h-page-toc-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
 $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
@@ -63,15 +64,8 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
 // Backdrop overlay (mobile only)
 .h-page-toc-backdrop {
-  display: none;
-  position: fixed;
-  inset: 0;
+  @include hmixins.h-backdrop;
   z-index: 39;
-  background-color: rgba(0, 0, 0, 0.5);
-
-  &.is-active {
-    display: block;
-  }
 
   // --- Intermediate (tablet): same as mobile top-nav dropdown backdrop ---
   @media (min-width: calc(#{$h-page-toc-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{$h-page-toc-breakpoint} - 1px)) {
