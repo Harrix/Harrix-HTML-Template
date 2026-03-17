@@ -53,3 +53,9 @@ a:hover {
 .h-backdrop {
   @include hmixins.h-backdrop;
 }
+
+// Footer: less tall + spacing from content above
+.footer {
+  margin-top: 2rem;
+  padding: 1.5rem 1.5rem;
+}
