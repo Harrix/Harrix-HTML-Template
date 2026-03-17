@@ -73,6 +73,11 @@
       color: dark.$h-dark-icon;
     }
 
+    body.h-navbar-toc-no-fit .h-page-toc.is-open {
+      background-color: dark.$h-dark-surface;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    }
+
     body.h-navbar-menu-no-fit .navbar-menu.is-active {
       background-color: dark.$h-dark-surface;
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);

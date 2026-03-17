@@ -811,6 +811,11 @@ function initDocsSidebar() {
 
   backdrop.addEventListener("click", closeSidebar);
 
+  const sidebarCloseBtn = document.getElementById("h-docs-sidebar-close");
+  const sidebarHeaderLabel = document.getElementById("h-docs-sidebar-header-label");
+  if (sidebarCloseBtn) sidebarCloseBtn.addEventListener("click", closeSidebar);
+  if (sidebarHeaderLabel) sidebarHeaderLabel.textContent = translate("Documentation");
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && sidebar.classList.contains("is-open")) closeSidebar();
   });

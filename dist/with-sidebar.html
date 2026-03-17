@@ -235,6 +235,12 @@
     <main>
       <div class="h-docs-layout">
         <aside id="h-docs-sidebar" class="h-docs-sidebar menu" aria-label="Documentation">
+          <div class="h-docs-sidebar__header" id="h-docs-sidebar-header">
+            <p class="menu-label" id="h-docs-sidebar-header-label">Документация</p>
+            <button type="button" class="h-docs-sidebar__close" id="h-docs-sidebar-close" aria-label="Закрыть">
+              <span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>
+            </button>
+          </div>
           <ul class="menu-list" id="root_tree">
             <li>
               <details>
@@ -832,7 +838,9 @@ public class MainActivity extends AppCompatActivity {
           <nav id="h-page-toc" class="h-page-toc menu">
             <div class="h-page-toc__header">
               <p class="menu-label" id="h-page-toc-label"></p>
-              <button id="h-page-toc-close" class="h-page-toc__close delete" type="button" aria-label="Close"></button>
+              <button id="h-page-toc-close" class="h-page-toc__close delete" type="button" aria-label="Close">
+                <span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>
+              </button>
             </div>
             <ul class="menu-list" id="h-page-toc-list"></ul>
           </nav>

@@ -394,15 +394,15 @@ body.h-mobile-nav-top .h-mobile-top-nav__menu-panel.is-open ~ .h-mobile-top-nav_
 
 .h-mobile-top-nav__panel-close {
   flex-shrink: 0;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   padding: 0;
   background: none;
   border: none;
-  border-radius: 999px;
+  border-radius: 0.25rem;
   cursor: pointer;
   color: initial-variables.$grey;
   transition: background-color 0.15s ease, color 0.15s ease;
