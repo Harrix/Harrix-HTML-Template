@@ -590,6 +590,8 @@ function initPageToc() {
   const toc = document.getElementById("h-page-toc");
   const tocList = document.getElementById("h-page-toc-list");
   const tocLabel = document.getElementById("h-page-toc-label");
+  const navbarTocTriggerLabel = document.getElementById("h-navbar-toc-trigger-label");
+  const mobileTocTriggerLabel = document.getElementById("h-mobile-top-nav-toc-trigger-label");
   const toggleBtn = document.getElementById("h-page-toc-toggle");
   const closeBtn = document.getElementById("h-page-toc-close");
   const backdrop = document.getElementById("h-page-toc-backdrop");
@@ -602,6 +604,14 @@ function initPageToc() {
   if (headings.length === 0) return;
 
   if (tocLabel) tocLabel.textContent = translate("Table of contents");
+  // Trigger labels in intermediate/mobile top navigation:
+  // show current section title instead of static "Table of contents".
+  function setTocTriggerLabel(text) {
+    const value = (text || "").trim() || translate("Table of contents");
+    if (navbarTocTriggerLabel) navbarTocTriggerLabel.textContent = value;
+    if (mobileTocTriggerLabel) mobileTocTriggerLabel.textContent = value;
+  }
+  setTocTriggerLabel("");
 
   const usedIds = new Set();
   headings.forEach((h, i) => {
@@ -635,6 +645,9 @@ function initPageToc() {
     if (index >= 0 && index < links.length) {
       links[index].classList.add("is-active");
       currentActiveIndex = index;
+      setTocTriggerLabel(headings[index]?.textContent || "");
+    } else {
+      setTocTriggerLabel("");
     }
     const mirror = document.getElementById("h-mobile-top-nav-dropdown")?.querySelector(".h-page-toc-mirror");
     const mirrorLinks = mirror?.querySelectorAll("a");
