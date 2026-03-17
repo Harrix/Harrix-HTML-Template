@@ -484,6 +484,7 @@ function initSearchPanel() {
     const searchButtonSubmit = document.getElementById("h-search-button-submit");
     const searchInput = document.getElementById("h-search-input");
     const formEl = searchForm.querySelector("form");
+    let isSearchOpen = false;
 
     searchInput.placeholder = translate("Search…");
 
@@ -505,12 +506,33 @@ function initSearchPanel() {
       else searchButtonClose.classList.add("is-hidden-touch");
     }
 
-    searchButtonOpen.addEventListener("click", () => {
+    function closeSearch({ fromPopstate } = { fromPopstate: false }) {
+      navbarMenu.classList.remove("h-has-visible-search-form");
+      searchInput.blur();
+      isSearchOpen = false;
+
+      // If user closed manually while the "open" state is in history,
+      // go back one step so Back button behavior stays intuitive.
+      if (!fromPopstate && window.history.state && window.history.state.hSearchOpen) {
+        window.history.back();
+      }
+    }
+
+    function openSearch() {
       // Close any other open UI modes first (sidebar/toc/menu/etc.)
       window.hUiModes?.closeAll?.();
       navbarMenu.classList.add("h-has-visible-search-form");
       focusAfterAnimation(searchInput, SEARCH_ANIMATION_MS);
       showOrHideSearchButtonClose();
+      isSearchOpen = true;
+
+      // Add a history entry so browser Back closes search first.
+      window.history.pushState({ hSearchOpen: true }, "", window.location.href);
+    }
+
+    searchButtonOpen.addEventListener("click", () => {
+      if (isSearchOpen) return;
+      openSearch();
     });
 
     searchButtonClose.addEventListener("click", () => {
@@ -518,13 +540,28 @@ function initSearchPanel() {
         searchInput.value = "";
         showOrHideSearchButtonClose();
       } else {
-        navbarMenu.classList.remove("h-has-visible-search-form");
-        searchInput.blur();
+        closeSearch();
       }
     });
 
     searchInput.addEventListener("input", () => {
       showOrHideSearchButtonClose();
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (!isSearchOpen) return;
+      if (e.key !== "Escape") return;
+      e.preventDefault();
+      // Prefer history back (so user stays on same page and state stack is clean)
+      if (window.history.state && window.history.state.hSearchOpen) {
+        window.history.back();
+      } else {
+        closeSearch();
+      }
+    });
+
+    window.addEventListener("popstate", () => {
+      if (isSearchOpen) closeSearch({ fromPopstate: true });
     });
   }
 }
