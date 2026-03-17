@@ -168,6 +168,11 @@
     }
   }
 
+  // Match navbar background with main content background
+  #h-navbar.navbar {
+    background-color: dark.$h-dark-bg !important;
+  }
+
   .section {
     background-color: dark.$h-dark-bg;
   }
