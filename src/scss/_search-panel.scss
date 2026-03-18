@@ -38,6 +38,7 @@
         border: 0;
         font-size: hvars.$h-navbar-font-size;
         color: derived-variables.$text;
+        background-color: derived-variables.$background;
 
         &::placeholder {
           color: hvars.$h-navbar-icon-color;
