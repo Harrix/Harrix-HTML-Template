@@ -54,6 +54,24 @@ a:hover {
   @include hmixins.h-backdrop;
 }
 
+// Suppress transitions on navigation elements during active browser resize
+// to prevent visual flickering when layout classes toggle rapidly.
+html.h-resizing {
+  .navbar,
+  .navbar-menu,
+  .h-navbar-sidebar-btn,
+  .h-navbar-toc-row,
+  .h-navbar-search-btn,
+  .h-navbar-search-overlay,
+  .h-docs-sidebar,
+  .h-docs-sidebar-toggle,
+  .h-page-toc,
+  .h-page-toc-toggle,
+  .h-backdrop {
+    transition: none !important;
+  }
+}
+
 // Footer: less tall + spacing from content above
 .footer {
   margin-top: 2rem;

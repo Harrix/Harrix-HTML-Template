@@ -1036,6 +1036,7 @@ const SIDEBAR_WIDTH = 280;
 const TOC_MIN_SPACE = 256;
 const MOBILE_NAV_BREAKPOINT = 1024;
 const SIDEBAR_TOC_DESKTOP_MIN_WIDTH = 1680;
+const MENU_FIT_HYSTERESIS = 40;
 
 function initNavbarSidebarTocFit() {
   const sidebar = document.getElementById("h-docs-sidebar");
@@ -1052,6 +1053,8 @@ function initNavbarSidebarTocFit() {
   const searchOverlaySubmit = document.getElementById("h-navbar-search-overlay-submit");
   const searchOverlayClose = document.getElementById("h-navbar-search-overlay-close");
   const mainSearchInput = document.getElementById("h-search-input");
+
+  let menuWasNoFit = false;
 
   // Open/close wiring is handled by createUiModesController().
   if (searchOverlaySubmit) {
@@ -1105,10 +1108,12 @@ function initNavbarSidebarTocFit() {
 
     const row1 = document.querySelector(".h-navbar__row1");
     const navbarMenu = document.getElementById("h-navbar-menu");
-    const menuNoFit =
-      row1 &&
-      navbarMenu &&
-      row1.scrollWidth > row1.clientWidth + 1;
+    let menuNoFit = false;
+    if (row1 && navbarMenu) {
+      const overflow = row1.scrollWidth - row1.clientWidth;
+      menuNoFit = menuWasNoFit ? overflow > -MENU_FIT_HYSTERESIS : overflow > 1;
+    }
+    menuWasNoFit = menuNoFit;
 
     document.body.classList.toggle("h-navbar-sidebar-overlaps", !!sidebarOverlaps);
     document.body.classList.toggle("h-navbar-toc-no-fit", !!tocNoFit);
@@ -1149,7 +1154,23 @@ function initNavbarSidebarTocFit() {
   if (tocTriggerLabel) tocTriggerLabel.textContent = translate("Table of contents");
 
   updateFit();
-  window.addEventListener("resize", updateFit);
+
+  let resizeRafId = 0;
+  let resizeTimer = 0;
+  window.addEventListener("resize", () => {
+    document.documentElement.classList.add("h-resizing");
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      document.documentElement.classList.remove("h-resizing");
+    }, 150);
+
+    if (!resizeRafId) {
+      resizeRafId = requestAnimationFrame(() => {
+        resizeRafId = 0;
+        updateFit();
+      });
+    }
+  });
 }
 
 function initDocsSidebar() {
