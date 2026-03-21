@@ -164,8 +164,13 @@ body.h-mobile-nav-top {
   }
 }
 
-.h-mobile-top-nav__btn--sidebar.is-hidden {
+// Hidden until body.h-has-docs-sidebar (set in template); avoids layout shift before JS
+.h-mobile-top-nav__btn--sidebar {
   display: none;
+}
+
+body.h-has-docs-sidebar .h-mobile-top-nav__btn--sidebar {
+  display: flex;
 }
 
 .h-mobile-top-nav__logo {

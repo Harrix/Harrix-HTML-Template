@@ -25,11 +25,14 @@
         document.documentElement.setAttribute("data-theme", theme);
       })();
     </script>
+    <script>
+      document.documentElement.classList.add("h-fit-pending");
+    </script>
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/../katex/katex.css" rel="stylesheet" />
     <link href="css/../charts/charts.css" rel="stylesheet" />
   </head>
-  <body class="has-navbar-fixed-top h-mobile-nav-top">
+  <body class="has-navbar-fixed-top h-mobile-nav-top h-has-docs-sidebar">
     <nav id="h-navbar" class="navbar is-fixed-top" aria-label="main navigation">
       <div id="h-navbar-bottom"></div>
       <div class="container">
@@ -42,7 +45,7 @@
             aria-hidden="true"
             tabindex="-1"
           >
-            <span class="icon" aria-hidden="true"><i class="fas fa-book-open"></i></span>
+            <span class="icon" aria-hidden="true"><i class="fas fa-bars"></i></span>
           </button>
           <div class="navbar-brand">
             <a class="navbar-item" href="/" id="h-logo"

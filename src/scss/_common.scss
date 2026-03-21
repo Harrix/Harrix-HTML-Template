@@ -54,6 +54,15 @@ a:hover {
   @include hmixins.h-backdrop;
 }
 
+// Hide the inline menu before JS has determined fit state to prevent
+// a flash of the expanded menu on page load in the intermediate zone.
+// Uses visibility:hidden so scrollWidth measurement still works.
+@media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
+  html.h-fit-pending .navbar-menu {
+    visibility: hidden;
+  }
+}
+
 // Suppress transitions on navigation elements during active browser resize
 // to prevent visual flickering when layout classes toggle rapidly.
 html.h-resizing {
