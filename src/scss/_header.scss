@@ -158,7 +158,7 @@
         width: min(100%, hvars.$h-container-max-width);
         background-color: #fff;
         // Side/bottom shadow only; no top shadow under navbar.
-        box-shadow: 0 8px 16px -12px rgba(0, 0, 0, 0.22);
+        box-shadow: hvars.$h-shadow-elevated;
         border-top: 1px solid initial-variables.$grey-lighter;
         overflow-x: hidden;
         overflow-y: auto;
@@ -382,7 +382,7 @@
     width: 100%;
     background-color: #fff;
     border-top: 1px solid initial-variables.$grey-lighter;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: hvars.$h-shadow-elevated;
 
     &.is-open {
       display: block;

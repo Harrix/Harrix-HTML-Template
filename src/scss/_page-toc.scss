@@ -100,7 +100,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
   overflow-y: auto;
   background-color: #fff;
   border-radius: 1rem 1rem 0 0;
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: hvars.$h-shadow-elevated-up;
   padding: 1rem 1.25rem 1.5rem;
   transform: translateY(100%);
   transition: transform 0.3s ease;
@@ -117,7 +117,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     bottom: 0;
     max-height: none;
     border-radius: 0;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: hvars.$h-shadow-elevated-end;
     padding: 0;
     transform: translateX(-100%);
     transition: transform 0.25s ease, visibility 0.25s ease;
@@ -254,9 +254,13 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
   .h-page-toc {
     background-color: dark.$h-dark-surface;
 
+    @media (max-width: $h-page-toc-mobile-nav-breakpoint) {
+      box-shadow: hvars.$h-shadow-elevated-up-dark;
+    }
+
     @media (min-width: calc(#{$h-page-toc-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{$h-page-toc-breakpoint} - 1px)) {
       background-color: dark.$h-dark-surface-elevated;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      box-shadow: hvars.$h-shadow-elevated-end-dark;
     }
 
     @media (min-width: $h-page-toc-breakpoint) {

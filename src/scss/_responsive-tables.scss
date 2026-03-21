@@ -1,6 +1,7 @@
 // Адаптивные таблицы: удобный просмотр на компьютере и телефоне
 
 @use "bulma/sass/utilities/initial-variables" as initial-variables;
+@use "variables" as hvars;
 
 // Обёртка с горизонтальной прокруткой на узких экранах
 .h-table-scroll {
@@ -39,7 +40,7 @@
       border: 1px solid initial-variables.$grey-lighter;
       border-radius: 4px;
       background: initial-variables.$white;
-      box-shadow: 0 1px 2px rgba(10, 10, 10, 0.05);
+      box-shadow: hvars.$h-shadow-elevated;
     }
 
     tbody td {

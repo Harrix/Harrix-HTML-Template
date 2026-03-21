@@ -1,5 +1,6 @@
 @use "bulma/sass/utilities/mixins" as mixins;
 @use "mixins" as hmixins;
+@use "variables" as hvars;
 
 // Цвета подсветки кода — гамма как в VSCode (Default Light Modern)
 $h-code-comment: #1cb978;
@@ -316,7 +317,7 @@ pre {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.25rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  box-shadow: hvars.$h-shadow-elevated;
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
@@ -331,5 +332,5 @@ pre {
   color: #e4e4e4;
   background-color: #363636;
   border-color: #4a4a4a;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: hvars.$h-shadow-elevated-dark;
 }

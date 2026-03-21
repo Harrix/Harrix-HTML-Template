@@ -24,3 +24,11 @@ $h-mobile-nav-breakpoint: 1024px;
 // Min viewport width for sidebar + content + TOC to fit; below this show sidebar/TOC triggers in navbar
 $h-sidebar-toc-desktop-min-width: 1680px;
 $h-color-section-red: #de2b26;
+
+// Elevation shadows (aligned with mobile top-nav menu panel)
+$h-shadow-elevated: 0 8px 16px -12px rgba(0, 0, 0, 0.22);
+$h-shadow-elevated-dark: 0 8px 16px -12px rgba(0, 0, 0, 0.44);
+$h-shadow-elevated-up: 0 -8px 16px -12px rgba(0, 0, 0, 0.22);
+$h-shadow-elevated-up-dark: 0 -8px 16px -12px rgba(0, 0, 0, 0.44);
+$h-shadow-elevated-end: 8px 0 16px -12px rgba(0, 0, 0, 0.22);
+$h-shadow-elevated-end-dark: 8px 0 16px -12px rgba(0, 0, 0, 0.44);
