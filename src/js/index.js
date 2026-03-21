@@ -417,22 +417,27 @@ function syncExpandedMenuDropdownAria() {
 }
 
 function initExpandedMenuDropdowns() {
-  document.addEventListener("click", (e) => {
-    const link = e.target.closest(".navbar-item.has-dropdown > .navbar-link");
-    if (!link) return;
-    const panel = link.closest("#h-mobile-top-nav-menu-panel, #h-navbar-menu");
-    if (!panel) return;
-    if (panel.id === "h-mobile-top-nav-menu-panel" && !panel.classList.contains("is-open")) return;
-    if (panel.id === "h-navbar-menu" && !panel.classList.contains("is-active")) return;
+  document.addEventListener(
+    "click",
+    (e) => {
+      const link = e.target.closest(".navbar-item.has-dropdown > .navbar-link");
+      if (!link) return;
+      const panel = link.closest("#h-mobile-top-nav-menu-panel, #h-navbar-menu");
+      if (!panel) return;
+      if (panel.id === "h-mobile-top-nav-menu-panel" && !panel.classList.contains("is-open")) return;
+      if (panel.id === "h-navbar-menu" && !panel.classList.contains("is-active")) return;
 
-    const dropdown = link.closest(".navbar-item.has-dropdown");
-    if (!dropdown) return;
+      const dropdown = link.closest(".navbar-item.has-dropdown");
+      if (!dropdown) return;
 
-    e.preventDefault();
-    dropdown.classList.toggle("is-collapsed");
-    const collapsed = dropdown.classList.contains("is-collapsed");
-    link.setAttribute("aria-expanded", collapsed ? "false" : "true");
-  });
+      e.preventDefault();
+      e.stopPropagation();
+      dropdown.classList.toggle("is-collapsed");
+      const collapsed = dropdown.classList.contains("is-collapsed");
+      link.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    },
+    true,
+  );
 
   syncExpandedMenuDropdownAria();
 }
@@ -1451,6 +1456,10 @@ function initExpandedMenuPanel() {
   }
   clone.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
   clone.classList.add("navbar-menu");
+  // Bulma hover dropdown rules fight stacked overlay layout; toggle is click-only here.
+  clone.querySelectorAll(".navbar-item.has-dropdown.is-hoverable").forEach((el) => {
+    el.classList.remove("is-hoverable");
+  });
   menuPanel.appendChild(clone);
 
   // Open/close is handled by createUiModesController().
@@ -1460,6 +1469,8 @@ function initExpandedMenuPanel() {
     else menuPanel.classList.remove("is-open");
   });
   menuPanel.querySelectorAll("a[href]").forEach((a) => {
+    // Dropdown parent row toggles submenu; do not close the whole panel (see initExpandedMenuDropdowns).
+    if (a.matches(".navbar-item.has-dropdown > .navbar-link")) return;
     a.addEventListener("click", () => {
       const backdrop = document.getElementById("h-mobile-top-nav-menu-backdrop");
       if (backdrop) backdrop.click();

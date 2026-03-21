@@ -59,18 +59,57 @@
     }
   }
 
+  // Bulma (desktop): .navbar-dropdown is display:none; .is-boxed uses display:block + opacity:0
+  // (invisible but still occupies space). Override for stacked overlay menu — always expanded
+  // unless .is-collapsed (must win over :hover / :focus-within from .is-hoverable).
   .navbar-item.has-dropdown > .navbar-dropdown {
-    position: static;
-    display: block;
+    position: static !important;
+    inset-inline-start: auto !important;
+    top: auto !important;
+    min-width: 0 !important;
     width: 100%;
-    padding: 0;
-    margin: 0;
-    border: none;
-    box-shadow: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    z-index: auto !important;
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    font-size: inherit;
   }
 
-  .navbar-item.has-dropdown.is-collapsed > .navbar-dropdown {
-    display: none;
+  .navbar-item.has-dropdown > .navbar-dropdown.is-boxed {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    top: auto !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .navbar-item.has-dropdown.is-hoverable:hover > .navbar-dropdown,
+  .navbar-item.has-dropdown.is-hoverable:focus > .navbar-dropdown,
+  .navbar-item.has-dropdown.is-hoverable:focus-within > .navbar-dropdown {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+  }
+
+  .navbar-item.has-dropdown.is-collapsed > .navbar-dropdown,
+  .navbar-item.has-dropdown.is-collapsed.is-hoverable:hover > .navbar-dropdown,
+  .navbar-item.has-dropdown.is-collapsed.is-hoverable:focus > .navbar-dropdown,
+  .navbar-item.has-dropdown.is-collapsed.is-hoverable:focus-within > .navbar-dropdown {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
   .navbar-item.has-dropdown > .navbar-dropdown .navbar-item {
