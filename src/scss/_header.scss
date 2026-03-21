@@ -94,7 +94,7 @@
       .navbar-item {
         &:hover {
           background-color: transparent;
-          color: derived-variables.$link;
+          color: hvars.$h-link-hover;
           transition: none;
         }
       }
