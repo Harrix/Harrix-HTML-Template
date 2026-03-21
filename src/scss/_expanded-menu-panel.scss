@@ -18,7 +18,7 @@
     padding: 0.75rem 1rem;
     border-bottom: none;
 
-    .icon {
+    .icon:not(.h-theme-icon) {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -36,7 +36,7 @@
     padding: 0;
     border-bottom: none;
 
-    .icon {
+    .icon:not(.h-theme-icon) {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -122,5 +122,12 @@
   // Search is opened via dedicated search button in expanded states.
   #h-search-form {
     display: none;
+  }
+
+  // Stacked overlay menu: show theme hint text (Bulma .is-hidden-desktop matches 1024px while
+  // mobile top nav / expanded navbar menu is still active at that width).
+  .h-theme-toggle-label {
+    display: inline !important;
+    margin-left: 0.375rem;
   }
 }
