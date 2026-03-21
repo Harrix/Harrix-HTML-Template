@@ -65,3 +65,16 @@
     margin-bottom: $margin;
   }
 }
+
+// Navbar / mobile search fields: primary border, no grey fill
+@mixin h-search-field-input {
+  border: 1px solid hvars.$h-primary;
+  background-color: #fff;
+  box-shadow: none;
+
+  &:focus,
+  &:focus-visible {
+    border-color: hvars.$h-primary;
+    box-shadow: 0 0 0 0.125em rgba(46, 134, 183, 0.25);
+  }
+}
