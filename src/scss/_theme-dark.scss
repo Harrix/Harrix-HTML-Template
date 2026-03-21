@@ -29,10 +29,13 @@
     .navbar-item,
     .navbar-link {
       color: dark.$h-dark-text;
+    }
 
+    a.navbar-item,
+    a.navbar-link {
       &:hover {
         background-color: transparent;
-        color: dark.$h-dark-text;
+        color: dark.$h-dark-link-hover;
       }
     }
 
@@ -63,7 +66,7 @@
 
         &:hover {
           background-color: transparent;
-          color: dark.$h-dark-text;
+          color: dark.$h-dark-link-hover;
         }
       }
     }

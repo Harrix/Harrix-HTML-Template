@@ -466,6 +466,13 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
     color: dark.$h-dark-text-strong;
   }
 
+  .h-mobile-top-nav__menu-panel a.navbar-item,
+  .h-mobile-top-nav__menu-panel a.navbar-link {
+    &:hover {
+      color: dark.$h-dark-link-hover;
+    }
+  }
+
   body.h-mobile-nav-top {
     .h-mobile-top-nav {
       background-color: dark.$h-dark-surface-elevated;
