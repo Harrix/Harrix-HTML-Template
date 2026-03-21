@@ -75,7 +75,8 @@
 
     body.h-navbar-menu-no-fit .navbar-menu.is-active {
       background-color: dark.$h-dark-surface;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+      box-shadow: none;
+      border-top-color: dark.$h-dark-border;
     }
 
     body.h-navbar-menu-no-fit .navbar-menu .navbar-item.has-dropdown > .navbar-dropdown {

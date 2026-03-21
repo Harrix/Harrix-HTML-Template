@@ -68,9 +68,10 @@
     inset-inline-start: auto !important;
     top: auto !important;
     min-width: 0 !important;
-    width: 100%;
-    padding: 0 !important;
-    margin: 0 0 0 0.75rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    padding: 0 0 0 0.75rem !important;
+    margin: 0 !important;
     border: none !important;
     border-left: 1px solid initial-variables.$grey-lighter !important;
     box-shadow: none !important;

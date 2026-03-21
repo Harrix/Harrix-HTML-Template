@@ -155,7 +155,9 @@
         right: 0;
         bottom: 0;
         background-color: #fff;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+        box-shadow: none;
+        border-top: 1px solid initial-variables.$grey-lighter;
+        overflow-x: hidden;
         overflow-y: auto;
         z-index: 51;
         padding: 0;
