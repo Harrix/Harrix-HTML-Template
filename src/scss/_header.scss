@@ -3,6 +3,7 @@
 @use "bulma/sass/utilities/mixins" as mixins;
 @use "variables" as hvars;
 @use "mixins" as hmixins;
+@use "expanded-menu-panel" as expanded-menu;
 
 .navbar {
   min-height: 3rem;
@@ -113,17 +114,27 @@
     color: hvars.$h-navbar-icon-color;
   }
 
-  .navbar-burger {
+  .h-navbar-menu-btn {
     display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
     color: hvars.$h-navbar-icon-color;
-
-    span {
-      height: 2px;
-      width: 18px;
-    }
+    transition: background-color 0.15s ease, color 0.15s ease;
 
     &:hover {
-      background-color: transparent;
+      background-color: initial-variables.$grey-lightest;
+      color: hvars.$h-primary;
+    }
+
+    .icon {
+      font-size: 1.25rem;
     }
 
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
@@ -175,6 +186,10 @@
       body.h-navbar-menu-no-fit & .navbar-item {
         padding: 0.75rem 1rem;
         border-bottom: none;
+      }
+
+      body.h-navbar-menu-no-fit & {
+        @include expanded-menu.panel-content-layout;
       }
     }
   }

@@ -1,0 +1,56 @@
+@mixin panel-content-layout {
+  .navbar-menu {
+    display: block;
+    padding: 0;
+  }
+
+  .navbar-end {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: none;
+
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+  }
+
+  // Keep expanded state identical on tablet/mobile:
+  // submenu label first, nested items below.
+  .navbar-item.has-dropdown {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .navbar-item.has-dropdown > .navbar-link {
+    width: 100%;
+  }
+
+  .navbar-item.has-dropdown > .navbar-dropdown {
+    position: static;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .navbar-item.has-dropdown > .navbar-dropdown .navbar-item {
+    padding: 0.5rem 0;
+  }
+
+  // Search is opened via dedicated search button in expanded states.
+  #h-search-form {
+    display: none;
+  }
+}

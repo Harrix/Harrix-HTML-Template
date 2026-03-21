@@ -3,6 +3,7 @@
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
 @use "mixins" as hmixins;
+@use "expanded-menu-panel" as expanded-menu;
 
 $h-mobile-top-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 $h-mobile-top-nav-row-height: 3rem;
@@ -237,6 +238,18 @@ body.h-mobile-nav-top {
 $h-mobile-top-nav-header-height: calc(#{$h-mobile-top-nav-row-height} + 2.5rem + env(safe-area-inset-top, 0));
 $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-area-inset-top, 0));
 
+body {
+  --h-expanded-menu-top: #{$h-mobile-top-nav-row1-height};
+}
+
+body.h-navbar-menu-no-fit {
+  --h-expanded-menu-top: 3rem;
+}
+
+body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
+  --h-expanded-menu-top: 5.5rem;
+}
+
 // Backdrop when dropdown is open
 .h-mobile-top-nav__dropdown-backdrop {
   top: $h-mobile-top-nav-header-height;
@@ -246,7 +259,7 @@ $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-a
 
 // Menu panel (clone of navbar menu)
 .h-mobile-top-nav__menu-backdrop {
-  top: $h-mobile-top-nav-row1-height;
+  top: var(--h-expanded-menu-top);
   @include hmixins.h-backdrop;
   z-index: 36;
 }
@@ -255,7 +268,7 @@ $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-a
   position: fixed;
   left: 0;
   right: 0;
-  top: $h-mobile-top-nav-row1-height;
+  top: var(--h-expanded-menu-top);
   bottom: 0;
   z-index: 37;
   overflow-y: auto;
@@ -275,55 +288,8 @@ $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-a
     pointer-events: auto;
   }
 }
-
-.h-mobile-top-nav__menu-panel .navbar-menu {
-  display: block;
-  padding: 0;
-}
-
-.h-mobile-top-nav__menu-panel .navbar-end {
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.h-mobile-top-nav__menu-panel .navbar-item {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  border-bottom: none;
-
-  .icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-  }
-}
-
-// In mobile menu panel, dropdown items must stack vertically:
-// first the dropdown label, then its submenu items.
-.h-mobile-top-nav__menu-panel .navbar-item.has-dropdown {
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0.5rem;
-}
-
-.h-mobile-top-nav__menu-panel .navbar-item.has-dropdown > .navbar-link {
-  width: 100%;
-}
-
-.h-mobile-top-nav__menu-panel .navbar-item.has-dropdown > .navbar-dropdown {
-  position: static;
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: none;
-  box-shadow: none;
-}
-
-.h-mobile-top-nav__menu-panel .navbar-item.has-dropdown > .navbar-dropdown .navbar-item {
-  padding: 0.5rem 0;
+.h-mobile-top-nav__menu-panel {
+  @include expanded-menu.panel-content-layout;
 }
 
 // Dropdown panel (TOC or sidebar tree)
@@ -444,6 +410,28 @@ $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-a
 
 // Dark theme
 [data-theme="dark"] {
+  .h-mobile-top-nav__panel-header .menu-label {
+    color: dark.$h-dark-text;
+  }
+
+  .h-mobile-top-nav__panel-close {
+    color: dark.$h-dark-icon;
+
+    &:hover {
+      background-color: dark.$h-dark-border;
+      color: dark.$h-dark-text-strong;
+    }
+  }
+
+  .h-mobile-top-nav__menu-panel {
+    background-color: dark.$h-dark-surface-elevated;
+  }
+
+  .h-mobile-top-nav__menu-panel .navbar-item,
+  .h-mobile-top-nav__menu-panel .navbar-link {
+    color: dark.$h-dark-text-strong;
+  }
+
   body.h-mobile-nav-top {
     .h-mobile-top-nav {
       background-color: dark.$h-dark-surface-elevated;
@@ -476,19 +464,6 @@ $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-a
     }
 
     .h-mobile-top-nav-search-panel__close {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: dark.$h-dark-border;
-        color: dark.$h-dark-text-strong;
-      }
-    }
-
-    .h-mobile-top-nav__panel-header .menu-label {
-      color: dark.$h-dark-text;
-    }
-
-    .h-mobile-top-nav__panel-close {
       color: dark.$h-dark-icon;
 
       &:hover {
@@ -555,12 +530,5 @@ $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-a
       }
     }
 
-    .h-mobile-top-nav__menu-panel {
-      background-color: dark.$h-dark-surface-elevated;
-    }
-
-    .h-mobile-top-nav__menu-panel .navbar-item {
-      color: dark.$h-dark-text-strong;
-    }
   }
 }

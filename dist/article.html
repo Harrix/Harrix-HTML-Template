@@ -48,16 +48,6 @@
             <a class="navbar-item" href="/" id="h-logo"
               ><img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span></a
             >
-            <div
-              id="h-burger"
-              class="navbar-burger"
-              role="button"
-              aria-label="Menu"
-              aria-expanded="false"
-              data-target="h-navbar-menu"
-            >
-              <span></span> <span></span> <span></span> <span></span>
-            </div>
           </div>
           <div id="h-navbar-menu" class="navbar-menu">
             <div class="h-navbar-menu-panel-header" id="h-navbar-menu-panel-header" aria-hidden="true" hidden>
@@ -149,6 +139,18 @@
             hidden
           >
             <span class="icon" aria-hidden="true"><i class="fas fa-search"></i></span>
+          </button>
+          <button
+            type="button"
+            class="h-navbar-menu-btn"
+            id="h-navbar-menu-btn"
+            aria-label="Меню"
+            aria-expanded="false"
+            data-target="h-navbar-menu"
+            aria-hidden="true"
+            hidden
+          >
+            <span class="icon" aria-hidden="true"><i class="fas fa-ellipsis-vertical"></i></span>
           </button>
           <div class="h-navbar-menu-backdrop" id="h-navbar-menu-backdrop" aria-hidden="true" hidden></div>
         </div>
@@ -260,15 +262,15 @@
         aria-label="Содержание"
       ></div>
       <div id="h-mobile-top-nav-dropdown-backdrop" class="h-mobile-top-nav__dropdown-backdrop" aria-hidden="true"></div>
-      <div
-        id="h-mobile-top-nav-menu-panel"
-        class="h-mobile-top-nav__menu-panel"
-        role="dialog"
-        aria-label="Меню"
-        aria-hidden="true"
-      ></div>
-      <div id="h-mobile-top-nav-menu-backdrop" class="h-mobile-top-nav__menu-backdrop" aria-hidden="true"></div>
     </div>
+    <div
+      id="h-mobile-top-nav-menu-panel"
+      class="h-mobile-top-nav__menu-panel"
+      role="dialog"
+      aria-label="Меню"
+      aria-hidden="true"
+    ></div>
+    <div id="h-mobile-top-nav-menu-backdrop" class="h-mobile-top-nav__menu-backdrop" aria-hidden="true"></div>
     <main>
       <article>
         <div class="section h-is-padding-bottomless">
