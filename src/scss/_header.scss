@@ -157,7 +157,8 @@
         max-height: calc(100vh - 3rem - env(safe-area-inset-bottom, 0px));
         width: min(100%, hvars.$h-container-max-width);
         background-color: #fff;
-        box-shadow: none;
+        // Side/bottom shadow only; no top shadow under navbar.
+        box-shadow: 0 12px 24px -14px rgba(0, 0, 0, 0.25);
         border-top: 1px solid initial-variables.$grey-lighter;
         overflow-x: hidden;
         overflow-y: auto;
@@ -230,6 +231,7 @@
   .h-navbar-menu-backdrop {
     @include hmixins.h-backdrop;
     top: 3rem;
+    background-color: transparent;
     z-index: 50;
 
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
