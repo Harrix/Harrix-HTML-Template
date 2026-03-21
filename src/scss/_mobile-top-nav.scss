@@ -257,15 +257,16 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
 
 // Backdrop when dropdown is open
 .h-mobile-top-nav__dropdown-backdrop {
-  top: $h-mobile-top-nav-header-height;
   @include hmixins.h-backdrop;
+  // After mixin: h-backdrop uses inset:0 — top must follow or the dim covers the header
+  top: $h-mobile-top-nav-header-height;
   z-index: 33;
 }
 
 // Menu panel (clone of navbar menu)
 .h-mobile-top-nav__menu-backdrop {
-  top: var(--h-expanded-menu-top);
   @include hmixins.h-backdrop;
+  top: var(--h-expanded-menu-top);
   z-index: 36;
 }
 
