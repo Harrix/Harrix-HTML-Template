@@ -140,6 +140,8 @@
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
       body.h-navbar-menu-no-fit & {
         display: flex;
+        // Spacing from search button (search has margin-left: auto — see .h-navbar-search-btn)
+        margin-left: 0.25rem;
       }
     }
   }
@@ -361,6 +363,8 @@
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
       body.h-navbar-menu-no-fit & {
         display: flex;
+        // #h-navbar-menu is position:fixed here — out of flex flow; push actions to row end like .h-mobile-top-nav__row1
+        margin-left: auto;
       }
     }
   }
