@@ -280,6 +280,8 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   z-index: 37;
   overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   background-color: #fff;
   // No upward blur past the top edge (avoids shadow strip under the navbar)
   box-shadow: none;

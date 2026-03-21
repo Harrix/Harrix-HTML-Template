@@ -161,6 +161,8 @@
         border-top: 1px solid initial-variables.$grey-lighter;
         overflow-x: hidden;
         overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
         z-index: 51;
         padding: 0;
         transform: translate(-50%, -8px);

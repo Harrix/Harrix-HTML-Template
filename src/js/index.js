@@ -179,12 +179,11 @@ function createUiModesController() {
       }
       case "mobileMenu": {
         if (!mobileMenuPanel) return;
-        if (document.body.classList.contains("h-navbar-menu-no-fit")) {
-          root.classList.add("h-is-clipped-touch");
-          if (navbarBurger) {
-            navbarBurger.classList.add("is-active");
-            navbarBurger.setAttribute("aria-expanded", "true");
-          }
+        // Prevent page scroll behind expanded menu on touch devices.
+        root.classList.add("h-is-clipped-touch");
+        if (document.body.classList.contains("h-navbar-menu-no-fit") && navbarBurger) {
+          navbarBurger.classList.add("is-active");
+          navbarBurger.setAttribute("aria-expanded", "true");
         }
         mobileMenuPanel.classList.add("is-open");
         mobileMenuPanel.setAttribute("aria-hidden", "false");
