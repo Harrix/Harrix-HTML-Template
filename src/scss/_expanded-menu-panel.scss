@@ -1,3 +1,4 @@
+@use "bulma/sass/utilities/initial-variables" as initial-variables;
 @use "variables" as hvars;
 
 @mixin panel-content-layout {
@@ -69,8 +70,9 @@
     min-width: 0 !important;
     width: 100%;
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 0 0 0.75rem !important;
     border: none !important;
+    border-left: 1px solid initial-variables.$grey-lighter !important;
     box-shadow: none !important;
     z-index: auto !important;
     display: block !important;
@@ -113,7 +115,7 @@
   }
 
   .navbar-item.has-dropdown > .navbar-dropdown .navbar-item {
-    padding: 0.5rem 0 0.5rem 1rem;
+    padding: 0.5rem 0.75rem 0.5rem 1.25rem;
   }
 
   // Search is opened via dedicated search button in expanded states.

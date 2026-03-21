@@ -78,6 +78,10 @@
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
     }
 
+    body.h-navbar-menu-no-fit .navbar-menu .navbar-item.has-dropdown > .navbar-dropdown {
+      border-left-color: dark.$h-dark-border !important;
+    }
+
     .h-navbar-menu-panel-header .menu-label {
       color: dark.$h-dark-text;
     }

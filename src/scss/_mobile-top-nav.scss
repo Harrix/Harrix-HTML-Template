@@ -432,6 +432,10 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
     background-color: dark.$h-dark-surface-elevated;
   }
 
+  .h-mobile-top-nav__menu-panel .navbar-item.has-dropdown > .navbar-dropdown {
+    border-left-color: dark.$h-dark-border !important;
+  }
+
   .h-mobile-top-nav__menu-panel .navbar-item,
   .h-mobile-top-nav__menu-panel .navbar-link {
     color: dark.$h-dark-text-strong;
