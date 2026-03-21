@@ -151,9 +151,11 @@
       body.h-navbar-menu-no-fit & {
         position: fixed;
         top: 3rem;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        max-height: calc(100vh - 3rem - env(safe-area-inset-bottom, 0px));
+        width: min(100%, hvars.$h-container-max-width);
         background-color: #fff;
         box-shadow: none;
         border-top: 1px solid initial-variables.$grey-lighter;
@@ -161,7 +163,7 @@
         overflow-y: auto;
         z-index: 51;
         padding: 0;
-        transform: translateY(-8px);
+        transform: translate(-50%, -8px);
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
@@ -169,7 +171,7 @@
       }
 
       body.h-navbar-menu-no-fit &.is-active {
-        transform: translateY(0);
+        transform: translate(-50%, 0);
         opacity: 1;
         visibility: visible;
         pointer-events: auto;

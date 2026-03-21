@@ -275,7 +275,8 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   left: 0;
   right: 0;
   top: var(--h-expanded-menu-top);
-  bottom: 0;
+  bottom: auto;
+  max-height: calc(100vh - var(--h-expanded-menu-top) - env(safe-area-inset-bottom, 0px));
   z-index: 37;
   overflow-x: hidden;
   overflow-y: auto;
@@ -295,6 +296,20 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+  }
+
+  // Intermediate: same max-width as .container (navbar content), centered
+  @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
+    body.h-navbar-menu-no-fit & {
+      left: 50%;
+      right: auto;
+      width: min(100%, hvars.$h-container-max-width);
+      transform: translate(-50%, -8px);
+
+      &.is-open {
+        transform: translate(-50%, 0);
+      }
+    }
   }
 }
 .h-mobile-top-nav__menu-panel {
