@@ -302,12 +302,12 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
     pointer-events: auto;
   }
 
-  // Intermediate: same max-width as .container (navbar content), centered
+  // Intermediate: same content width as .container (Bulma subtracts 2×$gap from max-width), centered
   @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
     body.h-navbar-menu-no-fit & {
       left: 50%;
       right: auto;
-      width: min(100%, hvars.$h-container-max-width);
+      width: min(100%, hvars.$h-container-content-max-width);
       transform: translate(-50%, -8px);
 
       &.is-open {

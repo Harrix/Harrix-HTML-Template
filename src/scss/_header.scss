@@ -155,7 +155,7 @@
         right: auto;
         bottom: auto;
         max-height: calc(100vh - 3rem - env(safe-area-inset-bottom, 0px));
-        width: min(100%, hvars.$h-container-max-width);
+        width: min(100%, hvars.$h-container-content-max-width);
         background-color: #fff;
         // Side/bottom shadow only; no top shadow under navbar.
         box-shadow: hvars.$h-shadow-elevated;
