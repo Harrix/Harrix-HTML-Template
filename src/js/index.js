@@ -355,7 +355,7 @@ function createUiModesController() {
   if (navbarMenuBackdrop) navbarMenuBackdrop.addEventListener("click", () => close("navbarMenu"));
   if (navbarMenuPanelClose) navbarMenuPanelClose.addEventListener("click", () => close("navbarMenu"));
 
-  if (navbarSearchBtn) navbarSearchBtn.addEventListener("click", () => open("navbarSearch"));
+  if (navbarSearchBtn) navbarSearchBtn.addEventListener("click", () => toggle("navbarSearch"));
   if (navbarSearchOverlayClose) navbarSearchOverlayClose.addEventListener("click", () => close("navbarSearch"));
 
   if (navbarSearchButtonOpen) {
