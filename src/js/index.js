@@ -1157,9 +1157,16 @@ function initNavbarSidebarTocFit() {
     }
   }
 
+  function closeNavbarSearchOverlay() {
+    if (searchOverlay?.classList.contains("is-open")) {
+      window.hUiModes?.close("navbarSearch");
+    }
+  }
+
   function updateFit() {
     const vw = window.innerWidth;
     if (vw <= MOBILE_NAV_BREAKPOINT) {
+      closeNavbarSearchOverlay();
       document.body.classList.remove("h-navbar-sidebar-overlaps", "h-navbar-toc-no-fit", "h-navbar-menu-no-fit");
       if (navbarSidebarBtn) {
         navbarSidebarBtn.setAttribute("aria-hidden", "true");
@@ -1197,6 +1204,10 @@ function initNavbarSidebarTocFit() {
     document.body.classList.toggle("h-navbar-sidebar-overlaps", !!sidebarOverlaps);
     document.body.classList.toggle("h-navbar-toc-no-fit", !!tocNoFit);
     document.body.classList.toggle("h-navbar-menu-no-fit", !!menuNoFit);
+
+    if (!menuNoFit) {
+      closeNavbarSearchOverlay();
+    }
 
     if (navbarSidebarBtn) {
       if (sidebarOverlaps) {
