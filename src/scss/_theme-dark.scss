@@ -382,6 +382,12 @@
   }
 
   .h-code-block {
+    .h-code-lang {
+      background-color: dark.$h-dark-input-bg;
+      color: dark.$h-dark-placeholder;
+      border-color: dark.$h-dark-border;
+    }
+
     .h-code-copy {
       background-color: dark.$h-dark-input-bg;
       color: dark.$h-dark-text;
