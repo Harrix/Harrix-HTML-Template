@@ -1464,6 +1464,10 @@ function initExpandedMenuPanel() {
   if (cloneSearchItem && cloneSearchItem.parentElement) {
     cloneSearchItem.parentElement.removeChild(cloneSearchItem);
   }
+  const cloneSearchButtonOpen = clone.querySelector("#h-search-button-open");
+  if (cloneSearchButtonOpen && cloneSearchButtonOpen.parentElement) {
+    cloneSearchButtonOpen.parentElement.removeChild(cloneSearchButtonOpen);
+  }
   clone.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
   clone.classList.add("navbar-menu");
   // Bulma hover dropdown rules fight stacked overlay layout; toggle is click-only here.
