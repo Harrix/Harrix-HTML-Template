@@ -169,10 +169,10 @@
       }
     }
 
-    // Header search input: override light-theme color rule from _search-panel.scss
+    // Header search input: same colors as .h-navbar-search-overlay__input (selector must beat #h-search-form .control #h-search-input from _search-panel.scss / h-search-field-input)
     #h-search-form {
       .control {
-        .input {
+        #h-search-input {
           background-color: dark.$h-dark-input-bg;
           border: 1px solid hvars.$h-primary;
           color: dark.$h-dark-text-strong;
@@ -189,7 +189,6 @@
           }
         }
 
-        // Make search icons/buttons match other navbar controls in dark theme
         .icon {
           color: dark.$h-dark-text-strong;
         }
