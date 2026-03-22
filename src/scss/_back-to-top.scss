@@ -32,6 +32,12 @@
     pointer-events: auto;
   }
 
+  &.is-visible.is-idle {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   .icon {
     display: flex;
     align-items: center;

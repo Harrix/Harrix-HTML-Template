@@ -20,6 +20,8 @@ const CODE_BLOCK_BOTTOM_THRESHOLD = 80;
 const GALLERY_ID = "1";
 const BACK_TO_TOP_THRESHOLD = 200;
 const BACK_TO_TOP_DURATION_MS = 800;
+/** Скрывать кнопку «наверх» после столько миллисекунд без прокрутки */
+const BACK_TO_TOP_IDLE_MS = 3000;
 const PAGE_TOC_TOGGLE_THRESHOLD = 200;
 
 const lang = document.documentElement.lang;
@@ -534,13 +536,38 @@ function initBackToTop(threshold, _durationMs) {
   const btn = document.getElementById("h-back-to-top");
   if (!btn) return;
 
-  window.addEventListener("scroll", () => {
+  let idleTimer = null;
+
+  function clearIdleTimer() {
+    if (idleTimer !== null) {
+      clearTimeout(idleTimer);
+      idleTimer = null;
+    }
+  }
+
+  function scheduleIdle() {
+    clearIdleTimer();
+    idleTimer = window.setTimeout(() => {
+      idleTimer = null;
+      if (window.scrollY >= threshold) {
+        btn.classList.add("is-idle");
+      }
+    }, BACK_TO_TOP_IDLE_MS);
+  }
+
+  function onScroll() {
+    btn.classList.remove("is-idle");
     if (window.scrollY >= threshold) {
       btn.classList.add("is-visible");
+      scheduleIdle();
     } else {
       btn.classList.remove("is-visible");
+      clearIdleTimer();
     }
-  });
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
   btn.addEventListener("click", (e) => {
     e.preventDefault();
