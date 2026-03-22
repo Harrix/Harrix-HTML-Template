@@ -39,6 +39,11 @@
       }
     }
 
+    a.navbar-item:hover .icon,
+    a.navbar-link:hover .icon {
+      color: dark.$h-dark-link-hover;
+    }
+
     #h-logo {
       color: dark.$h-dark-text;
 

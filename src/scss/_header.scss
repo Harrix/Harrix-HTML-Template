@@ -114,6 +114,12 @@
     color: hvars.$h-navbar-icon-color;
   }
 
+  // Icons use fixed grey above; match Bulma link hover on <a class="navbar-item"> / .navbar-link
+  a.navbar-item:hover .icon,
+  a.navbar-link:hover .icon {
+    color: hvars.$h-link-hover;
+  }
+
   .h-navbar-menu-btn {
     display: none;
     align-items: center;
