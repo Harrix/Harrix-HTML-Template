@@ -6,8 +6,7 @@
 @use "expanded-menu-panel" as expanded-menu;
 
 .navbar {
-  // Default Bulma boxed dropdown uses --bulma-radius-large; tighten corners (use 0 for square).
-  --bulma-navbar-dropdown-boxed-radius: 0.25rem;
+  --bulma-navbar-dropdown-boxed-radius: #{hvars.$h-panel-radius};
 
   min-height: 3rem;
   height: 3rem;
@@ -166,9 +165,9 @@
         max-height: calc(100vh - 3rem - env(safe-area-inset-bottom, 0px));
         width: min(100%, hvars.$h-container-content-max-width);
         background-color: #fff;
-        // Side/bottom shadow only; no top shadow under navbar.
+        border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
+        // Side/bottom shadow + hairline ring (navbar-dropdown.is-boxed); no top shadow under navbar.
         box-shadow: hvars.$h-shadow-elevated;
-        border-top: 1px solid initial-variables.$grey-lighter;
         overflow-x: hidden;
         overflow-y: auto;
         overscroll-behavior: contain;

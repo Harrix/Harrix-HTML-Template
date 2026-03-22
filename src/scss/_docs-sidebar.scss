@@ -98,6 +98,7 @@ $h-navbar-height: 3rem;
 
     &.is-open {
       transform: translateX(0);
+      border-radius: 0 hvars.$h-panel-radius hvars.$h-panel-radius 0;
       box-shadow: hvars.$h-shadow-elevated-end;
     }
 

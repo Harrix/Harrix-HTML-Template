@@ -37,8 +37,8 @@
       display: block;
       margin-bottom: 1rem;
       padding: 0.75rem;
-      border: 1px solid initial-variables.$grey-lighter;
-      border-radius: 4px;
+      border: none;
+      border-radius: hvars.$h-panel-radius;
       background: initial-variables.$white;
       box-shadow: hvars.$h-shadow-elevated;
     }

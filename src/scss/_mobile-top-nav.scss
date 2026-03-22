@@ -59,7 +59,7 @@ body.h-mobile-nav-top {
   right: 0;
   top: 100%;
   background-color: #fff;
-  border-bottom: 1px solid initial-variables.$grey-lighter;
+  border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
   box-shadow: hvars.$h-shadow-elevated;
   z-index: 2;
 
@@ -285,9 +285,8 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   background-color: #fff;
-  // Side/bottom shadow only; no top shadow under navbar.
+  border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
   box-shadow: hvars.$h-shadow-elevated;
-  border-top: 1px solid initial-variables.$grey-lighter;
   padding: 0;
   transform: translateY(-8px);
   opacity: 0;
@@ -330,6 +329,7 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   z-index: 34;
   overflow-y: auto;
   background-color: #fff;
+  border-radius: 0 hvars.$h-panel-radius hvars.$h-panel-radius 0;
   box-shadow: hvars.$h-shadow-elevated-end;
   transform: translateX(-100%);
   visibility: hidden;
@@ -454,7 +454,6 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   .h-mobile-top-nav__menu-panel {
     background-color: dark.$h-dark-surface-elevated;
     box-shadow: hvars.$h-shadow-elevated-dark;
-    border-top-color: dark.$h-dark-border;
   }
 
   .h-mobile-top-nav__menu-panel .navbar-item.has-dropdown > .navbar-dropdown {
@@ -481,7 +480,6 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
 
     .h-mobile-top-nav-search-panel {
       background-color: dark.$h-dark-surface-elevated;
-      border-bottom-color: dark.$h-dark-border;
       box-shadow: hvars.$h-shadow-elevated-dark;
     }
 
