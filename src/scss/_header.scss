@@ -6,6 +6,9 @@
 @use "expanded-menu-panel" as expanded-menu;
 
 .navbar {
+  // Default Bulma boxed dropdown uses --bulma-radius-large; tighten corners (use 0 for square).
+  --bulma-navbar-dropdown-boxed-radius: 0.25rem;
+
   min-height: 3rem;
   height: 3rem;
   padding-top: 0;
