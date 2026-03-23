@@ -664,12 +664,7 @@ function initSearchPanel() {
     });
 
     searchButtonClose.addEventListener("click", () => {
-      if (searchInput.value.length >= 1) {
-        searchInput.value = "";
-        showOrHideSearchButtonClose();
-      } else {
-        closeSearch();
-      }
+      closeSearch();
     });
 
     searchInput.addEventListener("input", () => {
