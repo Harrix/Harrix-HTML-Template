@@ -171,6 +171,7 @@
     }
 
     .h-navbar-search-overlay__submit,
+    .h-navbar-search-overlay__clear,
     .h-navbar-search-overlay__close {
       color: dark.$h-dark-icon;
 
@@ -202,6 +203,14 @@
 
         .icon {
           color: dark.$h-dark-text-strong;
+        }
+
+        .h-search-input-clear {
+          color: dark.$h-dark-icon;
+
+          &:hover {
+            color: dark.$h-dark-text-strong;
+          }
         }
       }
 

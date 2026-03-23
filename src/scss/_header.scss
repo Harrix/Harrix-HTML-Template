@@ -404,11 +404,51 @@
     padding: 0.5rem 0.75rem;
   }
 
-  .h-navbar-search-overlay__input {
-    @include hmixins.h-search-field-input;
+  .h-navbar-search-overlay__field {
+    position: relative;
     flex: 1;
     min-width: 0;
+  }
+
+  .h-navbar-search-overlay__input {
+    @include hmixins.h-search-field-input;
+    width: 100%;
+    padding-right: 2.5rem;
     font-size: 1rem;
+  }
+
+  .h-navbar-search-overlay__clear {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0.375rem;
+    margin: auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0.25rem;
+    color: initial-variables.$grey;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background-color: initial-variables.$grey-lightest;
+      color: initial-variables.$grey-darker;
+    }
+
+    .icon,
+    i {
+      line-height: 1;
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .h-navbar-search-overlay__submit,

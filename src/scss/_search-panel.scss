@@ -60,6 +60,42 @@
       }
     }
 
+    .h-search-input-wrap {
+      position: relative;
+    }
+
+    #h-search-input {
+      padding-right: 2.5rem;
+    }
+
+    .h-search-input-clear {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0.375rem;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: none;
+      border-radius: 0.25rem;
+      background: none;
+      color: hvars.$h-navbar-icon-color;
+      cursor: pointer;
+
+      &:hover {
+        color: derived-variables.$text;
+      }
+
+      .icon,
+      i {
+        line-height: 1;
+        margin: 0;
+      }
+    }
+
     // Make submit icon clickable like others
     #h-search-button-submit {
       background: none;

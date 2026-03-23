@@ -58,6 +58,26 @@ function createUiHistoryLayer(getIsAnyOpen, closeAll) {
   return { ensure, clearIfPresent };
 }
 
+function initSearchClearButton(inputEl, clearButtonEl) {
+  if (!inputEl || !clearButtonEl) return () => {};
+
+  function syncVisibility() {
+    const hasValue = inputEl.value.length > 0;
+    clearButtonEl.classList.toggle("is-hidden", !hasValue);
+  }
+
+  clearButtonEl.addEventListener("click", () => {
+    inputEl.value = "";
+    syncVisibility();
+    inputEl.dispatchEvent(new Event("input", { bubbles: true }));
+    inputEl.focus();
+  });
+
+  inputEl.addEventListener("input", syncVisibility);
+  syncVisibility();
+  return syncVisibility;
+}
+
 function createUiModesController() {
   const root = document.documentElement;
 
@@ -587,6 +607,7 @@ function initSearchPanel() {
     const searchButtonClose = document.getElementById("h-search-button-close");
     const searchButtonSubmit = document.getElementById("h-search-button-submit");
     const searchInput = document.getElementById("h-search-input");
+    const searchButtonClear = document.getElementById("h-search-button-clear");
     const formEl = searchForm.querySelector("form");
     let isSearchOpen = false;
 
@@ -604,6 +625,8 @@ function initSearchPanel() {
         if (formEl) formEl.requestSubmit();
       });
     }
+
+    const syncSearchClearButton = initSearchClearButton(searchInput, searchButtonClear);
 
     function showOrHideSearchButtonClose() {
       if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
@@ -628,6 +651,7 @@ function initSearchPanel() {
       navbarMenu.classList.add("h-has-visible-search-form");
       focusAfterAnimation(searchInput, SEARCH_ANIMATION_MS);
       showOrHideSearchButtonClose();
+      syncSearchClearButton();
       isSearchOpen = true;
 
       // Add a history entry so browser Back closes search first.
@@ -1137,6 +1161,7 @@ function initNavbarSidebarTocFit() {
   const navbarMenuBtn = document.getElementById("h-navbar-menu-btn") || document.getElementById("h-burger");
   const searchOverlay = document.getElementById("h-navbar-search-overlay");
   const searchOverlayInput = document.getElementById("h-navbar-search-overlay-input");
+  const searchOverlayClear = document.getElementById("h-navbar-search-overlay-clear");
   const searchOverlaySubmit = document.getElementById("h-navbar-search-overlay-submit");
   const searchOverlayClose = document.getElementById("h-navbar-search-overlay-close");
   const mainSearchInput = document.getElementById("h-search-input");
@@ -1151,6 +1176,7 @@ function initNavbarSidebarTocFit() {
     });
   }
   if (searchOverlayInput) {
+    initSearchClearButton(searchOverlayInput, searchOverlayClear);
     searchOverlayInput.placeholder = translate("Search…");
     searchOverlayInput.addEventListener("keydown", (e) => {
       // Escape is handled globally; keep Enter behavior here.
@@ -1315,6 +1341,7 @@ function initMobileTopNav() {
   const dropdownBackdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
   const searchPanel = document.getElementById("h-mobile-top-nav-search-panel");
   const searchInput = document.getElementById("h-mobile-top-nav-search-input");
+  const searchClear = document.getElementById("h-mobile-top-nav-search-clear");
   const searchSubmit = document.getElementById("h-mobile-top-nav-search-submit");
   const searchClose = document.getElementById("h-mobile-top-nav-search-close");
   const menuPanel = document.getElementById("h-mobile-top-nav-menu-panel");
@@ -1342,6 +1369,7 @@ function initMobileTopNav() {
   // Open/close and history handled by createUiModesController().
 
   if (searchPanel && searchInput) {
+    initSearchClearButton(searchInput, searchClear);
     if (searchInput) searchInput.placeholder = translate("Search…");
     searchInput.addEventListener("keydown", (e) => {
       // Escape handled globally; keep Enter behavior here.

@@ -25,6 +25,8 @@ import {
   faExclamationTriangle,
   faList,
   faTimes,
+  faBackspace,
+  faCircleXmark,
   faBars,
   faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
@@ -84,6 +86,8 @@ export default function initFontawesomeCollection() {
     faFileArchiveRegular,
     faList,
     faTimes,
+    faBackspace,
+    faCircleXmark,
     faBars,
     faBookOpen
   );

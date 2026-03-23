@@ -54,7 +54,12 @@
             <div class="navbar-item" id="h-search-form">
               <div class="control">
                 <form role="search" method="get" action="javascript:void(0)">
-                  <input class="input" type="text" value="" id="h-search-input" aria-label="Search" />
+                  <div class="h-search-input-wrap">
+                    <input class="input" type="text" value="" id="h-search-input" aria-label="Search" />
+                    <button type="button" class="h-search-input-clear is-hidden" id="h-search-button-clear" aria-label="Очистить поиск">
+                      <span class="icon is-small" aria-hidden="true"><i class="fas fa-circle-xmark"></i></span>
+                    </button>
+                  </div>
                 </form>
                 <button type="submit" class="icon is-small h-is-clickable" id="h-search-button-submit" aria-label="Search">
                   <i class="fas fa-search" aria-hidden="true"></i>
@@ -103,7 +108,12 @@
         </div>
         <div id="h-navbar-search-overlay" class="h-navbar-search-overlay" aria-hidden="true">
           <div class="h-navbar-search-overlay__inner">
-            <input type="text" class="h-navbar-search-overlay__input input" id="h-navbar-search-overlay-input" placeholder="Поиск…" aria-label="Поиск" autocomplete="off" />
+            <div class="h-navbar-search-overlay__field">
+              <input type="text" class="h-navbar-search-overlay__input input" id="h-navbar-search-overlay-input" placeholder="Поиск…" aria-label="Поиск" autocomplete="off" />
+              <button type="button" class="h-navbar-search-overlay__clear is-hidden" id="h-navbar-search-overlay-clear" aria-label="Очистить поиск">
+                <span class="icon is-small" aria-hidden="true"><i class="fas fa-circle-xmark"></i></span>
+              </button>
+            </div>
             <button type="button" class="h-navbar-search-overlay__submit" id="h-navbar-search-overlay-submit" aria-label="Поиск">
               <span class="icon is-small" aria-hidden="true"><i class="fas fa-search"></i></span>
             </button>
@@ -123,7 +133,12 @@
     <div id="h-mobile-top-nav" class="h-mobile-top-nav" aria-label="Мобильное меню">
       <div id="h-mobile-top-nav-search-panel" class="h-mobile-top-nav-search-panel" aria-hidden="true">
         <div class="h-mobile-top-nav-search-panel__inner">
-          <input type="text" class="h-mobile-top-nav-search-panel__input input" id="h-mobile-top-nav-search-input" placeholder="Поиск…" aria-label="Поиск" autocomplete="off" />
+          <div class="h-mobile-top-nav-search-panel__field">
+            <input type="text" class="h-mobile-top-nav-search-panel__input input" id="h-mobile-top-nav-search-input" placeholder="Поиск…" aria-label="Поиск" autocomplete="off" />
+            <button type="button" class="h-mobile-top-nav-search-panel__clear is-hidden" id="h-mobile-top-nav-search-clear" aria-label="Очистить поиск">
+              <span class="icon is-small" aria-hidden="true"><i class="fas fa-circle-xmark"></i></span>
+            </button>
+          </div>
           <button type="button" class="h-mobile-top-nav-search-panel__submit" id="h-mobile-top-nav-search-submit" aria-label="Поиск">
             <span class="icon is-small" aria-hidden="true"><i class="fas fa-search"></i></span>
           </button>
