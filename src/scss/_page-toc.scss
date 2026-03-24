@@ -1,4 +1,5 @@
 @use "bulma/sass/utilities/initial-variables" as initial-variables;
+@use "bulma/sass/utilities/derived-variables" as derived-variables;
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
 @use "mixins" as hmixins;
@@ -113,22 +114,31 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
   // --- Intermediate (tablet): match mobile top-nav dropdown (slide from left) ---
   @media (min-width: calc(#{$h-page-toc-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{$h-page-toc-breakpoint} - 1px)) {
-    top: 3rem;
-    bottom: 0;
-    max-height: none;
-    border-radius: 0 hvars.$h-panel-radius hvars.$h-panel-radius 0;
-    box-shadow: hvars.$h-shadow-elevated-end;
+    left: 50%;
+    right: auto;
+    top: var(--h-expanded-menu-top);
+    bottom: auto;
+    width: min(100%, hvars.$h-container-content-max-width);
+    max-height: calc(100vh - var(--h-expanded-menu-top) - env(safe-area-inset-bottom, 0px));
+    border: 1px solid initial-variables.$grey-lighter;
+    border-top: none;
+    border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
+    box-shadow: hvars.$h-shadow-elevated;
     padding: 0;
-    transform: translateX(-100%);
-    transition: transform 0.25s ease, visibility 0.25s ease;
+    transform: translate(-50%, -8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
 
     body.h-navbar-toc-no-fit & {
-      top: 5.5rem; // 3rem navbar + 2.5rem toc row
+      top: var(--h-expanded-menu-top);
     }
 
     &.is-open {
-      transform: translateX(0);
+      transform: translate(-50%, 0);
+      opacity: 1;
       visibility: visible;
+      pointer-events: auto;
     }
 
     .h-page-toc__header {
@@ -200,7 +210,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
       &:hover {
         background-color: initial-variables.$grey-lightest;
-        color: initial-variables.$grey-darker;
+        color: derived-variables.$text-strong;
       }
     }
 
@@ -260,7 +270,8 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
     @media (min-width: calc(#{$h-page-toc-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{$h-page-toc-breakpoint} - 1px)) {
       background-color: dark.$h-dark-surface-elevated;
-      box-shadow: hvars.$h-shadow-elevated-end-dark;
+      border-color: dark.$h-dark-border;
+      box-shadow: hvars.$h-shadow-elevated-dark;
     }
 
     @media (min-width: $h-page-toc-breakpoint) {
