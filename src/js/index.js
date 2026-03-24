@@ -60,7 +60,7 @@ function createUiHistoryLayer(getIsAnyOpen, closeAll) {
 }
 
 function initSearchClearButton(inputEl, clearButtonEl) {
-  if (!inputEl || !clearButtonEl) return () => {};
+  if (!inputEl || !clearButtonEl) return () => { };
 
   function syncVisibility() {
     const hasValue = inputEl.value.length > 0;
