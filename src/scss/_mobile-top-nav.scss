@@ -12,12 +12,6 @@ $h-mobile-top-nav-search-height: 3rem;
 // Only when body has the top-nav variant and viewport is mobile
 body.h-mobile-nav-top {
   @media (max-width: $h-mobile-top-nav-breakpoint) {
-    // Hide bottom nav and remove its padding
-    .h-bottom-nav-wrap {
-      display: none !important;
-    }
-
-    // Hide main navbar; menu opens from mobile top nav menu panel
     #h-navbar {
       display: none !important;
     }
@@ -90,79 +84,15 @@ body.h-mobile-nav-top {
 }
 
 .h-mobile-top-nav-search-panel__clear {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0.375rem;
-  margin: auto 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0.25rem;
-  color: initial-variables.$grey;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
-
-  &:hover {
-    background-color: initial-variables.$grey-lightest;
-    color: initial-variables.$grey-darker;
-  }
-
-  .icon,
-  i {
-    line-height: 1;
-    margin: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
+  @include hmixins.h-search-clear-btn;
 }
 
 .h-mobile-top-nav-search-panel__submit {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0.25rem;
-  color: initial-variables.$grey;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
-
-  &:hover {
-    background-color: initial-variables.$grey-lightest;
-    color: initial-variables.$grey-darker;
-  }
+  @include hmixins.h-icon-button-sm;
 }
 
 .h-mobile-top-nav-search-panel__close {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0.25rem;
-  color: initial-variables.$grey;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
-
-  &:hover {
-    background-color: initial-variables.$grey-lightest;
-    color: initial-variables.$grey-darker;
-  }
+  @include hmixins.h-icon-button-sm;
 }
 
 // Row 1: sidebar | logo | search | menu
@@ -175,25 +105,9 @@ body.h-mobile-nav-top {
 }
 
 .h-mobile-top-nav__btn {
+  @include hmixins.h-icon-button(initial-variables.$grey, derived-variables.$text-strong);
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0.25rem;
-  color: initial-variables.$grey;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
   -webkit-tap-highlight-color: transparent;
-
-  &:hover {
-    background-color: initial-variables.$grey-lightest;
-    color: derived-variables.$text-strong;
-  }
 
   &:focus-visible {
     outline: 2px solid hvars.$h-primary;
@@ -456,24 +370,7 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
 }
 
 .h-mobile-top-nav__panel-close {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  color: initial-variables.$grey;
-  transition: background-color 0.15s ease, color 0.15s ease;
-
-  &:hover {
-    background-color: initial-variables.$grey-lightest;
-    color: derived-variables.$text-strong;
-  }
+  @include hmixins.h-icon-button-sm(derived-variables.$text-strong);
 }
 
 // Dark theme
@@ -483,12 +380,7 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   }
 
   .h-mobile-top-nav__panel-close {
-    color: dark.$h-dark-icon;
-
-    &:hover {
-      background-color: dark.$h-dark-border;
-      color: dark.$h-dark-text-strong;
-    }
+    @include hmixins.h-dark-icon-button-hover;
   }
 
   .h-mobile-top-nav__menu-panel {
@@ -541,30 +433,15 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
 
     .h-mobile-top-nav-search-panel__submit,
     .h-mobile-top-nav-search-panel__clear {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: dark.$h-dark-border;
-        color: dark.$h-dark-text-strong;
-      }
+      @include hmixins.h-dark-icon-button-hover;
     }
 
     .h-mobile-top-nav-search-panel__close {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: dark.$h-dark-border;
-        color: dark.$h-dark-text-strong;
-      }
+      @include hmixins.h-dark-icon-button-hover;
     }
 
     .h-mobile-top-nav__btn {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.06);
-        color: dark.$h-dark-text-strong;
-      }
+      @include hmixins.h-dark-icon-button-hover(rgba(255, 255, 255, 0.06));
     }
 
     .h-mobile-top-nav__logo {

@@ -10,12 +10,6 @@ body {
   line-height: 1.6;
 }
 
-// Heading weight 400 (replaces Bulma $content-heading-weight when variables are not passed)
-.title,
-.subtitle {
-  font-weight: 400;
-}
-
 .subtitle {
   font-size: inherit;
   line-height: 1.5;
@@ -39,14 +33,6 @@ a:hover {
     background-color: hvars.$h-primary-hover;
     color: #fff;
   }
-}
-
-.h-sidebar {
-  font-size: hvars.$h-navbar-font-size;
-}
-
-.h-columns-with-sidebar {
-  align-items: flex-start;
 }
 
 // Shared backdrop animation for UI panels (sidebar/menu/toc/etc.)
@@ -82,8 +68,6 @@ html.h-resizing {
   }
 }
 
-// Footer: less tall + spacing from content above
 .footer {
   margin-top: 2rem;
-  padding: 1.5rem 1.5rem;
 }

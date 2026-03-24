@@ -1,5 +1,6 @@
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
+@use "mixins" as hmixins;
 
 // Theme toggle: show sun in light mode, moon in dark mode
 .h-theme-icon--dark {
@@ -81,12 +82,7 @@
     }
 
     .h-navbar-menu-btn {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.06);
-        color: dark.$h-dark-text-strong;
-      }
+      @include hmixins.h-dark-icon-button-hover(rgba(255, 255, 255, 0.06));
     }
 
     body.h-navbar-menu-no-fit .navbar-menu.is-active {
@@ -103,12 +99,7 @@
     }
 
     .h-navbar-menu-panel-close {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: dark.$h-dark-border;
-        color: dark.$h-dark-text-strong;
-      }
+      @include hmixins.h-dark-icon-button-hover;
     }
 
     .h-navbar-menu-backdrop {
@@ -120,12 +111,7 @@
     }
 
     .h-navbar-sidebar-btn {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.06);
-        color: dark.$h-dark-text-strong;
-      }
+      @include hmixins.h-dark-icon-button-hover(rgba(255, 255, 255, 0.06));
     }
 
     .h-navbar-toc-trigger {
@@ -141,12 +127,7 @@
     }
 
     .h-navbar-search-btn {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.06);
-        color: dark.$h-dark-text-strong;
-      }
+      @include hmixins.h-dark-icon-button-hover(rgba(255, 255, 255, 0.06));
     }
 
     .h-navbar-search-overlay {
@@ -173,12 +154,7 @@
     .h-navbar-search-overlay__submit,
     .h-navbar-search-overlay__clear,
     .h-navbar-search-overlay__close {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: dark.$h-dark-border;
-        color: dark.$h-dark-text-strong;
-      }
+      @include hmixins.h-dark-icon-button-hover;
     }
 
     // Header search input: same colors as .h-navbar-search-overlay__input (selector must beat #h-search-form .control #h-search-input from _search-panel.scss / h-search-field-input)

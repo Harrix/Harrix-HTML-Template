@@ -10,7 +10,3 @@
 .h-is-clickable {
   @include hmixins.h-clickable;
 }
-
-.h-is-padding-bottomless {
-  padding-bottom: 0 !important;
-}

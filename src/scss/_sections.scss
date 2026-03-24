@@ -1,13 +1,6 @@
-@use "bulma/sass/utilities/mixins" as mixins;
 @use "variables" as hvars;
 
 .section {
-  padding: 1.5rem 0;
-
-  @include mixins.desktop {
-    padding: 3rem;
-  }
-
   .h-has-special-hr {
     margin-bottom: 2.5rem;
 
@@ -23,9 +16,5 @@
       position: relative;
       width: 3rem;
     }
-  }
-
-  @include mixins.touch {
-    padding: 1.5rem 0.9375rem;
   }
 }

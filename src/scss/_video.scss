@@ -1,17 +1,5 @@
-.h-video-embed {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  min-height: 200px;
+@use "mixins" as hmixins;
 
-  iframe {
-    border: 0;
-    display: block;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
+.h-video-embed {
+  @include hmixins.h-responsive-embed;
 }

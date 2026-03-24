@@ -213,24 +213,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     }
 
     .h-page-toc__close {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.25rem;
-      height: 2.25rem;
-      padding: 0;
-      background: none;
-      border: none;
-      border-radius: 0.25rem;
-      cursor: pointer;
-      color: initial-variables.$grey;
-      transition: background-color 0.15s ease, color 0.15s ease;
-
-      &:hover {
-        background-color: initial-variables.$grey-lightest;
-        color: derived-variables.$text-strong;
-      }
+      @include hmixins.h-icon-button-sm(derived-variables.$text-strong);
     }
 
     @media (min-width: $h-page-toc-breakpoint) {
@@ -298,12 +281,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     }
 
     .h-page-toc__close {
-      color: dark.$h-dark-icon;
-
-      &:hover {
-        background-color: dark.$h-dark-border;
-        color: dark.$h-dark-text-strong;
-      }
+      @include hmixins.h-dark-icon-button-hover;
     }
 
     .menu-label {
