@@ -1,4 +1,5 @@
 import mermaid from "mermaid";
+import { onThemeToggle } from "./_theme-utils.js";
 
 function getMermaidTheme() {
   const stored = localStorage.getItem("h-theme");
@@ -26,13 +27,7 @@ function renderMermaid() {
 document.addEventListener("DOMContentLoaded", () => {
   renderMermaid();
 
-  document.addEventListener(
-    "click",
-    (e) => {
-      const target = e.target?.closest?.("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
-      if (!target) return;
-      setTimeout(renderMermaid, 50);
-    },
-    true,
-  );
+  onThemeToggle(() => {
+    setTimeout(renderMermaid, 50);
+  });
 });

@@ -1,4 +1,5 @@
 import Plotly from "plotly.js-dist-min";
+import { onThemeToggle } from "./_theme-utils.js";
 
 function getChartTheme() {
   const stored = localStorage.getItem("h-theme");
@@ -71,27 +72,21 @@ function renderCharts() {
 document.addEventListener("DOMContentLoaded", () => {
   renderCharts();
 
-  document.addEventListener(
-    "click",
-    (e) => {
-      const target = e.target?.closest?.("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
-      if (!target) return;
-      const containers = document.querySelectorAll(".h-chart-container");
-      containers.forEach((el) => {
-        const spec = el._spec;
-        if (!spec) return;
-        Plotly.purge(el);
-        const wrapper = document.createElement("pre");
-        wrapper.className = "chart";
-        const code = document.createElement("code");
-        code.className = "language-chart";
-        code.textContent = JSON.stringify(spec, null, 2);
-        wrapper.appendChild(code);
-        el.parentNode.insertBefore(wrapper, el);
-        el.remove();
-      });
-      setTimeout(renderCharts, 50);
-    },
-    true,
-  );
+  onThemeToggle(() => {
+    const containers = document.querySelectorAll(".h-chart-container");
+    containers.forEach((el) => {
+      const spec = el._spec;
+      if (!spec) return;
+      Plotly.purge(el);
+      const wrapper = document.createElement("pre");
+      wrapper.className = "chart";
+      const code = document.createElement("code");
+      code.className = "language-chart";
+      code.textContent = JSON.stringify(spec, null, 2);
+      wrapper.appendChild(code);
+      el.parentNode.insertBefore(wrapper, el);
+      el.remove();
+    });
+    setTimeout(renderCharts, 50);
+  });
 });

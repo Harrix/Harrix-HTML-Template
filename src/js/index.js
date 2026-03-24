@@ -10,6 +10,7 @@ import "lightgallery/css/lg-zoom.css";
 
 import initFontawesomeCollection from "./_fontawesome-collection.js";
 import locale from "./_locale-ru.js";
+import { THEME_TOGGLE_SELECTOR } from "./_theme-utils.js";
 
 const NAVBAR_HIDE_SCROLL_THRESHOLD = 100;
 const GALLERY_ROW_HEIGHT = 200;
@@ -492,40 +493,13 @@ function initNavbar(scrollThreshold) {
   const navbar = document.getElementById("h-navbar");
 
   if (navbar) {
-    const root = document.documentElement;
     const navbarBurger = document.getElementById("h-navbar-menu-btn") || document.getElementById("h-burger");
     const navbarBottom = document.getElementById("h-navbar-bottom");
-    const navbarMenu = document.getElementById("h-navbar-menu");
-    const menuPanelHeader = document.getElementById("h-navbar-menu-panel-header");
-    const menuPanelClose = document.getElementById("h-navbar-menu-panel-close");
-    const menuBackdrop = document.getElementById("h-navbar-menu-backdrop");
     const menuPanelLabel = document.getElementById("h-navbar-menu-panel-label");
 
     if (!navbarBurger || !navbarBottom) return;
 
     if (menuPanelLabel) menuPanelLabel.textContent = translate("Menu");
-
-    function closeNavbarMenu() {
-      if (!navbarMenu) return;
-      root.classList.remove("h-is-clipped-touch");
-      navbarBurger.classList.remove("is-active");
-      navbarBurger.setAttribute("aria-expanded", "false");
-      navbarMenu.classList.remove("is-active");
-      if (menuPanelHeader) {
-        menuPanelHeader.setAttribute("hidden", "");
-        menuPanelHeader.setAttribute("aria-hidden", "true");
-      }
-      if (menuBackdrop) {
-        menuBackdrop.setAttribute("hidden", "");
-        menuBackdrop.setAttribute("aria-hidden", "true");
-      }
-      if (document.body.classList.contains("h-navbar-menu-no-fit")) {
-        navbarBurger.style.display = "";
-      }
-    }
-
-    // Menu open/close is now controlled by the global UI modes controller
-    // Keep closeNavbarMenu as a fallback for legacy callers only.
 
     let lastY = 0;
     let currentY = 0;
@@ -922,7 +896,7 @@ function focusAfterAnimation(elem, delayMs) {
 
 function initThemeToggle() {
   function getToggles() {
-    return Array.from(document.querySelectorAll("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle"));
+    return Array.from(document.querySelectorAll(THEME_TOGGLE_SELECTOR));
   }
 
   function getTheme() {
@@ -955,7 +929,7 @@ function initThemeToggle() {
   document.addEventListener(
     "click",
     (e) => {
-      const target = e.target?.closest?.("[data-theme-toggle], .h-theme-toggle, #h-theme-toggle");
+      const target = e.target?.closest?.(THEME_TOGGLE_SELECTOR);
       if (!target) return;
       const current = getTheme();
       setTheme(current === "dark" ? "light" : "dark");
@@ -1040,7 +1014,6 @@ function initPageToc() {
   const mobileTocTriggerLabel = document.getElementById("h-mobile-top-nav-toc-trigger-label");
   const toggleBtn = document.getElementById("h-page-toc-toggle");
   const closeBtn = document.getElementById("h-page-toc-close");
-  const backdrop = document.getElementById("h-page-toc-backdrop");
   if (!toc || !tocList) return;
 
   const article = document.querySelector("article");
@@ -1308,11 +1281,8 @@ function initNavbarSidebarTocFit() {
 
 function initDocsSidebar() {
   const sidebar = document.getElementById("h-docs-sidebar");
-  const toggle = document.getElementById("h-docs-sidebar-toggle");
-  const backdrop = document.getElementById("h-docs-sidebar-backdrop");
-  if (!sidebar || !toggle || !backdrop) return;
+  if (!sidebar) return;
 
-  const sidebarCloseBtn = document.getElementById("h-docs-sidebar-close");
   const sidebarHeaderLabel = document.getElementById("h-docs-sidebar-header-label");
   if (sidebarHeaderLabel) sidebarHeaderLabel.textContent = translate("Documentation");
   // Open/close handled by createUiModesController(); keep label translation here.
@@ -1328,22 +1298,16 @@ function initMobileTopNav() {
   const HIDE_THRESHOLD = 100;
 
   const btnSidebar = document.getElementById("h-mobile-top-nav-sidebar");
-  const btnSearch = document.getElementById("h-mobile-top-nav-search");
-  const btnMenu = document.getElementById("h-mobile-top-nav-menu");
   const tocTrigger = document.getElementById("h-mobile-top-nav-toc-trigger");
   const tocTriggerLabel = document.getElementById("h-mobile-top-nav-toc-trigger-label");
   const dropdown = document.getElementById("h-mobile-top-nav-dropdown");
-  const dropdownBackdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
   const searchPanel = document.getElementById("h-mobile-top-nav-search-panel");
   const searchInput = document.getElementById("h-mobile-top-nav-search-input");
   const searchClear = document.getElementById("h-mobile-top-nav-search-clear");
-  const searchSubmit = document.getElementById("h-mobile-top-nav-search-submit");
-  const searchClose = document.getElementById("h-mobile-top-nav-search-close");
   const menuPanel = document.getElementById("h-mobile-top-nav-menu-panel");
 
   const sidebarToggle = document.getElementById("h-docs-sidebar-toggle");
   const sidebarPanel = document.getElementById("h-docs-sidebar");
-  const sidebarBackdrop = document.getElementById("h-docs-sidebar-backdrop");
   const rootTree = document.getElementById("root_tree");
   const pageTocList = document.getElementById("h-page-toc-list");
 
