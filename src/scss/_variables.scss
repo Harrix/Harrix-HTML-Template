@@ -24,8 +24,6 @@ $h-container-content-max-width: $h-container-max-width - 64px;
 $h-mobile-nav-breakpoint: 1024px;
 // Min viewport width for sidebar + content + TOC to fit; below this show sidebar/TOC triggers in navbar
 $h-sidebar-toc-desktop-min-width: 1680px;
-$h-color-section-red: #de2b26;
-
 // Panel chrome: same radius as .navbar-dropdown.is-boxed (sync _header --bulma-navbar-dropdown-boxed-radius)
 $h-panel-radius: 0.25rem;
 

@@ -1,5 +1,6 @@
 @use "mixins" as hmixins;
 
-.h-map-embed {
+.h-map-embed,
+.h-video-embed {
   @include hmixins.h-responsive-embed;
 }

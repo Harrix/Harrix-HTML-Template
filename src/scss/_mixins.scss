@@ -6,11 +6,6 @@
   transition: $property hvars.$h-transition-duration initial-variables.$easing;
 }
 
-@mixin h-clickable {
-  pointer-events: auto !important;
-  cursor: pointer !important;
-}
-
 @mixin h-overlay {
   position: absolute;
   bottom: 0;
@@ -29,6 +24,46 @@
   transition: opacity 0.25s ease, visibility 0.25s ease;
 
   &.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+@mixin h-fab-circle($x-side, $x-value, $y-value, $size: 3rem, $z-index: 30) {
+  position: fixed;
+  #{$x-side}: $x-value;
+  bottom: $y-value;
+  z-index: $z-index;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  background-color: initial-variables.$grey;
+  color: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.15s ease;
+
+  &:hover {
+    background-color: hvars.$h-primary;
+    color: #fff;
+  }
+}
+
+@mixin h-panel-visibility($hidden-transform, $open-transform) {
+  transform: $hidden-transform;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+
+  &.is-open,
+  &.is-active {
+    transform: $open-transform;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -166,6 +201,23 @@
   &:hover {
     background-color: $bg;
     color: dark.$h-dark-text-strong;
+  }
+}
+
+@mixin h-dark-search-field-input {
+  background-color: dark.$h-dark-input-bg;
+  border: 1px solid hvars.$h-primary;
+  color: dark.$h-dark-text-strong;
+
+  &::placeholder {
+    color: dark.$h-dark-placeholder;
+    opacity: 1;
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: hvars.$h-primary;
+    box-shadow: 0 0 0 0.125em rgba(46, 134, 183, 0.35);
   }
 }
 

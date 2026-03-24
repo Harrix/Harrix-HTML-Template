@@ -159,18 +159,7 @@
         -webkit-overflow-scrolling: touch;
         z-index: 51;
         padding: 0;
-        transform: translate(-50%, -8px);
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
-      }
-
-      body.h-navbar-menu-no-fit &.is-active {
-        transform: translate(-50%, 0);
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+        @include hmixins.h-panel-visibility(translate(-50%, -8px), translate(-50%, 0));
       }
 
       body.h-navbar-menu-no-fit & .h-navbar-menu-panel-header {

@@ -9,33 +9,14 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
 // Floating toggle button (visible below breakpoint) — same vertical level as .h-back-to-top
 .h-page-toc-toggle {
-  position: fixed;
-  left: 3.75rem;
-  bottom: 3.75rem;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  background-color: initial-variables.$grey;
-  color: #fff;
+  @include hmixins.h-fab-circle(left, 3.75rem, 3.75rem);
   border: none;
-  border-radius: 50%;
   cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.15s ease;
 
   &.is-visible {
     opacity: 0.9;
     visibility: visible;
     pointer-events: auto;
-  }
-
-  &:hover {
-    background-color: hvars.$h-primary;
   }
 
   .icon {
@@ -136,28 +117,14 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
     box-shadow: hvars.$h-shadow-elevated;
     padding: 0;
-    transform: translateY(-8px);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
-
-    &.is-open {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
+    @include hmixins.h-panel-visibility(translateY(-8px), translateY(0));
 
     // Same centered width as menu panel when navbar menu is in overflow mode
     body.h-navbar-menu-no-fit & {
       left: 50%;
       right: auto;
       width: min(100%, hvars.$h-container-content-max-width);
-      transform: translate(-50%, -8px);
-
-      &.is-open {
-        transform: translate(-50%, 0);
-      }
+      @include hmixins.h-panel-visibility(translate(-50%, -8px), translate(-50%, 0));
     }
 
     .h-page-toc__header {

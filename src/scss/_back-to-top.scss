@@ -1,30 +1,11 @@
-@use "bulma/sass/utilities/initial-variables" as initial-variables;
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
+@use "mixins" as hmixins;
 
 .h-back-to-top {
-  position: fixed;
-  right: 3.75rem;
-  bottom: 3.75rem;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  background-color: initial-variables.$grey;
-  color: #fff;
+  @include hmixins.h-fab-circle(right, 3.75rem, 3.75rem);
   border-radius: 50%;
   text-decoration: none;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.15s ease;
-
-  &:hover {
-    background-color: hvars.$h-primary;
-    color: #fff;
-  }
 
   &.is-visible {
     opacity: 0.9;

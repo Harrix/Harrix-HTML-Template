@@ -242,18 +242,7 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
   box-shadow: hvars.$h-shadow-elevated;
   padding: 0;
-  transform: translateY(-8px);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
-
-  &.is-open {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
+  @include hmixins.h-panel-visibility(translateY(-8px), translateY(0));
 
   // Intermediate: same content width as .container (Bulma subtracts 2×$gap from max-width), centered
   @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
@@ -261,11 +250,8 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
       left: 50%;
       right: auto;
       width: min(100%, hvars.$h-container-content-max-width);
-      transform: translate(-50%, -8px);
+      @include hmixins.h-panel-visibility(translate(-50%, -8px), translate(-50%, 0));
 
-      &.is-open {
-        transform: translate(-50%, 0);
-      }
     }
   }
 }
@@ -416,19 +402,7 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
     }
 
     .h-mobile-top-nav-search-panel__input {
-      background-color: dark.$h-dark-input-bg;
-      border: 1px solid hvars.$h-primary;
-      color: dark.$h-dark-text-strong;
-
-      &::placeholder {
-        color: dark.$h-dark-placeholder;
-      }
-
-      &:focus,
-      &:focus-visible {
-        border-color: hvars.$h-primary;
-        box-shadow: 0 0 0 0.125em rgba(46, 134, 183, 0.35);
-      }
+      @include hmixins.h-dark-search-field-input;
     }
 
     .h-mobile-top-nav-search-panel__submit,

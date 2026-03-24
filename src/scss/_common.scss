@@ -1,6 +1,5 @@
 @use "bulma/sass/utilities/mixins" as mixins;
 @use "variables" as hvars;
-@use "mixins" as hmixins;
 
 body {
   overflow-x: hidden;
@@ -35,11 +34,6 @@ a:hover {
   }
 }
 
-// Shared backdrop animation for UI panels (sidebar/menu/toc/etc.)
-.h-backdrop {
-  @include hmixins.h-backdrop;
-}
-
 // Hide the inline menu before JS has determined fit state to prevent
 // a flash of the expanded menu on page load in the intermediate zone.
 // Uses visibility:hidden so scrollWidth measurement still works.
@@ -62,8 +56,7 @@ html.h-resizing {
   .h-docs-sidebar,
   .h-docs-sidebar-toggle,
   .h-page-toc,
-  .h-page-toc-toggle,
-  .h-backdrop {
+  .h-page-toc-toggle {
     transition: none !important;
   }
 }

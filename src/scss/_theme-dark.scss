@@ -136,19 +136,7 @@
     }
 
     .h-navbar-search-overlay__input {
-      background-color: dark.$h-dark-input-bg;
-      border: 1px solid hvars.$h-primary;
-      color: dark.$h-dark-text-strong;
-
-      &::placeholder {
-        color: dark.$h-dark-placeholder;
-      }
-
-      &:focus,
-      &:focus-visible {
-        border-color: hvars.$h-primary;
-        box-shadow: 0 0 0 0.125em rgba(46, 134, 183, 0.35);
-      }
+      @include hmixins.h-dark-search-field-input;
     }
 
     .h-navbar-search-overlay__submit,
@@ -161,20 +149,7 @@
     #h-search-form {
       .control {
         #h-search-input {
-          background-color: dark.$h-dark-input-bg;
-          border: 1px solid hvars.$h-primary;
-          color: dark.$h-dark-text-strong;
-
-          &::placeholder {
-            color: dark.$h-dark-placeholder;
-            opacity: 1;
-          }
-
-          &:focus,
-          &:focus-visible {
-            border-color: hvars.$h-primary;
-            box-shadow: 0 0 0 0.125em rgba(46, 134, 183, 0.35);
-          }
+          @include hmixins.h-dark-search-field-input;
         }
 
         .icon {
