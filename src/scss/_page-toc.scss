@@ -63,20 +63,22 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
   }
 }
 
-// Backdrop overlay (mobile only)
+// Invisible hit-area for click-outside / history; no dimming (unlike generic h-backdrop)
 .h-page-toc-backdrop {
   @include hmixins.h-backdrop;
   z-index: 39;
+  background-color: transparent;
 
-  // --- Intermediate (tablet): same as mobile top-nav dropdown backdrop ---
+  // --- Intermediate (tablet): below navbar / expanded menu top (same as menu panel backdrop) ---
   @media (min-width: calc(#{$h-page-toc-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{$h-page-toc-breakpoint} - 1px)) {
-    top: 3rem;
+    top: var(--h-expanded-menu-top);
     bottom: 0;
     left: 0;
     right: 0;
 
-    body.h-navbar-toc-no-fit & {
-      top: 5.5rem; // 3rem navbar + 2.5rem toc row
+    // TOC row without menu overflow: --h-expanded-menu-top is not set on body (see _mobile-top-nav.scss)
+    body.h-navbar-toc-no-fit:not(.h-navbar-menu-no-fit) & {
+      top: 5.5rem;
     }
   }
 
@@ -112,33 +114,50 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     visibility: visible;
   }
 
-  // --- Intermediate (tablet): match mobile top-nav dropdown (slide from left) ---
+  // --- Intermediate (tablet): same open animation as .h-mobile-top-nav__menu-panel (slide from top) ---
   @media (min-width: calc(#{$h-page-toc-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{$h-page-toc-breakpoint} - 1px)) {
-    left: 50%;
-    right: auto;
+    left: 0;
+    right: 0;
     top: var(--h-expanded-menu-top);
     bottom: auto;
-    width: min(100%, hvars.$h-container-content-max-width);
+    width: auto;
     max-height: calc(100vh - var(--h-expanded-menu-top) - env(safe-area-inset-bottom, 0px));
+
+    body.h-navbar-toc-no-fit:not(.h-navbar-menu-no-fit) & {
+      top: 5.5rem;
+      max-height: calc(100vh - 5.5rem - env(safe-area-inset-bottom, 0px));
+    }
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     border: 1px solid initial-variables.$grey-lighter;
     border-top: none;
     border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
     box-shadow: hvars.$h-shadow-elevated;
     padding: 0;
-    transform: translate(-50%, -8px);
+    transform: translateY(-8px);
     opacity: 0;
     pointer-events: none;
     transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
 
-    body.h-navbar-toc-no-fit & {
-      top: var(--h-expanded-menu-top);
-    }
-
     &.is-open {
-      transform: translate(-50%, 0);
+      transform: translateY(0);
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
+    }
+
+    // Same centered width as menu panel when navbar menu is in overflow mode
+    body.h-navbar-menu-no-fit & {
+      left: 50%;
+      right: auto;
+      width: min(100%, hvars.$h-container-content-max-width);
+      transform: translate(-50%, -8px);
+
+      &.is-open {
+        transform: translate(-50%, 0);
+      }
     }
 
     .h-page-toc__header {
