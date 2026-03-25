@@ -1135,6 +1135,9 @@ function initNavbarSidebarTocFit() {
   const mainSearchInput = document.getElementById("h-search-input");
 
   let menuWasNoFit = false;
+  const rootStyle = document.documentElement.style;
+  const NO_FIT_PANEL_LEFT_VAR = "--h-no-fit-panel-left";
+  const NO_FIT_PANEL_WIDTH_VAR = "--h-no-fit-panel-width";
 
   // Open/close wiring is handled by createUiModesController().
   if (searchOverlaySubmit) {
@@ -1169,11 +1172,28 @@ function initNavbarSidebarTocFit() {
     }
   }
 
+  function clearNoFitPanelVars() {
+    rootStyle.removeProperty(NO_FIT_PANEL_LEFT_VAR);
+    rootStyle.removeProperty(NO_FIT_PANEL_WIDTH_VAR);
+  }
+
+  function updateNoFitPanelVars() {
+    const rowEl = document.querySelector(".h-navbar__row1") || document.querySelector("#h-navbar .container");
+    if (!rowEl) {
+      clearNoFitPanelVars();
+      return;
+    }
+    const rect = rowEl.getBoundingClientRect();
+    rootStyle.setProperty(NO_FIT_PANEL_LEFT_VAR, `${Math.max(0, Math.round(rect.left))}px`);
+    rootStyle.setProperty(NO_FIT_PANEL_WIDTH_VAR, `${Math.max(0, Math.round(rect.width))}px`);
+  }
+
   function updateFit() {
     const vw = window.innerWidth;
     if (vw <= MOBILE_NAV_BREAKPOINT) {
       closeNavbarSearchOverlay();
       document.body.classList.remove("h-navbar-sidebar-overlaps", "h-navbar-toc-no-fit", "h-navbar-menu-no-fit");
+      clearNoFitPanelVars();
       if (navbarSidebarBtn) {
         navbarSidebarBtn.setAttribute("aria-hidden", "true");
         navbarSidebarBtn.setAttribute("hidden", "");
@@ -1210,6 +1230,9 @@ function initNavbarSidebarTocFit() {
     document.body.classList.toggle("h-navbar-sidebar-overlaps", !!sidebarOverlaps);
     document.body.classList.toggle("h-navbar-toc-no-fit", !!tocNoFit);
     document.body.classList.toggle("h-navbar-menu-no-fit", !!menuNoFit);
+
+    if (tocNoFit || menuNoFit) updateNoFitPanelVars();
+    else clearNoFitPanelVars();
 
     if (!menuNoFit) {
       closeNavbarSearchOverlay();

@@ -121,10 +121,10 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
     // Same centered width as menu panel when navbar menu is in overflow mode
     body.h-navbar-menu-no-fit & {
-      left: 50%;
+      left: var(--h-no-fit-panel-left, 0px);
       right: auto;
-      width: min(100%, hvars.$h-container-content-max-width);
-      @include hmixins.h-panel-visibility(translate(-50%, -8px), translate(-50%, 0));
+      width: var(--h-no-fit-panel-width, 100%);
+      @include hmixins.h-panel-visibility(translateY(-8px), translateY(0));
     }
 
     .h-page-toc__header {

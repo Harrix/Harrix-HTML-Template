@@ -247,10 +247,10 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   // Intermediate: same content width as .container (Bulma subtracts 2×$gap from max-width), centered
   @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
     body.h-navbar-menu-no-fit & {
-      left: 50%;
+      left: var(--h-no-fit-panel-left, 0px);
       right: auto;
-      width: min(100%, hvars.$h-container-content-max-width);
-      @include hmixins.h-panel-visibility(translate(-50%, -8px), translate(-50%, 0));
+      width: var(--h-no-fit-panel-width, 100%);
+      @include hmixins.h-panel-visibility(translateY(-8px), translateY(0));
 
     }
   }
