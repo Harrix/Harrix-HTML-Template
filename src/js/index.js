@@ -38,7 +38,7 @@ const MENU_FIT_HYSTERESIS = 40;
 const SPLIT_SIDEBAR_STORAGE_KEY = "h-split-sidebar-width";
 const SPLIT_DEFAULT_WIDTH = 280;
 const SPLIT_MIN_WIDTH = 200;
-const SPLIT_MAX_WIDTH = 600;
+const SPLIT_MAX_VIEWPORT_RATIO = 0.5;
 const SPLIT_SPLITTER_WIDTH = 1;
 
 const lang = document.documentElement.lang;
@@ -484,13 +484,21 @@ function initSplitLayout() {
 
   const root = document.documentElement;
 
+  function getMaxSidebarWidth() {
+    return Math.max(SPLIT_MIN_WIDTH, Math.floor(window.innerWidth * SPLIT_MAX_VIEWPORT_RATIO));
+  }
+
+  function clampSidebarWidth(width) {
+    return Math.max(SPLIT_MIN_WIDTH, Math.min(getMaxSidebarWidth(), width));
+  }
+
   // Restore width from localStorage
   let sidebarWidth = SPLIT_DEFAULT_WIDTH;
   const stored = localStorage.getItem(SPLIT_SIDEBAR_STORAGE_KEY);
   if (stored) {
     const parsed = parseInt(stored, 10);
-    if (!isNaN(parsed) && parsed >= SPLIT_MIN_WIDTH && parsed <= SPLIT_MAX_WIDTH) {
-      sidebarWidth = parsed;
+    if (!isNaN(parsed)) {
+      sidebarWidth = clampSidebarWidth(parsed);
     }
   }
 
@@ -522,6 +530,7 @@ function initSplitLayout() {
     if (vw <= MOBILE_NAV_BREAKPOINT) {
       deactivate();
     } else {
+      sidebarWidth = clampSidebarWidth(sidebarWidth);
       activate();
     }
   }
@@ -553,7 +562,7 @@ function initSplitLayout() {
     const clientX = e.clientX != null ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : startX);
     const dx = clientX - startX;
     let newWidth = startWidth + dx;
-    newWidth = Math.max(SPLIT_MIN_WIDTH, Math.min(SPLIT_MAX_WIDTH, newWidth));
+    newWidth = clampSidebarWidth(newWidth);
     sidebarWidth = newWidth;
     applyCssVars();
     // Trigger fit recalculation
