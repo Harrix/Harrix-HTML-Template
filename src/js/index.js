@@ -24,11 +24,27 @@ const CODE_BLOCK_BOTTOM_THRESHOLD = 80;
 const GALLERY_ID = "1";
 const BACK_TO_TOP_THRESHOLD = 200;
 const BACK_TO_TOP_DURATION_MS = 800;
-/** Скрывать кнопку «наверх» после столько миллисекунд без прокрутки */
 const BACK_TO_TOP_IDLE_MS = 3000;
 const PAGE_TOC_TOGGLE_THRESHOLD = 200;
 
+const CONTAINER_MAX_WIDTH = 1179;
+const SIDEBAR_WIDTH = 280;
+const TOC_MIN_SPACE = 256;
+const MOBILE_NAV_BREAKPOINT = 1024;
+const SIDEBAR_TOC_DESKTOP_MIN_WIDTH = 1680;
+const MENU_FIT_HYSTERESIS = 40;
+
+// Split layout constants
+const SPLIT_SIDEBAR_STORAGE_KEY = "h-split-sidebar-width";
+const SPLIT_DEFAULT_WIDTH = 280;
+const SPLIT_MIN_WIDTH = 200;
+const SPLIT_MAX_WIDTH = 600;
+const SPLIT_SPLITTER_WIDTH = 1;
+
 const lang = document.documentElement.lang;
+
+// Global reference to split layout state
+let splitState = null;
 
 function createUiHistoryLayer(getIsAnyOpen, closeAll) {
   let pushed = false;
@@ -42,14 +58,12 @@ function createUiHistoryLayer(getIsAnyOpen, closeAll) {
   function clearIfPresent() {
     if (!pushed) return;
     pushed = false;
-    // If our UI layer is the current history entry, remove it.
     if (window.history.state && window.history.state.hUiLayer) {
       window.history.back();
     }
   }
 
   window.addEventListener("popstate", () => {
-    // Back button should close an open UI mode first.
     if (getIsAnyOpen()) {
       closeAll();
     }
@@ -82,7 +96,6 @@ function initSearchClearButton(inputEl, clearButtonEl) {
 function createUiModesController() {
   const root = document.documentElement;
 
-  // Desktop/tablet shared
   const docsSidebar = document.getElementById("h-docs-sidebar");
   const docsSidebarBackdrop = document.getElementById("h-docs-sidebar-backdrop");
   const docsSidebarClose = document.getElementById("h-docs-sidebar-close");
@@ -102,7 +115,6 @@ function createUiModesController() {
   const navbarMenuBackdrop = document.getElementById("h-navbar-menu-backdrop");
   const navbarMenuPanelClose = document.getElementById("h-navbar-menu-panel-close");
 
-  // Navbar inline search (desktop)
   const navbarSearchButtonOpen = document.getElementById("h-search-button-open");
   const navbarSearchInput = document.getElementById("h-search-input");
 
@@ -111,7 +123,6 @@ function createUiModesController() {
   const navbarSearchOverlayClose = document.getElementById("h-navbar-search-overlay-close");
   const navbarSearchOverlayInput = document.getElementById("h-navbar-search-overlay-input");
 
-  // Mobile top nav
   const mobileSearchBtn = document.getElementById("h-mobile-top-nav-search");
   const mobileSearchPanel = document.getElementById("h-mobile-top-nav-search-panel");
   const mobileSearchClose = document.getElementById("h-mobile-top-nav-search-close");
@@ -205,7 +216,6 @@ function createUiModesController() {
       }
       case "mobileMenu": {
         if (!mobileMenuPanel) return;
-        // Prevent page scroll behind expanded menu on touch devices.
         root.classList.add("h-is-clipped-touch");
         if (document.body.classList.contains("h-navbar-menu-no-fit") && navbarBurger) {
           navbarBurger.classList.add("is-active");
@@ -310,7 +320,6 @@ function createUiModesController() {
   }
 
   function closeAll() {
-    // Close navbar inline search if open
     if (navbarMenu) navbarMenu.classList.remove("h-has-visible-search-form");
     if (navbarSearchInput) navbarSearchInput.blur();
 
@@ -358,7 +367,6 @@ function createUiModesController() {
     else open(mode);
   }
 
-  // --- Wire common triggers (if present) ---
   if (docsSidebarToggle) docsSidebarToggle.addEventListener("click", () => toggle("docsSidebar"));
   if (navbarSidebarBtn) navbarSidebarBtn.addEventListener("click", () => toggle("docsSidebar"));
   if (docsSidebarClose) docsSidebarClose.addEventListener("click", () => close("docsSidebar"));
@@ -386,7 +394,6 @@ function createUiModesController() {
 
   if (navbarSearchButtonOpen) {
     navbarSearchButtonOpen.addEventListener("click", () => {
-      // Ensure mutual exclusion for inline search too
       closeAll();
     });
   }
@@ -467,11 +474,131 @@ function initExpandedMenuDropdowns() {
   syncExpandedMenuDropdownAria();
 }
 
+// ============================================================================
+// SPLIT LAYOUT — sidebar + splitter + content
+// ============================================================================
+function initSplitLayout() {
+  const sidebar = document.getElementById("h-docs-sidebar");
+  if (!sidebar) return null;
+  if (!document.body.classList.contains("h-has-docs-sidebar")) return null;
+
+  const root = document.documentElement;
+
+  // Restore width from localStorage
+  let sidebarWidth = SPLIT_DEFAULT_WIDTH;
+  const stored = localStorage.getItem(SPLIT_SIDEBAR_STORAGE_KEY);
+  if (stored) {
+    const parsed = parseInt(stored, 10);
+    if (!isNaN(parsed) && parsed >= SPLIT_MIN_WIDTH && parsed <= SPLIT_MAX_WIDTH) {
+      sidebarWidth = parsed;
+    }
+  }
+
+  // Create splitter element
+  const splitter = document.createElement("div");
+  splitter.id = "h-docs-splitter";
+  splitter.className = "h-docs-splitter";
+  splitter.setAttribute("aria-hidden", "true");
+  document.body.appendChild(splitter);
+
+  function applyCssVars() {
+    root.style.setProperty("--h-split-sidebar-w", sidebarWidth + "px");
+    root.style.setProperty("--h-split-offset", (sidebarWidth + SPLIT_SPLITTER_WIDTH) + "px");
+  }
+
+  function activate() {
+    root.classList.add("h-split-active");
+    applyCssVars();
+  }
+
+  function deactivate() {
+    root.classList.remove("h-split-active");
+    root.style.removeProperty("--h-split-sidebar-w");
+    root.style.removeProperty("--h-split-offset");
+  }
+
+  function updateSplitState() {
+    const vw = window.innerWidth;
+    if (vw <= MOBILE_NAV_BREAKPOINT) {
+      deactivate();
+    } else {
+      activate();
+    }
+  }
+
+  // Initial state (the early inline script in header.html already set class + vars,
+  // but we re-apply to ensure consistency with the correct width from localStorage)
+  updateSplitState();
+
+  // --- Drag handling ---
+  let isDragging = false;
+  let startX = 0;
+  let startWidth = 0;
+
+  function onPointerDown(e) {
+    isDragging = true;
+    startX = e.clientX != null ? e.clientX : e.touches[0].clientX;
+    startWidth = sidebarWidth;
+    splitter.classList.add("is-dragging");
+    root.classList.add("h-split-dragging");
+    document.addEventListener("mousemove", onPointerMove, { passive: false });
+    document.addEventListener("mouseup", onPointerUp);
+    document.addEventListener("touchmove", onPointerMove, { passive: false });
+    document.addEventListener("touchend", onPointerUp);
+    e.preventDefault();
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+    const clientX = e.clientX != null ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : startX);
+    const dx = clientX - startX;
+    let newWidth = startWidth + dx;
+    newWidth = Math.max(SPLIT_MIN_WIDTH, Math.min(SPLIT_MAX_WIDTH, newWidth));
+    sidebarWidth = newWidth;
+    applyCssVars();
+    // Trigger fit recalculation
+    if (window.hUpdateSplitFit) window.hUpdateSplitFit();
+  }
+
+  function onPointerUp() {
+    if (!isDragging) return;
+    isDragging = false;
+    splitter.classList.remove("is-dragging");
+    root.classList.remove("h-split-dragging");
+    document.removeEventListener("mousemove", onPointerMove);
+    document.removeEventListener("mouseup", onPointerUp);
+    document.removeEventListener("touchmove", onPointerMove);
+    document.removeEventListener("touchend", onPointerUp);
+    localStorage.setItem(SPLIT_SIDEBAR_STORAGE_KEY, sidebarWidth.toString());
+    // Final fit recalculation
+    if (window.hUpdateSplitFit) window.hUpdateSplitFit();
+  }
+
+  splitter.addEventListener("mousedown", onPointerDown);
+  splitter.addEventListener("touchstart", onPointerDown, { passive: false });
+
+  // Listen for resize to toggle split mode
+  window.addEventListener("resize", updateSplitState);
+
+  const state = {
+    getSidebarWidth: () => sidebarWidth,
+    getOffset: () => sidebarWidth + SPLIT_SPLITTER_WIDTH,
+    isActive: () => root.classList.contains("h-split-active"),
+    update: updateSplitState,
+  };
+
+  return state;
+}
+
+// ============================================================================
+// DOMContentLoaded
+// ============================================================================
 document.addEventListener("DOMContentLoaded", () => {
   initExpandedMenuPanel();
   initExpandedMenuDropdowns();
-  // Single controller to keep UI modes mutually exclusive
   window.hUiModes = createUiModesController();
+  // Split layout MUST be initialized before fit detection
+  splitState = initSplitLayout();
   initNavbar(NAVBAR_HIDE_SCROLL_THRESHOLD);
   initSearchPanel();
   initThemeToggle();
@@ -509,8 +636,6 @@ function initNavbar(scrollThreshold) {
       navbar.classList.remove("h-is-hidden");
       isNavbarHidden = false;
     });
-
-    // Click handling moved to createUiModesController() to guarantee mutual exclusion.
 
     window.addEventListener("scroll", () => {
       lastY = currentY;
@@ -612,15 +737,12 @@ function initSearchPanel() {
       searchInput.blur();
       isSearchOpen = false;
 
-      // If user closed manually while the "open" state is in history,
-      // go back one step so Back button behavior stays intuitive.
       if (!fromPopstate && window.history.state && window.history.state.hSearchOpen) {
         window.history.back();
       }
     }
 
     function openSearch() {
-      // Close any other open UI modes first (sidebar/toc/menu/etc.)
       window.hUiModes?.closeAll?.();
       navbarMenu.classList.add("h-has-visible-search-form");
       focusAfterAnimation(searchInput, SEARCH_ANIMATION_MS);
@@ -628,7 +750,6 @@ function initSearchPanel() {
       syncSearchClearButton();
       isSearchOpen = true;
 
-      // Add a history entry so browser Back closes search first.
       window.history.pushState({ hSearchOpen: true }, "", window.location.href);
     }
 
@@ -649,7 +770,6 @@ function initSearchPanel() {
       if (!isSearchOpen) return;
       if (e.key !== "Escape") return;
       e.preventDefault();
-      // Prefer history back (so user stays on same page and state stack is clean)
       if (window.history.state && window.history.state.hSearchOpen) {
         window.history.back();
       } else {
@@ -1023,8 +1143,6 @@ function initPageToc() {
   if (headings.length === 0) return;
 
   if (tocLabel) tocLabel.textContent = translate("Table of contents");
-  // Trigger labels in intermediate/mobile top navigation:
-  // show current section title instead of static "Table of contents".
   function setTocTriggerLabel(text) {
     const value = (text || "").trim() || translate("Table of contents");
     if (navbarTocTriggerLabel) navbarTocTriggerLabel.textContent = value;
@@ -1091,8 +1209,6 @@ function initPageToc() {
 
   if (!toggleBtn) return;
 
-  // Opening/closing handled by createUiModesController() for mutual exclusion.
-  // When a TOC link is clicked, close it by clicking the close button if present.
   tocList.querySelectorAll("a").forEach((a) => {
     a.addEventListener("click", () => {
       if (closeBtn) closeBtn.click();
@@ -1108,13 +1224,6 @@ function initPageToc() {
     }
   });
 }
-
-const CONTAINER_MAX_WIDTH = 1179;
-const SIDEBAR_WIDTH = 280;
-const TOC_MIN_SPACE = 256;
-const MOBILE_NAV_BREAKPOINT = 1024;
-const SIDEBAR_TOC_DESKTOP_MIN_WIDTH = 1680;
-const MENU_FIT_HYSTERESIS = 40;
 
 function initNavbarSidebarTocFit() {
   const sidebar = document.getElementById("h-docs-sidebar");
@@ -1139,7 +1248,6 @@ function initNavbarSidebarTocFit() {
   const NO_FIT_PANEL_LEFT_VAR = "--h-no-fit-panel-left";
   const NO_FIT_PANEL_WIDTH_VAR = "--h-no-fit-panel-width";
 
-  // Open/close wiring is handled by createUiModesController().
   if (searchOverlaySubmit) {
     searchOverlaySubmit.addEventListener("click", () => {
       const formEl = document.getElementById("h-search-form")?.querySelector("form");
@@ -1150,7 +1258,6 @@ function initNavbarSidebarTocFit() {
     initSearchClearButton(searchOverlayInput, searchOverlayClear);
     searchOverlayInput.placeholder = translate("Search…");
     searchOverlayInput.addEventListener("keydown", (e) => {
-      // Escape is handled globally; keep Enter behavior here.
       if (e.key === "Enter") {
         const formEl = document.getElementById("h-search-form")?.querySelector("form");
         if (formEl) formEl.requestSubmit();
@@ -1190,6 +1297,8 @@ function initNavbarSidebarTocFit() {
 
   function updateFit() {
     const vw = window.innerWidth;
+    const isSplitActive = splitState && splitState.isActive();
+
     if (vw <= MOBILE_NAV_BREAKPOINT) {
       closeNavbarSearchOverlay();
       document.body.classList.remove("h-navbar-sidebar-overlaps", "h-navbar-toc-no-fit", "h-navbar-menu-no-fit");
@@ -1214,6 +1323,85 @@ function initNavbarSidebarTocFit() {
       return;
     }
 
+    // ========================================================================
+    // SPLIT MODE — sidebar exists and visible; fit calculations use available
+    // width after the sidebar + splitter.
+    // ========================================================================
+    if (isSplitActive) {
+      const splitOffset = splitState.getOffset();
+      const availableWidth = vw - splitOffset;
+
+      // Sidebar is always visible in split mode — no overlaps concept
+      document.body.classList.remove("h-navbar-sidebar-overlaps");
+
+      // TOC fit: check if there's enough space to the right of the container
+      const rightSpace = availableWidth - CONTAINER_MAX_WIDTH;
+      const tocNoFit = tocList && tocList.children.length > 0 && rightSpace < TOC_MIN_SPACE;
+
+      // Menu fit: check scrollWidth overflow (same as non-split)
+      const row1 = document.querySelector(".h-navbar__row1");
+      const navbarMenu = document.getElementById("h-navbar-menu");
+      let menuNoFit = false;
+      if (row1 && navbarMenu) {
+        const overflow = row1.scrollWidth - row1.clientWidth;
+        menuNoFit = menuWasNoFit ? overflow > -MENU_FIT_HYSTERESIS : overflow > 1;
+      }
+      menuWasNoFit = menuNoFit;
+
+      document.body.classList.toggle("h-navbar-toc-no-fit", !!tocNoFit);
+      document.body.classList.toggle("h-navbar-menu-no-fit", !!menuNoFit);
+
+      if (tocNoFit || menuNoFit) updateNoFitPanelVars();
+      else clearNoFitPanelVars();
+
+      if (!menuNoFit) closeNavbarSearchOverlay();
+
+      // Sidebar button: always hidden in split mode
+      if (navbarSidebarBtn) {
+        navbarSidebarBtn.setAttribute("aria-hidden", "true");
+        navbarSidebarBtn.setAttribute("hidden", "");
+        navbarSidebarBtn.tabIndex = -1;
+      }
+
+      // TOC row: show when TOC doesn't fit
+      if (navbarTocRow) {
+        if (tocNoFit) {
+          navbarTocRow.removeAttribute("aria-hidden");
+          navbarTocRow.hidden = false;
+        } else {
+          navbarTocRow.setAttribute("aria-hidden", "true");
+          navbarTocRow.hidden = true;
+        }
+      }
+
+      // Search button: show when menu doesn't fit
+      if (navbarSearchBtn) {
+        if (menuNoFit) {
+          navbarSearchBtn.removeAttribute("aria-hidden");
+          navbarSearchBtn.removeAttribute("hidden");
+        } else {
+          navbarSearchBtn.setAttribute("aria-hidden", "true");
+          navbarSearchBtn.setAttribute("hidden", "");
+        }
+      }
+
+      // Menu button: show when menu doesn't fit
+      if (navbarMenuBtn) {
+        if (menuNoFit) {
+          navbarMenuBtn.removeAttribute("aria-hidden");
+          navbarMenuBtn.removeAttribute("hidden");
+        } else {
+          navbarMenuBtn.setAttribute("aria-hidden", "true");
+          navbarMenuBtn.setAttribute("hidden", "");
+        }
+      }
+
+      return;
+    }
+
+    // ========================================================================
+    // NORMAL MODE (no split) — original logic
+    // ========================================================================
     const contentLeft = (vw - CONTAINER_MAX_WIDTH) / 2;
     const sidebarOverlaps = sidebar && contentLeft < SIDEBAR_WIDTH;
     const tocNoFit = tocList && tocList.children.length > 0 && contentLeft < TOC_MIN_SPACE;
@@ -1284,6 +1472,9 @@ function initNavbarSidebarTocFit() {
   updateFit();
   document.documentElement.classList.remove("h-fit-pending");
 
+  // Expose updateFit for splitter drag callbacks
+  window.hUpdateSplitFit = updateFit;
+
   let resizeRafId = 0;
   let resizeTimer = 0;
   window.addEventListener("resize", () => {
@@ -1308,7 +1499,6 @@ function initDocsSidebar() {
 
   const sidebarHeaderLabel = document.getElementById("h-docs-sidebar-header-label");
   if (sidebarHeaderLabel) sidebarHeaderLabel.textContent = translate("Documentation");
-  // Open/close handled by createUiModesController(); keep label translation here.
 }
 
 function initMobileTopNav() {
@@ -1348,13 +1538,10 @@ function initMobileTopNav() {
     btnSidebar.addEventListener("click", () => sidebarToggle.click());
   }
 
-  // Open/close and history handled by createUiModesController().
-
   if (searchPanel && searchInput) {
     initSearchClearButton(searchInput, searchClear);
     if (searchInput) searchInput.placeholder = translate("Search…");
     searchInput.addEventListener("keydown", (e) => {
-      // Escape handled globally; keep Enter behavior here.
       if (e.key === "Enter") {
         const formEl = document.getElementById("h-search-form")?.querySelector("form");
         if (formEl) formEl.requestSubmit();
@@ -1419,7 +1606,6 @@ function initMobileTopNav() {
       );
     }
 
-    // Open/close is handled by createUiModesController().
     dropdownCloseBtn.addEventListener("click", () => {
       const backdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
       if (backdrop) backdrop.click();
@@ -1492,20 +1678,17 @@ function initExpandedMenuPanel() {
   }
   clone.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
   clone.classList.add("navbar-menu");
-  // Bulma hover dropdown rules fight stacked overlay layout; toggle is click-only here.
   clone.querySelectorAll(".navbar-item.has-dropdown.is-hoverable").forEach((el) => {
     el.classList.remove("is-hoverable");
   });
   menuPanel.appendChild(clone);
 
-  // Open/close is handled by createUiModesController().
   menuCloseBtn.addEventListener("click", () => {
     const backdrop = document.getElementById("h-mobile-top-nav-menu-backdrop");
     if (backdrop) backdrop.click();
     else menuPanel.classList.remove("is-open");
   });
   menuPanel.querySelectorAll("a[href]").forEach((a) => {
-    // Dropdown parent row toggles submenu; do not close the whole panel (see initExpandedMenuDropdowns).
     if (a.matches(".navbar-item.has-dropdown > .navbar-link")) return;
     a.addEventListener("click", () => {
       const backdrop = document.getElementById("h-mobile-top-nav-menu-backdrop");

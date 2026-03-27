@@ -28,6 +28,17 @@
     <script>
       document.documentElement.classList.add("h-fit-pending");
     </script>
+    <script>
+      (function () {
+        if (window.innerWidth <= 1024) return;
+        var w = localStorage.getItem("h-split-sidebar-width");
+        var n = w ? Math.max(200, Math.min(600, parseInt(w, 10))) : 280;
+        var d = document.documentElement;
+        d.style.setProperty("--h-split-sidebar-w", n + "px");
+        d.style.setProperty("--h-split-offset", n + 1 + "px");
+        d.classList.add("h-split-active");
+      })();
+    </script>
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/../katex/katex.css" rel="stylesheet" />
     <link href="css/../charts/charts.css" rel="stylesheet" />

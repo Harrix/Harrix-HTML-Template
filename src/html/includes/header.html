@@ -28,6 +28,19 @@
       })();
     </script>
     <script>document.documentElement.classList.add("h-fit-pending");</script>
+    <% if (typeof hasDocsSidebar !== 'undefined' && hasDocsSidebar) { %>
+    <script>
+      (function () {
+        if (window.innerWidth <= 1024) return;
+        var w = localStorage.getItem("h-split-sidebar-width");
+        var n = w ? Math.max(200, Math.min(600, parseInt(w, 10))) : 280;
+        var d = document.documentElement;
+        d.style.setProperty("--h-split-sidebar-w", n + "px");
+        d.style.setProperty("--h-split-offset", (n + 1) + "px");
+        d.classList.add("h-split-active");
+      })();
+    </script>
+    <% } %>
   </head>
 
   <body class="has-navbar-fixed-top<%= typeof mobileNavTop !== 'undefined' && mobileNavTop ? ' h-mobile-nav-top' : '' %><%= typeof hasDocsSidebar !== 'undefined' && hasDocsSidebar ? ' h-has-docs-sidebar' : '' %>">

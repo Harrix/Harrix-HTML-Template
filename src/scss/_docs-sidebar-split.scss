@@ -1,0 +1,478 @@
+@use "bulma/sass/utilities/initial-variables" as initial-variables;
+@use "theme-dark-variables" as dark;
+@use "variables" as hvars;
+@use "mixins" as hmixins;
+@use "expanded-menu-panel" as expanded-menu;
+
+// ============================================================================
+// Split layout: sidebar fixed to the left edge of the viewport, a draggable
+// vertical splitter, then the rest of the page (navbar + content + footer).
+// Active only when `html.h-split-active` is set (by JS when a docs sidebar
+// exists AND viewport > mobile breakpoint).
+// ============================================================================
+
+$h-splitter-width: 1px;
+$h-splitter-hover-width: 3px;
+
+// ---------------------------------------------------------------------------
+// Prevent text selection & iframe stealing pointer during splitter drag
+// ---------------------------------------------------------------------------
+html.h-split-dragging {
+  cursor: col-resize !important;
+
+  *,
+  *::before,
+  *::after {
+    cursor: col-resize !important;
+  }
+
+  body {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+  }
+
+  iframe {
+    pointer-events: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Suppress transitions during splitter drag (prevents lag)
+// ---------------------------------------------------------------------------
+html.h-split-dragging {
+  .navbar,
+  .navbar-menu,
+  .h-docs-sidebar,
+  .h-page-toc,
+  .h-page-toc-toggle,
+  .footer,
+  main {
+    transition: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Splitter element (created by JS, appended to body)
+// ---------------------------------------------------------------------------
+.h-docs-splitter {
+  display: none;
+}
+
+html.h-split-active .h-docs-splitter {
+  display: block;
+  position: fixed;
+  left: var(--h-split-sidebar-w, 280px);
+  top: 0;
+  bottom: 0;
+  width: $h-splitter-width;
+  background-color: #e0e0e0;
+  z-index: 45;
+  cursor: col-resize;
+  transition: background-color 0.15s ease;
+
+  // Wider invisible hit area for easier grabbing
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -4px;
+    right: -4px;
+  }
+
+  &:hover,
+  &.is-dragging {
+    background-color: hvars.$h-primary;
+    // Visual indicator: slightly wider line
+    width: $h-splitter-hover-width;
+    margin-left: -1px; // keep position stable
+  }
+}
+
+// ---------------------------------------------------------------------------
+// SIDEBAR — full-height, fixed to the left edge
+// ---------------------------------------------------------------------------
+html.h-split-active {
+  .h-docs-sidebar {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: var(--h-split-sidebar-w, 280px) !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    z-index: 44;
+    transform: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding-top: 1rem;
+    overflow-y: auto;
+
+    .h-docs-sidebar__header {
+      display: none !important;
+    }
+  }
+
+  // Hide sidebar toggle button & backdrop — sidebar is always visible
+  .h-docs-sidebar-toggle {
+    display: none !important;
+  }
+
+  .h-docs-sidebar-backdrop {
+    display: none !important;
+  }
+
+  // Hide navbar sidebar button — sidebar is always visible
+  .navbar .h-navbar-sidebar-btn {
+    display: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// NAVBAR — starts after splitter, left-aligned
+// ---------------------------------------------------------------------------
+html.h-split-active {
+  .navbar.is-fixed-top {
+    left: var(--h-split-offset, 281px);
+    right: 0;
+    width: auto;
+  }
+
+  .navbar > .container {
+    margin-left: 0;
+    margin-right: auto;
+    max-width: hvars.$h-container-max-width;
+  }
+
+  // Two-row navbar when TOC doesn't fit
+  &:not(.h-split-toc-fits) .navbar,
+  body.h-navbar-toc-no-fit .navbar {
+    min-height: 3rem;
+    height: auto;
+
+    > .container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// NAVBAR TOC ROW — show when TOC doesn't fit in split mode
+// ---------------------------------------------------------------------------
+html.h-split-active {
+  .navbar .h-navbar-toc-row {
+    display: none;
+    flex-shrink: 0;
+    width: 100%;
+    border-top: 1px solid initial-variables.$grey-lighter;
+    min-height: 2.5rem;
+  }
+
+  body.h-navbar-toc-no-fit .navbar .h-navbar-toc-row {
+    display: block;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// NAVBAR MENU NO-FIT — search & burger buttons, menu panel
+// ---------------------------------------------------------------------------
+html.h-split-active {
+  .navbar .h-navbar-search-btn {
+    display: none;
+  }
+
+  body.h-navbar-menu-no-fit .navbar .h-navbar-search-btn {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .navbar .h-navbar-menu-btn {
+    display: none;
+  }
+
+  body.h-navbar-menu-no-fit .navbar .h-navbar-menu-btn {
+    display: flex;
+    margin-left: 0.25rem;
+  }
+
+  // Navbar search overlay (shown in no-fit when user taps search)
+  .navbar .h-navbar-search-overlay {
+    display: none;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid initial-variables.$grey-lighter;
+
+    &.is-open {
+      display: block;
+    }
+  }
+
+  // Menu panel header (visible when navbar-menu is shown as a panel)
+  .navbar .h-navbar-menu-panel-header {
+    display: none;
+  }
+
+  body.h-navbar-menu-no-fit .navbar .h-navbar-menu-panel-header {
+    // Shown via JS removing [hidden]
+  }
+
+  // Navbar menu backdrop
+  .navbar .h-navbar-menu-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 3rem;
+    background-color: transparent;
+    z-index: 50;
+
+    &.is-active {
+      display: block;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// MOBILE TOP-NAV MENU PANEL — used when menu doesn't fit (in split mode, the
+// burger opens this panel even above the "intermediate" media-query range)
+// ---------------------------------------------------------------------------
+html.h-split-active {
+  // Ensure the panel is positioned to the right of the splitter
+  .h-mobile-top-nav__menu-panel {
+    left: var(--h-no-fit-panel-left, var(--h-split-offset, 0px));
+    right: auto;
+    width: var(--h-no-fit-panel-width, calc(100% - var(--h-split-offset, 0px)));
+  }
+
+  .h-mobile-top-nav__menu-backdrop {
+    left: var(--h-split-offset, 0px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// MAIN CONTENT — offset for sidebar + splitter, left-aligned
+// ---------------------------------------------------------------------------
+html.h-split-active {
+  main {
+    margin-left: var(--h-split-offset, 281px);
+  }
+
+  // All containers inside main: left-aligned
+  main .container {
+    margin-left: 0;
+    margin-right: auto;
+    max-width: hvars.$h-container-max-width;
+  }
+
+  // The .h-docs-layout wrapper: just a simple block, sidebar is pulled out
+  .h-docs-layout {
+    display: block;
+  }
+
+  .h-docs-body {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// FOOTER — offset for sidebar + splitter
+// ---------------------------------------------------------------------------
+html.h-split-active {
+  .footer {
+    margin-left: var(--h-split-offset, 281px);
+  }
+
+  .footer > .container {
+    margin-left: 0;
+    margin-right: auto;
+    max-width: hvars.$h-container-max-width;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// BACK-TO-TOP — stays on the right side, no offset needed
+// (position: fixed; right: ...) — already correct
+// ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// PAGE TOC — when it FITS: fixed to the right of the content column
+// ---------------------------------------------------------------------------
+html.h-split-active body:not(.h-navbar-toc-no-fit) {
+  .h-page-toc {
+    position: fixed;
+    top: 4.5rem;
+    left: calc(
+      var(--h-split-offset, 281px) + #{hvars.$h-container-max-width} + 1rem
+    );
+    right: auto;
+    bottom: auto;
+    width: min(
+      16rem,
+      calc(
+        100vw - var(--h-split-offset, 281px) - #{hvars.$h-container-max-width} -
+          2rem
+      )
+    );
+    max-width: 16rem;
+    max-height: calc(100vh - 5rem);
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    transform: none;
+    visibility: visible;
+    transition: none;
+    overflow-y: auto;
+
+    .h-page-toc__header .h-page-toc__close {
+      display: none;
+    }
+  }
+
+  // Hide toggle FAB — TOC is always visible
+  .h-page-toc-toggle {
+    display: none !important;
+  }
+
+  // Hide backdrop
+  .h-page-toc-backdrop {
+    display: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// PAGE TOC — when it DOESN'T FIT: dropdown panel
+// ---------------------------------------------------------------------------
+html.h-split-active body.h-navbar-toc-no-fit {
+  .h-page-toc {
+    position: fixed;
+    // When menu also doesn't fit → use JS-calculated panel vars
+    left: var(--h-no-fit-panel-left, var(--h-split-offset, 0px));
+    right: auto;
+    top: var(--h-expanded-menu-top, 3rem);
+    bottom: auto;
+    width: var(--h-no-fit-panel-width, calc(100% - var(--h-split-offset, 0px)));
+    max-height: calc(
+      100vh - var(--h-expanded-menu-top, 3rem) - env(
+          safe-area-inset-bottom,
+          0px
+        )
+    );
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    background-color: #fff;
+    border: 1px solid initial-variables.$grey-lighter;
+    border-top: none;
+    border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
+    box-shadow: hvars.$h-shadow-elevated;
+    padding: 0;
+    z-index: 40;
+    @include hmixins.h-panel-visibility(translateY(-8px), translateY(0));
+
+    .h-page-toc__header {
+      padding: 1rem 1rem 0.5rem;
+      margin-bottom: 0;
+    }
+
+    .menu-label {
+      margin: 0;
+    }
+
+    .menu-list {
+      padding: 0 1rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .menu-list a {
+      padding: 0.35em 0;
+      border-left: none;
+
+      &.is-active {
+        border-left-color: transparent;
+      }
+    }
+  }
+
+  // Hide toggle FAB — TOC trigger is in the navbar row2
+  .h-page-toc-toggle {
+    display: none !important;
+  }
+
+  // Backdrop should not cover the sidebar
+  .h-page-toc-backdrop {
+    left: var(--h-split-offset, 0px);
+    top: var(--h-expanded-menu-top, 3rem);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// --h-expanded-menu-top for split mode (override mobile-top-nav defaults)
+// ---------------------------------------------------------------------------
+html.h-split-active body {
+  --h-expanded-menu-top: 3rem;
+}
+
+html.h-split-active body.h-navbar-toc-no-fit {
+  --h-expanded-menu-top: 5.5rem;
+}
+
+// ---------------------------------------------------------------------------
+// DARK THEME overrides for split-specific elements
+// ---------------------------------------------------------------------------
+[data-theme="dark"] {
+  html.h-split-active & {
+    .h-docs-splitter {
+      background-color: dark.$h-dark-border;
+
+      &:hover,
+      &.is-dragging {
+        background-color: hvars.$h-primary;
+      }
+    }
+
+    .h-docs-sidebar {
+      background-color: dark.$h-dark-surface;
+      border-right: none;
+    }
+  }
+}
+
+// Also handle data-theme on html (the attribute is on <html>)
+html[data-theme="dark"] {
+  &.h-split-active .h-docs-splitter {
+    background-color: dark.$h-dark-border;
+
+    &:hover,
+    &.is-dragging {
+      background-color: hvars.$h-primary;
+    }
+  }
+
+  &.h-split-active .h-docs-sidebar {
+    background-color: dark.$h-dark-surface;
+  }
+
+  &.h-split-active .navbar .h-navbar-search-overlay {
+    background-color: dark.$h-dark-surface;
+    border-top-color: dark.$h-dark-border;
+  }
+
+  &.h-split-active .navbar .h-navbar-toc-row {
+    border-top-color: dark.$h-dark-border;
+  }
+
+  &.h-split-active body.h-navbar-toc-no-fit .h-page-toc {
+    background-color: dark.$h-dark-surface-elevated;
+    border-color: dark.$h-dark-border;
+    box-shadow: hvars.$h-shadow-elevated-dark;
+  }
+
+  &.h-split-active body:not(.h-navbar-toc-no-fit) .h-page-toc {
+    background-color: transparent;
+  }
+}
