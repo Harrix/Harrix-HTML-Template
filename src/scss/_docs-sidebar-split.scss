@@ -136,12 +136,31 @@ html.h-split-active {
     left: var(--h-split-offset, 281px);
     right: 0;
     width: auto;
+    // Same horizontal inset as main article `.section` (not on `.container`):
+    // padding on the bar keeps inner `.container` at full 1179px content width
+    // like `section` padding + inner `.container`, and avoids false menu overflow.
+    padding-inline: hvars.$h-section-padding-x-desktop;
   }
 
   .navbar > .container {
     margin-left: 0;
     margin-right: auto;
     max-width: hvars.$h-container-max-width;
+  }
+
+  // Bulma pulls .navbar-brand / .navbar-menu inward with negative margins for
+  // full-width nav; reset so they align with the padded container.
+  .navbar > .container .navbar-brand {
+    margin-inline-start: 0;
+  }
+
+  .navbar > .container .navbar-menu {
+    margin-inline-end: 0;
+  }
+
+  // Logo uses .navbar-item padding (12px); with container inset it is redundant.
+  .navbar > .container .navbar-brand #h-logo.navbar-item {
+    padding-inline: 0;
   }
 
   // Two-row navbar when TOC doesn't fit

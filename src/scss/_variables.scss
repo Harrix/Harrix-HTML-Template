@@ -20,6 +20,8 @@ $h-form-min-width: 8.125rem;
 $h-container-max-width: 1179px;
 // Matches Bulma .container width: min(breakpoint, $container-max-width) - 2 * $gap (see bulma/sass/layout/container.scss)
 $h-container-content-max-width: $h-container-max-width - 64px;
+// Same as style.scss $section-padding-desktop (Bulma .section horizontal padding on desktop)
+$h-section-padding-x-desktop: 3rem;
 // Viewport width at which top nav becomes two-line (mobile)
 $h-mobile-nav-breakpoint: 1024px;
 // Min viewport width for sidebar + content + TOC to fit; below this show sidebar/TOC triggers in navbar
