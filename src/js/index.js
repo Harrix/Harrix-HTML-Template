@@ -1347,13 +1347,33 @@ function initNavbarSidebarTocFit() {
       const rightSpace = availableWidth - CONTAINER_MAX_WIDTH;
       const tocNoFit = tocList && tocList.children.length > 0 && rightSpace < TOC_MIN_SPACE;
 
-      // Menu fit: check scrollWidth overflow (same as non-split)
+      // Menu fit: compare .navbar-end intrinsic width to space beside the brand.
+      // (row1 overflow is unreliable once inline #h-navbar-menu is display:none in CSS.)
       const row1 = document.querySelector(".h-navbar__row1");
       const navbarMenu = document.getElementById("h-navbar-menu");
       let menuNoFit = false;
       if (row1 && navbarMenu) {
-        const overflow = row1.scrollWidth - row1.clientWidth;
-        menuNoFit = menuWasNoFit ? overflow > -MENU_FIT_HYSTERESIS : overflow > 1;
+        const navbarEnd = navbarMenu.querySelector(".navbar-end");
+        if (navbarEnd && row1.clientWidth > 0) {
+          navbarMenu.style.setProperty("display", "flex", "important");
+          void navbarMenu.offsetWidth;
+          const menuNeed = navbarEnd.scrollWidth;
+          navbarMenu.style.removeProperty("display");
+          const rowRect = row1.getBoundingClientRect();
+          const brand = row1.querySelector(".navbar-brand");
+          let leftUsed = 0;
+          if (brand) {
+            const br = brand.getBoundingClientRect();
+            leftUsed = br.right - rowRect.left;
+          }
+          const sidebarBtn = row1.querySelector(".h-navbar-sidebar-btn");
+          if (sidebarBtn && window.getComputedStyle(sidebarBtn).display !== "none") {
+            leftUsed += sidebarBtn.getBoundingClientRect().width;
+          }
+          const availableForMenu = rowRect.width - leftUsed;
+          const overflowPx = menuNeed - availableForMenu;
+          menuNoFit = menuWasNoFit ? overflowPx > -MENU_FIT_HYSTERESIS : overflowPx > 1;
+        }
       }
       menuWasNoFit = menuNoFit;
 

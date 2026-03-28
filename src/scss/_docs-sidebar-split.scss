@@ -197,22 +197,27 @@ html.h-split-active {
 // ---------------------------------------------------------------------------
 // NAVBAR MENU NO-FIT — search & burger buttons, menu panel
 // ---------------------------------------------------------------------------
+// When menu does not fit, burger opens #h-mobile-top-nav-menu-panel (clone).
+// Hide the inline #h-navbar-menu in split mode at any viewport width — the
+// "intermediate" panel styles in _header.scss only apply below 1680px, which
+// left the bar showing both the full menu and the icon buttons on wide screens.
 html.h-split-active {
-  .navbar .h-navbar-search-btn {
-    display: none;
+  body:not(.h-navbar-menu-no-fit) .navbar .h-navbar-search-btn,
+  body:not(.h-navbar-menu-no-fit) .navbar .h-navbar-menu-btn {
+    display: none !important;
+  }
+
+  body.h-navbar-menu-no-fit .navbar #h-navbar-menu.navbar-menu {
+    display: none !important;
   }
 
   body.h-navbar-menu-no-fit .navbar .h-navbar-search-btn {
-    display: flex;
+    display: flex !important;
     margin-left: auto;
   }
 
-  .navbar .h-navbar-menu-btn {
-    display: none;
-  }
-
   body.h-navbar-menu-no-fit .navbar .h-navbar-menu-btn {
-    display: flex;
+    display: flex !important;
     margin-left: 0.25rem;
   }
 
