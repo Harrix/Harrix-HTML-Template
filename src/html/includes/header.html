@@ -35,8 +35,15 @@
         var w = localStorage.getItem("h-split-sidebar-width");
         var n = w ? Math.max(200, Math.min(600, parseInt(w, 10))) : 280;
         var d = document.documentElement;
+        var vw = window.innerWidth;
+        var offset = n + 1;
+        var trigger = 2500;
+        var band = offset + 1179 + 16 + 256;
+        var centerInset = vw <= trigger ? 0 : Math.max(0, (vw - band) / 2);
+        d.style.setProperty("--h-split-viewport-px", vw + "px");
         d.style.setProperty("--h-split-sidebar-w", n + "px");
-        d.style.setProperty("--h-split-offset", (n + 1) + "px");
+        d.style.setProperty("--h-split-offset", offset + "px");
+        d.style.setProperty("--h-split-center-inset", centerInset + "px");
         d.classList.add("h-split-active");
       })();
     </script>

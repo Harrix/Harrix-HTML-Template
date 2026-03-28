@@ -40,6 +40,21 @@ const SPLIT_DEFAULT_WIDTH = 280;
 const SPLIT_MIN_WIDTH = 200;
 const SPLIT_MAX_VIEWPORT_RATIO = 0.5;
 const SPLIT_SPLITTER_WIDTH = 1;
+/** Horizontal centering runs only when viewport is wider than this (px). */
+const SPLIT_LAYOUT_CENTER_TRIGGER_VW = 2500;
+/** Matches split SCSS gap before TOC (`+ 1rem`); px fallback for band width. */
+const SPLIT_LAYOUT_CENTER_TOC_GAP_PX = 16;
+
+function getSplitLayoutNaturalBandWidthPx(splitOffsetPx) {
+  return splitOffsetPx + CONTAINER_MAX_WIDTH + SPLIT_LAYOUT_CENTER_TOC_GAP_PX + TOC_MIN_SPACE;
+}
+
+/** Centers sidebar + content + TOC as one band: inset = max(0, (vw - band) / 2). */
+function getSplitLayoutCenterInsetPx(vw, splitOffsetPx) {
+  if (vw <= SPLIT_LAYOUT_CENTER_TRIGGER_VW) return 0;
+  const band = getSplitLayoutNaturalBandWidthPx(splitOffsetPx);
+  return Math.max(0, (vw - band) / 2);
+}
 
 // =========================================================================
 // FIX 2: TOC scroll — block navbar auto-hide during programmatic scroll
@@ -584,8 +599,12 @@ function initSplitLayout() {
   document.body.appendChild(splitter);
 
   function applyCssVars() {
+    const vw = window.innerWidth;
+    const offsetPx = sidebarWidth + SPLIT_SPLITTER_WIDTH;
     root.style.setProperty("--h-split-sidebar-w", sidebarWidth + "px");
-    root.style.setProperty("--h-split-offset", (sidebarWidth + SPLIT_SPLITTER_WIDTH) + "px");
+    root.style.setProperty("--h-split-offset", offsetPx + "px");
+    root.style.setProperty("--h-split-viewport-px", vw + "px");
+    root.style.setProperty("--h-split-center-inset", getSplitLayoutCenterInsetPx(vw, offsetPx) + "px");
   }
 
   function activate() {
@@ -597,6 +616,8 @@ function initSplitLayout() {
     root.classList.remove("h-split-active");
     root.style.removeProperty("--h-split-sidebar-w");
     root.style.removeProperty("--h-split-offset");
+    root.style.removeProperty("--h-split-viewport-px");
+    root.style.removeProperty("--h-split-center-inset");
   }
 
   function updateSplitState() {
@@ -1417,7 +1438,8 @@ function initNavbarSidebarTocFit() {
     // ========================================================================
     if (isSplitActive) {
       const splitOffset = splitState.getOffset();
-      const availableWidth = vw - splitOffset;
+      const centerInset = getSplitLayoutCenterInsetPx(vw, splitOffset);
+      const availableWidth = vw - splitOffset - 2 * centerInset;
 
       document.body.classList.remove("h-navbar-sidebar-overlaps");
 

@@ -9,6 +9,9 @@
 // vertical splitter, then the rest of the page (navbar + content + footer).
 // Active only when `html.h-split-active` is set (by JS when a docs sidebar
 // exists AND viewport > mobile breakpoint).
+// When viewport is wider than 2500px, `--h-split-center-inset` centers the
+// natural split band (sidebar + article + TOC). Set in JS; `--h-split-viewport-px`
+// matches innerWidth so calcs stay aligned with fixed `left` (avoids 100vw vs scrollbar).
 // ============================================================================
 
 $h-splitter-width: 1px;
@@ -61,7 +64,7 @@ html.h-split-dragging {
 html.h-split-active .h-docs-splitter {
   display: block;
   position: fixed;
-  left: var(--h-split-sidebar-w, 280px);
+  left: calc(var(--h-split-center-inset, 0px) + var(--h-split-sidebar-w, 280px));
   top: 0;
   bottom: 0;
   width: $h-splitter-width;
@@ -90,12 +93,12 @@ html.h-split-active .h-docs-splitter {
 }
 
 // ---------------------------------------------------------------------------
-// SIDEBAR — full-height, fixed to the left edge
+// SIDEBAR — full-height, fixed (inset from left; ultrawide: centered band)
 // ---------------------------------------------------------------------------
 html.h-split-active {
   .h-docs-sidebar {
     position: fixed !important;
-    left: 0 !important;
+    left: var(--h-split-center-inset, 0px) !important;
     top: 0 !important;
     bottom: 0 !important;
     width: var(--h-split-sidebar-w, 280px) !important;
@@ -133,8 +136,8 @@ html.h-split-active {
 // ---------------------------------------------------------------------------
 html.h-split-active {
   .navbar.is-fixed-top {
-    left: var(--h-split-offset, 281px);
-    right: 0;
+    left: calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 281px));
+    right: var(--h-split-center-inset, 0px);
     width: auto;
     // Same horizontal inset as main article `.section` (not on `.container`):
     // padding on the bar keeps inner `.container` at full 1179px content width
@@ -248,6 +251,8 @@ html.h-split-active {
     position: fixed;
     inset: 0;
     top: 3rem;
+    left: calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 0px));
+    right: var(--h-split-center-inset, 0px);
     background-color: transparent;
     z-index: 50;
 
@@ -264,13 +269,23 @@ html.h-split-active {
 html.h-split-active {
   // Ensure the panel is positioned to the right of the splitter
   .h-mobile-top-nav__menu-panel {
-    left: var(--h-no-fit-panel-left, var(--h-split-offset, 0px));
+    left: var(
+      --h-no-fit-panel-left,
+      calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 0px))
+    );
     right: auto;
-    width: var(--h-no-fit-panel-width, calc(100% - var(--h-split-offset, 0px)));
+    width: var(
+      --h-no-fit-panel-width,
+      calc(
+        var(--h-split-viewport-px, 100vw) - 2 * var(--h-split-center-inset, 0px) -
+          var(--h-split-offset, 0px)
+      )
+    );
   }
 
   .h-mobile-top-nav__menu-backdrop {
-    left: var(--h-split-offset, 0px);
+    left: calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 0px));
+    right: var(--h-split-center-inset, 0px);
   }
 }
 
@@ -279,7 +294,8 @@ html.h-split-active {
 // ---------------------------------------------------------------------------
 html.h-split-active {
   main {
-    margin-left: var(--h-split-offset, 281px);
+    margin-left: calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 281px));
+    margin-right: var(--h-split-center-inset, 0px);
   }
 
   // All containers inside main: left-aligned
@@ -305,7 +321,8 @@ html.h-split-active {
 // ---------------------------------------------------------------------------
 html.h-split-active {
   .footer {
-    margin-left: var(--h-split-offset, 281px);
+    margin-left: calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 281px));
+    margin-right: var(--h-split-center-inset, 0px);
   }
 
   .footer > .container {
@@ -328,15 +345,15 @@ html.h-split-active body:not(.h-navbar-toc-no-fit) {
     position: fixed;
     top: 4.5rem;
     left: calc(
-      var(--h-split-offset, 281px) + #{hvars.$h-container-max-width} + 1rem
+      var(--h-split-center-inset, 0px) + var(--h-split-offset, 281px) + #{hvars.$h-container-max-width} + 1rem
     );
     right: auto;
     bottom: auto;
     width: min(
       16rem,
       calc(
-        100vw - var(--h-split-offset, 281px) - #{hvars.$h-container-max-width} -
-          2rem
+        var(--h-split-viewport-px, 100vw) - 2 * var(--h-split-center-inset, 0px) -
+          var(--h-split-offset, 281px) - #{hvars.$h-container-max-width} - 2rem
       )
     );
     max-width: 16rem;
@@ -374,11 +391,20 @@ html.h-split-active body.h-navbar-toc-no-fit {
   .h-page-toc {
     position: fixed;
     // When menu also doesn't fit → use JS-calculated panel vars
-    left: var(--h-no-fit-panel-left, var(--h-split-offset, 0px));
+    left: var(
+      --h-no-fit-panel-left,
+      calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 0px))
+    );
     right: auto;
     top: var(--h-expanded-menu-top, 3rem);
     bottom: auto;
-    width: var(--h-no-fit-panel-width, calc(100% - var(--h-split-offset, 0px)));
+    width: var(
+      --h-no-fit-panel-width,
+      calc(
+        var(--h-split-viewport-px, 100vw) - 2 * var(--h-split-center-inset, 0px) -
+          var(--h-split-offset, 0px)
+      )
+    );
     max-height: calc(
       100vh - var(--h-expanded-menu-top, 3rem) - env(
           safe-area-inset-bottom,
@@ -429,7 +455,8 @@ html.h-split-active body.h-navbar-toc-no-fit {
 
   // Backdrop should not cover the sidebar
   .h-page-toc-backdrop {
-    left: var(--h-split-offset, 0px);
+    left: calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 0px));
+    right: var(--h-split-center-inset, 0px);
     top: var(--h-expanded-menu-top, 3rem);
   }
 }
