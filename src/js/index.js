@@ -41,6 +41,44 @@ const SPLIT_MIN_WIDTH = 200;
 const SPLIT_MAX_VIEWPORT_RATIO = 0.5;
 const SPLIT_SPLITTER_WIDTH = 1;
 
+// =========================================================================
+// FIX 2: TOC scroll — block navbar auto-hide during programmatic scroll
+// =========================================================================
+const TOC_SCROLL_BLOCK_MS = 1200;
+let _tocScrollBlockUntil = 0;
+
+function blockNavAutoHide() {
+  _tocScrollBlockUntil = Date.now() + TOC_SCROLL_BLOCK_MS;
+}
+
+function isNavAutoHideBlocked() {
+  return Date.now() < _tocScrollBlockUntil;
+}
+
+function getFixedHeaderHeight() {
+  const mobileTopNav = document.getElementById("h-mobile-top-nav");
+  if (mobileTopNav && window.getComputedStyle(mobileTopNav).display !== "none") {
+    return mobileTopNav.offsetHeight;
+  }
+  const navbar = document.getElementById("h-navbar");
+  if (navbar && window.getComputedStyle(navbar).display !== "none") {
+    return navbar.offsetHeight;
+  }
+  return 0;
+}
+
+function scrollToAnchor(href) {
+  const id = href && href.startsWith("#") ? href.slice(1) : href;
+  if (!id) return;
+  const el = document.getElementById(id);
+  if (!el) return;
+  blockNavAutoHide();
+  const headerHeight = getFixedHeaderHeight();
+  const elRect = el.getBoundingClientRect();
+  const targetY = elRect.top + window.scrollY - headerHeight - 16;
+  window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+}
+
 const lang = document.documentElement.lang;
 
 // Global reference to split layout state
@@ -475,6 +513,42 @@ function initExpandedMenuDropdowns() {
 }
 
 // ============================================================================
+// FIX 1 & 3: Unified menu width measurement helper.
+// Uses visibility:hidden to avoid visual flash and measures intrinsic width
+// of .navbar-end regardless of current CSS class state.
+// ============================================================================
+function measureMenuOverflow(row1, navbarMenu) {
+  if (!row1 || !navbarMenu) return 0;
+  const navbarEnd = navbarMenu.querySelector(".navbar-end");
+  if (!navbarEnd || row1.clientWidth <= 0) return 0;
+
+  // Force menu visible but invisible to measure intrinsic width
+  navbarMenu.style.setProperty("display", "flex", "important");
+  navbarMenu.style.setProperty("visibility", "hidden", "important");
+  navbarMenu.style.setProperty("pointer-events", "none", "important");
+  void navbarMenu.offsetWidth; // force reflow
+  const menuNeed = navbarEnd.scrollWidth;
+  navbarMenu.style.removeProperty("display");
+  navbarMenu.style.removeProperty("visibility");
+  navbarMenu.style.removeProperty("pointer-events");
+
+  // Measure available space (after removing forced styles, layout is back to normal)
+  const rowRect = row1.getBoundingClientRect();
+  const brand = row1.querySelector(".navbar-brand");
+  let leftUsed = 0;
+  if (brand) {
+    const br = brand.getBoundingClientRect();
+    leftUsed = br.right - rowRect.left;
+  }
+  const sidebarBtnEl = row1.querySelector(".h-navbar-sidebar-btn");
+  if (sidebarBtnEl && window.getComputedStyle(sidebarBtnEl).display !== "none") {
+    leftUsed += sidebarBtnEl.getBoundingClientRect().width;
+  }
+  const availableForMenu = rowRect.width - leftUsed;
+  return menuNeed - availableForMenu;
+}
+
+// ============================================================================
 // SPLIT LAYOUT — sidebar + splitter + content
 // ============================================================================
 function initSplitLayout() {
@@ -535,8 +609,6 @@ function initSplitLayout() {
     }
   }
 
-  // Initial state (the early inline script in header.html already set class + vars,
-  // but we re-apply to ensure consistency with the correct width from localStorage)
   updateSplitState();
 
   // --- Drag handling ---
@@ -565,7 +637,6 @@ function initSplitLayout() {
     newWidth = clampSidebarWidth(newWidth);
     sidebarWidth = newWidth;
     applyCssVars();
-    // Trigger fit recalculation
     if (window.hUpdateSplitFit) window.hUpdateSplitFit();
   }
 
@@ -579,14 +650,12 @@ function initSplitLayout() {
     document.removeEventListener("touchmove", onPointerMove);
     document.removeEventListener("touchend", onPointerUp);
     localStorage.setItem(SPLIT_SIDEBAR_STORAGE_KEY, sidebarWidth.toString());
-    // Final fit recalculation
     if (window.hUpdateSplitFit) window.hUpdateSplitFit();
   }
 
   splitter.addEventListener("mousedown", onPointerDown);
   splitter.addEventListener("touchstart", onPointerDown, { passive: false });
 
-  // Listen for resize to toggle split mode
   window.addEventListener("resize", updateSplitState);
 
   const state = {
@@ -606,7 +675,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initExpandedMenuPanel();
   initExpandedMenuDropdowns();
   window.hUiModes = createUiModesController();
-  // Split layout MUST be initialized before fit detection
   splitState = initSplitLayout();
   initNavbar(NAVBAR_HIDE_SCROLL_THRESHOLD);
   initSearchPanel();
@@ -647,6 +715,15 @@ function initNavbar(scrollThreshold) {
     });
 
     window.addEventListener("scroll", () => {
+      // FIX 2: don't hide navbar during programmatic TOC scroll
+      if (isNavAutoHideBlocked()) {
+        navbar.classList.remove("h-is-hidden");
+        isNavbarHidden = false;
+        lastY = window.scrollY;
+        currentY = window.scrollY;
+        return;
+      }
+
       lastY = currentY;
       currentY = window.scrollY;
 
@@ -1218,10 +1295,13 @@ function initPageToc() {
 
   if (!toggleBtn) return;
 
+  // FIX 2: Use preventDefault + scrollToAnchor instead of relying on anchor navigation
   tocList.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
-      if (closeBtn) closeBtn.click();
-      else toc.classList.remove("is-open");
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+      const href = a.getAttribute("href");
+      window.hUiModes?.close("pageToc");
+      scrollToAnchor(href);
     });
   });
 
@@ -1333,47 +1413,24 @@ function initNavbarSidebarTocFit() {
     }
 
     // ========================================================================
-    // SPLIT MODE — sidebar exists and visible; fit calculations use available
-    // width after the sidebar + splitter.
+    // SPLIT MODE
     // ========================================================================
     if (isSplitActive) {
       const splitOffset = splitState.getOffset();
       const availableWidth = vw - splitOffset;
 
-      // Sidebar is always visible in split mode — no overlaps concept
       document.body.classList.remove("h-navbar-sidebar-overlaps");
 
-      // TOC fit: check if there's enough space to the right of the container
       const rightSpace = availableWidth - CONTAINER_MAX_WIDTH;
       const tocNoFit = tocList && tocList.children.length > 0 && rightSpace < TOC_MIN_SPACE;
 
-      // Menu fit: compare .navbar-end intrinsic width to space beside the brand.
-      // (row1 overflow is unreliable once inline #h-navbar-menu is display:none in CSS.)
+      // FIX 1 & 3: Use unified measurement helper (visibility:hidden, no flash)
       const row1 = document.querySelector(".h-navbar__row1");
       const navbarMenu = document.getElementById("h-navbar-menu");
       let menuNoFit = false;
       if (row1 && navbarMenu) {
-        const navbarEnd = navbarMenu.querySelector(".navbar-end");
-        if (navbarEnd && row1.clientWidth > 0) {
-          navbarMenu.style.setProperty("display", "flex", "important");
-          void navbarMenu.offsetWidth;
-          const menuNeed = navbarEnd.scrollWidth;
-          navbarMenu.style.removeProperty("display");
-          const rowRect = row1.getBoundingClientRect();
-          const brand = row1.querySelector(".navbar-brand");
-          let leftUsed = 0;
-          if (brand) {
-            const br = brand.getBoundingClientRect();
-            leftUsed = br.right - rowRect.left;
-          }
-          const sidebarBtn = row1.querySelector(".h-navbar-sidebar-btn");
-          if (sidebarBtn && window.getComputedStyle(sidebarBtn).display !== "none") {
-            leftUsed += sidebarBtn.getBoundingClientRect().width;
-          }
-          const availableForMenu = rowRect.width - leftUsed;
-          const overflowPx = menuNeed - availableForMenu;
-          menuNoFit = menuWasNoFit ? overflowPx > -MENU_FIT_HYSTERESIS : overflowPx > 1;
-        }
+        const overflowPx = measureMenuOverflow(row1, navbarMenu);
+        menuNoFit = menuWasNoFit ? overflowPx > -MENU_FIT_HYSTERESIS : overflowPx > 1;
       }
       menuWasNoFit = menuNoFit;
 
@@ -1385,14 +1442,12 @@ function initNavbarSidebarTocFit() {
 
       if (!menuNoFit) closeNavbarSearchOverlay();
 
-      // Sidebar button: always hidden in split mode
       if (navbarSidebarBtn) {
         navbarSidebarBtn.setAttribute("aria-hidden", "true");
         navbarSidebarBtn.setAttribute("hidden", "");
         navbarSidebarBtn.tabIndex = -1;
       }
 
-      // TOC row: show when TOC doesn't fit
       if (navbarTocRow) {
         if (tocNoFit) {
           navbarTocRow.removeAttribute("aria-hidden");
@@ -1403,7 +1458,6 @@ function initNavbarSidebarTocFit() {
         }
       }
 
-      // Search button: show when menu doesn't fit
       if (navbarSearchBtn) {
         if (menuNoFit) {
           navbarSearchBtn.removeAttribute("aria-hidden");
@@ -1414,7 +1468,6 @@ function initNavbarSidebarTocFit() {
         }
       }
 
-      // Menu button: show when menu doesn't fit
       if (navbarMenuBtn) {
         if (menuNoFit) {
           navbarMenuBtn.removeAttribute("aria-hidden");
@@ -1429,7 +1482,10 @@ function initNavbarSidebarTocFit() {
     }
 
     // ========================================================================
-    // NORMAL MODE (no split) — original logic
+    // NORMAL MODE (no split)
+    // FIX 3: Use the same intrinsic-width measurement as split mode instead
+    // of scrollWidth-clientWidth. This avoids sensitivity to layout shifts
+    // when h-navbar-toc-no-fit changes the container to flex-direction:column.
     // ========================================================================
     const contentLeft = (vw - CONTAINER_MAX_WIDTH) / 2;
     const sidebarOverlaps = sidebar && contentLeft < SIDEBAR_WIDTH;
@@ -1439,8 +1495,8 @@ function initNavbarSidebarTocFit() {
     const navbarMenu = document.getElementById("h-navbar-menu");
     let menuNoFit = false;
     if (row1 && navbarMenu) {
-      const overflow = row1.scrollWidth - row1.clientWidth;
-      menuNoFit = menuWasNoFit ? overflow > -MENU_FIT_HYSTERESIS : overflow > 1;
+      const overflowPx = measureMenuOverflow(row1, navbarMenu);
+      menuNoFit = menuWasNoFit ? overflowPx > -MENU_FIT_HYSTERESIS : overflowPx > 1;
     }
     menuWasNoFit = menuNoFit;
 
@@ -1501,7 +1557,6 @@ function initNavbarSidebarTocFit() {
   updateFit();
   document.documentElement.classList.remove("h-fit-pending");
 
-  // Expose updateFit for splitter drag callbacks
   window.hUpdateSplitFit = updateFit;
 
   let resizeRafId = 0;
@@ -1615,10 +1670,13 @@ function initMobileTopNav() {
       listWrap.className = "menu-list";
       const tocClone = pageTocList.cloneNode(true);
       tocClone.classList.add("h-page-toc-mirror");
+      // FIX 2: Use preventDefault + scrollToAnchor for mobile TOC links
       tocClone.querySelectorAll("a").forEach((a) =>
-        a.addEventListener("click", () => {
-          const backdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
-          if (backdrop) backdrop.click();
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          const href = a.getAttribute("href");
+          window.hUiModes?.close("mobileDropdown");
+          scrollToAnchor(href);
         }),
       );
       listWrap.appendChild(tocClone);
@@ -1648,6 +1706,13 @@ function initMobileTopNav() {
 
   window.addEventListener("scroll", () => {
     currentScrollY = window.scrollY;
+
+    // FIX 2: don't hide mobile nav during programmatic TOC scroll
+    if (isNavAutoHideBlocked()) {
+      topNav.classList.remove("h-mobile-top-nav--hidden");
+      lastScrollY = currentScrollY;
+      return;
+    }
 
     if (currentScrollY <= HIDE_THRESHOLD) {
       topNav.classList.remove("h-mobile-top-nav--hidden");
