@@ -529,25 +529,131 @@ function initExpandedMenuDropdowns() {
 
 // ============================================================================
 // FIX 1 & 3: Unified menu width measurement helper.
-// Uses visibility:hidden to avoid visual flash and measures intrinsic width
-// of .navbar-end regardless of current CSS class state.
+// Use a hidden clone that is NOT affected by current menu state to avoid
+// feedback loops and flicker when toggling no-fit classes.
 // ============================================================================
+let _menuMeasure = null;
+
+function setImportantStyle(el, prop, value) {
+  el.style.setProperty(prop, value, "important");
+}
+
+function stripIds(root) {
+  if (!root) return;
+  if (root.hasAttribute && root.hasAttribute("id")) root.removeAttribute("id");
+  if (root.querySelectorAll) {
+    root.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
+  }
+}
+
+function buildMenuMeasure(navbarMenu) {
+  const navbarEnd = navbarMenu?.querySelector(".navbar-end");
+  if (!navbarEnd) return null;
+
+  const root = document.createElement("div");
+  root.className = "h-navbar-menu-measure";
+  setImportantStyle(root, "position", "absolute");
+  setImportantStyle(root, "left", "-9999px");
+  setImportantStyle(root, "top", "0");
+  setImportantStyle(root, "visibility", "hidden");
+  setImportantStyle(root, "pointer-events", "none");
+  setImportantStyle(root, "width", "auto");
+  setImportantStyle(root, "height", "auto");
+  setImportantStyle(root, "z-index", "-1");
+
+  const nav = document.createElement("nav");
+  nav.className = "navbar";
+  setImportantStyle(nav, "width", "auto");
+  setImportantStyle(nav, "height", "auto");
+  setImportantStyle(nav, "padding", "0");
+  setImportantStyle(nav, "margin", "0");
+
+  const menu = document.createElement("div");
+  menu.className = "navbar-menu";
+  stripIds(menu);
+  setImportantStyle(menu, "display", "flex");
+  setImportantStyle(menu, "position", "static");
+  setImportantStyle(menu, "visibility", "hidden");
+  setImportantStyle(menu, "opacity", "1");
+  setImportantStyle(menu, "transform", "none");
+  setImportantStyle(menu, "box-shadow", "none");
+  setImportantStyle(menu, "padding", "0");
+  setImportantStyle(menu, "margin", "0");
+  setImportantStyle(menu, "border", "none");
+  setImportantStyle(menu, "background", "transparent");
+  setImportantStyle(menu, "width", "auto");
+  setImportantStyle(menu, "max-height", "none");
+
+  const end = navbarEnd.cloneNode(true);
+  // Prevent dropdowns from affecting width measurement
+  end.querySelectorAll(".navbar-dropdown").forEach((dd) => {
+    dd.style.setProperty("display", "none", "important");
+    dd.style.setProperty("position", "absolute", "important");
+    dd.style.setProperty("visibility", "hidden", "important");
+    dd.style.setProperty("pointer-events", "none", "important");
+    dd.style.setProperty("width", "0", "important");
+    dd.style.setProperty("height", "0", "important");
+  });
+
+  end.querySelectorAll(".navbar-item.has-dropdown").forEach((item) => {
+    item.classList.remove("is-hoverable", "is-active");
+  });
+
+  stripIds(end);
+  setImportantStyle(end, "display", "flex");
+  setImportantStyle(end, "flex-direction", "row");
+  setImportantStyle(end, "flex-wrap", "nowrap");
+  setImportantStyle(end, "width", "max-content");
+  setImportantStyle(end, "align-items", "center");
+
+  menu.appendChild(end);
+  nav.appendChild(menu);
+  root.appendChild(nav);
+  document.body.appendChild(root);
+
+  return { root, end, source: navbarMenu };
+}
+
+function getMenuMeasure(navbarMenu) {
+  if (_menuMeasure && _menuMeasure.source === navbarMenu && document.body.contains(_menuMeasure.root)) {
+    return _menuMeasure;
+  }
+  if (_menuMeasure?.root?.parentNode) {
+    _menuMeasure.root.parentNode.removeChild(_menuMeasure.root);
+  }
+  _menuMeasure = buildMenuMeasure(navbarMenu);
+  return _menuMeasure;
+}
+
+function suppressNavbarDropdownsTemporarily() {
+  const dropdowns = document.querySelectorAll("#h-navbar-menu .navbar-dropdown");
+  if (!dropdowns.length) return;
+
+  dropdowns.forEach((dd) => {
+    dd.dataset.hSuppress = "1";
+    dd.style.display = "none";
+  });
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      dropdowns.forEach((dd) => {
+        if (dd.dataset.hSuppress) {
+          dd.style.display = "";
+          delete dd.dataset.hSuppress;
+        }
+      });
+    });
+  });
+}
+
 function measureMenuOverflow(row1, navbarMenu) {
   if (!row1 || !navbarMenu) return 0;
-  const navbarEnd = navbarMenu.querySelector(".navbar-end");
-  if (!navbarEnd || row1.clientWidth <= 0) return 0;
 
-  // Force menu visible but invisible to measure intrinsic width
-  navbarMenu.style.setProperty("display", "flex", "important");
-  navbarMenu.style.setProperty("visibility", "hidden", "important");
-  navbarMenu.style.setProperty("pointer-events", "none", "important");
-  void navbarMenu.offsetWidth; // force reflow
-  const menuNeed = navbarEnd.scrollWidth;
-  navbarMenu.style.removeProperty("display");
-  navbarMenu.style.removeProperty("visibility");
-  navbarMenu.style.removeProperty("pointer-events");
+  const measure = getMenuMeasure(navbarMenu);
+  if (!measure?.end) return 0;
 
-  // Measure available space (after removing forced styles, layout is back to normal)
+  const menuNeed = Math.ceil(measure.end.scrollWidth);
+
   const rowRect = row1.getBoundingClientRect();
   const brand = row1.querySelector(".navbar-brand");
   let leftUsed = 0;
@@ -1354,6 +1460,7 @@ function initNavbarSidebarTocFit() {
   const mainSearchInput = document.getElementById("h-search-input");
 
   let menuWasNoFit = false;
+  let prevMenuNoFit = null;
   const rootStyle = document.documentElement.style;
   const NO_FIT_PANEL_LEFT_VAR = "--h-no-fit-panel-left";
   const NO_FIT_PANEL_WIDTH_VAR = "--h-no-fit-panel-width";
@@ -1411,6 +1518,7 @@ function initNavbarSidebarTocFit() {
 
     if (vw <= MOBILE_NAV_BREAKPOINT) {
       closeNavbarSearchOverlay();
+      prevMenuNoFit = null;
       document.body.classList.remove("h-navbar-sidebar-overlaps", "h-navbar-toc-no-fit", "h-navbar-menu-no-fit");
       clearNoFitPanelVars();
       if (navbarSidebarBtn) {
@@ -1446,7 +1554,7 @@ function initNavbarSidebarTocFit() {
       const rightSpace = availableWidth - CONTAINER_MAX_WIDTH;
       const tocNoFit = tocList && tocList.children.length > 0 && rightSpace < TOC_MIN_SPACE;
 
-      // FIX 1 & 3: Use unified measurement helper (visibility:hidden, no flash)
+      // FIX 1 & 3: Use stable intrinsic measurement (hidden clone)
       const row1 = document.querySelector(".h-navbar__row1");
       const navbarMenu = document.getElementById("h-navbar-menu");
       let menuNoFit = false;
@@ -1454,6 +1562,10 @@ function initNavbarSidebarTocFit() {
         const overflowPx = measureMenuOverflow(row1, navbarMenu);
         menuNoFit = menuWasNoFit ? overflowPx > -MENU_FIT_HYSTERESIS : overflowPx > 1;
       }
+      if (prevMenuNoFit === true && menuNoFit === false) {
+        suppressNavbarDropdownsTemporarily();
+      }
+      prevMenuNoFit = menuNoFit;
       menuWasNoFit = menuNoFit;
 
       document.body.classList.toggle("h-navbar-toc-no-fit", !!tocNoFit);
@@ -1505,9 +1617,6 @@ function initNavbarSidebarTocFit() {
 
     // ========================================================================
     // NORMAL MODE (no split)
-    // FIX 3: Use the same intrinsic-width measurement as split mode instead
-    // of scrollWidth-clientWidth. This avoids sensitivity to layout shifts
-    // when h-navbar-toc-no-fit changes the container to flex-direction:column.
     // ========================================================================
     const contentLeft = (vw - CONTAINER_MAX_WIDTH) / 2;
     const sidebarOverlaps = sidebar && contentLeft < SIDEBAR_WIDTH;
@@ -1520,6 +1629,10 @@ function initNavbarSidebarTocFit() {
       const overflowPx = measureMenuOverflow(row1, navbarMenu);
       menuNoFit = menuWasNoFit ? overflowPx > -MENU_FIT_HYSTERESIS : overflowPx > 1;
     }
+    if (prevMenuNoFit === true && menuNoFit === false) {
+      suppressNavbarDropdownsTemporarily();
+    }
+    prevMenuNoFit = menuNoFit;
     menuWasNoFit = menuNoFit;
 
     document.body.classList.toggle("h-navbar-sidebar-overlaps", !!sidebarOverlaps);
