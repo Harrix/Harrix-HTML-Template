@@ -33,6 +33,8 @@ const TOC_MIN_SPACE = 256;
 const MOBILE_NAV_BREAKPOINT = 1024;
 const SIDEBAR_TOC_DESKTOP_MIN_WIDTH = 1680;
 const MENU_FIT_HYSTERESIS = 40;
+/** Narrower exit band in split layout — row width matches real flex chrome; large −40px slack stuck no-fit. */
+const MENU_FIT_HYSTERESIS_SPLIT = 12;
 
 // Split layout constants
 const SPLIT_SIDEBAR_STORAGE_KEY = "h-split-sidebar-width";
@@ -585,6 +587,11 @@ function buildMenuMeasure(navbarMenu) {
   setImportantStyle(menu, "max-height", "none");
 
   const end = navbarEnd.cloneNode(true);
+  // Desktop search is an overlay on .navbar-end; including it inflates scrollWidth vs flex row.
+  const measureSearchForm = end.querySelector("#h-search-form");
+  if (measureSearchForm?.parentElement) {
+    measureSearchForm.parentElement.removeChild(measureSearchForm);
+  }
   // Prevent dropdowns from affecting width measurement
   end.querySelectorAll(".navbar-dropdown").forEach((dd) => {
     dd.style.setProperty("display", "none", "important");
@@ -1560,7 +1567,7 @@ function initNavbarSidebarTocFit() {
       let menuNoFit = false;
       if (row1 && navbarMenu) {
         const overflowPx = measureMenuOverflow(row1, navbarMenu);
-        menuNoFit = menuWasNoFit ? overflowPx > -MENU_FIT_HYSTERESIS : overflowPx > 1;
+        menuNoFit = menuWasNoFit ? overflowPx > -MENU_FIT_HYSTERESIS_SPLIT : overflowPx > 1;
       }
       if (prevMenuNoFit === true && menuNoFit === false) {
         suppressNavbarDropdownsTemporarily();
