@@ -60,6 +60,26 @@ src/
 └── uploads/        Demo content (images, STL files)
 ```
 
+## Frontend notes
+
+### Internationalization (UI strings)
+
+In-app labels (search placeholder, theme toggle, TOC, code copy, and similar) are translated when `<html lang>` starts with `ru` (see [`src/js/_locale.js`](src/js/_locale.js) and [`src/js/_locale-ru.js`](src/js/_locale-ru.js)). For English or other languages, keys are shown as written in the source. Add another map and extend `_locale.js` if you need more locales.
+
+### SCSS and `!important`
+
+Some components override Bulma with high-specificity rules; a few SCSS partials use `!important` on purpose (for example expanded mobile menu and split docs layout). Prefer tightening selectors or `@layer` before adding new `!important` declarations.
+
+### Mobile menu and TOC mirroring
+
+The mobile top bar clones the desktop navbar menu and the in-page TOC (`cloneNode`) into panels. If you change IDs or structure in the header or TOC markup, update the cloning logic in [`src/js/_expanded-menu.js`](src/js/_expanded-menu.js) and [`src/js/_mobile-top-nav.js`](src/js/_mobile-top-nav.js) so mirrored DOM and event handlers stay correct.
+
+### Linting
+
+```bash
+npm run lint
+```
+
 ## Choosing a CSS framework
 
 | Name             | Downloads per week | Link                                             |

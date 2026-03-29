@@ -1,8 +1,10 @@
 import mermaid from "mermaid";
+import { THEME_STORAGE_KEY } from "./_constants.js";
+import { safeStorageGetItem } from "./_storage.js";
 import { onThemeToggle } from "./_theme-utils.js";
 
 function getMermaidTheme() {
-  const stored = localStorage.getItem("h-theme");
+  const stored = safeStorageGetItem(THEME_STORAGE_KEY);
   const fromDom = document.documentElement.getAttribute("data-theme");
   const theme = fromDom || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   return theme === "dark" ? "dark" : "default";

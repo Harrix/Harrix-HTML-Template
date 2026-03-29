@@ -1,8 +1,10 @@
 import Plotly from "plotly.js-dist-min";
+import { THEME_STORAGE_KEY } from "./_constants.js";
+import { safeStorageGetItem } from "./_storage.js";
 import { onThemeToggle } from "./_theme-utils.js";
 
 function getChartTheme() {
-  const stored = localStorage.getItem("h-theme");
+  const stored = safeStorageGetItem(THEME_STORAGE_KEY);
   const fromDom = document.documentElement.getAttribute("data-theme");
   const isDark =
     fromDom === "dark" ||

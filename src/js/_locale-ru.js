@@ -10,6 +10,8 @@ const locale = {
   "Menu": "Меню",
   "Search": "Поиск",
   "Sidebar": "Боковая",
+  Close: "Закрыть",
+  Documentation: "Документация",
 };
 
 export default locale;
