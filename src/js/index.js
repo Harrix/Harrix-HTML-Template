@@ -625,25 +625,25 @@ function getMenuMeasure(navbarMenu) {
   return _menuMeasure;
 }
 
-function suppressNavbarDropdownsTemporarily() {
-  const dropdowns = document.querySelectorAll("#h-navbar-menu .navbar-dropdown");
-  if (!dropdowns.length) return;
+function suppressNavbarDropdownsTemporarily(duration = 200) {
+  const root = document.documentElement;
+  root.classList.add("h-nav-suppress-dropdowns");
 
+  const dropdowns = document.querySelectorAll("#h-navbar-menu .navbar-dropdown");
   dropdowns.forEach((dd) => {
     dd.dataset.hSuppress = "1";
     dd.style.display = "none";
   });
 
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      dropdowns.forEach((dd) => {
-        if (dd.dataset.hSuppress) {
-          dd.style.display = "";
-          delete dd.dataset.hSuppress;
-        }
-      });
+  window.setTimeout(() => {
+    root.classList.remove("h-nav-suppress-dropdowns");
+    dropdowns.forEach((dd) => {
+      if (dd.dataset.hSuppress) {
+        dd.style.display = "";
+        delete dd.dataset.hSuppress;
+      }
     });
-  });
+  }, duration);
 }
 
 function measureMenuOverflow(row1, navbarMenu) {
