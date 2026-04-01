@@ -162,7 +162,8 @@ function createWebpackConfig(env, argv) {
               loader: "css-loader",
               options: {
                 sourceMap: true,
-                url: false,
+                // Resolve file url(...) in SCSS/CSS; data: URLs (e.g. Bootstrap icons) pass through.
+                url: true,
               },
             },
             {
@@ -187,7 +188,7 @@ function createWebpackConfig(env, argv) {
               loader: "css-loader",
               options: {
                 sourceMap: true,
-                url: false,
+                url: true,
               },
             },
           ],
@@ -201,7 +202,7 @@ function createWebpackConfig(env, argv) {
               loader: "css-loader",
               options: {
                 sourceMap: true,
-                url: false,
+                url: true,
               },
             },
           ],

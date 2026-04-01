@@ -66,6 +66,10 @@ src/
 
 In-app labels (search placeholder, theme toggle, TOC, code copy, and similar) are translated when `<html lang>` starts with `ru` (see [`src/js/_locale.js`](src/js/_locale.js) and [`src/js/_locale-ru.js`](src/js/_locale-ru.js)). For English or other languages, keys are shown as written in the source. Add another map and extend `_locale.js` if you need more locales.
 
+### `url()` in CSS and SCSS
+
+`css-loader` uses `url: true`, so file references inside `url(...)` in project SCSS and in vendor CSS (lightGallery, KaTeX) are resolved by Webpack and emitted according to the asset rules in `webpack.config.js` (fonts, images, and so on). `data:` URLs (for example icons embedded in CSS variables) are left as-is. CopyPlugin still copies `src/fonts`, `src/img`, favicon, uploads, and the explicit `node_modules` font/image paths so anything not referenced through `url()` in the bundle remains available in `dist/`.
+
 ### SCSS and `!important`
 
 Some components override Bulma with high-specificity rules; a few SCSS partials use `!important` on purpose (for example expanded mobile menu and split docs layout). Prefer tightening selectors or `@layer` before adding new `!important` declarations.
