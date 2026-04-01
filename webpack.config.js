@@ -62,11 +62,11 @@ const config = {
     filename: (pathData) => {
       const name = pathData.chunk.name;
       if (name === "early") return "./js/early.js";
-      return `./js/${name}.[contenthash:8].js`;
+      return `./js/${name}.js`;
     },
-    chunkFilename: "./js/chunks/[name].[contenthash:8].js",
+    chunkFilename: "./js/chunks/[name].js",
     clean: true,
-    assetModuleFilename: "assets/[name].[contenthash:8][ext]",
+    assetModuleFilename: "assets/[name][ext]",
   },
   cache: {
     type: "filesystem",
@@ -209,8 +209,8 @@ const config = {
     new MiniCssExtractPlugin({
       filename: ({ chunk }) => {
         const name = chunk?.name;
-        if (!name || name === "early") return "css/[name].[contenthash:8].css";
-        return `css/${name}.[contenthash:8].css`;
+        if (!name || name === "early") return "css/[name].css";
+        return `css/${name}.css`;
       },
     }),
     new CopyPlugin({
