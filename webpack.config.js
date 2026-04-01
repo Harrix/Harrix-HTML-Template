@@ -46,166 +46,43 @@ function generateHtmlPlugins(templateDir) {
   });
 }
 
-const htmlPlugins = generateHtmlPlugins("src/html/views");
+function createCopyPatterns() {
+  return [
+    { from: "node_modules/lightgallery/fonts", to: "fonts" },
+    { from: "node_modules/lightgallery/images", to: "images" },
+    { from: "node_modules/katex/dist/fonts", to: "katex/fonts" },
+    { from: "src/fonts", to: "fonts", noErrorOnMissing: true },
+    { from: "src/favicon", to: "favicon", noErrorOnMissing: true },
+    { from: "src/img", to: "img", noErrorOnMissing: true },
+    { from: "src/uploads", to: "uploads", noErrorOnMissing: true },
+  ];
+}
 
-const config = {
-  entry: {
-    early: ["./src/js/early.js"],
-    app: ["./src/js/index.js", "./src/scss/style.scss"],
-    "katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
-    "stl-viewer/stl-viewer": ["./src/js/stl-viewer.js", "./src/scss/stl-viewer.scss"],
-    "mermaid/mermaid": ["./src/js/mermaid.js"],
-    "charts/charts": ["./src/js/charts.js", "./src/scss/charts.scss"],
-  },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: (pathData) => {
-      const name = pathData.chunk.name;
-      if (name === "early") return "./js/early.js";
-      return `./js/${name}.js`;
-    },
-    chunkFilename: "./js/chunks/[name].js",
-    clean: true,
-    assetModuleFilename: "assets/[name][ext]",
-  },
-  cache: {
-    type: "filesystem",
-    buildDependencies: {
-      config: [__filename],
-    },
-  },
-  devtool: "source-map",
-  devServer: {
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
-    port: 9000,
-    hot: true,
-    open: true,
-    watchFiles: ["src/**/*"],
-  },
-  performance: {
-    // Increase thresholds to avoid warnings for large bundles (e.g., charts entrypoint).
-    maxEntrypointSize: 5242880,
-    maxAssetSize: 5242880,
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin({
-        minimizerOptions: {
-          preset: [
-            "default",
-            {
-              discardComments: { removeAll: true },
-            },
-          ],
-        },
-      }),
-      new TerserPlugin({
-        extractComments: true,
-        terserOptions: {
-          compress: {
-            drop_console: true,
-          },
-        },
-      }),
-    ],
-    splitChunks: false,
-    runtimeChunk: false,
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(sass|scss)$/,
-        include: path.resolve(__dirname, "src/scss"),
-        use: [
+function createMinimizers() {
+  return [
+    new CssMinimizerPlugin({
+      minimizerOptions: {
+        preset: [
+          "default",
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {},
-          },
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true,
-              url: false,
-            },
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true,
-            sassOptions: {
-              loadPaths: [path.resolve(__dirname, "node_modules")],
-              quietDeps: true,
-              silenceDeprecations: ["import", "global-builtin", "legacy-js-api", "if-function"],
-            },
-            },
+            discardComments: { removeAll: true },
           },
         ],
       },
-      {
-        test: /\.css$/,
-        include: path.resolve(__dirname, "node_modules/lightgallery"),
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true,
-              url: false,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.css$/,
-        include: path.resolve(__dirname, "node_modules/katex"),
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true,
-              url: false,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.html$/,
-        include: path.resolve(__dirname, "src/html/includes"),
-        type: "asset/source",
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
-        type: "asset",
-        parser: {
-          dataUrlCondition: {
-            maxSize: 8 * 1024,
-          },
-        },
-        generator: {
-          filename: "img/[name][ext]",
+    }),
+    new TerserPlugin({
+      extractComments: true,
+      terserOptions: {
+        compress: {
+          drop_console: true,
         },
       },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: "asset/resource",
-        generator: {
-          filename: "fonts/[name][ext]",
-        },
-      },
-      {
-        test: /\.(ico|pdf)$/i,
-        type: "asset/resource",
-        generator: {
-          filename: "[name][ext]",
-        },
-      },
-    ],
-  },
-  plugins: [
+    }),
+  ];
+}
+
+function createPlugins() {
+  return [
     new MiniCssExtractPlugin({
       filename: ({ chunk }) => {
         const name = chunk?.name;
@@ -214,30 +91,156 @@ const config = {
       },
     }),
     new CopyPlugin({
-      patterns: [
-        { from: "node_modules/lightgallery/fonts", to: "fonts" },
-        { from: "node_modules/lightgallery/images", to: "images" },
-        { from: "node_modules/katex/dist/fonts", to: "katex/fonts" },
-        { from: "src/fonts", to: "fonts", noErrorOnMissing: true },
-        { from: "src/favicon", to: "favicon", noErrorOnMissing: true },
-        { from: "src/img", to: "img", noErrorOnMissing: true },
-        { from: "src/uploads", to: "uploads", noErrorOnMissing: true },
-      ],
+      patterns: createCopyPatterns(),
     }),
-  ].concat(htmlPlugins),
-};
+    ...generateHtmlPlugins("src/html/views"),
+  ];
+}
 
-module.exports = (env, argv) => {
-  if (argv.mode === "production") {
-    config.optimization.moduleIds = "named";
-    config.optimization.chunkIds = "named";
-    config.devtool = false;
-  } else {
-    config.devtool = "eval-source-map";
-    config.optimization.minimize = false;
-    config.optimization.splitChunks = false;
-    config.optimization.runtimeChunk = false;
-  }
+function createWebpackConfig(env, argv) {
+  const isProduction = argv.mode === "production";
 
-  return config;
-};
+  return {
+    entry: {
+      early: ["./src/js/early.js"],
+      app: ["./src/js/index.js", "./src/scss/style.scss"],
+      "katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
+      "stl-viewer/stl-viewer": ["./src/js/stl-viewer.js", "./src/scss/stl-viewer.scss"],
+      "mermaid/mermaid": ["./src/js/mermaid.js"],
+      "charts/charts": ["./src/js/charts.js", "./src/scss/charts.scss"],
+    },
+    output: {
+      path: path.resolve(__dirname, "dist"),
+      filename: (pathData) => {
+        const name = pathData.chunk.name;
+        if (name === "early") return "./js/early.js";
+        return `./js/${name}.js`;
+      },
+      chunkFilename: "./js/chunks/[name].js",
+      clean: true,
+      assetModuleFilename: "assets/[name][ext]",
+    },
+    cache: {
+      type: "filesystem",
+      buildDependencies: {
+        config: [__filename],
+      },
+    },
+    devtool: isProduction ? false : "eval-source-map",
+    devServer: {
+      static: {
+        directory: path.join(__dirname, "dist"),
+      },
+      port: 9000,
+      hot: true,
+      open: true,
+      watchFiles: ["src/**/*"],
+    },
+    performance: {
+      // Increase thresholds to avoid warnings for large bundles (e.g., charts entrypoint).
+      maxEntrypointSize: 5242880,
+      maxAssetSize: 5242880,
+    },
+    optimization: {
+      minimize: isProduction,
+      minimizer: createMinimizers(),
+      splitChunks: false,
+      runtimeChunk: false,
+      ...(isProduction ? { moduleIds: "named", chunkIds: "named" } : {}),
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(sass|scss)$/,
+          include: path.resolve(__dirname, "src/scss"),
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {},
+            },
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: true,
+                url: false,
+              },
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: true,
+                sassOptions: {
+                  loadPaths: [path.resolve(__dirname, "node_modules")],
+                  quietDeps: true,
+                  silenceDeprecations: ["import", "global-builtin", "legacy-js-api", "if-function"],
+                },
+              },
+            },
+          ],
+        },
+        {
+          test: /\.css$/,
+          include: path.resolve(__dirname, "node_modules/lightgallery"),
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: true,
+                url: false,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.css$/,
+          include: path.resolve(__dirname, "node_modules/katex"),
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: "css-loader",
+              options: {
+                sourceMap: true,
+                url: false,
+              },
+            },
+          ],
+        },
+        {
+          test: /\.html$/,
+          include: path.resolve(__dirname, "src/html/includes"),
+          type: "asset/source",
+        },
+        {
+          test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
+          type: "asset",
+          parser: {
+            dataUrlCondition: {
+              maxSize: 8 * 1024,
+            },
+          },
+          generator: {
+            filename: "img/[name][ext]",
+          },
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: "asset/resource",
+          generator: {
+            filename: "fonts/[name][ext]",
+          },
+        },
+        {
+          test: /\.(ico|pdf)$/i,
+          type: "asset/resource",
+          generator: {
+            filename: "[name][ext]",
+          },
+        },
+      ],
+    },
+    plugins: createPlugins(),
+  };
+}
+
+module.exports = (env, argv) => createWebpackConfig(env, argv);
