@@ -18,14 +18,39 @@ function getLoadErrorMessage() {
   return "Failed to load 3D model.";
 }
 
+function isSafeStlUrl(raw) {
+  try {
+    const url = new URL(raw, window.location.href);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return false;
+    if (url.origin !== window.location.origin) return false;
+    if (!url.pathname.toLowerCase().endsWith(".stl")) return false;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function setMessage(container, html) {
+  container.textContent = "";
+  const p = document.createElement("p");
+  p.className = "h-stl-viewer__message";
+  p.innerHTML = html;
+  container.appendChild(p);
+}
+
 function initViewer(container) {
   const src = container.getAttribute("data-src");
   if (!src) return;
 
   if (window.location.protocol === "file:") {
     container.classList.add("h-stl-viewer--no-fetch");
-    container.innerHTML =
-      '<p class="h-stl-viewer__message">' + getNoFetchMessage() + "</p>";
+    setMessage(container, getNoFetchMessage());
+    return;
+  }
+
+  if (!isSafeStlUrl(src)) {
+    container.classList.add("h-stl-viewer--load-error");
+    setMessage(container, getLoadErrorMessage());
     return;
   }
 
@@ -102,7 +127,7 @@ function initViewer(container) {
     (err) => {
       stopped = true;
       container.classList.add("h-stl-viewer--load-error");
-      container.innerHTML = '<p class="h-stl-viewer__message">' + getLoadErrorMessage() + "</p>";
+      setMessage(container, getLoadErrorMessage());
       // console.* is dropped in production builds; keep this only for development visibility.
       console.error("STL load error:", err);
     }

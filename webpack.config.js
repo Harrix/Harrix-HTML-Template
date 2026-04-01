@@ -5,23 +5,42 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const _ = require("lodash");
 
 function generateHtmlPlugins(templateDir) {
+  const includesDir = path.resolve(__dirname, "src/html/includes");
+  const includeCache = new Map();
+  function include(fileName, data) {
+    const fullPath = path.resolve(includesDir, fileName);
+    let tpl = includeCache.get(fullPath);
+    if (!tpl) {
+      const src = fs.readFileSync(fullPath, "utf8");
+      tpl = _.template(src);
+      includeCache.set(fullPath, tpl);
+    }
+    return tpl({ ...data, include });
+  }
+
   const templateFiles = fs
     .readdirSync(path.resolve(__dirname, templateDir))
     .filter((item) => path.parse(item).ext.toLowerCase() === ".html");
-  const baseChunks = ["app", "../katex/katex", "../mermaid/mermaid", "../charts/charts"];
+  const baseChunks = ["app", "katex/katex", "mermaid/mermaid", "charts/charts"];
   return templateFiles.map((item) => {
     const parsedPath = path.parse(item);
     const name = parsedPath.name;
     const extension = parsedPath.ext.substring(1);
-    const chunks =
-      name === "index" ? [...baseChunks, "../stl-viewer/stl-viewer"] : baseChunks;
+    const chunks = name === "index" ? [...baseChunks, "stl-viewer/stl-viewer"] : baseChunks;
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
       inject: "body",
       scriptLoading: "defer",
+      templateParameters: (compilation, assets, assetTags, options) => ({
+        compilation,
+        webpackConfig: compilation.options,
+        htmlWebpackPlugin: { tags: assetTags, files: assets, options },
+        include,
+      }),
       chunks,
     });
   });
@@ -31,18 +50,23 @@ const htmlPlugins = generateHtmlPlugins("src/html/views");
 
 const config = {
   entry: {
+    early: ["./src/js/early.js"],
     app: ["./src/js/index.js", "./src/scss/style.scss"],
-    "../katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
-    "../stl-viewer/stl-viewer": ["./src/js/stl-viewer.js", "./src/scss/stl-viewer.scss"],
-    "../mermaid/mermaid": ["./src/js/mermaid.js"],
-    "../charts/charts": ["./src/js/charts.js", "./src/scss/charts.scss"],
+    "katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
+    "stl-viewer/stl-viewer": ["./src/js/stl-viewer.js", "./src/scss/stl-viewer.scss"],
+    "mermaid/mermaid": ["./src/js/mermaid.js"],
+    "charts/charts": ["./src/js/charts.js", "./src/scss/charts.scss"],
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "./js/[name].js",
-    chunkFilename: "./js/chunks/[name].js",
+    filename: (pathData) => {
+      const name = pathData.chunk.name;
+      if (name === "early") return "./js/early.js";
+      return `./js/${name}.[contenthash:8].js`;
+    },
+    chunkFilename: "./js/chunks/[name].[contenthash:8].js",
     clean: true,
-    assetModuleFilename: "assets/[name][ext]",
+    assetModuleFilename: "assets/[name].[contenthash:8][ext]",
   },
   cache: {
     type: "filesystem",
@@ -183,7 +207,11 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
+      filename: ({ chunk }) => {
+        const name = chunk?.name;
+        if (!name || name === "early") return "css/[name].[contenthash:8].css";
+        return `css/${name}.[contenthash:8].css`;
+      },
     }),
     new CopyPlugin({
       patterns: [
@@ -201,15 +229,12 @@ const config = {
 
 module.exports = (env, argv) => {
   if (argv.mode === "production") {
-    config.output.filename = "./js/[name].js";
-    config.output.assetModuleFilename = "assets/[name][ext]";
     config.optimization.moduleIds = "named";
     config.optimization.chunkIds = "named";
+    config.devtool = false;
   } else {
     config.devtool = "eval-source-map";
     config.optimization.minimize = false;
-    config.output.filename = "./js/[name].js";
-    config.output.assetModuleFilename = "assets/[name][ext]";
     config.optimization.splitChunks = false;
     config.optimization.runtimeChunk = false;
   }

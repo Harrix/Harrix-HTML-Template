@@ -5,8 +5,15 @@ import { scrollToAnchor } from "./_scroll-anchor.js";
 import { initSearchClearButton } from "./_search-clear.js";
 import { subscribeWindowScroll } from "./_scroll-hub.js";
 
-const PANEL_CLOSE_ICON_HTML =
-  '<span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>';
+function createPanelCloseIcon() {
+  const span = document.createElement("span");
+  span.className = "icon is-small";
+  span.setAttribute("aria-hidden", "true");
+  const i = document.createElement("i");
+  i.className = "fas fa-times";
+  span.appendChild(i);
+  return span;
+}
 
 export function initMobileTopNav() {
   if (!document.body.classList.contains("h-mobile-nav-top")) return;
@@ -82,7 +89,7 @@ export function initMobileTopNav() {
     dropdownCloseBtn.type = "button";
     dropdownCloseBtn.className = "h-mobile-top-nav__panel-close";
     dropdownCloseBtn.setAttribute("aria-label", translate("Close"));
-    dropdownCloseBtn.innerHTML = PANEL_CLOSE_ICON_HTML;
+    dropdownCloseBtn.appendChild(createPanelCloseIcon());
     header.appendChild(dropdownCloseBtn);
 
     dropdown.appendChild(header);

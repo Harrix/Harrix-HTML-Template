@@ -19,6 +19,7 @@ import { initPageToc } from "./_page-toc.js";
 import { initDocsSidebar } from "./_docs-sidebar.js";
 import { initNavbarSidebarTocFit } from "./_navbar-fit.js";
 import { initMobileTopNav } from "./_mobile-top-nav.js";
+import { initYearRange } from "./_year-range.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initExpandedMenuPanel();
@@ -40,4 +41,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initDocsSidebar();
   initNavbarSidebarTocFit();
   initMobileTopNav();
+  initYearRange(2022);
 });

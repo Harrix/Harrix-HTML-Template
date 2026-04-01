@@ -7,71 +7,13 @@
     <link rel="icon" type="image/svg+xml" sizes="any" href="favicon/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
     <meta name="theme-color" content="#2e86b7" />
-    <script>
-      (function () {
-        if (window.location.protocol === "http:" || window.location.protocol === "https:") {
-          var link = document.createElement("link");
-          link.rel = "manifest";
-          link.href = "favicon/manifest.json";
-          document.head.appendChild(link);
-        }
-      })();
-    </script>
-    <script>
-      (function () {
-        var stored = localStorage.getItem("h-theme");
-        var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        var theme = stored === "dark" || stored === "light" ? stored : prefersDark ? "dark" : "light";
-        document.documentElement.setAttribute("data-theme", theme);
-      })();
-    </script>
-    <script>
-      document.documentElement.classList.add("h-fit-pending");
-    </script>
-    <script>
-      (function () {
-        // Keep in sync with split constants in src/js/index.js (early paint before bundle).
-        var MOBILE_NAV_BREAKPOINT = 1024;
-        var SPLIT_SIDEBAR_STORAGE_KEY = "h-split-sidebar-width";
-        var SPLIT_DEFAULT_WIDTH = 280;
-        var SPLIT_MIN_WIDTH = 200;
-        var SPLIT_MAX_VIEWPORT_RATIO = 0.5;
-        var SPLIT_SPLITTER_WIDTH = 1;
-        var CONTAINER_MAX_WIDTH = 1179;
-        var SPLIT_LAYOUT_CENTER_TRIGGER_VW = 2500;
-        var SPLIT_LAYOUT_CENTER_TOC_GAP_PX = 16;
-        var TOC_MIN_SPACE = 256;
-
-        var vw = window.innerWidth;
-        if (vw <= MOBILE_NAV_BREAKPOINT) return;
-
-        var maxSidebar = Math.max(SPLIT_MIN_WIDTH, Math.floor(vw * SPLIT_MAX_VIEWPORT_RATIO));
-        var sidebarW = SPLIT_DEFAULT_WIDTH;
-        var stored = localStorage.getItem(SPLIT_SIDEBAR_STORAGE_KEY);
-        if (stored) {
-          var parsed = parseInt(stored, 10);
-          if (!isNaN(parsed)) {
-            sidebarW = Math.max(SPLIT_MIN_WIDTH, Math.min(maxSidebar, parsed));
-          }
-        }
-
-        var offset = sidebarW + SPLIT_SPLITTER_WIDTH;
-        var band = offset + CONTAINER_MAX_WIDTH + SPLIT_LAYOUT_CENTER_TOC_GAP_PX + TOC_MIN_SPACE;
-        var centerInset = vw <= SPLIT_LAYOUT_CENTER_TRIGGER_VW ? 0 : Math.max(0, (vw - band) / 2);
-
-        var d = document.documentElement;
-        d.style.setProperty("--h-split-viewport-px", vw + "px");
-        d.style.setProperty("--h-split-sidebar-w", sidebarW + "px");
-        d.style.setProperty("--h-split-offset", offset + "px");
-        d.style.setProperty("--h-split-center-inset", centerInset + "px");
-        d.classList.add("h-split-active");
-      })();
-    </script>
-    <link href="css/app.css" rel="stylesheet" />
-    <link href="css/../katex/katex.css" rel="stylesheet" />
-    <link href="css/../charts/charts.css" rel="stylesheet" />
+    <meta name="h-has-docs-sidebar" content="1" />
+    <script src="js/early.js"></script>
+    <link href="css/app.cce830fe.css" rel="stylesheet" />
+    <link href="css/katex/katex.099a30bf.css" rel="stylesheet" />
+    <link href="css/charts/charts.02d801ba.css" rel="stylesheet" />
   </head>
-  <body class="has-navbar-fixed-top h-mobile-nav-top h-has-docs-sidebar">
+  <body id="top" class="has-navbar-fixed-top h-mobile-nav-top h-has-docs-sidebar">
     <nav id="h-navbar" class="navbar is-fixed-top" aria-label="main navigation">
       <div id="h-navbar-bottom"></div>
       <div class="container">
@@ -106,9 +48,9 @@
             <div class="navbar-end">
               <div class="navbar-item" id="h-search-form">
                 <div class="control">
-                  <form role="search" action="javascript:void(0)">
+                  <form role="search" action="" id="h-search-form-el">
                     <div class="h-search-input-wrap">
-                      <input class="input" value="" id="h-search-input" aria-label="Search" />
+                      <input class="input" value="" id="h-search-input" aria-label="Поиск" />
                       <button
                         type="button"
                         class="h-search-input-clear is-hidden"
@@ -117,21 +59,21 @@
                       >
                         <span class="icon is-small" aria-hidden="true"><i class="fas fa-circle-xmark"></i></span>
                       </button>
+                      <button
+                        type="submit"
+                        class="icon is-small is-clickable"
+                        id="h-search-button-submit"
+                        aria-label="Поиск"
+                      >
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                      </button>
                     </div>
                   </form>
-                  <button
-                    type="submit"
-                    class="icon is-small is-clickable"
-                    id="h-search-button-submit"
-                    aria-label="Search"
-                  >
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                  </button>
                   <button
                     type="button"
                     class="icon is-small is-clickable is-hidden-touch"
                     id="h-search-button-close"
-                    aria-label="Close"
+                    aria-label="Закрыть"
                   >
                     <i class="fah fa-close" data-prefix="fah" data-icon="close"></i>
                   </button>
@@ -156,13 +98,12 @@
               <a class="navbar-item" href="https://github.com/Harrix"
                 ><span class="icon"><i class="fas fa-rss"></i></span> RSS </a
               ><a class="navbar-item" href="https://harrix.org/"
-                ><span class="icon"><i class="fas fa-globe-americas"></i></span> Eng</a
-              >
-              <div
+                ><span class="icon"><i class="fas fa-globe-americas"></i></span> Eng </a
+              ><button
+                type="button"
                 class="navbar-item is-clickable h-theme-toggle"
                 id="h-theme-toggle"
                 data-theme-toggle
-                role="button"
                 aria-label="Переключить светлую/тёмную тему"
               >
                 <span class="icon is-small h-theme-icon h-theme-icon--light" aria-hidden="true"
@@ -176,7 +117,7 @@
                   id="h-theme-toggle-label"
                   aria-hidden="true"
                 ></span>
-              </div>
+              </button>
               <div class="navbar-item is-clickable is-hidden-touch" id="h-search-button-open">
                 <span class="icon is-small"><i class="fas fa-search"></i></span>
               </div>
@@ -957,7 +898,7 @@ public class MainActivity extends AppCompatActivity {
         </div>
       </div>
     </main>
-    <a href="#" id="h-back-to-top" class="h-back-to-top" aria-label="Наверх"
+    <a href="#top" id="h-back-to-top" class="h-back-to-top" aria-label="Наверх"
       ><span class="icon" aria-hidden="true"><i class="fas fa-angle-up"></i></span
     ></a>
     <footer class="footer has-text-centered">
@@ -965,16 +906,9 @@ public class MainActivity extends AppCompatActivity {
         <p>© 2022<span id="h-year-range"></span> <a href="https://harrix.org">Harrix</a></p>
       </div>
     </footer>
-    <script>
-      (function () {
-        var y = new Date().getFullYear();
-        var el = document.getElementById("h-year-range");
-        if (el && y > 2022) el.textContent = "-" + y;
-      })();
-    </script>
-    <script defer="defer" src="./js/app.js"></script>
-    <script defer="defer" src="./js/../katex/katex.js"></script>
-    <script defer="defer" src="./js/../mermaid/mermaid.js"></script>
-    <script defer="defer" src="./js/../charts/charts.js"></script>
+    <script defer="defer" src="./js/app.d3753c3f.js"></script>
+    <script defer="defer" src="./js/katex/katex.f9efd1e9.js"></script>
+    <script defer="defer" src="./js/mermaid/mermaid.4869709c.js"></script>
+    <script defer="defer" src="./js/charts/charts.1b1f0026.js"></script>
   </body>
 </html>

@@ -1,5 +1,7 @@
 import { translate } from "./_locale.js";
 
+let expandedMenuDropdownsInitialized = false;
+
 export function resetExpandedMenuSubmenus() {
   document
     .querySelectorAll(
@@ -26,6 +28,9 @@ function syncExpandedMenuDropdownAria() {
 }
 
 export function initExpandedMenuDropdowns() {
+  if (expandedMenuDropdownsInitialized) return;
+  expandedMenuDropdownsInitialized = true;
+
   document.addEventListener(
     "click",
     (e) => {
