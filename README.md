@@ -62,6 +62,10 @@ src/
 
 ## Frontend notes
 
+### HTML includes templating
+
+HTML partials in `src/html/includes/` are rendered by a small `include(...)` helper in `webpack.config.js`. The project uses [Eta](https://www.npmjs.com/package/eta) (with `useWith: true` and `autoEscape: false`) to keep templates compatible with `<% %>` / `<%= %>` syntax without pulling the full `lodash` package.
+
 ### Internationalization (UI strings)
 
 In-app labels (search placeholder, theme toggle, TOC, code copy, and similar) are translated when `<html lang>` starts with `ru` (see [`src/js/_locale.js`](src/js/_locale.js) and [`src/js/_locale-ru.js`](src/js/_locale-ru.js)). For English or other languages, keys are shown as written in the source. Add another map and extend `_locale.js` if you need more locales.
