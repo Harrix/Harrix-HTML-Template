@@ -66,3 +66,6 @@ typings/
 
 .sass-cache/
 *.css.map
+
+# Build output
+dist/
