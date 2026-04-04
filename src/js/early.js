@@ -1,3 +1,5 @@
+import { safeStorageGetItem } from "./_storage.js";
+
 function isHttpLikeProtocol() {
   return window.location.protocol === "http:" || window.location.protocol === "https:";
 }
@@ -11,7 +13,7 @@ function injectManifestLink() {
 }
 
 function applyInitialTheme() {
-  var stored = localStorage.getItem("h-theme");
+  var stored = safeStorageGetItem("h-theme");
   var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   var theme = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
   document.documentElement.setAttribute("data-theme", theme);
@@ -45,7 +47,7 @@ function applyInitialSplitLayout() {
 
   var maxSidebar = Math.max(SPLIT_MIN_WIDTH, Math.floor(vw * SPLIT_MAX_VIEWPORT_RATIO));
   var sidebarW = SPLIT_DEFAULT_WIDTH;
-  var stored = localStorage.getItem(SPLIT_SIDEBAR_STORAGE_KEY);
+  var stored = safeStorageGetItem(SPLIT_SIDEBAR_STORAGE_KEY);
   if (stored) {
     var parsed = parseInt(stored, 10);
     if (!isNaN(parsed)) {
