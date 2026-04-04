@@ -1,4 +1,6 @@
-export function initYearRange(startYear = 2022) {
+import { YEAR_RANGE_START_YEAR } from "./_constants.js";
+
+export function initYearRange(startYear = YEAR_RANGE_START_YEAR) {
   const el = document.getElementById("h-year-range");
   if (!el) return;
   const y = new Date().getFullYear();

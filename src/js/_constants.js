@@ -1,5 +1,8 @@
 export const THEME_STORAGE_KEY = "h-theme";
 
+/** First year shown in footer copyright range (`#h-year-range`); keep in sync with `footer.html` if changed. */
+export const YEAR_RANGE_START_YEAR = 2022;
+
 export const NAVBAR_HIDE_SCROLL_THRESHOLD = 100;
 export const GALLERY_ROW_HEIGHT = 200;
 export const SEARCH_ANIMATION_MS = 500;

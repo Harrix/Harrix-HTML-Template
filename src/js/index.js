@@ -41,5 +41,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initDocsSidebar();
   initNavbarSidebarTocFit();
   initMobileTopNav();
-  initYearRange(2022);
+  initYearRange();
 });
