@@ -30,11 +30,15 @@ function isSafeStlUrl(raw) {
   }
 }
 
-function setMessage(container, html) {
+function setMessage(container, content) {
   container.textContent = "";
   const p = document.createElement("p");
   p.className = "h-stl-viewer__message";
-  p.innerHTML = html;
+  if (typeof content === "string") {
+    p.textContent = content;
+  } else {
+    p.appendChild(content);
+  }
   container.appendChild(p);
 }
 
@@ -44,7 +48,7 @@ function initViewer(container) {
 
   if (window.location.protocol === "file:") {
     container.classList.add("h-stl-viewer--no-fetch");
-    setMessage(container, getNoFetchMessage());
+    setMessage(container, getNoFetchMessageFragment());
     return;
   }
 
@@ -161,12 +165,39 @@ function initViewer(container) {
   };
 }
 
-function getNoFetchMessage() {
+function getNoFetchMessageFragment() {
   const lang = document.documentElement.lang;
+  const frag = document.createDocumentFragment();
+  const code = document.createElement("code");
+  code.textContent = "npm run start";
+
   if (lang === "ru") {
-    return 'Для просмотра 3D-модели откройте страницу через веб-сервер (например, <code>npm run start</code>). При открытии файла напрямую (file://) загрузка STL блокируется браузером.';
+    frag.appendChild(
+      document.createTextNode(
+        "Для просмотра 3D-модели откройте страницу через веб-сервер (например, "
+      )
+    );
+    frag.appendChild(code);
+    frag.appendChild(
+      document.createTextNode(
+        "). При открытии файла напрямую (file://) загрузка STL блокируется браузером."
+      )
+    );
+  } else {
+    frag.appendChild(
+      document.createTextNode(
+        "To view the 3D model, open the page via a web server (e.g. "
+      )
+    );
+    frag.appendChild(code);
+    frag.appendChild(
+      document.createTextNode(
+        "). Opening the file directly (file://) blocks STL loading in the browser."
+      )
+    );
   }
-  return 'To view the 3D model, open the page via a web server (e.g. <code>npm run start</code>). Opening the file directly (file://) blocks STL loading in the browser.';
+
+  return frag;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
