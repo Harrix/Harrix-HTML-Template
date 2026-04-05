@@ -26,7 +26,7 @@ export function subscribeWindowScroll(fn) {
   return () => {
     subscribers.delete(fn);
     if (subscribers.size === 0) {
-      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onScroll, { passive: true });
     }
   };
 }
