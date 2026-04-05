@@ -51,7 +51,7 @@ npm run build
 src/
 ├── fonts/          Fira Sans & JetBrains Mono (.woff2)
 ├── html/
-│   ├── includes/   Header and footer partials
+│   ├── includes/   Header and footer partials (Eta); see `includes/i18n/html-strings.json`
 │   └── views/      Page templates (index, article, with-sidebar)
 ├── js/             JavaScript entry points and modules
 ├── scss/           SCSS styles (Bulma overrides, dark theme, highlight, etc.)
@@ -70,7 +70,25 @@ Page templates in `src/html/views/` are compiled by HtmlWebpackPlugin’s built-
 
 ### Internationalization (UI strings)
 
+#### Runtime (JavaScript)
+
 In-app labels (search placeholder, theme toggle, TOC, code copy, and similar) are translated when `<html lang>` starts with `ru` (see [`src/js/_locale.js`](src/js/_locale.js) and [`src/js/_locale-ru.js`](src/js/_locale-ru.js)). For English or other languages, keys are shown as written in the source. Add another map and extend `_locale.js` if you need more locales.
+
+#### Static HTML partials (build time)
+
+Shell strings in [`src/html/includes/`](src/html/includes/) (navbar chrome, `aria-label`, placeholders, `lang` on `<html>`) are **not** switched by changing `lang` in the browser. They come from the Eta `include(...)` pipeline in [`webpack.config.js`](webpack.config.js).
+
+**Default:** Russian (`ru`) for both the document language and the string map. This matches the historical demo content in [`src/html/views/`](src/html/views/).
+
+**Ways to ship another language:**
+
+1. **Whole-site locale (recommended for one language per build)** — set `HTML_I18N_LOCALE` to a value that starts with `en` for English, or omit it / use anything else for Russian. Examples: `HTML_I18N_LOCALE=en npm run build` (Unix shell), or PowerShell: `$env:HTML_I18N_LOCALE = "en"; npm run build`. Strings live in [`src/html/includes/i18n/html-strings.json`](src/html/includes/i18n/html-strings.json); add keys there and use `<%= i18n.yourKey %>` in partials.
+
+2. **Per-page override** — pass `htmlLang: "en"` (or `"ru"`) in the object passed from a view template into `include("header.html", data)`. Nested partials inherit the same locale even when called as `include("mobile-top-nav.html", {})` because the bundler keeps a short include stack.
+
+3. **Separate markup per locale** — duplicate or branch view/partial files (for example different `header` files or site variants) if you need large content differences beyond the shared dictionary.
+
+Keep **`<html lang>`** aligned with [`_locale.js`](src/js/_locale.js): use `ru` when you rely on Russian JS strings, and `en` (or a non-`ru` prefix) when you want English runtime labels.
 
 ### `url()` in CSS and SCSS
 

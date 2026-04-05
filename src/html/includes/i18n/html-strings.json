@@ -1,0 +1,40 @@
+{
+  "ru": {
+    "htmlLang": "ru",
+    "navAriaMain": "Основная навигация",
+    "sidebarAria": "Боковая панель",
+    "brandSubtitle": "Проект",
+    "menuTitle": "Меню",
+    "close": "Закрыть",
+    "search": "Поиск",
+    "clearSearch": "Очистить поиск",
+    "navProjects": "Проекты",
+    "navContacts": "Контакты",
+    "navSubmenu": "Подменю",
+    "themeToggle": "Переключить светлую/тёмную тему",
+    "searchPlaceholder": "Поиск…",
+    "toc": "Содержание",
+    "backToTop": "Наверх",
+    "mobileNavRegion": "Мобильное меню",
+    "mobileNavMenuDialog": "Меню"
+  },
+  "en": {
+    "htmlLang": "en",
+    "navAriaMain": "Main navigation",
+    "sidebarAria": "Sidebar",
+    "brandSubtitle": "Project",
+    "menuTitle": "Menu",
+    "close": "Close",
+    "search": "Search",
+    "clearSearch": "Clear search",
+    "navProjects": "Projects",
+    "navContacts": "Contacts",
+    "navSubmenu": "Submenu",
+    "themeToggle": "Toggle light/dark theme",
+    "searchPlaceholder": "Search…",
+    "toc": "Table of contents",
+    "backToTop": "Back to top",
+    "mobileNavRegion": "Mobile navigation",
+    "mobileNavMenuDialog": "Menu"
+  }
+}

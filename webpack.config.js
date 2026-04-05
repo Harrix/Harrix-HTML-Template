@@ -7,6 +7,16 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { Eta } = require("eta");
 
+const htmlStrings = require("./src/html/includes/i18n/html-strings.json");
+
+/** Default locale for static HTML partials (`ru` | `en`). Override with env `HTML_I18N_LOCALE` or per-page `htmlLang` in `include(...)` data. */
+const HTML_I18N_LOCALE = (process.env.HTML_I18N_LOCALE || "ru").toLowerCase().startsWith("en") ? "en" : "ru";
+
+function getHtmlStrings(locale) {
+  const key = (locale || HTML_I18N_LOCALE).toLowerCase().startsWith("en") ? "en" : "ru";
+  return htmlStrings[key] || htmlStrings.ru;
+}
+
 function generateHtmlPlugins(templateDir) {
   const includesDir = path.resolve(__dirname, "src/html/includes");
   const eta = new Eta({
@@ -16,6 +26,7 @@ function generateHtmlPlugins(templateDir) {
     autoEscape: true,
   });
   const includeCache = new Map();
+  const includeLocaleStack = [];
   function include(fileName, data) {
     const fullPath = path.resolve(includesDir, fileName);
     let src = includeCache.get(fullPath);
@@ -23,7 +34,20 @@ function generateHtmlPlugins(templateDir) {
       src = fs.readFileSync(fullPath, "utf8");
       includeCache.set(fullPath, src);
     }
-    return eta.renderString(src, { ...data, include });
+    const parentLocale =
+      includeLocaleStack.length > 0
+        ? includeLocaleStack[includeLocaleStack.length - 1]
+        : HTML_I18N_LOCALE;
+    const locale = data && data.htmlLang != null ? String(data.htmlLang) : parentLocale;
+    const htmlLang = getHtmlStrings(locale).htmlLang;
+    const i18n = getHtmlStrings(locale);
+    const merged = { ...data, include, htmlLang, i18n };
+    includeLocaleStack.push(locale);
+    try {
+      return eta.renderString(src, merged);
+    } finally {
+      includeLocaleStack.pop();
+    }
   }
 
   const templateFiles = fs

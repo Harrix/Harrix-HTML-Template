@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="<%= htmlLang %>">
   <head>
     <meta charset="utf-8" />
     <title><%=title%></title>
@@ -16,22 +16,22 @@
   </head>
 
   <body id="top" class="has-navbar-fixed-top<%= typeof mobileNavTop !== 'undefined' && mobileNavTop ? ' h-mobile-nav-top' : '' %><%= typeof hasDocsSidebar !== 'undefined' && hasDocsSidebar ? ' h-has-docs-sidebar' : '' %>">
-    <nav id="h-navbar" class="navbar is-fixed-top" aria-label="main navigation">
+    <nav id="h-navbar" class="navbar is-fixed-top" aria-label="<%= i18n.navAriaMain %>">
       <div id="h-navbar-bottom"></div>
       <div class="container">
         <div class="h-navbar__row1">
-          <button type="button" class="h-navbar-sidebar-btn" id="h-navbar-sidebar-btn" aria-label="Боковая панель" aria-hidden="true" tabindex="-1">
+          <button type="button" class="h-navbar-sidebar-btn" id="h-navbar-sidebar-btn" aria-label="<%= i18n.sidebarAria %>" aria-hidden="true" tabindex="-1">
             <span class="icon" aria-hidden="true"><i class="fas fa-bars"></i></span>
           </button>
         <div class="navbar-brand">
           <a class="navbar-item" href="/" id="h-logo">
-            <img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub">Проект</span>
+            <img src="img/logo.svg" alt="Harrix" /> Harrix <span class="h-is-sub"><%= i18n.brandSubtitle %></span>
           </a>
         </div>
         <div id="h-navbar-menu" class="navbar-menu">
           <div class="h-navbar-menu-panel-header" id="h-navbar-menu-panel-header" aria-hidden="true" hidden>
-            <p class="menu-label" id="h-navbar-menu-panel-label">Меню</p>
-            <button type="button" class="h-navbar-menu-panel-close" id="h-navbar-menu-panel-close" aria-label="Закрыть">
+            <p class="menu-label" id="h-navbar-menu-panel-label"><%= i18n.menuTitle %></p>
+            <button type="button" class="h-navbar-menu-panel-close" id="h-navbar-menu-panel-close" aria-label="<%= i18n.close %>">
               <span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>
             </button>
           </div>
@@ -40,28 +40,28 @@
               <div class="control">
                 <form role="search" method="get" action="" id="h-search-form-el">
                   <div class="h-search-input-wrap">
-                    <input class="input" type="text" value="" id="h-search-input" aria-label="Поиск" />
-                    <button type="button" class="h-search-input-clear is-hidden" id="h-search-button-clear" aria-label="Очистить поиск">
+                    <input class="input" type="text" value="" id="h-search-input" aria-label="<%= i18n.search %>" />
+                    <button type="button" class="h-search-input-clear is-hidden" id="h-search-button-clear" aria-label="<%= i18n.clearSearch %>">
                       <span class="icon is-small" aria-hidden="true"><i class="fas fa-circle-xmark"></i></span>
                     </button>
-                    <button type="submit" class="icon is-small is-clickable" id="h-search-button-submit" aria-label="Поиск">
+                    <button type="submit" class="icon is-small is-clickable" id="h-search-button-submit" aria-label="<%= i18n.search %>">
                       <i class="fas fa-search" aria-hidden="true"></i>
                     </button>
                   </div>
                 </form>
-                <button type="button" class="icon is-small is-clickable is-hidden-touch" id="h-search-button-close" aria-label="Закрыть"
+                <button type="button" class="icon is-small is-clickable is-hidden-touch" id="h-search-button-close" aria-label="<%= i18n.close %>"
                   ><i class="fah fa-close" data-prefix="fah" data-icon="close"></i
                 ></button>
               </div>
             </div>
-            <a class="navbar-item is-active" href="https://harrix.org/projects/">Проекты</a>
+            <a class="navbar-item is-active" href="https://harrix.org/projects/"><%= i18n.navProjects %></a>
             <a class="navbar-item" href="https://harrix.org/"><span class="icon"><i class="fah fa-harrix" data-prefix="fah" data-icon="harrix"></i></span> Harrix.org</a>
-            <a class="navbar-item" href="https://harrix.org/contacts">Контакты</a>
+            <a class="navbar-item" href="https://harrix.org/contacts"><%= i18n.navContacts %></a>
             <a class="navbar-item" href="https://github.com/Harrix">
               <span class="icon"><i class="fab fa-github"></i></span> GitHub
             </a>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="#">Подменю</a>
+              <a class="navbar-link" href="#"><%= i18n.navSubmenu %></a>
               <div class="navbar-dropdown is-boxed">
                 <a class="navbar-item" href="#">Action</a> <a class="navbar-item" href="#">Another action</a>
                 <a class="navbar-item" href="#">Something else here</a>
@@ -73,7 +73,7 @@
             <a class="navbar-item" href="https://harrix.org/">
               <span class="icon"><i class="fas fa-globe-americas"></i></span> Eng
             </a>
-            <button type="button" class="navbar-item is-clickable h-theme-toggle" id="h-theme-toggle" data-theme-toggle aria-label="Переключить светлую/тёмную тему">
+            <button type="button" class="navbar-item is-clickable h-theme-toggle" id="h-theme-toggle" data-theme-toggle aria-label="<%= i18n.themeToggle %>">
               <span class="icon is-small h-theme-icon h-theme-icon--light" aria-hidden="true"><i class="fas fa-sun"></i></span>
               <span class="icon is-small h-theme-icon h-theme-icon--dark" aria-hidden="true"><i class="fas fa-moon"></i></span>
               <span class="is-hidden-desktop h-theme-toggle-label" id="h-theme-toggle-label" aria-hidden="true"></span>
@@ -83,10 +83,10 @@
             </div>
           </div>
         </div>
-        <button type="button" class="h-navbar-search-btn" id="h-navbar-search-btn" aria-label="Поиск" aria-hidden="true" hidden>
+        <button type="button" class="h-navbar-search-btn" id="h-navbar-search-btn" aria-label="<%= i18n.search %>" aria-hidden="true" hidden>
           <span class="icon" aria-hidden="true"><i class="fas fa-search"></i></span>
         </button>
-        <button type="button" class="h-navbar-menu-btn" id="h-navbar-menu-btn" aria-label="Меню" aria-expanded="false" data-target="h-navbar-menu" aria-hidden="true" hidden>
+        <button type="button" class="h-navbar-menu-btn" id="h-navbar-menu-btn" aria-label="<%= i18n.menuTitle %>" aria-expanded="false" data-target="h-navbar-menu" aria-hidden="true" hidden>
           <span class="icon" aria-hidden="true"><i class="fas fa-ellipsis-vertical"></i></span>
         </button>
         <div class="h-navbar-menu-backdrop" id="h-navbar-menu-backdrop" aria-hidden="true" hidden></div>
@@ -94,23 +94,23 @@
         <div id="h-navbar-search-overlay" class="h-navbar-search-overlay" aria-hidden="true">
           <div class="h-navbar-search-overlay__inner">
             <div class="h-navbar-search-overlay__field">
-              <input type="text" class="h-navbar-search-overlay__input input" id="h-navbar-search-overlay-input" placeholder="Поиск…" aria-label="Поиск" autocomplete="off" />
-              <button type="button" class="h-navbar-search-overlay__clear is-hidden" id="h-navbar-search-overlay-clear" aria-label="Очистить поиск">
+              <input type="text" class="h-navbar-search-overlay__input input" id="h-navbar-search-overlay-input" placeholder="<%= i18n.searchPlaceholder %>" aria-label="<%= i18n.search %>" autocomplete="off" />
+              <button type="button" class="h-navbar-search-overlay__clear is-hidden" id="h-navbar-search-overlay-clear" aria-label="<%= i18n.clearSearch %>">
                 <span class="icon is-small" aria-hidden="true"><i class="fas fa-circle-xmark"></i></span>
               </button>
             </div>
-            <button type="button" class="h-navbar-search-overlay__submit" id="h-navbar-search-overlay-submit" aria-label="Поиск">
+            <button type="button" class="h-navbar-search-overlay__submit" id="h-navbar-search-overlay-submit" aria-label="<%= i18n.search %>">
               <span class="icon is-small" aria-hidden="true"><i class="fas fa-search"></i></span>
             </button>
-            <button type="button" class="h-navbar-search-overlay__close" id="h-navbar-search-overlay-close" aria-label="Закрыть">
+            <button type="button" class="h-navbar-search-overlay__close" id="h-navbar-search-overlay-close" aria-label="<%= i18n.close %>">
               <span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>
             </button>
           </div>
         </div>
         <div class="h-navbar-toc-row" id="h-navbar-toc-row" aria-hidden="true" hidden>
-          <button type="button" class="h-navbar-toc-trigger" id="h-navbar-toc-trigger" aria-label="Содержание" aria-expanded="false" aria-controls="h-page-toc">
+          <button type="button" class="h-navbar-toc-trigger" id="h-navbar-toc-trigger" aria-label="<%= i18n.toc %>" aria-expanded="false" aria-controls="h-page-toc">
             <span class="icon" aria-hidden="true"><i class="fas fa-list"></i></span>
-            <span class="h-navbar-toc-trigger-label" id="h-navbar-toc-trigger-label">Содержание</span>
+            <span class="h-navbar-toc-trigger-label" id="h-navbar-toc-trigger-label"><%= i18n.toc %></span>
           </button>
         </div>
       </div>
