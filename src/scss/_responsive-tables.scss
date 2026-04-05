@@ -3,10 +3,8 @@
 @use "bulma/sass/utilities/initial-variables" as initial-variables;
 @use "variables" as hvars;
 
-// Обёртка с горизонтальной прокруткой на узких экранах
-.h-table-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+// Дополнения к Bulma .table-container: отступ снизу и сброс margin у .table
+.table-container {
   margin-bottom: 1.5rem;
 
   .table {

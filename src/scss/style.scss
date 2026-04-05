@@ -4,7 +4,10 @@
   $content-heading-weight: 400,
   $section-padding: 1.5rem 0.9375rem,
   $section-padding-desktop: 3rem,
-  $footer-padding: 1.5rem 1.5rem
+  $footer-padding: 1.5rem 1.5rem,
+  $primary: #2e86b7,
+  $link: #2e86b7,
+  $input-shadow: none
 );
 
 @use "fonts";
@@ -26,6 +29,5 @@
 @use "page-toc";
 @use "docs-sidebar";
 @use "docs-sidebar-split";
-@use "maps";
 
 @use "@fortawesome/fontawesome-svg-core/styles.css";

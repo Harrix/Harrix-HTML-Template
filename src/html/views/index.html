@@ -127,14 +127,22 @@
 
           <h2 id="tabs">Вкладки</h2>
 
-          <div class="h-tabs">
-            <div class="h-tabs__nav" role="tablist" aria-label="Пример вкладок">
-              <button class="h-tabs__tab is-active" type="button" role="tab" aria-selected="true" aria-controls="h-tab-panel-1" id="h-tab-1">Вкладка 1</button>
-              <button class="h-tabs__tab" type="button" role="tab" aria-selected="false" aria-controls="h-tab-panel-2" id="h-tab-2">Вкладка 2</button>
-              <button class="h-tabs__tab" type="button" role="tab" aria-selected="false" aria-controls="h-tab-panel-3" id="h-tab-3">Вкладка 3</button>
+          <div class="h-tab-widget">
+            <div class="tabs">
+              <ul role="tablist" aria-label="Пример вкладок">
+                <li class="is-active" role="presentation">
+                  <a href="#" role="tab" aria-selected="true" aria-controls="h-tab-panel-1" id="h-tab-1">Вкладка 1</a>
+                </li>
+                <li role="presentation">
+                  <a href="#" role="tab" aria-selected="false" aria-controls="h-tab-panel-2" id="h-tab-2">Вкладка 2</a>
+                </li>
+                <li role="presentation">
+                  <a href="#" role="tab" aria-selected="false" aria-controls="h-tab-panel-3" id="h-tab-3">Вкладка 3</a>
+                </li>
+              </ul>
             </div>
-            <div class="h-tabs__panels">
-              <div class="h-tabs__panel" role="tabpanel" id="h-tab-panel-1" aria-labelledby="h-tab-1">
+            <div class="h-tab-panels">
+              <div class="h-tab-panel" role="tabpanel" id="h-tab-panel-1" aria-labelledby="h-tab-1">
                 <p>Содержимое <strong>первой</strong> вкладки. Здесь можно размещать любой контент: текст, изображения, таблицы.</p>
                 <ul>
                   <li>Первый пункт</li>
@@ -142,11 +150,11 @@
                   <li>Третий пункт</li>
                 </ul>
               </div>
-              <div class="h-tabs__panel" role="tabpanel" id="h-tab-panel-2" aria-labelledby="h-tab-2" hidden>
+              <div class="h-tab-panel" role="tabpanel" id="h-tab-panel-2" aria-labelledby="h-tab-2" hidden>
                 <p>Содержимое <strong>второй</strong> вкладки. Вкладки удобны для группировки связанного контента без перехода на другую страницу.</p>
                 <pre><code class="plaintext">Пример кода на второй вкладке</code></pre>
               </div>
-              <div class="h-tabs__panel" role="tabpanel" id="h-tab-panel-3" aria-labelledby="h-tab-3" hidden>
+              <div class="h-tab-panel" role="tabpanel" id="h-tab-panel-3" aria-labelledby="h-tab-3" hidden>
                 <p>Содержимое <strong>третьей</strong> вкладки. Количество вкладок не ограничено — при необходимости навигация прокручивается горизонтально.</p>
               </div>
             </div>
@@ -358,29 +366,29 @@
           <p><a href="example.zip"><span class="icon h-fa-lg"><i class="far fa-file-archive" aria-hidden="true"></i></span> example.zip</a></p>
 
           <article class="message is-danger">
-            <div class="message-body h-message-with-icon">
-              <span class="icon is-medium"><i class="fas fa-exclamation-circle" aria-hidden="true"></i></span>
+            <div class="message-body is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="icon is-medium is-flex-shrink-0"><i class="fas fa-exclamation-circle" aria-hidden="true"></i></span>
               <span>Опасное предупреждение. Например, тут сообщается, что файл не открылся, и это плохо. Что-нибудь сделайте.</span>
             </div>
           </article>
 
           <article class="message is-success">
-            <div class="message-body h-message-with-icon">
-              <span class="icon is-medium"><i class="fas fa-check-circle" aria-hidden="true"></i></span>
+            <div class="message-body is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="icon is-medium is-flex-shrink-0"><i class="fas fa-check-circle" aria-hidden="true"></i></span>
               <span>Успех! Что-то получилось именно так, как и хотелось. Вот и сообщается, что всё получилось, как нужно.</span>
             </div>
           </article>
 
           <article class="message is-info">
-            <div class="message-body h-message-with-icon">
-              <span class="icon is-medium"><i class="fas fa-info-circle" aria-hidden="true"></i></span>
+            <div class="message-body is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="icon is-medium is-flex-shrink-0"><i class="fas fa-info-circle" aria-hidden="true"></i></span>
               <span>Информационное сообщение. Здесь о чем-то мы сообщаем. Мало ли что нужно сообщить. Например, что смысл жизни заключен в числе 42.</span>
             </div>
           </article>
 
           <article class="message is-warning">
-            <div class="message-body h-message-with-icon">
-              <span class="icon is-medium"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i></span>
+            <div class="message-body is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="icon is-medium is-flex-shrink-0"><i class="fas fa-exclamation-triangle" aria-hidden="true"></i></span>
               <span>Предупреждение. Это не обязательно ошибка, но стоит сообщить об этом пользователю. И в данный момент сообщяем об этом.</span>
             </div>
           </article>
@@ -405,7 +413,7 @@
             На узком экране таблица не сжимается — её можно листать влево и вправо. Удобно для таблиц с большим числом колонок.
           </p>
 
-          <div class="h-table-scroll table-container">
+          <div class="table-container">
             <table class="table is-bordered is-fullwidth">
               <thead>
                 <tr>
@@ -479,58 +487,58 @@
 
           <h2 id="history">Список изменений</h2>
 
-          <ul class="h-changelog content">
-            <li class="h-changelog__item">
-              <span class="tag is-warning">New</span>
-              <span class="h-changelog__text">Dark theme now available from Options menu.</span>
+          <ul class="h-changelog content is-flex is-flex-direction-column is-gap-2">
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-warning is-flex-shrink-0">New</span>
+              <span class="is-flex-grow-1">Dark theme now available from Options menu.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-success">Added</span>
-              <span class="h-changelog__text">Icons indicating whether a file was added, removed or modified.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-success is-flex-shrink-0">Added</span>
+              <span class="is-flex-grow-1">Icons indicating whether a file was added, removed or modified.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-info">Fixed</span>
-              <span class="h-changelog__text">Unable to add repository which exists at drive root.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-info is-flex-shrink-0">Fixed</span>
+              <span class="is-flex-grow-1">Unable to add repository which exists at drive root.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-info">Fixed</span>
-              <span class="h-changelog__text">Crash due to incorrect handling of input arguments on launch.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-info is-flex-shrink-0">Fixed</span>
+              <span class="is-flex-grow-1">Crash due to incorrect handling of input arguments on launch.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-info">Fixed</span>
-              <span class="h-changelog__text">Crash due to COM exception when interacting with Taskbar.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-info is-flex-shrink-0">Fixed</span>
+              <span class="is-flex-grow-1">Crash due to COM exception when interacting with Taskbar.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-info">Fixed</span>
-              <span class="h-changelog__text">Crash when scanning filesystem for local repositories.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-info is-flex-shrink-0">Fixed</span>
+              <span class="is-flex-grow-1">Crash when scanning filesystem for local repositories.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-info">Fixed</span>
-              <span class="h-changelog__text">Created SSH keys not added to ssh-agent on first launch.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-info is-flex-shrink-0">Fixed</span>
+              <span class="is-flex-grow-1">Created SSH keys not added to ssh-agent on first launch.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-info">Fixed</span>
-              <span class="h-changelog__text">Crash due to decoding malformed parameters on restart.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-info is-flex-shrink-0">Fixed</span>
+              <span class="is-flex-grow-1">Crash due to decoding malformed parameters on restart.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-link">Updated</span>
-              <span class="h-changelog__text">Posh-Git now includes new icons in prompt.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-link is-flex-shrink-0">Updated</span>
+              <span class="is-flex-grow-1">Posh-Git now includes new icons in prompt.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-link">Updated</span>
-              <span class="h-changelog__text">Git Shell updated to v2.8.1.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-link is-flex-shrink-0">Updated</span>
+              <span class="is-flex-grow-1">Git Shell updated to v2.8.1.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-link">Updated</span>
-              <span class="h-changelog__text">Git LFS updated to v1.2.0.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-link is-flex-shrink-0">Updated</span>
+              <span class="is-flex-grow-1">Git LFS updated to v1.2.0.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-link">Updated</span>
-              <span class="h-changelog__text">Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-link is-flex-shrink-0">Updated</span>
+              <span class="is-flex-grow-1">Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</span>
             </li>
-            <li class="h-changelog__item">
-              <span class="tag is-danger">Removed</span>
-              <span class="h-changelog__text">Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</span>
+            <li class="is-flex is-align-items-flex-start is-gap-1.5">
+              <span class="tag is-danger is-flex-shrink-0">Removed</span>
+              <span class="is-flex-grow-1">Git Shell adds Visual Studio 2015 developer tools and other common tools to $PATH.</span>
             </li>
           </ul>
 
@@ -1006,32 +1014,28 @@ kbd.menu {
           <a class="anchor" id="maps"></a>
           <h2>Карты</h2>
           <h3>Google Карты</h3>
-          <div class="h-map-embed">
+          <figure class="image is-16by9">
             <!-- Замените src на ссылку из Google Maps: Поделиться → Встроить карту -->
             <iframe
+              class="has-ratio"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2242.25!2d92.8523!3d56.0153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTbCsDAwJzU1IiBOIDkywrA1MScwOCJF!5e0!3m2!1sru!2sru!4v1"
-              width="600"
-              height="450"
-              style="border:0;"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               title="Google Карты"
             ></iframe>
-          </div>
+          </figure>
           <h3>Яндекс.Карты</h3>
-          <div class="h-map-embed">
+          <figure class="image is-16by9">
             <!-- Замените src на ссылку из Яндекс.Карт: Поделиться → Код для встраивания -->
             <iframe
+              class="has-ratio"
               src="https://yandex.ru/map-widget/v1/?ll=92.852300%2C56.015300&z=12"
-              width="560"
-              height="400"
-              style="border:0;"
               allowfullscreen="true"
               loading="lazy"
               title="Яндекс.Карты"
             ></iframe>
-          </div>
+          </figure>
         </div>
       </div>
     </div>
@@ -1044,31 +1048,27 @@ kbd.menu {
           <a class="anchor" id="video"></a>
           <h2>Видео</h2>
           <h3>YouTube</h3>
-          <div class="h-video-embed">
+          <figure class="image is-16by9">
             <!-- Замените src: в ссылке YouTube замените watch?v=ID на embed/ID -->
             <iframe
+              class="has-ratio"
               src="https://www.youtube.com/watch?v=jNQXAC9IVRw"
-              width="560"
-              height="315"
-              style="border:0;"
               allowfullscreen
               loading="lazy"
               title="YouTube"
             ></iframe>
-          </div>
+          </figure>
           <h3>ВКонтакте</h3>
-          <div class="h-video-embed">
+          <figure class="image is-16by9">
             <!-- Замените src на код встраивания из VK: Видео → Поделиться → Код для встраивания -->
             <iframe
+              class="has-ratio"
               src="https://vkvideo.ru/video-173270991_456239544"
-              width="640"
-              height="360"
-              style="border:0;"
               allowfullscreen
               loading="lazy"
               title="ВКонтакте"
             ></iframe>
-          </div>
+          </figure>
         </div>
       </div>
     </div>

@@ -14,26 +14,6 @@ body {
   line-height: 1.5;
 }
 
-// Link colors (replaces Bulma $link, $link-hover when variables are not passed)
-a {
-  color: hvars.$h-primary;
-}
-a:hover {
-  color: hvars.$h-link-hover;
-}
-
-// Primary buttons: boston blue (#2e86b7) with white text (as in old Bulma 0 version)
-.button.is-primary {
-  background-color: hvars.$h-primary;
-  border-color: transparent;
-  color: #fff;
-
-  &:hover {
-    background-color: hvars.$h-primary-hover;
-    color: #fff;
-  }
-}
-
 // Hide the inline menu before JS has determined fit state to prevent
 // a flash of the expanded menu on page load in the intermediate zone.
 // Uses visibility:hidden so scrollWidth measurement still works.

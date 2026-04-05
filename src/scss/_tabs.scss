@@ -1,63 +1,24 @@
 @use "variables" as hvars;
 
-.h-tabs {
+// Обёртка для Bulma .tabs + панелей контента (у Bulma есть только список вкладок)
+.h-tab-widget {
   margin: 1rem 0;
+}
 
-  &__nav {
-    display: flex;
-    border-bottom: 2px solid var(--bulma-border, #dbdbdb);
-    overflow-x: auto;
-    scrollbar-width: none;
+.h-tab-panels {
+  border: 1px solid var(--bulma-border, #dbdbdb);
+  border-top: none;
+  border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
+}
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+.h-tab-panel {
+  padding: 1.25rem;
+
+  > *:first-child {
+    margin-top: 0;
   }
 
-  &__tab {
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    padding: 0.6rem 1.25rem;
-    margin-bottom: -2px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--bulma-text, #4a4a4a);
-    white-space: nowrap;
-    transition:
-      color 0.2s ease,
-      border-bottom-color 0.2s ease,
-      background-color 0.2s ease;
-    user-select: none;
-
-    &:hover {
-      color: hvars.$h-primary;
-      border-bottom-color: rgba(46, 134, 183, 0.4);
-      background-color: rgba(46, 134, 183, 0.06);
-    }
-
-    &.is-active {
-      color: hvars.$h-primary;
-      border-bottom-color: hvars.$h-primary;
-    }
-  }
-
-  &__panels {
-    border: 1px solid var(--bulma-border, #dbdbdb);
-    border-top: none;
-    border-radius: 0 0 4px 4px;
-  }
-
-  &__panel {
-    padding: 1.25rem;
-
-    > *:first-child {
-      margin-top: 0;
-    }
-
-    > *:last-child {
-      margin-bottom: 0;
-    }
+  > *:last-child {
+    margin-bottom: 0;
   }
 }

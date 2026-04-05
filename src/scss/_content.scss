@@ -135,18 +135,7 @@
   font-size: 1.33em;
 }
 
-// Message with icon on the left (Bulma message-body + icon)
-.message-body.h-message-with-icon {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-
-  .icon {
-    flex-shrink: 0;
-  }
-}
-
-// Changelog list: tag + description per row (Bulma tag colors)
+// Changelog: сброс списка; подписи тегов — демо (ряд — хелперы Bulma is-flex / is-gap)
 .h-changelog {
   list-style: none;
   margin-left: 0;
@@ -154,21 +143,5 @@
 
   .tag {
     text-transform: uppercase;
-    flex-shrink: 0;
   }
-}
-
-.h-changelog__item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.h-changelog__text {
-  flex: 1;
 }

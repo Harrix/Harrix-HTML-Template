@@ -39,22 +39,20 @@ export function initSpoilerAnimation() {
 }
 
 export function initTabs() {
-  document.querySelectorAll(".h-tabs").forEach((tabs) => {
-    const tabBtns = tabs.querySelectorAll(".h-tabs__tab");
-    const panels = tabs.querySelectorAll(".h-tabs__panel");
+  document.querySelectorAll(".h-tab-widget").forEach((widget) => {
+    const tabLinks = widget.querySelectorAll('[role="tab"]');
+    const panels = widget.querySelectorAll('[role="tabpanel"]');
 
-    tabBtns.forEach((btn, i) => {
-      btn.addEventListener("click", () => {
-        tabBtns.forEach((b) => {
-          b.classList.remove("is-active");
-          b.setAttribute("aria-selected", "false");
+    tabLinks.forEach((link, i) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        tabLinks.forEach((l, j) => {
+          l.setAttribute("aria-selected", j === i ? "true" : "false");
+          l.closest("li")?.classList.toggle("is-active", j === i);
         });
-        panels.forEach((p) => {
-          p.hidden = true;
+        panels.forEach((p, j) => {
+          p.hidden = j !== i;
         });
-        btn.classList.add("is-active");
-        btn.setAttribute("aria-selected", "true");
-        panels[i].hidden = false;
       });
     });
   });

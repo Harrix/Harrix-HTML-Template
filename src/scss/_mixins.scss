@@ -177,24 +177,6 @@
   }
 }
 
-@mixin h-responsive-embed {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  min-height: 200px;
-
-  iframe {
-    border: 0;
-    display: block;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-}
-
 @mixin h-dark-icon-button-hover($bg: dark.$h-dark-border) {
   color: dark.$h-dark-icon;
 
