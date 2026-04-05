@@ -10,10 +10,10 @@ const { Eta } = require("eta");
 function generateHtmlPlugins(templateDir) {
   const includesDir = path.resolve(__dirname, "src/html/includes");
   const eta = new Eta({
-    // Keep templates compatible with lodash.template-style usage:
-    // allow `<%= title %>` (without `it.`) and don't change escaping semantics.
+    // useWith: lodash-style `<%= title %>` without `it.` in includes/
     useWith: true,
-    autoEscape: false,
+    // XSS-safe default: `<%=` is HTML-escaped. Trusted HTML from partials: `<%~ ... %>`.
+    autoEscape: true,
   });
   const includeCache = new Map();
   function include(fileName, data) {
