@@ -8,16 +8,16 @@ function isHttpLikeProtocol() {
 
 function injectManifestLink() {
   if (!isHttpLikeProtocol()) return;
-  var link = document.createElement("link");
+  const link = document.createElement("link");
   link.rel = "manifest";
   link.href = "favicon/manifest.json";
   document.head.appendChild(link);
 }
 
 function applyInitialTheme() {
-  var stored = safeStorageGetItem("h-theme");
-  var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  var theme = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
+  const stored = safeStorageGetItem("h-theme");
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const theme = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
   document.documentElement.setAttribute("data-theme", theme);
 }
 
@@ -32,14 +32,14 @@ function hasDocsSidebar() {
 function applyInitialSplitLayout() {
   if (!hasDocsSidebar()) return;
 
-  var vw = window.innerWidth;
+  const vw = window.innerWidth;
   if (vw <= MOBILE_NAV_BREAKPOINT) return;
 
-  var stored = safeStorageGetItem(SPLIT_SIDEBAR_STORAGE_KEY);
-  var sidebarW = resolveSplitSidebarWidthPx(stored, vw);
-  var props = getSplitLayoutCssPropMap(vw, sidebarW);
+  const stored = safeStorageGetItem(SPLIT_SIDEBAR_STORAGE_KEY);
+  const sidebarW = resolveSplitSidebarWidthPx(stored, vw);
+  const props = getSplitLayoutCssPropMap(vw, sidebarW);
 
-  var d = document.documentElement;
+  const d = document.documentElement;
   Object.keys(props).forEach(function (key) {
     d.style.setProperty(key, props[key]);
   });

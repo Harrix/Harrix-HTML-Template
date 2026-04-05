@@ -8,7 +8,8 @@
     "watch": "webpack --mode development --watch",
     "start": "webpack serve --no-client-overlay-warnings",
     "build": "webpack --mode production && prettier --print-width=120 --parser html --write \"dist/**/*.html\"",
-    "lint": "eslint src/js",
+    "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
+    "lint:fix": "eslint . --fix --cache --cache-location node_modules/.cache/eslint",
     "clear-css": "purgecss --config purgecss.config.js"
   },
   "repository": {
