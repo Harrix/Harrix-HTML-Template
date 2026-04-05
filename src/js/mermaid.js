@@ -37,10 +37,15 @@ function renderMermaid() {
   void mermaid.run({ querySelector: ".mermaid" });
 }
 
+/** Re-render after `data-theme` and styles settle (next frame + paint). */
+function scheduleRenderMermaidAfterThemePaint() {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(renderMermaid);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderMermaid();
 
-  onThemeToggle(() => {
-    setTimeout(renderMermaid, 50);
-  });
+  onThemeToggle(scheduleRenderMermaidAfterThemePaint);
 });
