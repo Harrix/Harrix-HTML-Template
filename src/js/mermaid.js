@@ -3,11 +3,26 @@ import { THEME_STORAGE_KEY } from "./_constants.js";
 import { safeStorageGetItem } from "./_storage.js";
 import { onThemeToggle } from "./_theme-utils.js";
 
+/** Last theme passed to `mermaid.initialize` (Mermaid docs: initialize is site-wide; avoid redundant calls). */
+let appliedMermaidTheme = null;
+
 function getMermaidTheme() {
   const stored = safeStorageGetItem(THEME_STORAGE_KEY);
   const fromDom = document.documentElement.getAttribute("data-theme");
   const theme = fromDom || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   return theme === "dark" ? "dark" : "default";
+}
+
+function ensureMermaidConfigForCurrentTheme() {
+  const theme = getMermaidTheme();
+  if (appliedMermaidTheme === theme) {
+    return;
+  }
+  mermaid.initialize({
+    startOnLoad: false,
+    theme,
+  });
+  appliedMermaidTheme = theme;
 }
 
 function renderMermaid() {
@@ -18,12 +33,8 @@ function renderMermaid() {
     el.removeAttribute("data-processed");
   });
 
-  mermaid.initialize({
-    startOnLoad: false,
-    theme: getMermaidTheme(),
-  });
-
-  mermaid.run({ querySelector: ".mermaid" });
+  ensureMermaidConfigForCurrentTheme();
+  void mermaid.run({ querySelector: ".mermaid" });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
