@@ -1,3 +1,5 @@
+import { MOBILE_NAV_BREAKPOINT, SPLIT_SIDEBAR_STORAGE_KEY } from "./_constants.js";
+import { getSplitLayoutCssPropMap, resolveSplitSidebarWidthPx } from "./_split-layout-values.js";
 import { safeStorageGetItem } from "./_storage.js";
 
 function isHttpLikeProtocol() {
@@ -30,40 +32,17 @@ function hasDocsSidebar() {
 function applyInitialSplitLayout() {
   if (!hasDocsSidebar()) return;
 
-  // Keep in sync with split constants in src/js/index.js (early paint before bundle).
-  var MOBILE_NAV_BREAKPOINT = 1024;
-  var SPLIT_SIDEBAR_STORAGE_KEY = "h-split-sidebar-width";
-  var SPLIT_DEFAULT_WIDTH = 280;
-  var SPLIT_MIN_WIDTH = 200;
-  var SPLIT_MAX_VIEWPORT_RATIO = 0.5;
-  var SPLIT_SPLITTER_WIDTH = 1;
-  var CONTAINER_MAX_WIDTH = 1179;
-  var SPLIT_LAYOUT_CENTER_TRIGGER_VW = 2500;
-  var SPLIT_LAYOUT_CENTER_TOC_GAP_PX = 16;
-  var TOC_MIN_SPACE = 256;
-
   var vw = window.innerWidth;
   if (vw <= MOBILE_NAV_BREAKPOINT) return;
 
-  var maxSidebar = Math.max(SPLIT_MIN_WIDTH, Math.floor(vw * SPLIT_MAX_VIEWPORT_RATIO));
-  var sidebarW = SPLIT_DEFAULT_WIDTH;
   var stored = safeStorageGetItem(SPLIT_SIDEBAR_STORAGE_KEY);
-  if (stored) {
-    var parsed = parseInt(stored, 10);
-    if (!isNaN(parsed)) {
-      sidebarW = Math.max(SPLIT_MIN_WIDTH, Math.min(maxSidebar, parsed));
-    }
-  }
-
-  var offset = sidebarW + SPLIT_SPLITTER_WIDTH;
-  var band = offset + CONTAINER_MAX_WIDTH + SPLIT_LAYOUT_CENTER_TOC_GAP_PX + TOC_MIN_SPACE;
-  var centerInset = vw <= SPLIT_LAYOUT_CENTER_TRIGGER_VW ? 0 : Math.max(0, (vw - band) / 2);
+  var sidebarW = resolveSplitSidebarWidthPx(stored, vw);
+  var props = getSplitLayoutCssPropMap(vw, sidebarW);
 
   var d = document.documentElement;
-  d.style.setProperty("--h-split-viewport-px", vw + "px");
-  d.style.setProperty("--h-split-sidebar-w", sidebarW + "px");
-  d.style.setProperty("--h-split-offset", offset + "px");
-  d.style.setProperty("--h-split-center-inset", centerInset + "px");
+  Object.keys(props).forEach(function (key) {
+    d.style.setProperty(key, props[key]);
+  });
   d.classList.add("h-split-active");
 }
 

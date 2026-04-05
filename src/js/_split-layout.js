@@ -1,14 +1,11 @@
-import {
-  MOBILE_NAV_BREAKPOINT,
-  SPLIT_DEFAULT_WIDTH,
-  SPLIT_MAX_VIEWPORT_RATIO,
-  SPLIT_MIN_WIDTH,
-  SPLIT_SIDEBAR_STORAGE_KEY,
-  SPLIT_SPLITTER_WIDTH,
-} from "./_constants.js";
+import { MOBILE_NAV_BREAKPOINT, SPLIT_SIDEBAR_STORAGE_KEY, SPLIT_SPLITTER_WIDTH } from "./_constants.js";
 import { requestSplitFitUpdate } from "./_app-bridge.js";
 import { safeStorageGetItem, safeStorageSetItem } from "./_storage.js";
-import { getSplitLayoutCenterInsetPx } from "./_split-layout-geometry.js";
+import {
+  clampSplitSidebarWidthPx,
+  getSplitLayoutCssPropMap,
+  resolveSplitSidebarWidthPx,
+} from "./_split-layout-values.js";
 import { subscribeWindowResize } from "./_resize-hub.js";
 
 export function initSplitLayout() {
@@ -18,22 +15,11 @@ export function initSplitLayout() {
 
   const root = document.documentElement;
 
-  function getMaxSidebarWidth() {
-    return Math.max(SPLIT_MIN_WIDTH, Math.floor(window.innerWidth * SPLIT_MAX_VIEWPORT_RATIO));
-  }
-
   function clampSidebarWidth(width) {
-    return Math.max(SPLIT_MIN_WIDTH, Math.min(getMaxSidebarWidth(), width));
+    return clampSplitSidebarWidthPx(width, window.innerWidth);
   }
 
-  let sidebarWidth = SPLIT_DEFAULT_WIDTH;
-  const stored = safeStorageGetItem(SPLIT_SIDEBAR_STORAGE_KEY);
-  if (stored) {
-    const parsed = parseInt(stored, 10);
-    if (!Number.isNaN(parsed)) {
-      sidebarWidth = clampSidebarWidth(parsed);
-    }
-  }
+  let sidebarWidth = resolveSplitSidebarWidthPx(safeStorageGetItem(SPLIT_SIDEBAR_STORAGE_KEY), window.innerWidth);
 
   const splitter = document.createElement("div");
   splitter.id = "h-docs-splitter";
@@ -43,11 +29,10 @@ export function initSplitLayout() {
 
   function applyCssVars() {
     const vw = window.innerWidth;
-    const offsetPx = sidebarWidth + SPLIT_SPLITTER_WIDTH;
-    root.style.setProperty("--h-split-sidebar-w", sidebarWidth + "px");
-    root.style.setProperty("--h-split-offset", offsetPx + "px");
-    root.style.setProperty("--h-split-viewport-px", vw + "px");
-    root.style.setProperty("--h-split-center-inset", getSplitLayoutCenterInsetPx(vw, offsetPx) + "px");
+    const map = getSplitLayoutCssPropMap(vw, sidebarWidth);
+    for (const key of Object.keys(map)) {
+      root.style.setProperty(key, map[key]);
+    }
   }
 
   function activate() {
