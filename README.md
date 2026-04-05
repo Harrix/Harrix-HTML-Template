@@ -64,7 +64,9 @@ src/
 
 ### HTML includes templating
 
-HTML partials in `src/html/includes/` are rendered by a small `include(...)` helper in `webpack.config.js`. The project uses [Eta](https://www.npmjs.com/package/eta) (with `useWith: true` and `autoEscape: false`) to keep templates compatible with `<% %>` / `<%= %>` syntax without pulling the full `lodash` package.
+Partials in `src/html/includes/` are rendered by the `include(...)` helper in `webpack.config.js`, which uses [Eta](https://www.npmjs.com/package/eta) with **`useWith: true`** and **`autoEscape: true`** (same as in that file). With auto-escaping enabled, `<%=` outputs HTML-escaped text; use **`<%~ … %>`** for trusted raw markup (for example nested `include(...)` results that must stay HTML, as in `header.html`).
+
+Page templates in `src/html/views/` are compiled by HtmlWebpackPlugin’s built-in **lodash** `_.template` loader, not Eta: there **`<%= … %>`** interpolates without HTML escaping and **`<%- … %>`** uses lodash’s escaped interpolation. Only the includes pipeline uses the Eta instance above.
 
 ### Internationalization (UI strings)
 
