@@ -8,8 +8,8 @@
 .navbar {
   --bulma-navbar-dropdown-boxed-radius: #{hvars.$h-panel-radius};
 
-  min-height: 3rem;
-  height: 3rem;
+  min-height: hvars.$h-navbar-height;
+  height: hvars.$h-navbar-height;
   padding-top: 0;
   padding-bottom: 0;
   font-size: hvars.$h-navbar-font-size;
@@ -23,7 +23,7 @@
     position: absolute;
     color: transparent;
     background-color: transparent;
-    height: 0.5rem;
+    height: hvars.$h-space-2;
     left: 0;
     right: 0;
     top: 100%;
@@ -58,8 +58,8 @@
       background-color: transparent;
     }
 
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: hvars.$h-space-3;
+    padding-right: hvars.$h-space-3;
 
     img {
       max-height: 2rem;
@@ -134,7 +134,7 @@
       body.h-navbar-menu-no-fit & {
         display: flex;
         // Spacing from search button (search has margin-left: auto — see .h-navbar-search-btn)
-        margin-left: 0.25rem;
+        margin-left: hvars.$h-space-1;
       }
     }
   }
@@ -143,11 +143,11 @@
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
       body.h-navbar-menu-no-fit & {
         position: fixed;
-        top: 3rem;
+        top: hvars.$h-navbar-height;
         left: 50%;
         right: auto;
         bottom: auto;
-        max-height: calc(100vh - 3rem - env(safe-area-inset-bottom, 0px));
+        max-height: calc(100vh - #{hvars.$h-navbar-height} - env(safe-area-inset-bottom, 0px));
         width: min(100%, hvars.$h-container-content-max-width);
         background-color: #fff;
         border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
@@ -166,7 +166,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem 1rem 0.5rem;
+        padding: hvars.$h-space-4 hvars.$h-space-4 hvars.$h-space-2;
       }
 
       body.h-navbar-menu-no-fit & .navbar-end {
@@ -175,7 +175,7 @@
       }
 
       body.h-navbar-menu-no-fit & .navbar-item {
-        padding: 0.75rem 1rem;
+        padding: hvars.$h-space-3 hvars.$h-space-4;
         border-bottom: none;
       }
 
@@ -195,7 +195,7 @@
 
   .h-navbar-menu-backdrop {
     @include hmixins.h-backdrop;
-    top: 3rem;
+    top: hvars.$h-navbar-height;
     background-color: transparent;
     z-index: 50;
 
@@ -215,7 +215,7 @@
     align-items: center;
     width: 100%;
     flex-shrink: 0;
-    min-height: 3rem;
+    min-height: hvars.$h-navbar-height;
 
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
       body.h-navbar-menu-no-fit & {
@@ -227,7 +227,7 @@
   .h-navbar-sidebar-btn {
     @include hmixins.h-icon-button(hvars.$h-navbar-icon-color, hvars.$h-primary);
     display: none;
-    margin-right: 0.25rem;
+    margin-right: hvars.$h-space-1;
 
     .icon {
       font-size: 1.125rem;
@@ -241,7 +241,7 @@
   }
 
   body.h-navbar-toc-no-fit & {
-    min-height: 3rem;
+    min-height: hvars.$h-navbar-height;
     height: auto;
   }
 
@@ -256,7 +256,7 @@
     flex-shrink: 0;
     width: 100%;
     border-top: 1px solid initial-variables.$grey-lighter;
-    min-height: 2.5rem;
+    min-height: hvars.$h-navbar-toc-row-height;
 
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
       body.h-navbar-toc-no-fit & {
@@ -268,10 +268,10 @@
   .h-navbar-toc-trigger {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: hvars.$h-space-2;
     width: 100%;
-    min-height: 2.5rem;
-    padding: 0 1rem;
+    min-height: hvars.$h-navbar-toc-row-height;
+    padding: 0 hvars.$h-space-4;
     background: none;
     border: none;
     color: derived-variables.$text-strong;
@@ -326,9 +326,9 @@
   .h-navbar-search-overlay__inner {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    min-height: 3rem;
-    padding: 0.5rem 0.75rem;
+    gap: hvars.$h-space-2;
+    min-height: hvars.$h-navbar-height;
+    padding: hvars.$h-space-2 hvars.$h-space-3;
   }
 
   .h-navbar-search-overlay__field {
@@ -340,7 +340,7 @@
   .h-navbar-search-overlay__input {
     @include hmixins.h-search-field-input;
     width: 100%;
-    padding-right: 2.5rem;
+    padding-right: hvars.$h-control-size-md;
     font-size: 1rem;
   }
 

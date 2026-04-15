@@ -2,7 +2,7 @@
 
 // Обёртка для Bulma .tabs + панелей контента (у Bulma есть только список вкладок)
 .h-tab-widget {
-  margin: 1rem 0;
+  margin: hvars.$h-space-4 0;
 }
 
 .h-tab-panels {
@@ -12,7 +12,7 @@
 }
 
 .h-tab-panel {
-  padding: 1.25rem;
+  padding: hvars.$h-space-5;
 
   > *:first-child {
     margin-top: 0;
