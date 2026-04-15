@@ -32,6 +32,7 @@
       width: 100%;
       display: flex;
       align-items: center;
+      flex-wrap: nowrap;
       gap: 0.25rem;
 
       .input {
@@ -46,6 +47,7 @@
 
       form {
         flex: 1;
+        min-width: 0;
         margin: 0;
       }
 
@@ -62,9 +64,16 @@
 
     .h-search-input-wrap {
       position: relative;
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
     }
 
     #h-search-input {
+      flex: 1;
+      min-width: 0;
       padding-right: 2.5rem;
     }
 
