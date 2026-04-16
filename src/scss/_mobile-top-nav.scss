@@ -63,8 +63,6 @@ body.h-mobile-nav-top {
 }
 
 .h-mobile-top-nav-search-panel__inner {
-  display: flex;
-  align-items: center;
   gap: hvars.$h-space-2;
   min-height: $h-mobile-top-nav-search-height;
   padding: hvars.$h-space-2 hvars.$h-space-3;
@@ -97,8 +95,6 @@ body.h-mobile-nav-top {
 
 // Row 1: sidebar | logo | search | menu
 .h-mobile-top-nav__row1 {
-  display: flex;
-  align-items: center;
   min-height: $h-mobile-top-nav-row-height;
   padding: 0 hvars.$h-space-2;
   gap: hvars.$h-space-2;

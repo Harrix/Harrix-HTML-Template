@@ -211,8 +211,6 @@
   }
 
   .h-navbar__row1 {
-    display: flex;
-    align-items: center;
     width: 100%;
     flex-shrink: 0;
     min-height: hvars.$h-navbar-height;
@@ -324,9 +322,6 @@
   }
 
   .h-navbar-search-overlay__inner {
-    display: flex;
-    align-items: center;
-    gap: hvars.$h-space-2;
     min-height: hvars.$h-navbar-height;
     padding: hvars.$h-space-2 hvars.$h-space-3;
   }

@@ -1,4 +1,3 @@
-@use "bulma/sass/utilities/mixins" as mixins;
 @use "variables" as hvars;
 @use "mixins" as hmixins;
 
@@ -16,53 +15,19 @@
 }
 
 .h-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: flex-start; //space-around;
-  width: calc(100% + #{hvars.$h-gallery-gap});
+  justify-content: flex-start;
+  gap: hvars.$h-gallery-gap;
 
   img {
     display: block;
     width: auto;
-    height: 200px;
+    height: auto;
   }
 
   div {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
-    margin-right: hvars.$h-gallery-gap;
-    margin-bottom: hvars.$h-gallery-gap;
     width: auto;
     height: auto;
-
     cursor: zoom-in;
-  }
-
-  &:after {
-    flex: 20 150px;
-    display: block;
-    content: " ";
-    height: 1px;
-  }
-
-  @include mixins.tablet {
-    &:after {
-      flex: 50 200px;
-    }
-  }
-
-  @include mixins.desktop {
-    &:after {
-      flex: 100 250px;
-    }
-  }
-
-  @include mixins.widescreen {
-    &:after {
-      flex: 500 300px;
-    }
   }
 }
 
