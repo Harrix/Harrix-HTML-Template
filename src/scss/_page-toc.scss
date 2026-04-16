@@ -59,7 +59,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
 
     // TOC row without menu overflow: --h-expanded-menu-top is not set on body (see _mobile-top-nav.scss)
     body.h-navbar-toc-no-fit:not(.h-navbar-menu-no-fit) & {
-      top: 5.5rem;
+      top: hvars.$h-navbar-height-2rows;
     }
   }
 
@@ -85,7 +85,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
   background-color: #fff;
   border-radius: hvars.$h-panel-radius hvars.$h-panel-radius 0 0;
   box-shadow: hvars.$h-shadow-elevated-up;
-  padding: 1rem 1.25rem 1.5rem;
+  padding: hvars.$h-space-4 hvars.$h-space-5 hvars.$h-space-6;
   transform: translateY(100%);
   transition: transform 0.3s ease;
   visibility: hidden;
@@ -105,8 +105,8 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     max-height: calc(100vh - var(--h-expanded-menu-top) - env(safe-area-inset-bottom, 0px));
 
     body.h-navbar-toc-no-fit:not(.h-navbar-menu-no-fit) & {
-      top: 5.5rem;
-      max-height: calc(100vh - 5.5rem - env(safe-area-inset-bottom, 0px));
+      top: hvars.$h-navbar-height-2rows;
+      max-height: calc(100vh - #{hvars.$h-navbar-height-2rows} - env(safe-area-inset-bottom, 0px));
     }
     overflow-x: hidden;
     overflow-y: auto;
@@ -128,7 +128,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     }
 
     .h-page-toc__header {
-      padding: 1rem 1rem 0.5rem;
+      padding: hvars.$h-space-4 hvars.$h-space-4 hvars.$h-space-2;
       margin-bottom: 0;
     }
 
@@ -137,7 +137,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     }
 
     .menu-list {
-      padding: 0 1rem 1rem;
+      padding: 0 hvars.$h-space-4 hvars.$h-space-4;
       font-size: 0.9rem;
     }
 
@@ -154,7 +154,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
   // --- Desktop: fixed sidebar, attached to content right edge ---
   @media (min-width: $h-page-toc-breakpoint) {
     top: 4.5rem;
-    left: calc((100vw + hvars.$h-container-max-width) / 2 + 1rem);
+    left: calc((100vw + hvars.$h-container-max-width) / 2 + #{hvars.$h-space-4});
     right: auto;
     bottom: auto;
     width: min(16rem, calc((100vw - hvars.$h-container-max-width) / 2 - 2rem));

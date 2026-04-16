@@ -26,7 +26,7 @@
     code {
       padding: 0.2em 0.4em;
       background: rgba(0, 0, 0, 0.06);
-      border-radius: 3px;
+      border-radius: var(--bulma-radius-small, 0.25rem);
     }
   }
 }

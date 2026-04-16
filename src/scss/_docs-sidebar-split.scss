@@ -169,7 +169,7 @@ html.h-split-active {
   // Two-row navbar when TOC doesn't fit
   &:not(.h-split-toc-fits) .navbar,
   body.h-navbar-toc-no-fit .navbar {
-    min-height: 3rem;
+    min-height: hvars.$h-navbar-height;
     height: auto;
 
     > .container {
@@ -189,7 +189,7 @@ html.h-split-active {
     flex-shrink: 0;
     width: 100%;
     border-top: 1px solid initial-variables.$grey-lighter;
-    min-height: 2.5rem;
+    min-height: hvars.$h-navbar-toc-row-height;
   }
 
   body.h-navbar-toc-no-fit .navbar .h-navbar-toc-row {
@@ -221,7 +221,7 @@ html.h-split-active {
 
   body.h-navbar-menu-no-fit .navbar .h-navbar-menu-btn {
     display: flex !important;
-    margin-left: 0.25rem;
+    margin-left: hvars.$h-space-1;
   }
 
   // Navbar search overlay (shown in no-fit when user taps search)
@@ -250,7 +250,7 @@ html.h-split-active {
     display: none;
     position: fixed;
     inset: 0;
-    top: 3rem;
+    top: hvars.$h-navbar-height;
     left: calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 0px));
     right: var(--h-split-center-inset, 0px);
     background-color: transparent;
@@ -396,7 +396,7 @@ html.h-split-active body.h-navbar-toc-no-fit {
       calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 0px))
     );
     right: auto;
-    top: var(--h-expanded-menu-top, 3rem);
+    top: var(--h-expanded-menu-top, #{hvars.$h-navbar-height});
     bottom: auto;
     width: var(
       --h-no-fit-panel-width,
@@ -406,7 +406,7 @@ html.h-split-active body.h-navbar-toc-no-fit {
       )
     );
     max-height: calc(
-      100vh - var(--h-expanded-menu-top, 3rem) - env(
+      100vh - var(--h-expanded-menu-top, #{hvars.$h-navbar-height}) - env(
           safe-area-inset-bottom,
           0px
         )
@@ -425,7 +425,7 @@ html.h-split-active body.h-navbar-toc-no-fit {
     @include hmixins.h-panel-visibility(translateY(-8px), translateY(0));
 
     .h-page-toc__header {
-      padding: 1rem 1rem 0.5rem;
+      padding: hvars.$h-space-4 hvars.$h-space-4 hvars.$h-space-2;
       margin-bottom: 0;
     }
 
@@ -434,7 +434,7 @@ html.h-split-active body.h-navbar-toc-no-fit {
     }
 
     .menu-list {
-      padding: 0 1rem 1rem;
+      padding: 0 hvars.$h-space-4 hvars.$h-space-4;
       font-size: 0.9rem;
     }
 
@@ -457,7 +457,7 @@ html.h-split-active body.h-navbar-toc-no-fit {
   .h-page-toc-backdrop {
     left: calc(var(--h-split-center-inset, 0px) + var(--h-split-offset, 0px));
     right: var(--h-split-center-inset, 0px);
-    top: var(--h-expanded-menu-top, 3rem);
+    top: var(--h-expanded-menu-top, #{hvars.$h-navbar-height});
   }
 }
 
@@ -465,11 +465,11 @@ html.h-split-active body.h-navbar-toc-no-fit {
 // --h-expanded-menu-top for split mode (override mobile-top-nav defaults)
 // ---------------------------------------------------------------------------
 html.h-split-active body {
-  --h-expanded-menu-top: 3rem;
+  --h-expanded-menu-top: #{hvars.$h-navbar-height};
 }
 
 html.h-split-active body.h-navbar-toc-no-fit {
-  --h-expanded-menu-top: 5.5rem;
+  --h-expanded-menu-top: #{hvars.$h-navbar-height-2rows};
 }
 
 // ---------------------------------------------------------------------------

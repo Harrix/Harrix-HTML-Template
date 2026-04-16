@@ -3,14 +3,14 @@
 // Spoiler on native <details>: smooth height animation and clear styling
 .h-spoiler {
   border: 1px solid var(--bulma-border, #dbdbdb);
-  border-radius: 4px;
-  margin: 1rem 0;
+  border-radius: hvars.$h-panel-radius;
+  margin: hvars.$h-space-4 0;
 
   &__summary {
     cursor: pointer;
     list-style: none;
-    padding: 0.6rem 1rem;
-    padding-left: 2.25rem;
+    padding: hvars.$h-space-2_4 hvars.$h-space-4;
+    padding-left: hvars.$h-control-size-sm;
     font-weight: 500;
     position: relative;
     user-select: none;
@@ -23,7 +23,7 @@
     &::before {
       content: "";
       position: absolute;
-      left: 0.75rem;
+      left: hvars.$h-space-3;
       top: 50%;
       transform: translateY(-50%);
       width: 0;
@@ -73,11 +73,11 @@
 
   .h-spoiler__inner p,
   &__inner > p {
-    padding: 0 1rem 0.75rem;
-    margin: 0 0 0.5rem;
+    padding: 0 hvars.$h-space-4 hvars.$h-space-3;
+    margin: 0 0 hvars.$h-space-2;
 
     &:last-child {
-      padding-bottom: 1rem;
+      padding-bottom: hvars.$h-space-4;
       margin-bottom: 0;
     }
   }
@@ -86,6 +86,6 @@
 .content .h-spoiler {
   .h-spoiler__inner p,
   .h-spoiler__inner > p {
-    margin: 0 0 0.5rem;
+    margin: 0 0 hvars.$h-space-2;
   }
 }

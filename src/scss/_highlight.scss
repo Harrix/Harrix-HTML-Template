@@ -35,10 +35,10 @@ pre {
   font-weight: 400;
   color: $h-code-default;
   line-height: 1.25rem;
-  padding: 0.375rem;
+  padding: hvars.$h-space-1_5;
   background-color: #f1f1f1;
   border: 1px solid #e5e7eb;
-  border-radius: 0.375rem;
+  border-radius: hvars.$h-space-1_5;
   overflow: hidden;
 
   @include hmixins.h-scrollbars;
@@ -220,13 +220,13 @@ pre {
 
   .h-code-lang {
     position: absolute;
-    top: 0.5rem;
-    right: 3rem;
+    top: hvars.$h-space-2;
+    right: hvars.$h-space-12;
     z-index: 2;
     pointer-events: none;
     box-sizing: border-box;
-    min-height: 2rem;
-    padding: 0 0.5rem;
+    min-height: hvars.$h-control-size-xs;
+    padding: 0 hvars.$h-space-2;
     display: inline-flex;
     align-items: center;
     max-width: calc(100% - 4rem);
@@ -237,7 +237,7 @@ pre {
     letter-spacing: 0.02em;
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 0.25rem;
+    border-radius: hvars.$h-panel-radius;
     transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
   }
 
@@ -253,9 +253,9 @@ pre {
   .h-code-copy {
     position: absolute;
     z-index: 2;
-    right: 0.5rem;
-    width: 2rem;
-    height: 2rem;
+    right: hvars.$h-space-2;
+    width: hvars.$h-control-size-xs;
+    height: hvars.$h-control-size-xs;
     padding: 0;
     display: inline-flex;
     align-items: center;
@@ -264,7 +264,7 @@ pre {
     color: rgba(0, 0, 0, 0.5);
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 0.25rem;
+    border-radius: hvars.$h-panel-radius;
     cursor: pointer;
     transition: opacity 0.2s ease, visibility 0.2s ease, color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 
@@ -292,13 +292,13 @@ pre {
     }
 
     &.h-code-copy--top {
-      top: 0.5rem;
+      top: hvars.$h-space-2;
       opacity: 1;
       visibility: visible;
     }
 
     &.h-code-copy--bottom {
-      bottom: 0.5rem;
+      bottom: hvars.$h-space-2;
       opacity: 0;
       visibility: hidden;
     }

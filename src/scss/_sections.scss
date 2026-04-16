@@ -2,7 +2,7 @@
 
 .section {
   .h-has-special-hr {
-    margin-bottom: 2.5rem;
+    margin-bottom: hvars.$h-space-10;
 
     &:after {
       background: hvars.$h-primary;
@@ -12,9 +12,9 @@
       height: 1px;
       left: 0;
       right: 0;
-      margin: 1.25rem auto;
+      margin: hvars.$h-space-5 auto;
       position: relative;
-      width: 3rem;
+      width: hvars.$h-space-12;
     }
   }
 }

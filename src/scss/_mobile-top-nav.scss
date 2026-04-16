@@ -6,8 +6,8 @@
 @use "expanded-menu-panel" as expanded-menu;
 
 $h-mobile-top-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
-$h-mobile-top-nav-row-height: 3rem;
-$h-mobile-top-nav-search-height: 3rem;
+$h-mobile-top-nav-row-height: hvars.$h-navbar-height;
+$h-mobile-top-nav-search-height: hvars.$h-navbar-height;
 
 // Only when body has the top-nav variant and viewport is mobile
 body.h-mobile-nav-top {
@@ -17,7 +17,7 @@ body.h-mobile-nav-top {
     }
 
     padding-bottom: 0 !important;
-    padding-top: calc(#{$h-mobile-top-nav-row-height} + 2.5rem + env(safe-area-inset-top, 0)) !important;
+    padding-top: calc(#{$h-mobile-top-nav-row-height} + #{hvars.$h-navbar-toc-row-height} + env(safe-area-inset-top, 0)) !important;
   }
 }
 
@@ -65,9 +65,9 @@ body.h-mobile-nav-top {
 .h-mobile-top-nav-search-panel__inner {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: hvars.$h-space-2;
   min-height: $h-mobile-top-nav-search-height;
-  padding: 0.5rem 0.75rem;
+  padding: hvars.$h-space-2 hvars.$h-space-3;
 }
 
 .h-mobile-top-nav-search-panel__field {
@@ -79,7 +79,7 @@ body.h-mobile-nav-top {
 .h-mobile-top-nav-search-panel__input {
   @include hmixins.h-search-field-input;
   width: 100%;
-  padding-right: 2.5rem;
+  padding-right: hvars.$h-control-size-md;
   font-size: 1rem;
 }
 
@@ -100,8 +100,8 @@ body.h-mobile-nav-top {
   display: flex;
   align-items: center;
   min-height: $h-mobile-top-nav-row-height;
-  padding: 0 0.5rem;
-  gap: 0.5rem;
+  padding: 0 hvars.$h-space-2;
+  gap: hvars.$h-space-2;
 }
 
 .h-mobile-top-nav__btn {
@@ -133,7 +133,7 @@ body.h-has-docs-sidebar .h-mobile-top-nav__btn--sidebar {
   display: flex;
   align-items: center;
   min-width: 0;
-  padding: 0 0.5rem;
+  padding: 0 hvars.$h-space-2;
   font-size: hvars.$h-navbar-logo-font-size;
   font-weight: 500;
   line-height: 1.2;
@@ -150,7 +150,7 @@ body.h-has-docs-sidebar .h-mobile-top-nav__btn--sidebar {
   }
 
   .h-is-sub {
-    padding-left: 0.25rem;
+    padding-left: hvars.$h-space-1;
     font-weight: 400;
   }
 }
@@ -167,10 +167,10 @@ body.h-has-docs-sidebar .h-mobile-top-nav__btn--sidebar {
 .h-mobile-top-nav__toc-trigger {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: hvars.$h-space-2;
   width: 100%;
-  min-height: 2.5rem;
-  padding: 0 1rem;
+  min-height: hvars.$h-navbar-toc-row-height;
+  padding: 0 hvars.$h-space-4;
   background: none;
   border: none;
   color: derived-variables.$text-strong;
@@ -195,7 +195,7 @@ body.h-has-docs-sidebar .h-mobile-top-nav__btn--sidebar {
   }
 }
 
-$h-mobile-top-nav-header-height: calc(#{$h-mobile-top-nav-row-height} + 2.5rem + env(safe-area-inset-top, 0));
+$h-mobile-top-nav-header-height: calc(#{$h-mobile-top-nav-row-height} + #{hvars.$h-navbar-toc-row-height} + env(safe-area-inset-top, 0));
 $h-mobile-top-nav-row1-height: calc(#{$h-mobile-top-nav-row-height} + env(safe-area-inset-top, 0));
 
 body {
@@ -203,11 +203,11 @@ body {
 }
 
 body.h-navbar-menu-no-fit {
-  --h-expanded-menu-top: 3rem;
+  --h-expanded-menu-top: #{hvars.$h-navbar-height};
 }
 
 body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
-  --h-expanded-menu-top: 5.5rem;
+  --h-expanded-menu-top: #{hvars.$h-navbar-height-2rows};
 }
 
 // Backdrop when dropdown is open
@@ -287,7 +287,7 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   }
 
   .menu-list {
-    padding: 0 1rem 1rem;
+    padding: 0 hvars.$h-space-4 hvars.$h-space-4;
     font-size: 0.9rem;
 
     a {
@@ -306,9 +306,9 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
     }
 
     ul.menu-list {
-      padding-left: 1rem;
+      padding-left: hvars.$h-space-4;
       border-left: 1px solid initial-variables.$grey-lighter;
-      margin-left: 0.5rem;
+      margin-left: hvars.$h-space-2;
       margin-top: 0.25em;
       margin-bottom: 0.25em;
     }
@@ -352,7 +352,7 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1rem 0.5rem;
+  padding: hvars.$h-space-4 hvars.$h-space-4 hvars.$h-space-2;
 }
 
 .h-mobile-top-nav__panel-close {
