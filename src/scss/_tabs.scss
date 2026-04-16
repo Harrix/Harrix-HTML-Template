@@ -1,10 +1,5 @@
 @use "variables" as hvars;
 
-// Обёртка для Bulma .tabs + панелей контента (у Bulma есть только список вкладок)
-.h-tab-widget {
-  margin: hvars.$h-space-4 0;
-}
-
 .h-tab-panels {
   border: 1px solid var(--bulma-border, #dbdbdb);
   border-top: none;

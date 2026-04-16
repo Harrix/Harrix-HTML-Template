@@ -1,9 +1,9 @@
-// Адаптивные таблицы: удобный просмотр на компьютере и телефоне
+// Responsive tables: comfortable viewing on desktop and mobile
 
 @use "bulma/sass/utilities/initial-variables" as initial-variables;
 @use "variables" as hvars;
 
-// Дополнения к Bulma .table-container: отступ снизу и сброс margin у .table
+// Additions to Bulma .table-container: bottom spacing and zero margin on .table
 .table-container {
   margin-bottom: 1.5rem;
 
@@ -12,11 +12,8 @@
   }
 }
 
-// Таблица, которая на мобильных превращается в карточки (каждая строка — карточка)
-.h-responsive-table-wrapper {
-  margin-bottom: 1.5rem;
-}
-
+// On small screens the table becomes cards (each row is a card).
+// Wrapper bottom margin is set in HTML via Bulma helper mb-5.
 .h-responsive-table {
   @media (max-width: 768px) {
     thead {

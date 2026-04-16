@@ -2,7 +2,7 @@
 @use "mixins" as hmixins;
 @use "variables" as hvars;
 
-// Цвета подсветки кода — гамма как в VSCode (Default Light Modern)
+// Code highlight colors — palette like VSCode (Default Light Modern)
 $h-code-comment: #1cb978;
 $h-code-keyword: #0f0fbd;
 $h-code-string: #1cb978;
