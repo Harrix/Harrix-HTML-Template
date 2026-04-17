@@ -62,6 +62,7 @@ function generateHtmlPlugins(templateDir) {
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
       inject: "body",
       scriptLoading: "defer",
+      minify: false,
       templateParameters: (compilation, assets, assetTags, options) => ({
         compilation,
         webpackConfig: compilation.options,
