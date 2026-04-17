@@ -108,15 +108,6 @@ The mobile top bar clones the desktop navbar menu and the in-page TOC (`cloneNod
 npm run lint
 ```
 
-## Choosing a CSS framework
-
-| Name             | Downloads per week | Link                                             |
-| ---------------- | ------------------ | ------------------------------------------------ |
-| bootstrap        | 5 426 048          | <https://www.npmjs.com/package/bootstrap>        |
-| Bulma            | 256 447            | <https://www.npmjs.com/package/bulma>            |
-| tailwindcss      | 8 817 268          | <https://www.npmjs.com/package/tailwindcss>      |
-| foundation-sites | 103 577            | <https://www.npmjs.com/package/foundation-sites> |
-
 ## 📄 License
 
 This project is licensed under the [MIT License](https://github.com/Harrix/Harrix-HTML-Template/blob/main/LICENSE.md).
