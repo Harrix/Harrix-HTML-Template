@@ -17,7 +17,7 @@ function injectManifestLink() {
 function applyInitialTheme() {
   const stored = safeStorageGetItem("h-theme");
   const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const theme = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
+  const theme = stored === "dark" || stored === "light" ? stored : prefersDark ? "dark" : "light";
   document.documentElement.setAttribute("data-theme", theme);
 }
 
@@ -50,4 +50,3 @@ injectManifestLink();
 applyInitialTheme();
 markFitPending();
 applyInitialSplitLayout();
-

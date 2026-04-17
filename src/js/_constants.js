@@ -7,8 +7,7 @@ export const NAVBAR_HIDE_SCROLL_THRESHOLD = 100;
 export const GALLERY_ROW_HEIGHT = 200;
 export const SEARCH_ANIMATION_MS = 500;
 export const CODE_COPY_FEEDBACK_MS = 800;
-export const CODE_COPY_ICON_HTML =
-  '<span class="icon is-small"><i class="fas fa-copy" aria-hidden="true"></i></span>';
+export const CODE_COPY_ICON_HTML = '<span class="icon is-small"><i class="fas fa-copy" aria-hidden="true"></i></span>';
 export const CODE_COPY_DONE_ICON_HTML =
   '<span class="icon is-small"><i class="fas fa-check" aria-hidden="true"></i></span>';
 export const CODE_BLOCK_BOTTOM_THRESHOLD = 80;

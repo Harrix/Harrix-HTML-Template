@@ -79,7 +79,7 @@ export function initSplitLayout() {
 
   function onPointerMove(e) {
     if (!isDragging) return;
-    const clientX = e.clientX != null ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : startX);
+    const clientX = e.clientX != null ? e.clientX : e.touches && e.touches[0] ? e.touches[0].clientX : startX;
     const dx = clientX - startX;
     let newWidth = startWidth + dx;
     newWidth = clampSidebarWidth(newWidth);

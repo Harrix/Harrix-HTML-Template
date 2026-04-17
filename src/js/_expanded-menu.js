@@ -56,8 +56,7 @@ export function initExpandedMenuDropdowns() {
   syncExpandedMenuDropdownAria();
 }
 
-const PANEL_CLOSE_ICON_HTML =
-  '<span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>';
+const PANEL_CLOSE_ICON_HTML = '<span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>';
 
 export function initExpandedMenuPanel() {
   const menuPanel = document.getElementById("h-mobile-top-nav-menu-panel");

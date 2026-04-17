@@ -30,7 +30,11 @@ export function initPageToc() {
   const usedIds = new Set();
   headings.forEach((h, i) => {
     if (!h.id || usedIds.has(h.id)) {
-      const base = h.textContent.trim().toLowerCase().replace(/[^a-zа-яё0-9]+/gi, "-").replace(/^-|-$/g, "");
+      const base = h.textContent
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-zа-яё0-9]+/gi, "-")
+        .replace(/^-|-$/g, "");
       let candidate = base || "section-" + i;
       let suffix = 1;
       while (usedIds.has(candidate) || document.getElementById(candidate)) {

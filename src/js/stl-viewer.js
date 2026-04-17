@@ -134,7 +134,7 @@ function initViewer(container) {
       setMessage(container, getLoadErrorMessage());
       // console.* is dropped in production builds; keep this only for development visibility.
       console.error("STL load error:", err);
-    }
+    },
   );
 
   function animate() {
@@ -172,28 +172,16 @@ function getNoFetchMessageFragment() {
   code.textContent = "npm run start";
 
   if (lang === "ru") {
-    frag.appendChild(
-      document.createTextNode(
-        "Для просмотра 3D-модели откройте страницу через веб-сервер (например, "
-      )
-    );
+    frag.appendChild(document.createTextNode("Для просмотра 3D-модели откройте страницу через веб-сервер (например, "));
     frag.appendChild(code);
     frag.appendChild(
-      document.createTextNode(
-        "). При открытии файла напрямую (file://) загрузка STL блокируется браузером."
-      )
+      document.createTextNode("). При открытии файла напрямую (file://) загрузка STL блокируется браузером."),
     );
   } else {
-    frag.appendChild(
-      document.createTextNode(
-        "To view the 3D model, open the page via a web server (e.g. "
-      )
-    );
+    frag.appendChild(document.createTextNode("To view the 3D model, open the page via a web server (e.g. "));
     frag.appendChild(code);
     frag.appendChild(
-      document.createTextNode(
-        "). Opening the file directly (file://) blocks STL loading in the browser."
-      )
+      document.createTextNode("). Opening the file directly (file://) blocks STL loading in the browser."),
     );
   }
 

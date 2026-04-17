@@ -21,7 +21,18 @@ function getLayoutOverrides(theme) {
     font: { color: "#e0e0e0" },
     xaxis: { gridcolor: "rgba(255,255,255,0.1)", zerolinecolor: "rgba(255,255,255,0.2)" },
     yaxis: { gridcolor: "rgba(255,255,255,0.1)", zerolinecolor: "rgba(255,255,255,0.2)" },
-    colorway: ["#636efa", "#ef553b", "#00cc96", "#ab63fa", "#ffa15a", "#19d3f3", "#ff6692", "#b6e880", "#ff97ff", "#fecb52"],
+    colorway: [
+      "#636efa",
+      "#ef553b",
+      "#00cc96",
+      "#ab63fa",
+      "#ffa15a",
+      "#19d3f3",
+      "#ff6692",
+      "#b6e880",
+      "#ff97ff",
+      "#fecb52",
+    ],
   };
 }
 

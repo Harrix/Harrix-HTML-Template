@@ -7,7 +7,6 @@ $h-docs-sidebar-width: 280px;
 $h-docs-sidebar-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
 $h-navbar-height: 3rem;
 
-
 .h-docs-sidebar {
   position: fixed;
   left: max(0px, calc((100vw - hvars.$h-container-max-width) / 2 - #{$h-docs-sidebar-width}));

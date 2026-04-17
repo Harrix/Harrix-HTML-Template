@@ -212,7 +212,6 @@ pre {
       border-color: rgba(129, 199, 132, 0.3);
     }
   }
-
 }
 
 .h-code-block {
@@ -238,7 +237,10 @@ pre {
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: hvars.$h-panel-radius;
-    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    transition:
+      color 0.15s ease,
+      background-color 0.15s ease,
+      border-color 0.15s ease;
   }
 
   &:has(.h-code-lang) .h-code-block-inner {
@@ -266,7 +268,12 @@ pre {
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: hvars.$h-panel-radius;
     cursor: pointer;
-    transition: opacity 0.2s ease, visibility 0.2s ease, color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease,
+      color 0.15s ease,
+      background-color 0.15s ease,
+      border-color 0.15s ease;
 
     .icon {
       display: flex;

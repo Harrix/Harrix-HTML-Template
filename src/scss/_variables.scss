@@ -57,9 +57,21 @@ $h-shadow-panel-outline: 0 0 0 1px rgba(0, 0, 0, 0.1);
 $h-shadow-panel-outline-dark: 0 0 0 1px rgba(255, 255, 255, 0.12);
 
 // Elevation shadows + outline (aligned with mobile top-nav + navbar boxed dropdown)
-$h-shadow-elevated: 0 8px 16px -12px rgba(0, 0, 0, 0.22), $h-shadow-panel-outline;
-$h-shadow-elevated-dark: 0 8px 16px -12px rgba(0, 0, 0, 0.44), $h-shadow-panel-outline-dark;
-$h-shadow-elevated-up: 0 -8px 16px -12px rgba(0, 0, 0, 0.22), $h-shadow-panel-outline;
-$h-shadow-elevated-up-dark: 0 -8px 16px -12px rgba(0, 0, 0, 0.44), $h-shadow-panel-outline-dark;
-$h-shadow-elevated-end: 8px 0 16px -12px rgba(0, 0, 0, 0.22), $h-shadow-panel-outline;
-$h-shadow-elevated-end-dark: 8px 0 16px -12px rgba(0, 0, 0, 0.44), $h-shadow-panel-outline-dark;
+$h-shadow-elevated:
+  0 8px 16px -12px rgba(0, 0, 0, 0.22),
+  $h-shadow-panel-outline;
+$h-shadow-elevated-dark:
+  0 8px 16px -12px rgba(0, 0, 0, 0.44),
+  $h-shadow-panel-outline-dark;
+$h-shadow-elevated-up:
+  0 -8px 16px -12px rgba(0, 0, 0, 0.22),
+  $h-shadow-panel-outline;
+$h-shadow-elevated-up-dark:
+  0 -8px 16px -12px rgba(0, 0, 0, 0.44),
+  $h-shadow-panel-outline-dark;
+$h-shadow-elevated-end:
+  8px 0 16px -12px rgba(0, 0, 0, 0.22),
+  $h-shadow-panel-outline;
+$h-shadow-elevated-end-dark:
+  8px 0 16px -12px rgba(0, 0, 0, 0.44),
+  $h-shadow-panel-outline-dark;

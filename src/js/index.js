@@ -1,10 +1,7 @@
 import initFontawesomeCollection from "./_fontawesome-collection.js";
 import { setSplitLayoutState, setUiModesController } from "./_app-bridge.js";
 import { initSplitLayout } from "./_split-layout.js";
-import {
-  initExpandedMenuDropdowns,
-  initExpandedMenuPanel,
-} from "./_expanded-menu.js";
+import { initExpandedMenuDropdowns, initExpandedMenuPanel } from "./_expanded-menu.js";
 import { createUiModesController } from "./_ui-modes.js";
 import { initNavbar } from "./_navbar.js";
 import { initSearchPanel } from "./_search-panel.js";

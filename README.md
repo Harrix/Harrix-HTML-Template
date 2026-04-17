@@ -39,11 +39,11 @@ npm run build
 
 ### Other scripts
 
-| Command | Description |
-| --------------- | ------------------------------------------ |
-| `npm run dev` | One-off development build |
+| Command         | Description                          |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | One-off development build            |
 | `npm run watch` | Development build with file watching |
-| `npm run build` | Production build + HTML formatting |
+| `npm run build` | Production build + HTML formatting   |
 
 ## Project structure
 

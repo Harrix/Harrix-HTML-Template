@@ -89,7 +89,7 @@ export default function initFontawesomeCollection() {
     faBackspace,
     faCircleXmark,
     faBars,
-    faBookOpen
+    faBookOpen,
   );
 
   const faHarrix = {

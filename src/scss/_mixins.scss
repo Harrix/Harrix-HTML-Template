@@ -21,7 +21,9 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
 
   &.is-active {
     opacity: 1;
@@ -46,7 +48,10 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.15s ease;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    background-color 0.15s ease;
 
   &:hover {
     background-color: hvars.$h-primary;
@@ -59,7 +64,10 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    visibility 0.25s ease;
 
   &.is-open,
   &.is-active {
@@ -115,7 +123,9 @@
   border-radius: hvars.$h-panel-radius;
   cursor: pointer;
   color: initial-variables.$grey;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 
   &:hover {
     background-color: initial-variables.$grey-lightest;
@@ -135,7 +145,9 @@
   border-radius: hvars.$h-panel-radius;
   cursor: pointer;
   color: $color;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 
   &:hover {
     background-color: initial-variables.$grey-lightest;
@@ -160,7 +172,9 @@
   border-radius: hvars.$h-panel-radius;
   color: initial-variables.$grey;
   cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 
   &:hover {
     background-color: initial-variables.$grey-lightest;

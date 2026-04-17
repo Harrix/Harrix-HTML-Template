@@ -35,9 +35,7 @@ function generateHtmlPlugins(templateDir) {
       includeCache.set(fullPath, src);
     }
     const parentLocale =
-      includeLocaleStack.length > 0
-        ? includeLocaleStack[includeLocaleStack.length - 1]
-        : HTML_I18N_LOCALE;
+      includeLocaleStack.length > 0 ? includeLocaleStack[includeLocaleStack.length - 1] : HTML_I18N_LOCALE;
     const locale = data && data.htmlLang != null ? String(data.htmlLang) : parentLocale;
     const htmlLang = getHtmlStrings(locale).htmlLang;
     const i18n = getHtmlStrings(locale);

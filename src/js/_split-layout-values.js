@@ -1,9 +1,4 @@
-import {
-  SPLIT_DEFAULT_WIDTH,
-  SPLIT_MAX_VIEWPORT_RATIO,
-  SPLIT_MIN_WIDTH,
-  SPLIT_SPLITTER_WIDTH,
-} from "./_constants.js";
+import { SPLIT_DEFAULT_WIDTH, SPLIT_MAX_VIEWPORT_RATIO, SPLIT_MIN_WIDTH, SPLIT_SPLITTER_WIDTH } from "./_constants.js";
 import { getSplitLayoutCenterInsetPx } from "./_split-layout-geometry.js";
 
 export function getMaxSplitSidebarWidthPx(viewportWidthPx) {

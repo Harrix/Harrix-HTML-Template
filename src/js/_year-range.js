@@ -6,4 +6,3 @@ export function initYearRange(startYear = YEAR_RANGE_START_YEAR) {
   const y = new Date().getFullYear();
   if (y > startYear) el.textContent = `-${y}`;
 }
-
