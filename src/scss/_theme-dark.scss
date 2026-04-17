@@ -25,7 +25,7 @@
   }
 
   .navbar {
-    background-color: dark.$h-dark-surface !important;
+    background-color: dark.$h-dark-surface;
 
     .navbar-item,
     .navbar-link {
@@ -54,11 +54,11 @@
     }
 
     .navbar-dropdown.is-boxed {
-      background-color: dark.$h-dark-surface !important;
-      border: none !important;
-      border-top: none !important;
+      background-color: dark.$h-dark-surface;
+      border: none;
+      border-top: none;
       overflow: hidden;
-      box-shadow: hvars.$h-shadow-elevated-dark !important;
+      box-shadow: hvars.$h-shadow-elevated-dark;
       // Unified background for rounded corners: override any Bulma shadow/border
       &,
       &::before,
@@ -91,7 +91,7 @@
     }
 
     body.h-navbar-menu-no-fit .navbar-menu .navbar-item.has-dropdown > .navbar-dropdown {
-      border-left-color: dark.$h-dark-border !important;
+      border-left-color: dark.$h-dark-border;
     }
 
     .h-navbar-menu-panel-header .menu-label {
@@ -187,7 +187,7 @@
 
   // Match navbar background with main content background
   #h-navbar.navbar {
-    background-color: dark.$h-dark-bg !important;
+    background-color: dark.$h-dark-bg;
   }
 
   .section {

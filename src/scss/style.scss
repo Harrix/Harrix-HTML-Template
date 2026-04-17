@@ -1,32 +1,46 @@
-@use "bulma/sass" with (
-  $container-max-width: 1179px,
-  $title-weight: 400,
-  $content-heading-weight: 400,
-  $section-padding: 1.5rem 0.9375rem,
-  $section-padding-desktop: 3rem,
-  $footer-padding: 1.5rem 1.5rem,
-  $primary: #2e86b7,
-  $link: #2e86b7,
-  $input-shadow: none
-);
+@use "sass:meta";
 
-@use "fonts";
-@use "helpers";
-@use "common";
-@use "header";
-@use "search-panel";
-@use "theme-dark";
-@use "sections";
-@use "images";
-@use "content";
-@use "spoiler";
-@use "tabs";
-@use "responsive-tables";
-@use "highlight";
-@use "back-to-top";
-@use "mobile-top-nav";
-@use "page-toc";
-@use "docs-sidebar";
-@use "docs-sidebar-split";
+@layer reset, bulma, components, overrides;
 
-@use "@fortawesome/fontawesome-svg-core/styles.css";
+@layer bulma {
+  @include meta.load-css(
+    "bulma/sass",
+    $with: (
+      container-max-width: 1179px,
+      title-weight: 400,
+      content-heading-weight: 400,
+      section-padding: 1.5rem 0.9375rem,
+      section-padding-desktop: 3rem,
+      footer-padding: 1.5rem 1.5rem,
+      primary: #2e86b7,
+      link: #2e86b7,
+      input-shadow: none
+    )
+  );
+}
+
+@layer components {
+  @include meta.load-css("fonts");
+  @include meta.load-css("helpers");
+  @include meta.load-css("common");
+  @include meta.load-css("header");
+  @include meta.load-css("search-panel");
+  @include meta.load-css("sections");
+  @include meta.load-css("images");
+  @include meta.load-css("content");
+  @include meta.load-css("spoiler");
+  @include meta.load-css("tabs");
+  @include meta.load-css("responsive-tables");
+  @include meta.load-css("highlight");
+  @include meta.load-css("back-to-top");
+  @include meta.load-css("mobile-top-nav");
+  @include meta.load-css("page-toc");
+  @include meta.load-css("docs-sidebar");
+  @include meta.load-css("docs-sidebar-split");
+
+  @include meta.load-css("@fortawesome/fontawesome-svg-core/styles.css");
+}
+
+@layer overrides {
+  @include meta.load-css("theme-dark");
+}

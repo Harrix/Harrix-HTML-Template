@@ -317,7 +317,7 @@
     }
 
     @media (max-width: hvars.$h-mobile-nav-breakpoint), (min-width: hvars.$h-sidebar-toc-desktop-min-width) {
-      display: none !important;
+      display: none;
     }
   }
 
