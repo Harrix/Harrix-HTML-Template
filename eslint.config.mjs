@@ -60,4 +60,19 @@ export default [
       ...styleRules,
     },
   },
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "module",
+      globals: {
+        ...globals.node,
+      },
+    },
+    rules: {
+      ...styleRules,
+      // Tooling scripts: allow console output.
+      "no-console": "off",
+    },
+  },
 ];
