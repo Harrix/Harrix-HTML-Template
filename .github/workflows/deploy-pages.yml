@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  # Opt into Node 24 for JavaScript-based GitHub Actions runtime.
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: read
   pages: write
@@ -25,7 +29,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "npm"
 
       - name: Install dependencies

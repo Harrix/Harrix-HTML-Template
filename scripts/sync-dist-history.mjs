@@ -12,8 +12,15 @@ const projectRoot = path.resolve(__dirname, "..");
 const distDir = path.join(projectRoot, "dist");
 
 const envTargetRoot = process.env.DIST_HISTORY_REPO?.trim();
+const isCi = Boolean(process.env.GITHUB_ACTIONS || process.env.CI);
 const defaultTargetRoot = `${projectRoot}-dist-history`;
-const targetRoot = envTargetRoot || defaultTargetRoot;
+const targetRoot = envTargetRoot || (isCi ? null : defaultTargetRoot);
+if (!targetRoot) {
+  console.error(
+    "[sync-dist-history] DIST_HISTORY_REPO is not set; skipping mirror sync",
+  );
+  process.exit(0);
+}
 const resolvedTarget = path.resolve(targetRoot);
 
 if (!fs.existsSync(distDir) || !fs.statSync(distDir).isDirectory()) {
@@ -25,7 +32,7 @@ if (!fs.existsSync(resolvedTarget) || !fs.statSync(resolvedTarget).isDirectory()
   console.error(
     `[sync-dist-history] target repo is not a directory: ${resolvedTarget}`,
   );
-  process.exit(1);
+  process.exit(isCi ? 0 : 1);
 }
 
 const gitMarker = path.join(resolvedTarget, ".git");
@@ -33,7 +40,7 @@ if (!fs.existsSync(gitMarker)) {
   console.error(
     `[sync-dist-history] expected a git repo root (.git missing): ${resolvedTarget}`,
   );
-  process.exit(1);
+  process.exit(isCi ? 0 : 1);
 }
 
 for (const ent of fs.readdirSync(resolvedTarget, { withFileTypes: true })) {
