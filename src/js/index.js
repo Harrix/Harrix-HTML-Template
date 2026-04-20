@@ -19,6 +19,23 @@ import { initNavbarSidebarTocFit } from "./_navbar-fit.js";
 import { initMobileTopNav } from "./_mobile-top-nav.js";
 import { initYearRange } from "./_year-range.js";
 
+/**
+ * Run a callback when the main thread is idle.
+ * Uses `requestIdleCallback` when available, otherwise falls back to a short timeout.
+ *
+ * @param {() => void} cb
+ * @param {{ timeout?: number }} [options]
+ */
+function runWhenIdle(cb, { timeout = 1500 } = {}) {
+  if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+    // @ts-ignore - requestIdleCallback is not in some JS typings
+    window.requestIdleCallback(cb, { timeout });
+    return;
+  }
+
+  window.setTimeout(cb, 50);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initExpandedMenuPanel();
   initExpandedMenuDropdowns();
@@ -28,19 +45,25 @@ document.addEventListener("DOMContentLoaded", () => {
   initSearchPanel();
   initThemeToggle();
   initBackToTop();
-  initLightGallery();
-  void (async () => {
-    await initSyntaxHighlighting();
-    initCodeCopyButtons();
-  })();
-  bootLazyHeavyLibs();
-  initFontawesomeCollection();
-  initGalleryGrid(GALLERY_ROW_HEIGHT);
-  initSpoilerAnimation();
-  initTabs();
   initPageToc();
   initDocsSidebar();
   initNavbarSidebarTocFit();
   initMobileTopNav();
-  initYearRange();
+
+  runWhenIdle(() => {
+    initLightGallery();
+    initGalleryGrid(GALLERY_ROW_HEIGHT);
+    initSpoilerAnimation();
+    initTabs();
+    bootLazyHeavyLibs();
+    initFontawesomeCollection();
+    initYearRange();
+  });
+});
+
+window.addEventListener("load", () => {
+  void (async () => {
+    await initSyntaxHighlighting();
+    initCodeCopyButtons();
+  })();
 });
