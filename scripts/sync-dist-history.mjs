@@ -1,7 +1,7 @@
 /**
  * Copies build output from dist/ into a separate git repo for history tracking.
  * Set DIST_HISTORY_REPO to an absolute path to that repo's root (where .git lives).
- * If unset, exits 0 and skips (for CI / contributors without a mirror clone).
+ * If unset, uses "<projectRoot>-dist-history" (sibling path).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -11,15 +11,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
 const distDir = path.join(projectRoot, "dist");
 
-const targetRoot = process.env.DIST_HISTORY_REPO?.trim();
-
-if (!targetRoot) {
-  console.error(
-    "[sync-dist-history] DIST_HISTORY_REPO is not set; skipping mirror sync",
-  );
-  process.exit(0);
-}
-
+const envTargetRoot = process.env.DIST_HISTORY_REPO?.trim();
+const defaultTargetRoot = `${projectRoot}-dist-history`;
+const targetRoot = envTargetRoot || defaultTargetRoot;
 const resolvedTarget = path.resolve(targetRoot);
 
 if (!fs.existsSync(distDir) || !fs.statSync(distDir).isDirectory()) {
@@ -29,7 +23,7 @@ if (!fs.existsSync(distDir) || !fs.statSync(distDir).isDirectory()) {
 
 if (!fs.existsSync(resolvedTarget) || !fs.statSync(resolvedTarget).isDirectory()) {
   console.error(
-    `[sync-dist-history] DIST_HISTORY_REPO is not a directory: ${resolvedTarget}`,
+    `[sync-dist-history] target repo is not a directory: ${resolvedTarget}`,
   );
   process.exit(1);
 }
