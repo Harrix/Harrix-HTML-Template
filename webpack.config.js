@@ -51,7 +51,7 @@ function generateHtmlPlugins(templateDir) {
   const templateFiles = fs
     .readdirSync(path.resolve(__dirname, templateDir))
     .filter((item) => path.parse(item).ext.toLowerCase() === ".html");
-  const baseChunks = ["app", "katex/katex", "mermaid/mermaid", "charts/charts"];
+  const baseChunks = ["app", "katex/katex"];
   return templateFiles.map((item) => {
     const parsedPath = path.parse(item);
     const name = parsedPath.name;
@@ -134,8 +134,6 @@ function createWebpackConfig(env, argv) {
       app: ["./src/js/index.js", "./src/scss/style.scss"],
       "katex/katex": ["./src/js/katex.js", "./src/scss/katex.scss"],
       "stl-viewer/stl-viewer": ["./src/js/stl-viewer.js", "./src/scss/stl-viewer.scss"],
-      "mermaid/mermaid": ["./src/js/mermaid.js"],
-      "charts/charts": ["./src/js/charts.js", "./src/scss/charts.scss"],
     },
     output: {
       path: path.resolve(__dirname, "dist"),

@@ -44,8 +44,7 @@ function scheduleRenderMermaidAfterThemePaint() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+export function startMermaid() {
   renderMermaid();
-
   onThemeToggle(scheduleRenderMermaidAfterThemePaint);
-});
+}

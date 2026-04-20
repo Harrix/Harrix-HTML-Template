@@ -1,14 +1,13 @@
-import hljs from "highlight.js";
-
 import {
   CODE_BLOCK_BOTTOM_THRESHOLD,
   CODE_COPY_DONE_ICON_HTML,
   CODE_COPY_FEEDBACK_MS,
   CODE_COPY_ICON_HTML,
 } from "./_constants.js";
+import { HLJS_LANGUAGE_LOADERS, normalizeHljsLanguageId } from "./_hljs-languages.js";
 import { translate } from "./_locale.js";
 
-function getCodeLanguage(codeEl) {
+export function getCodeLanguage(codeEl) {
   if (!codeEl || !codeEl.classList) return null;
   for (const c of codeEl.classList) {
     if (c.startsWith("language-")) return c.slice(9);
@@ -42,9 +41,47 @@ function getLanguageDisplayName(alias) {
   return CODE_LANGUAGE_NAMES[lower] || (alias ? alias.charAt(0).toUpperCase() + alias.slice(1) : "");
 }
 
-export function initSyntaxHighlighting() {
-  if (typeof hljs.highlightAll === "function") {
-    hljs.highlightAll();
+export async function initSyntaxHighlighting() {
+  const codeBlocks = document.querySelectorAll("pre > code");
+  if (codeBlocks.length === 0) return;
+
+  const toHighlight = [...codeBlocks].filter((el) => !el.classList.contains("language-chart") && !el.closest("pre.chart"));
+  if (toHighlight.length === 0) return;
+
+  const hljsModule = await import("highlight.js/lib/core");
+  const hljs = hljsModule.default;
+
+  /** @type {Set<string>} */
+  const languageIds = new Set();
+  for (const el of toHighlight) {
+    const raw = getCodeLanguage(el);
+    languageIds.add(normalizeHljsLanguageId(raw));
+  }
+
+  let plaintextGrammar = null;
+  async function getPlaintextGrammar() {
+    if (!plaintextGrammar) {
+      const mod = await HLJS_LANGUAGE_LOADERS.plaintext();
+      plaintextGrammar = mod.default;
+    }
+    return plaintextGrammar;
+  }
+
+  await Promise.all(
+    [...languageIds].map(async (id) => {
+      if (hljs.getLanguage(id)) return;
+      const loader = HLJS_LANGUAGE_LOADERS[id];
+      if (loader) {
+        const mod = await loader();
+        hljs.registerLanguage(id, mod.default);
+        return;
+      }
+      hljs.registerLanguage(id, await getPlaintextGrammar());
+    }),
+  );
+
+  for (const block of toHighlight) {
+    hljs.highlightElement(block);
   }
 }
 

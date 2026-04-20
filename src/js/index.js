@@ -9,6 +9,7 @@ import { initThemeToggle } from "./_theme.js";
 import { initBackToTop } from "./_back-to-top.js";
 import { initLightGallery } from "./_lightgallery-init.js";
 import { initCodeCopyButtons, initSyntaxHighlighting } from "./_code-blocks.js";
+import { bootLazyHeavyLibs } from "./_lazy-heavy-libs.js";
 import { GALLERY_ROW_HEIGHT, NAVBAR_HIDE_SCROLL_THRESHOLD } from "./_constants.js";
 import { initGalleryGrid } from "./_gallery-grid.js";
 import { initSpoilerAnimation, initTabs } from "./_spoiler-tabs.js";
@@ -28,8 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initBackToTop();
   initLightGallery();
-  initSyntaxHighlighting();
-  initCodeCopyButtons();
+  void (async () => {
+    await initSyntaxHighlighting();
+    initCodeCopyButtons();
+  })();
+  bootLazyHeavyLibs();
   initFontawesomeCollection();
   initGalleryGrid(GALLERY_ROW_HEIGHT);
   initSpoilerAnimation();

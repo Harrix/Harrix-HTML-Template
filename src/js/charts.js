@@ -1,3 +1,4 @@
+import "../scss/charts.scss";
 import Plotly from "plotly.js-dist-min";
 import { THEME_STORAGE_KEY } from "./_constants.js";
 import { safeStorageGetItem } from "./_storage.js";
@@ -82,7 +83,7 @@ function renderCharts() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+export function startCharts() {
   renderCharts();
 
   onThemeToggle(() => {
@@ -102,4 +103,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     setTimeout(renderCharts, 50);
   });
-});
+}
