@@ -45,7 +45,9 @@ export async function initSyntaxHighlighting() {
   const codeBlocks = document.querySelectorAll("pre > code");
   if (codeBlocks.length === 0) return;
 
-  const toHighlight = [...codeBlocks].filter((el) => !el.classList.contains("language-chart") && !el.closest("pre.chart"));
+  const toHighlight = [...codeBlocks].filter(
+    (el) => !el.classList.contains("language-chart") && !el.closest("pre.chart"),
+  );
   if (toHighlight.length === 0) return;
 
   const hljsModule = await import("highlight.js/lib/core");

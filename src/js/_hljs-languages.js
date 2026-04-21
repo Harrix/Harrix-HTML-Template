@@ -45,4 +45,3 @@ export function normalizeHljsLanguageId(raw) {
   if (lower === "chart") return "plaintext";
   return LANGUAGE_ALIASES[lower] || lower;
 }
-

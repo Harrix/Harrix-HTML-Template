@@ -274,29 +274,30 @@ export function createUiModesController() {
     else open(mode);
   }
 
-  const modeBindings = /** @type {Array<{ el: HTMLElement | null, type: "toggle"|"close"|"open", mode: UiModeName }>} */ ([
-    { el: docsSidebarToggle, type: "toggle", mode: "docsSidebar" },
-    { el: navbarSidebarBtn, type: "toggle", mode: "docsSidebar" },
-    { el: docsSidebarClose, type: "close", mode: "docsSidebar" },
-    { el: docsSidebarBackdrop, type: "close", mode: "docsSidebar" },
+  const modeBindings =
+    /** @type {Array<{ el: HTMLElement | null, type: "toggle"|"close"|"open", mode: UiModeName }>} */ ([
+      { el: docsSidebarToggle, type: "toggle", mode: "docsSidebar" },
+      { el: navbarSidebarBtn, type: "toggle", mode: "docsSidebar" },
+      { el: docsSidebarClose, type: "close", mode: "docsSidebar" },
+      { el: docsSidebarBackdrop, type: "close", mode: "docsSidebar" },
 
-    { el: pageTocToggle, type: "toggle", mode: "pageToc" },
-    { el: pageTocClose, type: "close", mode: "pageToc" },
-    { el: pageTocBackdrop, type: "close", mode: "pageToc" },
-    { el: navbarTocTrigger, type: "toggle", mode: "pageToc" },
+      { el: pageTocToggle, type: "toggle", mode: "pageToc" },
+      { el: pageTocClose, type: "close", mode: "pageToc" },
+      { el: pageTocBackdrop, type: "close", mode: "pageToc" },
+      { el: navbarTocTrigger, type: "toggle", mode: "pageToc" },
 
-    { el: navbarSearchBtn, type: "toggle", mode: "navbarSearch" },
-    { el: navbarSearchOverlayClose, type: "close", mode: "navbarSearch" },
+      { el: navbarSearchBtn, type: "toggle", mode: "navbarSearch" },
+      { el: navbarSearchOverlayClose, type: "close", mode: "navbarSearch" },
 
-    { el: mobileSearchBtn, type: "toggle", mode: "mobileSearch" },
-    { el: mobileSearchClose, type: "close", mode: "mobileSearch" },
+      { el: mobileSearchBtn, type: "toggle", mode: "mobileSearch" },
+      { el: mobileSearchClose, type: "close", mode: "mobileSearch" },
 
-    { el: mobileMenuBtn, type: "toggle", mode: "mobileMenu" },
-    { el: mobileMenuBackdrop, type: "close", mode: "mobileMenu" },
+      { el: mobileMenuBtn, type: "toggle", mode: "mobileMenu" },
+      { el: mobileMenuBackdrop, type: "close", mode: "mobileMenu" },
 
-    { el: mobileTocTrigger, type: "toggle", mode: "mobileDropdown" },
-    { el: mobileDropdownBackdrop, type: "close", mode: "mobileDropdown" },
-  ]);
+      { el: mobileTocTrigger, type: "toggle", mode: "mobileDropdown" },
+      { el: mobileDropdownBackdrop, type: "close", mode: "mobileDropdown" },
+    ]);
 
   for (const { el, type, mode } of modeBindings) {
     if (!el) continue;

@@ -6,4 +6,3 @@ export function bootLazyHeavyLibs() {
     void import(/* webpackChunkName: "charts/charts" */ "./charts.js").then((m) => m.startCharts());
   }
 }
-
