@@ -105,7 +105,7 @@ The mobile top bar clones the desktop navbar menu and the in-page TOC (`cloneNod
 ### Linting
 
 ```bash
-npm run lint
+npm run check
 ```
 
 ## 📄 License

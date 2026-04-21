@@ -10,8 +10,8 @@
     "build": "webpack --mode production && prettier --ignore-path .prettierignore --write \"dist/**/*.html\" && node scripts/sync-dist-history.mjs",
     "build:dist-history": "npm run build",
     "sync:dist-history": "node scripts/sync-dist-history.mjs",
-    "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
-    "lint:fix": "eslint . --fix --cache --cache-location node_modules/.cache/eslint",
+    "check": "eslint . --cache --cache-location node_modules/.cache/eslint",
+    "check:fix": "eslint . --fix --cache --cache-location node_modules/.cache/eslint",
     "format": "prettier --write \"src/**/*.{js,scss,html}\" \"*.{js,mjs,json,md}\" && prettier --ignore-path .prettierignore --write \"dist/**/*.html\"",
     "format:check": "prettier --check \"src/**/*.{js,scss,html}\" \"*.{js,mjs,json,md}\" && prettier --ignore-path .prettierignore --check \"dist/**/*.html\"",
     "clear-css": "purgecss --config purgecss.config.js"
