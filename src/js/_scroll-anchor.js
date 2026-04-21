@@ -1,11 +1,12 @@
 import { blockNavAutoHide } from "./_nav-scroll-guard.js";
+import { IDS } from "./_constants.js";
 
 export function getFixedHeaderHeight() {
-  const mobileTopNav = document.getElementById("h-mobile-top-nav");
+  const mobileTopNav = document.getElementById(IDS.mobileTopNav);
   if (mobileTopNav && window.getComputedStyle(mobileTopNav).display !== "none") {
     return mobileTopNav.offsetHeight;
   }
-  const navbar = document.getElementById("h-navbar");
+  const navbar = document.getElementById(IDS.navbar);
   if (navbar && window.getComputedStyle(navbar).display !== "none") {
     return navbar.offsetHeight;
   }

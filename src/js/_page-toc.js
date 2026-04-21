@@ -1,16 +1,16 @@
 import { getUiModes } from "./_app-bridge.js";
-import { PAGE_TOC_TOGGLE_THRESHOLD } from "./_constants.js";
+import { IDS, PAGE_TOC_TOGGLE_THRESHOLD } from "./_constants.js";
 import { translate } from "./_locale.js";
 import { scrollToAnchor } from "./_scroll-anchor.js";
 import { subscribeWindowScroll } from "./_scroll-hub.js";
 
 export function initPageToc() {
-  const toc = document.getElementById("h-page-toc");
-  const tocList = document.getElementById("h-page-toc-list");
-  const tocLabel = document.getElementById("h-page-toc-label");
-  const navbarTocTriggerLabel = document.getElementById("h-navbar-toc-trigger-label");
-  const mobileTocTriggerLabel = document.getElementById("h-mobile-top-nav-toc-trigger-label");
-  const toggleBtn = document.getElementById("h-page-toc-toggle");
+  const toc = document.getElementById(IDS.pageToc);
+  const tocList = document.getElementById(IDS.pageTocList);
+  const tocLabel = document.getElementById(IDS.pageTocLabel);
+  const navbarTocTriggerLabel = document.getElementById(IDS.navbarTocTriggerLabel);
+  const mobileTocTriggerLabel = document.getElementById(IDS.mobileTopNavTocTriggerLabel);
+  const toggleBtn = document.getElementById(IDS.pageTocToggle);
   if (!toc || !tocList) return;
 
   const article = document.querySelector("article");
@@ -67,7 +67,7 @@ export function initPageToc() {
     } else {
       setTocTriggerLabel("");
     }
-    const mirror = document.getElementById("h-mobile-top-nav-dropdown")?.querySelector(".h-page-toc-mirror");
+    const mirror = document.getElementById(IDS.mobileTopNavDropdown)?.querySelector(".h-page-toc-mirror");
     const mirrorLinks = mirror?.querySelectorAll("a");
     if (mirrorLinks && mirrorLinks.length === links.length) {
       mirrorLinks.forEach((a, i) => a.classList.toggle("is-active", i === index));

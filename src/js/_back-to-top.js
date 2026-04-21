@@ -1,8 +1,8 @@
-import { BACK_TO_TOP_IDLE_MS, BACK_TO_TOP_THRESHOLD } from "./_constants.js";
+import { BACK_TO_TOP_IDLE_MS, BACK_TO_TOP_THRESHOLD, IDS } from "./_constants.js";
 import { subscribeWindowScroll } from "./_scroll-hub.js";
 
 export function initBackToTop(threshold = BACK_TO_TOP_THRESHOLD) {
-  const btn = document.getElementById("h-back-to-top");
+  const btn = document.getElementById(IDS.backToTop);
   if (!btn) return;
 
   let idleTimer = null;
