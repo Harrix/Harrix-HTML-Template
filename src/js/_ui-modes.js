@@ -1,98 +1,99 @@
 import { createUiHistoryLayer } from "./_ui-history.js";
 import { resetExpandedMenuSubmenus } from "./_expanded-menu.js";
+import { IDS } from "./_constants.js";
 
 export function createUiModesController() {
   const root = document.documentElement;
 
-  const docsSidebar = document.getElementById("h-docs-sidebar");
-  const docsSidebarBackdrop = document.getElementById("h-docs-sidebar-backdrop");
-  const docsSidebarClose = document.getElementById("h-docs-sidebar-close");
-  const docsSidebarToggle = document.getElementById("h-docs-sidebar-toggle");
-  const navbarSidebarBtn = document.getElementById("h-navbar-sidebar-btn");
+  const byId = (id) => document.getElementById(id);
 
-  const pageToc = document.getElementById("h-page-toc");
-  const pageTocBackdrop = document.getElementById("h-page-toc-backdrop");
-  const pageTocClose = document.getElementById("h-page-toc-close");
-  const pageTocToggle = document.getElementById("h-page-toc-toggle");
-  const navbarTocTrigger = document.getElementById("h-navbar-toc-trigger");
-  const mobileTocTrigger = document.getElementById("h-mobile-top-nav-toc-trigger");
+  const docsSidebar = byId(IDS.docsSidebar);
+  const docsSidebarBackdrop = byId(IDS.docsSidebarBackdrop);
+  const docsSidebarClose = byId(IDS.docsSidebarClose);
+  const docsSidebarToggle = byId(IDS.docsSidebarToggle);
+  const navbarSidebarBtn = byId(IDS.navbarSidebarBtn);
 
-  const navbarBurger = document.getElementById("h-navbar-menu-btn") || document.getElementById("h-burger");
-  const navbarMenu = document.getElementById("h-navbar-menu");
-  const navbarMenuPanelHeader = document.getElementById("h-navbar-menu-panel-header");
-  const navbarMenuBackdrop = document.getElementById("h-navbar-menu-backdrop");
-  const navbarMenuPanelClose = document.getElementById("h-navbar-menu-panel-close");
+  const pageToc = byId(IDS.pageToc);
+  const pageTocBackdrop = byId(IDS.pageTocBackdrop);
+  const pageTocClose = byId(IDS.pageTocClose);
+  const pageTocToggle = byId(IDS.pageTocToggle);
+  const navbarTocTrigger = byId(IDS.navbarTocTrigger);
+  const mobileTocTrigger = byId(IDS.mobileTopNavTocTrigger);
 
-  const navbarSearchButtonOpen = document.getElementById("h-search-button-open");
-  const navbarSearchInput = document.getElementById("h-search-input");
+  const navbarBurger = byId(IDS.navbarMenuBtn) || byId(IDS.burger);
+  const navbarMenu = byId(IDS.navbarMenu);
+  const navbarMenuPanelHeader = byId(IDS.navbarMenuPanelHeader);
+  const navbarMenuBackdrop = byId(IDS.navbarMenuBackdrop);
+  const navbarMenuPanelClose = byId(IDS.navbarMenuPanelClose);
 
-  const navbarSearchBtn = document.getElementById("h-navbar-search-btn");
-  const navbarSearchOverlay = document.getElementById("h-navbar-search-overlay");
-  const navbarSearchOverlayClose = document.getElementById("h-navbar-search-overlay-close");
-  const navbarSearchOverlayInput = document.getElementById("h-navbar-search-overlay-input");
+  const navbarSearchButtonOpen = byId(IDS.searchButtonOpen);
+  const navbarSearchInput = byId(IDS.searchInput);
 
-  const mobileSearchBtn = document.getElementById("h-mobile-top-nav-search");
-  const mobileSearchPanel = document.getElementById("h-mobile-top-nav-search-panel");
-  const mobileSearchClose = document.getElementById("h-mobile-top-nav-search-close");
-  const mobileSearchInput = document.getElementById("h-mobile-top-nav-search-input");
-  const mobileSearchSubmit = document.getElementById("h-mobile-top-nav-search-submit");
+  const navbarSearchBtn = byId(IDS.navbarSearchBtn);
+  const navbarSearchOverlay = byId(IDS.navbarSearchOverlay);
+  const navbarSearchOverlayClose = byId(IDS.navbarSearchOverlayClose);
+  const navbarSearchOverlayInput = byId(IDS.navbarSearchOverlayInput);
 
-  const mobileMenuBtn = document.getElementById("h-mobile-top-nav-menu");
-  const mobileMenuPanel = document.getElementById("h-mobile-top-nav-menu-panel");
-  const mobileMenuBackdrop = document.getElementById("h-mobile-top-nav-menu-backdrop");
+  const mobileSearchBtn = byId(IDS.mobileTopNavSearch);
+  const mobileSearchPanel = byId(IDS.mobileTopNavSearchPanel);
+  const mobileSearchClose = byId(IDS.mobileTopNavSearchClose);
+  const mobileSearchInput = byId(IDS.mobileTopNavSearchInput);
+  const mobileSearchSubmit = byId(IDS.mobileTopNavSearchSubmit);
 
-  const mobileDropdown = document.getElementById("h-mobile-top-nav-dropdown");
-  const mobileDropdownBackdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
+  const mobileMenuBtn = byId(IDS.mobileTopNavMenu);
+  const mobileMenuPanel = byId(IDS.mobileTopNavMenuPanel);
+  const mobileMenuBackdrop = byId(IDS.mobileTopNavMenuBackdrop);
+
+  const mobileDropdown = byId(IDS.mobileTopNavDropdown);
+  const mobileDropdownBackdrop = byId(IDS.mobileTopNavDropdownBackdrop);
 
   let active = null;
-
-  function isModeOpen(mode) {
-    switch (mode) {
-      case "docsSidebar":
-        return !!(docsSidebar && docsSidebar.classList.contains("is-open"));
-      case "pageToc":
-        return !!(pageToc && pageToc.classList.contains("is-open"));
-      case "navbarMenu":
-        return !!(navbarMenu && navbarMenu.classList.contains("is-active"));
-      case "navbarSearch":
-        return !!(navbarSearchOverlay && navbarSearchOverlay.classList.contains("is-open"));
-      case "mobileSearch":
-        return !!(mobileSearchPanel && mobileSearchPanel.classList.contains("is-open"));
-      case "mobileMenu":
-        return !!(mobileMenuPanel && mobileMenuPanel.classList.contains("is-open"));
-      case "mobileDropdown":
-        return !!(mobileDropdown && mobileDropdown.classList.contains("is-open"));
-      default:
-        return false;
-    }
-  }
 
   function setTocExpanded(open) {
     if (navbarTocTrigger) navbarTocTrigger.setAttribute("aria-expanded", open ? "true" : "false");
     if (mobileTocTrigger) mobileTocTrigger.setAttribute("aria-expanded", open ? "true" : "false");
   }
 
-  function openMode(mode) {
-    switch (mode) {
-      case "docsSidebar": {
-        if (!docsSidebar) return;
-        docsSidebar.classList.add("is-open");
-        if (docsSidebarBackdrop) docsSidebarBackdrop.classList.add("is-active");
-        break;
-      }
-      case "pageToc": {
-        if (!pageToc) return;
-        pageToc.classList.add("is-open");
-        if (pageTocBackdrop) pageTocBackdrop.classList.add("is-active");
-        setTocExpanded(true);
-        break;
-      }
-      case "navbarMenu": {
+  /**
+   * @typedef {Object} UiMode
+   * @property {HTMLElement | null} [panel]
+   * @property {string} panelOpenClass
+   * @property {HTMLElement | null} [backdrop]
+   * @property {string} [backdropActiveClass]
+   * @property {() => boolean} [canOpen]
+   * @property {(mode: UiModeName) => void} [onOpen]
+   * @property {(mode: UiModeName) => void} [onClose]
+   */
+
+  /** @typedef {"docsSidebar"|"pageToc"|"navbarMenu"|"navbarSearch"|"mobileSearch"|"mobileMenu"|"mobileDropdown"} UiModeName */
+
+  /** @type {Record<UiModeName, UiMode>} */
+  const MODES = {
+    docsSidebar: {
+      panel: docsSidebar,
+      panelOpenClass: "is-open",
+      backdrop: docsSidebarBackdrop,
+      backdropActiveClass: "is-active",
+    },
+    pageToc: {
+      panel: pageToc,
+      panelOpenClass: "is-open",
+      backdrop: pageTocBackdrop,
+      backdropActiveClass: "is-active",
+      onOpen: () => setTocExpanded(true),
+      onClose: () => setTocExpanded(false),
+    },
+    navbarMenu: {
+      panel: navbarMenu,
+      panelOpenClass: "is-active",
+      canOpen: () => !!navbarBurger,
+      onOpen: () => {
         if (!navbarMenu || !navbarBurger) return;
+
         root.classList.add("h-is-clipped-touch");
         navbarBurger.classList.add("is-active");
         navbarBurger.setAttribute("aria-expanded", "true");
-        navbarMenu.classList.add("is-active");
+
         if (document.body.classList.contains("h-navbar-menu-no-fit")) {
           if (navbarMenuPanelHeader) {
             navbarMenuPanelHeader.removeAttribute("hidden");
@@ -105,71 +106,16 @@ export function createUiModesController() {
           }
           navbarBurger.style.display = "none";
         }
-        resetExpandedMenuSubmenus();
-        break;
-      }
-      case "navbarSearch": {
-        if (!navbarSearchOverlay) return;
-        navbarSearchOverlay.classList.add("is-open");
-        navbarSearchOverlay.setAttribute("aria-hidden", "false");
-        if (navbarSearchOverlayInput) setTimeout(() => navbarSearchOverlayInput.focus(), 50);
-        break;
-      }
-      case "mobileSearch": {
-        if (!mobileSearchPanel) return;
-        mobileSearchPanel.classList.add("is-open");
-        mobileSearchPanel.setAttribute("aria-hidden", "false");
-        if (mobileSearchInput) setTimeout(() => mobileSearchInput.focus(), 50);
-        break;
-      }
-      case "mobileMenu": {
-        if (!mobileMenuPanel) return;
-        root.classList.add("h-is-clipped-touch");
-        if (document.body.classList.contains("h-navbar-menu-no-fit") && navbarBurger) {
-          navbarBurger.classList.add("is-active");
-          navbarBurger.setAttribute("aria-expanded", "true");
-        }
-        mobileMenuPanel.classList.add("is-open");
-        mobileMenuPanel.setAttribute("aria-hidden", "false");
-        if (mobileMenuBackdrop) {
-          mobileMenuBackdrop.classList.add("is-active");
-          mobileMenuBackdrop.setAttribute("aria-hidden", "false");
-        }
-        resetExpandedMenuSubmenus();
-        break;
-      }
-      case "mobileDropdown": {
-        if (!mobileDropdown) return;
-        mobileDropdown.classList.add("is-open");
-        setTocExpanded(true);
-        if (mobileDropdownBackdrop) {
-          mobileDropdownBackdrop.classList.add("is-active");
-          mobileDropdownBackdrop.setAttribute("aria-hidden", "false");
-        }
-        break;
-      }
-    }
-  }
 
-  function closeMode(mode) {
-    switch (mode) {
-      case "docsSidebar": {
-        if (docsSidebar) docsSidebar.classList.remove("is-open");
-        if (docsSidebarBackdrop) docsSidebarBackdrop.classList.remove("is-active");
-        break;
-      }
-      case "pageToc": {
-        if (pageToc) pageToc.classList.remove("is-open");
-        if (pageTocBackdrop) pageTocBackdrop.classList.remove("is-active");
-        setTocExpanded(false);
-        break;
-      }
-      case "navbarMenu": {
+        resetExpandedMenuSubmenus();
+      },
+      onClose: () => {
         if (!navbarMenu || !navbarBurger) return;
+
         root.classList.remove("h-is-clipped-touch");
         navbarBurger.classList.remove("is-active");
         navbarBurger.setAttribute("aria-expanded", "false");
-        navbarMenu.classList.remove("is-active");
+
         if (navbarMenuPanelHeader) {
           navbarMenuPanelHeader.setAttribute("hidden", "");
           navbarMenuPanelHeader.setAttribute("aria-hidden", "true");
@@ -182,49 +128,102 @@ export function createUiModesController() {
         if (document.body.classList.contains("h-navbar-menu-no-fit")) {
           navbarBurger.style.display = "";
         }
-        break;
-      }
-      case "navbarSearch": {
+      },
+    },
+    navbarSearch: {
+      panel: navbarSearchOverlay,
+      panelOpenClass: "is-open",
+      onOpen: () => {
         if (!navbarSearchOverlay) return;
-        navbarSearchOverlay.classList.remove("is-open");
+        navbarSearchOverlay.setAttribute("aria-hidden", "false");
+        if (navbarSearchOverlayInput) setTimeout(() => navbarSearchOverlayInput.focus(), 50);
+      },
+      onClose: () => {
+        if (!navbarSearchOverlay) return;
         navbarSearchOverlay.setAttribute("aria-hidden", "true");
         if (navbarSearchOverlayInput) navbarSearchOverlayInput.blur();
-        break;
-      }
-      case "mobileSearch": {
+      },
+    },
+    mobileSearch: {
+      panel: mobileSearchPanel,
+      panelOpenClass: "is-open",
+      onOpen: () => {
+        if (!mobileSearchPanel) return;
+        mobileSearchPanel.setAttribute("aria-hidden", "false");
+        if (mobileSearchInput) setTimeout(() => mobileSearchInput.focus(), 50);
+      },
+      onClose: () => {
         if (mobileSearchInput) mobileSearchInput.blur();
-        if (mobileSearchPanel) {
-          mobileSearchPanel.classList.remove("is-open");
-          mobileSearchPanel.setAttribute("aria-hidden", "true");
+        if (mobileSearchPanel) mobileSearchPanel.setAttribute("aria-hidden", "true");
+      },
+    },
+    mobileMenu: {
+      panel: mobileMenuPanel,
+      panelOpenClass: "is-open",
+      backdrop: mobileMenuBackdrop,
+      backdropActiveClass: "is-active",
+      onOpen: () => {
+        if (!mobileMenuPanel) return;
+        root.classList.add("h-is-clipped-touch");
+        if (document.body.classList.contains("h-navbar-menu-no-fit") && navbarBurger) {
+          navbarBurger.classList.add("is-active");
+          navbarBurger.setAttribute("aria-expanded", "true");
         }
-        break;
-      }
-      case "mobileMenu": {
+        mobileMenuPanel.setAttribute("aria-hidden", "false");
+        if (mobileMenuBackdrop) mobileMenuBackdrop.setAttribute("aria-hidden", "false");
+        resetExpandedMenuSubmenus();
+      },
+      onClose: () => {
         root.classList.remove("h-is-clipped-touch");
         if (navbarBurger) {
           navbarBurger.classList.remove("is-active");
           navbarBurger.setAttribute("aria-expanded", "false");
         }
-        if (mobileMenuPanel) {
-          mobileMenuPanel.classList.remove("is-open");
-          mobileMenuPanel.setAttribute("aria-hidden", "true");
-        }
-        if (mobileMenuBackdrop) {
-          mobileMenuBackdrop.classList.remove("is-active");
-          mobileMenuBackdrop.setAttribute("aria-hidden", "true");
-        }
-        break;
-      }
-      case "mobileDropdown": {
-        if (mobileDropdown) mobileDropdown.classList.remove("is-open");
+        if (mobileMenuPanel) mobileMenuPanel.setAttribute("aria-hidden", "true");
+        if (mobileMenuBackdrop) mobileMenuBackdrop.setAttribute("aria-hidden", "true");
+      },
+    },
+    mobileDropdown: {
+      panel: mobileDropdown,
+      panelOpenClass: "is-open",
+      backdrop: mobileDropdownBackdrop,
+      backdropActiveClass: "is-active",
+      onOpen: () => {
+        setTocExpanded(true);
+        if (mobileDropdownBackdrop) mobileDropdownBackdrop.setAttribute("aria-hidden", "false");
+      },
+      onClose: () => {
         setTocExpanded(false);
-        if (mobileDropdownBackdrop) {
-          mobileDropdownBackdrop.classList.remove("is-active");
-          mobileDropdownBackdrop.setAttribute("aria-hidden", "true");
-        }
-        break;
-      }
-    }
+        if (mobileDropdownBackdrop) mobileDropdownBackdrop.setAttribute("aria-hidden", "true");
+      },
+    },
+  };
+
+  /** @param {UiModeName} mode */
+  function isModeOpen(mode) {
+    const def = MODES[mode];
+    return !!(def?.panel && def.panel.classList.contains(def.panelOpenClass));
+  }
+
+  /** @param {UiModeName} mode */
+  function openMode(mode) {
+    const def = MODES[mode];
+    if (!def?.panel) return;
+    if (def.canOpen && !def.canOpen()) return;
+
+    def.panel.classList.add(def.panelOpenClass);
+    if (def.backdrop && def.backdropActiveClass) def.backdrop.classList.add(def.backdropActiveClass);
+    def.onOpen?.(mode);
+  }
+
+  /** @param {UiModeName} mode */
+  function closeMode(mode) {
+    const def = MODES[mode];
+    if (!def) return;
+
+    if (def.panel) def.panel.classList.remove(def.panelOpenClass);
+    if (def.backdrop && def.backdropActiveClass) def.backdrop.classList.remove(def.backdropActiveClass);
+    def.onClose?.(mode);
   }
 
   function closeAll() {
@@ -275,51 +274,55 @@ export function createUiModesController() {
     else open(mode);
   }
 
-  if (docsSidebarToggle) docsSidebarToggle.addEventListener("click", () => toggle("docsSidebar"));
-  if (navbarSidebarBtn) navbarSidebarBtn.addEventListener("click", () => toggle("docsSidebar"));
-  if (docsSidebarClose) docsSidebarClose.addEventListener("click", () => close("docsSidebar"));
-  if (docsSidebarBackdrop) docsSidebarBackdrop.addEventListener("click", () => close("docsSidebar"));
+  const modeBindings = /** @type {Array<{ el: HTMLElement | null, type: "toggle"|"close"|"open", mode: UiModeName }>} */ ([
+    { el: docsSidebarToggle, type: "toggle", mode: "docsSidebar" },
+    { el: navbarSidebarBtn, type: "toggle", mode: "docsSidebar" },
+    { el: docsSidebarClose, type: "close", mode: "docsSidebar" },
+    { el: docsSidebarBackdrop, type: "close", mode: "docsSidebar" },
 
-  if (pageTocToggle) pageTocToggle.addEventListener("click", () => toggle("pageToc"));
-  if (pageTocClose) pageTocClose.addEventListener("click", () => close("pageToc"));
-  if (pageTocBackdrop) pageTocBackdrop.addEventListener("click", () => close("pageToc"));
-  if (navbarTocTrigger) navbarTocTrigger.addEventListener("click", () => toggle("pageToc"));
+    { el: pageTocToggle, type: "toggle", mode: "pageToc" },
+    { el: pageTocClose, type: "close", mode: "pageToc" },
+    { el: pageTocBackdrop, type: "close", mode: "pageToc" },
+    { el: navbarTocTrigger, type: "toggle", mode: "pageToc" },
+
+    { el: navbarSearchBtn, type: "toggle", mode: "navbarSearch" },
+    { el: navbarSearchOverlayClose, type: "close", mode: "navbarSearch" },
+
+    { el: mobileSearchBtn, type: "toggle", mode: "mobileSearch" },
+    { el: mobileSearchClose, type: "close", mode: "mobileSearch" },
+
+    { el: mobileMenuBtn, type: "toggle", mode: "mobileMenu" },
+    { el: mobileMenuBackdrop, type: "close", mode: "mobileMenu" },
+
+    { el: mobileTocTrigger, type: "toggle", mode: "mobileDropdown" },
+    { el: mobileDropdownBackdrop, type: "close", mode: "mobileDropdown" },
+  ]);
+
+  for (const { el, type, mode } of modeBindings) {
+    if (!el) continue;
+    el.addEventListener("click", () => {
+      if (type === "toggle") toggle(mode);
+      else if (type === "open") open(mode);
+      else close(mode);
+    });
+  }
 
   if (navbarBurger) {
     navbarBurger.addEventListener("click", () => {
-      if (document.body.classList.contains("h-navbar-menu-no-fit")) {
-        toggle("mobileMenu");
-      } else {
-        toggle("navbarMenu");
-      }
+      toggle(document.body.classList.contains("h-navbar-menu-no-fit") ? "mobileMenu" : "navbarMenu");
     });
   }
   if (navbarMenuBackdrop) navbarMenuBackdrop.addEventListener("click", () => close("navbarMenu"));
   if (navbarMenuPanelClose) navbarMenuPanelClose.addEventListener("click", () => close("navbarMenu"));
 
-  if (navbarSearchBtn) navbarSearchBtn.addEventListener("click", () => toggle("navbarSearch"));
-  if (navbarSearchOverlayClose) navbarSearchOverlayClose.addEventListener("click", () => close("navbarSearch"));
+  if (navbarSearchButtonOpen) navbarSearchButtonOpen.addEventListener("click", closeAll);
 
-  if (navbarSearchButtonOpen) {
-    navbarSearchButtonOpen.addEventListener("click", () => {
-      closeAll();
-    });
-  }
-
-  if (mobileSearchBtn) mobileSearchBtn.addEventListener("click", () => toggle("mobileSearch"));
-  if (mobileSearchClose) mobileSearchClose.addEventListener("click", () => close("mobileSearch"));
   if (mobileSearchSubmit) {
     mobileSearchSubmit.addEventListener("click", () => {
-      const formEl = document.getElementById("h-search-form")?.querySelector("form");
+      const formEl = byId(IDS.searchForm)?.querySelector("form");
       if (formEl) formEl.requestSubmit();
     });
   }
-
-  if (mobileMenuBtn) mobileMenuBtn.addEventListener("click", () => toggle("mobileMenu"));
-  if (mobileMenuBackdrop) mobileMenuBackdrop.addEventListener("click", () => close("mobileMenu"));
-
-  if (mobileTocTrigger) mobileTocTrigger.addEventListener("click", () => toggle("mobileDropdown"));
-  if (mobileDropdownBackdrop) mobileDropdownBackdrop.addEventListener("click", () => close("mobileDropdown"));
 
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
