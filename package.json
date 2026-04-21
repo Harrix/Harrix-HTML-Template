@@ -12,6 +12,7 @@
     "sync:dist-history": "node scripts/sync-dist-history.mjs",
     "check": "eslint . --cache --cache-location node_modules/.cache/eslint",
     "check:fix": "eslint . --fix --cache --cache-location node_modules/.cache/eslint",
+    "check:css": "stylelint \"src/scss/**/*.scss\"",
     "format": "prettier --write \"src/**/*.{js,scss,html}\" \"*.{js,mjs,json,md}\" && prettier --ignore-path .prettierignore --write \"dist/**/*.html\"",
     "format:check": "prettier --check \"src/**/*.{js,scss,html}\" \"*.{js,mjs,json,md}\" && prettier --ignore-path .prettierignore --check \"dist/**/*.html\"",
     "clear-css": "purgecss --config purgecss.config.js"
@@ -60,6 +61,9 @@
     "purgecss": "^8.0.0",
     "sass": "^1.98.0",
     "sass-loader": "^16.0.7",
+    "stylelint": "^16.21.1",
+    "stylelint-config-standard-scss": "^15.0.1",
+    "stylelint-order": "^7.0.0",
     "terser-webpack-plugin": "^5.4.0",
     "webpack": "^5.105.4",
     "webpack-cli": "^7.0.2",

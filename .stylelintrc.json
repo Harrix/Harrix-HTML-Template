@@ -1,0 +1,9 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "declaration-no-important": [true, { "severity": "warning" }],
+    "scss/at-use-no-unnamespaced": true,
+    "no-descending-specificity": null
+  }
+}
