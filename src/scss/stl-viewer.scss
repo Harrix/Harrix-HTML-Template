@@ -25,7 +25,7 @@
 
     code {
       padding: 0.2em 0.4em;
-      background: rgba(0, 0, 0, 0.06);
+      background: rgb(0 0 0 / 6%);
       border-radius: var(--bulma-radius-small, 0.25rem);
     }
   }
@@ -36,7 +36,7 @@
     background: #1a1a1a;
 
     &__message code {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgb(255 255 255 / 10%);
     }
   }
 }

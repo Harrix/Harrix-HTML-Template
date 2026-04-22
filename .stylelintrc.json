@@ -4,6 +4,34 @@
   "rules": {
     "declaration-no-important": [true, { "severity": "warning" }],
     "scss/at-use-no-unnamespaced": true,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "selector-class-pattern": null,
+    "property-no-vendor-prefix": null,
+    "no-duplicate-selectors": null,
+
+    "scss/double-slash-comment-empty-line-before": null,
+    "media-feature-range-notation": null,
+
+    "color-function-alias-notation": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+
+    "scss/dollar-variable-pattern": null,
+    "function-url-quotes": null,
+
+    "scss/operator-no-newline-after": null,
+    "scss/operator-no-newline-before": null,
+
+    "selector-pseudo-element-colon-notation": null,
+    "selector-not-notation": null,
+    "value-keyword-case": null,
+
+    "declaration-block-no-redundant-longhand-properties": null,
+    "shorthand-property-no-redundant-values": null,
+    "length-zero-no-unit": null,
+
+    "at-rule-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": null
   }
 }

@@ -4,6 +4,7 @@
 
 .h-back-to-top {
   @include hmixins.h-fab-circle(right, 3.75rem, 3.75rem);
+
   border-radius: 50%;
   text-decoration: none;
 
@@ -26,7 +27,7 @@
     font-size: 1.25rem;
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     right: 1.25rem;
     bottom: 1.25rem;
   }

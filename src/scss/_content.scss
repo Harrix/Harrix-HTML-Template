@@ -4,7 +4,6 @@
 
 .content {
   text-align: justify;
-
   hyphens: auto;
   hyphenate-limit-chars: 6 3 3;
   hyphenate-limit-lines: 2;
@@ -79,7 +78,7 @@
   blockquote {
     quotes: "\201C" "\201D";
     margin: 1.5em 0;
-    padding: 0.25em 0 0.5em 0;
+    padding: 0.25em 0 0.5em;
     font-style: normal;
     position: relative;
     padding-left: 1.5rem;

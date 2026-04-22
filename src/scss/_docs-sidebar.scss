@@ -64,8 +64,8 @@ $h-navbar-height: 3rem;
           width: 0.4em;
           height: 0.4em;
           margin-right: 0.5em;
-          border-right: 2px solid currentColor;
-          border-bottom: 2px solid currentColor;
+          border-right: 2px solid currentcolor;
+          border-bottom: 2px solid currentcolor;
           transform: rotate(-45deg);
           transform-origin: 60% 60%;
           transition: transform 0.2s ease;
@@ -87,7 +87,7 @@ $h-navbar-height: 3rem;
     }
   }
 
-  @media (max-width: $h-docs-sidebar-breakpoint - 1) {
+  @media (width <= calc(#{$h-docs-sidebar-breakpoint} - 1px)) {
     top: 0;
     max-height: 100vh;
     height: 100vh;
@@ -119,13 +119,13 @@ $h-navbar-height: 3rem;
     }
   }
 
-  @media (min-width: $h-docs-sidebar-breakpoint) {
+  @media (width >= #{$h-docs-sidebar-breakpoint}) {
     .h-docs-sidebar__header {
       display: none;
     }
   }
 
-  @media (min-width: $h-docs-sidebar-breakpoint) {
+  @media (width >= #{$h-docs-sidebar-breakpoint}) {
     transform: none;
   }
 }
@@ -156,15 +156,15 @@ $h-navbar-height: 3rem;
     font-size: 1.125rem;
   }
 
-  @media (max-width: $h-docs-sidebar-breakpoint - 1) {
+  @media (width <= calc(#{$h-docs-sidebar-breakpoint} - 1px)) {
     display: flex;
   }
 
-  @media (max-width: $h-docs-sidebar-breakpoint) {
+  @media (width <= #{$h-docs-sidebar-breakpoint}) {
     display: none !important;
   }
 
-  @media (min-width: $h-docs-sidebar-breakpoint) {
+  @media (width >= #{$h-docs-sidebar-breakpoint}) {
     display: none !important;
   }
 
@@ -175,6 +175,7 @@ $h-navbar-height: 3rem;
 
 .h-docs-sidebar-backdrop {
   @include hmixins.h-backdrop;
+
   // Match mobile top-nav menu: no dim overlay; panel uses shadow when open.
   background-color: transparent;
   z-index: 39;
