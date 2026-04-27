@@ -21,21 +21,21 @@ $h-splitter-hover-width: 3px;
 // Prevent text selection & iframe stealing pointer during splitter drag
 // ---------------------------------------------------------------------------
 html.h-split-dragging {
-  cursor: col-resize !important;
+  cursor: col-resize;
 
   *,
   *::before,
   *::after {
-    cursor: col-resize !important;
+    cursor: col-resize;
   }
 
   body {
-    user-select: none !important;
-    -webkit-user-select: none !important;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   iframe {
-    pointer-events: none !important;
+    pointer-events: none;
   }
 }
 
@@ -50,7 +50,7 @@ html.h-split-dragging {
   .h-page-toc-toggle,
   .footer,
   main {
-    transition: none !important;
+    transition: none;
   }
 }
 
@@ -97,37 +97,37 @@ html.h-split-active .h-docs-splitter {
 // ---------------------------------------------------------------------------
 html.h-split-active {
   .h-docs-sidebar {
-    position: fixed !important;
-    left: var(--h-split-center-inset, 0px) !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    width: var(--h-split-sidebar-w, 280px) !important;
-    max-height: 100vh !important;
-    height: 100vh !important;
+    position: fixed;
+    left: var(--h-split-center-inset, 0px);
+    top: 0;
+    bottom: 0;
+    width: var(--h-split-sidebar-w, 280px);
+    max-height: 100vh;
+    height: 100vh;
     z-index: 44;
-    transform: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+    transform: none;
+    border-radius: 0;
+    box-shadow: none;
     padding-top: 1rem;
     overflow-y: auto;
 
     .h-docs-sidebar__header {
-      display: none !important;
+      display: none;
     }
   }
 
   // Hide sidebar toggle button & backdrop — sidebar is always visible
   .h-docs-sidebar-toggle {
-    display: none !important;
+    display: none;
   }
 
   .h-docs-sidebar-backdrop {
-    display: none !important;
+    display: none;
   }
 
   // Hide navbar sidebar button — sidebar is always visible
   .navbar .h-navbar-sidebar-btn {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -207,20 +207,20 @@ html.h-split-active {
 html.h-split-active {
   body:not(.h-navbar-menu-no-fit) .navbar .h-navbar-search-btn,
   body:not(.h-navbar-menu-no-fit) .navbar .h-navbar-menu-btn {
-    display: none !important;
+    display: none;
   }
 
   body.h-navbar-menu-no-fit .navbar #h-navbar-menu.navbar-menu {
-    display: none !important;
+    display: none;
   }
 
   body.h-navbar-menu-no-fit .navbar .h-navbar-search-btn {
-    display: flex !important;
+    display: flex;
     margin-left: auto;
   }
 
   body.h-navbar-menu-no-fit .navbar .h-navbar-menu-btn {
-    display: flex !important;
+    display: flex;
     margin-left: hvars.$h-space-1;
   }
 
@@ -369,12 +369,12 @@ html.h-split-active body:not(.h-navbar-toc-no-fit) {
 
   // Hide toggle FAB — TOC is always visible
   .h-page-toc-toggle {
-    display: none !important;
+    display: none;
   }
 
   // Hide backdrop
   .h-page-toc-backdrop {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -433,7 +433,7 @@ html.h-split-active body.h-navbar-toc-no-fit {
 
   // Hide toggle FAB — TOC trigger is in the navbar row2
   .h-page-toc-toggle {
-    display: none !important;
+    display: none;
   }
 
   // Backdrop should not cover the sidebar

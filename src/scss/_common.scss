@@ -59,7 +59,7 @@ html.h-resizing {
 // Suppress dropdowns during resize and during menu mode switches
 html.h-resizing .navbar-item.has-dropdown > .navbar-dropdown,
 html.h-nav-suppress-dropdowns .navbar-item.has-dropdown > .navbar-dropdown {
-  display: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
 }

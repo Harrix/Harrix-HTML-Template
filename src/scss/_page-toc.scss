@@ -32,7 +32,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
   }
 
   @media (max-width: 1024px) {
-    display: none !important;
+    display: none;
   }
 
   @media (min-width: $h-page-toc-breakpoint) {
@@ -40,7 +40,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
   }
 
   body.h-navbar-toc-no-fit & {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -64,7 +64,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
   }
 
   @media (min-width: $h-page-toc-breakpoint) {
-    display: none !important;
+    display: none;
   }
 }
 

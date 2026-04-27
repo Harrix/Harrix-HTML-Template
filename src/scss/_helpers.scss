@@ -2,6 +2,6 @@
 
 .h-is-clipped-touch {
   @include mixins.touch {
-    overflow: hidden !important;
+    overflow: hidden;
   }
 }
