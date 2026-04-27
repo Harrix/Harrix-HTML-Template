@@ -346,8 +346,8 @@ html.h-split-active body:not(.h-navbar-toc-no-fit) {
     width: min(
       16rem,
       calc(
-        var(--h-split-viewport-px, 100vw) - 2 * var(--h-split-center-inset, 0px) - var(--h-split-offset, 281px)
-          - #{hvars.$h-container-max-width} - 2rem
+        var(--h-split-viewport-px, 100vw) - 2 * var(--h-split-center-inset, 0px) - var(--h-split-offset, 281px) -
+          #{hvars.$h-container-max-width} - 2rem
       )
     );
     max-width: 16rem;

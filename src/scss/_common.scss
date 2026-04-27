@@ -26,6 +26,7 @@ body {
 // Suppress transitions on navigation elements during active browser resize
 // to prevent visual flickering when layout classes toggle rapidly.
 html.h-resizing {
+  /* stylelint-disable declaration-no-important */
   .navbar,
   .navbar-menu,
   .h-navbar-sidebar-btn,
@@ -39,9 +40,11 @@ html.h-resizing {
   .h-page-toc-toggle {
     transition: none !important;
   }
+  /* stylelint-enable declaration-no-important */
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* stylelint-disable declaration-no-important */
   *,
   *::before,
   *::after {
@@ -50,6 +53,7 @@ html.h-resizing {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  /* stylelint-enable declaration-no-important */
 }
 
 .footer {
