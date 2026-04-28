@@ -3,6 +3,8 @@ import { SEARCH_ANIMATION_MS } from "./_constants.js";
 import { translate } from "./_locale.js";
 import { initSearchClearButton } from "./_search-clear.js";
 
+let searchPanelInitialized = false;
+
 function focusAfterAnimation(elem, delayMs) {
   setTimeout(() => {
     elem.focus();
@@ -11,7 +13,11 @@ function focusAfterAnimation(elem, delayMs) {
 
 export function initSearchPanel() {
   const searchForm = document.getElementById("h-search-form");
-  if (searchForm) {
+  if (!searchForm) return;
+  if (searchPanelInitialized) return;
+
+  searchPanelInitialized = true;
+
     const navbarMenu = document.getElementById("h-navbar-menu");
     const searchButtonOpen = document.getElementById("h-search-button-open");
     const searchButtonClose = document.getElementById("h-search-button-close");
@@ -91,5 +97,4 @@ export function initSearchPanel() {
     window.addEventListener("popstate", () => {
       if (isSearchOpen) closeSearch({ fromPopstate: true });
     });
-  }
 }
