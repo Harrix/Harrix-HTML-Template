@@ -1,8 +1,8 @@
 import {
   CODE_BLOCK_BOTTOM_THRESHOLD,
-  CODE_COPY_DONE_ICON_HTML,
   CODE_COPY_FEEDBACK_MS,
-  CODE_COPY_ICON_HTML,
+  createCodeCopyDoneIconNode,
+  createCodeCopyIconNode,
 } from "./_constants.js";
 import { HLJS_LANGUAGE_LOADERS, normalizeHljsLanguageId } from "./_hljs-languages.js";
 import { translate } from "./_locale.js";
@@ -109,11 +109,11 @@ export function initCodeCopyButtons() {
     function doCopy(btn) {
       const text = codeEl.textContent || "";
       navigator.clipboard.writeText(text).then(() => {
-        btn.innerHTML = CODE_COPY_DONE_ICON_HTML;
+        btn.replaceChildren(createCodeCopyDoneIconNode());
         btn.setAttribute("aria-label", labelCopied);
         btn.classList.add("h-code-copy--done");
         setTimeout(() => {
-          btn.innerHTML = CODE_COPY_ICON_HTML;
+          btn.replaceChildren(createCodeCopyIconNode());
           btn.setAttribute("aria-label", labelCopy);
           btn.classList.remove("h-code-copy--done");
         }, CODE_COPY_FEEDBACK_MS);
@@ -125,7 +125,7 @@ export function initCodeCopyButtons() {
       btn.type = "button";
       btn.className = "h-code-copy h-code-copy--" + position;
       btn.setAttribute("aria-label", labelCopy);
-      btn.innerHTML = CODE_COPY_ICON_HTML;
+      btn.replaceChildren(createCodeCopyIconNode());
       btn.addEventListener("click", () => doCopy(btn));
       return btn;
     }

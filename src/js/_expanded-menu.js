@@ -1,4 +1,5 @@
 import { translate } from "./_locale.js";
+import { createFaIconSpan } from "./_constants.js";
 
 let expandedMenuDropdownsInitialized = false;
 
@@ -56,8 +57,6 @@ export function initExpandedMenuDropdowns() {
   syncExpandedMenuDropdownAria();
 }
 
-const PANEL_CLOSE_ICON_HTML = '<span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>';
-
 export function initExpandedMenuPanel() {
   const menuPanel = document.getElementById("h-mobile-top-nav-menu-panel");
   if (!menuPanel || menuPanel.dataset.initialized === "true") return;
@@ -77,7 +76,7 @@ export function initExpandedMenuPanel() {
   menuCloseBtn.type = "button";
   menuCloseBtn.className = "h-mobile-top-nav__panel-close";
   menuCloseBtn.setAttribute("aria-label", translate("Close"));
-  menuCloseBtn.innerHTML = PANEL_CLOSE_ICON_HTML;
+  menuCloseBtn.replaceChildren(createFaIconSpan("fas fa-times"));
   menuHeader.appendChild(menuCloseBtn);
 
   menuPanel.appendChild(menuHeader);

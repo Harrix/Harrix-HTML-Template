@@ -63,9 +63,38 @@ export const NAVBAR_HIDE_SCROLL_THRESHOLD = 100;
 export const GALLERY_ROW_HEIGHT = 200;
 export const SEARCH_ANIMATION_MS = 500;
 export const CODE_COPY_FEEDBACK_MS = 800;
-export const CODE_COPY_ICON_HTML = '<span class="icon is-small"><i class="fas fa-copy" aria-hidden="true"></i></span>';
-export const CODE_COPY_DONE_ICON_HTML =
-  '<span class="icon is-small"><i class="fas fa-check" aria-hidden="true"></i></span>';
+
+/**
+ * Create a Bulma icon span with a Font Awesome <i>.
+ *
+ * @param {string} iClass - className for <i> (e.g. "fas fa-copy")
+ * @param {{ sizeClass?: string, spanAriaHidden?: boolean, iAriaHidden?: boolean }} [options]
+ * @returns {HTMLSpanElement}
+ */
+export function createFaIconSpan(
+  iClass,
+  { sizeClass = "is-small", spanAriaHidden = true, iAriaHidden = true } = {},
+) {
+  const span = document.createElement("span");
+  span.className = `icon ${sizeClass}`.trim();
+  if (spanAriaHidden) span.setAttribute("aria-hidden", "true");
+
+  const i = document.createElement("i");
+  i.className = iClass;
+  if (iAriaHidden) i.setAttribute("aria-hidden", "true");
+
+  span.appendChild(i);
+  return span;
+}
+
+export function createCodeCopyIconNode() {
+  return createFaIconSpan("fas fa-copy", { spanAriaHidden: false, iAriaHidden: true });
+}
+
+export function createCodeCopyDoneIconNode() {
+  return createFaIconSpan("fas fa-check", { spanAriaHidden: false, iAriaHidden: true });
+}
+
 export const CODE_BLOCK_BOTTOM_THRESHOLD = 80;
 export const GALLERY_ID = "1";
 export const BACK_TO_TOP_THRESHOLD = 200;
