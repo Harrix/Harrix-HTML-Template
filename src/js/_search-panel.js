@@ -1,103 +1,115 @@
 import { getUiModes } from "./_app-bridge.js";
-import { SEARCH_ANIMATION_MS } from "./_constants.js";
+import { IDS, SEARCH_ANIMATION_MS } from "./_constants.js";
 import { translate } from "./_locale.js";
 import { initSearchClearButton } from "./_search-clear.js";
 
 let searchPanelInitialized = false;
 
 function focusAfterAnimation(elem, delayMs) {
-  setTimeout(() => {
+  window.setTimeout(() => {
     elem.focus();
   }, delayMs);
 }
 
 export function initSearchPanel() {
-  const searchForm = document.getElementById("h-search-form");
+  const searchForm = document.getElementById(IDS.searchForm);
   if (!searchForm) return;
   if (searchPanelInitialized) return;
 
   searchPanelInitialized = true;
 
-    const navbarMenu = document.getElementById("h-navbar-menu");
-    const searchButtonOpen = document.getElementById("h-search-button-open");
-    const searchButtonClose = document.getElementById("h-search-button-close");
-    const searchButtonSubmit = document.getElementById("h-search-button-submit");
-    const searchInput = document.getElementById("h-search-input");
-    const searchButtonClear = document.getElementById("h-search-button-clear");
-    const formEl = searchForm.querySelector("form");
-    let isSearchOpen = false;
+  const byId = (id) => document.getElementById(id);
 
-    searchInput.placeholder = translate("Search…");
+  const navbarMenu = byId(IDS.navbarMenu);
+  const searchButtonOpen = byId(IDS.searchButtonOpen);
+  const searchButtonClose = byId(IDS.searchButtonClose);
+  const searchButtonSubmit = byId(IDS.searchButtonSubmit);
+  const searchInput = byId(IDS.searchInput);
+  const searchButtonClear = byId(IDS.searchButtonClear);
+  const formEl = searchForm.querySelector("form");
 
-    if (formEl) {
-      formEl.addEventListener("submit", (e) => {
-        e.preventDefault();
-      });
-    }
+  if (
+    !navbarMenu ||
+    !searchButtonOpen ||
+    !searchButtonClose ||
+    !searchInput ||
+    !(searchInput instanceof HTMLInputElement)
+  ) {
+    return;
+  }
 
-    if (searchButtonSubmit) {
-      searchButtonSubmit.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (formEl) formEl.requestSubmit();
-      });
-    }
+  let isSearchOpen = false;
 
-    const syncSearchClearButton = initSearchClearButton(searchInput, searchButtonClear);
+  searchInput.placeholder = translate("Search…");
 
-    function showOrHideSearchButtonClose() {
-      if (searchInput.value.length >= 1) searchButtonClose.classList.remove("is-hidden-touch");
-      else searchButtonClose.classList.add("is-hidden-touch");
-    }
-
-    function closeSearch({ fromPopstate } = { fromPopstate: false }) {
-      navbarMenu.classList.remove("h-has-visible-search-form");
-      searchInput.blur();
-      isSearchOpen = false;
-
-      if (!fromPopstate && window.history.state && window.history.state.hSearchOpen) {
-        window.history.back();
-      }
-    }
-
-    function openSearch() {
-      getUiModes()?.closeAll?.();
-      navbarMenu.classList.add("h-has-visible-search-form");
-      focusAfterAnimation(searchInput, SEARCH_ANIMATION_MS);
-      showOrHideSearchButtonClose();
-      syncSearchClearButton();
-      isSearchOpen = true;
-
-      const state = window.history.state;
-      if (!state || !state.hSearchOpen) {
-        window.history.pushState({ ...(state || {}), hSearchOpen: true }, "", window.location.href);
-      }
-    }
-
-    searchButtonOpen.addEventListener("click", () => {
-      if (isSearchOpen) return;
-      openSearch();
-    });
-
-    searchButtonClose.addEventListener("click", () => {
-      closeSearch();
-    });
-
-    searchInput.addEventListener("input", () => {
-      showOrHideSearchButtonClose();
-    });
-
-    window.addEventListener("keydown", (e) => {
-      if (!isSearchOpen) return;
-      if (e.key !== "Escape") return;
+  if (formEl) {
+    formEl.addEventListener("submit", (e) => {
       e.preventDefault();
-      if (window.history.state && window.history.state.hSearchOpen) {
-        window.history.back();
-      } else {
-        closeSearch();
-      }
     });
+  }
 
-    window.addEventListener("popstate", () => {
-      if (isSearchOpen) closeSearch({ fromPopstate: true });
+  if (searchButtonSubmit) {
+    searchButtonSubmit.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (formEl) formEl.requestSubmit();
     });
+  }
+
+  const syncSearchClearButton = initSearchClearButton(searchInput, searchButtonClear);
+
+  function syncCloseButtonVisibility() {
+    searchButtonClose.classList.toggle("is-hidden-touch", searchInput.value.length < 1);
+  }
+
+  function closeSearch({ fromPopstate } = { fromPopstate: false }) {
+    navbarMenu.classList.remove("h-has-visible-search-form");
+    searchInput.blur();
+    isSearchOpen = false;
+
+    if (!fromPopstate && window.history.state && window.history.state.hSearchOpen) {
+      window.history.back();
+    }
+  }
+
+  function openSearch() {
+    getUiModes()?.closeAll?.();
+    navbarMenu.classList.add("h-has-visible-search-form");
+    focusAfterAnimation(searchInput, SEARCH_ANIMATION_MS);
+    syncCloseButtonVisibility();
+    syncSearchClearButton();
+    isSearchOpen = true;
+
+    const state = window.history.state;
+    if (!state || !state.hSearchOpen) {
+      window.history.pushState({ ...(state || {}), hSearchOpen: true }, "", window.location.href);
+    }
+  }
+
+  searchButtonOpen.addEventListener("click", () => {
+    if (isSearchOpen) return;
+    openSearch();
+  });
+
+  searchButtonClose.addEventListener("click", () => {
+    closeSearch();
+  });
+
+  searchInput.addEventListener("input", () => {
+    syncCloseButtonVisibility();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (!isSearchOpen) return;
+    if (e.key !== "Escape") return;
+    e.preventDefault();
+    if (window.history.state && window.history.state.hSearchOpen) {
+      window.history.back();
+    } else {
+      closeSearch();
+    }
+  });
+
+  window.addEventListener("popstate", () => {
+    if (isSearchOpen) closeSearch({ fromPopstate: true });
+  });
 }
