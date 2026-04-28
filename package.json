@@ -14,8 +14,7 @@
     "check:fix": "eslint . --fix --cache --cache-location node_modules/.cache/eslint",
     "check:css": "stylelint \"src/scss/**/*.scss\"",
     "format": "prettier --write \"src/**/*.{js,scss,html}\" \"*.{js,mjs,json,md}\" && prettier --ignore-path .prettierignore --write \"dist/**/*.html\"",
-    "format:check": "prettier --check \"src/**/*.{js,scss,html}\" \"*.{js,mjs,json,md}\" && prettier --ignore-path .prettierignore --check \"dist/**/*.html\"",
-    "clear-css": "purgecss --config purgecss.config.js"
+    "format:check": "prettier --check \"src/**/*.{js,scss,html}\" \"*.{js,mjs,json,md}\" && prettier --ignore-path .prettierignore --check \"dist/**/*.html\""
   },
   "repository": {
     "type": "git",
@@ -58,7 +57,6 @@
     "html-webpack-plugin": "^5.6.6",
     "mini-css-extract-plugin": "^2.10.2",
     "prettier": "^3.8.1",
-    "purgecss": "^8.0.0",
     "sass": "^1.98.0",
     "sass-loader": "^16.0.7",
     "stylelint": "^16.21.1",

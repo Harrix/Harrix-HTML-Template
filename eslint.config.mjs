@@ -35,7 +35,7 @@ export default [
     },
   },
   {
-    files: ["webpack.config.js", "purgecss.config.js"],
+    files: ["webpack.config.js"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "commonjs",
