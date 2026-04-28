@@ -67,7 +67,10 @@ export function initSearchPanel() {
       syncSearchClearButton();
       isSearchOpen = true;
 
-      window.history.pushState({ hSearchOpen: true }, "", window.location.href);
+      const state = window.history.state;
+      if (!state || !state.hSearchOpen) {
+        window.history.pushState({ ...(state || {}), hSearchOpen: true }, "", window.location.href);
+      }
     }
 
     searchButtonOpen.addEventListener("click", () => {
