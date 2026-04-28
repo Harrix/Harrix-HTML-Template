@@ -71,10 +71,7 @@ export const CODE_COPY_FEEDBACK_MS = 800;
  * @param {{ sizeClass?: string, spanAriaHidden?: boolean, iAriaHidden?: boolean }} [options]
  * @returns {HTMLSpanElement}
  */
-export function createFaIconSpan(
-  iClass,
-  { sizeClass = "is-small", spanAriaHidden = true, iAriaHidden = true } = {},
-) {
+export function createFaIconSpan(iClass, { sizeClass = "is-small", spanAriaHidden = true, iAriaHidden = true } = {}) {
   const span = document.createElement("span");
   span.className = `icon ${sizeClass}`.trim();
   if (spanAriaHidden) span.setAttribute("aria-hidden", "true");
