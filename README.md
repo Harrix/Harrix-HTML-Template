@@ -66,7 +66,7 @@ src/
 
 Partials in `src/html/includes/` are rendered by the `include(...)` helper in `webpack.config.js`, which uses [Eta](https://www.npmjs.com/package/eta) with **`useWith: true`** and **`autoEscape: true`** (same as in that file). With auto-escaping enabled, `<%=` outputs HTML-escaped text; use **`<%~ … %>`** for trusted raw markup (for example nested `include(...)` results that must stay HTML, as in `header.html`).
 
-Page templates in `src/html/views/` are compiled by HtmlWebpackPlugin’s built-in **lodash** `_.template` loader, not Eta: there **`<%= … %>`** interpolates without HTML escaping and **`<%- … %>`** uses lodash’s escaped interpolation. Only the includes pipeline uses the Eta instance above.
+Page templates in `src/html/views/` are rendered by the same **Eta** instance (via HtmlWebpackPlugin `templateContent`). This removes the common “two templating syntaxes / two escaping rules” pitfall: now **`<%=`** always HTML-escapes and **`<%~ … %>`** is the explicit opt-out for trusted raw markup. In particular, when embedding partials, use **`<%~ include("header.html", data) %>`** / \*\*`<%~ include("footer.html", data) %>` so the HTML returned by `include(...)` is not escaped.
 
 ### Internationalization (UI strings)
 

@@ -19,6 +19,7 @@ function getHtmlStrings(locale) {
 
 function generateHtmlPlugins(templateDir) {
   const includesDir = path.resolve(__dirname, "src/html/includes");
+  const viewsDir = path.resolve(__dirname, templateDir);
   const eta = new Eta({
     // useWith: lodash-style `<%= title %>` without `it.` in includes/
     useWith: true,
@@ -48,9 +49,18 @@ function generateHtmlPlugins(templateDir) {
     }
   }
 
-  const templateFiles = fs
-    .readdirSync(path.resolve(__dirname, templateDir))
-    .filter((item) => path.parse(item).ext.toLowerCase() === ".html");
+  const viewCache = new Map();
+  function renderView(viewFileName, data) {
+    const fullPath = path.resolve(viewsDir, viewFileName);
+    let src = viewCache.get(fullPath);
+    if (!src) {
+      src = fs.readFileSync(fullPath, "utf8");
+      viewCache.set(fullPath, src);
+    }
+    return eta.renderString(src, { ...data, include });
+  }
+
+  const templateFiles = fs.readdirSync(viewsDir).filter((item) => path.parse(item).ext.toLowerCase() === ".html");
   const baseChunks = ["app", "katex/katex"];
   return templateFiles.map((item) => {
     const parsedPath = path.parse(item);
@@ -59,7 +69,7 @@ function generateHtmlPlugins(templateDir) {
     const chunks = name === "index" ? [...baseChunks, "stl-viewer/stl-viewer"] : baseChunks;
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
-      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+      templateContent: (templateParameters) => renderView(`${name}.${extension}`, templateParameters),
       inject: "body",
       scriptLoading: "defer",
       minify: false,
