@@ -1,16 +1,11 @@
 import mermaid from "mermaid";
-import { THEME_STORAGE_KEY } from "./_constants.js";
-import { safeStorageGetItem } from "./_storage.js";
-import { onThemeToggle } from "./_theme-utils.js";
+import { getTheme, onThemeToggle } from "./_theme-utils.js";
 
 /** Last theme passed to `mermaid.initialize` (Mermaid docs: initialize is site-wide; avoid redundant calls). */
 let appliedMermaidTheme = null;
 
 function getMermaidTheme() {
-  const stored = safeStorageGetItem(THEME_STORAGE_KEY);
-  const fromDom = document.documentElement.getAttribute("data-theme");
-  const theme = fromDom || stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  return theme === "dark" ? "dark" : "default";
+  return getTheme() === "dark" ? "dark" : "default";
 }
 
 function ensureMermaidConfigForCurrentTheme() {
@@ -34,7 +29,9 @@ function renderMermaid() {
   });
 
   ensureMermaidConfigForCurrentTheme();
-  void mermaid.run({ querySelector: ".mermaid" });
+  void mermaid.run({ querySelector: ".mermaid" }).catch((err) => {
+    console.error("Mermaid render error:", err);
+  });
 }
 
 /** Re-render after `data-theme` and styles settle (next frame + paint). */

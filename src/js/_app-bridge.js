@@ -5,6 +5,7 @@
 let uiModesRef = null;
 let splitFitUpdater = null;
 let splitLayoutStateRef = null;
+let inlineSearchCloser = null;
 
 export function setUiModesController(controller) {
   uiModesRef = controller;
@@ -28,4 +29,12 @@ export function setSplitLayoutState(state) {
 
 export function getSplitLayoutState() {
   return splitLayoutStateRef;
+}
+
+export function setInlineSearchCloser(fn) {
+  inlineSearchCloser = typeof fn === "function" ? fn : null;
+}
+
+export function closeInlineSearch() {
+  inlineSearchCloser?.();
 }

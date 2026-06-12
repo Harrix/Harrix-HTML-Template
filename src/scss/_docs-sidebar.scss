@@ -5,18 +5,17 @@
 
 $h-docs-sidebar-width: 280px;
 $h-docs-sidebar-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
-$h-navbar-height: 3rem;
 
 .h-docs-sidebar {
   position: fixed;
   left: max(0px, calc((100vw - hvars.$h-container-max-width) / 2 - #{$h-docs-sidebar-width}));
-  top: $h-navbar-height;
+  top: hvars.$h-navbar-height;
   width: $h-docs-sidebar-width;
-  max-height: calc(100vh - #{$h-navbar-height});
+  max-height: calc(100vh - #{hvars.$h-navbar-height});
   overflow-y: auto;
   z-index: 40;
   padding: 1rem 0;
-  background-color: #fff;
+  background-color: hvars.$h-surface;
   border-right: none;
   font-size: 0.9rem;
   transition: transform 0.25s ease;
@@ -134,7 +133,7 @@ $h-navbar-height: 3rem;
   display: none;
   position: fixed;
   left: 1rem;
-  top: calc(#{$h-navbar-height} + 0.75rem);
+  top: calc(#{hvars.$h-navbar-height} + 0.75rem);
   z-index: 35;
   align-items: center;
   justify-content: center;
@@ -158,10 +157,6 @@ $h-navbar-height: 3rem;
 
   @media (width <= calc(#{$h-docs-sidebar-breakpoint} - 1px)) {
     display: flex;
-  }
-
-  @media (width <= #{$h-docs-sidebar-breakpoint}) {
-    display: none;
   }
 
   @media (width >= #{$h-docs-sidebar-breakpoint}) {

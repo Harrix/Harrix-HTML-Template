@@ -220,7 +220,7 @@
 // Navbar / mobile search fields: primary border, no grey fill
 @mixin h-search-field-input {
   border: 1px solid hvars.$h-primary;
-  background-color: #fff;
+  background-color: hvars.$h-surface;
   box-shadow: none;
 
   &:focus,

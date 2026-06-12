@@ -60,6 +60,15 @@ export const IDS = Object.freeze({
 });
 
 export const NAVBAR_HIDE_SCROLL_THRESHOLD = 100;
+export const SCROLL_ANCHOR_OFFSET = 16;
+export const PAGE_TOC_OBSERVER_ROOT_MARGIN = "-80px 0px -70% 0px";
+export const UI_MODE_FOCUS_DELAY_MS = 50;
+export const NAVBAR_FIT_RESIZE_DEBOUNCE_MS = 150;
+export const MENU_MEASURE_SUPPRESS_MS = 200;
+export const NAV_SCROLL_GUARD_BLOCK_MS = 1200;
+export const LAZY_HEAVY_LIBS_IDLE_MS = 1500;
+export const LAZY_HEAVY_LIBS_FALLBACK_MS = 50;
+export const CHART_THEME_RERENDER_DELAY_MS = 50;
 export const GALLERY_ROW_HEIGHT = 200;
 export const SEARCH_ANIMATION_MS = 500;
 export const CODE_COPY_FEEDBACK_MS = 800;

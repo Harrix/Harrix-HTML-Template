@@ -1,5 +1,5 @@
 import { blockNavAutoHide } from "./_nav-scroll-guard.js";
-import { IDS } from "./_constants.js";
+import { IDS, SCROLL_ANCHOR_OFFSET } from "./_constants.js";
 
 export function getFixedHeaderHeight() {
   const mobileTopNav = document.getElementById(IDS.mobileTopNav);
@@ -21,6 +21,6 @@ export function scrollToAnchor(href) {
   blockNavAutoHide();
   const headerHeight = getFixedHeaderHeight();
   const elRect = el.getBoundingClientRect();
-  const targetY = elRect.top + window.scrollY - headerHeight - 16;
+  const targetY = elRect.top + window.scrollY - headerHeight - SCROLL_ANCHOR_OFFSET;
   window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
 }

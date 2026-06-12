@@ -12,6 +12,11 @@ const locale = {
   Sidebar: "Боковая",
   Close: "Закрыть",
   Documentation: "Документация",
+  "Failed to load 3D model.": "Не удалось загрузить 3D-модель.",
+  "To view the 3D model, open the page via a web server (e.g. ":
+    "Для просмотра 3D-модели откройте страницу через веб-сервер (например, ",
+  "). Opening the file directly (file://) blocks STL loading in the browser.":
+    "). При открытии файла напрямую (file://) загрузка STL блокируется браузером.",
 };
 
 export default locale;

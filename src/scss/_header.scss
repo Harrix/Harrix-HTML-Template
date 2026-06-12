@@ -149,7 +149,7 @@
         bottom: auto;
         max-height: calc(100vh - #{hvars.$h-navbar-height} - env(safe-area-inset-bottom, 0px));
         width: min(100%, hvars.$h-container-content-max-width);
-        background-color: #fff;
+        background-color: hvars.$h-surface;
         border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
         // Side/bottom shadow + hairline ring (navbar-dropdown.is-boxed); no top shadow under navbar.
         box-shadow: hvars.$h-shadow-elevated;
@@ -309,7 +309,7 @@
   .h-navbar-search-overlay {
     display: none;
     width: 100%;
-    background-color: #fff;
+    background-color: hvars.$h-surface;
     border-top: 1px solid initial-variables.$grey-lighter;
 
     &.is-open {

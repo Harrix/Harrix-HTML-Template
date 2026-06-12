@@ -1,4 +1,4 @@
-import { getUiModes } from "./_app-bridge.js";
+import { getUiModes, setInlineSearchCloser } from "./_app-bridge.js";
 import { IDS, SEARCH_ANIMATION_MS } from "./_constants.js";
 import { translate } from "./_locale.js";
 import { initSearchClearButton } from "./_search-clear.js";
@@ -15,8 +15,6 @@ export function initSearchPanel() {
   const searchForm = document.getElementById(IDS.searchForm);
   if (!searchForm) return;
   if (searchPanelInitialized) return;
-
-  searchPanelInitialized = true;
 
   const byId = (id) => document.getElementById(id);
 
@@ -37,6 +35,8 @@ export function initSearchPanel() {
   ) {
     return;
   }
+
+  searchPanelInitialized = true;
 
   let isSearchOpen = false;
 
@@ -61,12 +61,12 @@ export function initSearchPanel() {
     searchButtonClose.classList.toggle("is-hidden-touch", searchInput.value.length < 1);
   }
 
-  function closeSearch({ fromPopstate } = { fromPopstate: false }) {
+  function closeSearch({ fromPopstate, fromExternal } = { fromPopstate: false, fromExternal: false }) {
     navbarMenu.classList.remove("h-has-visible-search-form");
     searchInput.blur();
     isSearchOpen = false;
 
-    if (!fromPopstate && window.history.state && window.history.state.hSearchOpen) {
+    if (!fromPopstate && !fromExternal && window.history.state && window.history.state.hSearchOpen) {
       window.history.back();
     }
   }
@@ -112,4 +112,6 @@ export function initSearchPanel() {
   window.addEventListener("popstate", () => {
     if (isSearchOpen) closeSearch({ fromPopstate: true });
   });
+
+  setInlineSearchCloser(() => closeSearch({ fromExternal: true }));
 }

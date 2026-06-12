@@ -6,8 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   texElements.forEach((el) => {
     const expr = el.getAttribute("data-expr");
     if (!expr) return;
-    katex.render(expr, el, {
-      displayMode: true,
-    });
+    try {
+      katex.render(expr, el, {
+        displayMode: true,
+        throwOnError: false,
+      });
+    } catch (err) {
+      console.error("KaTeX render error:", err);
+    }
   });
 });

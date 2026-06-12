@@ -1,4 +1,4 @@
-import { MOBILE_NAV_BREAKPOINT, SPLIT_SIDEBAR_STORAGE_KEY } from "./_constants.js";
+import { MOBILE_NAV_BREAKPOINT, SPLIT_SIDEBAR_STORAGE_KEY, THEME_STORAGE_KEY } from "./_constants.js";
 import { getSplitLayoutCssPropMap, resolveSplitSidebarWidthPx } from "./_split-layout-values.js";
 import { safeStorageGetItem } from "./_storage.js";
 
@@ -15,7 +15,7 @@ function injectManifestLink() {
 }
 
 function applyInitialTheme() {
-  const stored = safeStorageGetItem("h-theme");
+  const stored = safeStorageGetItem(THEME_STORAGE_KEY);
   const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   const theme = stored === "dark" || stored === "light" ? stored : prefersDark ? "dark" : "light";
   document.documentElement.setAttribute("data-theme", theme);
@@ -40,7 +40,7 @@ function applyInitialSplitLayout() {
   const props = getSplitLayoutCssPropMap(vw, sidebarW);
 
   const d = document.documentElement;
-  Object.keys(props).forEach(function (key) {
+  Object.keys(props).forEach((key) => {
     d.style.setProperty(key, props[key]);
   });
   d.classList.add("h-split-active");

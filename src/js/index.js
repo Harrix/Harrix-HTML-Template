@@ -10,7 +10,12 @@ import { initBackToTop } from "./_back-to-top.js";
 import { initLightGallery } from "./_lightgallery-init.js";
 import { initCodeCopyButtons, initSyntaxHighlighting } from "./_code-blocks.js";
 import { bootLazyHeavyLibs } from "./_lazy-heavy-libs.js";
-import { GALLERY_ROW_HEIGHT, NAVBAR_HIDE_SCROLL_THRESHOLD } from "./_constants.js";
+import {
+  GALLERY_ROW_HEIGHT,
+  LAZY_HEAVY_LIBS_FALLBACK_MS,
+  LAZY_HEAVY_LIBS_IDLE_MS,
+  NAVBAR_HIDE_SCROLL_THRESHOLD,
+} from "./_constants.js";
 import { initGalleryGrid } from "./_gallery-grid.js";
 import { initSpoilerAnimation, initTabs } from "./_spoiler-tabs.js";
 import { initPageToc } from "./_page-toc.js";
@@ -26,14 +31,14 @@ import { initYearRange } from "./_year-range.js";
  * @param {() => void} cb
  * @param {{ timeout?: number }} [options]
  */
-function runWhenIdle(cb, { timeout = 1500 } = {}) {
+function runWhenIdle(cb, { timeout = LAZY_HEAVY_LIBS_IDLE_MS } = {}) {
   if (typeof window !== "undefined" && "requestIdleCallback" in window) {
     // @ts-ignore - requestIdleCallback is not in some JS typings
     window.requestIdleCallback(cb, { timeout });
     return;
   }
 
-  window.setTimeout(cb, 50);
+  window.setTimeout(cb, LAZY_HEAVY_LIBS_FALLBACK_MS);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

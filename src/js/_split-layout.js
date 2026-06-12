@@ -1,4 +1,4 @@
-import { MOBILE_NAV_BREAKPOINT, SPLIT_SIDEBAR_STORAGE_KEY, SPLIT_SPLITTER_WIDTH } from "./_constants.js";
+import { IDS, MOBILE_NAV_BREAKPOINT, SPLIT_SIDEBAR_STORAGE_KEY, SPLIT_SPLITTER_WIDTH } from "./_constants.js";
 import { requestSplitFitUpdate } from "./_app-bridge.js";
 import { safeStorageGetItem, safeStorageSetItem } from "./_storage.js";
 import {
@@ -9,7 +9,7 @@ import {
 import { subscribeWindowResize } from "./_resize-hub.js";
 
 export function initSplitLayout() {
-  const sidebar = document.getElementById("h-docs-sidebar");
+  const sidebar = document.getElementById(IDS.docsSidebar);
   if (!sidebar) return null;
   if (!document.body.classList.contains("h-has-docs-sidebar")) return null;
 

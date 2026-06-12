@@ -14,6 +14,8 @@
     "themeToggle": "Переключить светлую/тёмную тему",
     "searchPlaceholder": "Поиск…",
     "toc": "Содержание",
+    "docsSidebarAria": "Документация",
+    "openDocsSidebar": "Открыть меню документации",
     "backToTop": "Наверх",
     "mobileNavRegion": "Мобильное меню",
     "mobileNavMenuDialog": "Меню"
@@ -33,6 +35,8 @@
     "themeToggle": "Toggle light/dark theme",
     "searchPlaceholder": "Search…",
     "toc": "Table of contents",
+    "docsSidebarAria": "Documentation",
+    "openDocsSidebar": "Open documentation menu",
     "backToTop": "Back to top",
     "mobileNavRegion": "Mobile navigation",
     "mobileNavMenuDialog": "Menu"

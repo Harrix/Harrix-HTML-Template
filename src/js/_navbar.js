@@ -1,15 +1,15 @@
-import { NAVBAR_HIDE_SCROLL_THRESHOLD } from "./_constants.js";
+import { IDS, NAVBAR_HIDE_SCROLL_THRESHOLD } from "./_constants.js";
 import { isNavAutoHideBlocked } from "./_nav-scroll-guard.js";
 import { translate } from "./_locale.js";
 import { subscribeWindowScroll } from "./_scroll-hub.js";
 
 export function initNavbar(scrollThreshold = NAVBAR_HIDE_SCROLL_THRESHOLD) {
-  const navbar = document.getElementById("h-navbar");
+  const navbar = document.getElementById(IDS.navbar);
 
   if (navbar) {
-    const navbarBurger = document.getElementById("h-navbar-menu-btn") || document.getElementById("h-burger");
-    const navbarBottom = document.getElementById("h-navbar-bottom");
-    const menuPanelLabel = document.getElementById("h-navbar-menu-panel-label");
+    const navbarBurger = document.getElementById(IDS.navbarMenuBtn) || document.getElementById(IDS.burger);
+    const navbarBottom = document.getElementById(IDS.navbarBottom);
+    const menuPanelLabel = document.getElementById(IDS.navbarMenuPanelLabel);
 
     if (!navbarBurger || !navbarBottom) return;
 

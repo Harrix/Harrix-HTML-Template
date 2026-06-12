@@ -1,5 +1,5 @@
 import { getUiModes } from "./_app-bridge.js";
-import { IDS, PAGE_TOC_TOGGLE_THRESHOLD } from "./_constants.js";
+import { IDS, PAGE_TOC_OBSERVER_ROOT_MARGIN, PAGE_TOC_TOGGLE_THRESHOLD } from "./_constants.js";
 import { translate } from "./_locale.js";
 import { scrollToAnchor } from "./_scroll-anchor.js";
 import { subscribeWindowScroll } from "./_scroll-hub.js";
@@ -83,7 +83,7 @@ export function initPageToc() {
         }
       });
     },
-    { rootMargin: "-80px 0px -70% 0px" },
+    { rootMargin: PAGE_TOC_OBSERVER_ROOT_MARGIN },
   );
 
   headings.forEach((h) => observer.observe(h));

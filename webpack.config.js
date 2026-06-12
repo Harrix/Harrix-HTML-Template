@@ -57,7 +57,10 @@ function generateHtmlPlugins(templateDir) {
       src = fs.readFileSync(fullPath, "utf8");
       viewCache.set(fullPath, src);
     }
-    return eta.renderString(src, { ...data, include });
+    const locale = data && data.htmlLang != null ? String(data.htmlLang) : HTML_I18N_LOCALE;
+    const htmlLang = getHtmlStrings(locale).htmlLang;
+    const i18n = getHtmlStrings(locale);
+    return eta.renderString(src, { ...data, include, htmlLang, i18n });
   }
 
   const templateFiles = fs.readdirSync(viewsDir).filter((item) => path.parse(item).ext.toLowerCase() === ".html");

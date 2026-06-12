@@ -32,7 +32,7 @@ body.h-mobile-nav-top {
   top: 0;
   z-index: 35;
   padding-top: env(safe-area-inset-top, 0);
-  background-color: #fff;
+  background-color: hvars.$h-surface;
   box-shadow: 0 1px 0 0 initial-variables.$grey-lighter;
   transition: transform 0.2s ease;
 
@@ -54,7 +54,7 @@ body.h-mobile-nav-top {
   left: 0;
   right: 0;
   top: 100%;
-  background-color: #fff;
+  background-color: hvars.$h-surface;
   border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
   box-shadow: hvars.$h-shadow-elevated;
   z-index: 2;
@@ -238,7 +238,7 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
-  background-color: #fff;
+  background-color: hvars.$h-surface;
   border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
   box-shadow: hvars.$h-shadow-elevated;
   padding: 0;
@@ -267,7 +267,7 @@ body.h-navbar-menu-no-fit.h-navbar-toc-no-fit {
   bottom: 0;
   z-index: 34;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: hvars.$h-surface;
   border-radius: 0 hvars.$h-panel-radius hvars.$h-panel-radius 0;
   box-shadow: hvars.$h-shadow-elevated-end;
   transform: translateX(-100%);

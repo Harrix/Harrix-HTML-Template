@@ -15,7 +15,7 @@
 // On small screens the table becomes cards (each row is a card).
 // Wrapper bottom margin is set in HTML via Bulma helper mb-5.
 .h-responsive-table {
-  @media (max-width: 768px) {
+  @media (max-width: #{hvars.$h-touch-breakpoint}) {
     thead {
       position: absolute;
       width: 1px;

@@ -1,6 +1,7 @@
+import { closeInlineSearch } from "./_app-bridge.js";
 import { createUiHistoryLayer } from "./_ui-history.js";
 import { resetExpandedMenuSubmenus } from "./_expanded-menu.js";
-import { IDS } from "./_constants.js";
+import { IDS, UI_MODE_FOCUS_DELAY_MS } from "./_constants.js";
 
 export function createUiModesController() {
   const root = document.documentElement;
@@ -27,7 +28,6 @@ export function createUiModesController() {
   const navbarMenuPanelClose = byId(IDS.navbarMenuPanelClose);
 
   const navbarSearchButtonOpen = byId(IDS.searchButtonOpen);
-  const navbarSearchInput = byId(IDS.searchInput);
 
   const navbarSearchBtn = byId(IDS.navbarSearchBtn);
   const navbarSearchOverlay = byId(IDS.navbarSearchOverlay);
@@ -136,7 +136,7 @@ export function createUiModesController() {
       onOpen: () => {
         if (!navbarSearchOverlay) return;
         navbarSearchOverlay.setAttribute("aria-hidden", "false");
-        if (navbarSearchOverlayInput) setTimeout(() => navbarSearchOverlayInput.focus(), 50);
+        if (navbarSearchOverlayInput) setTimeout(() => navbarSearchOverlayInput.focus(), UI_MODE_FOCUS_DELAY_MS);
       },
       onClose: () => {
         if (!navbarSearchOverlay) return;
@@ -150,7 +150,7 @@ export function createUiModesController() {
       onOpen: () => {
         if (!mobileSearchPanel) return;
         mobileSearchPanel.setAttribute("aria-hidden", "false");
-        if (mobileSearchInput) setTimeout(() => mobileSearchInput.focus(), 50);
+        if (mobileSearchInput) setTimeout(() => mobileSearchInput.focus(), UI_MODE_FOCUS_DELAY_MS);
       },
       onClose: () => {
         if (mobileSearchInput) mobileSearchInput.blur();
@@ -227,8 +227,7 @@ export function createUiModesController() {
   }
 
   function closeAll() {
-    if (navbarMenu) navbarMenu.classList.remove("h-has-visible-search-form");
-    if (navbarSearchInput) navbarSearchInput.blur();
+    closeInlineSearch();
 
     closeMode("navbarMenu");
     closeMode("docsSidebar");

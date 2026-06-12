@@ -26,7 +26,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     font-size: 1.125rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: #{hvars.$h-touch-breakpoint}) {
     left: 1.25rem;
     bottom: 1.25rem;
   }
@@ -82,7 +82,7 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
   bottom: 0;
   max-height: 70vh;
   overflow-y: auto;
-  background-color: #fff;
+  background-color: hvars.$h-surface;
   border-radius: hvars.$h-panel-radius hvars.$h-panel-radius 0 0;
   box-shadow: hvars.$h-shadow-elevated-up;
   padding: hvars.$h-space-4 hvars.$h-space-5 hvars.$h-space-6;

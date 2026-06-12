@@ -1,9 +1,11 @@
 import { getUiModes, getSplitLayoutState, setSplitFitUpdater } from "./_app-bridge.js";
 import {
   CONTAINER_MAX_WIDTH,
+  IDS,
   MENU_FIT_HYSTERESIS,
   MENU_FIT_HYSTERESIS_SPLIT,
   MOBILE_NAV_BREAKPOINT,
+  NAVBAR_FIT_RESIZE_DEBOUNCE_MS,
   SIDEBAR_WIDTH,
   TOC_MIN_SPACE,
 } from "./_constants.js";
@@ -14,17 +16,17 @@ import { getSplitLayoutCenterInsetPx } from "./_split-layout-geometry.js";
 import { subscribeWindowResize } from "./_resize-hub.js";
 
 export function initNavbarSidebarTocFit() {
-  const sidebar = document.getElementById("h-docs-sidebar");
-  const tocList = document.getElementById("h-page-toc-list");
-  const navbarSidebarBtn = document.getElementById("h-navbar-sidebar-btn");
-  const navbarTocRow = document.getElementById("h-navbar-toc-row");
-  const navbarSearchBtn = document.getElementById("h-navbar-search-btn");
-  const navbarMenuBtn = document.getElementById("h-navbar-menu-btn") || document.getElementById("h-burger");
-  const searchOverlay = document.getElementById("h-navbar-search-overlay");
-  const searchOverlayInput = document.getElementById("h-navbar-search-overlay-input");
-  const searchOverlayClear = document.getElementById("h-navbar-search-overlay-clear");
-  const searchOverlaySubmit = document.getElementById("h-navbar-search-overlay-submit");
-  const mainSearchInput = document.getElementById("h-search-input");
+  const sidebar = document.getElementById(IDS.docsSidebar);
+  const tocList = document.getElementById(IDS.pageTocList);
+  const navbarSidebarBtn = document.getElementById(IDS.navbarSidebarBtn);
+  const navbarTocRow = document.getElementById(IDS.navbarTocRow);
+  const navbarSearchBtn = document.getElementById(IDS.navbarSearchBtn);
+  const navbarMenuBtn = document.getElementById(IDS.navbarMenuBtn) || document.getElementById(IDS.burger);
+  const searchOverlay = document.getElementById(IDS.navbarSearchOverlay);
+  const searchOverlayInput = document.getElementById(IDS.navbarSearchOverlayInput);
+  const searchOverlayClear = document.getElementById(IDS.navbarSearchOverlayClear);
+  const searchOverlaySubmit = document.getElementById(IDS.navbarSearchOverlaySubmit);
+  const mainSearchInput = document.getElementById(IDS.searchInput);
 
   let menuWasNoFit = false;
   let prevMenuNoFit = null;
@@ -34,7 +36,7 @@ export function initNavbarSidebarTocFit() {
 
   if (searchOverlaySubmit) {
     searchOverlaySubmit.addEventListener("click", () => {
-      const formEl = document.getElementById("h-search-form")?.querySelector("form");
+      const formEl = document.getElementById(IDS.searchForm)?.querySelector("form");
       if (formEl) formEl.requestSubmit();
     });
   }
@@ -43,7 +45,7 @@ export function initNavbarSidebarTocFit() {
     searchOverlayInput.placeholder = translate("Search…");
     searchOverlayInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
-        const formEl = document.getElementById("h-search-form")?.querySelector("form");
+        const formEl = document.getElementById(IDS.searchForm)?.querySelector("form");
         if (formEl) formEl.requestSubmit();
       }
     });
@@ -120,7 +122,7 @@ export function initNavbarSidebarTocFit() {
       const tocNoFit = tocList && tocList.children.length > 0 && rightSpace < TOC_MIN_SPACE;
 
       const row1 = document.querySelector(".h-navbar__row1");
-      const navbarMenu = document.getElementById("h-navbar-menu");
+      const navbarMenu = document.getElementById(IDS.navbarMenu);
       let menuNoFit = false;
       if (row1 && navbarMenu) {
         const overflowPx = measureMenuOverflow(row1, navbarMenu);
@@ -184,7 +186,7 @@ export function initNavbarSidebarTocFit() {
     const tocNoFit = tocList && tocList.children.length > 0 && contentLeft < TOC_MIN_SPACE;
 
     const row1 = document.querySelector(".h-navbar__row1");
-    const navbarMenu = document.getElementById("h-navbar-menu");
+    const navbarMenu = document.getElementById(IDS.navbarMenu);
     let menuNoFit = false;
     if (row1 && navbarMenu) {
       const overflowPx = measureMenuOverflow(row1, navbarMenu);
@@ -247,7 +249,7 @@ export function initNavbarSidebarTocFit() {
     }
   }
 
-  const tocTriggerLabel = document.getElementById("h-navbar-toc-trigger-label");
+  const tocTriggerLabel = document.getElementById(IDS.navbarTocTriggerLabel);
   if (tocTriggerLabel) tocTriggerLabel.textContent = translate("Table of contents");
 
   updateFit();
@@ -262,7 +264,7 @@ export function initNavbarSidebarTocFit() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
       document.documentElement.classList.remove("h-resizing");
-    }, 150);
+    }, NAVBAR_FIT_RESIZE_DEBOUNCE_MS);
 
     if (!resizeRafId) {
       resizeRafId = requestAnimationFrame(() => {

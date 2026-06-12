@@ -1,21 +1,15 @@
 import * as THREE from "three";
 import { STLLoader } from "three/addons/loaders/STLLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-
-function isDarkTheme() {
-  return document.documentElement.getAttribute("data-theme") === "dark";
-}
+import { translate } from "./_locale.js";
+import { isDarkTheme } from "./_theme-utils.js";
 
 function getSceneBg() {
   return isDarkTheme() ? 0x1a1a1a : 0xf0f0f0;
 }
 
 function getLoadErrorMessage() {
-  const lang = document.documentElement.lang;
-  if (lang === "ru") {
-    return "Не удалось загрузить 3D-модель.";
-  }
-  return "Failed to load 3D model.";
+  return translate("Failed to load 3D model.");
 }
 
 function isSafeStlUrl(raw) {
@@ -99,6 +93,7 @@ function initViewer(container) {
   controls.dampingFactor = 0.05;
 
   let stopped = false;
+  let rafId = 0;
 
   const loader = new STLLoader();
   loader.load(
@@ -139,7 +134,7 @@ function initViewer(container) {
 
   function animate() {
     if (stopped) return;
-    requestAnimationFrame(animate);
+    rafId = requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
   }
@@ -157,7 +152,10 @@ function initViewer(container) {
   resizeObserver.observe(container);
 
   return () => {
+    stopped = true;
+    if (rafId) cancelAnimationFrame(rafId);
     resizeObserver.disconnect();
+    controls.dispose();
     renderer.dispose();
     if (container.contains(renderer.domElement)) {
       container.removeChild(renderer.domElement);
@@ -165,25 +163,22 @@ function initViewer(container) {
   };
 }
 
+function resetViewerContainer(container) {
+  container.classList.remove("h-stl-viewer--load-error", "h-stl-viewer--no-fetch");
+  container.querySelectorAll(".h-stl-viewer__message").forEach((el) => el.remove());
+  container.querySelectorAll("canvas").forEach((el) => el.remove());
+}
+
 function getNoFetchMessageFragment() {
-  const lang = document.documentElement.lang;
   const frag = document.createDocumentFragment();
   const code = document.createElement("code");
   code.textContent = "npm run start";
 
-  if (lang === "ru") {
-    frag.appendChild(document.createTextNode("Для просмотра 3D-модели откройте страницу через веб-сервер (например, "));
-    frag.appendChild(code);
-    frag.appendChild(
-      document.createTextNode("). При открытии файла напрямую (file://) загрузка STL блокируется браузером."),
-    );
-  } else {
-    frag.appendChild(document.createTextNode("To view the 3D model, open the page via a web server (e.g. "));
-    frag.appendChild(code);
-    frag.appendChild(
-      document.createTextNode("). Opening the file directly (file://) blocks STL loading in the browser."),
-    );
-  }
+  frag.appendChild(document.createTextNode(translate("To view the 3D model, open the page via a web server (e.g. ")));
+  frag.appendChild(code);
+  frag.appendChild(
+    document.createTextNode(translate("). Opening the file directly (file://) blocks STL loading in the browser.")),
+  );
 
   return frag;
 }
@@ -205,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const entry = cleanups.find((c) => c.el === el);
           if (entry) {
             entry.cleanup();
+            resetViewerContainer(el);
             const newCleanup = initViewer(el);
             if (newCleanup) entry.cleanup = newCleanup;
           }

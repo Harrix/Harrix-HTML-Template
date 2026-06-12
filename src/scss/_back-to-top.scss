@@ -27,7 +27,7 @@
     font-size: 1.25rem;
   }
 
-  @media (width <= 768px) {
+  @media (width <= #{hvars.$h-touch-breakpoint}) {
     right: 1.25rem;
     bottom: 1.25rem;
   }

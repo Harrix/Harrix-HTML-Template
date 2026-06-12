@@ -2,6 +2,8 @@
  * Hidden clone of `.navbar-end` for stable intrinsic width — avoids feedback loops when toggling no-fit classes.
  */
 
+import { IDS, MENU_MEASURE_SUPPRESS_MS } from "./_constants.js";
+
 let menuMeasure = null;
 
 function setImportantStyle(el, prop, value) {
@@ -98,11 +100,11 @@ function getMenuMeasure(navbarMenu) {
   return menuMeasure;
 }
 
-export function suppressNavbarDropdownsTemporarily(duration = 200) {
+export function suppressNavbarDropdownsTemporarily(duration = MENU_MEASURE_SUPPRESS_MS) {
   const root = document.documentElement;
   root.classList.add("h-nav-suppress-dropdowns");
 
-  const dropdowns = document.querySelectorAll("#h-navbar-menu .navbar-dropdown");
+  const dropdowns = document.querySelectorAll(`#${IDS.navbarMenu} .navbar-dropdown`);
   dropdowns.forEach((dd) => {
     dd.dataset.hSuppress = "1";
     dd.style.display = "none";

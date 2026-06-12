@@ -85,13 +85,15 @@
       @include hmixins.h-dark-icon-button-hover(rgba(255, 255, 255, 0.06));
     }
 
-    body.h-navbar-menu-no-fit .navbar-menu.is-active {
-      background-color: dark.$h-dark-surface;
-      box-shadow: hvars.$h-shadow-elevated-dark;
-    }
+    body.h-navbar-menu-no-fit & {
+      .navbar-menu.is-active {
+        background-color: dark.$h-dark-surface;
+        box-shadow: hvars.$h-shadow-elevated-dark;
+      }
 
-    body.h-navbar-menu-no-fit .navbar-menu .navbar-item.has-dropdown > .navbar-dropdown {
-      border-left-color: dark.$h-dark-border;
+      .navbar-menu .navbar-item.has-dropdown > .navbar-dropdown {
+        border-left-color: dark.$h-dark-border;
+      }
     }
 
     .h-navbar-menu-panel-header .menu-label {
@@ -363,5 +365,27 @@
         color: #fff;
       }
     }
+  }
+
+  .h-responsive-table {
+    @media (max-width: #{hvars.$h-touch-breakpoint}) {
+      tbody tr {
+        background-color: dark.$h-dark-surface;
+        box-shadow: hvars.$h-shadow-elevated-dark;
+      }
+
+      tbody td {
+        border-bottom-color: dark.$h-dark-border;
+      }
+    }
+  }
+
+  .h-spoiler,
+  .h-tab-panels {
+    border-color: dark.$h-dark-border;
+  }
+
+  .h-spoiler__summary:hover {
+    background-color: rgba(255, 255, 255, 0.06);
   }
 }

@@ -6,8 +6,7 @@
     "checkJs": true,
     "allowJs": true,
     "strict": false,
-    "noImplicitAny": false,
-    "jsx": "react-jsx"
+    "noImplicitAny": false
   },
   "include": ["src/js/**/*.js"]
 }

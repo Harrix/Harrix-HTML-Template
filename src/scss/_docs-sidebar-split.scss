@@ -228,7 +228,7 @@ html.h-split-active {
   .navbar .h-navbar-search-overlay {
     display: none;
     width: 100%;
-    background-color: #fff;
+    background-color: hvars.$h-surface;
     border-top: 1px solid initial-variables.$grey-lighter;
 
     &.is-open {
@@ -398,7 +398,7 @@ html.h-split-active body.h-navbar-toc-no-fit {
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-    background-color: #fff;
+    background-color: hvars.$h-surface;
     border: 1px solid initial-variables.$grey-lighter;
     border-top: none;
     border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
@@ -458,25 +458,6 @@ html.h-split-active body.h-navbar-toc-no-fit {
 // ---------------------------------------------------------------------------
 // DARK THEME overrides for split-specific elements
 // ---------------------------------------------------------------------------
-[data-theme="dark"] {
-  html.h-split-active & {
-    .h-docs-splitter {
-      background-color: dark.$h-dark-border;
-
-      &:hover,
-      &.is-dragging {
-        background-color: hvars.$h-primary;
-      }
-    }
-
-    .h-docs-sidebar {
-      background-color: dark.$h-dark-surface;
-      border-right: none;
-    }
-  }
-}
-
-// Also handle data-theme on html (the attribute is on <html>)
 html[data-theme="dark"] {
   &.h-split-active .h-docs-splitter {
     background-color: dark.$h-dark-border;
@@ -489,6 +470,7 @@ html[data-theme="dark"] {
 
   &.h-split-active .h-docs-sidebar {
     background-color: dark.$h-dark-surface;
+    border-right: none;
   }
 
   &.h-split-active .navbar .h-navbar-search-overlay {

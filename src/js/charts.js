@@ -1,17 +1,10 @@
 import "../scss/charts.scss";
 import Plotly from "plotly.js-dist-min";
-import { THEME_STORAGE_KEY } from "./_constants.js";
-import { safeStorageGetItem } from "./_storage.js";
-import { onThemeToggle } from "./_theme-utils.js";
+import { CHART_THEME_RERENDER_DELAY_MS } from "./_constants.js";
+import { isDarkTheme, onThemeToggle } from "./_theme-utils.js";
 
 function getChartTheme() {
-  const stored = safeStorageGetItem(THEME_STORAGE_KEY);
-  const fromDom = document.documentElement.getAttribute("data-theme");
-  const isDark =
-    fromDom === "dark" ||
-    stored === "dark" ||
-    (window.matchMedia("(prefers-color-scheme: dark)").matches && fromDom !== "light" && stored !== "light");
-  return isDark ? "dark" : "light";
+  return isDarkTheme() ? "dark" : "light";
 }
 
 function getLayoutOverrides(theme) {
@@ -101,6 +94,6 @@ export function startCharts() {
       el.parentNode.insertBefore(wrapper, el);
       el.remove();
     });
-    setTimeout(renderCharts, 50);
+    setTimeout(renderCharts, CHART_THEME_RERENDER_DELAY_MS);
   });
 }

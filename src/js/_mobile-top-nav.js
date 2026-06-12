@@ -1,4 +1,5 @@
 import { getUiModes } from "./_app-bridge.js";
+import { IDS, NAVBAR_HIDE_SCROLL_THRESHOLD } from "./_constants.js";
 import { translate } from "./_locale.js";
 import { isNavAutoHideBlocked } from "./_nav-scroll-guard.js";
 import { scrollToAnchor } from "./_scroll-anchor.js";
@@ -18,25 +19,24 @@ function createPanelCloseIcon() {
 export function initMobileTopNav() {
   if (!document.body.classList.contains("h-mobile-nav-top")) return;
 
-  const topNav = document.getElementById("h-mobile-top-nav");
+  const topNav = document.getElementById(IDS.mobileTopNav);
   if (!topNav) return;
   let lastScrollY = window.scrollY;
   let currentScrollY = window.scrollY;
-  const HIDE_THRESHOLD = 100;
 
-  const btnSidebar = document.getElementById("h-mobile-top-nav-sidebar");
-  const tocTrigger = document.getElementById("h-mobile-top-nav-toc-trigger");
-  const tocTriggerLabel = document.getElementById("h-mobile-top-nav-toc-trigger-label");
-  const dropdown = document.getElementById("h-mobile-top-nav-dropdown");
-  const searchPanel = document.getElementById("h-mobile-top-nav-search-panel");
-  const searchInput = document.getElementById("h-mobile-top-nav-search-input");
-  const searchClear = document.getElementById("h-mobile-top-nav-search-clear");
-  const menuPanel = document.getElementById("h-mobile-top-nav-menu-panel");
+  const btnSidebar = document.getElementById(IDS.mobileTopNavSidebar);
+  const tocTrigger = document.getElementById(IDS.mobileTopNavTocTrigger);
+  const tocTriggerLabel = document.getElementById(IDS.mobileTopNavTocTriggerLabel);
+  const dropdown = document.getElementById(IDS.mobileTopNavDropdown);
+  const searchPanel = document.getElementById(IDS.mobileTopNavSearchPanel);
+  const searchInput = document.getElementById(IDS.mobileTopNavSearchInput);
+  const searchClear = document.getElementById(IDS.mobileTopNavSearchClear);
+  const menuPanel = document.getElementById(IDS.mobileTopNavMenuPanel);
 
-  const sidebarToggle = document.getElementById("h-docs-sidebar-toggle");
-  const sidebarPanel = document.getElementById("h-docs-sidebar");
+  const sidebarToggle = document.getElementById(IDS.docsSidebarToggle);
+  const sidebarPanel = document.getElementById(IDS.docsSidebar);
   const rootTree = document.getElementById("root_tree");
-  const pageTocList = document.getElementById("h-page-toc-list");
+  const pageTocList = document.getElementById(IDS.pageTocList);
 
   if (tocTriggerLabel) tocTriggerLabel.textContent = translate("Table of contents");
 
@@ -57,7 +57,7 @@ export function initMobileTopNav() {
     if (searchInput) searchInput.placeholder = translate("Search…");
     searchInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
-        const formEl = document.getElementById("h-search-form")?.querySelector("form");
+        const formEl = document.getElementById(IDS.searchForm)?.querySelector("form");
         if (formEl) formEl.requestSubmit();
       }
     });
@@ -115,14 +115,14 @@ export function initMobileTopNav() {
       dropdown.appendChild(treeClone);
       dropdown.querySelectorAll("a[href]").forEach((a) =>
         a.addEventListener("click", () => {
-          const backdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
+          const backdrop = document.getElementById(IDS.mobileTopNavDropdownBackdrop);
           if (backdrop) backdrop.click();
         }),
       );
     }
 
     dropdownCloseBtn.addEventListener("click", () => {
-      const backdrop = document.getElementById("h-mobile-top-nav-dropdown-backdrop");
+      const backdrop = document.getElementById(IDS.mobileTopNavDropdownBackdrop);
       if (backdrop) backdrop.click();
       else dropdown.classList.remove("is-open");
     });
@@ -141,7 +141,7 @@ export function initMobileTopNav() {
       return;
     }
 
-    if (currentScrollY <= HIDE_THRESHOLD) {
+    if (currentScrollY <= NAVBAR_HIDE_SCROLL_THRESHOLD) {
       topNav.classList.remove("h-mobile-top-nav--hidden");
       lastScrollY = currentScrollY;
       return;

@@ -108,22 +108,28 @@ export function initCodeCopyButtons() {
 
     function doCopy(btn) {
       const text = codeEl.textContent || "";
-      navigator.clipboard.writeText(text).then(() => {
-        btn.replaceChildren(createCodeCopyDoneIconNode());
-        btn.setAttribute("aria-label", labelCopied);
-        btn.classList.add("h-code-copy--done");
-        setTimeout(() => {
-          btn.replaceChildren(createCodeCopyIconNode());
-          btn.setAttribute("aria-label", labelCopy);
-          btn.classList.remove("h-code-copy--done");
-        }, CODE_COPY_FEEDBACK_MS);
-      });
+      if (!navigator.clipboard?.writeText) return;
+      void navigator.clipboard.writeText(text).then(
+        () => {
+          btn.replaceChildren(createCodeCopyDoneIconNode());
+          btn.setAttribute("aria-label", labelCopied);
+          btn.classList.add("h-code-copy--done");
+          setTimeout(() => {
+            btn.replaceChildren(createCodeCopyIconNode());
+            btn.setAttribute("aria-label", labelCopy);
+            btn.classList.remove("h-code-copy--done");
+          }, CODE_COPY_FEEDBACK_MS);
+        },
+        (err) => {
+          console.error("Clipboard copy failed:", err);
+        },
+      );
     }
 
     function createButton(position) {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "h-code-copy h-code-copy--" + position;
+      btn.className = `h-code-copy h-code-copy--${position}`;
       btn.setAttribute("aria-label", labelCopy);
       btn.replaceChildren(createCodeCopyIconNode());
       btn.addEventListener("click", () => doCopy(btn));
