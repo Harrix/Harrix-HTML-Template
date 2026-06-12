@@ -250,11 +250,7 @@
   }
 
   .h-navbar-toc-row {
-    display: none;
-    flex-shrink: 0;
-    width: 100%;
-    border-top: 1px solid initial-variables.$grey-lighter;
-    min-height: hvars.$h-navbar-toc-row-height;
+    @include hmixins.h-navbar-toc-row;
 
     @media (min-width: calc(#{hvars.$h-mobile-nav-breakpoint} + 1px)) and (max-width: calc(#{hvars.$h-sidebar-toc-desktop-min-width} - 1px)) {
       body.h-navbar-toc-no-fit & {
@@ -307,14 +303,7 @@
   }
 
   .h-navbar-search-overlay {
-    display: none;
-    width: 100%;
-    background-color: hvars.$h-surface;
-    border-top: 1px solid initial-variables.$grey-lighter;
-
-    &.is-open {
-      display: block;
-    }
+    @include hmixins.h-search-overlay-surface;
 
     @media (max-width: hvars.$h-mobile-nav-breakpoint), (min-width: hvars.$h-sidebar-toc-desktop-min-width) {
       display: none;

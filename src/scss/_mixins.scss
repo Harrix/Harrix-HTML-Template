@@ -229,3 +229,81 @@
     box-shadow: 0 0 0 0.125em rgba(46, 134, 183, 0.25);
   }
 }
+
+// Inline surface row under the navbar (search overlay); shared by _header and split layout
+@mixin h-search-overlay-surface {
+  display: none;
+  width: 100%;
+  background-color: hvars.$h-surface;
+  border-top: 1px solid initial-variables.$grey-lighter;
+
+  &.is-open {
+    display: block;
+  }
+}
+
+// Second navbar row that hosts the TOC trigger; shared by _header and split layout
+@mixin h-navbar-toc-row {
+  display: none;
+  flex-shrink: 0;
+  width: 100%;
+  border-top: 1px solid initial-variables.$grey-lighter;
+  min-height: hvars.$h-navbar-toc-row-height;
+}
+
+// Dropdown TOC panel chrome (tablet no-fit and split no-fit modes)
+@mixin h-toc-dropdown-panel {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid initial-variables.$grey-lighter;
+  border-top: none;
+  border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
+  box-shadow: hvars.$h-shadow-elevated;
+  padding: 0;
+  @include h-panel-visibility(translateY(-8px), translateY(0));
+}
+
+// Inner spacing of the dropdown TOC panel
+@mixin h-toc-panel-content {
+  .h-page-toc__header {
+    padding: hvars.$h-space-4 hvars.$h-space-4 hvars.$h-space-2;
+    margin-bottom: 0;
+  }
+
+  .menu-label {
+    margin: 0;
+  }
+
+  .menu-list {
+    padding: 0 hvars.$h-space-4 hvars.$h-space-4;
+    font-size: 0.9rem;
+  }
+
+  .menu-list a {
+    padding: 0.35em 0;
+    border-left: none;
+
+    &.is-active {
+      border-left-color: transparent;
+    }
+  }
+}
+
+// Desktop "docked" TOC: plain list next to the content column (no panel chrome)
+@mixin h-toc-docked {
+  top: 4.5rem;
+  right: auto;
+  bottom: auto;
+  max-width: 16rem;
+  max-height: calc(100vh - 5rem);
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  transform: none;
+  visibility: visible;
+  transition: none;
+}

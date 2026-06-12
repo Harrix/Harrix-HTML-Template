@@ -1,4 +1,3 @@
-@use "bulma/sass/utilities/initial-variables" as initial-variables;
 @use "bulma/sass/utilities/derived-variables" as derived-variables;
 @use "theme-dark-variables" as dark;
 @use "variables" as hvars;
@@ -103,21 +102,13 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
     bottom: auto;
     width: auto;
     max-height: calc(100vh - var(--h-expanded-menu-top) - env(safe-area-inset-bottom, 0px));
+    @include hmixins.h-toc-dropdown-panel;
 
+    // TOC row without menu overflow: --h-expanded-menu-top is not set on body (see _mobile-top-nav.scss)
     body.h-navbar-toc-no-fit:not(.h-navbar-menu-no-fit) & {
       top: hvars.$h-navbar-height-2rows;
       max-height: calc(100vh - #{hvars.$h-navbar-height-2rows} - env(safe-area-inset-bottom, 0px));
     }
-    overflow-x: hidden;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
-    border: 1px solid initial-variables.$grey-lighter;
-    border-top: none;
-    border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
-    box-shadow: hvars.$h-shadow-elevated;
-    padding: 0;
-    @include hmixins.h-panel-visibility(translateY(-8px), translateY(0));
 
     // Same centered width as menu panel when navbar menu is in overflow mode
     body.h-navbar-menu-no-fit & {
@@ -127,46 +118,14 @@ $h-page-toc-mobile-nav-breakpoint: hvars.$h-mobile-nav-breakpoint;
       @include hmixins.h-panel-visibility(translateY(-8px), translateY(0));
     }
 
-    .h-page-toc__header {
-      padding: hvars.$h-space-4 hvars.$h-space-4 hvars.$h-space-2;
-      margin-bottom: 0;
-    }
-
-    .menu-label {
-      margin: 0;
-    }
-
-    .menu-list {
-      padding: 0 hvars.$h-space-4 hvars.$h-space-4;
-      font-size: 0.9rem;
-    }
-
-    .menu-list a {
-      padding: 0.35em 0;
-      border-left: none;
-
-      &.is-active {
-        border-left-color: transparent;
-      }
-    }
+    @include hmixins.h-toc-panel-content;
   }
 
   // --- Desktop: fixed sidebar, attached to content right edge ---
   @media (min-width: $h-page-toc-breakpoint) {
-    top: 4.5rem;
+    @include hmixins.h-toc-docked;
     left: calc((100vw + hvars.$h-container-max-width) / 2 + #{hvars.$h-space-4});
-    right: auto;
-    bottom: auto;
     width: min(16rem, calc((100vw - hvars.$h-container-max-width) / 2 - 2rem));
-    max-width: 16rem;
-    max-height: calc(100vh - 5rem);
-    background-color: transparent;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0;
-    transform: none;
-    visibility: visible;
-    transition: none;
   }
 
   .h-page-toc__header {
