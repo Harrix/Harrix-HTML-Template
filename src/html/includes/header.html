@@ -16,9 +16,11 @@
     <meta name="h-has-docs-sidebar" content="1" />
     <% } %>
     <script src="js/early.js"></script>
+    <!-- h-ssg:optional-head -->
   </head>
 
   <body id="top" class="has-navbar-fixed-top<%= typeof mobileNavTop !== 'undefined' && mobileNavTop ? ' h-mobile-nav-top' : '' %><%= typeof hasDocsSidebar !== 'undefined' && hasDocsSidebar ? ' h-has-docs-sidebar' : '' %>">
+    <!-- h-ssg:chrome-header-start -->
     <nav id="h-navbar" class="navbar is-fixed-top" aria-label="<%= i18n.navAriaMain %>">
       <div id="h-navbar-bottom"></div>
       <div class="container">
@@ -119,3 +121,4 @@
       </div>
     </nav>
     <%~ include("mobile-top-nav.html", {}) %>
+    <!-- h-ssg:chrome-header-end -->
