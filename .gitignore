@@ -69,3 +69,6 @@ typings/
 
 # Build output
 dist/
+
+# Sliced SSG theme (from dist via harrix-pyssg ThemeSlicer / hsk site slice-html-template)
+theme/
