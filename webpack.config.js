@@ -69,7 +69,8 @@ function generateHtmlPlugins(templateDir) {
     const parsedPath = path.parse(item);
     const name = parsedPath.name;
     const extension = parsedPath.ext.substring(1);
-    const chunks = name === "index" ? [...baseChunks, "stl-viewer/stl-viewer"] : baseChunks;
+    const pagesWithStl = new Set(["index", "blank"]);
+    const chunks = pagesWithStl.has(name) ? [...baseChunks, "stl-viewer/stl-viewer"] : baseChunks;
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       templateContent: (templateParameters) => renderView(`${name}.${extension}`, templateParameters),
