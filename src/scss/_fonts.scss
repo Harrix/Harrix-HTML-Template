@@ -1,41 +1,19 @@
 @font-face {
-  font-family: "Fira Sans";
+  font-family: Inter;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
+  font-optical-sizing: auto;
   font-display: swap;
-  src: url(../fonts/FiraSans-Regular.woff2) format("woff2");
+  src: url("../fonts/Inter.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Fira Sans";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(../fonts/FiraSans-Medium.woff2) format("woff2");
-}
-
-@font-face {
-  font-family: "Fira Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(../fonts/FiraSans-Bold.woff2) format("woff2");
-}
-
-@font-face {
-  font-family: "Fira Sans";
+  font-family: Inter;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 100 900;
+  font-optical-sizing: auto;
   font-display: swap;
-  src: url(../fonts/FiraSans-Italic.woff2) format("woff2");
-}
-
-@font-face {
-  font-family: "Fira Sans";
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url(../fonts/FiraSans-MediumItalic.woff2) format("woff2");
+  src: url("../fonts/Inter-Italic.woff2") format("woff2");
 }
 
 @font-face {
