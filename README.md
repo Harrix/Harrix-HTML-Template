@@ -49,7 +49,7 @@ npm run build
 
 ```text
 src/
-├── fonts/          Inter & JetBrains Mono (.woff2)
+├── fonts/          Roboto & JetBrains Mono (.woff2)
 ├── html/
 │   ├── includes/   Header and footer partials (Eta); see `includes/i18n/html-strings.json`
 │   └── views/      Page templates (index, article, with-sidebar)
