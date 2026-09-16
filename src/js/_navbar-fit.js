@@ -6,6 +6,7 @@ import {
   MENU_FIT_HYSTERESIS_SPLIT,
   MOBILE_NAV_BREAKPOINT,
   NAVBAR_FIT_RESIZE_DEBOUNCE_MS,
+  SIDEBAR_CONTENT_GAP,
   SIDEBAR_WIDTH,
   TOC_MIN_SPACE,
 } from "./_constants.js";
@@ -162,7 +163,7 @@ export function initNavbarSidebarTocFit() {
     }
 
     const contentLeft = (vw - CONTAINER_MAX_WIDTH) / 2;
-    const sidebarOverlaps = !!sidebar && contentLeft < SIDEBAR_WIDTH;
+    const sidebarOverlaps = !!sidebar && contentLeft < SIDEBAR_WIDTH + SIDEBAR_CONTENT_GAP;
     const tocNoFit = hasTocItems() && contentLeft < TOC_MIN_SPACE;
     const menuNoFit = computeMenuNoFit(MENU_FIT_HYSTERESIS);
 

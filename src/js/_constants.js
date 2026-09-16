@@ -109,9 +109,13 @@ export const PAGE_TOC_TOGGLE_THRESHOLD = 200;
 
 export const CONTAINER_MAX_WIDTH = 1179;
 export const SIDEBAR_WIDTH = 280;
+/** Matches SCSS `$h-sidebar-content-gap` / page-toc offset (`1rem`). */
+export const SIDEBAR_CONTENT_GAP = 16;
 export const TOC_MIN_SPACE = 256;
 export const MOBILE_NAV_BREAKPOINT = 1024;
-export const SIDEBAR_TOC_DESKTOP_MIN_WIDTH = 1680;
+/** Matches SCSS `$h-sidebar-toc-desktop-min-width`. */
+export const SIDEBAR_TOC_DESKTOP_MIN_WIDTH =
+  CONTAINER_MAX_WIDTH + 2 * (SIDEBAR_WIDTH + SIDEBAR_CONTENT_GAP);
 export const MENU_FIT_HYSTERESIS = 40;
 /** Narrower exit band in split layout — row width matches real flex chrome; large −40px slack stuck no-fit. */
 export const MENU_FIT_HYSTERESIS_SPLIT = 12;

@@ -3,14 +3,18 @@
 @use "variables" as hvars;
 @use "mixins" as hmixins;
 
-$h-docs-sidebar-width: 280px;
 $h-docs-sidebar-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
 
 .h-docs-sidebar {
   position: fixed;
-  left: max(0px, calc((100vw - hvars.$h-container-max-width) / 2 - #{$h-docs-sidebar-width}));
+  left: max(
+    0px,
+    calc(
+      (100vw - hvars.$h-container-max-width) / 2 - #{hvars.$h-docs-sidebar-width} - #{hvars.$h-sidebar-content-gap}
+    )
+  );
   top: hvars.$h-navbar-height;
-  width: $h-docs-sidebar-width;
+  width: hvars.$h-docs-sidebar-width;
   max-height: calc(100vh - #{hvars.$h-navbar-height});
   overflow-y: auto;
   z-index: 40;
