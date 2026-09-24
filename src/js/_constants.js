@@ -27,7 +27,6 @@ export const IDS = Object.freeze({
   mobileTopNavTocTrigger: "h-mobile-top-nav-toc-trigger",
   mobileTopNavTocTriggerLabel: "h-mobile-top-nav-toc-trigger-label",
   navbar: "h-navbar",
-  navbarBottom: "h-navbar-bottom",
   navbarMenu: "h-navbar-menu",
   navbarMenuBackdrop: "h-navbar-menu-backdrop",
   navbarMenuBtn: "h-navbar-menu-btn",

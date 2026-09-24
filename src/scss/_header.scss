@@ -13,21 +13,6 @@
   padding-top: 0;
   padding-bottom: 0;
   font-size: hvars.$h-navbar-font-size;
-  @include hmixins.h-transition(transform);
-
-  &.h-is-hidden {
-    transform: translateY(-100%);
-  }
-
-  #h-navbar-bottom {
-    position: absolute;
-    color: transparent;
-    background-color: transparent;
-    height: hvars.$h-space-2;
-    left: 0;
-    right: 0;
-    top: 100%;
-  }
 
   #h-logo {
     font-size: hvars.$h-navbar-logo-font-size;

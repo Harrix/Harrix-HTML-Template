@@ -10,12 +10,7 @@ import { initBackToTop } from "./_back-to-top.js";
 import { initLightGallery } from "./_lightgallery-init.js";
 import { initCodeCopyButtons, initSyntaxHighlighting } from "./_code-blocks.js";
 import { bootLazyHeavyLibs } from "./_lazy-heavy-libs.js";
-import {
-  GALLERY_ROW_HEIGHT,
-  LAZY_HEAVY_LIBS_FALLBACK_MS,
-  LAZY_HEAVY_LIBS_IDLE_MS,
-  NAVBAR_HIDE_SCROLL_THRESHOLD,
-} from "./_constants.js";
+import { GALLERY_ROW_HEIGHT, LAZY_HEAVY_LIBS_FALLBACK_MS, LAZY_HEAVY_LIBS_IDLE_MS } from "./_constants.js";
 import { initGalleryGrid } from "./_gallery-grid.js";
 import { initSpoilerAnimation, initTabs } from "./_spoiler-tabs.js";
 import { initPageToc } from "./_page-toc.js";
@@ -46,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initExpandedMenuDropdowns();
   setUiModesController(createUiModesController());
   setSplitLayoutState(initSplitLayout());
-  initNavbar(NAVBAR_HIDE_SCROLL_THRESHOLD);
+  initNavbar();
   initSearchPanel();
   initThemeToggle();
   initBackToTop();
