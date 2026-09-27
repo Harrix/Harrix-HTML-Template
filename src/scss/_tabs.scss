@@ -9,7 +9,7 @@
 
     ul {
       margin-left: 0;
-      border-bottom-color: transparent;
+      border-bottom-width: 0;
     }
 
     li + li {
@@ -36,9 +36,12 @@
     }
 
     li.is-active a {
+      position: relative;
+      z-index: 1;
       background-color: var(--h-tab-surface);
       border-color: var(--bulma-border, #dbdbdb);
       border-bottom-color: var(--h-tab-surface);
+      box-shadow: 0 2px 0 var(--h-tab-surface);
       color: hvars.$h-primary;
     }
   }
