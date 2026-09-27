@@ -1,3 +1,4 @@
+@use "sass:math";
 @use "bulma/sass/utilities/initial-variables" as initial-variables;
 
 $h-primary: #2e86b7;
@@ -41,8 +42,10 @@ $h-space-10: 2.5rem;
 $h-space-12: 3rem;
 // Gap between docked docs sidebar and content column (matches page-toc offset)
 $h-sidebar-content-gap: $h-space-4;
-// Min viewport for sidebar + gap + content + gap + TOC; below this show sidebar/TOC triggers in navbar
-$h-sidebar-toc-desktop-min-width: $h-container-max-width + 2 * ($h-docs-sidebar-width + $h-sidebar-content-gap);
+// Min viewport for sidebar + gap + content + gap + TOC; below this show sidebar/TOC triggers in navbar.
+// Sass cannot add px + rem; convert gap at 16px root (JS `SIDEBAR_CONTENT_GAP`).
+$h-sidebar-toc-desktop-min-width: $h-container-max-width +
+  2 * ($h-docs-sidebar-width + math.div($h-sidebar-content-gap, 1rem) * 16px);
 
 // Common layout sizes
 $h-navbar-height: 3rem;
