@@ -9,9 +9,7 @@ $h-docs-sidebar-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
   position: fixed;
   left: max(
     0px,
-    calc(
-      (100vw - hvars.$h-container-max-width) / 2 - #{hvars.$h-docs-sidebar-width} - #{hvars.$h-sidebar-content-gap}
-    )
+    calc((100vw - hvars.$h-container-max-width) / 2 - #{hvars.$h-docs-sidebar-width} - #{hvars.$h-sidebar-content-gap})
   );
   top: hvars.$h-navbar-height;
   width: hvars.$h-docs-sidebar-width;
@@ -164,7 +162,7 @@ $h-docs-sidebar-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
   }
 
   // Mobile top nav already has a sidebar button in the header row.
-  @media (width <= hvars.$h-mobile-nav-breakpoint) {
+  @media (width <= #{hvars.$h-mobile-nav-breakpoint}) {
     body.h-mobile-nav-top & {
       display: none;
     }
