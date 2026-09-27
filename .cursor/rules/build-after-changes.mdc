@@ -1,5 +1,5 @@
 ---
-description: After project changes, run the production build
+description: After project changes, run the production build and show both commit titles
 alwaysApply: true
 ---
 
@@ -14,3 +14,12 @@ npm run build
 - Run it once, after the edits are done, not after every intermediate save.
 - If the build fails, fix the cause and run it again until it succeeds.
 - Skip the build only when the task did not change any project files.
+
+# Commit titles
+
+At the end, show the commit title twice, with the same text:
+
+1. For this repository.
+2. For `D:\GitHub\Harrix-HTML-Template-dist-history`.
+
+Do not create the commits. Only print both titles.
