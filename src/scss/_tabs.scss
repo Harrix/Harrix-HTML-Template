@@ -41,8 +41,18 @@
       background-color: var(--h-tab-surface);
       border-color: var(--bulma-border, #dbdbdb);
       border-bottom-color: var(--h-tab-surface);
-      box-shadow: 0 2px 0 var(--h-tab-surface);
       color: hvars.$h-primary;
+
+      // Cover the panel's top border under the label without painting over the side borders.
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: -2px;
+        left: 0;
+        height: 3px;
+        background-color: var(--h-tab-surface);
+      }
     }
   }
 }
