@@ -33,9 +33,12 @@ function getLayoutOverrides(theme) {
 function getChartBlocks() {
   const byClass = document.querySelectorAll("pre.chart, pre > code.language-chart");
   const blocks = [];
+  const seen = new Set();
   byClass.forEach((el) => {
     const pre = el.tagName === "PRE" ? el : el.closest("pre");
-    if (pre && !pre.dataset.hChartProcessed) blocks.push(pre);
+    if (!pre || pre.dataset.hChartProcessed || seen.has(pre)) return;
+    seen.add(pre);
+    blocks.push(pre);
   });
   return blocks;
 }
@@ -59,7 +62,7 @@ function renderCharts() {
 
   blocks.forEach((pre) => {
     const spec = getSpecFromBlock(pre);
-    if (!spec || !spec.data) return;
+    if (!spec || !spec.data || !pre.parentNode) return;
 
     pre.dataset.hChartProcessed = "true";
     const container = document.createElement("div");
@@ -80,20 +83,18 @@ export function startCharts() {
   renderCharts();
 
   onThemeToggle(() => {
-    const containers = document.querySelectorAll(".h-chart-container");
-    containers.forEach((el) => {
-      const spec = el._spec;
-      if (!spec) return;
-      Plotly.purge(el);
-      const wrapper = document.createElement("pre");
-      wrapper.className = "chart";
-      const code = document.createElement("code");
-      code.className = "language-chart";
-      code.textContent = JSON.stringify(spec, null, 2);
-      wrapper.appendChild(code);
-      el.parentNode.insertBefore(wrapper, el);
-      el.remove();
-    });
-    setTimeout(renderCharts, CHART_THEME_RERENDER_DELAY_MS);
+    setTimeout(applyChartTheme, CHART_THEME_RERENDER_DELAY_MS);
+  });
+}
+
+function applyChartTheme() {
+  const layoutOverrides = getLayoutOverrides(getChartTheme());
+  document.querySelectorAll(".h-chart-container").forEach((el) => {
+    const spec = el._spec;
+    if (!spec?.data || !el.isConnected) return;
+    const data = Array.isArray(spec.data) ? spec.data : [spec.data];
+    const layout = { autosize: true, ...spec.layout, ...layoutOverrides };
+    const config = spec.config || { responsive: true };
+    Plotly.react(el, data, layout, config);
   });
 }

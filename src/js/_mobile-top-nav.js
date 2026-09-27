@@ -11,7 +11,7 @@ function createPanelCloseIcon() {
   span.className = "icon is-small";
   span.setAttribute("aria-hidden", "true");
   const i = document.createElement("i");
-  i.className = "fas fa-times";
+  i.setAttribute("data-lucide", "x");
   span.appendChild(i);
   return span;
 }

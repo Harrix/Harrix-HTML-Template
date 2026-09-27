@@ -1,5 +1,5 @@
 import { translate } from "./_locale.js";
-import { createFaIconSpan } from "./_constants.js";
+import { createIconSpan } from "./_constants.js";
 
 let expandedMenuDropdownsInitialized = false;
 
@@ -76,7 +76,7 @@ export function initExpandedMenuPanel() {
   menuCloseBtn.type = "button";
   menuCloseBtn.className = "h-mobile-top-nav__panel-close";
   menuCloseBtn.setAttribute("aria-label", translate("Close"));
-  menuCloseBtn.replaceChildren(createFaIconSpan("fas fa-times"));
+  menuCloseBtn.replaceChildren(createIconSpan("x"));
   menuHeader.appendChild(menuCloseBtn);
 
   menuPanel.appendChild(menuHeader);

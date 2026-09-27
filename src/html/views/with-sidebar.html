@@ -6,7 +6,7 @@ include("header.html", data) %>
     <aside id="h-docs-sidebar" class="h-docs-sidebar menu" aria-label="<%= i18n.docsSidebarAria %>">
       <div class="h-docs-sidebar__header" id="h-docs-sidebar-header">
         <button type="button" class="h-docs-sidebar__close" id="h-docs-sidebar-close" aria-label="Закрыть">
-          <span class="icon is-small" aria-hidden="true"><i class="fas fa-times"></i></span>
+          <span class="icon is-small" aria-hidden="true"><i data-lucide="x"></i></span>
         </button>
       </div>
       <ul class="menu-list" id="root_tree">
@@ -69,7 +69,7 @@ include("header.html", data) %>
       type="button"
       aria-label="<%= i18n.openDocsSidebar %>"
     >
-      <span class="icon" aria-hidden="true"><i class="fas fa-bars"></i></span>
+      <span class="icon" aria-hidden="true"><i data-lucide="menu"></i></span>
     </button>
     <div id="h-docs-sidebar-backdrop" class="h-docs-sidebar-backdrop"></div>
     <div class="h-docs-body">
@@ -559,14 +559,14 @@ public class MainActivity extends AppCompatActivity {
       </article>
 
       <button id="h-page-toc-toggle" class="h-page-toc-toggle" type="button" aria-label="<%= i18n.toc %>">
-        <span class="icon" aria-hidden="true"><i class="fas fa-list"></i></span>
+        <span class="icon" aria-hidden="true"><i data-lucide="list"></i></span>
       </button>
       <div id="h-page-toc-backdrop" class="h-page-toc-backdrop"></div>
       <nav id="h-page-toc" class="h-page-toc menu">
         <div class="h-page-toc__header">
           <p class="menu-label" id="h-page-toc-label"></p>
           <button id="h-page-toc-close" class="h-page-toc__close" type="button" aria-label="<%= i18n.close %>">
-            <span class="icon" aria-hidden="true"><i class="fas fa-times"></i></span>
+            <span class="icon" aria-hidden="true"><i data-lucide="x"></i></span>
           </button>
         </div>
         <ul class="menu-list" id="h-page-toc-list"></ul>

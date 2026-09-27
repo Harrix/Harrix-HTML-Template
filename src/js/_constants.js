@@ -73,19 +73,19 @@ export const SEARCH_ANIMATION_MS = 500;
 export const CODE_COPY_FEEDBACK_MS = 800;
 
 /**
- * Create a Bulma icon span with a Font Awesome <i>.
+ * Create a Bulma icon span with a Lucide `<i data-lucide>`.
  *
- * @param {string} iClass - className for <i> (e.g. "fas fa-copy")
+ * @param {string} iconName - Lucide icon name (e.g. "copy")
  * @param {{ sizeClass?: string, spanAriaHidden?: boolean, iAriaHidden?: boolean }} [options]
  * @returns {HTMLSpanElement}
  */
-export function createFaIconSpan(iClass, { sizeClass = "is-small", spanAriaHidden = true, iAriaHidden = true } = {}) {
+export function createIconSpan(iconName, { sizeClass = "is-small", spanAriaHidden = true, iAriaHidden = true } = {}) {
   const span = document.createElement("span");
   span.className = `icon ${sizeClass}`.trim();
   if (spanAriaHidden) span.setAttribute("aria-hidden", "true");
 
   const i = document.createElement("i");
-  i.className = iClass;
+  i.setAttribute("data-lucide", iconName);
   if (iAriaHidden) i.setAttribute("aria-hidden", "true");
 
   span.appendChild(i);
@@ -93,11 +93,11 @@ export function createFaIconSpan(iClass, { sizeClass = "is-small", spanAriaHidde
 }
 
 export function createCodeCopyIconNode() {
-  return createFaIconSpan("fas fa-copy", { spanAriaHidden: false, iAriaHidden: true });
+  return createIconSpan("copy", { spanAriaHidden: false, iAriaHidden: true });
 }
 
 export function createCodeCopyDoneIconNode() {
-  return createFaIconSpan("fas fa-check", { spanAriaHidden: false, iAriaHidden: true });
+  return createIconSpan("check", { spanAriaHidden: false, iAriaHidden: true });
 }
 
 export const CODE_BLOCK_BOTTOM_THRESHOLD = 80;
@@ -113,8 +113,7 @@ export const SIDEBAR_CONTENT_GAP = 16;
 export const TOC_MIN_SPACE = 256;
 export const MOBILE_NAV_BREAKPOINT = 1024;
 /** Matches SCSS `$h-sidebar-toc-desktop-min-width`. */
-export const SIDEBAR_TOC_DESKTOP_MIN_WIDTH =
-  CONTAINER_MAX_WIDTH + 2 * (SIDEBAR_WIDTH + SIDEBAR_CONTENT_GAP);
+export const SIDEBAR_TOC_DESKTOP_MIN_WIDTH = CONTAINER_MAX_WIDTH + 2 * (SIDEBAR_WIDTH + SIDEBAR_CONTENT_GAP);
 export const MENU_FIT_HYSTERESIS = 40;
 /** Narrower exit band in split layout — row width matches real flex chrome; large −40px slack stuck no-fit. */
 export const MENU_FIT_HYSTERESIS_SPLIT = 12;

@@ -1,4 +1,4 @@
-import initFontawesomeCollection from "./_fontawesome-collection.js";
+import { initLucideIcons } from "./_lucide-icons.js";
 import { setSplitLayoutState, setUiModesController } from "./_app-bridge.js";
 import { initSplitLayout } from "./_split-layout.js";
 import { initExpandedMenuDropdowns, initExpandedMenuPanel } from "./_expanded-menu.js";
@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initDocsSidebar();
   initNavbarSidebarTocFit();
   initMobileTopNav();
+  initLucideIcons();
 
   runWhenIdle(() => {
     initLightGallery();
@@ -56,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initSpoilerAnimation();
     initTabs();
     bootLazyHeavyLibs();
-    initFontawesomeCollection();
     initYearRange();
   });
 });

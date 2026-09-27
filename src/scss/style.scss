@@ -36,7 +36,6 @@
   @include meta.load-css("page-toc");
   @include meta.load-css("docs-sidebar");
   @include meta.load-css("docs-sidebar-split");
-  @include meta.load-css("@fortawesome/fontawesome-svg-core/styles.css");
 }
 
 @layer overrides {

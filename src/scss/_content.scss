@@ -96,8 +96,43 @@
   }
 }
 
-// Font Awesome list and icon sizes (demo section)
-.h-fa-ul {
+.icon > svg {
+  width: 1em;
+  height: 1em;
+}
+
+.h-icon-spin {
+  animation: h-icon-spin 1s linear infinite;
+}
+
+.h-icon-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.h-icon-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.h-icon-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.h-icon-flip-horizontal {
+  transform: scaleX(-1);
+}
+
+.h-icon-flip-vertical {
+  transform: scaleY(-1);
+}
+
+@keyframes h-icon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Icon list and sizes (demo section)
+.h-icon-ul {
   list-style-type: none;
   margin-left: 0;
   padding-left: 2em;
@@ -114,23 +149,27 @@
   }
 }
 
-.h-fa-li {
+.h-icon-li {
   position: absolute;
   left: -2em;
   width: 2em;
   text-align: center;
 }
 
-.h-fa-3x {
+.h-icon-3x {
   font-size: 3em;
   line-height: 1;
 
-  .svg-inline--fa {
+  svg {
+    width: 1em;
+    height: 1em;
     margin-right: 0.5rem;
   }
 }
 
-.h-fa-lg.icon {
+.h-icon-lg.icon {
+  width: 1.33em;
+  height: 1.33em;
   font-size: 1.33em;
 }
 
