@@ -1,0 +1,16 @@
+---
+description: After project changes, run the production build
+alwaysApply: true
+---
+
+# Build after changes
+
+When a task changes project files, finish by running:
+
+```bash
+npm run build
+```
+
+- Run it once, after the edits are done, not after every intermediate save.
+- If the build fails, fix the cause and run it again until it succeeds.
+- Skip the build only when the task did not change any project files.
