@@ -385,6 +385,27 @@
     border-color: dark.$h-dark-border;
   }
 
+  .h-tab-widget {
+    --h-tab-surface: #{dark.$h-dark-bg};
+
+    > .tabs {
+      a {
+        color: dark.$h-dark-text;
+      }
+
+      a:hover,
+      li.is-active a {
+        color: dark.$h-dark-link;
+      }
+
+      li.is-active a {
+        background-color: var(--h-tab-surface);
+        border-color: dark.$h-dark-border;
+        border-bottom-color: var(--h-tab-surface);
+      }
+    }
+  }
+
   .h-spoiler__summary:hover {
     background-color: rgba(255, 255, 255, 0.06);
   }

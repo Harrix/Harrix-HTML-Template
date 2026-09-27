@@ -1,9 +1,53 @@
 @use "variables" as hvars;
 
+.h-tab-widget {
+  --h-tab-surface: var(--bulma-scheme-main, #fff);
+
+  > .tabs {
+    margin-bottom: 0;
+    overflow: visible;
+
+    ul {
+      margin-left: 0;
+      border-bottom-color: transparent;
+    }
+
+    li + li {
+      margin-top: 0;
+    }
+
+    a {
+      border: 1px solid transparent;
+      border-radius: hvars.$h-panel-radius hvars.$h-panel-radius 0 0;
+      margin-bottom: -1px;
+      text-decoration: none;
+
+      &:hover {
+        background-color: rgba(46, 134, 183, 0.06);
+        border-bottom-color: transparent;
+        color: hvars.$h-primary;
+        text-decoration: none;
+      }
+
+      &:focus-visible {
+        outline: 2px solid hvars.$h-primary;
+        outline-offset: -2px;
+      }
+    }
+
+    li.is-active a {
+      background-color: var(--h-tab-surface);
+      border-color: var(--bulma-border, #dbdbdb);
+      border-bottom-color: var(--h-tab-surface);
+      color: hvars.$h-primary;
+    }
+  }
+}
+
 .h-tab-panels {
   border: 1px solid var(--bulma-border, #dbdbdb);
-  border-top: none;
-  border-radius: 0 0 hvars.$h-panel-radius hvars.$h-panel-radius;
+  border-radius: 0 hvars.$h-panel-radius hvars.$h-panel-radius hvars.$h-panel-radius;
+  background-color: var(--h-tab-surface);
 }
 
 .h-tab-panel {
