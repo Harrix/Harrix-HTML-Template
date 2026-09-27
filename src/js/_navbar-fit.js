@@ -129,6 +129,11 @@ export function initNavbarSidebarTocFit() {
     else clearNoFitPanelVars();
 
     if (!menuNoFit) closeNavbarSearchOverlay();
+    // Three-dot menu is a full-viewport panel. Once the inline navbar fits,
+    // close it so a resize from mobile does not leave that panel on screen.
+    if (!menuNoFit && window.innerWidth > MOBILE_NAV_BREAKPOINT) {
+      getUiModes()?.close("mobileMenu");
+    }
 
     setVisible(navbarSidebarBtn, sidebarOverlaps, { focusable: true });
     setVisible(navbarTocRow, tocNoFit);
