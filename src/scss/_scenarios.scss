@@ -1,0 +1,128 @@
+@use "variables" as hvars;
+
+// Article scenarios: popover footnotes, callouts, definitions, dialog, task list.
+.h-footnote-ref {
+  font-size: 0.75em;
+  line-height: 0;
+  margin-inline-start: 0.15em;
+  vertical-align: super;
+}
+
+.h-footnote-pop {
+  max-width: min(24rem, calc(100vw - 2rem));
+  padding: hvars.$h-space-3 hvars.$h-space-4;
+  border: 1px solid #ddd;
+  border-radius: hvars.$h-panel-radius;
+  background: #fff;
+  color: #122a3a;
+  box-shadow: 0 0.5rem 1.5rem rgba(68, 68, 68, 0.15);
+
+  p {
+    margin: 0 0 hvars.$h-space-3;
+    text-align: start;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.h-footnote-pop__close {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: hvars.$h-primary;
+  cursor: pointer;
+  font: inherit;
+}
+
+.h-callout {
+  margin: 0 0 hvars.$h-space-4;
+  padding: hvars.$h-space-3 hvars.$h-space-4;
+  border-inline-start: 4px solid hvars.$h-primary;
+  border-radius: hvars.$h-panel-radius;
+  background: rgba(46, 134, 183, 0.1);
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.h-callout__title {
+  margin: 0 0 hvars.$h-space-1;
+  font-weight: 600;
+}
+
+.h-callout--note {
+  border-inline-start-color: #2e86b7;
+  background: rgba(46, 134, 183, 0.1);
+}
+
+.h-callout--warning {
+  border-inline-start-color: #eec646;
+  background: rgba(238, 198, 70, 0.2);
+}
+
+.h-callout--tip {
+  border-inline-start-color: #35965f;
+  background: rgba(53, 150, 95, 0.12);
+}
+
+.h-defs {
+  dt {
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0 0 hvars.$h-space-3;
+  }
+
+  dd:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.h-scenario-dialog {
+  max-width: min(32rem, calc(100vw - 2rem));
+  padding: hvars.$h-space-5 hvars.$h-space-6;
+  border: 1px solid #ddd;
+  border-radius: hvars.$h-panel-radius;
+  background: #fff;
+  color: #122a3a;
+
+  &::backdrop {
+    background: rgba(18, 30, 40, 0.45);
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p:last-of-type {
+    margin-bottom: hvars.$h-space-4;
+  }
+}
+
+.h-task-list {
+  list-style: none;
+  padding-inline-start: 0;
+
+  li {
+    margin-bottom: hvars.$h-space-1_5;
+  }
+
+  label {
+    display: flex;
+    gap: hvars.$h-space-2;
+    align-items: flex-start;
+  }
+
+  input {
+    margin-top: 0.3rem;
+    accent-color: hvars.$h-primary;
+  }
+}
+
+.h-footnotes {
+  font-size: 0.9em;
+}

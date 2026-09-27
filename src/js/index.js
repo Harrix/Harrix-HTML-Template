@@ -13,6 +13,7 @@ import { bootLazyHeavyLibs } from "./_lazy-heavy-libs.js";
 import { GALLERY_ROW_HEIGHT, LAZY_HEAVY_LIBS_FALLBACK_MS, LAZY_HEAVY_LIBS_IDLE_MS } from "./_constants.js";
 import { initGalleryGrid } from "./_gallery-grid.js";
 import { initSpoilerAnimation, initTabs } from "./_spoiler-tabs.js";
+import { initScenarios } from "./_scenarios.js";
 import { initPageToc } from "./_page-toc.js";
 import { initDocsSidebar } from "./_docs-sidebar.js";
 import { initNavbarSidebarTocFit } from "./_navbar-fit.js";
@@ -50,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavbarSidebarTocFit();
   initMobileTopNav();
   initLucideIcons();
+  initScenarios();
 
   runWhenIdle(() => {
     initLightGallery();

@@ -55,9 +55,7 @@
 
             <a class="anchor" id="contents"></a>
 
-            <nav id="js-table-of-contents"></nav>
-
-            <h2>Типографика</h2>
+            <h2 id="typography">Типографика</h2>
 
             <p>
               В данном блоке пример использования обычного текста в несколько абзацев. Непосредственно в данном абзаце
@@ -1075,8 +1073,130 @@ kbd.menu {
       <div class="container">
         <div class="columns content">
           <div class="column">
-            <a class="anchor" id="maps"></a>
-            <h2>Карты</h2>
+            <h2 id="scenarios">Сценарии</h2>
+
+            <h3>Сноски</h3>
+            <p>
+              Надстрочная ссылка открывает примечание через Popover API
+              <a
+                class="h-footnote-ref"
+                id="h-footnote-ref-popover"
+                href="#h-footnote-popover"
+                popovertarget="h-footnote-pop-popover"
+                >1</a
+              >. Без поддержки popover та же ссылка ведёт к списку внизу блока. Вторая сноска
+              <a
+                class="h-footnote-ref"
+                id="h-footnote-ref-dialog"
+                href="#h-footnote-dialog"
+                popovertarget="h-footnote-pop-dialog"
+                >2</a
+              >
+              относится к диалоговому окну ниже.
+            </p>
+            <div class="h-footnote-pop" id="h-footnote-pop-popover" popover="auto">
+              <p>
+                Popover API показывает примечание поверх страницы и закрывает его по клику снаружи или по Escape.
+                <a href="#h-footnote-popover">К списку примечаний</a>
+              </p>
+              <button
+                class="h-footnote-pop__close"
+                type="button"
+                popovertarget="h-footnote-pop-popover"
+                popovertargetaction="hide"
+              >
+                Закрыть
+              </button>
+            </div>
+            <div class="h-footnote-pop" id="h-footnote-pop-dialog" popover="auto">
+              <p>
+                Нативный <code>dialog.showModal()</code> держит фокус внутри окна, пока его не закроют.
+                <a href="#h-footnote-dialog">К списку примечаний</a>
+              </p>
+              <button
+                class="h-footnote-pop__close"
+                type="button"
+                popovertarget="h-footnote-pop-dialog"
+                popovertargetaction="hide"
+              >
+                Закрыть
+              </button>
+            </div>
+
+            <h3>Врезки</h3>
+            <aside class="h-callout h-callout--note">
+              <p class="h-callout__title">Заметка</p>
+              <p>Короткое пояснение рядом с основным текстом, без новой секции.</p>
+            </aside>
+            <aside class="h-callout h-callout--warning">
+              <p class="h-callout__title">Предупреждение</p>
+              <p>То, на что стоит обратить внимание до того, как продолжить чтение.</p>
+            </aside>
+            <aside class="h-callout h-callout--tip">
+              <p class="h-callout__title">Совет</p>
+              <p>Практический приём, который можно применить сразу.</p>
+            </aside>
+
+            <h3>Определения</h3>
+            <dl class="h-defs">
+              <dt>Popover</dt>
+              <dd>
+                Всплывающий слой поверх страницы. Закрывается сам, когда открывается другой popover или пользователь
+                нажимает снаружи.
+              </dd>
+              <dt>Dialog</dt>
+              <dd>Модальное окно: фон затемняется, фокус остаётся внутри, Escape закрывает окно.</dd>
+            </dl>
+
+            <h3>Диалог</h3>
+            <p>
+              <button class="button is-primary" type="button" data-h-dialog-open="h-scenario-dialog">Открыть</button>
+            </p>
+            <dialog class="h-scenario-dialog" id="h-scenario-dialog" aria-labelledby="h-scenario-dialog-title">
+              <h3 id="h-scenario-dialog-title">Пример диалога</h3>
+              <p>Окно открыто через <code>showModal()</code>. Закройте его кнопкой или клавишей Escape.</p>
+              <form method="dialog">
+                <button class="button" type="submit">Закрыть</button>
+              </form>
+            </dialog>
+
+            <h3>Список задач</h3>
+            <ul class="h-task-list">
+              <li>
+                <label>
+                  <input type="checkbox" checked disabled />
+                  Разметка готова
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="checkbox" disabled />
+                  Пункт ещё не отмечен
+                </label>
+              </li>
+            </ul>
+
+            <h3>Примечания</h3>
+            <ol class="h-footnotes">
+              <li id="h-footnote-popover">
+                Popover API показывает примечание поверх страницы.
+                <a href="#h-footnote-ref-popover" aria-label="Вернуться к сноске 1">↑</a>
+              </li>
+              <li id="h-footnote-dialog">
+                Нативный dialog держит фокус внутри окна.
+                <a href="#h-footnote-ref-dialog" aria-label="Вернуться к сноске 2">↑</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <div class="columns content">
+          <div class="column">
+            <h2 id="maps">Карты</h2>
             <h3>Google Карты</h3>
             <figure class="image is-16by9">
               <!-- Замените src на ссылку из Google Maps: Поделиться → Встроить карту -->
@@ -1109,8 +1229,7 @@ kbd.menu {
       <div class="container">
         <div class="columns content">
           <div class="column">
-            <a class="anchor" id="video"></a>
-            <h2>Видео</h2>
+            <h2 id="video">Видео</h2>
             <h3>YouTube</h3>
             <figure class="image is-16by9">
               <!-- Замените src: в ссылке YouTube замените watch?v=ID на embed/ID -->

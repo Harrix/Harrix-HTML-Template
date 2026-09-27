@@ -409,4 +409,31 @@
   .h-spoiler__summary:hover {
     background-color: rgba(255, 255, 255, 0.06);
   }
+
+  .h-footnote-pop,
+  .h-scenario-dialog {
+    background: dark.$h-dark-surface;
+    border-color: dark.$h-dark-border;
+    color: dark.$h-dark-text;
+  }
+
+  .h-footnote-pop__close {
+    color: dark.$h-dark-link;
+  }
+
+  .h-callout--note {
+    background: rgba(46, 134, 183, 0.2);
+  }
+
+  .h-callout--warning {
+    background: rgba(238, 198, 70, 0.16);
+  }
+
+  .h-callout--tip {
+    background: rgba(53, 150, 95, 0.2);
+  }
+
+  .h-scenario-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.55);
+  }
 }
