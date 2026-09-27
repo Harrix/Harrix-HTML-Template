@@ -2,18 +2,18 @@
 @use "mixins" as hmixins;
 @use "variables" as hvars;
 
-// Code highlight colors — palette like VSCode (Default Light Modern)
-$h-code-comment: #1cb978;
-$h-code-keyword: #0f0fbd;
-$h-code-string: #1cb978;
-$h-code-variable: #d07826;
-$h-code-constant: #3861b2;
-$h-code-entity: #4c43c2;
-$h-code-attr: #d07826;
-$h-code-number: #1f2939;
-$h-code-invalid: #ad1c48;
-$h-code-regexp: #1acd82;
-$h-code-default: #1f2939;
+// Code highlight colors from the brand palette
+$h-code-comment: #607785;
+$h-code-keyword: #2e86b7;
+$h-code-string: #35965f;
+$h-code-variable: #df7148;
+$h-code-constant: #038387;
+$h-code-entity: #ad403b;
+$h-code-attr: #a18267;
+$h-code-number: #36434f;
+$h-code-invalid: #de2b26;
+$h-code-regexp: #3aaf9d;
+$h-code-default: #122a3a;
 
 .content pre code,
 pre code {
@@ -36,8 +36,8 @@ pre {
   color: $h-code-default;
   line-height: 1.25rem;
   padding: hvars.$h-space-1_5;
-  background-color: #f1f1f1;
-  border: 1px solid #e5e7eb;
+  background-color: #f4f4f4;
+  border: 1px solid #dddddd;
   border-radius: hvars.$h-space-1_5;
   overflow: hidden;
 
@@ -128,45 +128,45 @@ pre {
   font-weight: bold;
 }
 
-// Dark theme — VSCode Dark Modern palette
+// Dark theme — same brand hues, light enough to read on a dark background
 [data-theme="dark"] {
   .hljs {
-    color: #d4d4d4;
+    color: #e9e9e9;
   }
 
   .content pre code,
   pre code,
   .content pre,
   pre {
-    color: #d4d4d4;
+    color: #e9e9e9;
   }
 
   .hljs-comment,
   .hljs-quote {
-    color: #6a9955;
+    color: #7193ad;
   }
 
   .hljs-keyword,
   .hljs-selector-tag,
   .hljs-doctag {
-    color: #569cd6;
+    color: #79b1d1;
   }
 
   .hljs-selector-id,
   .hljs-selector-class {
-    color: #b267e6;
+    color: #eec646;
   }
 
   .hljs-string,
   .hljs-symbol,
   .hljs-bullet,
   .hljs-addition {
-    color: #ce9178;
+    color: #3aaf9d;
   }
 
   .hljs-variable,
   .hljs-template-variable {
-    color: #9cdcfe;
+    color: #ffdd7a;
   }
 
   .hljs-built_in,
@@ -176,40 +176,40 @@ pre {
   .hljs-meta,
   .hljs-link,
   .hljs-meta .hljs-meta-string {
-    color: #4ec9b0;
+    color: #4caf50;
   }
 
   .hljs-attr,
   .hljs-attribute {
-    color: #9cdcfe;
+    color: #e0ac7e;
   }
 
   .hljs-number,
   .hljs-params,
   .hljs-subst {
-    color: #b5cea8;
+    color: #dddddd;
   }
 
   .hljs-title,
   .hljs-title.class_,
   .hljs-section,
   .hljs-name {
-    color: #dcdcaa;
+    color: #eec646;
   }
 
   .hljs-deletion {
-    color: #f44747;
+    color: #f84d18;
   }
 
   .hljs-regexp {
-    color: #d16969;
+    color: #cc584c;
   }
 
   .h-code-block .h-code-copy {
     &.h-code-copy--done {
-      color: #81c784;
-      background-color: rgba(46, 125, 50, 0.2);
-      border-color: rgba(129, 199, 132, 0.3);
+      color: #4caf50;
+      background-color: rgba(53, 150, 95, 0.2);
+      border-color: rgba(76, 175, 80, 0.35);
     }
   }
 }
@@ -283,20 +283,20 @@ pre {
     }
 
     &:hover {
-      color: #363636;
+      color: #36434f;
       background-color: #fff;
-      border-color: rgba(0, 0, 0, 0.15);
+      border-color: rgba(68, 68, 68, 0.15);
     }
 
     &:focus {
-      outline: 1px dotted #3273dc;
+      outline: 1px dotted #2e86b7;
       outline-offset: 2px;
     }
 
     &.h-code-copy--done {
-      color: #2e7d32;
-      background-color: rgba(232, 245, 233, 0.95);
-      border-color: rgba(46, 125, 50, 0.3);
+      color: #35965f;
+      background-color: rgba(76, 175, 80, 0.12);
+      border-color: rgba(53, 150, 95, 0.35);
     }
 
     &.h-code-copy--top {

@@ -13,6 +13,19 @@
       footer-padding: 1.5rem 1.5rem,
       primary: #2e86b7,
       link: #2e86b7,
+      "blue": #2e86b7,
+      // Bulma defaults used in the article (red is hsl(348, 100%, 70%) = #ff6685) mapped to the brand palette.
+      "red": #cc584c,
+      danger: #cc584c,
+      code: #cc584c,
+      "green": #4caf50,
+      success: #4caf50,
+      "yellow": #eec646,
+      warning: #eec646,
+      "cyan": #79b1d1,
+      info: #79b1d1,
+      "orange": #ffa000,
+      "turquoise": #038387,
       input-shadow: none
     )
   );
