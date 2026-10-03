@@ -1,4 +1,5 @@
 import {
+  Calendar,
   Check,
   ChevronUp,
   CircleAlert,
@@ -29,6 +30,7 @@ import {
   Shield,
   Square,
   SquareCheck,
+  Star,
   Sun,
   TriangleAlert,
   X,
@@ -64,6 +66,7 @@ const Windows = [
 ];
 
 const icons = {
+  Calendar,
   Check,
   ChevronUp,
   CircleAlert,
@@ -96,6 +99,7 @@ const icons = {
   Shield,
   Square,
   SquareCheck,
+  Star,
   Sun,
   TriangleAlert,
   Windows,

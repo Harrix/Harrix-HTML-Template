@@ -506,6 +506,325 @@
               </li>
             </ul>
 
+            <h2 id="form-controls">Элементы управления</h2>
+
+            <p>
+              Ниже — примеры типичных элементов формы и интерфейса в стиле
+              <a href="https://bulma.io/documentation/form/general/">Bulma</a>. Разметка демонстрационная, без
+              отправки данных.
+            </p>
+
+            <h3>Поле ввода</h3>
+            <div class="field">
+              <label class="label" for="h-demo-email">Электронная почта</label>
+              <div class="control">
+                <input
+                  id="h-demo-email"
+                  class="input"
+                  type="email"
+                  placeholder="hi@example.com"
+                  autocomplete="email"
+                />
+              </div>
+            </div>
+
+            <h3>Поле с иконкой и датой</h3>
+            <div class="field">
+              <label class="label" for="h-demo-date">Дата</label>
+              <div class="control has-icons-left">
+                <input id="h-demo-date" class="input" type="date" value="2026-10-03" />
+                <span class="icon is-left"><i data-lucide="calendar" aria-hidden="true"></i></span>
+              </div>
+            </div>
+
+            <h3>Цвет</h3>
+            <div class="field">
+              <label class="label" for="h-demo-color">Выбор цвета</label>
+              <div class="control is-flex is-align-items-center">
+                <input id="h-demo-color" class="mr-2" type="color" value="#2e86b7" aria-label="Цвет" />
+                <span class="tag is-light">#2e86b7</span>
+              </div>
+            </div>
+
+            <h3>Многострочный текст</h3>
+            <div class="field">
+              <label class="label" for="h-demo-textarea">Комментарий</label>
+              <div class="control">
+                <textarea id="h-demo-textarea" class="textarea" rows="3" placeholder="Текст сообщения"></textarea>
+              </div>
+            </div>
+
+            <h3>Теги</h3>
+            <div class="field">
+              <label class="label">Выбранные значения</label>
+              <div class="control">
+                <div class="tags">
+                  <div class="tags has-addons">
+                    <span class="tag is-link">Яблоко</span>
+                    <a class="tag is-delete" href="#" aria-label="Удалить Яблоко"></a>
+                  </div>
+                  <div class="tags has-addons">
+                    <span class="tag is-link">Банан</span>
+                    <a class="tag is-delete" href="#" aria-label="Удалить Банан"></a>
+                  </div>
+                  <div class="tags has-addons">
+                    <span class="tag is-link">Апельсин</span>
+                    <a class="tag is-delete" href="#" aria-label="Удалить Апельсин"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3>Выпадающий список</h3>
+            <div class="field">
+              <label class="label" for="h-demo-select">Фрукт</label>
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select id="h-demo-select">
+                    <option>Яблоко</option>
+                    <option>Груша</option>
+                    <option>Банан</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <h3>Меню (dropdown)</h3>
+            <div class="dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button
+                  class="button"
+                  type="button"
+                  aria-haspopup="true"
+                  aria-controls="h-demo-dropdown-menu"
+                >
+                  <span>Действия</span>
+                  <span class="icon is-small">
+                    <i data-lucide="ellipsis-vertical" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="h-demo-dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a href="#" class="dropdown-item">Открыть</a>
+                  <a href="#" class="dropdown-item">Редактировать</a>
+                  <hr class="dropdown-divider" />
+                  <a href="#" class="dropdown-item has-text-danger">Удалить</a>
+                </div>
+              </div>
+            </div>
+
+            <h3>Флажки</h3>
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <input type="checkbox" checked />
+                  Яблоко
+                </label>
+              </div>
+              <div class="control">
+                <label class="checkbox">
+                  <input type="checkbox" />
+                  Груша
+                </label>
+              </div>
+            </div>
+
+            <h3>Переключатели (radio)</h3>
+            <div class="field">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="h-demo-fruit" checked />
+                  Яблоко
+                </label>
+              </div>
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" name="h-demo-fruit" />
+                  Груша
+                </label>
+              </div>
+            </div>
+
+            <h3>Код подтверждения</h3>
+            <div class="field">
+              <label class="label" id="h-demo-otp-label">Введите код</label>
+              <div class="field is-grouped h-otp-group" role="group" aria-labelledby="h-demo-otp-label">
+                <div class="control">
+                  <input
+                    class="input has-text-centered"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    value="1"
+                    aria-label="Цифра 1"
+                  />
+                </div>
+                <div class="control">
+                  <input
+                    class="input has-text-centered"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    value="2"
+                    aria-label="Цифра 2"
+                  />
+                </div>
+                <div class="control">
+                  <input
+                    class="input has-text-centered"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    value="3"
+                    aria-label="Цифра 3"
+                  />
+                </div>
+                <div class="control">
+                  <input
+                    class="input has-text-centered"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    aria-label="Цифра 4"
+                  />
+                </div>
+                <div class="control">
+                  <input
+                    class="input has-text-centered"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    aria-label="Цифра 5"
+                  />
+                </div>
+                <div class="control">
+                  <input
+                    class="input has-text-centered"
+                    type="text"
+                    inputmode="numeric"
+                    maxlength="1"
+                    aria-label="Цифра 6"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <h3>Файл</h3>
+            <div class="file has-name">
+              <label class="file-label">
+                <input class="file-input" type="file" name="h-demo-file" />
+                <span class="file-cta">
+                  <span class="file-icon"><i data-lucide="file" aria-hidden="true"></i></span>
+                  <span class="file-label">Выберите файл…</span>
+                </span>
+                <span class="file-name">файл не выбран</span>
+              </label>
+            </div>
+
+            <h3>Кнопки</h3>
+            <div class="buttons">
+              <button class="button is-primary" type="button">Основная</button>
+              <button class="button is-danger is-outlined" type="button">Опасная</button>
+              <button class="button is-link is-outlined" type="button">Контурная</button>
+              <button class="button is-primary is-rounded" type="button">Скруглённая</button>
+              <button class="button is-loading is-primary" type="button" aria-label="Загрузка">Загрузка</button>
+            </div>
+            <div class="buttons has-addons">
+              <button class="button is-primary is-selected" type="button" aria-pressed="true">1D</button>
+              <button class="button" type="button" aria-pressed="false">7D</button>
+              <button class="button" type="button" aria-pressed="false">1M</button>
+              <button class="button" type="button" aria-pressed="false">1Y</button>
+              <button class="button" type="button" aria-pressed="false">All</button>
+            </div>
+            <div class="buttons">
+              <a class="button" href="#">
+                <span class="icon"><i data-lucide="github" aria-hidden="true"></i></span>
+                <span>Продолжить с GitHub</span>
+              </a>
+              <a class="button" href="#">
+                <span class="icon"><i data-lucide="globe" aria-hidden="true"></i></span>
+                <span>Продолжить с Google</span>
+              </a>
+            </div>
+
+            <h3>Индикатор прогресса</h3>
+            <progress class="progress is-primary" value="50" max="100" aria-label="Прогресс 50%">50%</progress>
+            <progress class="progress is-danger" value="30" max="100" aria-label="Ошибка 30%">30%</progress>
+
+            <h3>Статусы</h3>
+            <div class="tags">
+              <span class="tag is-success">Успех</span>
+              <span class="tag is-danger">Ошибка</span>
+              <span class="tag">По умолчанию</span>
+              <span class="tag is-info">Обработка</span>
+              <span class="tag is-warning">Предупреждение</span>
+            </div>
+
+            <h3>Рейтинг</h3>
+            <p class="is-flex is-align-items-center" aria-label="Оценка 3 из 5">
+              <span class="icon has-text-warning mr-1"
+                ><i data-lucide="star" data-lucide-filled aria-hidden="true"></i
+              ></span>
+              <span class="icon has-text-warning mr-1"
+                ><i data-lucide="star" data-lucide-filled aria-hidden="true"></i
+              ></span>
+              <span class="icon has-text-warning mr-1"
+                ><i data-lucide="star" data-lucide-filled aria-hidden="true"></i
+              ></span>
+              <span class="icon has-text-grey-light mr-1"><i data-lucide="star" aria-hidden="true"></i></span>
+              <span class="icon has-text-grey-light"><i data-lucide="star" aria-hidden="true"></i></span>
+            </p>
+
+            <h3>Загрузка</h3>
+            <p>
+              <span class="icon h-icon-lg has-text-primary"
+                ><i data-lucide="loader-circle" class="h-icon-spin" aria-hidden="true"></i
+              ></span>
+            </p>
+
+            <h3>Уведомление</h3>
+            <div class="notification is-info is-light">
+              <button class="delete" type="button" aria-label="Закрыть"></button>
+              Информационное уведомление. Его можно закрыть кнопкой справа.
+            </div>
+
+            <h3>Хлебные крошки</h3>
+            <nav class="breadcrumb has-succeeds-separator" aria-label="Хлебные крошки">
+              <ul>
+                <li>
+                  <a href="#">
+                    <span class="icon is-small"><i data-lucide="circle-check" aria-hidden="true"></i></span>
+                    <span>Готово</span>
+                  </a>
+                </li>
+                <li class="is-active">
+                  <a href="#" aria-current="page">
+                    <span class="icon is-small"><i data-lucide="loader-circle" aria-hidden="true"></i></span>
+                    <span>В процессе</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span>Ожидание</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <h3>Пагинация</h3>
+            <nav class="pagination" role="navigation" aria-label="Пагинация">
+              <a class="pagination-previous" href="#">Назад</a>
+              <a class="pagination-next" href="#">Вперёд</a>
+              <ul class="pagination-list">
+                <li><a class="pagination-link" href="#" aria-label="Страница 1">1</a></li>
+                <li><a class="pagination-link is-current" href="#" aria-label="Страница 2" aria-current="page">2</a></li>
+                <li><a class="pagination-link" href="#" aria-label="Страница 3">3</a></li>
+                <li><span class="pagination-ellipsis">&hellip;</span></li>
+                <li><a class="pagination-link" href="#" aria-label="Страница 10">10</a></li>
+              </ul>
+            </nav>
+
             <h2 id="responsive-tables">Адаптивные таблицы</h2>
 
             <p>

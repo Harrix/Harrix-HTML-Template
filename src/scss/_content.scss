@@ -183,3 +183,10 @@
     text-transform: uppercase;
   }
 }
+
+// Demo OTP / verification code inputs
+.h-otp-group {
+  .control {
+    max-width: 2.75rem;
+  }
+}
