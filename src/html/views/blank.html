@@ -1,4 +1,4 @@
-<% const data = { title: "Заголовок | Harrix Проект", noChrome: true }; %> <%~ include("header.html", data) %>
+﻿<% const data = { title: "Заголовок | Harrix Проект", noChrome: true }; %> <%~ include("header.html", data) %>
 
 <main>
   <article>
@@ -506,27 +506,199 @@
               </li>
             </ul>
 
-            <h2 id="responsive-tables">Адаптивные таблицы</h2>
+            <h2 id="tables">Таблицы</h2>
 
             <p>
-              Ниже приведены два способа отображения таблиц: с горизонтальной прокруткой на узких экранах и в виде
-              карточек, когда каждая строка на телефоне показывается отдельным блоком с подписями полей.
+              Примеры таблиц в стиле
+              <a href="https://bulma.io/documentation/elements/table/">Bulma</a>: обычная, с рамкой, полосатая, с
+              подсветкой строк и адаптивные варианты для узких экранов.
             </p>
 
-            <h3>Таблица с горизонтальной прокруткой</h3>
+            <h3>Обычная таблица</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Имя</th>
+                  <th>Роль</th>
+                  <th>Город</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Анна</td>
+                  <td>Дизайнер</td>
+                  <td>Красноярск</td>
+                </tr>
+                <tr>
+                  <td>Иван</td>
+                  <td>Разработчик</td>
+                  <td>Москва</td>
+                </tr>
+                <tr>
+                  <td>Мария</td>
+                  <td>Менеджер</td>
+                  <td>Санкт-Петербург</td>
+                </tr>
+              </tbody>
+            </table>
 
+            <h3>С рамкой и на всю ширину</h3>
+            <table class="table is-bordered is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Проект</th>
+                  <th>Статус</th>
+                  <th>Приоритет</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Документация</td>
+                  <td><span class="tag is-success is-light">Готово</span></td>
+                  <td>Средний</td>
+                </tr>
+                <tr>
+                  <td>API</td>
+                  <td><span class="tag is-warning is-light">В работе</span></td>
+                  <td>Высокий</td>
+                </tr>
+                <tr>
+                  <td>Тесты</td>
+                  <td><span class="tag is-info is-light">Планируется</span></td>
+                  <td>Низкий</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Полосатая</h3>
+            <table class="table is-striped is-fullwidth">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Файл</th>
+                  <th>Размер</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>readme.md</td>
+                  <td>12 КБ</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>package.json</td>
+                  <td>4 КБ</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>style.scss</td>
+                  <td>28 КБ</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>index.js</td>
+                  <td>16 КБ</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>С подсветкой строк при наведении</h3>
+            <table class="table is-hoverable is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Команда</th>
+                  <th>Описание</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>npm start</code></td>
+                  <td>Запуск dev-сервера</td>
+                </tr>
+                <tr>
+                  <td><code>npm run build</code></td>
+                  <td>Сборка для публикации</td>
+                </tr>
+                <tr>
+                  <td><code>npm run check</code></td>
+                  <td>Проверка линтером</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>Узкая таблица</h3>
+            <table class="table is-narrow is-bordered">
+              <thead>
+                <tr>
+                  <th>Клавиша</th>
+                  <th>Действие</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><kbd>Ctrl</kbd> + <kbd>S</kbd></td>
+                  <td>Сохранить</td>
+                </tr>
+                <tr>
+                  <td><kbd>Ctrl</kbd> + <kbd>F</kbd></td>
+                  <td>Найти</td>
+                </tr>
+                <tr>
+                  <td><kbd>Esc</kbd></td>
+                  <td>Закрыть</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>С выделенной строкой и подвалом</h3>
+            <table class="table is-bordered is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Товар</th>
+                  <th>Цена</th>
+                  <th>Кол-во</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ноутбук</td>
+                  <td>85 000 ₽</td>
+                  <td>1</td>
+                </tr>
+                <tr class="is-selected">
+                  <td>Мышь</td>
+                  <td>1 200 ₽</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>Клавиатура</td>
+                  <td>4 500 ₽</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Итого</th>
+                  <th>92 900 ₽</th>
+                  <th>4</th>
+                </tr>
+              </tfoot>
+            </table>
+
+            <h3>С прокруткой на узких экранах</h3>
             <p>
               На узком экране таблица не сжимается — её можно листать влево и вправо. Удобно для таблиц с большим числом
               колонок.
             </p>
-
             <div class="table-container">
-              <table class="table is-bordered is-fullwidth">
+              <table class="table is-bordered is-striped is-fullwidth">
                 <thead>
                   <tr>
                     <th>Дата</th>
                     <th>Версия</th>
                     <th>Изменения</th>
+                    <th>Автор</th>
                     <th>Статус</th>
                   </tr>
                 </thead>
@@ -535,31 +707,32 @@
                     <td>12.03.2025</td>
                     <td>2.1.0</td>
                     <td>Добавлена поддержка тёмной темы</td>
+                    <td>Анна</td>
                     <td>Выпущено</td>
                   </tr>
                   <tr>
                     <td>01.02.2025</td>
                     <td>2.0.0</td>
                     <td>Обновлён интерфейс, исправлены ошибки</td>
+                    <td>Иван</td>
                     <td>Выпущено</td>
                   </tr>
                   <tr>
                     <td>15.01.2025</td>
                     <td>1.9.0</td>
                     <td>Улучшена производительность</td>
+                    <td>Мария</td>
                     <td>Выпущено</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <h3>Таблица в виде карточек на мобильных</h3>
-
+            <h3>В виде карточек на мобильных</h3>
             <p>
               На экранах уже 768px каждая строка отображается карточкой: заголовки колонок становятся подписями к
               значениям. На десктопе таблица выглядит как обычная.
             </p>
-
             <div class="mb-5">
               <table class="table is-bordered is-fullwidth h-responsive-table">
                 <thead>
