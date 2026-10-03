@@ -42,7 +42,7 @@ $h-docs-sidebar-breakpoint: hvars.$h-sidebar-toc-desktop-min-width;
       border-radius: 0;
 
       &:hover {
-        background-color: initial-variables.$grey-light;
+        background-color: hvars.$h-soft-hover;
       }
     }
 

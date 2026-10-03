@@ -1,0 +1,23 @@
+---
+description: Harrix brand and soft-blue tokens aligned with harrix-swiss-knife
+alwaysApply: true
+---
+
+# Brand colors
+
+Shared brand with harrix-swiss-knife soft-blue chrome. Tokens live in `src/scss/_variables.scss`.
+
+| Token | Hex | Role |
+| --- | --- | --- |
+| `$h-primary` | `#2e86b7` | Brand / links / Bulma primary-link-blue |
+| `$h-soft-bg` | `#e8f4fc` | Soft tint (callouts, note fills) |
+| `$h-soft-hover` | `#f3f8fb` | Soft hover (tabs, spoilers, sidebar) |
+| `$h-brand-ink` | `#1a5f7a` | Ink on soft fills when needed |
+
+Bulma injection in `style.scss` keeps `primary` / `link` / `blue` = `#2e86b7`. Semantic accents (`#cc584c`, `#4caf50`, `#eec646`, `#79b1d1`, `#038387`) match HSK Lucide colors — do not change without a reason.
+
+## Rules
+
+- Use `$h-soft-bg` / `$h-soft-hover` instead of hardcoding `rgba(46, 134, 183, …)` for soft fills.
+- TOC / active reading nav: text color + left border (or underline), **not** app-style fill+border selection.
+- Do not port Qt list-selection chrome (rounded selected rows with blue outline) onto the docs site.

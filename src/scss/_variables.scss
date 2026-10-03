@@ -2,6 +2,10 @@
 @use "bulma/sass/utilities/initial-variables" as initial-variables;
 
 $h-primary: #2e86b7;
+// Soft fills — aligned with harrix-swiss-knife ui_chrome (SELECTION_BG / SELECTION_HOVER)
+$h-soft-bg: #e8f4fc;
+$h-soft-hover: #f3f8fb;
+$h-brand-ink: #1a5f7a;
 $h-surface: #fff;
 $h-touch-breakpoint: 768px;
 $h-link-hover: #2e86b7;

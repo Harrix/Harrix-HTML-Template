@@ -41,7 +41,7 @@
   padding: hvars.$h-space-3 hvars.$h-space-4;
   border-inline-start: 4px solid hvars.$h-primary;
   border-radius: hvars.$h-panel-radius;
-  background: rgba(46, 134, 183, 0.1);
+  background: hvars.$h-soft-bg;
 
   p:last-child {
     margin-bottom: 0;
@@ -54,8 +54,8 @@
 }
 
 .h-callout--note {
-  border-inline-start-color: #2e86b7;
-  background: rgba(46, 134, 183, 0.1);
+  border-inline-start-color: hvars.$h-primary;
+  background: hvars.$h-soft-bg;
 }
 
 .h-callout--warning {
