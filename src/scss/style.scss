@@ -42,6 +42,7 @@
   @include meta.load-css("content");
   @include meta.load-css("checks");
   @include meta.load-css("color-picker");
+  @include meta.load-css("date-picker");
   @include meta.load-css("spoiler");
   @include meta.load-css("scenarios");
   @include meta.load-css("tabs");

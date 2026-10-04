@@ -526,7 +526,36 @@
             <div class="field">
               <label class="label" for="h-demo-date">Дата</label>
               <div class="control h-control-sm">
-                <input id="h-demo-date" class="input" type="date" value="2026-10-03" />
+                <div class="h-date-picker" data-h-date-picker>
+                  <input
+                    id="h-demo-date"
+                    class="input h-date-picker__input"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    spellcheck="false"
+                    placeholder="yyyy-MM-dd"
+                    value="2026-10-03"
+                    data-h-date-input
+                  />
+                  <button
+                    type="button"
+                    class="h-date-picker__trigger"
+                    data-h-date-trigger
+                    aria-haspopup="dialog"
+                    aria-expanded="false"
+                    aria-controls="h-demo-date-dropdown"
+                  >
+                    <i data-lucide="calendar" aria-hidden="true"></i>
+                  </button>
+                  <div
+                    id="h-demo-date-dropdown"
+                    class="h-date-picker__dropdown"
+                    data-h-date-dropdown
+                    role="dialog"
+                    hidden
+                  ></div>
+                </div>
               </div>
             </div>
 

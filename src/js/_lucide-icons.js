@@ -1,6 +1,11 @@
 import {
+  Calendar,
   Check,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
   ChevronUp,
   Circle,
   CircleAlert,
@@ -68,8 +73,13 @@ const Windows = [
 ];
 
 const icons = {
+  Calendar,
   Check,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
   ChevronUp,
   Circle,
   CircleAlert,

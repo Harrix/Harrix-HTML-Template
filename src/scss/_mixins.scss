@@ -251,7 +251,7 @@
   min-height: hvars.$h-navbar-toc-row-height;
 }
 
-// Floating panel chrome shared by navbar dropdown, Bulma dropdown, color picker
+// Floating panel chrome shared by navbar dropdown, Bulma dropdown, color/date pickers
 @mixin h-floating-panel {
   border: none;
   border-radius: hvars.$h-panel-radius;

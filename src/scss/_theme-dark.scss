@@ -199,7 +199,8 @@
     }
 
     .h-color-picker__dropdown,
-    .h-color-picker__format-menu {
+    .h-color-picker__format-menu,
+    .h-date-picker__dropdown {
       @include hmixins.h-floating-panel-dark;
     }
 
@@ -209,6 +210,26 @@
         background: rgba(46, 134, 183, 0.2);
         color: dark.$h-dark-link-hover;
       }
+    }
+
+    .h-date-picker__header,
+    .h-date-picker__footer {
+      border-color: dark.$h-dark-border;
+    }
+
+    .h-date-picker__weekday,
+    .h-date-picker__nav {
+      color: dark.$h-dark-placeholder;
+    }
+
+    .h-date-picker__day.is-outside,
+    .h-date-picker__choice.is-muted {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .h-date-picker__day.is-selected,
+    .h-date-picker__choice.is-selected {
+      background-color: dark.$h-dark-input-bg;
     }
 
     .dropdown-content {
