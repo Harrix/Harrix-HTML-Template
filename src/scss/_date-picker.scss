@@ -19,13 +19,14 @@ $h-date-muted: #5c6370;
 .h-date-picker__input {
   width: 100%;
   padding-inline-start: 2.25rem;
+  padding-inline-end: 2.25rem;
 }
 
-.h-date-picker__trigger {
+.h-date-picker__icon,
+.h-date-picker__caret {
   position: absolute;
   z-index: 1;
   inset-block-start: 50%;
-  inset-inline-start: 0.55rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +36,6 @@ $h-date-muted: #5c6370;
   border: 0;
   border-radius: 0.25rem;
   background: transparent;
-  color: hvars.$h-primary;
   cursor: pointer;
   transform: translateY(-50%);
 
@@ -55,9 +55,29 @@ $h-date-muted: #5c6370;
   }
 }
 
+.h-date-picker__icon {
+  inset-inline-start: 0.55rem;
+  color: hvars.$h-primary;
+}
+
+.h-date-picker__caret {
+  inset-inline-end: 0.55rem;
+  color: $h-date-muted;
+
+  .lucide {
+    width: 1rem;
+    height: 1rem;
+    transition: transform 0.15s ease;
+  }
+}
+
 .h-date-picker.is-open .h-date-picker__input {
   border-color: hvars.$h-primary;
   box-shadow: 0 0 0 2px rgba(46, 134, 183, 0.2);
+}
+
+.h-date-picker.is-open .h-date-picker__caret .lucide {
+  transform: rotate(180deg);
 }
 
 .h-date-picker__dropdown {

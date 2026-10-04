@@ -123,12 +123,16 @@ function lucideIcon(name, className = "h-date-picker__nav-icon") {
  */
 function bindDatePicker(root) {
   const input = root.querySelector("[data-h-date-input]");
-  const trigger = root.querySelector("[data-h-date-trigger]");
+  const triggers = [...root.querySelectorAll("[data-h-date-trigger]")].filter(
+    (element) => element instanceof HTMLButtonElement,
+  );
   let dropdown = root.querySelector("[data-h-date-dropdown]");
 
-  if (!(input instanceof HTMLInputElement) || !(trigger instanceof HTMLButtonElement)) {
+  if (!(input instanceof HTMLInputElement) || triggers.length === 0) {
     return;
   }
+
+  const primaryTrigger = triggers[0];
 
   if (!(dropdown instanceof HTMLElement)) {
     dropdown = document.createElement("div");
@@ -242,12 +246,17 @@ function bindDatePicker(root) {
   dropdown.replaceChildren(header, weekdays, dayGrid, monthPanel, yearPanel, footer);
   renderLucideIcons(dropdown);
 
-  trigger.setAttribute("aria-label", translate("Open calendar"));
-  if (!trigger.getAttribute("aria-controls") && dropdown.id) {
-    trigger.setAttribute("aria-controls", dropdown.id);
-  }
-  trigger.setAttribute("aria-haspopup", "dialog");
-  trigger.setAttribute("aria-expanded", "false");
+  const openLabel = translate("Open calendar");
+  triggers.forEach((trigger) => {
+    if (!trigger.getAttribute("aria-label")) {
+      trigger.setAttribute("aria-label", openLabel);
+    }
+    if (!trigger.getAttribute("aria-controls") && dropdown.id) {
+      trigger.setAttribute("aria-controls", dropdown.id);
+    }
+    trigger.setAttribute("aria-haspopup", "dialog");
+    trigger.setAttribute("aria-expanded", "false");
+  });
 
   /**
    * @param {Date} date
@@ -282,7 +291,7 @@ function bindDatePicker(root) {
   function closePopup() {
     dropdown.hidden = true;
     root.classList.remove("is-open");
-    trigger.setAttribute("aria-expanded", "false");
+    triggers.forEach((trigger) => trigger.setAttribute("aria-expanded", "false"));
     panelMode = "day";
   }
 
@@ -291,7 +300,7 @@ function bindDatePicker(root) {
     showDayPanel();
     dropdown.hidden = false;
     root.classList.add("is-open");
-    trigger.setAttribute("aria-expanded", "true");
+    triggers.forEach((trigger) => trigger.setAttribute("aria-expanded", "true"));
     render();
   }
 
@@ -512,9 +521,11 @@ function bindDatePicker(root) {
     else closePopup();
   };
 
-  trigger.addEventListener("click", (event) => {
-    event.stopPropagation();
-    toggle();
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggle();
+    });
   });
 
   input.addEventListener("dblclick", (event) => {
@@ -540,7 +551,7 @@ function bindDatePicker(root) {
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape" || dropdown.hidden) return;
     closePopup();
-    trigger.focus();
+    primaryTrigger.focus();
   });
 
   if (!input.value) {
