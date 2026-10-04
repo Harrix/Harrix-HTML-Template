@@ -32,6 +32,23 @@
   max-width: hvars.$h-control-width-md;
 }
 
+// Chromium puts the native date picker icon next to the value; pin it to the end
+.input[type="date"] {
+  position: relative;
+  padding-inline-end: 2.25rem;
+
+  &::-webkit-calendar-picker-indicator {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: 0.65rem;
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+}
+
 // Tag multi-select lookalike: bordered zone, tags aligned on one baseline
 .h-tag-field {
   display: flex;
