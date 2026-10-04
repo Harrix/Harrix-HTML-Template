@@ -9,7 +9,7 @@ $h-brand-ink: #1a5f7a;
 $h-surface: #fff;
 // Lucide indicator colors — harrix-swiss-knife qt_lucide_checkbox / qt_lucide_icon
 $h-lucide-ink: #122a3a;
-$h-lucide-checked: #4caf50;
+$h-lucide-checked: $h-primary; // selected state = brand blue (not success green)
 $h-lucide-disabled: #767676;
 $h-lucide-indicator-size: 1.5rem; // 24px, same as HSK CHECKBOX_INDICATOR_PX
 $h-touch-breakpoint: 768px;
