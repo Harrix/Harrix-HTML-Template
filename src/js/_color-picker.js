@@ -1,10 +1,11 @@
 /**
- * Ant Design–style color picker (trigger + sat/val panel, hue, alpha, HEX).
+ * Ant Design–style color picker (palette, hue/alpha, HEX / HSB / RGB formats).
  * Progressive enhancement for `[data-h-color-picker]`.
  */
 
 /**
  * @typedef {{ h: number, s: number, v: number, a: number }} Hsva
+ * @typedef {"hex" | "hsb" | "rgb"} ColorFormat
  */
 
 /**
@@ -121,6 +122,17 @@ function roundAlpha(a) {
 }
 
 /**
+ * @param {string} value
+ * @param {boolean} [percent]
+ */
+function parseChannel(value, percent = false) {
+  const n = Number.parseFloat(String(value).replace("%", "").trim());
+  if (!Number.isFinite(n)) return null;
+  if (percent) return Math.min(100, Math.max(0, n)) / 100;
+  return n;
+}
+
+/**
  * @param {HTMLElement} root
  */
 function bindColorPicker(root) {
@@ -135,8 +147,22 @@ function bindColorPicker(root) {
   const alphaTrack = root.querySelector("[data-h-color-alpha]");
   const alphaHandle = root.querySelector("[data-h-color-alpha-handle]");
   const previewColor = root.querySelector("[data-h-color-preview]");
+  const formatRoot = root.querySelector("[data-h-color-format]");
+  const formatTrigger = root.querySelector("[data-h-color-format-trigger]");
+  const formatLabel = root.querySelector("[data-h-color-format-label]");
+  const formatMenu = root.querySelector("[data-h-color-format-menu]");
+  const formatOptions = root.querySelectorAll("[data-h-color-format-option]");
+  const channelsHex = root.querySelector("[data-h-color-channels-hex]");
+  const channelsHsb = root.querySelector("[data-h-color-channels-hsb]");
+  const channelsRgb = root.querySelector("[data-h-color-channels-rgb]");
   const hexInput = root.querySelector("[data-h-color-hex]");
-  const alphaInput = root.querySelector("[data-h-color-alpha-input]");
+  const hInput = root.querySelector("[data-h-color-h]");
+  const sInput = root.querySelector("[data-h-color-s]");
+  const vInput = root.querySelector("[data-h-color-v]");
+  const rInput = root.querySelector("[data-h-color-r]");
+  const gInput = root.querySelector("[data-h-color-g]");
+  const bInput = root.querySelector("[data-h-color-b]");
+  const alphaInputs = root.querySelectorAll("[data-h-color-alpha-input]");
 
   if (
     !(trigger instanceof HTMLButtonElement) ||
@@ -150,8 +176,20 @@ function bindColorPicker(root) {
     !(alphaTrack instanceof HTMLElement) ||
     !(alphaHandle instanceof HTMLElement) ||
     !(previewColor instanceof HTMLElement) ||
+    !(formatRoot instanceof HTMLElement) ||
+    !(formatTrigger instanceof HTMLButtonElement) ||
+    !(formatLabel instanceof HTMLElement) ||
+    !(formatMenu instanceof HTMLElement) ||
+    !(channelsHex instanceof HTMLElement) ||
+    !(channelsHsb instanceof HTMLElement) ||
+    !(channelsRgb instanceof HTMLElement) ||
     !(hexInput instanceof HTMLInputElement) ||
-    !(alphaInput instanceof HTMLInputElement)
+    !(hInput instanceof HTMLInputElement) ||
+    !(sInput instanceof HTMLInputElement) ||
+    !(vInput instanceof HTMLInputElement) ||
+    !(rInput instanceof HTMLInputElement) ||
+    !(gInput instanceof HTMLInputElement) ||
+    !(bInput instanceof HTMLInputElement)
   ) {
     return;
   }
@@ -160,8 +198,23 @@ function bindColorPicker(root) {
   const hsv = rgbToHsv(initial.r, initial.g, initial.b);
   /** @type {Hsva} */
   const state = { h: hsv.h, s: hsv.s, v: hsv.v, a: 1 };
+  /** @type {ColorFormat} */
+  let format = "hex";
+
+  const closeFormatMenu = () => {
+    formatMenu.hidden = true;
+    formatRoot.classList.remove("is-open");
+    formatTrigger.setAttribute("aria-expanded", "false");
+  };
+
+  const openFormatMenu = () => {
+    formatMenu.hidden = false;
+    formatRoot.classList.add("is-open");
+    formatTrigger.setAttribute("aria-expanded", "true");
+  };
 
   const close = () => {
+    closeFormatMenu();
     dropdown.hidden = true;
     root.classList.remove("is-open");
     trigger.setAttribute("aria-expanded", "false");
@@ -173,18 +226,49 @@ function bindColorPicker(root) {
     trigger.setAttribute("aria-expanded", "true");
   };
 
+  /**
+   * @param {ColorFormat} next
+   */
+  const setFormat = (next) => {
+    format = next;
+    formatLabel.textContent = next.toUpperCase();
+    channelsHex.hidden = next !== "hex";
+    channelsHsb.hidden = next !== "hsb";
+    channelsRgb.hidden = next !== "rgb";
+    formatOptions.forEach((option) => {
+      if (!(option instanceof HTMLElement)) return;
+      option.classList.toggle("is-active", option.dataset.hColorFormatOption === next);
+    });
+    closeFormatMenu();
+    render();
+  };
+
+  /**
+   * @param {number} r
+   * @param {number} g
+   * @param {number} b
+   * @param {string} hex
+   */
+  const formatTriggerValue = (r, g, b, hex) => {
+    if (format === "rgb") return `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+    if (format === "hsb") {
+      return `hsb(${Math.round(state.h)}, ${Math.round(state.s * 100)}%, ${Math.round(state.v * 100)}%)`;
+    }
+    return hex;
+  };
+
   const render = () => {
     const { r, g, b } = hsvToRgb(state.h, state.s, state.v);
     const hex = rgbToHex(r, g, b);
     const solid = `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
     const withAlpha = hsvaToCss(state);
-    const hueColor = (() => {
-      const hueRgb = hsvToRgb(state.h, 1, 1);
-      return `rgb(${Math.round(hueRgb.r)}, ${Math.round(hueRgb.g)}, ${Math.round(hueRgb.b)})`;
-    })();
+    const hueRgb = hsvToRgb(state.h, 1, 1);
+    const hueColor = `rgb(${Math.round(hueRgb.r)}, ${Math.round(hueRgb.g)}, ${Math.round(hueRgb.b)})`;
+    const alphaText = `${Math.round(state.a * 100)}%`;
 
     swatchColor.style.background = withAlpha;
-    valueEl.textContent = hex;
+    valueEl.textContent = formatTriggerValue(r, g, b, hex);
+    valueEl.classList.toggle("is-mono-upper", format === "hex");
     previewColor.style.background = withAlpha;
     palette.style.background = `
       linear-gradient(to top, #000, transparent),
@@ -197,13 +281,22 @@ function bindColorPicker(root) {
     alphaHandle.style.left = `${state.a * 100}%`;
 
     if (document.activeElement !== hexInput) hexInput.value = hex;
-    if (document.activeElement !== alphaInput) alphaInput.value = `${Math.round(state.a * 100)}%`;
+    if (document.activeElement !== hInput) hInput.value = String(Math.round(state.h));
+    if (document.activeElement !== sInput) sInput.value = `${Math.round(state.s * 100)}%`;
+    if (document.activeElement !== vInput) vInput.value = `${Math.round(state.v * 100)}%`;
+    if (document.activeElement !== rInput) rInput.value = String(Math.round(r));
+    if (document.activeElement !== gInput) gInput.value = String(Math.round(g));
+    if (document.activeElement !== bInput) bInput.value = String(Math.round(b));
+    alphaInputs.forEach((input) => {
+      if (input instanceof HTMLInputElement && document.activeElement !== input) input.value = alphaText;
+    });
 
     root.dataset.color = hex;
+    root.dataset.format = format;
     root.dispatchEvent(
       new CustomEvent("h-color-change", {
         bubbles: true,
-        detail: { hex, alpha: state.a, css: withAlpha },
+        detail: { hex, alpha: state.a, css: withAlpha, format },
       }),
     );
   };
@@ -211,15 +304,14 @@ function bindColorPicker(root) {
   /**
    * @param {HTMLElement} el
    * @param {(ratioX: number, ratioY: number) => void} onMove
-   * @param {{ vertical?: boolean }} [options]
    */
-  const bindDrag = (el, onMove, { vertical = false } = {}) => {
+  const bindDrag = (el, onMove) => {
     /** @param {PointerEvent} event */
     const update = (event) => {
       const rect = el.getBoundingClientRect();
       const x = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
       const y = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
-      onMove(x, vertical ? y : x);
+      onMove(x, y);
       render();
     };
 
@@ -250,6 +342,21 @@ function bindColorPicker(root) {
     else close();
   });
 
+  formatTrigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    if (formatMenu.hidden) openFormatMenu();
+    else closeFormatMenu();
+  });
+
+  formatOptions.forEach((option) => {
+    option.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (!(option instanceof HTMLElement)) return;
+      const next = option.dataset.hColorFormatOption;
+      if (next === "hex" || next === "hsb" || next === "rgb") setFormat(next);
+    });
+  });
+
   hexInput.addEventListener("change", () => {
     const rgb = parseHex(hexInput.value);
     if (!rgb) {
@@ -263,23 +370,62 @@ function bindColorPicker(root) {
     render();
   });
 
-  alphaInput.addEventListener("change", () => {
-    const n = Number.parseFloat(alphaInput.value.replace("%", ""));
-    if (Number.isFinite(n)) state.a = Math.min(100, Math.max(0, n)) / 100;
+  const applyHsbInputs = () => {
+    const h = parseChannel(hInput.value);
+    const s = parseChannel(sInput.value, true);
+    const v = parseChannel(vInput.value, true);
+    if (h !== null) state.h = Math.min(360, Math.max(0, h));
+    if (s !== null) state.s = s;
+    if (v !== null) state.v = v;
     render();
+  };
+
+  const applyRgbInputs = () => {
+    const r = parseChannel(rInput.value);
+    const g = parseChannel(gInput.value);
+    const b = parseChannel(bInput.value);
+    if (r === null || g === null || b === null) {
+      render();
+      return;
+    }
+    const next = rgbToHsv(Math.min(255, Math.max(0, r)), Math.min(255, Math.max(0, g)), Math.min(255, Math.max(0, b)));
+    state.h = next.h;
+    state.s = next.s;
+    state.v = next.v;
+    render();
+  };
+
+  [hInput, sInput, vInput].forEach((input) => input.addEventListener("change", applyHsbInputs));
+  [rInput, gInput, bInput].forEach((input) => input.addEventListener("change", applyRgbInputs));
+
+  alphaInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      if (!(input instanceof HTMLInputElement)) return;
+      const a = parseChannel(input.value, true);
+      if (a !== null) state.a = a;
+      render();
+    });
   });
 
   document.addEventListener("pointerdown", (event) => {
+    if (!(event.target instanceof Node)) return;
+    if (!formatMenu.hidden && formatRoot.contains(event.target)) return;
+    if (!formatMenu.hidden) closeFormatMenu();
     if (dropdown.hidden) return;
-    if (event.target instanceof Node && root.contains(event.target)) return;
+    if (root.contains(event.target)) return;
     close();
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !dropdown.hidden) close();
+    if (event.key !== "Escape") return;
+    if (!formatMenu.hidden) {
+      closeFormatMenu();
+      return;
+    }
+    if (!dropdown.hidden) close();
   });
 
-  render();
+  setFormat("hex");
 }
 
 export function initColorPickers() {

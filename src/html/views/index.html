@@ -578,25 +578,138 @@
                       </div>
                     </div>
                     <div class="h-color-picker__inputs">
-                      <select class="h-color-picker__format" aria-label="Формат цвета" disabled>
-                        <option selected>HEX</option>
-                      </select>
-                      <input
-                        class="h-color-picker__hex"
-                        type="text"
-                        data-h-color-hex
-                        spellcheck="false"
-                        autocomplete="off"
-                        aria-label="HEX-код"
-                      />
-                      <input
-                        class="h-color-picker__alpha-input"
-                        type="text"
-                        data-h-color-alpha-input
-                        spellcheck="false"
-                        autocomplete="off"
-                        aria-label="Прозрачность"
-                      />
+                      <div class="h-color-picker__format" data-h-color-format>
+                        <button
+                          type="button"
+                          class="h-color-picker__format-trigger"
+                          data-h-color-format-trigger
+                          aria-expanded="false"
+                          aria-haspopup="listbox"
+                          aria-controls="h-demo-color-format-menu"
+                          aria-label="Формат цвета"
+                        >
+                          <span data-h-color-format-label>HEX</span>
+                        </button>
+                        <div
+                          id="h-demo-color-format-menu"
+                          class="h-color-picker__format-menu"
+                          data-h-color-format-menu
+                          role="listbox"
+                          aria-label="Форматы цвета"
+                          hidden
+                        >
+                          <button
+                            type="button"
+                            class="h-color-picker__format-option is-active"
+                            role="option"
+                            data-h-color-format-option="hex"
+                          >
+                            HEX
+                          </button>
+                          <button
+                            type="button"
+                            class="h-color-picker__format-option"
+                            role="option"
+                            data-h-color-format-option="hsb"
+                          >
+                            HSB
+                          </button>
+                          <button
+                            type="button"
+                            class="h-color-picker__format-option"
+                            role="option"
+                            data-h-color-format-option="rgb"
+                          >
+                            RGB
+                          </button>
+                        </div>
+                      </div>
+                      <div class="h-color-picker__channels" data-h-color-channels-hex>
+                        <input
+                          class="h-color-picker__channel h-color-picker__channel--hex"
+                          type="text"
+                          data-h-color-hex
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="HEX-код"
+                        />
+                        <input
+                          class="h-color-picker__channel h-color-picker__channel--alpha"
+                          type="text"
+                          data-h-color-alpha-input
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="Прозрачность"
+                        />
+                      </div>
+                      <div class="h-color-picker__channels" data-h-color-channels-hsb hidden>
+                        <input
+                          class="h-color-picker__channel"
+                          type="text"
+                          data-h-color-h
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="H"
+                        />
+                        <input
+                          class="h-color-picker__channel"
+                          type="text"
+                          data-h-color-s
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="S"
+                        />
+                        <input
+                          class="h-color-picker__channel"
+                          type="text"
+                          data-h-color-v
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="B"
+                        />
+                        <input
+                          class="h-color-picker__channel h-color-picker__channel--alpha"
+                          type="text"
+                          data-h-color-alpha-input
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="Прозрачность"
+                        />
+                      </div>
+                      <div class="h-color-picker__channels" data-h-color-channels-rgb hidden>
+                        <input
+                          class="h-color-picker__channel"
+                          type="text"
+                          data-h-color-r
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="R"
+                        />
+                        <input
+                          class="h-color-picker__channel"
+                          type="text"
+                          data-h-color-g
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="G"
+                        />
+                        <input
+                          class="h-color-picker__channel"
+                          type="text"
+                          data-h-color-b
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="B"
+                        />
+                        <input
+                          class="h-color-picker__channel h-color-picker__channel--alpha"
+                          type="text"
+                          data-h-color-alpha-input
+                          spellcheck="false"
+                          autocomplete="off"
+                          aria-label="Прозрачность"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

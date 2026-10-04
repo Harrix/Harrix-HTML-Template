@@ -190,16 +190,24 @@
     }
 
     .h-color-picker__trigger,
-    .h-color-picker__format,
-    .h-color-picker__hex,
-    .h-color-picker__alpha-input {
+    .h-color-picker__format-trigger,
+    .h-color-picker__channel {
       background-color: dark.$h-dark-input-bg;
       border-color: dark.$h-dark-border;
       color: dark.$h-dark-text;
     }
 
-    .h-color-picker__dropdown {
+    .h-color-picker__dropdown,
+    .h-color-picker__format-menu {
       @include hmixins.h-floating-panel-dark;
+    }
+
+    .h-color-picker__format-option {
+      &:hover,
+      &.is-active {
+        background: rgba(46, 134, 183, 0.2);
+        color: dark.$h-dark-link-hover;
+      }
     }
 
     .dropdown-content {
