@@ -32,6 +32,27 @@
   max-width: hvars.$h-control-width-md;
 }
 
+// Select control using Bulma dropdown menu chrome
+.h-select-dropdown {
+  display: block;
+  width: 100%;
+
+  .dropdown-trigger,
+  .dropdown-menu {
+    width: 100%;
+  }
+
+  .button {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .dropdown-item {
+    width: 100%;
+    text-align: start;
+  }
+}
+
 // Chromium puts the native date picker icon next to the value; pin it to the end
 .input[type="date"] {
   position: relative;

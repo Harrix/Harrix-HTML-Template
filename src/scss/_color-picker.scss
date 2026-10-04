@@ -215,47 +215,80 @@
 }
 
 .h-color-picker__format {
+  position: relative;
   flex: 0 0 auto;
+}
 
-  .dropdown-menu {
-    min-width: 5.5rem;
+.h-color-picker__format-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+  width: 3.75rem;
+  height: 1.75rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--bulma-border, #d9d9d9);
+  border-radius: 0.25rem;
+  background: var(--bulma-scheme-main, #fff);
+  color: inherit;
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
 
-    &[hidden] {
-      display: none;
-    }
+  &::after {
+    content: "";
+    width: 0.35rem;
+    height: 0.35rem;
+    margin-top: -0.15rem;
+    border-right: 1.5px solid currentcolor;
+    border-bottom: 1.5px solid currentcolor;
+    opacity: 0.55;
+    transform: rotate(45deg);
   }
 
-  .dropdown-item {
-    padding-inline-end: 1rem;
-    font-size: 0.75rem;
+  &:hover,
+  .h-color-picker__format.is-open & {
+    border-color: hvars.$h-primary;
   }
 
-  .dropdown-item.is-active {
-    background: hvars.$h-soft-bg;
-    color: hvars.$h-brand-ink;
+  &:focus-visible {
+    outline: 2px solid hvars.$h-primary;
+    outline-offset: 1px;
   }
 }
 
-.h-color-picker__format-trigger.button {
-  width: 4.5rem;
-  height: 1.75rem;
-  padding-inline: 0.4rem;
-  font-size: 0.75rem;
+.h-color-picker__format-menu {
+  @include hmixins.h-floating-panel;
 
-  .icon:last-child:not(:first-child) {
-    margin-inline-start: 0.15rem;
-    margin-inline-end: 0;
-    width: 0.75rem;
-    height: 0.75rem;
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  min-width: 4.5rem;
+  padding: 0.25rem;
 
-    svg {
-      width: 0.75rem;
-      height: 0.75rem;
-    }
+  &[hidden] {
+    display: none;
   }
+}
 
-  .h-color-picker__format.is-active & {
-    border-color: hvars.$h-primary;
+.h-color-picker__format-option {
+  display: block;
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.75rem;
+  text-align: start;
+  cursor: pointer;
+
+  &:hover,
+  &.is-active {
+    background: hvars.$h-soft-bg;
+    color: hvars.$h-brand-ink;
   }
 }
 

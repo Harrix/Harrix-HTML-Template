@@ -578,56 +578,50 @@
                       </div>
                     </div>
                     <div class="h-color-picker__inputs">
-                      <div class="dropdown h-color-picker__format" data-h-color-format>
-                        <div class="dropdown-trigger">
-                          <button
-                            type="button"
-                            class="button is-small h-color-picker__format-trigger"
-                            data-h-color-format-trigger
-                            aria-expanded="false"
-                            aria-haspopup="true"
-                            aria-controls="h-demo-color-format-menu"
-                            aria-label="Формат цвета"
-                          >
-                            <span data-h-color-format-label>HEX</span>
-                            <span class="icon is-small">
-                              <i data-lucide="chevron-down" aria-hidden="true"></i>
-                            </span>
-                          </button>
-                        </div>
+                      <div class="h-color-picker__format" data-h-color-format>
+                        <button
+                          type="button"
+                          class="h-color-picker__format-trigger"
+                          data-h-color-format-trigger
+                          aria-expanded="false"
+                          aria-haspopup="listbox"
+                          aria-controls="h-demo-color-format-menu"
+                          aria-label="Формат цвета"
+                        >
+                          <span data-h-color-format-label>HEX</span>
+                        </button>
                         <div
                           id="h-demo-color-format-menu"
-                          class="dropdown-menu"
+                          class="h-color-picker__format-menu"
                           data-h-color-format-menu
-                          role="menu"
+                          role="listbox"
+                          aria-label="Форматы цвета"
                           hidden
                         >
-                          <div class="dropdown-content">
-                            <button
-                              type="button"
-                              class="dropdown-item is-active"
-                              role="menuitem"
-                              data-h-color-format-option="hex"
-                            >
-                              HEX
-                            </button>
-                            <button
-                              type="button"
-                              class="dropdown-item"
-                              role="menuitem"
-                              data-h-color-format-option="hsb"
-                            >
-                              HSB
-                            </button>
-                            <button
-                              type="button"
-                              class="dropdown-item"
-                              role="menuitem"
-                              data-h-color-format-option="rgb"
-                            >
-                              RGB
-                            </button>
-                          </div>
+                          <button
+                            type="button"
+                            class="h-color-picker__format-option is-active"
+                            role="option"
+                            data-h-color-format-option="hex"
+                          >
+                            HEX
+                          </button>
+                          <button
+                            type="button"
+                            class="h-color-picker__format-option"
+                            role="option"
+                            data-h-color-format-option="hsb"
+                          >
+                            HSB
+                          </button>
+                          <button
+                            type="button"
+                            class="h-color-picker__format-option"
+                            role="option"
+                            data-h-color-format-option="rgb"
+                          >
+                            RGB
+                          </button>
                         </div>
                       </div>
                       <div class="h-color-picker__channels" data-h-color-channels-hex>
@@ -753,14 +747,56 @@
 
             <h3>Выпадающий список</h3>
             <div class="field">
-              <label class="label" for="h-demo-select">Фрукт</label>
+              <label class="label" for="h-demo-select-trigger">Фрукт</label>
               <div class="control h-control-sm">
-                <div class="select is-fullwidth">
-                  <select id="h-demo-select">
-                    <option>Яблоко</option>
-                    <option>Груша</option>
-                    <option>Банан</option>
-                  </select>
+                <div class="dropdown h-select-dropdown" data-h-select>
+                  <div class="dropdown-trigger">
+                    <button
+                      class="button"
+                      type="button"
+                      id="h-demo-select-trigger"
+                      aria-haspopup="listbox"
+                      aria-controls="h-demo-select-menu"
+                      aria-expanded="false"
+                      data-h-select-trigger
+                    >
+                      <span data-h-select-label>Яблоко</span>
+                      <span class="icon is-small">
+                        <i data-lucide="chevron-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="h-demo-select-menu" role="listbox" data-h-select-menu>
+                    <div class="dropdown-content">
+                      <button
+                        type="button"
+                        class="dropdown-item is-active"
+                        role="option"
+                        aria-selected="true"
+                        data-h-select-option
+                      >
+                        Яблоко
+                      </button>
+                      <button
+                        type="button"
+                        class="dropdown-item"
+                        role="option"
+                        aria-selected="false"
+                        data-h-select-option
+                      >
+                        Груша
+                      </button>
+                      <button
+                        type="button"
+                        class="dropdown-item"
+                        role="option"
+                        aria-selected="false"
+                        data-h-select-option
+                      >
+                        Банан
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

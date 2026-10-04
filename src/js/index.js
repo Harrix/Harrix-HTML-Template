@@ -15,6 +15,7 @@ import { initGalleryGrid } from "./_gallery-grid.js";
 import { initSpoilerAnimation, initTabs } from "./_spoiler-tabs.js";
 import { initScenarios } from "./_scenarios.js";
 import { initColorPickers } from "./_color-picker.js";
+import { initSelectDropdowns } from "./_select-dropdown.js";
 import { initPageToc } from "./_page-toc.js";
 import { initDocsSidebar } from "./_docs-sidebar.js";
 import { initNavbarSidebarTocFit } from "./_navbar-fit.js";
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLucideIcons();
   initScenarios();
   initColorPickers();
+  initSelectDropdowns();
 
   runWhenIdle(() => {
     initLightGallery();

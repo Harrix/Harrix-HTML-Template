@@ -203,13 +203,13 @@ function bindColorPicker(root) {
 
   const closeFormatMenu = () => {
     formatMenu.hidden = true;
-    formatRoot.classList.remove("is-active");
+    formatRoot.classList.remove("is-open");
     formatTrigger.setAttribute("aria-expanded", "false");
   };
 
   const openFormatMenu = () => {
     formatMenu.hidden = false;
-    formatRoot.classList.add("is-active");
+    formatRoot.classList.add("is-open");
     formatTrigger.setAttribute("aria-expanded", "true");
   };
 
