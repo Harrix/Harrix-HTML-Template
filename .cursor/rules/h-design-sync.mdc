@@ -1,0 +1,22 @@
+---
+description: Sync shared design tokens with harrix-swiss-knife
+alwaysApply: true
+---
+
+# Design sync (HTML ↔ HSK)
+
+Shared chrome is defined here and mirrored in harrix-swiss-knife.
+
+## Checklist when changing colors / buttons / input chrome
+
+1. Edit `src/scss/_variables.scss`
+2. Update `.cursor/design-tokens.md` if roles change
+3. Update `.cursor/rules/h-brand-colors.mdc`
+4. Mirror in HSK: `apps/common/ui_chrome.py`, `.cursor/design-tokens.md`, `.cursor/rules/hsk-ui-chrome.mdc`
+5. Run `npm run check`, `npm run check:css`, `npm run build`
+
+## Do not sync
+
+- Navbar height / logo layout (site-only)
+- Caption / Win11 window buttons (desktop-only)
+- Screenshot overlay `#00AEFF` (desktop-only)

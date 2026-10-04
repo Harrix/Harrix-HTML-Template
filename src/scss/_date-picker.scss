@@ -5,8 +5,8 @@
 $h-date-cell: 2.25rem;
 $h-date-popup-width: 18.375rem; // 7 * 2.25rem + padding
 $h-date-outside: #bfbfbf;
-$h-date-sep: #f0f0f0;
-$h-date-muted: #5c6370;
+$h-date-sep: hvars.$h-hairline;
+$h-date-muted: hvars.$h-muted-text;
 
 .h-date-picker {
   position: relative;
