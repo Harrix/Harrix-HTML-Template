@@ -185,6 +185,11 @@
         color: dark.$h-dark-placeholder;
       }
     }
+
+    .h-tag-field {
+      background-color: dark.$h-dark-input-bg;
+      border-color: dark.$h-dark-border;
+    }
   }
 
   // Match navbar background with main content background
