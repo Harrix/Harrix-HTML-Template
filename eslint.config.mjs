@@ -17,7 +17,7 @@ const styleRules = {
 };
 
 export default [
-  { ignores: ["dist/**", "node_modules/**"] },
+  { ignores: ["dist/**", "node_modules/**", "theme/**"] },
   js.configs.recommended,
   {
     files: ["src/js/**/*.js"],
