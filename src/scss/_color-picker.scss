@@ -2,6 +2,42 @@
 @use "variables" as hvars;
 @use "mixins" as hmixins;
 
+@mixin h-color-checkerboard {
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 0.5rem 0.5rem;
+  background-position:
+    0 0,
+    0 0.25rem,
+    0.25rem -0.25rem,
+    -0.25rem 0;
+}
+
+// Checkerboard behind color fill without fringe at rounded corners
+@mixin h-color-well {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    @include h-color-checkerboard;
+  }
+}
+
+@mixin h-color-well-fill {
+  position: absolute;
+  z-index: 1;
+  // Cover subpixel antialias gaps where checkerboard would otherwise show
+  inset: -1px;
+  border-radius: inherit;
+}
+
 .h-color-picker {
   position: relative;
   display: inline-block;
@@ -40,28 +76,17 @@
 }
 
 .h-color-picker__swatch {
-  position: relative;
+  @include h-color-well;
+
   flex-shrink: 0;
   width: 1.125rem;
   height: 1.125rem;
   border-radius: 0.125rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  background-color: #fff;
-  background-image:
-    linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
-  background-size: 0.5rem 0.5rem;
-  background-position:
-    0 0,
-    0 0.25rem,
-    0.25rem -0.25rem,
-    -0.25rem 0;
 }
 
 .h-color-picker__swatch-color {
-  position: absolute;
-  inset: 0;
+  @include h-color-well-fill;
 }
 
 .h-color-picker__value {
@@ -170,28 +195,17 @@
 }
 
 .h-color-picker__preview {
-  position: relative;
+  @include h-color-well;
+
   flex-shrink: 0;
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 0.25rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  background-color: #fff;
-  background-image:
-    linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
-  background-size: 0.5rem 0.5rem;
-  background-position:
-    0 0,
-    0 0.25rem,
-    0.25rem -0.25rem,
-    -0.25rem 0;
 }
 
 .h-color-picker__preview-color {
-  position: absolute;
-  inset: 0;
+  @include h-color-well-fill;
 }
 
 .h-color-picker__inputs {
