@@ -111,15 +111,12 @@
     margin-bottom: hvars.$h-space-1_5;
   }
 
-  label {
-    display: flex;
-    gap: hvars.$h-space-2;
+  .h-check {
     align-items: flex-start;
   }
 
-  input {
-    margin-top: 0.3rem;
-    accent-color: hvars.$h-primary;
+  .h-check__icons {
+    margin-top: 0.1rem;
   }
 }
 

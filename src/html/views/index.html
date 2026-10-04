@@ -617,15 +617,23 @@
             <h3>Флажки</h3>
             <div class="field">
               <div class="control">
-                <label class="checkbox">
+                <label class="checkbox h-check">
                   <input type="checkbox" checked />
-                  Яблоко
+                  <span class="h-check__icons" aria-hidden="true">
+                    <i data-lucide="square" class="h-check__off"></i>
+                    <i data-lucide="square-check" class="h-check__on"></i>
+                  </span>
+                  <span class="h-check__label">Яблоко</span>
                 </label>
               </div>
               <div class="control">
-                <label class="checkbox">
+                <label class="checkbox h-check">
                   <input type="checkbox" />
-                  Груша
+                  <span class="h-check__icons" aria-hidden="true">
+                    <i data-lucide="square" class="h-check__off"></i>
+                    <i data-lucide="square-check" class="h-check__on"></i>
+                  </span>
+                  <span class="h-check__label">Груша</span>
                 </label>
               </div>
             </div>
@@ -633,15 +641,23 @@
             <h3>Переключатели (radio)</h3>
             <div class="field">
               <div class="control">
-                <label class="radio">
+                <label class="radio h-radio">
                   <input type="radio" name="h-demo-fruit" checked />
-                  Яблоко
+                  <span class="h-radio__icons" aria-hidden="true">
+                    <i data-lucide="circle" class="h-radio__off"></i>
+                    <i data-lucide="circle-dot" class="h-radio__on"></i>
+                  </span>
+                  <span class="h-radio__label">Яблоко</span>
                 </label>
               </div>
               <div class="control">
-                <label class="radio">
+                <label class="radio h-radio">
                   <input type="radio" name="h-demo-fruit" />
-                  Груша
+                  <span class="h-radio__icons" aria-hidden="true">
+                    <i data-lucide="circle" class="h-radio__off"></i>
+                    <i data-lucide="circle-dot" class="h-radio__on"></i>
+                  </span>
+                  <span class="h-radio__label">Груша</span>
                 </label>
               </div>
             </div>
@@ -1132,13 +1148,21 @@
               <div class="field-body">
                 <div class="field is-narrow">
                   <div class="control">
-                    <label class="radio">
+                    <label class="radio h-radio">
                       <input type="radio" name="h-demo-horizontal-theme" checked />
-                      Светлая
+                      <span class="h-radio__icons" aria-hidden="true">
+                        <i data-lucide="circle" class="h-radio__off"></i>
+                        <i data-lucide="circle-dot" class="h-radio__on"></i>
+                      </span>
+                      <span class="h-radio__label">Светлая</span>
                     </label>
-                    <label class="radio ml-3">
+                    <label class="radio h-radio ml-3">
                       <input type="radio" name="h-demo-horizontal-theme" />
-                      Тёмная
+                      <span class="h-radio__icons" aria-hidden="true">
+                        <i data-lucide="circle" class="h-radio__off"></i>
+                        <i data-lucide="circle-dot" class="h-radio__on"></i>
+                      </span>
+                      <span class="h-radio__label">Тёмная</span>
                     </label>
                   </div>
                 </div>
@@ -1985,15 +2009,23 @@ kbd.menu {
             <h3>Список задач</h3>
             <ul class="h-task-list">
               <li>
-                <label>
+                <label class="h-check">
                   <input type="checkbox" checked disabled />
-                  Разметка готова
+                  <span class="h-check__icons" aria-hidden="true">
+                    <i data-lucide="square" class="h-check__off"></i>
+                    <i data-lucide="square-check" class="h-check__on"></i>
+                  </span>
+                  <span class="h-check__label">Разметка готова</span>
                 </label>
               </li>
               <li>
-                <label>
+                <label class="h-check">
                   <input type="checkbox" disabled />
-                  Пункт ещё не отмечен
+                  <span class="h-check__icons" aria-hidden="true">
+                    <i data-lucide="square" class="h-check__off"></i>
+                    <i data-lucide="square-check" class="h-check__on"></i>
+                  </span>
+                  <span class="h-check__label">Пункт ещё не отмечен</span>
                 </label>
               </li>
             </ul>

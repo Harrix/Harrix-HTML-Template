@@ -324,6 +324,28 @@
     border-color: transparent;
   }
 
+  .h-check__off,
+  .h-radio__off {
+    color: dark.$h-dark-text;
+  }
+
+  .h-check > input:disabled ~ .h-check__icons,
+  .h-radio > input:disabled ~ .h-radio__icons {
+    .h-check__off,
+    .h-check__on,
+    .h-radio__off,
+    .h-radio__on {
+      color: dark.$h-dark-placeholder;
+    }
+  }
+
+  .h-check > input:disabled ~ .h-check__label,
+  .h-radio > input:disabled ~ .h-radio__label,
+  .h-check:has(> input:disabled),
+  .h-radio:has(> input:disabled) {
+    color: dark.$h-dark-placeholder;
+  }
+
   .panel {
     background-color: dark.$h-dark-surface;
     color: dark.$h-dark-text;

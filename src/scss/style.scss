@@ -40,6 +40,7 @@
   @include meta.load-css("sections");
   @include meta.load-css("images");
   @include meta.load-css("content");
+  @include meta.load-css("checks");
   @include meta.load-css("spoiler");
   @include meta.load-css("scenarios");
   @include meta.load-css("tabs");

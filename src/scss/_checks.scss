@@ -1,0 +1,88 @@
+// Lucide checkbox / radio indicators (harrix-swiss-knife qt_lucide_checkbox)
+@use "variables" as hvars;
+
+.h-check,
+.h-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: hvars.$h-space-2;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.4;
+
+  > input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    opacity: 0;
+  }
+}
+
+.h-check__icons,
+.h-radio__icons {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  width: hvars.$h-lucide-indicator-size;
+  height: hvars.$h-lucide-indicator-size;
+  border-radius: 0.125rem;
+
+  svg,
+  i {
+    position: absolute;
+    inset: 0;
+    width: hvars.$h-lucide-indicator-size;
+    height: hvars.$h-lucide-indicator-size;
+  }
+}
+
+.h-check__off,
+.h-radio__off {
+  color: hvars.$h-lucide-ink;
+}
+
+.h-check__on,
+.h-radio__on {
+  color: hvars.$h-lucide-checked;
+  opacity: 0;
+}
+
+.h-check > input:checked ~ .h-check__icons .h-check__off,
+.h-radio > input:checked ~ .h-radio__icons .h-radio__off {
+  opacity: 0;
+}
+
+.h-check > input:checked ~ .h-check__icons .h-check__on,
+.h-radio > input:checked ~ .h-radio__icons .h-radio__on {
+  opacity: 1;
+}
+
+.h-check > input:disabled ~ .h-check__icons,
+.h-radio > input:disabled ~ .h-radio__icons {
+  .h-check__off,
+  .h-check__on,
+  .h-radio__off,
+  .h-radio__on {
+    color: hvars.$h-lucide-disabled;
+  }
+}
+
+.h-check > input:disabled ~ .h-check__label,
+.h-radio > input:disabled ~ .h-radio__label,
+.h-check:has(> input:disabled),
+.h-radio:has(> input:disabled) {
+  cursor: not-allowed;
+  color: hvars.$h-lucide-disabled;
+}
+
+.h-check > input:focus-visible ~ .h-check__icons,
+.h-radio > input:focus-visible ~ .h-radio__icons {
+  outline: 2px solid hvars.$h-primary;
+  outline-offset: 2px;
+}
