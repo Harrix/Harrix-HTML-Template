@@ -506,6 +506,336 @@
               </li>
             </ul>
 
+            <h2 id="cards-media">Карточки и media</h2>
+
+            <p>
+              Контейнеры для блоков контента:
+              <a href="https://bulma.io/documentation/elements/box/">box</a>,
+              <a href="https://bulma.io/documentation/components/card/">card</a>,
+              <a href="https://bulma.io/documentation/layout/media-object/">media</a>,
+              <a href="https://bulma.io/documentation/components/panel/">panel</a>
+              и оформление
+              <a href="https://bulma.io/documentation/elements/image/">изображений</a>.
+            </p>
+
+            <h3>Box</h3>
+            <div class="box">
+              <p class="title is-5 mb-2">Короткий анонс</p>
+              <p class="mb-0">
+                Box — простой контейнер с тенью. Удобен для заметки, CTA или блока без сложной структуры карточки.
+              </p>
+            </div>
+
+            <h3>Карточки</h3>
+            <div class="columns is-multiline">
+              <div class="column is-4">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img src="uploads/09-thumbnail.webp" alt="Робот" />
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <p class="title is-5">Документация</p>
+                    <p class="mb-0">Описание API, примеры и руководства по установке.</p>
+                  </div>
+                  <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Открыть</a>
+                  </footer>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="card">
+                  <header class="card-header">
+                    <p class="card-header-title">Релизы</p>
+                    <button class="card-header-icon" type="button" aria-label="Ещё">
+                      <span class="icon"><i data-lucide="ellipsis-vertical" aria-hidden="true"></i></span>
+                    </button>
+                  </header>
+                  <div class="card-content">
+                    <p class="mb-0">Последняя версия 2.1.0. Добавлена тёмная тема и правки навигации.</p>
+                  </div>
+                  <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Changelog</a>
+                    <a href="#" class="card-footer-item">Скачать</a>
+                  </footer>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="card">
+                  <div class="card-content">
+                    <p class="title is-5">Исходники</p>
+                    <p class="mb-3">Репозиторий шаблона на GitHub. Можно форкнуть и собрать локально.</p>
+                    <a class="button is-primary is-fullwidth" href="#">
+                      <span class="icon"><i data-lucide="github" aria-hidden="true"></i></span>
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3>Media object</h3>
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img class="is-rounded" src="uploads/07-thumbnail.webp" alt="" />
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Анна Сергеева</strong>
+                    <small class="has-text-grey"> · 12.03.2025</small>
+                    <br />
+                    Добавлена поддержка тёмной темы и обновлены иконки Lucide. Подходит для автора статьи, пункта
+                    релиза или короткого комментария.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img class="is-rounded" src="uploads/10-thumbnail.webp" alt="" />
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>Иван Петров</strong>
+                    <small class="has-text-grey"> · 01.02.2025</small>
+                    <br />
+                    Обновлён интерфейс, исправлены ошибки в мобильном меню и оглавлении.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <h3>Panel</h3>
+            <nav class="panel">
+              <p class="panel-heading">Связанные страницы</p>
+              <a class="panel-block is-active" href="#">
+                <span class="panel-icon"><i data-lucide="file-text" aria-hidden="true"></i></span>
+                Быстрый старт
+              </a>
+              <a class="panel-block" href="#">
+                <span class="panel-icon"><i data-lucide="settings" aria-hidden="true"></i></span>
+                Настройка темы
+              </a>
+              <a class="panel-block" href="#">
+                <span class="panel-icon"><i data-lucide="download" aria-hidden="true"></i></span>
+                Сборка и публикация
+              </a>
+              <div class="panel-block">
+                <button class="button is-link is-outlined is-fullwidth" type="button">Все разделы</button>
+              </div>
+            </nav>
+
+            <h3>Изображения</h3>
+            <div class="columns is-vcentered">
+              <div class="column is-narrow">
+                <figure class="image is-128x128">
+                  <img class="is-rounded" src="uploads/09-thumbnail.webp" alt="Скруглённое изображение 128×128" />
+                </figure>
+              </div>
+              <div class="column is-narrow">
+                <figure class="image is-96x96">
+                  <img class="is-rounded" src="uploads/01-thumbnail.webp" alt="Скруглённое изображение 96×96" />
+                </figure>
+              </div>
+              <div class="column is-narrow">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="uploads/02-thumbnail.webp" alt="Скруглённое изображение 64×64" />
+                </figure>
+              </div>
+              <div class="column">
+                <figure>
+                  <img src="uploads/10-thumbnail.webp" alt="Скафандр" />
+                  <figcaption>Подпись к рисунку через <code>figcaption</code>, без lightbox.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <h2 id="level-forms">Level и состояния форм</h2>
+
+            <p>
+              Раскладка
+              <a href="https://bulma.io/documentation/layout/level/">level</a>
+              для шапки блока и дополнительные состояния
+              <a href="https://bulma.io/documentation/form/general/">полей формы</a>: ошибки, успех, иконки, addons и
+              горизонтальная форма.
+            </p>
+
+            <h3>Level</h3>
+            <nav class="level" aria-label="Панель страницы">
+              <div class="level-left">
+                <div class="level-item">
+                  <div>
+                    <p class="title is-4 mb-1">Harrix HTML Template</p>
+                    <p class="heading mb-0">Версия 2.1.0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="level-right">
+                <p class="level-item"><span class="tag is-success is-light">Stable</span></p>
+                <div class="level-item">
+                  <div class="buttons mb-0">
+                    <a class="button is-primary" href="#">
+                      <span class="icon"><i data-lucide="download" aria-hidden="true"></i></span>
+                      <span>Скачать</span>
+                    </a>
+                    <a class="button" href="#">
+                      <span class="icon"><i data-lucide="github" aria-hidden="true"></i></span>
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+
+            <h3>Размеры и состояния кнопок</h3>
+            <div class="buttons">
+              <button class="button is-small" type="button">Маленькая</button>
+              <button class="button" type="button">Обычная</button>
+              <button class="button is-medium" type="button">Средняя</button>
+              <button class="button is-large is-primary" type="button">Большая</button>
+            </div>
+            <div class="buttons">
+              <button class="button" type="button" disabled>Disabled</button>
+              <span class="button is-static">Static</span>
+              <button class="button" type="button" aria-label="Поиск">
+                <span class="icon"><i data-lucide="search" aria-hidden="true"></i></span>
+              </button>
+              <button class="button is-primary" type="button" aria-label="Настройки">
+                <span class="icon"><i data-lucide="settings" aria-hidden="true"></i></span>
+              </button>
+            </div>
+
+            <h3>Состояния полей</h3>
+            <div class="field">
+              <label class="label" for="h-demo-input-success">Успешная проверка</label>
+              <div class="control has-icons-left has-icons-right">
+                <input
+                  id="h-demo-input-success"
+                  class="input is-success"
+                  type="text"
+                  value="ok@example.com"
+                  autocomplete="off"
+                />
+                <span class="icon is-left"><i data-lucide="search" aria-hidden="true"></i></span>
+                <span class="icon is-right"><i data-lucide="circle-check" aria-hidden="true"></i></span>
+              </div>
+              <p class="help is-success">Адрес выглядит корректно.</p>
+            </div>
+            <div class="field">
+              <label class="label" for="h-demo-input-danger">Ошибка</label>
+              <div class="control has-icons-left has-icons-right">
+                <input
+                  id="h-demo-input-danger"
+                  class="input is-danger"
+                  type="text"
+                  value="не email"
+                  autocomplete="off"
+                />
+                <span class="icon is-left"><i data-lucide="search" aria-hidden="true"></i></span>
+                <span class="icon is-right"><i data-lucide="circle-x" aria-hidden="true"></i></span>
+              </div>
+              <p class="help is-danger">Укажите адрес в формате name@domain.com.</p>
+            </div>
+
+            <h3>Addons</h3>
+            <div class="field has-addons">
+              <div class="control">
+                <span class="button is-static">https://</span>
+              </div>
+              <div class="control is-expanded">
+                <input class="input" type="text" placeholder="harrix.org" aria-label="Адрес сайта" />
+              </div>
+              <div class="control">
+                <button class="button is-primary" type="button">Проверить</button>
+              </div>
+            </div>
+            <div class="field has-addons">
+              <div class="control">
+                <div class="select">
+                  <select aria-label="Валюта">
+                    <option>₽</option>
+                    <option>$</option>
+                    <option>€</option>
+                  </select>
+                </div>
+              </div>
+              <div class="control">
+                <input class="input" type="number" placeholder="0" aria-label="Сумма" />
+              </div>
+              <div class="control">
+                <button class="button" type="button">OK</button>
+              </div>
+            </div>
+
+            <h3>Горизонтальная форма</h3>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="h-demo-horizontal-name">Имя</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input id="h-demo-horizontal-name" class="input" type="text" placeholder="Анна" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label" for="h-demo-horizontal-email">Почта</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input
+                      id="h-demo-horizontal-email"
+                      class="input"
+                      type="email"
+                      placeholder="hi@example.com"
+                      autocomplete="email"
+                    />
+                  </div>
+                  <p class="help">Не публикуется на сайте.</p>
+                </div>
+              </div>
+            </div>
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Тема</label>
+              </div>
+              <div class="field-body">
+                <div class="field is-narrow">
+                  <div class="control">
+                    <label class="radio">
+                      <input type="radio" name="h-demo-horizontal-theme" checked />
+                      Светлая
+                    </label>
+                    <label class="radio ml-3">
+                      <input type="radio" name="h-demo-horizontal-theme" />
+                      Тёмная
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field is-horizontal">
+              <div class="field-label"></div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <button class="button is-primary" type="button">Отправить</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <h2 id="tables">Таблицы</h2>
 
             <p>

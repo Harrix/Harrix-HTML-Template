@@ -324,6 +324,36 @@
     border-color: transparent;
   }
 
+  .panel {
+    background-color: dark.$h-dark-surface;
+    color: dark.$h-dark-text;
+
+    .panel-heading {
+      background-color: dark.$h-dark-surface-elevated;
+      color: dark.$h-dark-text-strong;
+      border-color: dark.$h-dark-border;
+    }
+
+    .panel-block,
+    .panel-tabs a {
+      color: dark.$h-dark-text;
+      border-color: dark.$h-dark-border;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      &.is-active {
+        color: dark.$h-dark-link;
+        border-left-color: hvars.$h-primary;
+      }
+    }
+
+    .panel-icon {
+      color: dark.$h-dark-icon;
+    }
+  }
+
   .message {
     background-color: dark.$h-dark-surface;
 
