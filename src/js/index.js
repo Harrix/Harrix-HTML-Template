@@ -14,6 +14,7 @@ import { GALLERY_ROW_HEIGHT, LAZY_HEAVY_LIBS_FALLBACK_MS, LAZY_HEAVY_LIBS_IDLE_M
 import { initGalleryGrid } from "./_gallery-grid.js";
 import { initSpoilerAnimation, initTabs } from "./_spoiler-tabs.js";
 import { initScenarios } from "./_scenarios.js";
+import { initColorPickers } from "./_color-picker.js";
 import { initPageToc } from "./_page-toc.js";
 import { initDocsSidebar } from "./_docs-sidebar.js";
 import { initNavbarSidebarTocFit } from "./_navbar-fit.js";
@@ -52,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileTopNav();
   initLucideIcons();
   initScenarios();
+  initColorPickers();
 
   runWhenIdle(() => {
     initLightGallery();

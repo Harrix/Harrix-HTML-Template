@@ -532,10 +532,74 @@
 
             <h3>Цвет</h3>
             <div class="field">
-              <label class="label" for="h-demo-color">Выбор цвета</label>
-              <div class="control is-flex is-align-items-center">
-                <input id="h-demo-color" class="mr-2" type="color" value="#2e86b7" aria-label="Цвет" />
-                <span class="tag is-light">#2e86b7</span>
+              <label class="label" id="h-demo-color-label">Выбор цвета</label>
+              <div class="control">
+                <div
+                  class="h-color-picker"
+                  data-h-color-picker
+                  data-color="#2e86b7"
+                  aria-labelledby="h-demo-color-label"
+                >
+                  <button
+                    type="button"
+                    class="h-color-picker__trigger"
+                    data-h-color-trigger
+                    aria-expanded="false"
+                    aria-controls="h-demo-color-dropdown"
+                    aria-haspopup="dialog"
+                  >
+                    <span class="h-color-picker__swatch" aria-hidden="true">
+                      <span class="h-color-picker__swatch-color" data-h-color-swatch></span>
+                    </span>
+                    <span class="h-color-picker__value" data-h-color-value>#2E86B7</span>
+                  </button>
+                  <div
+                    id="h-demo-color-dropdown"
+                    class="h-color-picker__dropdown"
+                    data-h-color-dropdown
+                    role="dialog"
+                    aria-label="Палитра цвета"
+                    hidden
+                  >
+                    <div class="h-color-picker__palette" data-h-color-palette>
+                      <span class="h-color-picker__palette-handle" data-h-color-palette-handle></span>
+                    </div>
+                    <div class="h-color-picker__sliders-row">
+                      <div class="h-color-picker__sliders">
+                        <div class="h-color-picker__hue" data-h-color-hue>
+                          <span class="h-color-picker__slider-handle" data-h-color-hue-handle></span>
+                        </div>
+                        <div class="h-color-picker__alpha" data-h-color-alpha>
+                          <span class="h-color-picker__slider-handle" data-h-color-alpha-handle></span>
+                        </div>
+                      </div>
+                      <div class="h-color-picker__preview" aria-hidden="true">
+                        <span class="h-color-picker__preview-color" data-h-color-preview></span>
+                      </div>
+                    </div>
+                    <div class="h-color-picker__inputs">
+                      <select class="h-color-picker__format" aria-label="Формат цвета" disabled>
+                        <option selected>HEX</option>
+                      </select>
+                      <input
+                        class="h-color-picker__hex"
+                        type="text"
+                        data-h-color-hex
+                        spellcheck="false"
+                        autocomplete="off"
+                        aria-label="HEX-код"
+                      />
+                      <input
+                        class="h-color-picker__alpha-input"
+                        type="text"
+                        data-h-color-alpha-input
+                        spellcheck="false"
+                        autocomplete="off"
+                        aria-label="Прозрачность"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 

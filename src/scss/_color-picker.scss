@@ -1,0 +1,256 @@
+// Ant Design–inspired color picker (demo control)
+@use "variables" as hvars;
+
+.h-color-picker {
+  position: relative;
+  display: inline-block;
+  text-align: start;
+  hyphens: manual;
+}
+
+.h-color-picker__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--bulma-border, #d9d9d9);
+  border-radius: 0.375rem;
+  background: var(--bulma-scheme-main, #fff);
+  color: inherit;
+  font: inherit;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: hvars.$h-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid hvars.$h-primary;
+    outline-offset: 2px;
+  }
+}
+
+.h-color-picker.is-open .h-color-picker__trigger {
+  border-color: hvars.$h-primary;
+  box-shadow: 0 0 0 2px rgba(46, 134, 183, 0.2);
+}
+
+.h-color-picker__swatch {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 0.125rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 0.5rem 0.5rem;
+  background-position:
+    0 0,
+    0 0.25rem,
+    0.25rem -0.25rem,
+    -0.25rem 0;
+}
+
+.h-color-picker__swatch-color {
+  position: absolute;
+  inset: 0;
+}
+
+.h-color-picker__value {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+}
+
+.h-color-picker__dropdown {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  width: 16.5rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: var(--bulma-scheme-main, #fff);
+  box-shadow:
+    0 0.375rem 1rem rgba(0, 0, 0, 0.12),
+    0 0.1875rem 0.375rem rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -0.375rem;
+    left: 1rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: inherit;
+    border-left: 1px solid rgba(0, 0, 0, 0.06);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    transform: rotate(45deg);
+  }
+}
+
+.h-color-picker__palette {
+  position: relative;
+  width: 100%;
+  height: 10rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.25rem;
+  cursor: crosshair;
+  touch-action: none;
+  overflow: hidden;
+}
+
+.h-color-picker__palette-handle {
+  position: absolute;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin: -0.4375rem 0 0 -0.4375rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.h-color-picker__sliders-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.h-color-picker__sliders {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.h-color-picker__hue,
+.h-color-picker__alpha {
+  position: relative;
+  height: 0.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.h-color-picker__hue {
+  background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+}
+
+.h-color-picker__alpha {
+  --h-color-alpha-end: #{hvars.$h-primary};
+
+  background-image:
+    linear-gradient(to right, transparent, var(--h-color-alpha-end)), linear-gradient(45deg, #ccc 25%, transparent 25%),
+    linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%),
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-color: #fff;
+  background-size:
+    100% 100%,
+    0.5rem 0.5rem,
+    0.5rem 0.5rem,
+    0.5rem 0.5rem,
+    0.5rem 0.5rem;
+  background-position:
+    0 0,
+    0 0,
+    0 0.25rem,
+    0.25rem -0.25rem,
+    -0.25rem 0;
+}
+
+.h-color-picker__slider-handle {
+  position: absolute;
+  top: 50%;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin: -0.4375rem 0 0 -0.4375rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.h-color-picker__preview {
+  position: relative;
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 0.5rem 0.5rem;
+  background-position:
+    0 0,
+    0 0.25rem,
+    0.25rem -0.25rem,
+    -0.25rem 0;
+}
+
+.h-color-picker__preview-color {
+  position: absolute;
+  inset: 0;
+}
+
+.h-color-picker__inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.h-color-picker__format {
+  flex: 0 0 auto;
+  width: 4.25rem;
+  height: 1.75rem;
+  padding: 0 0.35rem;
+  border: 1px solid var(--bulma-border, #d9d9d9);
+  border-radius: 0.25rem;
+  background: var(--bulma-scheme-main, #fff);
+  color: inherit;
+  font-size: 0.75rem;
+}
+
+.h-color-picker__hex,
+.h-color-picker__alpha-input {
+  height: 1.75rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--bulma-border, #d9d9d9);
+  border-radius: 0.25rem;
+  background: var(--bulma-scheme-main, #fff);
+  color: inherit;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+
+  &:focus {
+    outline: none;
+    border-color: hvars.$h-primary;
+    box-shadow: 0 0 0 2px rgba(46, 134, 183, 0.15);
+  }
+}
+
+.h-color-picker__hex {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-transform: uppercase;
+}
+
+.h-color-picker__alpha-input {
+  flex: 0 0 3.25rem;
+  width: 3.25rem;
+  text-align: center;
+}
