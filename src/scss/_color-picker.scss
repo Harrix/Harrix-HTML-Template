@@ -80,7 +80,7 @@
   z-index: 30;
   top: calc(100% + 0.5rem);
   left: 0;
-  width: 16.5rem;
+  width: 18rem;
   padding: 0.75rem;
 }
 
@@ -252,6 +252,10 @@
   left: 0;
   min-width: 4.5rem;
   padding: 0.25rem;
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 .h-color-picker__format-option {
@@ -280,6 +284,11 @@
   align-items: center;
   gap: 0.25rem;
   min-width: 0;
+
+  // `display: flex` must not override the HTML hidden attribute
+  &[hidden] {
+    display: none;
+  }
 }
 
 .h-color-picker__channel {
