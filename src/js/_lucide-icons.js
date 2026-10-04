@@ -1,5 +1,6 @@
 import {
   Check,
+  ChevronDown,
   ChevronUp,
   Circle,
   CircleAlert,
@@ -68,6 +69,7 @@ const Windows = [
 
 const icons = {
   Check,
+  ChevronDown,
   ChevronUp,
   Circle,
   CircleAlert,

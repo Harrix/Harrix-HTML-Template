@@ -578,50 +578,56 @@
                       </div>
                     </div>
                     <div class="h-color-picker__inputs">
-                      <div class="h-color-picker__format" data-h-color-format>
-                        <button
-                          type="button"
-                          class="h-color-picker__format-trigger"
-                          data-h-color-format-trigger
-                          aria-expanded="false"
-                          aria-haspopup="listbox"
-                          aria-controls="h-demo-color-format-menu"
-                          aria-label="Формат цвета"
-                        >
-                          <span data-h-color-format-label>HEX</span>
-                        </button>
+                      <div class="dropdown h-color-picker__format" data-h-color-format>
+                        <div class="dropdown-trigger">
+                          <button
+                            type="button"
+                            class="button is-small h-color-picker__format-trigger"
+                            data-h-color-format-trigger
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                            aria-controls="h-demo-color-format-menu"
+                            aria-label="Формат цвета"
+                          >
+                            <span data-h-color-format-label>HEX</span>
+                            <span class="icon is-small">
+                              <i data-lucide="chevron-down" aria-hidden="true"></i>
+                            </span>
+                          </button>
+                        </div>
                         <div
                           id="h-demo-color-format-menu"
-                          class="h-color-picker__format-menu"
+                          class="dropdown-menu"
                           data-h-color-format-menu
-                          role="listbox"
-                          aria-label="Форматы цвета"
+                          role="menu"
                           hidden
                         >
-                          <button
-                            type="button"
-                            class="h-color-picker__format-option is-active"
-                            role="option"
-                            data-h-color-format-option="hex"
-                          >
-                            HEX
-                          </button>
-                          <button
-                            type="button"
-                            class="h-color-picker__format-option"
-                            role="option"
-                            data-h-color-format-option="hsb"
-                          >
-                            HSB
-                          </button>
-                          <button
-                            type="button"
-                            class="h-color-picker__format-option"
-                            role="option"
-                            data-h-color-format-option="rgb"
-                          >
-                            RGB
-                          </button>
+                          <div class="dropdown-content">
+                            <button
+                              type="button"
+                              class="dropdown-item is-active"
+                              role="menuitem"
+                              data-h-color-format-option="hex"
+                            >
+                              HEX
+                            </button>
+                            <button
+                              type="button"
+                              class="dropdown-item"
+                              role="menuitem"
+                              data-h-color-format-option="hsb"
+                            >
+                              HSB
+                            </button>
+                            <button
+                              type="button"
+                              class="dropdown-item"
+                              role="menuitem"
+                              data-h-color-format-option="rgb"
+                            >
+                              RGB
+                            </button>
+                          </div>
                         </div>
                       </div>
                       <div class="h-color-picker__channels" data-h-color-channels-hex>
