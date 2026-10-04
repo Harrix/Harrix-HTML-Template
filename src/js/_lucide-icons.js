@@ -1,5 +1,4 @@
 import {
-  Calendar,
   Check,
   ChevronUp,
   Circle,
@@ -68,7 +67,6 @@ const Windows = [
 ];
 
 const icons = {
-  Calendar,
   Check,
   ChevronUp,
   Circle,

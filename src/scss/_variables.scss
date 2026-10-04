@@ -29,6 +29,11 @@ $h-h5-font-size: 1.25rem;
 $h-h6-font-size: 1.125rem;
 $h-gallery-gap: 10px;
 $h-form-min-width: 8.125rem;
+// Compact demo / article form widths (short values should not span the content column)
+$h-control-width-xs: 6rem;
+$h-control-width-sm: 12.5rem;
+$h-control-width-md: 22rem;
+$h-control-width-lg: 36rem;
 $h-container-max-width: 1179px;
 // Matches Bulma .container width: min(breakpoint, $container-max-width) - 2 * $gap (see bulma/sass/layout/container.scss)
 $h-container-content-max-width: $h-container-max-width - 64px;

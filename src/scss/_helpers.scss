@@ -1,7 +1,33 @@
 @use "bulma/sass/utilities/mixins" as mixins;
+@use "variables" as hvars;
 
 .h-is-clipped-touch {
   @include mixins.touch {
     overflow: hidden;
   }
+}
+
+// Limit control / field width so short inputs are not full content-column wide
+.h-control-xs {
+  max-width: hvars.$h-control-width-xs;
+  width: 100%;
+}
+
+.h-control-sm {
+  max-width: hvars.$h-control-width-sm;
+  width: 100%;
+}
+
+.h-control-md {
+  max-width: hvars.$h-control-width-md;
+  width: 100%;
+}
+
+.h-control-lg {
+  max-width: hvars.$h-control-width-lg;
+  width: 100%;
+}
+
+.h-field-md {
+  max-width: hvars.$h-control-width-md;
 }
