@@ -1,5 +1,6 @@
 @use "bulma/sass/utilities/mixins" as mixins;
 @use "variables" as hvars;
+@use "mixins" as hmixins;
 
 body {
   overflow-x: hidden;
@@ -66,4 +67,9 @@ html.h-nav-suppress-dropdowns .navbar-item.has-dropdown > .navbar-dropdown {
   display: none;
   opacity: 0;
   pointer-events: none;
+}
+
+// Bulma dropdown panel: same chrome as navbar-dropdown.is-boxed / color picker
+.dropdown-content {
+  @include hmixins.h-floating-panel;
 }

@@ -85,6 +85,10 @@
           transition: none;
         }
       }
+
+      &.is-boxed {
+        @include hmixins.h-floating-panel;
+      }
     }
   }
 

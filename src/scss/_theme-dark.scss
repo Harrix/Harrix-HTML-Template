@@ -54,11 +54,9 @@
     }
 
     .navbar-dropdown.is-boxed {
-      background-color: dark.$h-dark-surface;
-      border: none;
-      border-top: none;
+      @include hmixins.h-floating-panel-dark;
+
       overflow: hidden;
-      box-shadow: hvars.$h-shadow-elevated-dark;
       // Unified background for rounded corners: override any Bulma shadow/border
       &,
       &::before,
@@ -192,7 +190,6 @@
     }
 
     .h-color-picker__trigger,
-    .h-color-picker__dropdown,
     .h-color-picker__format,
     .h-color-picker__hex,
     .h-color-picker__alpha-input {
@@ -202,9 +199,11 @@
     }
 
     .h-color-picker__dropdown {
-      box-shadow:
-        0 0.375rem 1rem rgba(0, 0, 0, 0.45),
-        0 0.1875rem 0.375rem rgba(0, 0, 0, 0.3);
+      @include hmixins.h-floating-panel-dark;
+    }
+
+    .dropdown-content {
+      @include hmixins.h-floating-panel-dark;
     }
   }
 

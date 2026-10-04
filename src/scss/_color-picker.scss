@@ -1,5 +1,6 @@
 // Ant Design–inspired color picker (demo control)
 @use "variables" as hvars;
+@use "mixins" as hmixins;
 
 .h-color-picker {
   position: relative;
@@ -70,31 +71,14 @@
 }
 
 .h-color-picker__dropdown {
+  @include hmixins.h-floating-panel;
+
   position: absolute;
   z-index: 30;
   top: calc(100% + 0.5rem);
   left: 0;
   width: 16.5rem;
   padding: 0.75rem;
-  border-radius: 0.5rem;
-  background: var(--bulma-scheme-main, #fff);
-  box-shadow:
-    0 0.375rem 1rem rgba(0, 0, 0, 0.12),
-    0 0.1875rem 0.375rem rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: -0.375rem;
-    left: 1rem;
-    width: 0.75rem;
-    height: 0.75rem;
-    background: inherit;
-    border-left: 1px solid rgba(0, 0, 0, 0.06);
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
-    transform: rotate(45deg);
-  }
 }
 
 .h-color-picker__palette {

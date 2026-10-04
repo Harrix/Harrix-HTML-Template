@@ -251,6 +251,20 @@
   min-height: hvars.$h-navbar-toc-row-height;
 }
 
+// Floating panel chrome shared by navbar dropdown, Bulma dropdown, color picker
+@mixin h-floating-panel {
+  border: none;
+  border-radius: hvars.$h-panel-radius;
+  background-color: hvars.$h-surface;
+  box-shadow: hvars.$h-shadow-elevated;
+}
+
+@mixin h-floating-panel-dark {
+  border: none;
+  background-color: dark.$h-dark-surface;
+  box-shadow: hvars.$h-shadow-elevated-dark;
+}
+
 // Dropdown TOC panel chrome (tablet no-fit and split no-fit modes)
 @mixin h-toc-dropdown-panel {
   overflow-x: hidden;
