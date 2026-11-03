@@ -483,28 +483,26 @@
     }
   }
 
-  .h-spoiler,
-  .h-tab-panels {
+  .h-spoiler {
     border-color: dark.$h-dark-border;
   }
 
   .h-tab-widget {
-    --h-tab-surface: #{dark.$h-dark-bg};
-
     > .tabs {
       a {
-        color: dark.$h-dark-text;
+        color: dark.$h-dark-placeholder;
       }
 
-      a:hover,
-      li.is-active a {
-        color: dark.$h-dark-link;
+      a:hover {
+        border-bottom-color: dark.$h-dark-border;
+        color: dark.$h-dark-text-strong;
       }
 
-      li.is-active a {
-        background-color: var(--h-tab-surface);
-        border-color: dark.$h-dark-border;
-        border-bottom-color: var(--h-tab-surface);
+      li.is-active a,
+      li.is-active a:hover {
+        background-color: transparent;
+        border-bottom-color: dark.$h-dark-link;
+        color: dark.$h-dark-text-strong;
       }
     }
   }

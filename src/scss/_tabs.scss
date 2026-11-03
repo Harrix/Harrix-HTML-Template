@@ -1,15 +1,24 @@
 @use "variables" as hvars;
 
-.h-tab-widget {
-  --h-tab-surface: var(--bulma-scheme-main, #fff);
+// Fluent / SelectorBar-style tabs (match HSK `fluent_tab_bar_qss`):
+// plain labels, accent underline on the selected tab, no folder-card chrome.
+$h-tab-indicator: 3px; // HSK TAB_INDICATOR_HEIGHT
+$h-tab-gap: 1.25rem; // HSK TAB_GAP (20px)
 
+.h-tab-widget {
   > .tabs {
     margin-bottom: 0;
-    overflow: visible;
+    overflow-x: auto;
+    overflow-y: hidden;
 
     ul {
       margin-left: 0;
       border-bottom-width: 0;
+      column-gap: $h-tab-gap;
+    }
+
+    li {
+      margin-top: 0;
     }
 
     li + li {
@@ -17,15 +26,20 @@
     }
 
     a {
-      border: 1px solid transparent;
-      border-radius: hvars.$h-panel-radius hvars.$h-panel-radius 0 0;
-      margin-bottom: -1px;
+      border: none;
+      border-bottom: $h-tab-indicator solid transparent;
+      border-radius: 0;
+      margin-bottom: 0;
+      padding: calc(#{hvars.$h-space-1_5} + #{$h-tab-indicator}) #{hvars.$h-space-1} #{hvars.$h-space-1_5};
+      background-color: transparent;
+      color: hvars.$h-muted-text;
+      font-weight: 400;
       text-decoration: none;
 
       &:hover {
-        background-color: hvars.$h-soft-hover;
-        border-bottom-color: transparent;
-        color: hvars.$h-primary;
+        background-color: transparent;
+        border-bottom-color: hvars.$h-border;
+        color: hvars.$h-text;
         text-decoration: none;
       }
 
@@ -36,35 +50,25 @@
     }
 
     li.is-active a {
-      position: relative;
-      z-index: 1;
-      background-color: var(--h-tab-surface);
-      border-color: var(--bulma-border, #dbdbdb);
-      border-bottom-color: var(--h-tab-surface);
-      color: hvars.$h-primary;
+      background-color: transparent;
+      border-bottom-color: hvars.$h-primary;
+      color: hvars.$h-text;
+      font-weight: 600;
 
-      // Cover the panel's top border under the label without painting over the side borders.
-      &::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: -2px;
-        left: 0;
-        height: 3px;
-        background-color: var(--h-tab-surface);
+      &:hover {
+        border-bottom-color: hvars.$h-primary;
+        color: hvars.$h-text;
       }
     }
   }
 }
 
 .h-tab-panels {
-  border: 1px solid var(--bulma-border, #dbdbdb);
-  border-radius: 0 hvars.$h-panel-radius hvars.$h-panel-radius hvars.$h-panel-radius;
-  background-color: var(--h-tab-surface);
+  background-color: transparent;
 }
 
 .h-tab-panel {
-  padding: hvars.$h-space-5;
+  padding: hvars.$h-space-4 0 0;
 
   > *:first-child {
     margin-top: 0;
