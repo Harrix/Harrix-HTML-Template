@@ -1,5 +1,5 @@
 ---
-description: After project changes, run the production build and show both commit titles
+description: After project changes, run the production build and create local commits in both repos
 alwaysApply: true
 ---
 
@@ -15,11 +15,11 @@ npm run build
 - If the build fails, fix the cause and run it again until it succeeds.
 - Skip the build only when the task did not change any project files.
 
-# Commit titles
+# Commits
 
-At the end, show the commit title twice, with the same text:
+After `npm run build` succeeds, create local commits (never push):
 
-1. For this repository.
-2. For `D:\GitHub\Harrix-HTML-Template-dist-history`.
+1. In this repository (`Harrix-HTML-Template`): commit only the agent's changed/added/deleted files plus updated build outputs from this task, using the usual `# Git style` title.
+2. If `D:\GitHub\Harrix-HTML-Template-dist-history` has changes produced by `npm run build`, create a matching local commit there with the **same** commit title (agent/build outputs only; never push).
 
-Do not create the commits. Only print both titles.
+At the end, show both created commit titles and short hashes. If a commit could not be created, show the intended title and the reason.
